@@ -1,0 +1,45 @@
+{
+  "name": "angular2-openlayers",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "tslint src/**/*.ts",
+    "test": "tsc && karma start",
+    "postinstall": "typings install",
+    "prepublish": "tsc",
+    "tsc": "tsc",
+    "typings": "typings"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quentin-ol/angular2-openlayers"
+  },
+  "author": {
+    "name": "Quentin Lampin",
+    "email": "quentin.lampin@orange.com"
+  },
+  "keywords": [
+    "angular",
+    "angular2"
+  ],
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/quentin-ol/angular2-openlayers/issues"
+  },
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "dependencies": {
+    "openlayers-prebuilt": "^3.12.1"
+  },
+  "devDependencies": {
+    "@angular/core": "2.0.0-rc.3",
+    "codelyzer": "^0.0.20",
+    "rxjs": "5.0.0-beta.6",
+    "tslint": "^3.6.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.0.4",
+    "zone.js": "0.6.12"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
