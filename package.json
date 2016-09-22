@@ -1,6 +1,6 @@
 {
   "name": "angular2-openlayers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
@@ -19,7 +19,8 @@
   },
   "keywords": [
     "angular",
-    "angular2"
+    "angular2",
+    "openlayers"
   ],
   "license": "MPL-2.0",
   "bugs": {
@@ -28,7 +29,7 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "dependencies": {
-    "openlayers-prebuilt": "^3.12.1"
+    "openlayers": "^3.18.2"
   },
   "devDependencies": {
     "@angular/core": "2.0.0-rc.3",

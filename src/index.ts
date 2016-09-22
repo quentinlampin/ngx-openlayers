@@ -1,13 +1,7 @@
-import {DIRECTIVES} from './directives';
-import {PIPES} from './pipes';
-import {PROVIDERS} from './services';
+import {COMPONENTS} from './components';
 
-export * from './directives';
-export * from './services';
-export * from './pipes';
+export * from './components';
 
 export default {
-  directives: [DIRECTIVES],
-  pipes: [PIPES],
-  providers: [PROVIDERS]
+  components: [COMPONENTS]
 }

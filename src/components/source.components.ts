@@ -31,10 +31,10 @@ export class SourceBingmapsComponent extends source.BingMaps implements OnDestro
   
   @Input('key') key: string;
 
-  constructor(@Host() layer: LayerTileComponent){
+  constructor(@Host() layer: LayerTileComponent, key: String){
     console.log('instancing aol-source-osm');
     super({
-      key: this.key,
+      key: key,
       imagerySet: 'Road'
     });
     this._host_ = layer;
