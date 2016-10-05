@@ -11,5 +11,6 @@ export class MapComponent extends Map {
     console.log('instancing aol-map');
     super({target: element.nativeElement.parentElement});
     this._host_ = element;
+    setTimeout( ()=>this.updateSize() );
   }
 }

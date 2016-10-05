@@ -14,6 +14,7 @@ export class SourceOsmComponent extends source.OSM implements OnDestroy{
     super();
     this._host_ = layer;
     this._host_.setSource(this);
+    this._host_.changed();
   }
 
   ngOnDestroy(){
