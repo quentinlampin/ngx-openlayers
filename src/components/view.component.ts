@@ -24,6 +24,6 @@ export class ViewComponent extends View implements OnChanges, OnDestroy{
 
   ngOnDestroy(){
     console.log('removing aol-view');
-    this._host_.setView(null);
+    // this._host_.setView(null);
   }
 }

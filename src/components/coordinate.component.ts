@@ -1,5 +1,5 @@
 import { Component, Host, OnDestroy, Optional, OnChanges, Input } from '@angular/core';
-import { proj, Collection, Coordinate } from 'openlayers';
+import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from "./map.component";
 import {GeometryPointComponent, GeometryLinestringComponent} from "./geometry.components";
 import {ViewComponent} from "./view.component";
@@ -60,33 +60,31 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
     }
   }
   ngOnDestroy(){
-    switch(this._hostType_){
-      case 'GeometryPointComponent':
-        this._host_.setCoordinates(null);
-        break;
-      case 'ViewComponent':
-        this._host_.setCenter(null);
-        break;
-    }
+    // switch(this._hostType_){
+    //   case 'GeometryPointComponent':
+    //     this._host_.setCoordinates(null);
+    //     break;
+    //   case 'ViewComponent':
+    //     this._host_.setCenter(null);
+    //     break;
+    // }
   }
 }
 @Component({
   selector: 'aol-collection-coordinates',
   template: `<div class="aol-collection-coordinates"></div>`
 })
-export class CollectionCoordinatesComponent extends Collection<Coordinate> implements OnChanges, OnDestroy {
+export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
   _host_: any;
   _hostType_: "GeometryLinestringComponent";
   _map_: MapComponent;
   
-  @Input('coordinates') array_: Array<Array<number>>;
+  @Input('coordinates') coordinates: Array<Array<number>>;
   @Input('srid') srid: string;
   
   constructor(@Host() map: MapComponent, @Host() geometryLinestring: GeometryLinestringComponent){
     
-    
     console.log('instancing aol-collection-coordinates');
-    super(new Array<Coordinate>());
     this._map_ = map;
     this.srid = this.srid ? this.srid : 'EPSG:3857';
     
@@ -105,10 +103,10 @@ export class CollectionCoordinatesComponent extends Collection<Coordinate> imple
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
     
     if(this.srid == referenceProjectionCode){
-      transformedCoordinates = this.getArray();
+      transformedCoordinates = this.coordinates;
     }else{
       transformedCoordinates = new Array<Coordinate>();
-      this.forEach( function (coordinate: Coordinate) {
+      this.coordinates.forEach( function (coordinate: Coordinate) {
         transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
       }.bind(this));
     }
@@ -119,10 +117,10 @@ export class CollectionCoordinatesComponent extends Collection<Coordinate> imple
     }
   }
   ngOnDestroy(){
-    switch(this._hostType_){
-      case 'GeometryLinestringComponent':
-        this._host_.setCoordinates(null);
-        break;
-    }
+    // switch(this._hostType_){
+    //   case 'GeometryLinestringComponent':
+    //     this._host_.setCoordinates(null);
+    //     break;
+    // }
   }
 }

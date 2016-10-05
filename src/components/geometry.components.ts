@@ -16,7 +16,7 @@ export class GeometryPointComponent extends geom.Point implements OnDestroy {
   }
 
   ngOnDestroy(){
-    this._host_.setGeometry(null);
+    // this._host_.setGeometry(null);
   }
 }
 
@@ -34,6 +34,6 @@ export class GeometryLinestringComponent extends geom.LineString implements OnDe
   }
 
   ngOnDestroy(){
-    this._host_.setGeometry(null);
+    // this._host_.setGeometry(null);
   }
 }
