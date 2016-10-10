@@ -3,14 +3,20 @@ import { Map } from 'openlayers';
 
 @Component({
   selector: 'aol-map',
-  template: `<ng-content></ng-content>`
+  template: `<div class='fill'></div><ng-content></ng-content>`,
+  styles: ['.fill { height:100%; width: 100% }']
 })
 export class MapComponent extends Map {
   _host_: ElementRef;
+  
   constructor(element: ElementRef){
-    console.log('instancing aol-map');
-    super({target: element.nativeElement.parentElement});
+    super({target: null});
     this._host_ = element;
-    setTimeout( ()=>this.updateSize() );
+    setTimeout( ()=>this.onFirstDigest() );
+  }
+
+  onFirstDigest(){
+  	this.setTarget(this._host_.nativeElement.firstElementChild);
+  	this.updateSize();
   }
 }

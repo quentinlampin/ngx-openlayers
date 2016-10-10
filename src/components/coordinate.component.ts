@@ -59,16 +59,7 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
         break;
     }
   }
-  ngOnDestroy(){
-    // switch(this._hostType_){
-    //   case 'GeometryPointComponent':
-    //     this._host_.setCoordinates(null);
-    //     break;
-    //   case 'ViewComponent':
-    //     this._host_.setCenter(null);
-    //     break;
-    // }
-  }
+  ngOnDestroy(){}
 }
 @Component({
   selector: 'aol-collection-coordinates',
@@ -116,11 +107,5 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
         break;
     }
   }
-  ngOnDestroy(){
-    // switch(this._hostType_){
-    //   case 'GeometryLinestringComponent':
-    //     this._host_.setCoordinates(null);
-    //     break;
-    // }
-  }
+  ngOnDestroy(){}
 }
