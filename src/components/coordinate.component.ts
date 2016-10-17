@@ -39,7 +39,7 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
   ngOnChanges(){
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
-    let transformedCoordinates: Array<number>;
+    let transformedCoordinates: number[];
     
     referenceProjection = this._map_.getView().getProjection();
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
@@ -70,7 +70,7 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
   _hostType_: "GeometryLinestringComponent";
   _map_: MapComponent;
   
-  @Input('coordinates') coordinates: Array<Array<number>>;
+  @Input('coordinates') coordinates: [number, number][];
   @Input('srid') srid: string;
   
   constructor(@Host() map: MapComponent, @Host() geometryLinestring: GeometryLinestringComponent){

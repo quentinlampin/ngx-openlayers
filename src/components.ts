@@ -7,7 +7,7 @@ import {ViewComponent} from "./components/view.component";
 import {FeatureComponent} from "./components/feature.component";
 import {GeometryLinestringComponent, GeometryPointComponent} from "./components/geometry.components";
 import {CoordinateComponent, CollectionCoordinatesComponent} from "./components/coordinate.component";
-// import {StyleComponent, StyleCircleComponent} from "./components/style.components";
+import {StyleComponent, StyleFillComponent, StyleCircleComponent} from "./components/style.components";
 
 // Export all components
 export * from './components/map.component';
@@ -17,7 +17,7 @@ export * from './components/source.components';
 export * from './components/feature.component';
 export * from './components/geometry.components';
 export * from './components/coordinate.component';
-// export * from './components/style.components';
+export * from './components/style.components';
 
 // Export convenience property
 export const COMPONENTS: any[] = [
@@ -32,7 +32,8 @@ export const COMPONENTS: any[] = [
   GeometryLinestringComponent,
   GeometryPointComponent,
   CoordinateComponent,
-  CollectionCoordinatesComponent
-  // StyleComponent,
-  // StyleCircleComponent
+  CollectionCoordinatesComponent,
+  StyleComponent,
+  StyleFillComponent,
+  StyleCircleComponent
 ];
