@@ -4,21 +4,21 @@ import { MapComponent } from './../map.component';
 
 
 @Component({
-  selector: 'aol-control-attribution',
+  selector: 'aol-control-mouseposition',
   template: `<ng-content></ng-content>`
 })
-export class ControlAttributionComponent extends control.Attribution implements OnDestroy{
+export class ControlMousePositionComponent extends control.MousePosition implements OnDestroy{
   _host_: MapComponent;
 
   constructor(@Host() map: MapComponent){
-    console.log('instancing aol-control-attribution');
+    console.log('instancing aol-control-mouseposition');
     super();
     this._host_ = map;
     map.addControl(this);
   }
 
   ngOnDestroy(){
-    console.log('removing aol-control-attribution');
+    console.log('removing aol-control-mouseposition');
     this._host_.removeControl(this);
   }
 }

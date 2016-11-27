@@ -1,6 +1,6 @@
 import { Component, Host, OnDestroy } from '@angular/core';
 import { control } from 'openlayers';
-import { MapComponent } from "./../map.component";
+import { MapComponent } from './../map.component';
 
 
 @Component({

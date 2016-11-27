@@ -1,6 +1,6 @@
 import { Component, Host, Input, OnChanges, OnDestroy } from '@angular/core';
 import { View } from 'openlayers';
-import {MapComponent} from "./map.component";
+import { MapComponent } from "./map.component";
 
 @Component({
   selector: 'aol-view',
