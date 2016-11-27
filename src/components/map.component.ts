@@ -8,9 +8,9 @@ import { Map } from 'openlayers';
 })
 export class MapComponent extends Map {
   _host_: ElementRef;
-  
+
   constructor(element: ElementRef){
-    super({target: null});
+    super({target: null, controls: []});
     this._host_ = element;
     setTimeout( ()=>this.onFirstDigest() );
   }
