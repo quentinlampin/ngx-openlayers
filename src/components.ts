@@ -7,7 +7,7 @@ import {ViewComponent} from "./components/view.component";
 import {FeatureComponent} from "./components/feature.component";
 import {GeometryLinestringComponent, GeometryPointComponent} from "./components/geometry.components";
 import {CoordinateComponent, CollectionCoordinatesComponent} from "./components/coordinate.component";
-import {StyleComponent, StyleFillComponent, StyleCircleComponent} from "./components/style.components";
+import {CONTROLS} from './components/controls/controls';
 
 // Export all components
 export * from './components/map.component';
@@ -17,7 +17,7 @@ export * from './components/source.components';
 export * from './components/feature.component';
 export * from './components/geometry.components';
 export * from './components/coordinate.component';
-export * from './components/style.components';
+export * from './components/controls/controls';
 
 // Export convenience property
 export const COMPONENTS: any[] = [
@@ -33,7 +33,5 @@ export const COMPONENTS: any[] = [
   GeometryPointComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
-  StyleComponent,
-  StyleFillComponent,
-  StyleCircleComponent
+  CONTROLS
 ];
