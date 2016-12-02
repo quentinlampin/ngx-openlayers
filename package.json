@@ -25,6 +25,7 @@
     "url": "https://github.com/quentin-ol/angular2-openlayers/issues"
   },
   "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "dependencies": {
     "openlayers": "^3.18.2",
     "@angular/common": "^2.0.1",
