@@ -12,10 +12,9 @@ export class MapComponent extends Map {
   constructor(element: ElementRef){
     super({target: null, controls: []});
     this._host_ = element;
-    setTimeout( ()=>this.onFirstDigest() );
   }
 
-  onFirstDigest(){
+  ngOnInit(){
   	this.setTarget(this._host_.nativeElement.firstElementChild);
   	this.updateSize();
   }
