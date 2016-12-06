@@ -1,5 +1,5 @@
-import { Component, ElementRef } from '@angular/core';
-import { Map } from 'openlayers';
+import { Component, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Map, MapBrowserEvent,MapEvent, render, ObjectEvent } from 'openlayers';
 
 @Component({
   selector: 'aol-map',
@@ -9,6 +9,17 @@ import { Map } from 'openlayers';
 export class MapComponent extends Map {
   _host_: ElementRef;
 
+  @Output() onClick = new EventEmitter<MapBrowserEvent>();
+  @Output() onDblClick = new EventEmitter<MapBrowserEvent>();
+  @Output() onMoveEnd = new EventEmitter<MapEvent>();
+  @Output() onPointerDrag = new EventEmitter<MapBrowserEvent>();
+  @Output() onPointerMove = new EventEmitter<MapBrowserEvent>();
+  @Output() onPostCompose = new EventEmitter<render.Event>();
+  @Output() onPostRender = new EventEmitter<MapEvent>();
+  @Output() onPreCompose = new EventEmitter<render.Event>();
+  @Output() onPropertyChange = new EventEmitter<ObjectEvent>();
+  @Output() onSingleClick = new EventEmitter<MapBrowserEvent>();
+
   constructor(element: ElementRef){
     super({target: null, controls: []});
     this._host_ = element;
@@ -17,5 +28,39 @@ export class MapComponent extends Map {
   ngOnInit(){
   	this.setTarget(this._host_.nativeElement.firstElementChild);
   	this.updateSize();
+    this.addEvents();
+  }
+
+  private addEvents() {
+    this.on('click', function(event: MapBrowserEvent) {
+      this.onClick.emit(event);
+    });
+    this.on('dblclick', function(event: MapBrowserEvent) {
+      this.onDblClick.emit(event);
+    });
+    this.on('moveend', function(event: MapEvent) {
+      this.onMoveEnd.emit(event);
+    });
+    this.on('pointerdrag', function(event: MapBrowserEvent) {
+      this.onPointerDrag.emit(event);
+    });
+    this.on('pointermove', function(event: MapBrowserEvent) {
+      this.onPointerMove.emit(event);
+    });
+    this.on('postcompose', function(event: render.Event) {
+      this.onPostCompose.emit(event);
+    });
+    this.on('postrender', function(event: MapEvent) {
+      this.onPostRender.emit(event);
+    });
+    this.on('precompose', function(event: render.Event) {
+      this.onPreCompose.emit(event);
+    });
+    this.on('propertychange', function(event: ObjectEvent) {
+      this.onPropertyChange.emit(event);
+    });
+    this.on('singleclick', function(event: MapBrowserEvent) {
+      this.onSingleClick.emit(event);
+    });
   }
 }
