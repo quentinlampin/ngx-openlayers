@@ -7,6 +7,7 @@ import { FeatureComponent } from "./feature.component";
 })
 export class IconStyleDirective implements OnChanges {
 
+    // For usage info see: http://openlayers.org/en/latest/apidoc/ol.style.Icon.html
     @Input('anchor') anchor: [number, number];
     @Input('anchorXUnits') anchorXUnits: string;
     @Input('anchorYUnits') anchorYUnits: string;
