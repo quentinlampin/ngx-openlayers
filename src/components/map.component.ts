@@ -1,14 +1,16 @@
-import { Component, ElementRef, Output, EventEmitter, Optional } from '@angular/core';
+import { Component, OnInit, OnChanges, ElementRef, Input, Output, EventEmitter, Optional } from '@angular/core';
 import { Map, MapBrowserEvent,MapEvent, render, ObjectEvent } from 'openlayers';
 import { MapCommandService } from '../services/map-command.service';
 
 @Component({
   selector: 'aol-map',
-  template: `<div class='fill'></div><ng-content></ng-content>`,
-  styles: ['.fill { height:100%; width: 100% }']
+  template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
 })
-export class MapComponent extends Map {
+export class MapComponent extends Map implements OnInit, OnChanges {
   _host_: ElementRef;
+
+  @Input('width') width: string = "100%";
+  @Input('height') height: string = "100%";
 
   @Output() onClick = new EventEmitter<MapBrowserEvent>();
   @Output() onDblClick = new EventEmitter<MapBrowserEvent>();
@@ -30,11 +32,19 @@ export class MapComponent extends Map {
 
   ngOnInit(){
   	this.setTarget(this._host_.nativeElement.firstElementChild);
-  	this.updateSize();
+  	this.refresh();
     this.addEvents();
     if (this.mapCommandService) {
       this.mapCommandService.registerMap(this);
     }
+  }
+
+  ngOnChanges(){
+    this.refresh();
+  }
+
+  private refresh() {
+  setTimeout(()=>{this.updateSize();}, 0);
   }
 
   private addEvents() {
