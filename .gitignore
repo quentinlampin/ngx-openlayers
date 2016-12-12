@@ -17,6 +17,7 @@ npm-debug.log
 # Windows
 Thumbs.db
 Desktop.ini
+.vscode/*
 
 # Mac
 .DS_Store
