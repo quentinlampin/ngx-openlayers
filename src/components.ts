@@ -7,7 +7,7 @@ import {ViewComponent} from "./components/view.component";
 import {FeatureComponent} from "./components/feature.component";
 import {GeometryLinestringComponent, GeometryPointComponent} from "./components/geometry.components";
 import {CoordinateComponent, CollectionCoordinatesComponent} from "./components/coordinate.component";
-import {StyleComponent, IconStyleDirective} from "./components/style.components";
+import {StyleComponent, IconStyleDirective, StrokeStyleDirective} from "./components/style.components";
 import {controls} from './components/controls/controls';
 
 // Export all components
@@ -38,6 +38,7 @@ export function components(): any[] {
     CollectionCoordinatesComponent,
     StyleComponent,
     IconStyleDirective,
+  StrokeStyleDirective,
     controls()
   ]
 };
