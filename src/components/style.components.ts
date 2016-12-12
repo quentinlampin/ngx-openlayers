@@ -4,19 +4,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { FeatureComponent } from "./feature.component";
 
-export abstract class StyleDirective implements OnChanges {
-
-    @Output() onChanged = new EventEmitter<any>();
-
-    ngOnChanges() {
-        this.onChanged.emit();
-    }
-}
-
 @Directive({
     selector: 'aol-style-icon'
 })
-export class IconStyleDirective extends StyleDirective {
+export class IconStyleDirective implements OnChanges {
 
     // For usage info see: http://openlayers.org/en/latest/apidoc/ol.style.Icon.html
     @Input('anchor') anchor: [number, number];
@@ -37,6 +28,8 @@ export class IconStyleDirective extends StyleDirective {
     @Input('imgSize') imgSize: [number, number];
     @Input('src') src: string;
 
+    @Output() onChanged = new EventEmitter<any>();
+
     ngOnChanges() {
         this.onChanged.emit(this.src);
     }
@@ -45,7 +38,7 @@ export class IconStyleDirective extends StyleDirective {
 @Directive({
     selector: 'aol-style-stroke'
 })
-export class StrokeStyleDirective extends StyleDirective {
+export class StrokeStyleDirective implements OnChanges {
 
     // For usage info see: http://openlayers.org/en/latest/apidoc/ol.style.Stroke.html
     @Input('color') color: [number, number, number, number];
@@ -54,6 +47,12 @@ export class StrokeStyleDirective extends StyleDirective {
     @Input('lineDash') lineDash: number[];
     @Input('miterLimit') miterLimit: number;
     @Input('width') width: number;
+
+    @Output() onChanged = new EventEmitter<any>();
+
+    ngOnChanges() {
+        this.onChanged.emit();
+    }
 }
 
 @Component({

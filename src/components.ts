@@ -38,7 +38,7 @@ export function components(): any[] {
     CollectionCoordinatesComponent,
     StyleComponent,
     IconStyleDirective,
-  StrokeStyleDirective,
+    StrokeStyleDirective,
     controls()
   ]
 };
