@@ -1,13 +1,16 @@
-import { Component, Host, OnDestroy } from '@angular/core';
+import { Component, Host, OnDestroy, Input } from '@angular/core';
 import { layer } from 'openlayers';
 import { MapComponent } from "./map.component";
-
 
 @Component({
   selector: 'aol-layer-tile',
   template: `<ng-content></ng-content>`
 })
 export class LayerTileComponent extends layer.Tile implements OnDestroy{
+    @Input() set name(value: string) {
+        this.set('name', value);
+    }
+
   _host_: MapComponent;
 
   constructor(@Host() map: MapComponent){
@@ -28,6 +31,10 @@ export class LayerTileComponent extends layer.Tile implements OnDestroy{
   template: `<ng-content></ng-content>`
 })
 export class LayerVectorComponent extends layer.Vector implements OnDestroy{
+    @Input() set name(value: string) {
+        this.set('name', value);
+    }
+
   _host_: MapComponent;
 
   constructor(@Host() map: MapComponent){

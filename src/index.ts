@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {COMPONENTS} from './components';
 
 export * from './components';
+export * from './services';
 export default {
   components: [COMPONENTS]
 }

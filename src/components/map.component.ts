@@ -1,5 +1,6 @@
-import { Component, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Output, EventEmitter, Optional } from '@angular/core';
 import { Map, MapBrowserEvent,MapEvent, render, ObjectEvent } from 'openlayers';
+import { MapCommandService } from '../services/map-command.service';
 
 @Component({
   selector: 'aol-map',
@@ -20,7 +21,9 @@ export class MapComponent extends Map {
   @Output() onPropertyChange = new EventEmitter<ObjectEvent>();
   @Output() onSingleClick = new EventEmitter<MapBrowserEvent>();
 
-  constructor(element: ElementRef){
+  constructor(
+    element: ElementRef,
+    @Optional() private mapCommandService: MapCommandService){
     super({target: null, controls: []});
     this._host_ = element;
   }
@@ -29,6 +32,9 @@ export class MapComponent extends Map {
   	this.setTarget(this._host_.nativeElement.firstElementChild);
   	this.updateSize();
     this.addEvents();
+    if (this.mapCommandService) {
+      this.mapCommandService.registerMap(this);
+    }
   }
 
   private addEvents() {
