@@ -14,11 +14,11 @@ export class ControlZoomToExtentComponent extends control.ZoomToExtent implement
     console.log('instancing aol-control-zoomtoextent');
     super();
     this._host_ = map;
-    map.addControl(this);
+    map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-zoomtoextent');
-    this._host_.removeControl(this);
+    this._host_.instance.removeControl(this);
   }
 }

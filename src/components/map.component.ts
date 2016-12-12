@@ -6,16 +6,23 @@ import { Map } from 'openlayers';
   template: `<div class='fill'></div><ng-content></ng-content>`,
   styles: ['.fill { height:100%; width: 100% }']
 })
-export class MapComponent extends Map {
-  _host_: ElementRef;
+export class MapComponent{
+  private _host_: ElementRef;
+
+  public instance: Map;
+  public options: any;
 
   constructor(element: ElementRef){
-    super({target: null, controls: []});
+    this.options = {
+      target: null,
+      controls: []
+    };
+    this.instance = new Map(this.options);
     this._host_ = element;
   }
 
   ngOnInit(){
-  	this.setTarget(this._host_.nativeElement.firstElementChild);
-  	this.updateSize();
+  	this.instance.setTarget(this._host_.nativeElement.firstElementChild);
+  	this.instance.updateSize();
   }
 }

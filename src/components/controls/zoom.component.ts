@@ -14,11 +14,11 @@ export class ControlZoomComponent extends control.Zoom implements OnDestroy{
     console.log('instancing aol-control-zoom');
     super();
     this._host_ = map;
-    map.addControl(this);
+    map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-zoom');
-    this._host_.removeControl(this);
+    this._host_.instance.removeControl(this);
   }
 }

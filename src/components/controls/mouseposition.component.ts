@@ -14,11 +14,11 @@ export class ControlMousePositionComponent extends control.MousePosition impleme
     console.log('instancing aol-control-mouseposition');
     super();
     this._host_ = map;
-    map.addControl(this);
+    map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-mouseposition');
-    this._host_.removeControl(this);
+    this._host_.instance.removeControl(this);
   }
 }
