@@ -29,7 +29,7 @@ export class SourceOsmComponent extends source.OSM implements OnDestroy{
 })
 export class SourceBingmapsComponent extends source.BingMaps implements OnDestroy{
   _host_: LayerTileComponent;
-  
+
   @Input('key') key: string;
 
   constructor(@Host() layer: LayerTileComponent, key: string){
