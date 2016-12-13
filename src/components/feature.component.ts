@@ -13,11 +13,11 @@ export class FeatureComponent extends Feature implements OnDestroy{
     console.log('instancing aol-feature');
     super();
     this._host_ = source;
-    source.addFeature(this);
+    source.instance.addFeature(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-feature');
-    this._host_.removeFeature(this);
+    this._host_.instance.removeFeature(this);
   }
 }
