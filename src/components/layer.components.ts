@@ -1,8 +1,6 @@
 import {Component, Host, OnDestroy, OnInit} from '@angular/core';
 import { layer } from 'openlayers';
 import { MapComponent } from "./map.component";
-import TileOptions = olx.layer.TileOptions;
-import VectorOptions = olx.layer.VectorOptions;
 
 
 export class LayerComponent implements OnInit, OnDestroy {
@@ -30,7 +28,7 @@ export class LayerComponent implements OnInit, OnDestroy {
   selector: 'aol-layer-tile',
   template: `<ng-content></ng-content>`
 })
-export class LayerTileComponent extends LayerComponent implements TileOptions{
+export class LayerTileComponent extends LayerComponent {
   public source: ol.source.Tile;
 
   constructor(@Host() map: MapComponent){
@@ -44,7 +42,7 @@ export class LayerTileComponent extends LayerComponent implements TileOptions{
   selector: 'aol-layer-vector',
   template: `<ng-content></ng-content>`
 })
-export class LayerVectorComponent extends LayerComponent implements VectorOptions{
+export class LayerVectorComponent extends LayerComponent {
   public source: ol.source.Vector;
 
   constructor(@Host() map: MapComponent){

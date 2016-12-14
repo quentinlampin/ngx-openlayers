@@ -1,9 +1,6 @@
 import {Component, Host, OnDestroy, Input, OnInit} from '@angular/core';
 import { source } from 'openlayers';
 import {LayerTileComponent, LayerVectorComponent, LayerComponent} from "./layer.components";
-import BingMapsOptions = olx.source.BingMapsOptions;
-import OSMOptions = olx.source.OSMOptions;
-import VectorOptions = olx.source.VectorOptions;
 
 export class SourceComponent implements OnInit, OnDestroy {
   public host: LayerComponent;
@@ -25,7 +22,7 @@ export class SourceComponent implements OnInit, OnDestroy {
   selector: 'aol-source-osm',
   template: `<div class="aol-source-osm"></div>`
 })
-export class SourceOsmComponent extends SourceComponent implements OSMOptions{
+export class SourceOsmComponent extends SourceComponent {
 
   constructor(@Host() layer: LayerTileComponent){
     console.log('instancing aol-source-osm');
@@ -43,7 +40,7 @@ export class SourceOsmComponent extends SourceComponent implements OSMOptions{
   template: `<div class="aol-source-bingmaps"></div>`
 })
 
-export class SourceBingmapsComponent extends SourceComponent implements BingMapsOptions{
+export class SourceBingmapsComponent extends SourceComponent {
   @Input('key') key: string;
   @Input('imagerySet') imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey';
 
@@ -63,7 +60,7 @@ export class SourceBingmapsComponent extends SourceComponent implements BingMaps
   selector: 'aol-source-vector',
   template: `<ng-content></ng-content>`
 })
-export class SourceVectorComponent extends SourceComponent implements VectorOptions{
+export class SourceVectorComponent extends SourceComponent {
 
   constructor(@Host() layer: LayerVectorComponent){
     console.log('instancing aol-source-vector');
