@@ -27,6 +27,7 @@ export class MapComponent{
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
 
   constructor(element: ElementRef){
+    console.log('instancing aol-map');
     this._host_ = element;
 
     this.options = {

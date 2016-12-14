@@ -24,4 +24,4 @@ Desktop.ini
 **/.DS_Store
 
 # Angular
-/compiled
+/aot

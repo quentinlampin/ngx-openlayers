@@ -18,6 +18,7 @@
         "dist"
     ],
     "angularCompilerOptions": {
-        "genDir": "aot"
+        "genDir": "aot",
+        "skipTemplateCodegen": true
     }
 }
