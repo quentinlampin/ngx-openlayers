@@ -1,13 +1,12 @@
 import { Component, Host, Input, OnChanges, OnDestroy } from '@angular/core';
 import { View } from 'openlayers';
 import { MapComponent } from "./map.component";
-import ViewOptions = olx.ViewOptions;
 
 @Component({
   selector: 'aol-view',
   template: `<ng-content></ng-content>`
 })
-export class ViewComponent implements ViewOptions, OnChanges, OnDestroy{
+export class ViewComponent implements OnChanges, OnDestroy{
   private _host_: MapComponent;
 
   public instance: View;

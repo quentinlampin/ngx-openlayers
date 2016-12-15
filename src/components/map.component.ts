@@ -1,16 +1,19 @@
-import { Component, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { Map, MapBrowserEvent,MapEvent, render, ObjectEvent } from 'openlayers';
 
 @Component({
   selector: 'aol-map',
-  template: `<div class='fill'></div><ng-content></ng-content>`,
-  styles: ['.fill { height:100%; width: 100% }']
+  template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
 })
+
 export class MapComponent{
   private _host_: ElementRef;
 
   public instance: Map;
   public options: any;
+
+  @Input('width') width: string = "100%";
+  @Input('height') height: string = "100%";
 
   @Output() onClick: EventEmitter<MapBrowserEvent>;
   @Output() onDblClick: EventEmitter<MapBrowserEvent>;
@@ -24,6 +27,7 @@ export class MapComponent{
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
 
   constructor(element: ElementRef){
+    console.log('instancing aol-map');
     this._host_ = element;
 
     this.options = {
@@ -46,8 +50,16 @@ export class MapComponent{
 
   ngOnInit(){
   	this.instance.setTarget(this._host_.nativeElement.firstElementChild);
-  	this.instance.updateSize();
+    this.refresh();
     this.addEvents();
+  }
+
+  ngOnChanges(){
+    this.refresh();
+  }
+
+  private refresh() {
+  setTimeout(()=>{this.instance.updateSize();}, 0);
   }
 
   private addEvents() {

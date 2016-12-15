@@ -8,7 +8,7 @@ import {FeatureComponent} from "./components/feature.component";
 import {GeometryLinestringComponent, GeometryPointComponent} from "./components/geometry.components";
 import {CoordinateComponent, CollectionCoordinatesComponent} from "./components/coordinate.component";
 import {StyleComponent, IconStyleDirective} from "./components/style.components";
-import {CONTROLS} from './components/controls/controls';
+import {controls} from './components/controls/controls';
 
 // Export all components
 export * from './components/map.component';
@@ -22,20 +22,22 @@ export * from './components/style.components';
 export * from './components/controls/controls';
 
 // Export convenience property
-export const COMPONENTS: any[] = [
-  MapComponent,
-  ViewComponent,
-  LayerTileComponent,
-  LayerVectorComponent,
-  SourceOsmComponent,
-  SourceBingmapsComponent,
-  SourceVectorComponent,
-  FeatureComponent,
-  GeometryLinestringComponent,
-  GeometryPointComponent,
-  CoordinateComponent,
-  CollectionCoordinatesComponent,
-  StyleComponent,
-  IconStyleDirective,
-  CONTROLS
-];
+export function components(): any[] {
+  return [
+    MapComponent,
+    ViewComponent,
+    LayerTileComponent,
+    LayerVectorComponent,
+    SourceOsmComponent,
+    SourceBingmapsComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryLinestringComponent,
+    GeometryPointComponent,
+    CoordinateComponent,
+    CollectionCoordinatesComponent,
+    StyleComponent,
+    IconStyleDirective,
+    controls()
+  ]
+};
