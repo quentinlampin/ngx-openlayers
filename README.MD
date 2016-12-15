@@ -44,7 +44,7 @@ $ npm install angular2-openlayers --save
 To generate all `*.js`, `*.js.map` and `*.d.ts` files:
 
 ```bash
-$ npm run tsc
+$ npm run ngc
 ```
 
 To lint all `*.ts` files:
@@ -52,6 +52,15 @@ To lint all `*.ts` files:
 ```bash
 $ npm run lint
 ```
+
+Live example (reload on code changes):
+```bash
+$ npm install -g angular-cli@1.0.0-beta.21 (May require sudo)
+$ cd example
+$ npm install
+$ ng serve
+```
+Live example will be visable at locahost:4200
 
 ## Contributing
 
