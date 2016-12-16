@@ -21,14 +21,16 @@ export * from './zoomslider.component';
 export * from './zoomtoextent.component';
 
 // Export convenience property
-export const CONTROLS: any[] = [
-    ControlAttributionComponent,
-    ControlFullScreenComponent,
-    ControlMousePositionComponent,
-    // ControlOverviewMapComponent,
-    ControlRotateComponent,
-    ControlScaleLineComponent,
-    ControlZoomComponent,
-    ControlZoomSliderComponent,
-    ControlZoomToExtentComponent
-];
+export function controls(): any[] {
+    return [
+        ControlAttributionComponent,
+        ControlFullScreenComponent,
+        ControlMousePositionComponent,
+        // ControlOverviewMapComponent,
+        ControlRotateComponent,
+        ControlScaleLineComponent,
+        ControlZoomComponent,
+        ControlZoomSliderComponent,
+        ControlZoomToExtentComponent
+    ]
+};

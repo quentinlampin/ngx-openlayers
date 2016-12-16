@@ -14,11 +14,11 @@ export class ControlAttributionComponent extends control.Attribution implements 
     console.log('instancing aol-control-attribution');
     super();
     this._host_ = map;
-    map.addControl(this);
+    map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-attribution');
-    this._host_.removeControl(this);
+    this._host_.instance.removeControl(this);
   }
 }

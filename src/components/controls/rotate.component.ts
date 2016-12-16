@@ -14,11 +14,11 @@ export class ControlRotateComponent extends control.Rotate implements OnDestroy{
     console.log('instancing aol-control-rotate');
     super();
     this._host_ = map;
-    map.addControl(this);
+    map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-rotate');
-    this._host_.removeControl(this);
+    this._host_.instance.removeControl(this);
   }
 }

@@ -14,11 +14,11 @@ export class ControlOverviewMapComponent extends control.OverviewMap implements 
     console.log('instancing aol-control-overviewmap');
     super();
     this._host_ = map;
-    map.addControl(this);
+    map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-overviewmap');
-    this._host_.removeControl(this);
+    this._host_.instance.removeControl(this);
   }
 }

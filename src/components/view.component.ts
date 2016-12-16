@@ -6,24 +6,27 @@ import { MapComponent } from "./map.component";
   selector: 'aol-view',
   template: `<ng-content></ng-content>`
 })
-export class ViewComponent extends View implements OnChanges, OnDestroy{
-  _host_: MapComponent;
+export class ViewComponent implements OnChanges, OnDestroy{
+  private _host_: MapComponent;
+
+  public instance: View;
 
   @Input('zoom') zoom: number;
+  @Input('center') center: [number, number];
 
   constructor(@Host() map: MapComponent){
     console.log('instancing aol-view');
-    super({center: [0,0], zoom:1});
+
+    this.instance = new View(this);
     this._host_ = map;
-    this._host_.setView(this);
+    this._host_.instance.setView(this.instance);
   }
 
   ngOnChanges(){
-    this.setZoom(this.zoom);
+    this.instance.setZoom(this.zoom);
   }
 
   ngOnDestroy(){
     console.log('removing aol-view');
-    // this._host_.setView(null);
   }
 }
