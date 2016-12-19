@@ -63,9 +63,6 @@ export class MapComponent{
   }
 
   private addEvents() {
-    console.log('instance: ', this.instance);
-    console.log('mapComponent: ', this);
-
     this.instance.on('click', function(event: MapBrowserEvent) {
       this.onClick.emit(event);
     }.bind(this));
