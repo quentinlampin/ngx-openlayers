@@ -2,7 +2,7 @@
 import { ControlAttributionComponent } from './attribution.component';
 import { ControlFullScreenComponent } from './fullscreen.component';
 import { ControlMousePositionComponent } from './mouseposition.component';
-// import { ControlOverviewMapComponent } from './overviewmap.component';
+import { ControlOverviewMapComponent } from './overviewmap.component';
 import { ControlRotateComponent } from './rotate.component';
 import { ControlScaleLineComponent } from './scaleline.component';
 import { ControlZoomComponent } from './zoom.component';
@@ -13,7 +13,7 @@ import { ControlZoomToExtentComponent } from './zoomtoextent.component';
 export * from './attribution.component';
 export * from './fullscreen.component';
 export * from './mouseposition.component';
-// export * from './overviewmap.component';
+export * from './overviewmap.component';
 export * from './rotate.component';
 export * from './scaleline.component';
 export * from './zoom.component';
@@ -26,7 +26,7 @@ export function controls(): any[] {
         ControlAttributionComponent,
         ControlFullScreenComponent,
         ControlMousePositionComponent,
-        // ControlOverviewMapComponent,
+        ControlOverviewMapComponent,
         ControlRotateComponent,
         ControlScaleLineComponent,
         ControlZoomComponent,
