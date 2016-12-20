@@ -1,12 +1,12 @@
 import {Component, Host, OnDestroy, OnInit} from '@angular/core';
-import { layer } from 'openlayers';
+import { layer, source } from 'openlayers';
 import { MapComponent } from "./map.component";
 
 
-export class LayerComponent implements OnInit, OnDestroy {
+export abstract class LayerComponent implements OnInit, OnDestroy {
   public host: MapComponent;
   public instance: any;
-  public source: ol.source.Tile|ol.source.Vector;
+  public source: source.Tile|source.Vector;
   public renderOrder: any;
 
   constructor(map: MapComponent){
@@ -28,13 +28,21 @@ export class LayerComponent implements OnInit, OnDestroy {
   selector: 'aol-layer-tile',
   template: `<ng-content></ng-content>`
 })
-export class LayerTileComponent extends LayerComponent {
-  public source: ol.source.Tile;
+export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy {
+  public source: source.Tile;
 
   constructor(@Host() map: MapComponent){
     console.log('instancing aol-layer-tile');
     super(map);
     this.instance = new layer.Tile(this);
+  }
+
+  ngOnInit(){
+    super.ngOnInit();
+  }
+
+  ngOnDestroy(){
+    super.ngOnDestroy();
   }
 }
 
@@ -42,12 +50,20 @@ export class LayerTileComponent extends LayerComponent {
   selector: 'aol-layer-vector',
   template: `<ng-content></ng-content>`
 })
-export class LayerVectorComponent extends LayerComponent {
-  public source: ol.source.Vector;
+export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy {
+  public source: source.Vector;
 
   constructor(@Host() map: MapComponent){
     console.log('instancing aol-layer-vector');
     super(map);
     this.instance = new layer.Vector(this);
+  }
+
+  ngOnInit(){
+    super.ngOnInit();
+  }
+
+  ngOnDestroy(){
+    super.ngOnDestroy();
   }
 }
