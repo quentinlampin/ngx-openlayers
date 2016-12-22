@@ -1,7 +1,6 @@
 import { Component, Directive, EventEmitter, Host, OnDestroy, OnChanges, AfterContentInit, Input, Output, ContentChild } from '@angular/core';
 import { style } from 'openlayers';
 import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
 import { FeatureComponent } from "./feature.component";
 
 @Directive({
@@ -82,20 +81,22 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
     }
 
     update() {
+        let styles = new Array<style.Style>();
         if (this.iconStyleDirective) {
-            this.setIconStyle();
+            styles.push(this.getIconStyle());
         }
-        else if (this.strokeStyleDirective) {
-            this.setStrokeStyle();
+        if (this.strokeStyleDirective) {
+            styles.push(this.getStrokeStyle());
         }
+        this._host_.setStyle(styles);
     }
 
     ngOnDestroy() {
         this.childSubscription$.unsubscribe();
     }
 
-    private setIconStyle() {
-        this._host_.setStyle(new style.Style({
+    private getIconStyle(): style.Style {
+        return new style.Style({
             image: new style.Icon({
                 anchor: this.iconStyleDirective.anchor,
                 anchorOrigin: this.iconStyleDirective.anchorOrigin,
@@ -115,11 +116,11 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
                 imgSize: this.iconStyleDirective.imgSize,
                 src: this.iconStyleDirective.src
             })
-        }));
+        });
     }
 
-    private setStrokeStyle() {
-        this._host_.setStyle(new style.Style({
+    private getStrokeStyle(): style.Style {
+        return new style.Style({
             stroke: new style.Stroke({
                 color: this.strokeStyleDirective.color,
                 lineCap: this.strokeStyleDirective.lineCap,
@@ -128,6 +129,6 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
                 miterLimit: this.strokeStyleDirective.miterLimit,
                 width: this.strokeStyleDirective.width
             })
-        }))
+        });
     }
 }
