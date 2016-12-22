@@ -1,6 +1,6 @@
 {
     "name": "angular2-openlayers",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "scripts": {
         "lint": "tslint src/**/*.ts",
         "test": "ngc && karma start",
@@ -28,16 +28,16 @@
     "typings": "./dist/index.d.ts",
     "dependencies": {
         "openlayers": "3.18.2",
-        "@angular/platform-browser": "2.2.3",
-        "@angular/common": "2.2.3",
-        "@angular/core": "2.2.3",
+        "@angular/platform-browser": "^2.3.1",
+        "@angular/common": "^2.3.1",
+        "@angular/core": "^2.3.1",
         "@types/openlayers": "3.18.38",
-        "rxjs": "5.0.0-beta.12"
+        "rxjs": "^5.0.1"
     },
     "devDependencies": {
-        "@angular/compiler": "2.2.3",
-        "@angular/compiler-cli": "2.2.3",
-        "@angular/platform-server": "2.2.3",
+        "@angular/compiler": "^2.3.1",
+        "@angular/compiler-cli": "^2.3.1",
+        "@angular/platform-server": "^2.3.1",
         "@types/es6-shim": "^0.31.32",
         "@types/jasmine": "^2.5.38",
         "@types/selenium-webdriver": "^2.53.33",
