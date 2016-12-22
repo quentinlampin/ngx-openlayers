@@ -1,5 +1,6 @@
 import { Component, Directive, EventEmitter, Host, OnDestroy, OnChanges, AfterContentInit, Input, Output, ContentChild } from '@angular/core';
 import { style } from 'openlayers';
+import { Subscription } from 'rxjs/Subscription';
 import { FeatureComponent } from "./feature.component";
 
 @Directive({
@@ -28,10 +29,28 @@ export class IconStyleDirective implements OnChanges {
 
     @Output() onChanged = new EventEmitter<any>();
 
-    constructor() { }
-
     ngOnChanges() {
         this.onChanged.emit(this.src);
+    }
+}
+
+@Directive({
+    selector: 'aol-style-stroke'
+})
+export class StrokeStyleDirective implements OnChanges {
+
+    // For usage info see: http://openlayers.org/en/latest/apidoc/ol.style.Stroke.html
+    @Input('color') color: [number, number, number, number];
+    @Input('lineCap') lineCap: 'butt' | 'round' | 'square';
+    @Input('lineJoin') lineJoin: 'bevel' | 'round' | 'miter';
+    @Input('lineDash') lineDash: number[];
+    @Input('miterLimit') miterLimit: number;
+    @Input('width') width: number;
+
+    @Output() onChanged = new EventEmitter<any>();
+
+    ngOnChanges() {
+        this.onChanged.emit();
     }
 }
 
@@ -41,9 +60,10 @@ export class IconStyleDirective implements OnChanges {
 })
 export class StyleComponent implements OnDestroy, AfterContentInit {
     private _host_: FeatureComponent;
-    private childSubscription$: any;
+    private childSubscription$: Subscription;
 
     @ContentChild(IconStyleDirective) iconStyleDirective: IconStyleDirective;
+    @ContentChild(StrokeStyleDirective) strokeStyleDirective: StrokeStyleDirective;
 
     constructor( @Host() feature: FeatureComponent) {
         console.log('instancing aol-style');
@@ -52,13 +72,31 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
 
     ngAfterContentInit() {
         this.update();
-        this.childSubscription$ = this.iconStyleDirective.onChanged.subscribe((): void => {
-            this.update();
-        });
+        if (this.iconStyleDirective) {
+            this.childSubscription$ = this.iconStyleDirective.onChanged.subscribe((): void => this.update());
+        }
+        else if (this.strokeStyleDirective) {
+            this.childSubscription$ = this.strokeStyleDirective.onChanged.subscribe((): void => this.update());
+        }
     }
 
     update() {
-        this._host_.setStyle(new style.Style({
+        let styles = new Array<style.Style>();
+        if (this.iconStyleDirective) {
+            styles.push(this.getIconStyle());
+        }
+        if (this.strokeStyleDirective) {
+            styles.push(this.getStrokeStyle());
+        }
+        this._host_.setStyle(styles);
+    }
+
+    ngOnDestroy() {
+        this.childSubscription$.unsubscribe();
+    }
+
+    private getIconStyle(): style.Style {
+        return new style.Style({
             image: new style.Icon({
                 anchor: this.iconStyleDirective.anchor,
                 anchorOrigin: this.iconStyleDirective.anchorOrigin,
@@ -78,10 +116,19 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
                 imgSize: this.iconStyleDirective.imgSize,
                 src: this.iconStyleDirective.src
             })
-        }));
+        });
     }
 
-    ngOnDestroy() {
-        this.childSubscription$.unsubscribe();
+    private getStrokeStyle(): style.Style {
+        return new style.Style({
+            stroke: new style.Stroke({
+                color: this.strokeStyleDirective.color,
+                lineCap: this.strokeStyleDirective.lineCap,
+                lineJoin: this.strokeStyleDirective.lineJoin,
+                lineDash: this.strokeStyleDirective.lineDash,
+                miterLimit: this.strokeStyleDirective.miterLimit,
+                width: this.strokeStyleDirective.width
+            })
+        });
     }
 }
