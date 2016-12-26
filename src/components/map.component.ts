@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers';
 
 @Component({
@@ -6,10 +6,10 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers'
   template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
 })
 
-export class MapComponent implements OnInit {
-  private _host_: ElementRef;
-
+export class MapComponent implements OnInit, AfterViewInit {
+  private host: ElementRef; /** element that hosts the map */
   public instance: Map;
+
 
   @Input('width') width: string = '100%';
   @Input('height') height: string = '100%';
@@ -34,8 +34,7 @@ export class MapComponent implements OnInit {
 
   constructor(element: ElementRef) {
     console.log('instancing aol-map');
-    this._host_ = element;
-
+    this.host = element;
     this.instance = new Map(this);
 
     this.onClick = new EventEmitter<MapBrowserEvent>();
@@ -51,45 +50,20 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.instance.setTarget(this._host_.nativeElement.firstElementChild);
-    this.addEvents();
-    this.refresh();
+    this.instance.setTarget(this.host.nativeElement.firstElementChild);
+    this.instance.on('click', (event: MapBrowserEvent) => this.onClick.emit(event));
+    this.instance.on('dblclick', (event: MapBrowserEvent) => this.onDblClick.emit(event));
+    this.instance.on('moveend', (event: MapEvent) => this.onMoveEnd.emit(event));
+    this.instance.on('pointerdrag', (event: MapBrowserEvent) => this.onPointerDrag.emit(event));
+    this.instance.on('pointermove', (event: MapBrowserEvent) => this.onPointerMove.emit(event));
+    this.instance.on('postcompose', (event: render.Event) => this.onPostCompose.emit(event));
+    this.instance.on('postrender',  (event: MapEvent) => this.onPostRender.emit(event));
+    this.instance.on('precompose', (event: render.Event) => this.onPreCompose.emit(event));
+    this.instance.on('propertychange', (event: ObjectEvent) => this.onPropertyChange.emit(event));
+    this.instance.on('singleclick', (event: MapBrowserEvent) => this.onSingleClick.emit(event));
   }
 
-  private refresh() {
-    setTimeout( () => { this.instance.updateSize(); }, 0);
-  }
-
-  private addEvents() {
-    this.instance.on('click', function(event: MapBrowserEvent) {
-      this.onClick.emit(event);
-    }.bind(this));
-    this.instance.on('dblclick', function(event: MapBrowserEvent) {
-      this.onDblClick.emit(event);
-    }.bind(this));
-    this.instance.on('moveend', function(event: MapEvent) {
-      this.onMoveEnd.emit(event);
-    }.bind(this));
-    this.instance.on('pointerdrag', function(event: MapBrowserEvent) {
-      this.onPointerDrag.emit(event);
-    }.bind(this));
-    this.instance.on('pointermove', function(event: MapBrowserEvent) {
-      this.onPointerMove.emit(event);
-    }.bind(this));
-    this.instance.on('postcompose', function(event: render.Event) {
-      this.onPostCompose.emit(event);
-    }.bind(this));
-    this.instance.on('postrender', function(event: MapEvent) {
-      this.onPostRender.emit(event);
-    }.bind(this));
-    this.instance.on('precompose', function(event: render.Event) {
-      this.onPreCompose.emit(event);
-    }.bind(this));
-    this.instance.on('propertychange', function(event: ObjectEvent) {
-      this.onPropertyChange.emit(event);
-    }.bind(this));
-    this.instance.on('singleclick', function(event: MapBrowserEvent) {
-      this.onSingleClick.emit(event);
-    }.bind(this));
+  ngAfterViewInit() {
+    this.instance.updateSize();
   }
 }
