@@ -5,18 +5,18 @@ import { FeatureComponent } from "./feature.component";
 @Directive({
     selector: 'aol-style-icon'
 })
-export class IconStyleDirective implements OnChanges {
+export class StyleIconComponent implements OnChanges {
 
     // For usage info see: http://openlayers.org/en/latest/apidoc/ol.style.Icon.html
     @Input('anchor') anchor: [number, number];
-    @Input('anchorXUnits') anchorXUnits: string;
-    @Input('anchorYUnits') anchorYUnits: string;
-    @Input('anchorOrigin') anchorOrigin: string;
+    @Input('anchorXUnits') anchorXUnits: style.IconAnchorUnits;
+    @Input('anchorYUnits') anchorYUnits: style.IconAnchorUnits;
+    @Input('anchorOrigin') anchorOrigin: style.IconOrigin;
     @Input('color') color: [number, number, number, number];
-    @Input('crossOrigin') crossOrigin: string;
+    @Input('crossOrigin') crossOrigin: style.IconOrigin;
     @Input('img') img: string;
     @Input('offset') offset: [number, number];
-    @Input('offsetOrigin') offsetOrigin: string;
+    @Input('offsetOrigin') offsetOrigin: style.IconOrigin;
     @Input('opacity') opacity: number;
     @Input('scale') scale: number;
     @Input('snapToPixel') snapToPixel: boolean;
@@ -43,7 +43,7 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
     private _host_: FeatureComponent;
     private childSubscription$: any;
 
-    @ContentChild(IconStyleDirective) iconStyleDirective: IconStyleDirective;
+    @ContentChild(StyleIconComponent) iconStyleDirective: StyleIconComponent;
 
     constructor( @Host() feature: FeatureComponent) {
         console.log('instancing aol-style');
