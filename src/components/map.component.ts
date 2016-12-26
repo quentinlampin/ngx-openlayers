@@ -1,19 +1,25 @@
-import { Component, OnInit, OnChanges, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import { Map, MapBrowserEvent,MapEvent, render, ObjectEvent } from 'openlayers';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers';
 
 @Component({
   selector: 'aol-map',
   template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
 })
 
-export class MapComponent{
+export class MapComponent implements OnInit {
   private _host_: ElementRef;
 
   public instance: Map;
-  public options: any;
 
-  @Input('width') width: string = "100%";
-  @Input('height') height: string = "100%";
+  @Input('width') width: string = '100%';
+  @Input('height') height: string = '100%';
+  @Input('pixelRatio') pixelRatio: number|undefined = undefined;
+  @Input('keyboardEventTarget') keyboardEventTarget: Element|string|undefined = undefined;
+  @Input('loadTilesWhileAnimating') loadTilesWhileAnimating: boolean|undefined = undefined;
+  @Input('loadTilesWhileInteracting') loadTilesWhileInteracting: boolean|undefined = undefined;
+  @Input('logo') logo: string|boolean|undefined = undefined;
+  @Input('renderer') renderer: 'canvas'|'webgl'|undefined = undefined;
+
 
   @Output() onClick: EventEmitter<MapBrowserEvent>;
   @Output() onDblClick: EventEmitter<MapBrowserEvent>;
@@ -26,15 +32,11 @@ export class MapComponent{
   @Output() onPropertyChange: EventEmitter<ObjectEvent>;
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
 
-  constructor(element: ElementRef){
+  constructor(element: ElementRef) {
     console.log('instancing aol-map');
     this._host_ = element;
 
-    this.options = {
-      target: null,
-      controls: []
-    };
-    this.instance = new Map(this.options);
+    this.instance = new Map(this);
 
     this.onClick = new EventEmitter<MapBrowserEvent>();
     this.onDblClick = new EventEmitter<MapBrowserEvent>();
@@ -48,18 +50,14 @@ export class MapComponent{
     this.onSingleClick = new EventEmitter<MapBrowserEvent>();
   }
 
-  ngOnInit(){
-  	this.instance.setTarget(this._host_.nativeElement.firstElementChild);
-    this.refresh();
+  ngOnInit() {
+    this.instance.setTarget(this._host_.nativeElement.firstElementChild);
     this.addEvents();
-  }
-
-  ngOnChanges(){
     this.refresh();
   }
 
   private refresh() {
-  setTimeout(()=>{this.instance.updateSize();}, 0);
+    setTimeout( () => { this.instance.updateSize(); }, 0);
   }
 
   private addEvents() {
