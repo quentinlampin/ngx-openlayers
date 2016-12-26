@@ -10,7 +10,21 @@ $ npm install angular2-openlayers --save
 
 ## Example
 
-Have a look at the code in the [example](https://github.com/quentin-ol/angular2-openlayers/blob/master/example/src/app)
+Here is a "minimal" map example that fetches tiles from OpenStreetMap and center the map in Meylan (France):
+
+```
+<aol-map [width]="'500px'" [height]="'300'">
+    <aol-view [zoom]="2">
+        <aol-coordinate [x]="5.795122" [y]="45.210225" [srid]="'EPSG:4326'"></aol-coordinate>
+    </aol-view>
+    <aol-layer-tile>
+        <aol-source-osm></aol-source-osm>
+    </aol-layer-tile>
+</aol-map>
+```
+
+## Documentation
+The API is documented in `documentation/`
 
 ## Development
 
