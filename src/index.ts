@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {components} from './components';
+import {COMPONENTS} from './components';
 
 export * from './components';
 
 @NgModule({
-  declarations: components(),
+  declarations: COMPONENTS,
   imports: [CommonModule],
-  exports: components()
+  exports: COMPONENTS
 })
 export class AngularOpenlayersModule {}
