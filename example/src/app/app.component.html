@@ -5,7 +5,7 @@
 	<aol-layer-tile [opacity]="opacity">
     <aol-source-osm></aol-source-osm>
 	</aol-layer-tile>
-	<aol-layer-vector>
+	<aol-layer-vector [opacity]="opacity">
 		<aol-source-vector>
 			<aol-feature>
 				<aol-geometry-point>
@@ -36,6 +36,5 @@
 	</aol-layer-vector>
 </aol-map>
 
-<span>width:</span><button (click)="increaseWidth()">+</button><button (click)="decreaseWidth()">-</button><br>
 <span>opacity:</span><button (click)="increaseOpacity()">+</button><button (click)="decreaseOpacity()">-</button><br>
 <span>zoom:</span><button (click)="increaseZoom()">+</button><button (click)="decreaseZoom()">-</button><br>
