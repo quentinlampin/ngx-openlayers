@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularOpenlayersModule } from './ng2-ol';
+import { AngularOpenlayersModule } from 'angular2-openlayers';
 
 import { AppComponent } from './app.component';
 

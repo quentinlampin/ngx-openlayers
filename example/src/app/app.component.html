@@ -2,10 +2,10 @@
 	<aol-view [zoom]="zoom">
 		<aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
 	</aol-view>
-	<aol-layer-tile>
+	<aol-layer-tile [opacity]="opacity">
     <aol-source-osm></aol-source-osm>
 	</aol-layer-tile>
-	<aol-layer-vector  [opacity]="opacity">
+	<aol-layer-vector>
 		<aol-source-vector>
 			<aol-feature>
 				<aol-geometry-point>
