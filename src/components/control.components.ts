@@ -8,18 +8,20 @@ import { MapComponent } from './map.component';
   template: `<ng-content></ng-content>`
 })
 export class ControlAttributionComponent extends control.Attribution implements OnDestroy{
-  _host_: MapComponent;
+  private host: MapComponent;
+  public componentType: string;
 
   constructor(@Host() map: MapComponent){
     console.log('instancing aol-control-attribution');
     super();
-    this._host_ = map;
+    this.host = map;
+    this.componentType = 'control';
     map.instance.addControl(this);
   }
 
   ngOnDestroy(){
     console.log('removing aol-control-attribution');
-    this._host_.instance.removeControl(this);
+    this.host.instance.removeControl(this);
   }
 }
 

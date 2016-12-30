@@ -5,15 +5,17 @@ import {LayerTileComponent, LayerVectorComponent, LayerComponent} from "./layer.
 export class SourceComponent implements OnInit, OnDestroy {
   public host: LayerComponent;
   public instance: any;
+  public componentType: string = 'source';
 
   constructor(layer: LayerComponent){
     this.host = layer;
   }
 
-  ngOnInit(){}
-
+  ngOnInit() {
+    this.host.instance.setSource(this.instance);
+  }
+  
   ngOnDestroy(){
-    console.log('removing aol-layer');
     this.host.instance.setSource(null);
   }
 }
@@ -25,7 +27,6 @@ export class SourceComponent implements OnInit, OnDestroy {
 export class SourceOsmComponent extends SourceComponent {
 
   constructor(@Host() layer: LayerTileComponent){
-    console.log('instancing aol-source-osm');
     super(layer);
   }
 
@@ -45,7 +46,6 @@ export class SourceBingmapsComponent extends SourceComponent {
   @Input('imagerySet') imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey';
 
   constructor(@Host() layer: LayerTileComponent){
-    console.log('instancing aol-source-bingmaps');
     super(layer);
   }
 
@@ -63,12 +63,11 @@ export class SourceBingmapsComponent extends SourceComponent {
 export class SourceVectorComponent extends SourceComponent {
 
   constructor(@Host() layer: LayerVectorComponent){
-    console.log('instancing aol-source-vector');
     super(layer);
-    this.instance = new source.Vector(this);
   }
 
   ngOnInit(){
+    this.instance = new source.Vector(this);
     this.host.instance.setSource(this.instance);
   }
 }

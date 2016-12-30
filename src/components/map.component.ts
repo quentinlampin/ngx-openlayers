@@ -1,4 +1,7 @@
-import { Component, OnInit, ElementRef, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import {
+  Component, OnInit, OnChanges, ElementRef, Input, Output, EventEmitter, AfterViewInit,
+  SimpleChange, SimpleChanges
+} from '@angular/core';
 import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers';
 
 @Component({
@@ -8,7 +11,8 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers'
 
 export class MapComponent implements OnInit, AfterViewInit {
   private host: ElementRef; /** element that hosts the map */
-  public instance: Map;
+  public instance: Map; /** ol.Map instance */
+  public componentType: string = 'map';
 
 
   @Input('width') width: string = '100%';
@@ -33,10 +37,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
 
   constructor(element: ElementRef) {
-    console.log('instancing aol-map');
     this.host = element;
-    this.instance = new Map(this);
-
     this.onClick = new EventEmitter<MapBrowserEvent>();
     this.onDblClick = new EventEmitter<MapBrowserEvent>();
     this.onMoveEnd = new EventEmitter<MapEvent>();
@@ -50,6 +51,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    console.log('creating ol.Map instance with:', this);
+    this.instance = new Map(this);
     this.instance.setTarget(this.host.nativeElement.firstElementChild);
     this.instance.on('click', (event: MapBrowserEvent) => this.onClick.emit(event));
     this.instance.on('dblclick', (event: MapBrowserEvent) => this.onDblClick.emit(event));
@@ -57,10 +60,18 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.instance.on('pointerdrag', (event: MapBrowserEvent) => this.onPointerDrag.emit(event));
     this.instance.on('pointermove', (event: MapBrowserEvent) => this.onPointerMove.emit(event));
     this.instance.on('postcompose', (event: render.Event) => this.onPostCompose.emit(event));
-    this.instance.on('postrender',  (event: MapEvent) => this.onPostRender.emit(event));
+    this.instance.on('postrender', (event: MapEvent) => this.onPostRender.emit(event));
     this.instance.on('precompose', (event: render.Event) => this.onPreCompose.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.onPropertyChange.emit(event));
     this.instance.on('singleclick', (event: MapBrowserEvent) => this.onSingleClick.emit(event));
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let properties: { [index: string] : any } = {};
+    if(!this.instance) { return }
+    for (let key in changes) { properties[key] = changes[key].currentValue }
+    console.log('changes detected in aol-map, setting new properties: ', properties);
+    this.instance.setProperties(properties, false);
   }
 
   ngAfterViewInit() {

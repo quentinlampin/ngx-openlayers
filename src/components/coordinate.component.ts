@@ -9,9 +9,9 @@ import {ViewComponent} from "./view.component";
   template: `<div class="aol-coordinate"></div>`
 })
 export class CoordinateComponent implements OnChanges, OnDestroy {
-  _host_: any;
-  _hostType_: "ViewComponent"|"GeometryPointComponent";
-  _map_: MapComponent;
+  private host: any;
+  private hostType: "ViewComponent"|"GeometryPointComponent";
+  private map: MapComponent;
 
   @Input('x') x: number;
   @Input('y') y: number;
@@ -24,15 +24,15 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
 
     console.log('instancing aol-coordinate');
 
-    this._map_ = map;
+    this.map = map;
     this.srid = this.srid ? this.srid : 'EPSG:3857';
 
     if(geometryPointHost !== null){
-      this._host_ = geometryPointHost;
-      this._hostType_ = 'GeometryPointComponent';
+      this.host = geometryPointHost;
+      this.hostType = 'GeometryPointComponent';
     }else if (viewHost !== null){
-      this._host_ = viewHost;
-      this._hostType_ = 'ViewComponent';
+      this.host = viewHost;
+      this.hostType = 'ViewComponent';
     }
   }
 
@@ -41,7 +41,7 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
     let referenceProjectionCode: string;
     let transformedCoordinates: number[];
 
-    referenceProjection = this._map_.instance.getView().getProjection();
+    referenceProjection = this.map.instance.getView().getProjection();
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
 
     if(this.srid == referenceProjectionCode){
@@ -50,12 +50,12 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
       transformedCoordinates = proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
     }
 
-    switch(this._hostType_){
+    switch(this.hostType){
       case 'GeometryPointComponent':
-        this._host_.setCoordinates(transformedCoordinates);
+        this.host.instance.setCoordinates(transformedCoordinates);
         break;
       case 'ViewComponent':
-        this._host_.instance.setCenter(transformedCoordinates);
+        this.host.instance.setCenter(transformedCoordinates);
         break;
     }
   }
@@ -103,7 +103,7 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
     }
     switch(this._hostType_){
       case 'GeometryLinestringComponent':
-        this._host_.setCoordinates(transformedCoordinates);
+        this._host_.instance.setCoordinates(transformedCoordinates);
         break;
     }
   }

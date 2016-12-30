@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy } from '@angular/core';
+import { Component, Host, OnInit, OnDestroy } from '@angular/core';
 import { geom } from 'openlayers';
 import { FeatureComponent } from "./feature.component";
 
@@ -6,17 +6,24 @@ import { FeatureComponent } from "./feature.component";
   selector: 'aol-geometry-point',
   template: `<ng-content></ng-content>`
 })
-export class GeometryPointComponent extends geom.Point implements OnDestroy {
-  _host_: FeatureComponent;
+export class GeometryPointComponent implements OnInit, OnDestroy {
+  public componentType: string = 'geometry-point';
+  public instance: geom.Point;
+  private host: FeatureComponent;
+  
+
   constructor(@Host() feature: FeatureComponent){
-    console.log('instancing aol-geometry-point');
-    super([0,0]); // defaulting coordinates to [0,0]. To be overridden in child component.
-    this._host_ = feature;
-    this._host_.setGeometry(this);
+    console.log('creating aol-geometry-point');
+    this.host = feature;
   }
 
-  ngOnDestroy(){
-    // this._host_.setGeometry(null);
+  ngOnInit() {
+    this.instance = new geom.Point([0,0]); // defaulting coordinates to [0,0]. To be overridden in child component.
+    this.host.instance.setGeometry(this.instance);
+  }
+
+  ngOnDestroy() {
+    // this.host.setGeometry(null);
   }
 }
 
@@ -24,16 +31,21 @@ export class GeometryPointComponent extends geom.Point implements OnDestroy {
   selector: 'aol-geometry-linestring',
   template: `<ng-content></ng-content>`
 })
-export class GeometryLinestringComponent extends geom.LineString implements OnDestroy {
-  _host_: FeatureComponent;
+export class GeometryLinestringComponent implements OnInit, OnDestroy {
+  public componentType: string = 'geometry-linestring';
+  public instance: geom.LineString;
+  private host: FeatureComponent;
+
   constructor(@Host() feature: FeatureComponent){
     console.log('instancing aol-geometry-linestring');
-    super([]);
-    this._host_ = feature;
-    this._host_.setGeometry(this);
+    this.host = feature;
   }
 
-  ngOnDestroy(){
-    // this._host_.setGeometry(null);
+  ngOnInit() {
+    this.instance = new geom.LineString([]);
+    this.host.instance.setGeometry(this.instance);
+  }
+  ngOnDestroy() {
+    // this.host.setGeometry(null);
   }
 }
