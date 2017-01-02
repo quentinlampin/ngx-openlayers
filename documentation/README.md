@@ -202,12 +202,14 @@ Available parameters are:
 Fill the host with a color, or gradient of colors.
 
 Available parameters are: 
+
     - `color` (`Color|ColorLike|undefined`): color, gradient or pattern. See ol.color and ol.colorlike for possible formats. Defaults to black.
 
 ## `StyleIconComponent` (`<aol-style-icon`)
 Displays an icon.
 
 Available parameters are: 
+
     - `anchor` (`[number, number]`): image anchor. Defaults to [0.5, 0.5]: icon center.
     - `anchorXUnits` (`style.IconAnchorUnits`): X anchor unit: 'fraction' indicates a fraction of the icon, 'pixels' indicates a value in pixels. Defaults to 'fraction'.
     - `anchorYUnits` (`style.IconAnchorUnits`): Y anchor unit: 'fraction' indicates a fraction of the icon, 'pixels' indicates a value in pixels. Defaults to 'fraction'.
@@ -231,6 +233,7 @@ Available parameters are:
 add a stroke around the host.
 
 Available parameters are: 
+
     - `color`: (`Color|ColorLike|undefined`): color, gradient or pattern. See ol.color and ol.colorlike for possible formats. Defaults to black.
     - `lineCap`: (string|undefined): line cap style: butt, round, or square. Default to round.
     - `lineDash`: (number[]|undefined): line dash pattern. Defaults to undefined (no dash). No support inInternet Explorer 10 and lower.
