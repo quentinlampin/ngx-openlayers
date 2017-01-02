@@ -10,6 +10,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy{
   private host: MapComponent;
 
   public instance: View;
+  public componentType: string = 'view';
 
 
   @Input('constrainRotation') constrainRotation: boolean|number|undefined = undefined;
