@@ -3,7 +3,7 @@ import {  LayerTileComponent, LayerVectorComponent } from "./components/layer.co
 import {  SourceOsmComponent, SourceBingmapsComponent, SourceVectorComponent } from "./components/source.components";
 import {  ViewComponent } from "./components/view.component";
 import {  FeatureComponent } from "./components/feature.component";
-import {  GeometryLinestringComponent, GeometryPointComponent } from "./components/geometry.components";
+import {  GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent } from "./components/geometry.components";
 import {  CoordinateComponent, CollectionCoordinatesComponent } from "./components/coordinate.component";
 import {  StyleComponent, StyleCircleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent } from "./components/style.components";
 import {  ControlAttributionComponent, ControlFullScreenComponent, ControlMousePositionComponent,
@@ -33,6 +33,7 @@ export const COMPONENTS: any[] = [
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
+  GeometryPolygonComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
   StyleComponent,

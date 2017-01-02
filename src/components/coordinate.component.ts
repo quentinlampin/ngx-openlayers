@@ -1,7 +1,7 @@
-import { Component, Host, OnDestroy, Optional, OnChanges, Input } from '@angular/core';
+import { Component, Host, OnDestroy, Optional, OnInit, OnChanges, Input } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from "./map.component";
-import {GeometryPointComponent, GeometryLinestringComponent} from "./geometry.components";
+import {GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent} from "./geometry.components";
 import {ViewComponent} from "./view.component";
 
 @Component({
@@ -10,7 +10,6 @@ import {ViewComponent} from "./view.component";
 })
 export class CoordinateComponent implements OnChanges, OnDestroy {
   private host: any;
-  private hostType: "ViewComponent"|"GeometryPointComponent";
   private map: MapComponent;
 
   @Input('x') x: number;
@@ -29,10 +28,8 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
 
     if(geometryPointHost !== null){
       this.host = geometryPointHost;
-      this.hostType = 'GeometryPointComponent';
     }else if (viewHost !== null){
       this.host = viewHost;
-      this.hostType = 'ViewComponent';
     }
   }
 
@@ -50,11 +47,11 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
       transformedCoordinates = proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
     }
 
-    switch(this.hostType){
-      case 'GeometryPointComponent':
+    switch(this.host.componentType){
+      case 'geometry-point':
         this.host.instance.setCoordinates(transformedCoordinates);
         break;
-      case 'ViewComponent':
+      case 'view':
         this.host.instance.setCenter(transformedCoordinates);
         break;
     }
@@ -66,22 +63,26 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
   template: `<div class="aol-collection-coordinates"></div>`
 })
 export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
-  _host_: any;
-  _hostType_: "GeometryLinestringComponent";
-  _map_: MapComponent;
+  private host: any;
+  private map: MapComponent;
 
   @Input('coordinates') coordinates: [number, number][];
   @Input('srid') srid: string;
 
-  constructor(@Host() map: MapComponent, @Host() geometryLinestring: GeometryLinestringComponent){
+  constructor(@Host() map: MapComponent, 
+              @Optional() geometryLinestring: GeometryLinestringComponent,
+              @Optional() geometryPolygon: GeometryPolygonComponent){
 
-    console.log('instancing aol-collection-coordinates');
-    this._map_ = map;
-    this.srid = this.srid ? this.srid : 'EPSG:3857';
+    console.log('creating aol-collection-coordinates');
+    this.map = map;
+    this.srid = this.srid ? this.srid : 'EPSG:3857'; 
 
-    if(geometryLinestring !== null){
-      this._host_ = geometryLinestring;
-      this._hostType_ = 'GeometryLinestringComponent';
+    if (!!geometryLinestring) {
+      this.host = geometryLinestring;
+    } else if (!!geometryPolygon) {
+      this.host = geometryPolygon;
+    }else {
+      throw new Error('aol-collection-coordinates must be a child of a geometry component');
     }
   }
 
@@ -90,7 +91,7 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
     let referenceProjectionCode: string;
     let transformedCoordinates: Array<Coordinate>;
 
-    referenceProjection = this._map_.instance.getView().getProjection();
+    referenceProjection = this.map.instance.getView().getProjection();
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
 
     if(this.srid == referenceProjectionCode){
@@ -101,10 +102,16 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
         transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
       }.bind(this));
     }
-    switch(this._hostType_){
-      case 'GeometryLinestringComponent':
-        this._host_.instance.setCoordinates(transformedCoordinates);
+    switch(this.host.componentType){
+      case 'geometry-linestring':
+        this.host.instance.setCoordinates(transformedCoordinates);
         break;
+      case 'geometry-polygon':
+        this.host.instance.setCoordinates([transformedCoordinates]);
+        break;
+      default:
+        throw new Error('aol-collection-coordinates\' host is of unknown type: ' + this.host.componentType);
+        // break;
     }
   }
   ngOnDestroy(){}

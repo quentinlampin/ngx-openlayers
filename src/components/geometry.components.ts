@@ -3,6 +3,29 @@ import { geom } from 'openlayers';
 import { FeatureComponent } from "./feature.component";
 
 @Component({
+  selector: 'aol-geometry-linestring',
+  template: `<ng-content></ng-content>`
+})
+export class GeometryLinestringComponent implements OnInit, OnDestroy {
+  public componentType: string = 'geometry-linestring';
+  public instance: geom.LineString;
+  private host: FeatureComponent;
+
+  constructor(@Host() feature: FeatureComponent){
+    console.log('instancing aol-geometry-linestring');
+    this.host = feature;
+  }
+
+  ngOnInit() {
+    this.instance = new geom.LineString([]);
+    this.host.instance.setGeometry(this.instance);
+  }
+  ngOnDestroy() {
+    // this.host.setGeometry(null);
+  }
+}
+
+@Component({
   selector: 'aol-geometry-point',
   template: `<ng-content></ng-content>`
 })
@@ -28,23 +51,25 @@ export class GeometryPointComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'aol-geometry-linestring',
+  selector: 'aol-geometry-polygon',
   template: `<ng-content></ng-content>`
 })
-export class GeometryLinestringComponent implements OnInit, OnDestroy {
-  public componentType: string = 'geometry-linestring';
-  public instance: geom.LineString;
+export class GeometryPolygonComponent implements OnInit, OnDestroy {
+  public componentType: string = 'geometry-polygon';
+  public instance: geom.Polygon;
   private host: FeatureComponent;
+  
 
   constructor(@Host() feature: FeatureComponent){
-    console.log('instancing aol-geometry-linestring');
+    console.log('creating aol-geometry-polygon');
     this.host = feature;
   }
 
   ngOnInit() {
-    this.instance = new geom.LineString([]);
+    this.instance = new geom.Polygon([ [ [0,0], [1,0], [1,1] ] ]); // defaulting coordinates to [0,0]. To be overridden in child component.
     this.host.instance.setGeometry(this.instance);
   }
+
   ngOnDestroy() {
     // this.host.setGeometry(null);
   }
