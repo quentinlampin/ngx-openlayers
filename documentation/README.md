@@ -96,6 +96,89 @@ Available parameters are:
     - `minResolution` (`number|undefined`: 	minimum resolution (inclusive) at which the layer is visible.
     - `maxResolution` (`number|undefined`: 	maximum resolution (exclusive) at which the layer is visible.
 
+# Feature component
+
+The `FeatureComponent` (`aol-feature`) is a  vector object with a geometry and other attribute properties, similar to the features in vector file formats like GeoJSON.
+Used in conjunction with a geometry (`<aol-geometry-*>`) and a style (`<aol-style>`), it allows displaying vector shapes on the map.
+
+## Usage example
+```
+<aol-feature>
+    <aol-geometry-point>
+        <aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
+    </aol-geometry-point>
+    <aol-style>
+        <aol-style-circle [radius]="10">
+            <aol-style-stroke [color]="'black'" [width]="2"></aol-style-stroke>
+            <aol-style-fill [color]="'green'"></aol-style-fill>
+        </aol-style-circle>
+    </aol-style>
+</aol-feature>
+```
+
+
+# Geometry components
+
+The `GeometryComponents` (`aol-geometry-*`) allow defining geometrical shapes that, used in conjunction with a geometry (`<aol-geometry-*>`) and a style (`<aol-style>`),
+display said geometrical shape to the map.
+
+## Linestring component 
+
+The `GeometryLinestringComponent` (`aol-geometry-linestring`) defines a collection of connected segments.
+
+## Usage example
+```
+<aol-feature>
+    <aol-geometry-linestring>
+        <aol-collection-coordinates 
+            [coordinates]="[[5.0, 45.01],[5.01, 45.03]]"
+            [srid]="'EPSG:4326'">
+        </aol-collection-coordinates>
+    </aol-geometry-linestring>
+    <aol-style>
+        <aol-style-stroke [color]="'red'"></aol-style-stroke>
+    </aol-style>
+</aol-feature>
+```
+
+
+## Point component
+The `GeometryPointComponent` (`aol-geometry-point`) defines a single point.
+
+## Usage example
+```
+<aol-feature>
+    <aol-geometry-point>
+        <aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
+    </aol-geometry-point>
+    <aol-style>
+        <aol-style-circle [radius]="10">
+            <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+            <aol-style-fill [color]="'green'"></aol-style-fill>
+        </aol-style-circle>
+    </aol-style>
+</aol-feature>
+```
+
+## Polygon component
+The `GeometryPolygonComponent` (`aol-geometry-polygon`) defines a polygon.
+
+## Usage example
+```
+<aol-feature>
+    <aol-geometry-polygon>
+        <aol-collection-coordinates 
+            [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
+            [srid]="'EPSG:4326'"
+        >
+        </aol-collection-coordinates>
+    </aol-geometry-polygon>
+    <aol-style>
+        <aol-style-stroke [color]="'red'"></aol-style-stroke>
+        <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+    </aol-style>
+</aol-feature>
+```
 
 # Style Components
 
