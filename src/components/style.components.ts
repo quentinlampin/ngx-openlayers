@@ -13,18 +13,18 @@ export class StyleComponent implements OnInit {
   public componentType: string = 'style';
 
   constructor(@Optional() featureHost: FeatureComponent, @Optional() layerHost: LayerVectorComponent) {
-    console.log('creating aol-style');
+    // console.log('creating aol-style');
     this.host = !!featureHost ? featureHost : layerHost;
     if(!this.host) { throw new Error('aol-style must be applied to a feature or a layer') }
   }
 
   update(){
-    console.log('updating style\'s host: ', this.host);
+    // console.log('updating style\'s host: ', this.host);
     this.host.instance.changed();
   }
 
   ngOnInit(){
-    console.log('creating aol-style instance with: ', this);
+    // console.log('creating aol-style instance with: ', this);
     this.instance = new style.Style(this);
     this.host.instance.setStyle(this.instance);
   }
@@ -45,7 +45,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   @Input('snapToPixel') snapToPixel: boolean = true;
   
   constructor(@Host() style: StyleComponent) {
-    console.log('creating aol-style-circle');
+    // console.log('creating aol-style-circle');
     this.host = style;
   }
 
@@ -56,13 +56,13 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
    */
   update(){
     if(!!this.instance) { 
-      console.log('setting ol.style.Circle instance\'s radius');
+      // console.log('setting ol.style.Circle instance\'s radius');
       this.instance.setRadius(this.radius);
     }
   }
 
   ngAfterContentInit() {
-    console.log('creating ol.style.Circle instance with: ', this);
+    // console.log('creating ol.style.Circle instance with: ', this);
     this.instance = new style.Circle(this);
     this.host.instance.setImage(this.instance);
     this.host.update();
@@ -71,11 +71,11 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   ngOnChanges(changes: SimpleChanges) {
     if(!this.instance) { return }
     if(changes['radius']) { this.instance.setRadius(changes['radius'].currentValue) }
-    console.log('changes detected in aol-style-circle, setting new radius: ', changes['radius'].currentValue);
+    // console.log('changes detected in aol-style-circle, setting new radius: ', changes['radius'].currentValue);
   }
 
   ngOnDestroy(){
-    console.log('removing aol-style-circle');
+    // console.log('removing aol-style-circle');
     this.host.instance.setImage(null);
   }
 }
@@ -92,26 +92,41 @@ export class StyleFillComponent implements OnInit, OnChanges {
   @Input('color') color: Color|ColorLike|undefined;
 
 
-  constructor(@Optional() styleHost: StyleComponent, @Optional() styleCircleHost: StyleCircleComponent) {
-    this.host = !!styleCircleHost ? styleCircleHost : styleHost;
-    console.log('creating aol-style-fill with: ', this);
+  constructor(
+    @Optional() styleHost: StyleComponent, 
+    @Optional() styleCircleHost: StyleCircleComponent, 
+    @Optional() styleTextHost: StyleTextComponent
+  ) {
+    if(!styleHost) { throw new Error('aol-style-stroke must be a descendant of aol-style') }
+
+    if (!!styleTextHost) {
+      this.host = styleTextHost;
+    } else if (!!styleCircleHost) {
+      this.host = styleCircleHost;
+    } else {
+      this.host = styleHost;
+    }
+    // console.log('creating aol-style-fill with: ', this);
   }
 
   ngOnInit(){
-    console.log('creating ol.style.Fill instance with: ', this);
+    // console.log('creating ol.style.Fill instance with: ', this);
     this.instance = new style.Fill(this);
     switch(this.host.componentType){
       case 'style':
         this.host.instance.setFill(this.instance);
-        console.log('setting ol.style instance\'s fill:', this.host);
+        // console.log('setting ol.style instance\'s fill:', this.host);
+        break;
+      case 'style-text':
+        this.host.instance.setFill(this.instance);
         break;
       case 'style-circle':
         this.host.fill = this.instance;
-        console.log('setting ol.style.circle instance\'s fill:', this.host);
+        // console.log('setting ol.style.circle instance\'s fill:', this.host);
         break;
       default:
-        console.log('unknown host type: ', this.host);
-        break;
+        throw new Error('unknown host type: ' + this.host);
+        // break;
     }
   }
 
@@ -119,7 +134,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
     if(!this.instance) { return }
     if(changes['color']) { this.instance.setColor(changes['color'].currentValue) }
     this.host.update();
-    console.log('changes detected in aol-style-fill, setting new color: ', changes);
+    // console.log('changes detected in aol-style-fill, setting new color: ', changes);
   }
 }
 
@@ -153,11 +168,11 @@ export class StyleIconComponent implements OnInit, OnChanges {
 
   constructor(@Host() styleHost: StyleComponent) {
     this.host =  styleHost;
-    console.log('creating aol-style-icon with: ', this);
+    // console.log('creating aol-style-icon with: ', this);
   }
 
   ngOnInit(){
-    console.log('creating ol.style.Icon instance with: ', this);
+    // console.log('creating ol.style.Icon instance with: ', this);
     this.instance = new style.Icon(this);
     this.host.instance.setImage(this.instance);
   }
@@ -172,7 +187,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
       this.host.instance.setImage(this.instance);
     }
     this.host.update();
-    console.log('changes detected in aol-style-icon: ', changes);
+    // console.log('changes detected in aol-style-icon: ', changes);
   }
 }
 
@@ -191,27 +206,41 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input('miterLimit') miterLimit: number|undefined;
   @Input('width') width: number|undefined;
 
-  constructor(@Optional() styleHost: StyleComponent, @Optional() styleCircleHost: StyleCircleComponent) {
-    if(!styleHost) { throw new Error('aol-style-fill must be a descendant of aol-style') }
-    this.host = !!styleCircleHost ? styleCircleHost : styleHost;
-    console.log('creating aol-style-stroke with: ', this);
+  constructor(
+    @Optional() styleHost: StyleComponent, 
+    @Optional() styleCircleHost: StyleCircleComponent, 
+    @Optional() styleTextHost: StyleTextComponent
+  ) {
+    if(!styleHost) { throw new Error('aol-style-stroke must be a descendant of aol-style') }
+
+    if (!!styleTextHost) {
+      this.host = styleTextHost;
+    } else if (!!styleCircleHost) {
+      this.host = styleCircleHost;
+    } else {
+      this.host = styleHost;
+    }
+    // console.log('creating aol-style-stroke with: ', this);
   }
 
   ngOnInit(){
-    console.log('creating ol.style.Stroke instance with: ', this);
+    // console.log('creating ol.style.Stroke instance with: ', this);
     this.instance = new style.Stroke(this);
     switch(this.host.componentType){
       case 'style':
         this.host.instance.setStroke(this.instance);
-        console.log('setting ol.style instance\'s stroke:', this.host);
+        // console.log('setting ol.style instance\'s stroke:', this.host);
+        break;
+      case 'style-text':
+        this.host.instance.setStroke(this.instance);
         break;
       case 'style-circle':
         this.host.stroke = this.instance;
-        console.log('setting ol.style.circle instance\'s stroke:', this.host);
+        // console.log('setting ol.style.circle instance\'s stroke:', this.host);
         break;
       default:
-        console.log('unknown host type: ', this.host.componentType);
-        break;
+        throw new Error('unknown host type: ' + this.host);
+        // break;
     }
   }
 
@@ -224,6 +253,53 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     if(changes['miterLimit']) { this.instance.setMiterLimit(changes['miterLimit'].currentValue) }
     if(changes['width']) { this.instance.setWidth(changes['width'].currentValue) }
     this.host.update();
-    console.log('changes detected in aol-style-stroke, setting new properties: ', changes); 
+    // console.log('changes detected in aol-style-stroke, setting new properties: ', changes); 
   }
 }
+
+@Component({
+  selector: 'aol-style-text',
+  template: `<div class="aol-style-text"></div>`,
+})
+export class StyleTextComponent implements OnInit, OnChanges {
+  public instance: style.Text;
+  public componentType: string = 'style-text';
+  private host: any;
+
+  @Input('font') font: string|undefined;
+  @Input('offsetX') offsetX: number|undefined;
+  @Input('offsetY') offsetY: number|undefined;
+  @Input('scale') scale: number|undefined;
+  @Input('rotateWithView') rotateWithView: boolean|undefined;
+  @Input('rotation') rotation: number|undefined;
+  @Input('text') text: string|undefined;
+  @Input('textAlign') textAlign: string|undefined;
+  @Input('textBaseLine') textBaseLine: string|undefined;
+
+  constructor(@Optional() host: StyleComponent) {
+    if(!host) { throw new Error('aol-style-text must be a descendant of aol-style') }
+    this.host = host;
+    // console.log('creating aol-style-text with: ', this);
+  }
+
+  ngOnInit(){
+    // console.log('creating ol.style.Text instance with: ', this);
+    this.instance = new style.Text(this);
+    this.host.instance.setText(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(!this.instance) { return }
+    if(changes['font']) { this.instance.setFont(changes['font'].currentValue) }
+    if(changes['offsetX']) { this.instance.setOffsetX(changes['offsetX'].currentValue) }
+    if(changes['offsetY']) { this.instance.setOffsetY(changes['offsetY'].currentValue) }
+    if(changes['scale']) { this.instance.setScale(changes['scale'].currentValue) }
+    if(changes['rotation']) { this.instance.setRotation(changes['rotation'].currentValue) }
+    if(changes['text']) { this.instance.setText(changes['text'].currentValue) }
+    if(changes['textAlign']) { this.instance.setTextAlign(changes['textAlign'].currentValue) }
+    if(changes['textBaseLine']) { this.instance.setTextBaseline(changes['textBaseLine'].currentValue) }
+    this.host.update();
+    // console.log('changes detected in aol-style-text, setting new properties: ', changes); 
+  }
+}
+
