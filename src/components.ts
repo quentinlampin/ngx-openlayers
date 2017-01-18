@@ -5,7 +5,7 @@ import {  ViewComponent } from "./components/view.component";
 import {  FeatureComponent } from "./components/feature.component";
 import {  GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent } from "./components/geometry.components";
 import {  CoordinateComponent, CollectionCoordinatesComponent } from "./components/coordinate.component";
-import {  StyleComponent, StyleCircleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent } from "./components/style.components";
+import {  StyleComponent, StyleCircleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent, StyleTextComponent } from "./components/style.components";
 import {  ControlAttributionComponent, ControlFullScreenComponent, ControlMousePositionComponent,
           ControlOverviewMapComponent, ControlRotateComponent, ControlScaleLineComponent,
           ControlZoomComponent, ControlZoomSliderComponent, ControlZoomToExtentComponent
@@ -42,6 +42,7 @@ export const COMPONENTS: any[] = [
   StyleFillComponent, 
   StyleIconComponent,
   StyleStrokeComponent,
+  StyleTextComponent,
   ControlAttributionComponent,
   ControlFullScreenComponent,
   ControlMousePositionComponent,
