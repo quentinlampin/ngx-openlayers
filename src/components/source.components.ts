@@ -1,5 +1,5 @@
 import {Component, Host, OnDestroy, Input, OnInit} from '@angular/core';
-import { source } from 'openlayers';
+import { source, AttributionLike } from 'openlayers';
 import {LayerTileComponent, LayerVectorComponent, LayerComponent} from "./layer.components";
 
 export class SourceComponent implements OnInit, OnDestroy {
@@ -61,6 +61,10 @@ export class SourceBingmapsComponent extends SourceComponent {
   template: `<ng-content></ng-content>`
 })
 export class SourceVectorComponent extends SourceComponent {
+  @Input('attributions') attributions: AttributionLike|undefined;
+  @Input('overlaps') overlaps: boolean|undefined;
+  @Input('useSpatialIndex') useSpatialIndex: boolean|undefined;
+  @Input('wrapX') wrapX: boolean|undefined;
 
   constructor(@Host() layer: LayerVectorComponent){
     super(layer);
