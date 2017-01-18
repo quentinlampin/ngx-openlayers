@@ -59,4 +59,4 @@ Live example will be visable at locahost:4200
 
 ## License
 
-MIT © [Quentin Lampin](quentin.lampin@orange.com)
+MPL-2.0 © [Quentin Lampin](quentin.lampin@orange.com)
