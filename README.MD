@@ -5,14 +5,14 @@
 To install this library, run:
 
 ```bash
-$ npm install angular2-openlayers --save
+npm install angular2-openlayers --save
 ```
 
 ## Example
 
 Here is a "minimal" map example that fetches tiles from OpenStreetMap and center the map in Meylan (France):
 
-```
+```html
 <aol-map [width]="'500px'" [height]="'300'">
     <aol-view [zoom]="2">
         <aol-coordinate [x]="5.795122" [y]="45.210225" [srid]="'EPSG:4326'"></aol-coordinate>
@@ -31,23 +31,25 @@ The API is documented in `documentation/`
 To generate all `*.js`, `*.js.map` and `*.d.ts` files:
 
 ```bash
-$ npm run ngc
+npm run ngc
 ```
 
 To lint all `*.ts` files:
 
 ```bash
-$ npm run lint
+npm run lint
 ```
 
 Live example (reload on code changes):
+
 ```bash
-$ npm install -g angular-cli@1.0.0-beta.21 (May require sudo)
-$ cd example
-$ npm install
-$ ng serve
+npm install -g angular-cli@1.0.0-beta.21 (May require sudo)
+cd example
+npm install
+ng serve
 ```
-Live example will be visable at locahost:4200
+
+Live example will be viewable at locahost:4200
 
 ## Contributing
 
