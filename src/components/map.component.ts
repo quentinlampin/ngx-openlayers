@@ -51,7 +51,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    console.log('creating ol.Map instance with:', this);
+    // console.log('creating ol.Map instance with:', this);
     this.instance = new Map(this);
     this.instance.setTarget(this.host.nativeElement.firstElementChild);
     this.instance.on('click', (event: MapBrowserEvent) => this.onClick.emit(event));
@@ -70,7 +70,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     let properties: { [index: string] : any } = {};
     if(!this.instance) { return }
     for (let key in changes) { properties[key] = changes[key].currentValue }
-    console.log('changes detected in aol-map, setting new properties: ', properties);
+    // console.log('changes detected in aol-map, setting new properties: ', properties);
     this.instance.setProperties(properties, false);
   }
 

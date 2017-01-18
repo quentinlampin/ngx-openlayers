@@ -21,7 +21,7 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
     @Optional() viewHost: ViewComponent,
     @Optional() geometryPointHost: GeometryPointComponent){
 
-    console.log('instancing aol-coordinate');
+    // console.log('instancing aol-coordinate');
 
     this.map = map;
     this.srid = this.srid ? this.srid : 'EPSG:3857';
@@ -73,7 +73,7 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
               @Optional() geometryLinestring: GeometryLinestringComponent,
               @Optional() geometryPolygon: GeometryPolygonComponent){
 
-    console.log('creating aol-collection-coordinates');
+    // console.log('creating aol-collection-coordinates');
     this.map = map;
     this.srid = this.srid ? this.srid : 'EPSG:3857'; 
 
@@ -90,6 +90,8 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: Array<Coordinate>;
+
+    // console.log('coordinates change: ', this.coordinates);
 
     referenceProjection = this.map.instance.getView().getProjection();
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';

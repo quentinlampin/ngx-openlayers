@@ -12,7 +12,7 @@ export class GeometryLinestringComponent implements OnInit, OnDestroy {
   private host: FeatureComponent;
 
   constructor(@Host() feature: FeatureComponent){
-    console.log('instancing aol-geometry-linestring');
+    // console.log('instancing aol-geometry-linestring');
     this.host = feature;
   }
 
@@ -36,7 +36,7 @@ export class GeometryPointComponent implements OnInit, OnDestroy {
   
 
   constructor(@Host() feature: FeatureComponent){
-    console.log('creating aol-geometry-point');
+    // console.log('creating aol-geometry-point');
     this.host = feature;
   }
 
@@ -61,7 +61,7 @@ export class GeometryPolygonComponent implements OnInit, OnDestroy {
   
 
   constructor(@Host() feature: FeatureComponent){
-    console.log('creating aol-geometry-polygon');
+    // console.log('creating aol-geometry-polygon');
     this.host = feature;
   }
 

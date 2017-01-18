@@ -12,7 +12,7 @@ export class FeatureComponent implements OnInit, OnDestroy{
   public instance: Feature;
 
   constructor(@Host() source: SourceVectorComponent){
-    console.log('instancing aol-feature');
+    // console.log('instancing aol-feature');
     this.host = source;
     this.componentType = 'feature';
   }
@@ -23,7 +23,7 @@ export class FeatureComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    console.log('removing aol-feature');
+    // console.log('removing aol-feature');
     this.host.instance.removeFeature(this);
   }
 }
