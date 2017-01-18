@@ -27,15 +27,15 @@
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
     "dependencies": {
-        "openlayers": "3.20.1",
+        "openlayers": "3.20.1"
+    },
+    "devDependencies": {
         "@angular/platform-browser": "2.4.1",
         "@angular/common": "2.4.1",
         "@angular/core": "2.4.1",
         "zone.js": "0.7.4",
         "@types/openlayers": "3.20.0",
-        "rxjs": "5.0.2"
-    },
-    "devDependencies": {
+        "rxjs": "5.0.2",
         "@angular/compiler": "2.4.1",
         "@angular/compiler-cli": "2.4.1",
         "@angular/platform-server": "2.4.1",
