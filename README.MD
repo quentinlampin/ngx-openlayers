@@ -43,10 +43,10 @@ npm run lint
 Live example (reload on code changes):
 
 ```bash
-npm install -g angular-cli@1.0.0-beta.21 (May require sudo)
+npm install -g angular-cli@1.0.0-beta.24 (May require sudo)
 cd example
 npm install
-ng serve
+npm start
 ```
 
 Live example will be viewable at locahost:4200

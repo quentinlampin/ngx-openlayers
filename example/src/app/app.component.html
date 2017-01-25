@@ -8,6 +8,7 @@
 	<aol-layer-vector [opacity]="opacity">
 		<aol-source-vector>
 			<aol-feature>
+				<aol-popup [(show)]="show">First Popup</aol-popup>
 				<aol-geometry-point>
 					<aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
 				</aol-geometry-point>
@@ -19,6 +20,19 @@
 				</aol-style>
 			</aol-feature>
 			<aol-feature>
+				<aol-popup>Second Popup</aol-popup>
+				<aol-geometry-point>
+					<aol-coordinate [x]="5.05" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
+				</aol-geometry-point>
+				<aol-style>
+					<aol-style-circle [radius]="10">
+						<aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+						<aol-style-fill [color]="'green'"></aol-style-fill>
+					</aol-style-circle>
+				</aol-style>
+			</aol-feature>
+			<aol-feature>
+			<aol-popup>Third Popup</aol-popup>
 				<aol-geometry-point>
 					<aol-coordinate [x]="5.1" [y]="45.1" [srid]="'EPSG:4326'"></aol-coordinate>
 				</aol-geometry-point>
@@ -38,3 +52,4 @@
 
 <span>opacity:</span><button (click)="increaseOpacity()">+</button><button (click)="decreaseOpacity()">-</button><br>
 <span>zoom:</span><button (click)="increaseZoom()">+</button><button (click)="decreaseZoom()">-</button><br>
+<span>popup:</span><button (click)="showPopup()">show</button><button (click)="hidePopup()">hide</button><br> {{ show }}

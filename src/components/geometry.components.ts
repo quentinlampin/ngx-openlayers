@@ -33,7 +33,6 @@ export class GeometryPointComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-point';
   public instance: geom.Point;
   private host: FeatureComponent;
-  
 
   constructor(@Host() feature: FeatureComponent){
     // console.log('creating aol-geometry-point');
@@ -58,7 +57,7 @@ export class GeometryPolygonComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-polygon';
   public instance: geom.Polygon;
   private host: FeatureComponent;
-  
+
 
   constructor(@Host() feature: FeatureComponent){
     // console.log('creating aol-geometry-polygon');
