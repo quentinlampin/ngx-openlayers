@@ -84,8 +84,8 @@ var StyleCircleComponent = (function () {
         { type: StyleComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     StyleCircleComponent.propDecorators = {
-        'radius': [{ type: core_1.Input, args: ['radius',] },],
-        'snapToPixel': [{ type: core_1.Input, args: ['snapToPixel',] },],
+        'radius': [{ type: core_1.Input },],
+        'snapToPixel': [{ type: core_1.Input },],
     };
     return StyleCircleComponent;
 }());
@@ -148,7 +148,7 @@ var StyleFillComponent = (function () {
         { type: StyleTextComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
     StyleFillComponent.propDecorators = {
-        'color': [{ type: core_1.Input, args: ['color',] },],
+        'color': [{ type: core_1.Input },],
     };
     return StyleFillComponent;
 }());
@@ -194,23 +194,23 @@ var StyleIconComponent = (function () {
         { type: StyleComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     StyleIconComponent.propDecorators = {
-        'anchor': [{ type: core_1.Input, args: ['anchor',] },],
-        'anchorXUnits': [{ type: core_1.Input, args: ['anchorXUnits',] },],
-        'anchorYUnits': [{ type: core_1.Input, args: ['anchorYUnits',] },],
-        'anchorOrigin': [{ type: core_1.Input, args: ['anchorOrigin',] },],
-        'color': [{ type: core_1.Input, args: ['color',] },],
-        'crossOrigin': [{ type: core_1.Input, args: ['crossOrigin',] },],
-        'img': [{ type: core_1.Input, args: ['img',] },],
-        'offset': [{ type: core_1.Input, args: ['offset',] },],
-        'offsetOrigin': [{ type: core_1.Input, args: ['offsetOrigin',] },],
-        'opacity': [{ type: core_1.Input, args: ['opacity',] },],
-        'scale': [{ type: core_1.Input, args: ['scale',] },],
-        'snapToPixel': [{ type: core_1.Input, args: ['snapToPixel',] },],
-        'rotateWithView': [{ type: core_1.Input, args: ['rotateWithView',] },],
-        'rotation': [{ type: core_1.Input, args: ['rotation',] },],
-        'size': [{ type: core_1.Input, args: ['size',] },],
-        'imgSize': [{ type: core_1.Input, args: ['imgSize',] },],
-        'src': [{ type: core_1.Input, args: ['src',] },],
+        'anchor': [{ type: core_1.Input },],
+        'anchorXUnits': [{ type: core_1.Input },],
+        'anchorYUnits': [{ type: core_1.Input },],
+        'anchorOrigin': [{ type: core_1.Input },],
+        'color': [{ type: core_1.Input },],
+        'crossOrigin': [{ type: core_1.Input },],
+        'img': [{ type: core_1.Input },],
+        'offset': [{ type: core_1.Input },],
+        'offsetOrigin': [{ type: core_1.Input },],
+        'opacity': [{ type: core_1.Input },],
+        'scale': [{ type: core_1.Input },],
+        'snapToPixel': [{ type: core_1.Input },],
+        'rotateWithView': [{ type: core_1.Input },],
+        'rotation': [{ type: core_1.Input },],
+        'size': [{ type: core_1.Input },],
+        'imgSize': [{ type: core_1.Input },],
+        'src': [{ type: core_1.Input },],
     };
     return StyleIconComponent;
 }());
@@ -273,7 +273,7 @@ var StyleStrokeComponent = (function () {
             this.instance.setWidth(changes['width'].currentValue);
         }
         this.host.update();
-        // console.log('changes detected in aol-style-stroke, setting new properties: ', changes); 
+        // console.log('changes detected in aol-style-stroke, setting new properties: ', changes);
     };
     StyleStrokeComponent.decorators = [
         { type: core_1.Component, args: [{
@@ -288,12 +288,12 @@ var StyleStrokeComponent = (function () {
         { type: StyleTextComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
     StyleStrokeComponent.propDecorators = {
-        'color': [{ type: core_1.Input, args: ['color',] },],
-        'lineCap': [{ type: core_1.Input, args: ['lineCap',] },],
-        'lineDash': [{ type: core_1.Input, args: ['lineDash',] },],
-        'lineJoin': [{ type: core_1.Input, args: ['lineJoin',] },],
-        'miterLimit': [{ type: core_1.Input, args: ['miterLimit',] },],
-        'width': [{ type: core_1.Input, args: ['width',] },],
+        'color': [{ type: core_1.Input },],
+        'lineCap': [{ type: core_1.Input },],
+        'lineDash': [{ type: core_1.Input },],
+        'lineJoin': [{ type: core_1.Input },],
+        'miterLimit': [{ type: core_1.Input },],
+        'width': [{ type: core_1.Input },],
     };
     return StyleStrokeComponent;
 }());
@@ -341,7 +341,7 @@ var StyleTextComponent = (function () {
             this.instance.setTextBaseline(changes['textBaseLine'].currentValue);
         }
         this.host.update();
-        // console.log('changes detected in aol-style-text, setting new properties: ', changes); 
+        // console.log('changes detected in aol-style-text, setting new properties: ', changes);
     };
     StyleTextComponent.decorators = [
         { type: core_1.Component, args: [{
@@ -354,15 +354,15 @@ var StyleTextComponent = (function () {
         { type: StyleComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
     StyleTextComponent.propDecorators = {
-        'font': [{ type: core_1.Input, args: ['font',] },],
-        'offsetX': [{ type: core_1.Input, args: ['offsetX',] },],
-        'offsetY': [{ type: core_1.Input, args: ['offsetY',] },],
-        'scale': [{ type: core_1.Input, args: ['scale',] },],
-        'rotateWithView': [{ type: core_1.Input, args: ['rotateWithView',] },],
-        'rotation': [{ type: core_1.Input, args: ['rotation',] },],
-        'text': [{ type: core_1.Input, args: ['text',] },],
-        'textAlign': [{ type: core_1.Input, args: ['textAlign',] },],
-        'textBaseLine': [{ type: core_1.Input, args: ['textBaseLine',] },],
+        'font': [{ type: core_1.Input },],
+        'offsetX': [{ type: core_1.Input },],
+        'offsetY': [{ type: core_1.Input },],
+        'scale': [{ type: core_1.Input },],
+        'rotateWithView': [{ type: core_1.Input },],
+        'rotation': [{ type: core_1.Input },],
+        'text': [{ type: core_1.Input },],
+        'textAlign': [{ type: core_1.Input },],
+        'textBaseLine': [{ type: core_1.Input },],
     };
     return StyleTextComponent;
 }());

@@ -1,14 +1,14 @@
 "use strict";
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var map_component_1 = require("./map.component");
-var geometry_components_1 = require("./geometry.components");
-var view_component_1 = require("./view.component");
+var map_component_1 = require('./map.component');
+var geometry_components_1 = require('./geometry.components');
+var view_component_1 = require('./view.component');
 var CoordinateComponent = (function () {
     function CoordinateComponent(map, viewHost, geometryPointHost) {
+        this.srid = 'EPSG:3857';
         // console.log('instancing aol-coordinate');
         this.map = map;
-        this.srid = this.srid ? this.srid : 'EPSG:3857';
         if (geometryPointHost !== null) {
             this.host = geometryPointHost;
         }
@@ -22,7 +22,7 @@ var CoordinateComponent = (function () {
         var transformedCoordinates;
         referenceProjection = this.map.instance.getView().getProjection();
         referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
-        if (this.srid == referenceProjectionCode) {
+        if (this.srid === referenceProjectionCode) {
             transformedCoordinates = [this.x, this.y];
         }
         else {
@@ -37,7 +37,8 @@ var CoordinateComponent = (function () {
                 break;
         }
     };
-    CoordinateComponent.prototype.ngOnDestroy = function () { };
+    CoordinateComponent.prototype.ngOnDestroy = function () {
+    };
     CoordinateComponent.decorators = [
         { type: core_1.Component, args: [{
                     selector: 'aol-coordinate',
@@ -51,18 +52,18 @@ var CoordinateComponent = (function () {
         { type: geometry_components_1.GeometryPointComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
     CoordinateComponent.propDecorators = {
-        'x': [{ type: core_1.Input, args: ['x',] },],
-        'y': [{ type: core_1.Input, args: ['y',] },],
-        'srid': [{ type: core_1.Input, args: ['srid',] },],
+        'x': [{ type: core_1.Input },],
+        'y': [{ type: core_1.Input },],
+        'srid': [{ type: core_1.Input },],
     };
     return CoordinateComponent;
 }());
 exports.CoordinateComponent = CoordinateComponent;
 var CollectionCoordinatesComponent = (function () {
     function CollectionCoordinatesComponent(map, geometryLinestring, geometryPolygon) {
+        this.srid = 'EPSG:3857';
         // console.log('creating aol-collection-coordinates');
         this.map = map;
-        this.srid = this.srid ? this.srid : 'EPSG:3857';
         if (!!geometryLinestring) {
             this.host = geometryLinestring;
         }
@@ -80,11 +81,11 @@ var CollectionCoordinatesComponent = (function () {
         // console.log('coordinates change: ', this.coordinates);
         referenceProjection = this.map.instance.getView().getProjection();
         referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
-        if (this.srid == referenceProjectionCode) {
+        if (this.srid === referenceProjectionCode) {
             transformedCoordinates = this.coordinates;
         }
         else {
-            transformedCoordinates = new Array();
+            transformedCoordinates = [];
             this.coordinates.forEach(function (coordinate) {
                 transformedCoordinates.push(openlayers_1.proj.transform(coordinate, this.srid, referenceProjectionCode));
             }.bind(this));
@@ -100,7 +101,8 @@ var CollectionCoordinatesComponent = (function () {
                 throw new Error('aol-collection-coordinates\' host is of unknown type: ' + this.host.componentType);
         }
     };
-    CollectionCoordinatesComponent.prototype.ngOnDestroy = function () { };
+    CollectionCoordinatesComponent.prototype.ngOnDestroy = function () {
+    };
     CollectionCoordinatesComponent.decorators = [
         { type: core_1.Component, args: [{
                     selector: 'aol-collection-coordinates',
@@ -114,8 +116,8 @@ var CollectionCoordinatesComponent = (function () {
         { type: geometry_components_1.GeometryPolygonComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
     CollectionCoordinatesComponent.propDecorators = {
-        'coordinates': [{ type: core_1.Input, args: ['coordinates',] },],
-        'srid': [{ type: core_1.Input, args: ['srid',] },],
+        'coordinates': [{ type: core_1.Input },],
+        'srid': [{ type: core_1.Input },],
     };
     return CollectionCoordinatesComponent;
 }());

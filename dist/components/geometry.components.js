@@ -1,7 +1,7 @@
 "use strict";
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var feature_component_1 = require("./feature.component");
+var feature_component_1 = require('./feature.component');
 var GeometryLinestringComponent = (function () {
     function GeometryLinestringComponent(feature) {
         this.componentType = 'geometry-linestring';
@@ -61,7 +61,8 @@ var GeometryPolygonComponent = (function () {
         this.host = feature;
     }
     GeometryPolygonComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.geom.Polygon([[[0, 0], [1, 0], [1, 1]]]); // defaulting coordinates to [0,0]. To be overridden in child component.
+        // defaulting coordinates to [0,0]. To be overridden in child component.
+        this.instance = new openlayers_1.geom.Polygon([[[0, 0], [1, 0], [1, 1]]]);
         this.host.instance.setGeometry(this.instance);
     };
     GeometryPolygonComponent.prototype.ngOnDestroy = function () {

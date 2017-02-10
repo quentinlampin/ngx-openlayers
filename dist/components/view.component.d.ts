@@ -1,7 +1,7 @@
 /// <reference types="openlayers" />
 import { OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { View, Extent } from 'openlayers';
-import { MapComponent } from "./map.component";
+import { MapComponent } from './map.component';
 export declare class ViewComponent implements OnInit, OnChanges, OnDestroy {
     private host;
     instance: View;

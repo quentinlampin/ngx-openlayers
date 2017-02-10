@@ -1,7 +1,7 @@
 /// <reference types="openlayers" />
 import { OnInit, OnDestroy } from '@angular/core';
 import { geom } from 'openlayers';
-import { FeatureComponent } from "./feature.component";
+import { FeatureComponent } from './feature.component';
 export declare class GeometryLinestringComponent implements OnInit, OnDestroy {
     componentType: string;
     instance: geom.LineString;

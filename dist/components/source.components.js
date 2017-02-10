@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var layer_components_1 = require("./layer.components");
+var layer_components_1 = require('./layer.components');
 var SourceComponent = (function () {
     function SourceComponent(layer) {
         this.componentType = 'source';
@@ -47,9 +47,9 @@ var SourceBingmapsComponent = (function (_super) {
     __extends(SourceBingmapsComponent, _super);
     function SourceBingmapsComponent(layer) {
         _super.call(this, layer);
+        this.imagerySet = 'Aerial';
     }
     SourceBingmapsComponent.prototype.ngOnInit = function () {
-        this.imagerySet = this.imagerySet ? this.imagerySet : 'Aerial';
         this.instance = new openlayers_1.source.BingMaps(this);
         this.host.instance.setSource(this.instance);
     };
@@ -64,8 +64,8 @@ var SourceBingmapsComponent = (function (_super) {
         { type: layer_components_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceBingmapsComponent.propDecorators = {
-        'key': [{ type: core_1.Input, args: ['key',] },],
-        'imagerySet': [{ type: core_1.Input, args: ['imagerySet',] },],
+        'key': [{ type: core_1.Input },],
+        'imagerySet': [{ type: core_1.Input },],
     };
     return SourceBingmapsComponent;
 }(SourceComponent));
@@ -90,10 +90,10 @@ var SourceVectorComponent = (function (_super) {
         { type: layer_components_1.LayerVectorComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceVectorComponent.propDecorators = {
-        'attributions': [{ type: core_1.Input, args: ['attributions',] },],
-        'overlaps': [{ type: core_1.Input, args: ['overlaps',] },],
-        'useSpatialIndex': [{ type: core_1.Input, args: ['useSpatialIndex',] },],
-        'wrapX': [{ type: core_1.Input, args: ['wrapX',] },],
+        'attributions': [{ type: core_1.Input },],
+        'overlaps': [{ type: core_1.Input },],
+        'useSpatialIndex': [{ type: core_1.Input },],
+        'wrapX': [{ type: core_1.Input },],
     };
     return SourceVectorComponent;
 }(SourceComponent));

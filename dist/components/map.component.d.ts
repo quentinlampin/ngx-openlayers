@@ -1,7 +1,7 @@
 /// <reference types="openlayers" />
-import { OnInit, ElementRef, EventEmitter, AfterViewInit, SimpleChanges } from '@angular/core';
+import { OnInit, ElementRef, EventEmitter, AfterViewInit, SimpleChanges, OnChanges } from '@angular/core';
 import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers';
-export declare class MapComponent implements OnInit, AfterViewInit {
+export declare class MapComponent implements OnInit, AfterViewInit, OnChanges {
     private host;
     instance: Map;
     componentType: string;

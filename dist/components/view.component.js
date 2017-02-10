@@ -1,7 +1,7 @@
 "use strict";
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var map_component_1 = require("./map.component");
+var map_component_1 = require('./map.component');
 var ViewComponent = (function () {
     function ViewComponent(map) {
         this.componentType = 'view';
@@ -20,7 +20,7 @@ var ViewComponent = (function () {
         this.host = map;
     }
     ViewComponent.prototype.ngOnInit = function () {
-        console.log('creating ol.View instance with: ', this);
+        // console.log('creating ol.View instance with: ', this);
         this.instance = new openlayers_1.View(this);
         this.host.instance.setView(this.instance);
     };
@@ -40,11 +40,11 @@ var ViewComponent = (function () {
             }
             properties[key] = changes[key].currentValue;
         }
-        console.log('changes detected in aol-view, setting new properties: ', properties);
+        // console.log('changes detected in aol-view, setting new properties: ', properties);
         this.instance.setProperties(properties, false);
     };
     ViewComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-view');
+        // console.log('removing aol-view');
     };
     ViewComponent.decorators = [
         { type: core_1.Component, args: [{
@@ -57,18 +57,18 @@ var ViewComponent = (function () {
         { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     ViewComponent.propDecorators = {
-        'constrainRotation': [{ type: core_1.Input, args: ['constrainRotation',] },],
-        'enableRotation': [{ type: core_1.Input, args: ['enableRotation',] },],
-        'extent': [{ type: core_1.Input, args: ['extent',] },],
-        'maxResolution': [{ type: core_1.Input, args: ['maxResolution',] },],
-        'minResolution': [{ type: core_1.Input, args: ['minResolution',] },],
-        'maxZoom': [{ type: core_1.Input, args: ['maxZoom',] },],
-        'minZoom': [{ type: core_1.Input, args: ['minZoom',] },],
-        'resolution': [{ type: core_1.Input, args: ['resolution',] },],
-        'resolutions': [{ type: core_1.Input, args: ['resolutions',] },],
-        'rotation': [{ type: core_1.Input, args: ['rotation',] },],
-        'zoom': [{ type: core_1.Input, args: ['zoom',] },],
-        'zoomFactor': [{ type: core_1.Input, args: ['zoomFactor',] },],
+        'constrainRotation': [{ type: core_1.Input },],
+        'enableRotation': [{ type: core_1.Input },],
+        'extent': [{ type: core_1.Input },],
+        'maxResolution': [{ type: core_1.Input },],
+        'minResolution': [{ type: core_1.Input },],
+        'maxZoom': [{ type: core_1.Input },],
+        'minZoom': [{ type: core_1.Input },],
+        'resolution': [{ type: core_1.Input },],
+        'resolutions': [{ type: core_1.Input },],
+        'rotation': [{ type: core_1.Input },],
+        'zoom': [{ type: core_1.Input },],
+        'zoomFactor': [{ type: core_1.Input },],
     };
     return ViewComponent;
 }());

@@ -1,7 +1,7 @@
 "use strict";
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var source_components_1 = require("./source.components");
+var source_components_1 = require('./source.components');
 var FeatureComponent = (function () {
     function FeatureComponent(source) {
         // console.log('instancing aol-feature');

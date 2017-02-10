@@ -1,7 +1,7 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { source, Extent } from 'openlayers';
-import { MapComponent } from "./map.component";
+import { MapComponent } from './map.component';
 export declare abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     host: MapComponent;
     instance: any;

@@ -1,7 +1,7 @@
 import { OnDestroy, OnChanges } from '@angular/core';
-import { MapComponent } from "./map.component";
-import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from "./geometry.components";
-import { ViewComponent } from "./view.component";
+import { MapComponent } from './map.component';
+import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
+import { ViewComponent } from './view.component';
 export declare class CoordinateComponent implements OnChanges, OnDestroy {
     private host;
     private map;

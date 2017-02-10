@@ -10,7 +10,7 @@ var map_component_1 = require('./map.component');
 var ControlAttributionComponent = (function (_super) {
     __extends(ControlAttributionComponent, _super);
     function ControlAttributionComponent(map) {
-        console.log('instancing aol-control-attribution');
+        // console.log('instancing aol-control-attribution');
         _super.call(this);
         this.host = map;
         this.componentType = 'control';
@@ -36,13 +36,13 @@ exports.ControlAttributionComponent = ControlAttributionComponent;
 var ControlFullScreenComponent = (function (_super) {
     __extends(ControlFullScreenComponent, _super);
     function ControlFullScreenComponent(map) {
-        console.log('instancing aol-control-fullscreen');
+        // console.log('instancing aol-control-fullscreen');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlFullScreenComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-fullscreen');
+        // console.log('removing aol-control-fullscreen');
         this._host_.instance.removeControl(this);
     };
     ControlFullScreenComponent.decorators = [
@@ -61,13 +61,13 @@ exports.ControlFullScreenComponent = ControlFullScreenComponent;
 var ControlMousePositionComponent = (function (_super) {
     __extends(ControlMousePositionComponent, _super);
     function ControlMousePositionComponent(map) {
-        console.log('instancing aol-control-mouseposition');
+        // console.log('instancing aol-control-mouseposition');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlMousePositionComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-mouseposition');
+        // console.log('removing aol-control-mouseposition');
         this._host_.instance.removeControl(this);
     };
     ControlMousePositionComponent.decorators = [
@@ -86,13 +86,13 @@ exports.ControlMousePositionComponent = ControlMousePositionComponent;
 var ControlOverviewMapComponent = (function (_super) {
     __extends(ControlOverviewMapComponent, _super);
     function ControlOverviewMapComponent(map) {
-        console.log('instancing aol-control-overviewmap');
+        // console.log('instancing aol-control-overviewmap');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlOverviewMapComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-overviewmap');
+        // console.log('removing aol-control-overviewmap');
         this._host_.instance.removeControl(this);
     };
     ControlOverviewMapComponent.decorators = [
@@ -111,13 +111,13 @@ exports.ControlOverviewMapComponent = ControlOverviewMapComponent;
 var ControlRotateComponent = (function (_super) {
     __extends(ControlRotateComponent, _super);
     function ControlRotateComponent(map) {
-        console.log('instancing aol-control-rotate');
+        // console.log('instancing aol-control-rotate');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlRotateComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-rotate');
+        // console.log('removing aol-control-rotate');
         this._host_.instance.removeControl(this);
     };
     ControlRotateComponent.decorators = [
@@ -136,13 +136,13 @@ exports.ControlRotateComponent = ControlRotateComponent;
 var ControlScaleLineComponent = (function (_super) {
     __extends(ControlScaleLineComponent, _super);
     function ControlScaleLineComponent(map) {
-        console.log('instancing aol-control-scaleline');
+        // console.log('instancing aol-control-scaleline');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlScaleLineComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-scaleline');
+        // console.log('removing aol-control-scaleline');
         this._host_.instance.removeControl(this);
     };
     ControlScaleLineComponent.decorators = [
@@ -161,13 +161,13 @@ exports.ControlScaleLineComponent = ControlScaleLineComponent;
 var ControlZoomComponent = (function (_super) {
     __extends(ControlZoomComponent, _super);
     function ControlZoomComponent(map) {
-        console.log('instancing aol-control-zoom');
+        // console.log('instancing aol-control-zoom');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlZoomComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-zoom');
+        // console.log('removing aol-control-zoom');
         this._host_.instance.removeControl(this);
     };
     ControlZoomComponent.decorators = [
@@ -186,13 +186,13 @@ exports.ControlZoomComponent = ControlZoomComponent;
 var ControlZoomSliderComponent = (function (_super) {
     __extends(ControlZoomSliderComponent, _super);
     function ControlZoomSliderComponent(map) {
-        console.log('instancing aol-control-zoomslider');
+        // console.log('instancing aol-control-zoomslider');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlZoomSliderComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-zoomslider');
+        // console.log('removing aol-control-zoomslider');
         this._host_.instance.removeControl(this);
     };
     ControlZoomSliderComponent.decorators = [
@@ -211,13 +211,13 @@ exports.ControlZoomSliderComponent = ControlZoomSliderComponent;
 var ControlZoomToExtentComponent = (function (_super) {
     __extends(ControlZoomToExtentComponent, _super);
     function ControlZoomToExtentComponent(map) {
-        console.log('instancing aol-control-zoomtoextent');
+        // console.log('instancing aol-control-zoomtoextent');
         _super.call(this);
         this._host_ = map;
         map.instance.addControl(this);
     }
     ControlZoomToExtentComponent.prototype.ngOnDestroy = function () {
-        console.log('removing aol-control-zoomtoextent');
+        // console.log('removing aol-control-zoomtoextent');
         this._host_.instance.removeControl(this);
     };
     ControlZoomToExtentComponent.decorators = [
