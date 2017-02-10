@@ -102,4 +102,36 @@ var LayerVectorComponent = (function (_super) {
     return LayerVectorComponent;
 }(LayerComponent));
 exports.LayerVectorComponent = LayerVectorComponent;
+var LayerVectorTileComponent = (function (_super) {
+    __extends(LayerVectorTileComponent, _super);
+    function LayerVectorTileComponent(map) {
+        _super.call(this, map);
+    }
+    LayerVectorTileComponent.prototype.ngOnInit = function () {
+        // console.log('creating ol.layer.VectorTile instance with:', this);
+        this.instance = new openlayers_1.layer.VectorTile(this);
+        _super.prototype.ngOnInit.call(this);
+    };
+    LayerVectorTileComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'aol-layer-vectortile',
+                    template: "<ng-content></ng-content>"
+                },] },
+    ];
+    /** @nocollapse */
+    LayerVectorTileComponent.ctorParameters = function () { return [
+        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+    ]; };
+    LayerVectorTileComponent.propDecorators = {
+        'renderBuffer': [{ type: core_1.Input },],
+        'renderMode': [{ type: core_1.Input },],
+        'renderOrder': [{ type: core_1.Input },],
+        'style': [{ type: core_1.Input },],
+        'updateWhileAnimating': [{ type: core_1.Input },],
+        'updateWhileInteracting': [{ type: core_1.Input },],
+        'visible': [{ type: core_1.Input },],
+    };
+    return LayerVectorTileComponent;
+}(LayerComponent));
+exports.LayerVectorTileComponent = LayerVectorTileComponent;
 //# sourceMappingURL=layer.components.js.map

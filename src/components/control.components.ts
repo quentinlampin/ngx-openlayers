@@ -2,7 +2,6 @@ import { Component, Host, OnDestroy } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from './map.component';
 
-
 @Component({
   selector: 'aol-control-attribution',
   template: `<ng-content></ng-content>`

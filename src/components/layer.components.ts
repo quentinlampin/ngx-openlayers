@@ -1,7 +1,7 @@
 import { Component, Host, OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { layer, source, Extent } from 'openlayers';
+import { layer, source, Extent, style, StyleFunction } from 'openlayers';
 import { MapComponent } from './map.component';
-
+import VectorTileRenderType = ol.layer.VectorTileRenderType;
 
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   public host: MapComponent;
@@ -77,6 +77,33 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
   ngOnInit() {
     // console.log('creating ol.layer.Vector instance with:', this);
     this.instance = new layer.Vector(this);
+    super.ngOnInit();
+  }
+}
+
+@Component({
+  selector: 'aol-layer-vectortile',
+  template: `<ng-content></ng-content>`
+})
+export class LayerVectorTileComponent extends LayerComponent implements OnInit {
+  public source: source.VectorTile;
+
+  @Input() renderBuffer: number;
+  @Input() renderMode: VectorTileRenderType|string;
+  /* not marked as optional in the typings */
+  @Input() renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
+  @Input() style: (style.Style | style.Style[] | StyleFunction);
+  @Input() updateWhileAnimating: boolean;
+  @Input() updateWhileInteracting: boolean;
+  @Input() visible: boolean;
+
+  constructor(@Host() map: MapComponent) {
+    super(map);
+  }
+
+  ngOnInit() {
+    // console.log('creating ol.layer.VectorTile instance with:', this);
+    this.instance = new layer.VectorTile(this);
     super.ngOnInit();
   }
 }

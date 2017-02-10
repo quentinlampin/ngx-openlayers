@@ -1,7 +1,8 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { source, Extent } from 'openlayers';
+import { source, Extent, style, StyleFunction } from 'openlayers';
 import { MapComponent } from './map.component';
+import VectorTileRenderType = ol.layer.VectorTileRenderType;
 export declare abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     host: MapComponent;
     instance: any;
@@ -27,6 +28,18 @@ export declare class LayerTileComponent extends LayerComponent implements OnInit
 export declare class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy {
     source: source.Vector;
     renderBuffer: number | undefined;
+    constructor(map: MapComponent);
+    ngOnInit(): void;
+}
+export declare class LayerVectorTileComponent extends LayerComponent implements OnInit {
+    source: source.VectorTile;
+    renderBuffer: number;
+    renderMode: VectorTileRenderType | string;
+    renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
+    style: (style.Style | style.Style[] | StyleFunction);
+    updateWhileAnimating: boolean;
+    updateWhileInteracting: boolean;
+    visible: boolean;
     constructor(map: MapComponent);
     ngOnInit(): void;
 }

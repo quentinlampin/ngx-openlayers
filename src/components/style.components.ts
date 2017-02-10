@@ -40,7 +40,6 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   private host: StyleComponent;
   public componentType: string = 'style-circle';
   public instance: style.Circle;
-  // TODO unused
   public fill: style.Fill|undefined;
   public stroke: style.Stroke|undefined;
 
@@ -97,7 +96,6 @@ export class StyleFillComponent implements OnInit, OnChanges {
   public instance: style.Fill;
 
   @Input() color: Color|ColorLike|undefined;
-
 
   constructor(
     @Optional() styleHost: StyleComponent,

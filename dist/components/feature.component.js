@@ -4,9 +4,9 @@ var openlayers_1 = require('openlayers');
 var source_components_1 = require('./source.components');
 var FeatureComponent = (function () {
     function FeatureComponent(source) {
+        this.componentType = 'feature';
         // console.log('instancing aol-feature');
         this.host = source;
-        this.componentType = 'feature';
     }
     FeatureComponent.prototype.ngOnInit = function () {
         this.instance = new openlayers_1.Feature();

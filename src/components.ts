@@ -1,15 +1,21 @@
-import {  MapComponent } from "./components/map.component";
-import {  LayerTileComponent, LayerVectorComponent } from "./components/layer.components";
-import {  SourceOsmComponent, SourceBingmapsComponent, SourceVectorComponent } from "./components/source.components";
-import {  ViewComponent } from "./components/view.component";
-import {  FeatureComponent } from "./components/feature.component";
-import {  GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent } from "./components/geometry.components";
-import {  CoordinateComponent, CollectionCoordinatesComponent } from "./components/coordinate.component";
-import {  StyleComponent, StyleCircleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent, StyleTextComponent } from "./components/style.components";
+import {  MapComponent } from './components/map.component';
+import { LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent } from './components/layer.components';
+import {
+  SourceOsmComponent, SourceBingmapsComponent, SourceVectorComponent, SourceXYZComponent,
+  SourceVectorTileComponent
+} from './components/source.components';
+import {  ViewComponent } from './components/view.component';
+import {  FeatureComponent } from './components/feature.component';
+import {  GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent } from './components/geometry.components';
+import {  CoordinateComponent, CollectionCoordinatesComponent } from './components/coordinate.component';
+import {  StyleComponent, StyleCircleComponent, StyleFillComponent, StyleIconComponent,
+          StyleStrokeComponent, StyleTextComponent } from './components/style.components';
 import {  ControlAttributionComponent, ControlFullScreenComponent, ControlMousePositionComponent,
           ControlOverviewMapComponent, ControlRotateComponent, ControlScaleLineComponent,
           ControlZoomComponent, ControlZoomSliderComponent, ControlZoomToExtentComponent
 } from './components/control.components';
+import { FormatMVTComponent } from './components/format.component';
+import { TileGridComponent } from './components/tilegrid.component';
 
 // Export all components
 export * from './components/map.component';
@@ -27,9 +33,12 @@ export const COMPONENTS: any[] = [
   ViewComponent,
   LayerTileComponent,
   LayerVectorComponent,
+  LayerVectorTileComponent,
   SourceOsmComponent,
   SourceBingmapsComponent,
   SourceVectorComponent,
+  SourceXYZComponent,
+  SourceVectorTileComponent,
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
@@ -37,9 +46,9 @@ export const COMPONENTS: any[] = [
   CoordinateComponent,
   CollectionCoordinatesComponent,
   StyleComponent,
-  StyleComponent, 
-  StyleCircleComponent, 
-  StyleFillComponent, 
+  StyleComponent,
+  StyleCircleComponent,
+  StyleFillComponent,
   StyleIconComponent,
   StyleStrokeComponent,
   StyleTextComponent,
@@ -51,6 +60,7 @@ export const COMPONENTS: any[] = [
   ControlScaleLineComponent,
   ControlZoomComponent,
   ControlZoomSliderComponent,
-  ControlZoomToExtentComponent
+  ControlZoomToExtentComponent,
+  FormatMVTComponent,
+  TileGridComponent
 ];
-
