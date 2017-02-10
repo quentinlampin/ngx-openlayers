@@ -1,0 +1,10 @@
+export * from './components/map.component';
+export * from './components/view.component';
+export * from './components/layer.components';
+export * from './components/source.components';
+export * from './components/feature.component';
+export * from './components/geometry.components';
+export * from './components/coordinate.component';
+export * from './components/style.components';
+export * from './components/control.components';
+export declare const COMPONENTS: any[];

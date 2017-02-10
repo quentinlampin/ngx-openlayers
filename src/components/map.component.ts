@@ -1,6 +1,6 @@
 import {
-  Component, OnInit, OnChanges, ElementRef, Input, Output, EventEmitter, AfterViewInit,
-  SimpleChange, SimpleChanges
+  Component, OnInit, ElementRef, Input, Output, EventEmitter, AfterViewInit,
+  SimpleChanges, OnChanges
 } from '@angular/core';
 import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers';
 
@@ -9,20 +9,20 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers'
   template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
 })
 
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   private host: ElementRef; /** element that hosts the map */
   public instance: Map; /** ol.Map instance */
   public componentType: string = 'map';
 
 
-  @Input('width') width: string = '100%';
-  @Input('height') height: string = '100%';
-  @Input('pixelRatio') pixelRatio: number|undefined = undefined;
-  @Input('keyboardEventTarget') keyboardEventTarget: Element|string|undefined = undefined;
-  @Input('loadTilesWhileAnimating') loadTilesWhileAnimating: boolean|undefined = undefined;
-  @Input('loadTilesWhileInteracting') loadTilesWhileInteracting: boolean|undefined = undefined;
-  @Input('logo') logo: string|boolean|undefined = undefined;
-  @Input('renderer') renderer: 'canvas'|'webgl'|undefined = undefined;
+  @Input() width: string = '100%';
+  @Input() height: string = '100%';
+  @Input() pixelRatio: number|undefined = undefined;
+  @Input() keyboardEventTarget: Element|string|undefined = undefined;
+  @Input() loadTilesWhileAnimating: boolean|undefined = undefined;
+  @Input() loadTilesWhileInteracting: boolean|undefined = undefined;
+  @Input() logo: string|boolean|undefined = undefined;
+  @Input() renderer: 'canvas'|'webgl'|undefined = undefined;
 
 
   @Output() onClick: EventEmitter<MapBrowserEvent>;
@@ -67,9 +67,13 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let properties: { [index: string] : any } = {};
-    if(!this.instance) { return }
-    for (let key in changes) { properties[key] = changes[key].currentValue }
+    let properties: { [index: string]: any } = {};
+    if (!this.instance) {
+      return;
+    }
+    for (let key in changes) {
+      properties[key] = changes[key].currentValue;
+    }
     // console.log('changes detected in aol-map, setting new properties: ', properties);
     this.instance.setProperties(properties, false);
   }
