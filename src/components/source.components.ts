@@ -1,21 +1,21 @@
-import {Component, Host, OnDestroy, Input, OnInit} from '@angular/core';
+import { Component, Host, OnDestroy, Input, OnInit } from '@angular/core';
 import { source, AttributionLike } from 'openlayers';
-import {LayerTileComponent, LayerVectorComponent, LayerComponent} from "./layer.components";
+import { LayerTileComponent, LayerVectorComponent, LayerComponent } from './layer.components';
 
 export class SourceComponent implements OnInit, OnDestroy {
   public host: LayerComponent;
   public instance: any;
   public componentType: string = 'source';
 
-  constructor(layer: LayerComponent){
+  constructor(layer: LayerComponent) {
     this.host = layer;
   }
 
   ngOnInit() {
     this.host.instance.setSource(this.instance);
   }
-  
-  ngOnDestroy(){
+
+  ngOnDestroy() {
     this.host.instance.setSource(null);
   }
 }
@@ -24,13 +24,13 @@ export class SourceComponent implements OnInit, OnDestroy {
   selector: 'aol-source-osm',
   template: `<div class="aol-source-osm"></div>`
 })
-export class SourceOsmComponent extends SourceComponent {
+export class SourceOsmComponent extends SourceComponent implements OnInit {
 
-  constructor(@Host() layer: LayerTileComponent){
+  constructor(@Host() layer: LayerTileComponent) {
     super(layer);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.instance = new source.OSM(this);
     this.host.instance.setSource(this.instance);
   }
@@ -41,16 +41,15 @@ export class SourceOsmComponent extends SourceComponent {
   template: `<div class="aol-source-bingmaps"></div>`
 })
 
-export class SourceBingmapsComponent extends SourceComponent {
-  @Input('key') key: string;
-  @Input('imagerySet') imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey';
+export class SourceBingmapsComponent extends SourceComponent implements OnInit {
+  @Input() key: string;
+  @Input() imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey' = 'Aerial';
 
-  constructor(@Host() layer: LayerTileComponent){
+  constructor(@Host() layer: LayerTileComponent) {
     super(layer);
   }
 
-  ngOnInit(){
-    this.imagerySet = this.imagerySet ? this.imagerySet : 'Aerial';
+  ngOnInit() {
     this.instance = new source.BingMaps(this);
     this.host.instance.setSource(this.instance);
   }
@@ -60,17 +59,17 @@ export class SourceBingmapsComponent extends SourceComponent {
   selector: 'aol-source-vector',
   template: `<ng-content></ng-content>`
 })
-export class SourceVectorComponent extends SourceComponent {
-  @Input('attributions') attributions: AttributionLike|undefined;
-  @Input('overlaps') overlaps: boolean|undefined;
-  @Input('useSpatialIndex') useSpatialIndex: boolean|undefined;
-  @Input('wrapX') wrapX: boolean|undefined;
+export class SourceVectorComponent extends SourceComponent implements OnInit {
+  @Input() attributions: AttributionLike|undefined;
+  @Input() overlaps: boolean|undefined;
+  @Input() useSpatialIndex: boolean|undefined;
+  @Input() wrapX: boolean|undefined;
 
-  constructor(@Host() layer: LayerVectorComponent){
+  constructor(@Host() layer: LayerVectorComponent) {
     super(layer);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.instance = new source.Vector(this);
     this.host.instance.setSource(this.instance);
   }

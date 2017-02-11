@@ -1,8 +1,8 @@
-import { Component, Host, OnDestroy, Optional, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, Host, OnDestroy, Optional, OnChanges, Input } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
-import { MapComponent } from "./map.component";
-import {GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent} from "./geometry.components";
-import {ViewComponent} from "./view.component";
+import { MapComponent } from './map.component';
+import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
+import { ViewComponent } from './view.component';
 
 @Component({
   selector: 'aol-coordinate',
@@ -12,28 +12,26 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
   private host: any;
   private map: MapComponent;
 
-  @Input('x') x: number;
-  @Input('y') y: number;
-  @Input('srid') srid: string;
+  @Input() x: number;
+  @Input() y: number;
+  @Input() srid: string = 'EPSG:3857';
 
   constructor(
     @Host() map: MapComponent,
     @Optional() viewHost: ViewComponent,
-    @Optional() geometryPointHost: GeometryPointComponent){
-
+    @Optional() geometryPointHost: GeometryPointComponent
+  ) {
     // console.log('instancing aol-coordinate');
-
     this.map = map;
-    this.srid = this.srid ? this.srid : 'EPSG:3857';
 
-    if(geometryPointHost !== null){
+    if (geometryPointHost !== null) {
       this.host = geometryPointHost;
-    }else if (viewHost !== null){
+    } else if (viewHost !== null) {
       this.host = viewHost;
     }
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: number[];
@@ -41,13 +39,13 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
     referenceProjection = this.map.instance.getView().getProjection();
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
 
-    if(this.srid == referenceProjectionCode){
+    if (this.srid === referenceProjectionCode) {
       transformedCoordinates = [this.x, this.y];
-    }else{
+    } else {
       transformedCoordinates = proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
     }
 
-    switch(this.host.componentType){
+    switch (this.host.componentType) {
       case 'geometry-point':
         this.host.instance.setCoordinates(transformedCoordinates);
         break;
@@ -56,8 +54,10 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
         break;
     }
   }
-  ngOnDestroy(){}
+  ngOnDestroy() {
+  }
 }
+
 @Component({
   selector: 'aol-collection-coordinates',
   template: `<div class="aol-collection-coordinates"></div>`
@@ -66,27 +66,27 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
   private host: any;
   private map: MapComponent;
 
-  @Input('coordinates') coordinates: [number, number][];
-  @Input('srid') srid: string;
+  @Input() coordinates: [number, number][];
+  @Input() srid: string = 'EPSG:3857';
 
-  constructor(@Host() map: MapComponent, 
-              @Optional() geometryLinestring: GeometryLinestringComponent,
-              @Optional() geometryPolygon: GeometryPolygonComponent){
-
+  constructor(
+      @Host() map: MapComponent,
+      @Optional() geometryLinestring: GeometryLinestringComponent,
+      @Optional() geometryPolygon: GeometryPolygonComponent
+  ) {
     // console.log('creating aol-collection-coordinates');
     this.map = map;
-    this.srid = this.srid ? this.srid : 'EPSG:3857'; 
 
     if (!!geometryLinestring) {
       this.host = geometryLinestring;
     } else if (!!geometryPolygon) {
       this.host = geometryPolygon;
-    }else {
+    } else {
       throw new Error('aol-collection-coordinates must be a child of a geometry component');
     }
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: Array<Coordinate>;
@@ -96,15 +96,15 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
     referenceProjection = this.map.instance.getView().getProjection();
     referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
 
-    if(this.srid == referenceProjectionCode){
+    if (this.srid === referenceProjectionCode) {
       transformedCoordinates = this.coordinates;
-    }else{
-      transformedCoordinates = new Array<Coordinate>();
-      this.coordinates.forEach( function (coordinate: Coordinate) {
+    } else {
+      transformedCoordinates = [];
+      this.coordinates.forEach(function (coordinate: Coordinate) {
         transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
       }.bind(this));
     }
-    switch(this.host.componentType){
+    switch (this.host.componentType) {
       case 'geometry-linestring':
         this.host.instance.setCoordinates(transformedCoordinates);
         break;
@@ -116,5 +116,6 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
         // break;
     }
   }
-  ngOnDestroy(){}
+  ngOnDestroy() {
+  }
 }
