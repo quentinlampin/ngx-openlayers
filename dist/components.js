@@ -13,6 +13,7 @@ var style_components_1 = require('./components/style.components');
 var control_components_1 = require('./components/control.components');
 var format_component_1 = require('./components/format.component');
 var tilegrid_component_1 = require('./components/tilegrid.component');
+var interactions_1 = require('./components/interactions');
 // Export all components
 __export(require('./components/map.component'));
 __export(require('./components/view.component'));
@@ -23,6 +24,7 @@ __export(require('./components/geometry.components'));
 __export(require('./components/coordinate.component'));
 __export(require('./components/style.components'));
 __export(require('./components/control.components'));
+__export(require('./components/interactions'));
 exports.COMPONENTS = [
     map_component_1.MapComponent,
     view_component_1.ViewComponent,
@@ -57,6 +59,9 @@ exports.COMPONENTS = [
     control_components_1.ControlZoomSliderComponent,
     control_components_1.ControlZoomToExtentComponent,
     format_component_1.FormatMVTComponent,
-    tilegrid_component_1.TileGridComponent
+    tilegrid_component_1.TileGridComponent,
+    interactions_1.DefaultInteractionComponent,
+    interactions_1.DragRotateInteractionComponent,
+    interactions_1.DragRotateAndZoomInteractionComponent
 ];
 //# sourceMappingURL=components.js.map

@@ -133,6 +133,7 @@ var SourceXYZComponent = (function (_super) {
         { type: layer_components_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceXYZComponent.propDecorators = {
+        'attributions': [{ type: core_1.Input },],
         'cacheSize': [{ type: core_1.Input },],
         'crossOrigin': [{ type: core_1.Input },],
         'opaque': [{ type: core_1.Input },],
@@ -177,6 +178,7 @@ var SourceVectorTileComponent = (function (_super) {
         { type: layer_components_1.LayerVectorTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceVectorTileComponent.propDecorators = {
+        'attributions': [{ type: core_1.Input },],
         'cacheSize': [{ type: core_1.Input },],
         'overlaps': [{ type: core_1.Input },],
         'projection': [{ type: core_1.Input },],

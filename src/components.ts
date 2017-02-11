@@ -2,8 +2,7 @@ import {  MapComponent } from './components/map.component';
 import { LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent } from './components/layer.components';
 import {
   SourceOsmComponent, SourceBingmapsComponent, SourceVectorComponent, SourceXYZComponent,
-  SourceVectorTileComponent
-} from './components/source.components';
+  SourceVectorTileComponent } from './components/source.components';
 import {  ViewComponent } from './components/view.component';
 import {  FeatureComponent } from './components/feature.component';
 import {  GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent } from './components/geometry.components';
@@ -16,6 +15,8 @@ import {  ControlAttributionComponent, ControlFullScreenComponent, ControlMouseP
 } from './components/control.components';
 import { FormatMVTComponent } from './components/format.component';
 import { TileGridComponent } from './components/tilegrid.component';
+import { DefaultInteractionComponent, DragRotateInteractionComponent,
+         DragRotateAndZoomInteractionComponent } from './components/interactions';
 
 // Export all components
 export * from './components/map.component';
@@ -27,6 +28,7 @@ export * from './components/geometry.components';
 export * from './components/coordinate.component';
 export * from './components/style.components';
 export * from './components/control.components';
+export * from './components/interactions';
 
 export const COMPONENTS: any[] = [
   MapComponent,
@@ -62,5 +64,8 @@ export const COMPONENTS: any[] = [
   ControlZoomSliderComponent,
   ControlZoomToExtentComponent,
   FormatMVTComponent,
-  TileGridComponent
+  TileGridComponent,
+  DefaultInteractionComponent,
+  DragRotateInteractionComponent,
+  DragRotateAndZoomInteractionComponent
 ];

@@ -23,7 +23,7 @@ export declare class MapComponent implements OnInit, AfterViewInit, OnChanges {
     onPreCompose: EventEmitter<render.Event>;
     onPropertyChange: EventEmitter<ObjectEvent>;
     onSingleClick: EventEmitter<MapBrowserEvent>;
-    constructor(element: ElementRef);
+    constructor(host: ElementRef);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngAfterViewInit(): void;

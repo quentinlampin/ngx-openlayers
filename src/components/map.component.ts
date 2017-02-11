@@ -10,10 +10,8 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers'
 })
 
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
-  private host: ElementRef; /** element that hosts the map */
   public instance: Map; /** ol.Map instance */
   public componentType: string = 'map';
-
 
   @Input() width: string = '100%';
   @Input() height: string = '100%';
@@ -36,8 +34,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() onPropertyChange: EventEmitter<ObjectEvent>;
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
 
-  constructor(element: ElementRef) {
-    this.host = element;
+  constructor(private host: ElementRef) {
     this.onClick = new EventEmitter<MapBrowserEvent>();
     this.onDblClick = new EventEmitter<MapBrowserEvent>();
     this.onMoveEnd = new EventEmitter<MapEvent>();

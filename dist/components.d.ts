@@ -7,4 +7,5 @@ export * from './components/geometry.components';
 export * from './components/coordinate.component';
 export * from './components/style.components';
 export * from './components/control.components';
+export * from './components/interactions';
 export declare const COMPONENTS: any[];

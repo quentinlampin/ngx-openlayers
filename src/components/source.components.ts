@@ -93,7 +93,7 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   ]
 })
 export class SourceXYZComponent extends SourceComponent implements OnInit {
-
+  @Input() attributions: AttributionLike;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
   @Input() opaque: boolean;
@@ -127,7 +127,7 @@ export class SourceXYZComponent extends SourceComponent implements OnInit {
   ]
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
-
+  @Input() attributions: AttributionLike;
   @Input() cacheSize: number;
   @Input() overlaps: boolean;
   @Input() projection: ProjectionLike;

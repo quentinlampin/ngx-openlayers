@@ -2,7 +2,8 @@
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var MapComponent = (function () {
-    function MapComponent(element) {
+    function MapComponent(host) {
+        this.host = host;
         this.componentType = 'map';
         this.width = '100%';
         this.height = '100%';
@@ -12,7 +13,6 @@ var MapComponent = (function () {
         this.loadTilesWhileInteracting = undefined;
         this.logo = undefined;
         this.renderer = undefined;
-        this.host = element;
         this.onClick = new core_1.EventEmitter();
         this.onDblClick = new core_1.EventEmitter();
         this.onMoveEnd = new core_1.EventEmitter();

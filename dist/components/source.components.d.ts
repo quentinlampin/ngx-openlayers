@@ -31,6 +31,7 @@ export declare class SourceVectorComponent extends SourceComponent implements On
     ngOnInit(): void;
 }
 export declare class SourceXYZComponent extends SourceComponent implements OnInit {
+    attributions: AttributionLike;
     cacheSize: number;
     crossOrigin: string;
     opaque: boolean;
@@ -48,6 +49,7 @@ export declare class SourceXYZComponent extends SourceComponent implements OnIni
     ngOnInit(): void;
 }
 export declare class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
+    attributions: AttributionLike;
     cacheSize: number;
     overlaps: boolean;
     projection: ProjectionLike;
