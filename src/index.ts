@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MapComponent } from './components/map.component';
 import { ViewComponent } from './components/view.component';
 import { LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent } from './components/layer.components';
@@ -24,8 +24,11 @@ import { TileGridComponent } from './components/tilegrid.component';
 import { DefaultInteractionComponent } from './components/interactions/default.component';
 import { DragRotateInteractionComponent } from './components/interactions/dragrotate.component';
 import { DragRotateAndZoomInteractionComponent } from './components/interactions/dragrotateandzoom.component';
+import { DefaultControlComponent } from './components/controls';
 
-export const COMPONENTS: any[] = [
+export * from './components';
+
+const COMPONENTS = [
   MapComponent,
   ViewComponent,
   LayerTileComponent,
@@ -61,7 +64,8 @@ export const COMPONENTS: any[] = [
   TileGridComponent,
   DefaultInteractionComponent,
   DragRotateInteractionComponent,
-  DragRotateAndZoomInteractionComponent
+  DragRotateAndZoomInteractionComponent,
+  DefaultControlComponent
 ];
 
 @NgModule({

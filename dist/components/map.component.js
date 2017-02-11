@@ -40,7 +40,9 @@ var MapComponent = (function () {
             return;
         }
         for (var key in changes) {
-            properties[key] = changes[key].currentValue;
+            if (changes.hasOwnProperty(key)) {
+                properties[key] = changes[key].currentValue;
+            }
         }
         // console.log('changes detected in aol-map, setting new properties: ', properties);
         this.instance.setProperties(properties, false);

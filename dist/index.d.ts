@@ -1,3 +1,3 @@
-export declare const COMPONENTS: any[];
+export * from './components';
 export declare class AngularOpenlayersModule {
 }

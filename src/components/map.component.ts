@@ -69,7 +69,9 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
       return;
     }
     for (let key in changes) {
-      properties[key] = changes[key].currentValue;
+      if (changes.hasOwnProperty(key)) {
+        properties[key] = changes[key].currentValue;
+      }
     }
     // console.log('changes detected in aol-map, setting new properties: ', properties);
     this.instance.setProperties(properties, false);

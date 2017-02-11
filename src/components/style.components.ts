@@ -1,5 +1,5 @@
 import { Component, Input, Host, Optional, OnInit, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { style, Color, ColorLike } from 'openlayers';
+import { style, Color, ColorLike, StyleGeometryFunction, geom } from 'openlayers';
 import { FeatureComponent } from './feature.component';
 import { LayerVectorComponent } from './layer.components';
 
@@ -11,6 +11,13 @@ export class StyleComponent implements OnInit {
   private host: FeatureComponent|LayerVectorComponent;
   public instance: style.Style;
   public componentType: string = 'style';
+
+  @Input() geometry: string | geom.Geometry | StyleGeometryFunction;
+  @Input() fill: style.Fill;
+  @Input() image: style.Image;
+  @Input() stroke: style.Stroke;
+  @Input() text: style.Text;
+  @Input() zIndex: number;
 
   constructor(
     @Optional() featureHost: FeatureComponent,
@@ -42,11 +49,12 @@ export class StyleComponent implements OnInit {
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
   public componentType: string = 'style-circle';
   public instance: style.Circle;
-  public fill: style.Fill;
-  public stroke: style.Stroke;
 
-  @Input() radius: number = 10;
-  @Input() snapToPixel: boolean = true;
+  @Input() fill: style.Fill;
+  @Input() radius: number;
+  @Input() snapToPixel: boolean;
+  @Input() stroke: style.Stroke;
+  @Input() atlasManager: style.AtlasManager;
 
   constructor(@Host() private host: StyleComponent) {
   }
@@ -86,7 +94,6 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   }
 }
 
-
 @Component({
   selector: 'aol-style-fill',
   template: `<div class="aol-style-fill"></div>`,
@@ -96,7 +103,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/any;
   public instance: style.Fill;
 
-  @Input() color: Color|ColorLike|undefined;
+  @Input() color: Color|ColorLike;
 
   constructor(
     @Optional() styleHost: StyleComponent,

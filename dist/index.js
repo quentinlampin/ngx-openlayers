@@ -1,4 +1,7 @@
 "use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var map_component_1 = require('./components/map.component');
@@ -15,7 +18,9 @@ var tilegrid_component_1 = require('./components/tilegrid.component');
 var default_component_1 = require('./components/interactions/default.component');
 var dragrotate_component_1 = require('./components/interactions/dragrotate.component');
 var dragrotateandzoom_component_1 = require('./components/interactions/dragrotateandzoom.component');
-exports.COMPONENTS = [
+var controls_1 = require('./components/controls');
+__export(require('./components'));
+var COMPONENTS = [
     map_component_1.MapComponent,
     view_component_1.ViewComponent,
     layer_components_1.LayerTileComponent,
@@ -51,16 +56,17 @@ exports.COMPONENTS = [
     tilegrid_component_1.TileGridComponent,
     default_component_1.DefaultInteractionComponent,
     dragrotate_component_1.DragRotateInteractionComponent,
-    dragrotateandzoom_component_1.DragRotateAndZoomInteractionComponent
+    dragrotateandzoom_component_1.DragRotateAndZoomInteractionComponent,
+    controls_1.DefaultControlComponent
 ];
 var AngularOpenlayersModule = (function () {
     function AngularOpenlayersModule() {
     }
     AngularOpenlayersModule.decorators = [
         { type: core_1.NgModule, args: [{
-                    declarations: exports.COMPONENTS,
+                    declarations: COMPONENTS,
                     imports: [common_1.CommonModule],
-                    exports: exports.COMPONENTS
+                    exports: COMPONENTS
                 },] },
     ];
     /** @nocollapse */

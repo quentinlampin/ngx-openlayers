@@ -32,6 +32,14 @@ var StyleComponent = (function () {
         { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Optional },] },
         { type: layer_components_1.LayerVectorComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
+    StyleComponent.propDecorators = {
+        'geometry': [{ type: core_1.Input },],
+        'fill': [{ type: core_1.Input },],
+        'image': [{ type: core_1.Input },],
+        'stroke': [{ type: core_1.Input },],
+        'text': [{ type: core_1.Input },],
+        'zIndex': [{ type: core_1.Input },],
+    };
     return StyleComponent;
 }());
 exports.StyleComponent = StyleComponent;
@@ -39,8 +47,6 @@ var StyleCircleComponent = (function () {
     function StyleCircleComponent(host) {
         this.host = host;
         this.componentType = 'style-circle';
-        this.radius = 10;
-        this.snapToPixel = true;
     }
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
@@ -83,8 +89,11 @@ var StyleCircleComponent = (function () {
         { type: StyleComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     StyleCircleComponent.propDecorators = {
+        'fill': [{ type: core_1.Input },],
         'radius': [{ type: core_1.Input },],
         'snapToPixel': [{ type: core_1.Input },],
+        'stroke': [{ type: core_1.Input },],
+        'atlasManager': [{ type: core_1.Input },],
     };
     return StyleCircleComponent;
 }());

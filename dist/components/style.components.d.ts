@@ -1,12 +1,18 @@
 /// <reference types="openlayers" />
 import { OnInit, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { style, Color, ColorLike } from 'openlayers';
+import { style, Color, ColorLike, StyleGeometryFunction, geom } from 'openlayers';
 import { FeatureComponent } from './feature.component';
 import { LayerVectorComponent } from './layer.components';
 export declare class StyleComponent implements OnInit {
     private host;
     instance: style.Style;
     componentType: string;
+    geometry: string | geom.Geometry | StyleGeometryFunction;
+    fill: style.Fill;
+    image: style.Image;
+    stroke: style.Stroke;
+    text: style.Text;
+    zIndex: number;
     constructor(featureHost: FeatureComponent, layerHost: LayerVectorComponent);
     update(): void;
     ngOnInit(): void;
@@ -16,9 +22,10 @@ export declare class StyleCircleComponent implements AfterContentInit, OnChanges
     componentType: string;
     instance: style.Circle;
     fill: style.Fill;
-    stroke: style.Stroke;
     radius: number;
     snapToPixel: boolean;
+    stroke: style.Stroke;
+    atlasManager: style.AtlasManager;
     constructor(host: StyleComponent);
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
@@ -33,7 +40,7 @@ export declare class StyleCircleComponent implements AfterContentInit, OnChanges
 export declare class StyleFillComponent implements OnInit, OnChanges {
     private host;
     instance: style.Fill;
-    color: Color | ColorLike | undefined;
+    color: Color | ColorLike;
     constructor(styleHost: StyleComponent, styleCircleHost: StyleCircleComponent, styleTextHost: StyleTextComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;

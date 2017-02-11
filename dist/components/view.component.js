@@ -18,15 +18,17 @@ var ViewComponent = (function () {
             return;
         }
         for (var key in changes) {
-            switch (key) {
-                case 'zoom':
-                    /** Work-around: setting the zoom via setProperties does not work. */
-                    this.instance.setZoom(changes[key].currentValue);
-                    break;
-                default:
-                    break;
+            if (changes.hasOwnProperty(key)) {
+                switch (key) {
+                    case 'zoom':
+                        /* Work-around: setting the zoom via setProperties does not work. */
+                        this.instance.setZoom(changes[key].currentValue);
+                        break;
+                    default:
+                        break;
+                }
+                properties[key] = changes[key].currentValue;
             }
-            properties[key] = changes[key].currentValue;
         }
         // console.log('changes detected in aol-view, setting new properties: ', properties);
         this.instance.setProperties(properties, false);
