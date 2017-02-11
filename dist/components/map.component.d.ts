@@ -7,12 +7,12 @@ export declare class MapComponent implements OnInit, AfterViewInit, OnChanges {
     componentType: string;
     width: string;
     height: string;
-    pixelRatio: number | undefined;
-    keyboardEventTarget: Element | string | undefined;
-    loadTilesWhileAnimating: boolean | undefined;
-    loadTilesWhileInteracting: boolean | undefined;
-    logo: string | boolean | undefined;
-    renderer: 'canvas' | 'webgl' | undefined;
+    pixelRatio: number;
+    keyboardEventTarget: Element | string;
+    loadTilesWhileAnimating: boolean;
+    loadTilesWhileInteracting: boolean;
+    logo: string | boolean;
+    renderer: 'canvas' | 'webgl';
     onClick: EventEmitter<MapBrowserEvent>;
     onDblClick: EventEmitter<MapBrowserEvent>;
     onMoveEnd: EventEmitter<MapEvent>;

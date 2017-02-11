@@ -1,22 +1,19 @@
 import { Component, Host, OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { layer, source, Extent, style, StyleFunction } from 'openlayers';
 import { MapComponent } from './map.component';
-import VectorTileRenderType = ol.layer.VectorTileRenderType;
 
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
-  public host: MapComponent;
   public instance: any;
   public componentType: string = 'layer';
 
-  @Input() opacity: number|undefined = undefined;
-  @Input() visible: boolean|undefined = undefined;
-  @Input() extent:	Extent|undefined = undefined;
-  @Input() zIndex:	number|undefined = undefined;
-  @Input() minResolution: number|undefined = undefined;
-  @Input() maxResolution: number|undefined = undefined;
+  @Input() opacity: number;
+  @Input() visible: boolean;
+  @Input() extent:	Extent;
+  @Input() zIndex:	number;
+  @Input() minResolution: number;
+  @Input() maxResolution: number;
 
-  constructor(map: MapComponent) {
-    this.host = map;
+  constructor(@Host() protected host: MapComponent) {
   }
 
   ngOnInit() {
@@ -47,8 +44,8 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
 export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy {
   public source: source.Tile;
 
-  @Input() preload: number|undefined = undefined;
-  @Input() useInterimTilesOnError: boolean|undefined = undefined;
+  @Input() preload: number;
+  @Input() useInterimTilesOnError: boolean;
 
   constructor(@Host() map: MapComponent) {
     super(map);
@@ -68,7 +65,7 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
 export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy {
   public source: source.Vector;
 
-  @Input() renderBuffer: number|undefined = undefined;
+  @Input() renderBuffer: number;
 
   constructor(@Host() map: MapComponent) {
     super(map);
@@ -89,7 +86,7 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit {
   public source: source.VectorTile;
 
   @Input() renderBuffer: number;
-  @Input() renderMode: VectorTileRenderType|string;
+  @Input() renderMode: layer.VectorTileRenderType|string;
   /* not marked as optional in the typings */
   @Input() renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
   @Input() style: (style.Style | style.Style[] | StyleFunction);

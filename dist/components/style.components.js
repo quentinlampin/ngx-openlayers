@@ -36,12 +36,11 @@ var StyleComponent = (function () {
 }());
 exports.StyleComponent = StyleComponent;
 var StyleCircleComponent = (function () {
-    function StyleCircleComponent(style) {
+    function StyleCircleComponent(host) {
+        this.host = host;
         this.componentType = 'style-circle';
         this.radius = 10;
         this.snapToPixel = true;
-        // console.log('creating aol-style-circle');
-        this.host = style;
     }
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
@@ -154,9 +153,8 @@ var StyleFillComponent = (function () {
 }());
 exports.StyleFillComponent = StyleFillComponent;
 var StyleIconComponent = (function () {
-    function StyleIconComponent(styleHost) {
-        this.host = styleHost;
-        // console.log('creating aol-style-icon with: ', this);
+    function StyleIconComponent(host) {
+        this.host = host;
     }
     StyleIconComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.style.Icon instance with: ', this);
@@ -300,11 +298,11 @@ var StyleStrokeComponent = (function () {
 exports.StyleStrokeComponent = StyleStrokeComponent;
 var StyleTextComponent = (function () {
     function StyleTextComponent(host) {
+        this.host = host;
         this.componentType = 'style-text';
         if (!host) {
             throw new Error('aol-style-text must be a descendant of aol-style');
         }
-        this.host = host;
         // console.log('creating aol-style-text with: ', this);
     }
     StyleTextComponent.prototype.ngOnInit = function () {

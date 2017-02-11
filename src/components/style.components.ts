@@ -8,11 +8,14 @@ import { LayerVectorComponent } from './layer.components';
   template: `<ng-content></ng-content>`
 })
 export class StyleComponent implements OnInit {
-  private host: any;
+  private host: FeatureComponent|LayerVectorComponent;
   public instance: style.Style;
   public componentType: string = 'style';
 
-  constructor(@Optional() featureHost: FeatureComponent, @Optional() layerHost: LayerVectorComponent) {
+  constructor(
+    @Optional() featureHost: FeatureComponent,
+    @Optional() layerHost: LayerVectorComponent
+  ) {
     // console.log('creating aol-style');
     this.host = !!featureHost ? featureHost : layerHost;
     if (!this.host) {
@@ -37,18 +40,15 @@ export class StyleComponent implements OnInit {
   template: `<ng-content></ng-content>`
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
-  private host: StyleComponent;
   public componentType: string = 'style-circle';
   public instance: style.Circle;
-  public fill: style.Fill|undefined;
-  public stroke: style.Stroke|undefined;
+  public fill: style.Fill;
+  public stroke: style.Stroke;
 
   @Input() radius: number = 10;
   @Input() snapToPixel: boolean = true;
 
-  constructor(@Host() style: StyleComponent) {
-    // console.log('creating aol-style-circle');
-    this.host = style;
+  constructor(@Host() private host: StyleComponent) {
   }
 
   /**
@@ -92,7 +92,8 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   template: `<div class="aol-style-fill"></div>`,
 })
 export class StyleFillComponent implements OnInit, OnChanges {
-  private host: any;
+  /* the typings do not have the setters */
+  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/any;
   public instance: style.Fill;
 
   @Input() color: Color|ColorLike|undefined;
@@ -153,7 +154,6 @@ export class StyleFillComponent implements OnInit, OnChanges {
   template: `<div class="aol-style-icon"></div>`,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
-  private host: any;
   public instance: style.Icon;
 
   @Input() anchor: [number, number];
@@ -175,9 +175,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input() src: string;
 
 
-  constructor(@Host() styleHost: StyleComponent) {
-    this.host =  styleHost;
-    // console.log('creating aol-style-icon with: ', this);
+  constructor(@Host() private host: StyleComponent) {
   }
 
   ngOnInit() {
@@ -214,7 +212,8 @@ export class StyleIconComponent implements OnInit, OnChanges {
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {
   public instance: style.Stroke;
-  private host: any;
+  /* the typings do not have the setters */
+  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/any;
 
   @Input() color: Color|undefined;
   @Input() lineCap: string|undefined;
@@ -296,7 +295,6 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
 export class StyleTextComponent implements OnInit, OnChanges {
   public instance: style.Text;
   public componentType: string = 'style-text';
-  private host: any;
 
   @Input() font: string|undefined;
   @Input() offsetX: number|undefined;
@@ -308,11 +306,10 @@ export class StyleTextComponent implements OnInit, OnChanges {
   @Input() textAlign: string|undefined;
   @Input() textBaseLine: string|undefined;
 
-  constructor(@Optional() host: StyleComponent) {
+  constructor(@Optional() private host: StyleComponent) {
     if (!host) {
       throw new Error('aol-style-text must be a descendant of aol-style');
     }
-    this.host = host;
     // console.log('creating aol-style-text with: ', this);
   }
 

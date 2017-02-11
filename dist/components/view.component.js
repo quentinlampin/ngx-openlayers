@@ -3,21 +3,9 @@ var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var map_component_1 = require('./map.component');
 var ViewComponent = (function () {
-    function ViewComponent(map) {
+    function ViewComponent(host) {
+        this.host = host;
         this.componentType = 'view';
-        this.constrainRotation = undefined;
-        this.enableRotation = undefined;
-        this.extent = undefined;
-        this.maxResolution = undefined;
-        this.minResolution = undefined;
-        this.maxZoom = undefined;
-        this.minZoom = undefined;
-        this.resolution = undefined;
-        this.resolutions = undefined;
-        this.rotation = undefined;
-        this.zoom = undefined;
-        this.zoomFactor = undefined;
-        this.host = map;
     }
     ViewComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.View instance with: ', this);

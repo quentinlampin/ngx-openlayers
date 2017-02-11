@@ -9,9 +9,9 @@ export class TileGridComponent implements OnInit {
   instance: tilegrid.TileGrid;
 
   @Input() extent: Extent;
-  @Input() maxZoom?: number;
-  @Input() minZoom?: number;
-  @Input() tileSize: (number | Size);
+  @Input() maxZoom: number;
+  @Input() minZoom: number;
+  @Input() tileSize: number|Size;
 
   ngOnInit() {
     this.instance = tilegrid.createXYZ(this);

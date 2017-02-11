@@ -5,12 +5,10 @@ import { FormatComponent } from './format.component';
 import { TileGridComponent } from './tilegrid.component';
 
 export class SourceComponent implements OnInit, OnDestroy {
-  public host: LayerComponent;
   public instance: any;
   public componentType: string = 'source';
 
-  constructor(layer: LayerComponent) {
-    this.host = layer;
+  constructor(@Host() protected host: LayerComponent) {
   }
 
   ngOnInit() {
@@ -70,10 +68,10 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   ]
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
-  @Input() attributions: AttributionLike|undefined;
-  @Input() overlaps: boolean|undefined;
-  @Input() useSpatialIndex: boolean|undefined;
-  @Input() wrapX: boolean|undefined;
+  @Input() attributions: AttributionLike;
+  @Input() overlaps: boolean;
+  @Input() useSpatialIndex: boolean;
+  @Input() wrapX: boolean;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);
@@ -97,7 +95,7 @@ export class SourceXYZComponent extends SourceComponent implements OnInit {
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
   @Input() opaque: boolean;
-  @Input() projection: string|undefined;
+  @Input() projection: string;
   @Input() reprojectionErrorThreshold: number;
   @Input() minZoom: number;
   @Input() maxZoom: number;

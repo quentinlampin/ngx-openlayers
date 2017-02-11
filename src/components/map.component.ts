@@ -15,12 +15,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() width: string = '100%';
   @Input() height: string = '100%';
-  @Input() pixelRatio: number|undefined = undefined;
-  @Input() keyboardEventTarget: Element|string|undefined = undefined;
-  @Input() loadTilesWhileAnimating: boolean|undefined = undefined;
-  @Input() loadTilesWhileInteracting: boolean|undefined = undefined;
-  @Input() logo: string|boolean|undefined = undefined;
-  @Input() renderer: 'canvas'|'webgl'|undefined = undefined;
+  @Input() pixelRatio: number;
+  @Input() keyboardEventTarget: Element|string;
+  @Input() loadTilesWhileAnimating: boolean;
+  @Input() loadTilesWhileInteracting: boolean;
+  @Input() logo: string|boolean;
+  @Input() renderer: 'canvas'|'webgl';
 
 
   @Output() onClick: EventEmitter<MapBrowserEvent>;

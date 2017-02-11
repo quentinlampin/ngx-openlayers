@@ -10,9 +10,9 @@ var layer_components_1 = require('./layer.components');
 var format_component_1 = require('./format.component');
 var tilegrid_component_1 = require('./tilegrid.component');
 var SourceComponent = (function () {
-    function SourceComponent(layer) {
+    function SourceComponent(host) {
+        this.host = host;
         this.componentType = 'source';
-        this.host = layer;
     }
     SourceComponent.prototype.ngOnInit = function () {
         this.host.instance.setSource(this.instance);
@@ -20,6 +20,10 @@ var SourceComponent = (function () {
     SourceComponent.prototype.ngOnDestroy = function () {
         this.host.instance.setSource(null);
     };
+    /** @nocollapse */
+    SourceComponent.ctorParameters = function () { return [
+        { type: layer_components_1.LayerComponent, decorators: [{ type: core_1.Host },] },
+    ]; };
     return SourceComponent;
 }());
 exports.SourceComponent = SourceComponent;

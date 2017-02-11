@@ -15,11 +15,11 @@ export declare class StyleCircleComponent implements AfterContentInit, OnChanges
     private host;
     componentType: string;
     instance: style.Circle;
-    fill: style.Fill | undefined;
-    stroke: style.Stroke | undefined;
+    fill: style.Fill;
+    stroke: style.Stroke;
     radius: number;
     snapToPixel: boolean;
-    constructor(style: StyleComponent);
+    constructor(host: StyleComponent);
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
      * we trigger a radius change.
@@ -58,7 +58,7 @@ export declare class StyleIconComponent implements OnInit, OnChanges {
     size: [number, number];
     imgSize: [number, number];
     src: string;
-    constructor(styleHost: StyleComponent);
+    constructor(host: StyleComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
 }
@@ -76,9 +76,9 @@ export declare class StyleStrokeComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
 }
 export declare class StyleTextComponent implements OnInit, OnChanges {
+    private host;
     instance: style.Text;
     componentType: string;
-    private host;
     font: string | undefined;
     offsetX: number | undefined;
     offsetY: number | undefined;

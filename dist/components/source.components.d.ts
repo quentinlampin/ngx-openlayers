@@ -5,10 +5,10 @@ import { LayerTileComponent, LayerVectorComponent, LayerComponent, LayerVectorTi
 import { FormatComponent } from './format.component';
 import { TileGridComponent } from './tilegrid.component';
 export declare class SourceComponent implements OnInit, OnDestroy {
-    host: LayerComponent;
+    protected host: LayerComponent;
     instance: any;
     componentType: string;
-    constructor(layer: LayerComponent);
+    constructor(host: LayerComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }
@@ -23,10 +23,10 @@ export declare class SourceBingmapsComponent extends SourceComponent implements 
     ngOnInit(): void;
 }
 export declare class SourceVectorComponent extends SourceComponent implements OnInit {
-    attributions: AttributionLike | undefined;
-    overlaps: boolean | undefined;
-    useSpatialIndex: boolean | undefined;
-    wrapX: boolean | undefined;
+    attributions: AttributionLike;
+    overlaps: boolean;
+    useSpatialIndex: boolean;
+    wrapX: boolean;
     constructor(layer: LayerVectorComponent);
     ngOnInit(): void;
 }
@@ -35,7 +35,7 @@ export declare class SourceXYZComponent extends SourceComponent implements OnIni
     cacheSize: number;
     crossOrigin: string;
     opaque: boolean;
-    projection: string | undefined;
+    projection: string;
     reprojectionErrorThreshold: number;
     minZoom: number;
     maxZoom: number;
