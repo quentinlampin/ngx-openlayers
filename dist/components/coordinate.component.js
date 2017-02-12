@@ -6,9 +6,9 @@ var geometry_components_1 = require('./geometry.components');
 var view_component_1 = require('./view.component');
 var CoordinateComponent = (function () {
     function CoordinateComponent(map, viewHost, geometryPointHost) {
+        this.map = map;
         this.srid = 'EPSG:3857';
         // console.log('instancing aol-coordinate');
-        this.map = map;
         if (geometryPointHost !== null) {
             this.host = geometryPointHost;
         }
@@ -37,8 +37,6 @@ var CoordinateComponent = (function () {
                 break;
         }
     };
-    CoordinateComponent.prototype.ngOnDestroy = function () {
-    };
     CoordinateComponent.decorators = [
         { type: core_1.Component, args: [{
                     selector: 'aol-coordinate',
@@ -61,9 +59,9 @@ var CoordinateComponent = (function () {
 exports.CoordinateComponent = CoordinateComponent;
 var CollectionCoordinatesComponent = (function () {
     function CollectionCoordinatesComponent(map, geometryLinestring, geometryPolygon) {
+        this.map = map;
         this.srid = 'EPSG:3857';
         // console.log('creating aol-collection-coordinates');
-        this.map = map;
         if (!!geometryLinestring) {
             this.host = geometryLinestring;
         }
@@ -100,8 +98,6 @@ var CollectionCoordinatesComponent = (function () {
             default:
                 throw new Error('aol-collection-coordinates\' host is of unknown type: ' + this.host.componentType);
         }
-    };
-    CollectionCoordinatesComponent.prototype.ngOnDestroy = function () {
     };
     CollectionCoordinatesComponent.decorators = [
         { type: core_1.Component, args: [{

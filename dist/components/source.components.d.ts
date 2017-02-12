@@ -1,7 +1,7 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit, AfterContentInit } from '@angular/core';
 import { AttributionLike, Size, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
-import { LayerTileComponent, LayerVectorComponent, LayerComponent, LayerVectorTileComponent } from './layer.components';
+import { LayerTileComponent, LayerVectorComponent, LayerComponent, LayerVectorTileComponent } from './layers';
 import { FormatComponent } from './format.component';
 import { TileGridComponent } from './tilegrid.component';
 export declare class SourceComponent implements OnInit, OnDestroy {

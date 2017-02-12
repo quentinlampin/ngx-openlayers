@@ -41,7 +41,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
       if (changes.hasOwnProperty(key)) {
         switch (key) {
           case 'zoom':
-            /* Work-around: setting the zoom via setProperties does not work. */
+            /** Work-around: setting the zoom via setProperties does not work. */
             this.instance.setZoom(changes[key].currentValue);
             break;
           default:

@@ -2,7 +2,7 @@
 import { OnInit, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { style, Color, ColorLike, StyleGeometryFunction, geom } from 'openlayers';
 import { FeatureComponent } from './feature.component';
-import { LayerVectorComponent } from './layer.components';
+import { LayerVectorComponent } from './layers';
 export declare class StyleComponent implements OnInit {
     private host;
     instance: style.Style;

@@ -1,7 +1,7 @@
 "use strict";
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var source_components_1 = require('./source.components');
+var sources_1 = require('./sources');
 var FeatureComponent = (function () {
     function FeatureComponent(source) {
         this.componentType = 'feature';
@@ -24,7 +24,7 @@ var FeatureComponent = (function () {
     ];
     /** @nocollapse */
     FeatureComponent.ctorParameters = function () { return [
-        { type: source_components_1.SourceVectorComponent, decorators: [{ type: core_1.Host },] },
+        { type: sources_1.SourceVectorComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     return FeatureComponent;
 }());

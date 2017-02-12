@@ -1,10 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { format, geom } from 'openlayers';
-
-export class FormatComponent {
-  public instance: format.Feature;
-  public componentType = 'format';
-}
+import { FormatComponent } from './format.component';
 
 @Component({
   selector: 'aol-format-mvt',

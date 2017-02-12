@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
-var layer_components_1 = require('./layer.components');
+var layers_1 = require('./layers');
 var format_component_1 = require('./format.component');
 var tilegrid_component_1 = require('./tilegrid.component');
 var SourceComponent = (function () {
@@ -22,7 +22,7 @@ var SourceComponent = (function () {
     };
     /** @nocollapse */
     SourceComponent.ctorParameters = function () { return [
-        { type: layer_components_1.LayerComponent, decorators: [{ type: core_1.Host },] },
+        { type: layers_1.LayerComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     return SourceComponent;
 }());
@@ -47,7 +47,7 @@ var SourceOsmComponent = (function (_super) {
     ];
     /** @nocollapse */
     SourceOsmComponent.ctorParameters = function () { return [
-        { type: layer_components_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
+        { type: layers_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     return SourceOsmComponent;
 }(SourceComponent));
@@ -73,7 +73,7 @@ var SourceBingmapsComponent = (function (_super) {
     ];
     /** @nocollapse */
     SourceBingmapsComponent.ctorParameters = function () { return [
-        { type: layer_components_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
+        { type: layers_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceBingmapsComponent.propDecorators = {
         'key': [{ type: core_1.Input },],
@@ -102,7 +102,7 @@ var SourceVectorComponent = (function (_super) {
     ];
     /** @nocollapse */
     SourceVectorComponent.ctorParameters = function () { return [
-        { type: layer_components_1.LayerVectorComponent, decorators: [{ type: core_1.Host },] },
+        { type: layers_1.LayerVectorComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceVectorComponent.propDecorators = {
         'attributions': [{ type: core_1.Input },],
@@ -134,7 +134,7 @@ var SourceXYZComponent = (function (_super) {
     ];
     /** @nocollapse */
     SourceXYZComponent.ctorParameters = function () { return [
-        { type: layer_components_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
+        { type: layers_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceXYZComponent.propDecorators = {
         'attributions': [{ type: core_1.Input },],
@@ -179,7 +179,7 @@ var SourceVectorTileComponent = (function (_super) {
     ];
     /** @nocollapse */
     SourceVectorTileComponent.ctorParameters = function () { return [
-        { type: layer_components_1.LayerVectorTileComponent, decorators: [{ type: core_1.Host },] },
+        { type: layers_1.LayerVectorTileComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     SourceVectorTileComponent.propDecorators = {
         'attributions': [{ type: core_1.Input },],

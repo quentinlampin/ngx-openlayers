@@ -2,7 +2,7 @@
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var feature_component_1 = require('./feature.component');
-var layer_components_1 = require('./layer.components');
+var layers_1 = require('./layers');
 var StyleComponent = (function () {
     function StyleComponent(featureHost, layerHost) {
         this.componentType = 'style';
@@ -30,7 +30,7 @@ var StyleComponent = (function () {
     /** @nocollapse */
     StyleComponent.ctorParameters = function () { return [
         { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Optional },] },
-        { type: layer_components_1.LayerVectorComponent, decorators: [{ type: core_1.Optional },] },
+        { type: layers_1.LayerVectorComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
     StyleComponent.propDecorators = {
         'geometry': [{ type: core_1.Input },],
