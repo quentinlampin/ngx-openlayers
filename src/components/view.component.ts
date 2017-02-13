@@ -7,27 +7,23 @@ import { MapComponent } from './map.component';
   template: `<ng-content></ng-content>`
 })
 export class ViewComponent implements OnInit, OnChanges, OnDestroy {
-  private host: MapComponent;
-
   public instance: View;
   public componentType: string = 'view';
 
+  @Input() constrainRotation: boolean|number;
+  @Input() enableRotation: boolean;
+  @Input() extent: Extent;
+  @Input() maxResolution: number;
+  @Input() minResolution: number;
+  @Input() maxZoom: number;
+  @Input() minZoom: number;
+  @Input() resolution: number;
+  @Input() resolutions: number[];
+  @Input() rotation: number;
+  @Input() zoom: number;
+  @Input() zoomFactor: number;
 
-  @Input() constrainRotation: boolean|number|undefined = undefined;
-  @Input() enableRotation: boolean|undefined = undefined;
-  @Input() extent: Extent|undefined = undefined;
-  @Input() maxResolution: number|undefined = undefined;
-  @Input() minResolution: number|undefined = undefined;
-  @Input() maxZoom: number|undefined = undefined;
-  @Input() minZoom: number|undefined = undefined;
-  @Input() resolution: number|undefined = undefined;
-  @Input() resolutions: number[]|undefined = undefined;
-  @Input() rotation: number|undefined = undefined;
-  @Input() zoom: number|undefined = undefined;
-  @Input() zoomFactor: number|undefined = undefined;
-
-  constructor(@Host() map: MapComponent) {
-    this.host = map;
+  constructor(@Host() private host: MapComponent) {
   }
 
   ngOnInit() {
@@ -42,15 +38,17 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
       return;
     }
     for (let key in changes) {
-      switch (key) {
-        case 'zoom':
-          /** Work-around: setting the zoom via setProperties does not work. */
-          this.instance.setZoom(changes[key].currentValue);
-          break;
-        default:
-          break;
+      if (changes.hasOwnProperty(key)) {
+        switch (key) {
+          case 'zoom':
+            /** Work-around: setting the zoom via setProperties does not work. */
+            this.instance.setZoom(changes[key].currentValue);
+            break;
+          default:
+            break;
+        }
+        properties[key] = changes[key].currentValue;
       }
-      properties[key] = changes[key].currentValue;
     }
     // console.log('changes detected in aol-view, setting new properties: ', properties);
     this.instance.setProperties(properties, false);

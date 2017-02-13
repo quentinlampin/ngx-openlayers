@@ -1,6 +1,6 @@
 import { Component, Host, OnInit, OnDestroy } from '@angular/core';
 import { Feature } from 'openlayers';
-import { SourceVectorComponent } from './source.components';
+import { SourceVectorComponent } from './sources';
 
 @Component({
   selector: 'aol-feature',
@@ -8,13 +8,12 @@ import { SourceVectorComponent } from './source.components';
 })
 export class FeatureComponent implements OnInit, OnDestroy {
   private host: SourceVectorComponent;
-  public componentType: string;
+  public componentType = 'feature';
   public instance: Feature;
 
   constructor(@Host() source: SourceVectorComponent) {
     // console.log('instancing aol-feature');
     this.host = source;
-    this.componentType = 'feature';
   }
 
   ngOnInit() {

@@ -8,15 +8,9 @@ var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var map_component_1 = require('./map.component');
 var LayerComponent = (function () {
-    function LayerComponent(map) {
+    function LayerComponent(host) {
+        this.host = host;
         this.componentType = 'layer';
-        this.opacity = undefined;
-        this.visible = undefined;
-        this.extent = undefined;
-        this.zIndex = undefined;
-        this.minResolution = undefined;
-        this.maxResolution = undefined;
-        this.host = map;
     }
     LayerComponent.prototype.ngOnInit = function () {
         this.host.instance.addLayer(this.instance);
@@ -30,11 +24,17 @@ var LayerComponent = (function () {
             return;
         }
         for (var key in changes) {
-            properties[key] = changes[key].currentValue;
+            if (changes.hasOwnProperty(key)) {
+                properties[key] = changes[key].currentValue;
+            }
         }
         // console.log('changes detected in aol-layer, setting new properties: ', properties);
         this.instance.setProperties(properties, false);
     };
+    /** @nocollapse */
+    LayerComponent.ctorParameters = function () { return [
+        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+    ]; };
     LayerComponent.propDecorators = {
         'opacity': [{ type: core_1.Input },],
         'visible': [{ type: core_1.Input },],
@@ -50,8 +50,6 @@ var LayerTileComponent = (function (_super) {
     __extends(LayerTileComponent, _super);
     function LayerTileComponent(map) {
         _super.call(this, map);
-        this.preload = undefined;
-        this.useInterimTilesOnError = undefined;
     }
     LayerTileComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.layer.Tile instance with:', this);
@@ -79,7 +77,6 @@ var LayerVectorComponent = (function (_super) {
     __extends(LayerVectorComponent, _super);
     function LayerVectorComponent(map) {
         _super.call(this, map);
-        this.renderBuffer = undefined;
     }
     LayerVectorComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.layer.Vector instance with:', this);
@@ -102,4 +99,36 @@ var LayerVectorComponent = (function (_super) {
     return LayerVectorComponent;
 }(LayerComponent));
 exports.LayerVectorComponent = LayerVectorComponent;
+var LayerVectorTileComponent = (function (_super) {
+    __extends(LayerVectorTileComponent, _super);
+    function LayerVectorTileComponent(map) {
+        _super.call(this, map);
+    }
+    LayerVectorTileComponent.prototype.ngOnInit = function () {
+        // console.log('creating ol.layer.VectorTile instance with:', this);
+        this.instance = new openlayers_1.layer.VectorTile(this);
+        _super.prototype.ngOnInit.call(this);
+    };
+    LayerVectorTileComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'aol-layer-vectortile',
+                    template: "<ng-content></ng-content>"
+                },] },
+    ];
+    /** @nocollapse */
+    LayerVectorTileComponent.ctorParameters = function () { return [
+        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+    ]; };
+    LayerVectorTileComponent.propDecorators = {
+        'renderBuffer': [{ type: core_1.Input },],
+        'renderMode': [{ type: core_1.Input },],
+        'renderOrder': [{ type: core_1.Input },],
+        'style': [{ type: core_1.Input },],
+        'updateWhileAnimating': [{ type: core_1.Input },],
+        'updateWhileInteracting': [{ type: core_1.Input },],
+        'visible': [{ type: core_1.Input },],
+    };
+    return LayerVectorTileComponent;
+}(LayerComponent));
+exports.LayerVectorTileComponent = LayerVectorTileComponent;
 //# sourceMappingURL=layer.components.js.map

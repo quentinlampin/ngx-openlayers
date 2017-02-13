@@ -2,7 +2,7 @@
 var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var feature_component_1 = require('./feature.component');
-var layer_components_1 = require('./layer.components');
+var layers_1 = require('./layers');
 var StyleComponent = (function () {
     function StyleComponent(featureHost, layerHost) {
         this.componentType = 'style';
@@ -30,18 +30,23 @@ var StyleComponent = (function () {
     /** @nocollapse */
     StyleComponent.ctorParameters = function () { return [
         { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Optional },] },
-        { type: layer_components_1.LayerVectorComponent, decorators: [{ type: core_1.Optional },] },
+        { type: layers_1.LayerVectorComponent, decorators: [{ type: core_1.Optional },] },
     ]; };
+    StyleComponent.propDecorators = {
+        'geometry': [{ type: core_1.Input },],
+        'fill': [{ type: core_1.Input },],
+        'image': [{ type: core_1.Input },],
+        'stroke': [{ type: core_1.Input },],
+        'text': [{ type: core_1.Input },],
+        'zIndex': [{ type: core_1.Input },],
+    };
     return StyleComponent;
 }());
 exports.StyleComponent = StyleComponent;
 var StyleCircleComponent = (function () {
-    function StyleCircleComponent(style) {
+    function StyleCircleComponent(host) {
+        this.host = host;
         this.componentType = 'style-circle';
-        this.radius = 10;
-        this.snapToPixel = true;
-        // console.log('creating aol-style-circle');
-        this.host = style;
     }
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
@@ -84,8 +89,11 @@ var StyleCircleComponent = (function () {
         { type: StyleComponent, decorators: [{ type: core_1.Host },] },
     ]; };
     StyleCircleComponent.propDecorators = {
+        'fill': [{ type: core_1.Input },],
         'radius': [{ type: core_1.Input },],
         'snapToPixel': [{ type: core_1.Input },],
+        'stroke': [{ type: core_1.Input },],
+        'atlasManager': [{ type: core_1.Input },],
     };
     return StyleCircleComponent;
 }());
@@ -154,9 +162,8 @@ var StyleFillComponent = (function () {
 }());
 exports.StyleFillComponent = StyleFillComponent;
 var StyleIconComponent = (function () {
-    function StyleIconComponent(styleHost) {
-        this.host = styleHost;
-        // console.log('creating aol-style-icon with: ', this);
+    function StyleIconComponent(host) {
+        this.host = host;
     }
     StyleIconComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.style.Icon instance with: ', this);
@@ -300,11 +307,11 @@ var StyleStrokeComponent = (function () {
 exports.StyleStrokeComponent = StyleStrokeComponent;
 var StyleTextComponent = (function () {
     function StyleTextComponent(host) {
+        this.host = host;
         this.componentType = 'style-text';
         if (!host) {
             throw new Error('aol-style-text must be a descendant of aol-style');
         }
-        this.host = host;
         // console.log('creating aol-style-text with: ', this);
     }
     StyleTextComponent.prototype.ngOnInit = function () {

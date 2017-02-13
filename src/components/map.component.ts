@@ -10,19 +10,17 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers'
 })
 
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
-  private host: ElementRef; /** element that hosts the map */
   public instance: Map; /** ol.Map instance */
   public componentType: string = 'map';
 
-
   @Input() width: string = '100%';
   @Input() height: string = '100%';
-  @Input() pixelRatio: number|undefined = undefined;
-  @Input() keyboardEventTarget: Element|string|undefined = undefined;
-  @Input() loadTilesWhileAnimating: boolean|undefined = undefined;
-  @Input() loadTilesWhileInteracting: boolean|undefined = undefined;
-  @Input() logo: string|boolean|undefined = undefined;
-  @Input() renderer: 'canvas'|'webgl'|undefined = undefined;
+  @Input() pixelRatio: number;
+  @Input() keyboardEventTarget: Element|string;
+  @Input() loadTilesWhileAnimating: boolean;
+  @Input() loadTilesWhileInteracting: boolean;
+  @Input() logo: string|boolean;
+  @Input() renderer: 'canvas'|'webgl';
 
 
   @Output() onClick: EventEmitter<MapBrowserEvent>;
@@ -36,8 +34,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() onPropertyChange: EventEmitter<ObjectEvent>;
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
 
-  constructor(element: ElementRef) {
-    this.host = element;
+  constructor(private host: ElementRef) {
     this.onClick = new EventEmitter<MapBrowserEvent>();
     this.onDblClick = new EventEmitter<MapBrowserEvent>();
     this.onMoveEnd = new EventEmitter<MapEvent>();
@@ -72,7 +69,9 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
       return;
     }
     for (let key in changes) {
-      properties[key] = changes[key].currentValue;
+      if (changes.hasOwnProperty(key)) {
+        properties[key] = changes[key].currentValue;
+      }
     }
     // console.log('changes detected in aol-map, setting new properties: ', properties);
     this.instance.setProperties(properties, false);

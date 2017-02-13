@@ -1,12 +1,18 @@
 /// <reference types="openlayers" />
 import { OnInit, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { style, Color, ColorLike } from 'openlayers';
+import { style, Color, ColorLike, StyleGeometryFunction, geom } from 'openlayers';
 import { FeatureComponent } from './feature.component';
-import { LayerVectorComponent } from './layer.components';
+import { LayerVectorComponent } from './layers';
 export declare class StyleComponent implements OnInit {
     private host;
     instance: style.Style;
     componentType: string;
+    geometry: string | geom.Geometry | StyleGeometryFunction;
+    fill: style.Fill;
+    image: style.Image;
+    stroke: style.Stroke;
+    text: style.Text;
+    zIndex: number;
     constructor(featureHost: FeatureComponent, layerHost: LayerVectorComponent);
     update(): void;
     ngOnInit(): void;
@@ -15,11 +21,12 @@ export declare class StyleCircleComponent implements AfterContentInit, OnChanges
     private host;
     componentType: string;
     instance: style.Circle;
-    fill: style.Fill | undefined;
-    stroke: style.Stroke | undefined;
+    fill: style.Fill;
     radius: number;
     snapToPixel: boolean;
-    constructor(style: StyleComponent);
+    stroke: style.Stroke;
+    atlasManager: style.AtlasManager;
+    constructor(host: StyleComponent);
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
      * we trigger a radius change.
@@ -33,7 +40,7 @@ export declare class StyleCircleComponent implements AfterContentInit, OnChanges
 export declare class StyleFillComponent implements OnInit, OnChanges {
     private host;
     instance: style.Fill;
-    color: Color | ColorLike | undefined;
+    color: Color | ColorLike;
     constructor(styleHost: StyleComponent, styleCircleHost: StyleCircleComponent, styleTextHost: StyleTextComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
@@ -58,7 +65,7 @@ export declare class StyleIconComponent implements OnInit, OnChanges {
     size: [number, number];
     imgSize: [number, number];
     src: string;
-    constructor(styleHost: StyleComponent);
+    constructor(host: StyleComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
 }
@@ -76,9 +83,9 @@ export declare class StyleStrokeComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
 }
 export declare class StyleTextComponent implements OnInit, OnChanges {
+    private host;
     instance: style.Text;
     componentType: string;
-    private host;
     font: string | undefined;
     offsetX: number | undefined;
     offsetY: number | undefined;

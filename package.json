@@ -30,21 +30,21 @@
         "openlayers": "3.20.1"
     },
     "devDependencies": {
-        "@angular/platform-browser": "2.4.1",
-        "@angular/common": "2.4.1",
-        "@angular/core": "2.4.1",
+        "@angular/platform-browser": "^2.4.1",
+        "@angular/common": "^2.4.1",
+        "@angular/core": "^2.4.1",
         "zone.js": "0.7.4",
         "@types/openlayers": "3.20.1",
         "rxjs": "5.0.2",
-        "@angular/compiler": "2.4.1",
-        "@angular/compiler-cli": "2.4.1",
-        "@angular/platform-server": "2.4.1",
+        "@angular/compiler": "^2.4.1",
+        "@angular/compiler-cli": "^2.4.1",
+        "@angular/platform-server": "^2.4.1",
         "@types/es6-shim": "^0.31.32",
         "@types/jasmine": "^2.5.38",
         "@types/selenium-webdriver": "^2.53.33",
         "codelyzer": "2.0.0-beta.4",
         "tslint": "~4.2.0",
-        "typescript": "2.0.10"
+        "typescript": "^2.0.10"
 
     },
     "engines": {

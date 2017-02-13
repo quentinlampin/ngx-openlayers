@@ -1,50 +1,68 @@
 /// <reference types="openlayers" />
-import { OnDestroy } from '@angular/core';
-import { control } from 'openlayers';
+import { ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { control, CoordinateFormatType, ProjectionLike } from 'openlayers';
 import { MapComponent } from './map.component';
-export declare class ControlAttributionComponent extends control.Attribution implements OnDestroy {
-    private host;
+export declare class ControlAttributionComponent implements OnInit, OnDestroy {
+    private map;
+    private element;
     componentType: string;
-    constructor(map: MapComponent);
+    instance: control.Attribution;
+    target: Element;
+    collapsible: boolean;
+    constructor(map: MapComponent, element: ElementRef);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlFullScreenComponent extends control.FullScreen implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlFullScreenComponent extends control.FullScreen implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlMousePositionComponent extends control.MousePosition implements OnDestroy {
-    _host_: MapComponent;
-    constructor(map: MapComponent);
+export declare class ControlMousePositionComponent implements OnInit, OnDestroy {
+    private map;
+    private element;
+    instance: control.MousePosition;
+    coordinateFormat: CoordinateFormatType;
+    projection: ProjectionLike;
+    target: Element;
+    constructor(map: MapComponent, element: ElementRef);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlOverviewMapComponent extends control.OverviewMap implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlOverviewMapComponent extends control.OverviewMap implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlRotateComponent extends control.Rotate implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlRotateComponent extends control.Rotate implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlScaleLineComponent extends control.ScaleLine implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlScaleLineComponent extends control.ScaleLine implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlZoomComponent extends control.Zoom implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlZoomComponent extends control.Zoom implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlZoomSliderComponent extends control.ZoomSlider implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlZoomSliderComponent extends control.ZoomSlider implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }
-export declare class ControlZoomToExtentComponent extends control.ZoomToExtent implements OnDestroy {
-    _host_: MapComponent;
+export declare class ControlZoomToExtentComponent extends control.ZoomToExtent implements OnInit, OnDestroy {
+    private map;
     constructor(map: MapComponent);
+    ngOnInit(): void;
     ngOnDestroy(): void;
 }

@@ -1,7 +1,7 @@
 /// <reference types="openlayers" />
 import { OnInit, OnDestroy } from '@angular/core';
 import { Feature } from 'openlayers';
-import { SourceVectorComponent } from './source.components';
+import { SourceVectorComponent } from './sources';
 export declare class FeatureComponent implements OnInit, OnDestroy {
     private host;
     componentType: string;

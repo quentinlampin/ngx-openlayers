@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy, Optional, OnChanges, Input } from '@angular/core';
+import { Component, Host, Optional, OnChanges, Input } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
@@ -8,22 +8,19 @@ import { ViewComponent } from './view.component';
   selector: 'aol-coordinate',
   template: `<div class="aol-coordinate"></div>`
 })
-export class CoordinateComponent implements OnChanges, OnDestroy {
+export class CoordinateComponent implements OnChanges {
   private host: any;
-  private map: MapComponent;
 
   @Input() x: number;
   @Input() y: number;
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
-    @Host() map: MapComponent,
+    @Host() private map: MapComponent,
     @Optional() viewHost: ViewComponent,
     @Optional() geometryPointHost: GeometryPointComponent
   ) {
     // console.log('instancing aol-coordinate');
-    this.map = map;
-
     if (geometryPointHost !== null) {
       this.host = geometryPointHost;
     } else if (viewHost !== null) {
@@ -54,29 +51,24 @@ export class CoordinateComponent implements OnChanges, OnDestroy {
         break;
     }
   }
-  ngOnDestroy() {
-  }
 }
 
 @Component({
   selector: 'aol-collection-coordinates',
   template: `<div class="aol-collection-coordinates"></div>`
 })
-export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
+export class CollectionCoordinatesComponent implements OnChanges {
   private host: any;
-  private map: MapComponent;
 
   @Input() coordinates: [number, number][];
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
-      @Host() map: MapComponent,
+      @Host() private map: MapComponent,
       @Optional() geometryLinestring: GeometryLinestringComponent,
       @Optional() geometryPolygon: GeometryPolygonComponent
   ) {
     // console.log('creating aol-collection-coordinates');
-    this.map = map;
-
     if (!!geometryLinestring) {
       this.host = geometryLinestring;
     } else if (!!geometryPolygon) {
@@ -115,7 +107,5 @@ export class CollectionCoordinatesComponent implements OnChanges, OnDestroy {
         throw new Error('aol-collection-coordinates\' host is of unknown type: ' + this.host.componentType);
         // break;
     }
-  }
-  ngOnDestroy() {
   }
 }
