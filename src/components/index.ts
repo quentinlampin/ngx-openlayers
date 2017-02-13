@@ -5,6 +5,7 @@ export * from './layers';
 export * from './sources';
 export * from './styles';
 
+export * from './content.component';
 export * from './coordinate.component';
 export * from './feature.component';
 export * from './geometry.components';

@@ -8,6 +8,7 @@ __export(require('./interactions'));
 __export(require('./layers'));
 __export(require('./sources'));
 __export(require('./styles'));
+__export(require('./content.component'));
 __export(require('./coordinate.component'));
 __export(require('./feature.component'));
 __export(require('./geometry.components'));

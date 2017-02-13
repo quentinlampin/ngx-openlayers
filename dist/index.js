@@ -19,6 +19,7 @@ var default_component_1 = require('./components/interactions/default.component')
 var dragrotate_component_1 = require('./components/interactions/dragrotate.component');
 var dragrotateandzoom_component_1 = require('./components/interactions/dragrotateandzoom.component');
 var overlay_component_1 = require('./components/overlay.component');
+var content_component_1 = require('./components/content.component');
 __export(require('./components'));
 var COMPONENTS = [
     map_component_1.MapComponent,
@@ -59,7 +60,8 @@ var COMPONENTS = [
     dragrotate_component_1.DragRotateInteractionComponent,
     dragrotateandzoom_component_1.DragRotateAndZoomInteractionComponent,
     controls_1.DefaultControlComponent,
-    overlay_component_1.OverlayComponent
+    overlay_component_1.OverlayComponent,
+    content_component_1.ContentComponent
 ];
 var AngularOpenlayersModule = (function () {
     function AngularOpenlayersModule() {

@@ -1,6 +1,7 @@
-import { Component, ElementRef, Host, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ContentChild, ElementRef, Host, Input, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from './map.component';
 import { Overlay, OverlayPositioning } from 'openlayers';
+import { ContentComponent } from './content.component';
 
 @Component({
   selector: 'aol-overlay',
@@ -10,6 +11,8 @@ export class OverlayComponent implements OnInit, OnDestroy {
   componentType = 'overlay';
   instance: Overlay;
   element: Element;
+  @ContentChild(ContentComponent) content: ContentComponent;
+
   @Input() id: number|string;
   @Input() offset: number[];
   @Input() positioning: OverlayPositioning|string;
@@ -20,18 +23,21 @@ export class OverlayComponent implements OnInit, OnDestroy {
   @Input() autoPanMargin: number;
 
   constructor(
-    @Host() private map: MapComponent,
-    private elementRef: ElementRef
+    @Host() private map: MapComponent
   ) {
   }
 
   ngOnInit() {
-    this.element = this.elementRef.nativeElement.children[0];
-    this.instance = new Overlay(this);
-    this.map.instance.addOverlay(this.instance);
+    if (this.content) {
+      this.element = this.content.elementRef.nativeElement;
+      this.instance = new Overlay(this);
+      this.map.instance.addOverlay(this.instance);
+    }
   }
 
   ngOnDestroy() {
-    this.map.instance.removeOverlay(this.instance);
+    if (this.instance) {
+      this.map.instance.removeOverlay(this.instance);
+    }
   }
 }

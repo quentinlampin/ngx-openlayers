@@ -25,6 +25,7 @@ import { DefaultInteractionComponent } from './components/interactions/default.c
 import { DragRotateInteractionComponent } from './components/interactions/dragrotate.component';
 import { DragRotateAndZoomInteractionComponent } from './components/interactions/dragrotateandzoom.component';
 import { OverlayComponent } from './components/overlay.component';
+import { ContentComponent } from './components/content.component';
 
 export * from './components';
 
@@ -67,7 +68,8 @@ const COMPONENTS = [
   DragRotateInteractionComponent,
   DragRotateAndZoomInteractionComponent,
   DefaultControlComponent,
-  OverlayComponent
+  OverlayComponent,
+  ContentComponent
 ];
 
 @NgModule({

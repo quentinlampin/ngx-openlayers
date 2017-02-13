@@ -2,19 +2,23 @@
 var core_1 = require('@angular/core');
 var map_component_1 = require('./map.component');
 var openlayers_1 = require('openlayers');
+var content_component_1 = require('./content.component');
 var OverlayComponent = (function () {
-    function OverlayComponent(map, elementRef) {
+    function OverlayComponent(map) {
         this.map = map;
-        this.elementRef = elementRef;
         this.componentType = 'overlay';
     }
     OverlayComponent.prototype.ngOnInit = function () {
-        this.element = this.elementRef.nativeElement.children[0];
-        this.instance = new openlayers_1.Overlay(this);
-        this.map.instance.addOverlay(this.instance);
+        if (this.content) {
+            this.element = this.content.elementRef.nativeElement;
+            this.instance = new openlayers_1.Overlay(this);
+            this.map.instance.addOverlay(this.instance);
+        }
     };
     OverlayComponent.prototype.ngOnDestroy = function () {
-        this.map.instance.removeOverlay(this.instance);
+        if (this.instance) {
+            this.map.instance.removeOverlay(this.instance);
+        }
     };
     OverlayComponent.decorators = [
         { type: core_1.Component, args: [{
@@ -25,9 +29,9 @@ var OverlayComponent = (function () {
     /** @nocollapse */
     OverlayComponent.ctorParameters = function () { return [
         { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
-        { type: core_1.ElementRef, },
     ]; };
     OverlayComponent.propDecorators = {
+        'content': [{ type: core_1.ContentChild, args: [content_component_1.ContentComponent,] },],
         'id': [{ type: core_1.Input },],
         'offset': [{ type: core_1.Input },],
         'positioning': [{ type: core_1.Input },],

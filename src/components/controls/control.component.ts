@@ -1,6 +1,7 @@
-import { Component, ElementRef, Host, OnDestroy, OnInit } from '@angular/core';
+import { Component, ContentChild, Host, OnDestroy, OnInit } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
+import { ContentComponent } from '../content.component';
 
 @Component({
   selector: 'aol-control',
@@ -10,20 +11,24 @@ export class ControlComponent implements OnInit, OnDestroy {
   public componentType: string = 'control';
   instance: control.Control;
   element: Element;
+  @ContentChild(ContentComponent) content: ContentComponent;
 
   constructor(
-    @Host() private map: MapComponent,
-    private elementRef: ElementRef
+    @Host() private map: MapComponent
   ) {
   }
 
   ngOnInit() {
-    this.element = this.elementRef.nativeElement.children[0];
-    this.instance = new control.Control(this);
-    this.map.instance.addControl(this.instance);
+    if (this.content) {
+      this.element = this.content.elementRef.nativeElement;
+      this.instance = new control.Control(this);
+      this.map.instance.addControl(this.instance);
+    }
   }
 
   ngOnDestroy() {
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      this.map.instance.removeControl(this.instance);
+    }
   }
 }
