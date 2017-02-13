@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interaction } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
 export class DragRotateInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragRotate;
 
-  constructor(@Host() private map: MapComponent) {
+  constructor(private map: MapComponent) {
   }
 
   ngOnInit() {

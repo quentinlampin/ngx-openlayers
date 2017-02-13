@@ -1,4 +1,4 @@
-import { Component, ElementRef, Host, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { control, CoordinateFormatType, ProjectionLike } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -13,7 +13,7 @@ export class ControlMousePositionComponent implements OnInit, OnDestroy {
   target: Element;
 
   constructor(
-    @Host() private map: MapComponent,
+    private map: MapComponent,
     private element: ElementRef
   ) {
   }

@@ -1,4 +1,4 @@
-import { Component, Host, Optional, OnChanges, Input } from '@angular/core';
+import { Component, Optional, OnChanges, Input } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
@@ -17,7 +17,7 @@ export class CoordinateComponent implements OnChanges {
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
-    @Host() private map: MapComponent,
+    private map: MapComponent,
     @Optional() viewHost: ViewComponent,
     @Optional() geometryPointHost: GeometryPointComponent,
     @Optional() overlayHost: OverlayComponent
@@ -71,7 +71,7 @@ export class CollectionCoordinatesComponent implements OnChanges {
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
-      @Host() private map: MapComponent,
+      private map: MapComponent,
       @Optional() geometryLinestring: GeometryLinestringComponent,
       @Optional() geometryPolygon: GeometryPolygonComponent
   ) {

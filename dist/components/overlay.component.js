@@ -28,7 +28,7 @@ var OverlayComponent = (function () {
     ];
     /** @nocollapse */
     OverlayComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     OverlayComponent.propDecorators = {
         'content': [{ type: core_1.ContentChild, args: [content_component_1.ContentComponent,] },],

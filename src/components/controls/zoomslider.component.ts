@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
 })
 export class ControlZoomSliderComponent extends control.ZoomSlider implements OnInit, OnDestroy {
 
-  constructor(@Host() private map: MapComponent) {
+  constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomslider');
     super();
   }

@@ -1,4 +1,4 @@
-import { Component, Host, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Feature } from 'openlayers';
 import { SourceVectorComponent } from './sources';
 
@@ -7,13 +7,11 @@ import { SourceVectorComponent } from './sources';
   template: `<ng-content></ng-content>`
 })
 export class FeatureComponent implements OnInit, OnDestroy {
-  private host: SourceVectorComponent;
   public componentType = 'feature';
   public instance: Feature;
 
-  constructor(@Host() source: SourceVectorComponent) {
+  constructor(private host: SourceVectorComponent) {
     // console.log('instancing aol-feature');
-    this.host = source;
   }
 
   ngOnInit() {

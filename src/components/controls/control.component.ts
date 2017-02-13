@@ -1,4 +1,4 @@
-import { Component, ContentChild, Host, OnDestroy, OnInit } from '@angular/core';
+import { Component, ContentChild, OnDestroy, OnInit } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { ContentComponent } from '../content.component';
@@ -14,7 +14,7 @@ export class ControlComponent implements OnInit, OnDestroy {
   @ContentChild(ContentComponent) content: ContentComponent;
 
   constructor(
-    @Host() private map: MapComponent
+    private map: MapComponent
   ) {
   }
 

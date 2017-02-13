@@ -29,7 +29,7 @@ var ControlRotateComponent = (function (_super) {
     ];
     /** @nocollapse */
     ControlRotateComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     return ControlRotateComponent;
 }(openlayers_1.control.Rotate));

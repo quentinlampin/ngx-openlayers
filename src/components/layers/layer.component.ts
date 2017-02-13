@@ -1,4 +1,4 @@
-import { Host, OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { layer, Extent } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -13,7 +13,7 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() minResolution: number;
   @Input() maxResolution: number;
 
-  constructor(@Host() protected host: MapComponent) {
+  constructor(protected host: MapComponent) {
   }
 
   ngOnInit() {

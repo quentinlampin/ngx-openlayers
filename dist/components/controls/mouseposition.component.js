@@ -25,7 +25,7 @@ var ControlMousePositionComponent = (function () {
     ];
     /** @nocollapse */
     ControlMousePositionComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
         { type: core_1.ElementRef, },
     ]; };
     ControlMousePositionComponent.propDecorators = {

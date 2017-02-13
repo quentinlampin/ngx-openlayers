@@ -3,10 +3,10 @@ var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var feature_component_1 = require('./feature.component');
 var GeometryLinestringComponent = (function () {
-    function GeometryLinestringComponent(feature) {
+    function GeometryLinestringComponent(host) {
+        this.host = host;
         this.componentType = 'geometry-linestring';
         // console.log('instancing aol-geometry-linestring');
-        this.host = feature;
     }
     GeometryLinestringComponent.prototype.ngOnInit = function () {
         this.instance = new openlayers_1.geom.LineString([]);
@@ -23,16 +23,16 @@ var GeometryLinestringComponent = (function () {
     ];
     /** @nocollapse */
     GeometryLinestringComponent.ctorParameters = function () { return [
-        { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Host },] },
+        { type: feature_component_1.FeatureComponent, },
     ]; };
     return GeometryLinestringComponent;
 }());
 exports.GeometryLinestringComponent = GeometryLinestringComponent;
 var GeometryPointComponent = (function () {
-    function GeometryPointComponent(feature) {
+    function GeometryPointComponent(host) {
+        this.host = host;
         this.componentType = 'geometry-point';
         // console.log('creating aol-geometry-point');
-        this.host = feature;
     }
     GeometryPointComponent.prototype.ngOnInit = function () {
         this.instance = new openlayers_1.geom.Point([0, 0]); // defaulting coordinates to [0,0]. To be overridden in child component.
@@ -49,16 +49,16 @@ var GeometryPointComponent = (function () {
     ];
     /** @nocollapse */
     GeometryPointComponent.ctorParameters = function () { return [
-        { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Host },] },
+        { type: feature_component_1.FeatureComponent, },
     ]; };
     return GeometryPointComponent;
 }());
 exports.GeometryPointComponent = GeometryPointComponent;
 var GeometryPolygonComponent = (function () {
-    function GeometryPolygonComponent(feature) {
+    function GeometryPolygonComponent(host) {
+        this.host = host;
         this.componentType = 'geometry-polygon';
         // console.log('creating aol-geometry-polygon');
-        this.host = feature;
     }
     GeometryPolygonComponent.prototype.ngOnInit = function () {
         // defaulting coordinates to [0,0]. To be overridden in child component.
@@ -76,7 +76,7 @@ var GeometryPolygonComponent = (function () {
     ];
     /** @nocollapse */
     GeometryPolygonComponent.ctorParameters = function () { return [
-        { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Host },] },
+        { type: feature_component_1.FeatureComponent, },
     ]; };
     return GeometryPolygonComponent;
 }());

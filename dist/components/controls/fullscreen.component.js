@@ -29,7 +29,7 @@ var ControlFullScreenComponent = (function (_super) {
     ];
     /** @nocollapse */
     ControlFullScreenComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     return ControlFullScreenComponent;
 }(openlayers_1.control.FullScreen));

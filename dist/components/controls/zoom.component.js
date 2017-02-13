@@ -29,7 +29,7 @@ var ControlZoomComponent = (function (_super) {
     ];
     /** @nocollapse */
     ControlZoomComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     return ControlZoomComponent;
 }(openlayers_1.control.Zoom));

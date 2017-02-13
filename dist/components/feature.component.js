@@ -3,10 +3,10 @@ var core_1 = require('@angular/core');
 var openlayers_1 = require('openlayers');
 var sources_1 = require('./sources');
 var FeatureComponent = (function () {
-    function FeatureComponent(source) {
+    function FeatureComponent(host) {
+        this.host = host;
         this.componentType = 'feature';
         // console.log('instancing aol-feature');
-        this.host = source;
     }
     FeatureComponent.prototype.ngOnInit = function () {
         this.instance = new openlayers_1.Feature();
@@ -24,7 +24,7 @@ var FeatureComponent = (function () {
     ];
     /** @nocollapse */
     FeatureComponent.ctorParameters = function () { return [
-        { type: sources_1.SourceVectorComponent, decorators: [{ type: core_1.Host },] },
+        { type: sources_1.SourceVectorComponent, },
     ]; };
     return FeatureComponent;
 }());

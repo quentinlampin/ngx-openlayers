@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, Host, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ContentChild, Input, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from './map.component';
 import { Overlay, OverlayPositioning } from 'openlayers';
 import { ContentComponent } from './content.component';
@@ -23,7 +23,7 @@ export class OverlayComponent implements OnInit, OnDestroy {
   @Input() autoPanMargin: number;
 
   constructor(
-    @Host() private map: MapComponent
+    private map: MapComponent
   ) {
   }
 

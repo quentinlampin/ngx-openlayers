@@ -29,7 +29,7 @@ var ControlOverviewMapComponent = (function (_super) {
     ];
     /** @nocollapse */
     ControlOverviewMapComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     return ControlOverviewMapComponent;
 }(openlayers_1.control.OverviewMap));

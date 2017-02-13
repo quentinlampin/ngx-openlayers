@@ -26,7 +26,7 @@ var LayerVectorTileComponent = (function (_super) {
     ];
     /** @nocollapse */
     LayerVectorTileComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     LayerVectorTileComponent.propDecorators = {
         'renderBuffer': [{ type: core_1.Input },],

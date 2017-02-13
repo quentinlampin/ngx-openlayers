@@ -44,7 +44,7 @@ var ViewComponent = (function () {
     ];
     /** @nocollapse */
     ViewComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     ViewComponent.propDecorators = {
         'constrainRotation': [{ type: core_1.Input },],

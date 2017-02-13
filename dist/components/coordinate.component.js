@@ -52,7 +52,7 @@ var CoordinateComponent = (function () {
     ];
     /** @nocollapse */
     CoordinateComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
         { type: view_component_1.ViewComponent, decorators: [{ type: core_1.Optional },] },
         { type: geometry_components_1.GeometryPointComponent, decorators: [{ type: core_1.Optional },] },
         { type: overlay_component_1.OverlayComponent, decorators: [{ type: core_1.Optional },] },
@@ -115,7 +115,7 @@ var CollectionCoordinatesComponent = (function () {
     ];
     /** @nocollapse */
     CollectionCoordinatesComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
         { type: geometry_components_1.GeometryLinestringComponent, decorators: [{ type: core_1.Optional },] },
         { type: geometry_components_1.GeometryPolygonComponent, decorators: [{ type: core_1.Optional },] },
     ]; };

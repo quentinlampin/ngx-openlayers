@@ -21,7 +21,7 @@ var DragRotateInteractionComponent = (function () {
     ];
     /** @nocollapse */
     DragRotateInteractionComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     return DragRotateInteractionComponent;
 }());

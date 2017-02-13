@@ -1,6 +1,5 @@
 "use strict";
 var core_1 = require('@angular/core');
-var map_component_1 = require('../map.component');
 var LayerComponent = (function () {
     function LayerComponent(host) {
         this.host = host;
@@ -25,10 +24,6 @@ var LayerComponent = (function () {
         // console.log('changes detected in aol-layer, setting new properties: ', properties);
         this.instance.setProperties(properties, false);
     };
-    /** @nocollapse */
-    LayerComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
-    ]; };
     LayerComponent.propDecorators = {
         'opacity': [{ type: core_1.Input },],
         'visible': [{ type: core_1.Input },],

@@ -26,7 +26,7 @@ var LayerVectorComponent = (function (_super) {
     ];
     /** @nocollapse */
     LayerVectorComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     LayerVectorComponent.propDecorators = {
         'renderBuffer': [{ type: core_1.Input },],

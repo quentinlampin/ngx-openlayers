@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
@@ -12,7 +12,7 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   @Input() renderBuffer: number;
 
-  constructor(@Host() map: MapComponent) {
+  constructor(map: MapComponent) {
     super(map);
   }
 

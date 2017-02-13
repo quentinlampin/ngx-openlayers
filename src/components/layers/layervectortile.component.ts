@@ -1,4 +1,4 @@
-import { Component, Host, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { layer, style, StyleFunction } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
@@ -18,7 +18,7 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit {
   @Input() updateWhileInteracting: boolean;
   @Input() visible: boolean;
 
-  constructor(@Host() map: MapComponent) {
+  constructor(map: MapComponent) {
     super(map);
   }
 

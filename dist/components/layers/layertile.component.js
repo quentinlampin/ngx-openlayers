@@ -26,7 +26,7 @@ var LayerTileComponent = (function (_super) {
     ];
     /** @nocollapse */
     LayerTileComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
     ]; };
     LayerTileComponent.propDecorators = {
         'preload': [{ type: core_1.Input },],

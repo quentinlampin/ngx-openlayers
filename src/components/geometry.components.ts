@@ -1,4 +1,4 @@
-import { Component, Host, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { geom } from 'openlayers';
 import { FeatureComponent } from './feature.component';
 
@@ -9,11 +9,9 @@ import { FeatureComponent } from './feature.component';
 export class GeometryLinestringComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-linestring';
   public instance: geom.LineString;
-  private host: FeatureComponent;
 
-  constructor(@Host() feature: FeatureComponent) {
+  constructor(private host: FeatureComponent) {
     // console.log('instancing aol-geometry-linestring');
-    this.host = feature;
   }
 
   ngOnInit() {
@@ -32,11 +30,9 @@ export class GeometryLinestringComponent implements OnInit, OnDestroy {
 export class GeometryPointComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-point';
   public instance: geom.Point;
-  private host: FeatureComponent;
 
-  constructor(@Host() feature: FeatureComponent) {
+  constructor(private host: FeatureComponent) {
     // console.log('creating aol-geometry-point');
-    this.host = feature;
   }
 
   ngOnInit() {
@@ -56,11 +52,9 @@ export class GeometryPointComponent implements OnInit, OnDestroy {
 export class GeometryPolygonComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-polygon';
   public instance: geom.Polygon;
-  private host: FeatureComponent;
 
-  constructor(@Host() feature: FeatureComponent) {
+  constructor(private host: FeatureComponent) {
     // console.log('creating aol-geometry-polygon');
-    this.host = feature;
   }
 
   ngOnInit() {

@@ -26,7 +26,7 @@ var ControlAttributionComponent = (function () {
     ];
     /** @nocollapse */
     ControlAttributionComponent.ctorParameters = function () { return [
-        { type: map_component_1.MapComponent, decorators: [{ type: core_1.Host },] },
+        { type: map_component_1.MapComponent, },
         { type: core_1.ElementRef, },
     ]; };
     ControlAttributionComponent.propDecorators = {
