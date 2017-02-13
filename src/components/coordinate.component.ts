@@ -3,6 +3,7 @@ import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
 import { ViewComponent } from './view.component';
+import { OverlayComponent } from './overlay.component';
 
 @Component({
   selector: 'aol-coordinate',
@@ -18,13 +19,16 @@ export class CoordinateComponent implements OnChanges {
   constructor(
     @Host() private map: MapComponent,
     @Optional() viewHost: ViewComponent,
-    @Optional() geometryPointHost: GeometryPointComponent
+    @Optional() geometryPointHost: GeometryPointComponent,
+    @Optional() overlayHost: OverlayComponent
   ) {
     // console.log('instancing aol-coordinate');
     if (geometryPointHost !== null) {
       this.host = geometryPointHost;
     } else if (viewHost !== null) {
       this.host = viewHost;
+    } else if (overlayHost !== null) {
+      this.host = overlayHost;
     }
   }
 
@@ -48,6 +52,9 @@ export class CoordinateComponent implements OnChanges {
         break;
       case 'view':
         this.host.instance.setCenter(transformedCoordinates);
+        break;
+      case 'overlay':
+        this.host.instance.setPosition(transformedCoordinates);
         break;
     }
   }

@@ -24,6 +24,7 @@ import { TileGridComponent } from './components/tilegrid.component';
 import { DefaultInteractionComponent } from './components/interactions/default.component';
 import { DragRotateInteractionComponent } from './components/interactions/dragrotate.component';
 import { DragRotateAndZoomInteractionComponent } from './components/interactions/dragrotateandzoom.component';
+import { OverlayComponent } from './components/overlay.component';
 
 export * from './components';
 
@@ -65,7 +66,8 @@ const COMPONENTS = [
   DefaultInteractionComponent,
   DragRotateInteractionComponent,
   DragRotateAndZoomInteractionComponent,
-  DefaultControlComponent
+  DefaultControlComponent,
+  OverlayComponent
 ];
 
 @NgModule({
