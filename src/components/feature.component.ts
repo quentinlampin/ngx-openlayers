@@ -11,7 +11,6 @@ export class FeatureComponent implements OnInit, OnDestroy {
   public instance: Feature;
 
   constructor(private host: SourceVectorComponent) {
-    // console.log('instancing aol-feature');
   }
 
   ngOnInit() {
@@ -20,7 +19,6 @@ export class FeatureComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // console.log('removing aol-feature');
-    this.host.instance.removeFeature(this);
+    this.host.instance.removeFeature(this.instance);
   }
 }

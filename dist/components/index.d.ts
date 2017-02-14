@@ -4,6 +4,8 @@ export * from './interactions';
 export * from './layers';
 export * from './sources';
 export * from './styles';
+export * from './attribution.component';
+export * from './attributions.component';
 export * from './content.component';
 export * from './coordinate.component';
 export * from './feature.component';

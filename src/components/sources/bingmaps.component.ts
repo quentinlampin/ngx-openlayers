@@ -11,6 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
+  instance: source.BingMaps;
   @Input() key: string;
   @Input() imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey' = 'Aerial';
 

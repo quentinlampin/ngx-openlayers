@@ -11,6 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceOsmComponent extends SourceComponent implements OnInit {
+  instance: source.OSM;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

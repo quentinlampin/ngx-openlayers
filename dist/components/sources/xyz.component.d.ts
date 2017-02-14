@@ -1,10 +1,10 @@
 /// <reference types="openlayers" />
 import { OnInit } from '@angular/core';
-import { AttributionLike, Size, TileUrlFunctionType } from 'openlayers';
+import { source, Size, TileUrlFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 export declare class SourceXYZComponent extends SourceComponent implements OnInit {
-    attributions: AttributionLike;
+    instance: source.XYZ;
     cacheSize: number;
     crossOrigin: string;
     opaque: boolean;
