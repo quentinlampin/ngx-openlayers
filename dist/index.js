@@ -1,89 +1,68 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var map_component_1 = require("./components/map.component");
-var view_component_1 = require("./components/view.component");
-var layers_1 = require("./components/layers");
-var sources_1 = require("./components/sources");
-var feature_component_1 = require("./components/feature.component");
-var geometry_components_1 = require("./components/geometry.components");
-var coordinate_component_1 = require("./components/coordinate.component");
-var styles_1 = require("./components/styles");
-var controls_1 = require("./components/controls");
-var formats_1 = require("./components/formats");
-var tilegrid_component_1 = require("./components/tilegrid.component");
-var default_component_1 = require("./components/interactions/default.component");
-var dragrotate_component_1 = require("./components/interactions/dragrotate.component");
-var dragrotateandzoom_component_1 = require("./components/interactions/dragrotateandzoom.component");
-var overlay_component_1 = require("./components/overlay.component");
-var content_component_1 = require("./components/content.component");
-var attribution_component_1 = require("./components/attribution.component");
-var attributions_component_1 = require("./components/attributions.component");
-__export(require("./components"));
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var components_1 = require('./components');
+__export(require('./components'));
 var COMPONENTS = [
-    map_component_1.MapComponent,
-    view_component_1.ViewComponent,
-    layers_1.LayerTileComponent,
-    layers_1.LayerVectorComponent,
-    layers_1.LayerVectorTileComponent,
-    sources_1.SourceOsmComponent,
-    sources_1.SourceBingmapsComponent,
-    sources_1.SourceVectorComponent,
-    sources_1.SourceXYZComponent,
-    sources_1.SourceVectorTileComponent,
-    feature_component_1.FeatureComponent,
-    geometry_components_1.GeometryLinestringComponent,
-    geometry_components_1.GeometryPointComponent,
-    geometry_components_1.GeometryPolygonComponent,
-    coordinate_component_1.CoordinateComponent,
-    coordinate_component_1.CollectionCoordinatesComponent,
-    styles_1.StyleComponent,
-    styles_1.StyleCircleComponent,
-    styles_1.StyleFillComponent,
-    styles_1.StyleIconComponent,
-    styles_1.StyleStrokeComponent,
-    styles_1.StyleTextComponent,
-    controls_1.ControlComponent,
-    controls_1.ControlAttributionComponent,
-    controls_1.ControlFullScreenComponent,
-    controls_1.ControlMousePositionComponent,
-    controls_1.ControlOverviewMapComponent,
-    controls_1.ControlRotateComponent,
-    controls_1.ControlScaleLineComponent,
-    controls_1.ControlZoomComponent,
-    controls_1.ControlZoomSliderComponent,
-    controls_1.ControlZoomToExtentComponent,
-    formats_1.FormatMVTComponent,
-    tilegrid_component_1.TileGridComponent,
-    default_component_1.DefaultInteractionComponent,
-    dragrotate_component_1.DragRotateInteractionComponent,
-    dragrotateandzoom_component_1.DragRotateAndZoomInteractionComponent,
-    controls_1.DefaultControlComponent,
-    overlay_component_1.OverlayComponent,
-    content_component_1.ContentComponent,
-    attribution_component_1.AttributionComponent,
-    attributions_component_1.AttributionsComponent
+    components_1.MapComponent,
+    components_1.ViewComponent,
+    components_1.LayerTileComponent,
+    components_1.LayerVectorComponent,
+    components_1.LayerVectorTileComponent,
+    components_1.SourceOsmComponent,
+    components_1.SourceBingmapsComponent,
+    components_1.SourceVectorComponent,
+    components_1.SourceXYZComponent,
+    components_1.SourceVectorTileComponent,
+    components_1.FeatureComponent,
+    components_1.GeometryLinestringComponent,
+    components_1.GeometryPointComponent,
+    components_1.GeometryPolygonComponent,
+    components_1.CoordinateComponent,
+    components_1.CollectionCoordinatesComponent,
+    components_1.StyleComponent,
+    components_1.StyleCircleComponent,
+    components_1.StyleFillComponent,
+    components_1.StyleIconComponent,
+    components_1.StyleStrokeComponent,
+    components_1.StyleTextComponent,
+    components_1.ControlComponent,
+    components_1.ControlAttributionComponent,
+    components_1.ControlFullScreenComponent,
+    components_1.ControlMousePositionComponent,
+    components_1.ControlOverviewMapComponent,
+    components_1.ControlRotateComponent,
+    components_1.ControlScaleLineComponent,
+    components_1.ControlZoomComponent,
+    components_1.ControlZoomSliderComponent,
+    components_1.ControlZoomToExtentComponent,
+    components_1.FormatMVTComponent,
+    components_1.TileGridComponent,
+    components_1.DefaultInteractionComponent,
+    components_1.DragRotateInteractionComponent,
+    components_1.DragRotateAndZoomInteractionComponent,
+    components_1.DefaultControlComponent,
+    components_1.OverlayComponent,
+    components_1.ContentComponent,
+    components_1.AttributionComponent,
+    components_1.AttributionsComponent
 ];
 var AngularOpenlayersModule = (function () {
     function AngularOpenlayersModule() {
     }
+    AngularOpenlayersModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    declarations: COMPONENTS,
+                    imports: [common_1.CommonModule],
+                    exports: COMPONENTS
+                },] },
+    ];
+    /** @nocollapse */
+    AngularOpenlayersModule.ctorParameters = function () { return []; };
     return AngularOpenlayersModule;
 }());
-AngularOpenlayersModule = __decorate([
-    core_1.NgModule({
-        declarations: COMPONENTS,
-        imports: [common_1.CommonModule],
-        exports: COMPONENTS
-    })
-], AngularOpenlayersModule);
 exports.AngularOpenlayersModule = AngularOpenlayersModule;
 //# sourceMappingURL=index.js.map

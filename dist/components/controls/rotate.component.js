@@ -1,34 +1,18 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
-var map_component_1 = require("../map.component");
+var core_1 = require('@angular/core');
+var openlayers_1 = require('openlayers');
+var map_component_1 = require('../map.component');
 var ControlRotateComponent = (function (_super) {
     __extends(ControlRotateComponent, _super);
     function ControlRotateComponent(map) {
-        var _this = 
         // console.log('instancing aol-control-rotate');
-        _super.call(this) || this;
-        _this.map = map;
-        return _this;
+        _super.call(this);
+        this.map = map;
     }
     ControlRotateComponent.prototype.ngOnInit = function () {
         this.map.instance.addControl(this);
@@ -37,14 +21,17 @@ var ControlRotateComponent = (function (_super) {
         // console.log('removing aol-control-rotate');
         this.map.instance.removeControl(this);
     };
+    ControlRotateComponent.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'aol-control-rotate',
+                    template: "<ng-content></ng-content>"
+                },] },
+    ];
+    /** @nocollapse */
+    ControlRotateComponent.ctorParameters = function () { return [
+        { type: map_component_1.MapComponent, },
+    ]; };
     return ControlRotateComponent;
 }(openlayers_1.control.Rotate));
-ControlRotateComponent = __decorate([
-    core_1.Component({
-        selector: 'aol-control-rotate',
-        template: "<ng-content></ng-content>"
-    }),
-    __metadata("design:paramtypes", [map_component_1.MapComponent])
-], ControlRotateComponent);
 exports.ControlRotateComponent = ControlRotateComponent;
 //# sourceMappingURL=rotate.component.js.map
