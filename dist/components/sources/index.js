@@ -2,10 +2,10 @@
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(require('./bingmaps.component'));
-__export(require('./osm.component'));
-__export(require('./source.component'));
-__export(require('./vector.component'));
-__export(require('./vectortile.component'));
-__export(require('./xyz.component'));
+__export(require("./bingmaps.component"));
+__export(require("./osm.component"));
+__export(require("./source.component"));
+__export(require("./vector.component"));
+__export(require("./vectortile.component"));
+__export(require("./xyz.component"));
 //# sourceMappingURL=index.js.map

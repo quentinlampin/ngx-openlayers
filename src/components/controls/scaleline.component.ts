@@ -6,19 +6,20 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-scaleline',
   template: `<ng-content></ng-content>`
 })
-export class ControlScaleLineComponent extends control.ScaleLine implements OnInit, OnDestroy {
+export class ControlScaleLineComponent implements OnInit, OnDestroy {
+  instance: control.ScaleLine;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-scaleline');
-    super();
   }
 
   ngOnInit() {
-    this.map.instance.addControl(this);
+    this.instance = new control.ScaleLine(this);
+    this.map.instance.addControl(this.instance);
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-scaleline');
-    this.map.instance.removeControl(this);
+    this.map.instance.removeControl(this.instance);
   }
 }

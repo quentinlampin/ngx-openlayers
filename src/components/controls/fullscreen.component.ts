@@ -6,19 +6,20 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-fullscreen',
   template: `<ng-content></ng-content>`
 })
-export class ControlFullScreenComponent extends control.FullScreen implements OnInit, OnDestroy {
+export class ControlFullScreenComponent implements OnInit, OnDestroy {
+  instance: control.FullScreen;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-fullscreen');
-    super();
   }
 
   ngOnInit() {
-    this.map.instance.addControl(this);
+    this.instance = new control.FullScreen(this);
+    this.map.instance.addControl(this.instance);
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-fullscreen');
-    this.map.instance.removeControl(this);
+    this.map.instance.removeControl(this.instance);
   }
 }

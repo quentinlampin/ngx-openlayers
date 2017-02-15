@@ -6,19 +6,20 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-zoomtoextent',
   template: `<ng-content></ng-content>`
 })
-export class ControlZoomToExtentComponent extends control.ZoomToExtent implements OnInit, OnDestroy {
+export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
+  instance: control.ZoomToExtent;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomtoextent');
-    super();
   }
 
   ngOnInit() {
-    this.map.instance.addControl(this);
+    this.instance = new control.ZoomToExtent(this);
+    this.map.instance.addControl(this.instance);
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-zoomtoextent');
-    this.map.instance.removeControl(this);
+    this.map.instance.removeControl(this.instance);
   }
 }

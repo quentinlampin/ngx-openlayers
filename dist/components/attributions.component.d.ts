@@ -1,4 +1,3 @@
-/// <reference types="es6-shim" />
 /// <reference types="openlayers" />
 import { AfterViewInit, QueryList } from '@angular/core';
 import { Attribution } from 'openlayers';

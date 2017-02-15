@@ -6,19 +6,20 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-zoom',
   template: `<ng-content></ng-content>`
 })
-export class ControlZoomComponent extends control.Zoom implements OnInit, OnDestroy {
+export class ControlZoomComponent implements OnInit, OnDestroy {
+  instance: control.Zoom;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoom');
-    super();
   }
 
   ngOnInit() {
-    this.map.instance.addControl(this);
+    this.instance = new control.Zoom(this);
+    this.map.instance.addControl(this.instance);
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-zoom');
-    this.map.instance.removeControl(this);
+    this.map.instance.removeControl(this.instance);
   }
 }

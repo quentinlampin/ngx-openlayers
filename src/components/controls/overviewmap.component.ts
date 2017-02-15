@@ -6,19 +6,20 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-overviewmap',
   template: `<ng-content></ng-content>`
 })
-export class ControlOverviewMapComponent extends control.OverviewMap implements OnInit, OnDestroy {
+export class ControlOverviewMapComponent implements OnInit, OnDestroy {
+  instance: control.OverviewMap;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-overviewmap');
-    super();
   }
 
   ngOnInit() {
-    this.map.instance.addControl(this);
+    this.instance = new control.OverviewMap(this);
+    this.map.instance.addControl(this.instance);
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-overviewmap');
-    this.map.instance.removeControl(this);
+    this.map.instance.removeControl(this.instance);
   }
 }
