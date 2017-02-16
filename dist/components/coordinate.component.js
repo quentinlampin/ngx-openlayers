@@ -16,8 +16,9 @@ var openlayers_1 = require("openlayers");
 var map_component_1 = require("./map.component");
 var geometry_components_1 = require("./geometry.components");
 var view_component_1 = require("./view.component");
+var overlay_component_1 = require("./overlay.component");
 var CoordinateComponent = (function () {
-    function CoordinateComponent(map, viewHost, geometryPointHost) {
+    function CoordinateComponent(map, viewHost, geometryPointHost, overlayHost) {
         this.map = map;
         this.srid = 'EPSG:3857';
         // console.log('instancing aol-coordinate');
@@ -26,6 +27,9 @@ var CoordinateComponent = (function () {
         }
         else if (viewHost !== null) {
             this.host = viewHost;
+        }
+        else if (overlayHost !== null) {
+            this.host = overlayHost;
         }
     }
     CoordinateComponent.prototype.ngOnChanges = function () {
@@ -46,6 +50,9 @@ var CoordinateComponent = (function () {
                 break;
             case 'view':
                 this.host.instance.setCenter(transformedCoordinates);
+                break;
+            case 'overlay':
+                this.host.instance.setPosition(transformedCoordinates);
                 break;
         }
     };
@@ -68,12 +75,13 @@ CoordinateComponent = __decorate([
         selector: 'aol-coordinate',
         template: "<div class=\"aol-coordinate\"></div>"
     }),
-    __param(0, core_1.Host()),
     __param(1, core_1.Optional()),
     __param(2, core_1.Optional()),
+    __param(3, core_1.Optional()),
     __metadata("design:paramtypes", [map_component_1.MapComponent,
         view_component_1.ViewComponent,
-        geometry_components_1.GeometryPointComponent])
+        geometry_components_1.GeometryPointComponent,
+        overlay_component_1.OverlayComponent])
 ], CoordinateComponent);
 exports.CoordinateComponent = CoordinateComponent;
 var CollectionCoordinatesComponent = (function () {
@@ -133,7 +141,6 @@ CollectionCoordinatesComponent = __decorate([
         selector: 'aol-collection-coordinates',
         template: "<div class=\"aol-collection-coordinates\"></div>"
     }),
-    __param(0, core_1.Host()),
     __param(1, core_1.Optional()),
     __param(2, core_1.Optional()),
     __metadata("design:paramtypes", [map_component_1.MapComponent,

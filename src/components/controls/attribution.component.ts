@@ -1,4 +1,4 @@
-import { Component, ElementRef, Host, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -13,7 +13,7 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
   @Input() collapsible: boolean;
 
   constructor(
-    @Host() private map: MapComponent,
+    private map: MapComponent,
     private element: ElementRef
   ) {
   }

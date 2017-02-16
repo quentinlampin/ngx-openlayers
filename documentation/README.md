@@ -1,14 +1,22 @@
-# Angular2-openlayers documentation
+# angular2-openlayers documentation
 
 ## Foreword
 
 Most of the following documentation is an adaptation of OpenLayers' own documentation: http://openlayers.org/en/latest/apidoc.
-While trying to cover most important aspects in here, this documentation is by no way exhaustive, please refer to http://openlayers.org/en/latest/apidoc if in doubt.
-Contributions welcome!
+While trying to cover most important aspects in here, this documentation is by no means exhaustive,
+please refer to http://openlayers.org/en/latest/apidoc if in doubt. Contributions welcome!
+
+## Basic structure
+
+For each supported OpenLayers class, there is a corresponding Angular component. The components instantiate their underlying
+OpenLayers counterpart as part of their initialization and carry the reference in their `instance` property which is public.
+Each property of the underlying OpenLayers object is also an `@Input()` property of the Angular component.
+Each component has a directive selector of the form `aol-` and a structure of components that corresponds to the hierarchy of
+OpenLayers objects is built in a declarative Angular fashion.
 
 ## Map Component
 
-The `MapComponent`(`aol-map`) is the root component of Angular2 Openlayers maps.
+The `MapComponent`(`aol-map`) is the root component of Angular2 OpenLayers maps.
 
 Available parameters are:
 
@@ -63,7 +71,8 @@ Here is a simple example, based on OpenStreetMap tiles source:
 
 ## View Component
 
-The `ViewComponent` (`<aol-view>`) describes which content to display. In most cases, the view specifies the center of the map, _i.e._ coordinates on which the map is centered, and a zoom level or extent.
+The `ViewComponent` (`<aol-view>`) describes which content to display. In most cases, the view specifies the center of the map,
+_i.e._ coordinates on which the map is centered, and a zoom level or extent.
 
 Available parameters are:
 
@@ -106,10 +115,43 @@ Available parameters are:
     - `minResolution` (`number|undefined`: 	minimum resolution (inclusive) at which the layer is visible.
     - `maxResolution` (`number|undefined`: 	maximum resolution (exclusive) at which the layer is visible.
 
+## Source components
+
+The `SourceComponent`s (`aol-source-*`) represent a map source and belong to a layer.
+
+Source attributions can either be passed via the `attributions` input property or defined in a declarative way. If multiple sources share the
+same attribution, the attribution should be defined in the code portion as an `ol.AttributionLike` and passed via the `attributions` input
+property of the source as they would otherwise appear multiple times.
+
+```html
+<aol-layer-vectortile
+    [renderMode]="'vector'"
+    [maxResolution]="312"
+    [style]="myStyle"
+    [zIndex]="20"
+>
+    <aol-source-vectortile
+        [tilePixelRatio]="16"
+        [tileUrlFunction]="tileUrlFn"
+    >
+        <aol-attributions>
+          <aol-attribution>&copy; by me</aol-attribution>
+        </aol-attributions>
+        <aol-format-mvt></aol-format-mvt>
+        <aol-tilegrid
+            [minZoom]="5"
+            [extent]="tileGridExtent"
+        >
+        </aol-tilegrid>
+    </aol-source-vectortile>
+</aol-layer-vectortile>
+```
+
 ## Feature component
 
-The `FeatureComponent` (`aol-feature`) is a  vector object with a geometry and other attribute properties, similar to the features in vector file formats like GeoJSON.
-Used in conjunction with a geometry (`<aol-geometry-*>`) and a style (`<aol-style>`), it allows displaying vector shapes on the map.
+The `FeatureComponent` (`aol-feature`) is a  vector object with a geometry and other attribute properties, similar to the features in
+vector file formats like GeoJSON. Used in conjunction with a geometry (`<aol-geometry-*>`) and a style (`<aol-style>`),
+it allows displaying vector shapes on the map.
 
 ### Feature component example
 
@@ -129,8 +171,8 @@ Used in conjunction with a geometry (`<aol-geometry-*>`) and a style (`<aol-styl
 
 ## Geometry components
 
-The `GeometryComponents` (`aol-geometry-*`) allow defining geometrical shapes that, used in conjunction with a geometry (`<aol-geometry-*>`) and a style (`<aol-style>`),
-display said geometrical shape to the map.
+The `GeometryComponents` (`aol-geometry-*`) allow defining geometrical shapes that, used in conjunction with a geometry
+(`<aol-geometry-*>`) and a style (`<aol-style>`), display said geometrical shape to the map.
 
 ### Linestring component
 
@@ -198,7 +240,8 @@ The `GeometryPolygonComponent` (`aol-geometry-polygon`) defines a polygon.
 
 `StyleComponents` (`<aol-style-*>`) provide ways to altering the look of vector features.
 
-**WARNING** : as of now, changes on style directives are not displayed. This issue lies in Openlayers: https://github.com/openlayers/ol3/issues/5775 (related).
+**WARNING** : as of now, changes on style directives are not displayed. This issue lies in OpenLayers:
+https://github.com/openlayers/ol3/issues/5775 (related).
 
 `<aol-style-*>` must be encapsulated in a `<aol-style>` component. As of now, only `StyleCircleComponent` (`<aol-style-circle>`), `StyleFillComponent` (`<aol-style-fill>`),
 `StyleIconComponent` (`<aol-style-icon`) and `StyleFillComponent` (`<aol-style-stroke>`) are implemented.
@@ -273,3 +316,39 @@ Available parameters are:
     - `text`: (`string|undefined`): Text content.
     - `textAlign`: (`string|undefined`): Text alignment. Possible values: 'left', 'right', 'center', 'end' or 'start'. Default is 'start'.
     - `textBaseLine`: (`string|undefined`): Text base line. Possible values: 'bottom', 'top', 'middle', 'alphabetic', 'hanging', 'ideographic'. Default is 'alphabetic'.
+
+## Controls components
+
+For each `ol.control` class, there is a corresponding component. Apart from the specialized pre-defined controls, you can define your own
+custom controls using a simple declarative syntax. Use the map component's CSS to style and position the control on the map view.
+
+```html
+<aol-control>
+    <aol-content>
+        <div id="controlnameforcssstyling" class="ol-unselectable ol-control">
+            <span (click)="doSomething()">{{ someContent() }}</span>
+        </div>
+    </aol-content>
+</aol-control>
+```
+
+## Overlay component
+
+Similar to controls, custom overlays can be defined using HTML markup. Overlays have a position on the map as opposed to controls which are
+positioned on the map view. You can style overlay components like a regular component element.
+
+```html
+<aol-overlay>
+    <aol-coordinate
+        [x]="longitude"
+        [y]="latitude"
+        [srid]="'EPSG:4326'"
+    >
+    </aol-coordinate>
+    <aol-content>
+        <div class="my-overlay-class">
+            <h1>This is an overlay</h1>
+        </div>
+    </aol-content>
+</aol-overlay>
+```

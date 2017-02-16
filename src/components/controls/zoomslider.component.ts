@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -6,19 +6,20 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-zoomslider',
   template: `<ng-content></ng-content>`
 })
-export class ControlZoomSliderComponent extends control.ZoomSlider implements OnInit, OnDestroy {
+export class ControlZoomSliderComponent implements OnInit, OnDestroy {
+  instance: control.ZoomSlider;
 
-  constructor(@Host() private map: MapComponent) {
+  constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomslider');
-    super();
   }
 
   ngOnInit() {
-    this.map.instance.addControl(this);
+    this.instance = new control.ZoomSlider(this);
+    this.map.instance.addControl(this.instance);
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-zoomslider');
-    this.map.instance.removeControl(this);
+    this.map.instance.removeControl(this.instance);
   }
 }

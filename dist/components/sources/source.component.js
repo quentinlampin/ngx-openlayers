@@ -26,6 +26,10 @@ var SourceComponent = (function () {
     };
     return SourceComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], SourceComponent.prototype, "attributions", void 0);
 SourceComponent = __decorate([
     __param(0, core_1.Host()),
     __metadata("design:paramtypes", [layers_1.LayerComponent])

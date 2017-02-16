@@ -18,9 +18,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
@@ -50,7 +47,6 @@ LayerTileComponent = __decorate([
         selector: 'aol-layer-tile',
         template: "<ng-content></ng-content>"
     }),
-    __param(0, core_1.Host()),
     __metadata("design:paramtypes", [map_component_1.MapComponent])
 ], LayerTileComponent);
 exports.LayerTileComponent = LayerTileComponent;

@@ -1,5 +1,5 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, AttributionLike, Size, TileUrlFunctionType } from 'openlayers';
+import { source, Size, TileUrlFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 
@@ -11,7 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceXYZComponent extends SourceComponent implements OnInit {
-  @Input() attributions: AttributionLike;
+  instance: source.XYZ;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
   @Input() opaque: boolean;

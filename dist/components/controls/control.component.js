@@ -8,36 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var content_component_1 = require("../content.component");
 var ControlComponent = (function () {
-    function ControlComponent(map, elementRef) {
+    function ControlComponent(map) {
         this.map = map;
-        this.elementRef = elementRef;
         this.componentType = 'control';
     }
     ControlComponent.prototype.ngOnInit = function () {
-        this.element = this.elementRef.nativeElement.children[0];
-        this.instance = new openlayers_1.control.Control(this);
-        this.map.instance.addControl(this.instance);
+        if (this.content) {
+            this.element = this.content.elementRef.nativeElement;
+            this.instance = new openlayers_1.control.Control(this);
+            this.map.instance.addControl(this.instance);
+        }
     };
     ControlComponent.prototype.ngOnDestroy = function () {
-        this.map.instance.removeControl(this.instance);
+        if (this.instance) {
+            this.map.instance.removeControl(this.instance);
+        }
     };
     return ControlComponent;
 }());
+__decorate([
+    core_1.ContentChild(content_component_1.ContentComponent),
+    __metadata("design:type", content_component_1.ContentComponent)
+], ControlComponent.prototype, "content", void 0);
 ControlComponent = __decorate([
     core_1.Component({
         selector: 'aol-control',
         template: "<ng-content></ng-content>"
     }),
-    __param(0, core_1.Host()),
-    __metadata("design:paramtypes", [map_component_1.MapComponent,
-        core_1.ElementRef])
+    __metadata("design:paramtypes", [map_component_1.MapComponent])
 ], ControlComponent);
 exports.ControlComponent = ControlComponent;
 //# sourceMappingURL=control.component.js.map

@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { View, Extent } from 'openlayers';
 import { MapComponent } from './map.component';
 
@@ -23,7 +23,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input() zoom: number;
   @Input() zoomFactor: number;
 
-  constructor(@Host() private host: MapComponent) {
+  constructor(private host: MapComponent) {
   }
 
   ngOnInit() {

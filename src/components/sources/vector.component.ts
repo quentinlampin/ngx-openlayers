@@ -1,5 +1,5 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, AttributionLike } from 'openlayers';
+import { source } from 'openlayers';
 import { LayerVectorComponent } from '../layers';
 import { SourceComponent } from './source.component';
 
@@ -11,7 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
-  @Input() attributions: AttributionLike;
+  instance: source.Vector;
   @Input() overlaps: boolean;
   @Input() useSpatialIndex: boolean;
   @Input() wrapX: boolean;

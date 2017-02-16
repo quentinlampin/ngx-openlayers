@@ -1,4 +1,4 @@
-import { Component, Host, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interaction, Collection } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
 export class DefaultInteractionComponent implements OnInit, OnDestroy {
   instance: Collection<interaction.Interaction>;
 
-  constructor(@Host() private map: MapComponent) {
+  constructor(private map: MapComponent) {
   }
 
   ngOnInit() {

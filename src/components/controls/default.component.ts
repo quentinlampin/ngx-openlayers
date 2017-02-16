@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Input, Host } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { control, Collection } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -15,7 +15,7 @@ export class DefaultControlComponent implements OnInit, OnDestroy {
   @Input() zoom: boolean;
   @Input() zoomOptions: olx.control.ZoomOptions;
 
-  constructor(@Host() private map: MapComponent) {
+  constructor(private map: MapComponent) {
   }
 
   ngOnInit() {

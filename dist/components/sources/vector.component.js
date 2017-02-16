@@ -38,10 +38,6 @@ var SourceVectorComponent = SourceVectorComponent_1 = (function (_super) {
 }(source_component_1.SourceComponent));
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Object)
-], SourceVectorComponent.prototype, "attributions", void 0);
-__decorate([
-    core_1.Input(),
     __metadata("design:type", Boolean)
 ], SourceVectorComponent.prototype, "overlaps", void 0);
 __decorate([

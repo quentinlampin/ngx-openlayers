@@ -44,10 +44,6 @@ var SourceVectorTileComponent = SourceVectorTileComponent_1 = (function (_super)
 }(source_component_1.SourceComponent));
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Object)
-], SourceVectorTileComponent.prototype, "attributions", void 0);
-__decorate([
-    core_1.Input(),
     __metadata("design:type", Number)
 ], SourceVectorTileComponent.prototype, "cacheSize", void 0);
 __decorate([

@@ -1,10 +1,10 @@
 /// <reference types="openlayers" />
 import { OnInit } from '@angular/core';
-import { AttributionLike } from 'openlayers';
+import { source } from 'openlayers';
 import { LayerVectorComponent } from '../layers';
 import { SourceComponent } from './source.component';
 export declare class SourceVectorComponent extends SourceComponent implements OnInit {
-    attributions: AttributionLike;
+    instance: source.Vector;
     overlaps: boolean;
     useSpatialIndex: boolean;
     wrapX: boolean;

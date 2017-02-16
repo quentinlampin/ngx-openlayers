@@ -6,7 +6,7 @@ export declare class FeatureComponent implements OnInit, OnDestroy {
     private host;
     componentType: string;
     instance: Feature;
-    constructor(source: SourceVectorComponent);
+    constructor(host: SourceVectorComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

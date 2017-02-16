@@ -1,5 +1,5 @@
 import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
-import { source, AttributionLike, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
+import { source, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
 import { LayerVectorTileComponent } from '../layers';
 import { FormatComponent } from '../formats';
 import { TileGridComponent } from '../tilegrid.component';
@@ -13,7 +13,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
-  @Input() attributions: AttributionLike;
+  public instance: source.VectorTile;
   @Input() cacheSize: number;
   @Input() overlaps: boolean;
   @Input() projection: ProjectionLike;
