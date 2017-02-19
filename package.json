@@ -1,6 +1,6 @@
 {
     "name": "angular2-openlayers",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "scripts": {
         "lint": "tslint src/**/*.ts",
         "test": "ngc && karma start",
