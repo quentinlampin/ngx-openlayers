@@ -15,6 +15,7 @@ var FeatureComponent = (function () {
     function FeatureComponent(host) {
         this.host = host;
         this.componentType = 'feature';
+        this.id = undefined;
     }
     FeatureComponent.prototype.ngOnInit = function () {
         this.instance = new openlayers_1.Feature();
@@ -23,8 +24,15 @@ var FeatureComponent = (function () {
     FeatureComponent.prototype.ngOnDestroy = function () {
         this.host.instance.removeFeature(this.instance);
     };
+    FeatureComponent.prototype.ngOnChanges = function () {
+        this.instance.setId(this.id);
+    };
     return FeatureComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], FeatureComponent.prototype, "id", void 0);
 FeatureComponent = __decorate([
     core_1.Component({
         selector: 'aol-feature',
