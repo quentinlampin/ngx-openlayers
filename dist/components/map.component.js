@@ -16,6 +16,9 @@ var MapComponent = (function () {
         this.componentType = 'map';
         this.width = '100%';
         this.height = '100%';
+        // we pass empty arrays to not get default controls/interactions because we have our own directives
+        this.controls = [];
+        this.interactions = [];
         this.onClick = new core_1.EventEmitter();
         this.onDblClick = new core_1.EventEmitter();
         this.onMoveEnd = new core_1.EventEmitter();

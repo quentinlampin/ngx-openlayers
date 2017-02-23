@@ -11,33 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
-var DragRotateAndZoomInteractionComponent = (function () {
-    function DragRotateAndZoomInteractionComponent(map) {
+var DragPanInteractionComponent = (function () {
+    function DragPanInteractionComponent(map) {
         this.map = map;
     }
-    DragRotateAndZoomInteractionComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.interaction.DragRotateAndZoom(this);
+    DragPanInteractionComponent.prototype.ngOnInit = function () {
+        this.instance = new openlayers_1.interaction.DragPan(this);
         this.map.instance.addInteraction(this.instance);
     };
-    DragRotateAndZoomInteractionComponent.prototype.ngOnDestroy = function () {
+    DragPanInteractionComponent.prototype.ngOnDestroy = function () {
         this.map.instance.removeInteraction(this.instance);
     };
-    return DragRotateAndZoomInteractionComponent;
+    return DragPanInteractionComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Function)
-], DragRotateAndZoomInteractionComponent.prototype, "condition", void 0);
+], DragPanInteractionComponent.prototype, "condition", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Number)
-], DragRotateAndZoomInteractionComponent.prototype, "duration", void 0);
-DragRotateAndZoomInteractionComponent = __decorate([
+    __metadata("design:type", openlayers_1.Kinetic)
+], DragPanInteractionComponent.prototype, "kinetic", void 0);
+DragPanInteractionComponent = __decorate([
     core_1.Component({
-        selector: 'aol-interaction-dragrotateandzoom',
+        selector: 'aol-interaction-dragpan',
         template: ''
     }),
     __metadata("design:paramtypes", [map_component_1.MapComponent])
-], DragRotateAndZoomInteractionComponent);
-exports.DragRotateAndZoomInteractionComponent = DragRotateAndZoomInteractionComponent;
-//# sourceMappingURL=dragrotateandzoom.component.js.map
+], DragPanInteractionComponent);
+exports.DragPanInteractionComponent = DragPanInteractionComponent;
+//# sourceMappingURL=dragpan.component.js.map

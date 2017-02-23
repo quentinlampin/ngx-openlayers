@@ -14,6 +14,8 @@ import {
   FormatMVTComponent,
   TileGridComponent,
   DefaultInteractionComponent, DragRotateInteractionComponent, DragRotateAndZoomInteractionComponent,
+  DoubleClickZoomInteractionComponent, DragAndDropInteractionComponent, DragBoxInteractionComponent,
+  DragPanInteractionComponent, DragZoomInteractionComponent,
   OverlayComponent,
   ContentComponent,
   AttributionComponent,
@@ -24,27 +26,34 @@ export * from './components';
 
 const COMPONENTS = [
   MapComponent,
+
   ViewComponent,
+
   LayerTileComponent,
   LayerVectorComponent,
   LayerVectorTileComponent,
+
   SourceOsmComponent,
   SourceBingmapsComponent,
   SourceVectorComponent,
   SourceXYZComponent,
   SourceVectorTileComponent,
+
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
+
   StyleComponent,
   StyleCircleComponent,
   StyleFillComponent,
   StyleIconComponent,
   StyleStrokeComponent,
   StyleTextComponent,
+
+  DefaultControlComponent,
   ControlComponent,
   ControlAttributionComponent,
   ControlFullScreenComponent,
@@ -55,12 +64,19 @@ const COMPONENTS = [
   ControlZoomComponent,
   ControlZoomSliderComponent,
   ControlZoomToExtentComponent,
+
   FormatMVTComponent,
   TileGridComponent,
+
   DefaultInteractionComponent,
+  DoubleClickZoomInteractionComponent,
+  DragAndDropInteractionComponent,
+  DragBoxInteractionComponent,
+  DragPanInteractionComponent,
   DragRotateInteractionComponent,
   DragRotateAndZoomInteractionComponent,
-  DefaultControlComponent,
+  DragZoomInteractionComponent,
+
   OverlayComponent,
   ContentComponent,
   AttributionComponent,

@@ -11,33 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
-var DragRotateAndZoomInteractionComponent = (function () {
-    function DragRotateAndZoomInteractionComponent(map) {
+var DragAndDropInteractionComponent = (function () {
+    function DragAndDropInteractionComponent(map) {
         this.map = map;
     }
-    DragRotateAndZoomInteractionComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.interaction.DragRotateAndZoom(this);
+    DragAndDropInteractionComponent.prototype.ngOnInit = function () {
+        this.instance = new openlayers_1.interaction.DragAndDrop(this);
         this.map.instance.addInteraction(this.instance);
     };
-    DragRotateAndZoomInteractionComponent.prototype.ngOnDestroy = function () {
+    DragAndDropInteractionComponent.prototype.ngOnDestroy = function () {
         this.map.instance.removeInteraction(this.instance);
     };
-    return DragRotateAndZoomInteractionComponent;
+    return DragAndDropInteractionComponent;
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Function)
-], DragRotateAndZoomInteractionComponent.prototype, "condition", void 0);
+    __metadata("design:type", Array)
+], DragAndDropInteractionComponent.prototype, "formatConstructors", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Number)
-], DragRotateAndZoomInteractionComponent.prototype, "duration", void 0);
-DragRotateAndZoomInteractionComponent = __decorate([
+    __metadata("design:type", Object)
+], DragAndDropInteractionComponent.prototype, "projection", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Element)
+], DragAndDropInteractionComponent.prototype, "target", void 0);
+DragAndDropInteractionComponent = __decorate([
     core_1.Component({
-        selector: 'aol-interaction-dragrotateandzoom',
+        selector: 'aol-interaction-draganddrop',
         template: ''
     }),
     __metadata("design:paramtypes", [map_component_1.MapComponent])
-], DragRotateAndZoomInteractionComponent);
-exports.DragRotateAndZoomInteractionComponent = DragRotateAndZoomInteractionComponent;
-//# sourceMappingURL=dragrotateandzoom.component.js.map
+], DragAndDropInteractionComponent);
+exports.DragAndDropInteractionComponent = DragAndDropInteractionComponent;
+//# sourceMappingURL=draganddrop.component.js.map

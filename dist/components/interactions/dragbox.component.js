@@ -11,33 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
-var DragRotateAndZoomInteractionComponent = (function () {
-    function DragRotateAndZoomInteractionComponent(map) {
+var DragBoxInteractionComponent = (function () {
+    function DragBoxInteractionComponent(map) {
         this.map = map;
     }
-    DragRotateAndZoomInteractionComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.interaction.DragRotateAndZoom(this);
+    DragBoxInteractionComponent.prototype.ngOnInit = function () {
+        this.instance = new openlayers_1.interaction.DragBox(this);
         this.map.instance.addInteraction(this.instance);
     };
-    DragRotateAndZoomInteractionComponent.prototype.ngOnDestroy = function () {
+    DragBoxInteractionComponent.prototype.ngOnDestroy = function () {
         this.map.instance.removeInteraction(this.instance);
     };
-    return DragRotateAndZoomInteractionComponent;
+    return DragBoxInteractionComponent;
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Function)
-], DragRotateAndZoomInteractionComponent.prototype, "condition", void 0);
+    __metadata("design:type", String)
+], DragBoxInteractionComponent.prototype, "className", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Number)
-], DragRotateAndZoomInteractionComponent.prototype, "duration", void 0);
-DragRotateAndZoomInteractionComponent = __decorate([
+    __metadata("design:type", Function)
+], DragBoxInteractionComponent.prototype, "condition", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Function)
+], DragBoxInteractionComponent.prototype, "boxEndCondition", void 0);
+DragBoxInteractionComponent = __decorate([
     core_1.Component({
-        selector: 'aol-interaction-dragrotateandzoom',
+        selector: 'aol-interaction-dragbox',
         template: ''
     }),
     __metadata("design:paramtypes", [map_component_1.MapComponent])
-], DragRotateAndZoomInteractionComponent);
-exports.DragRotateAndZoomInteractionComponent = DragRotateAndZoomInteractionComponent;
-//# sourceMappingURL=dragrotateandzoom.component.js.map
+], DragBoxInteractionComponent);
+exports.DragBoxInteractionComponent = DragBoxInteractionComponent;
+//# sourceMappingURL=dragbox.component.js.map

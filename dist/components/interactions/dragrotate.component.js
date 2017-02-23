@@ -24,6 +24,14 @@ var DragRotateInteractionComponent = (function () {
     };
     return DragRotateInteractionComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Function)
+], DragRotateInteractionComponent.prototype, "condition", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], DragRotateInteractionComponent.prototype, "duration", void 0);
 DragRotateInteractionComponent = __decorate([
     core_1.Component({
         selector: 'aol-interaction-dragrotate',

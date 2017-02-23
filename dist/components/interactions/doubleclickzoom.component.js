@@ -11,33 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
-var DragRotateAndZoomInteractionComponent = (function () {
-    function DragRotateAndZoomInteractionComponent(map) {
+var DoubleClickZoomInteractionComponent = (function () {
+    function DoubleClickZoomInteractionComponent(map) {
         this.map = map;
     }
-    DragRotateAndZoomInteractionComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.interaction.DragRotateAndZoom(this);
+    DoubleClickZoomInteractionComponent.prototype.ngOnInit = function () {
+        this.instance = new openlayers_1.interaction.DoubleClickZoom(this);
         this.map.instance.addInteraction(this.instance);
     };
-    DragRotateAndZoomInteractionComponent.prototype.ngOnDestroy = function () {
+    DoubleClickZoomInteractionComponent.prototype.ngOnDestroy = function () {
         this.map.instance.removeInteraction(this.instance);
     };
-    return DragRotateAndZoomInteractionComponent;
+    return DoubleClickZoomInteractionComponent;
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Function)
-], DragRotateAndZoomInteractionComponent.prototype, "condition", void 0);
+    __metadata("design:type", Number)
+], DoubleClickZoomInteractionComponent.prototype, "duration", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Number)
-], DragRotateAndZoomInteractionComponent.prototype, "duration", void 0);
-DragRotateAndZoomInteractionComponent = __decorate([
+], DoubleClickZoomInteractionComponent.prototype, "delta", void 0);
+DoubleClickZoomInteractionComponent = __decorate([
     core_1.Component({
-        selector: 'aol-interaction-dragrotateandzoom',
+        selector: 'aol-interaction-doubleclickzoom',
         template: ''
     }),
     __metadata("design:paramtypes", [map_component_1.MapComponent])
-], DragRotateAndZoomInteractionComponent);
-exports.DragRotateAndZoomInteractionComponent = DragRotateAndZoomInteractionComponent;
-//# sourceMappingURL=dragrotateandzoom.component.js.map
+], DoubleClickZoomInteractionComponent);
+exports.DoubleClickZoomInteractionComponent = DoubleClickZoomInteractionComponent;
+//# sourceMappingURL=doubleclickzoom.component.js.map

@@ -1,12 +1,12 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction, EventsConditionType } from 'openlayers';
+import { interaction } from 'openlayers';
 import { MapComponent } from '../map.component';
-export declare class DragRotateAndZoomInteractionComponent implements OnInit, OnDestroy {
+export declare class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
     private map;
-    instance: interaction.DragRotate;
-    condition: EventsConditionType;
+    instance: interaction.DoubleClickZoom;
     duration: number;
+    delta: number;
     constructor(map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;

@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interaction } from 'openlayers';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { interaction, EventsConditionType } from 'openlayers';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,6 +8,9 @@ import { MapComponent } from '../map.component';
 })
 export class DragRotateAndZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragRotate;
+
+  @Input() condition: EventsConditionType;
+  @Input() duration: number;
 
   constructor(private map: MapComponent) {
   }

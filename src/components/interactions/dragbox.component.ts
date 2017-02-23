@@ -1,22 +1,23 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
-import { interaction, EventsConditionType } from 'openlayers';
+import { interaction, EventsConditionType, DragBoxEndConditionType } from 'openlayers';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-interaction-dragrotate',
+  selector: 'aol-interaction-dragbox',
   template: ''
 })
-export class DragRotateInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.DragRotate;
+export class DragBoxInteractionComponent implements OnInit, OnDestroy {
+  instance: interaction.DragBox;
 
+  @Input() className: string;
   @Input() condition: EventsConditionType;
-  @Input() duration: number;
+  @Input() boxEndCondition: DragBoxEndConditionType;
 
   constructor(private map: MapComponent) {
   }
 
   ngOnInit() {
-    this.instance = new interaction.DragRotate(this);
+    this.instance = new interaction.DragBox(this);
     this.map.instance.addInteraction(this.instance);
   }
 
