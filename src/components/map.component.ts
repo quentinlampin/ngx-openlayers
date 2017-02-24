@@ -2,7 +2,10 @@ import {
   Component, OnInit, ElementRef, Input, Output, EventEmitter, AfterViewInit,
   SimpleChanges, OnChanges
 } from '@angular/core';
-import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers';
+import {
+  Map, MapBrowserEvent, MapEvent, render, ObjectEvent, control,
+  interaction
+} from 'openlayers';
 
 @Component({
   selector: 'aol-map',
@@ -10,7 +13,7 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent } from 'openlayers'
 })
 
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
-  public instance: Map; /** ol.Map instance */
+  public instance: Map;
   public componentType: string = 'map';
 
   @Input() width: string = '100%';
@@ -33,6 +36,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() onPreCompose: EventEmitter<render.Event>;
   @Output() onPropertyChange: EventEmitter<ObjectEvent>;
   @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
+
+  // we pass empty arrays to not get default controls/interactions because we have our own directives
+  controls: control.Control[] = [];
+  interactions: interaction.Interaction[] = [];
 
   constructor(private host: ElementRef) {
     this.onClick = new EventEmitter<MapBrowserEvent>();

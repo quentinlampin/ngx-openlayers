@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var components_1 = require("./components");
@@ -36,6 +35,7 @@ var COMPONENTS = [
     components_1.StyleIconComponent,
     components_1.StyleStrokeComponent,
     components_1.StyleTextComponent,
+    components_1.DefaultControlComponent,
     components_1.ControlComponent,
     components_1.ControlAttributionComponent,
     components_1.ControlFullScreenComponent,
@@ -49,9 +49,13 @@ var COMPONENTS = [
     components_1.FormatMVTComponent,
     components_1.TileGridComponent,
     components_1.DefaultInteractionComponent,
+    components_1.DoubleClickZoomInteractionComponent,
+    components_1.DragAndDropInteractionComponent,
+    components_1.DragBoxInteractionComponent,
+    components_1.DragPanInteractionComponent,
     components_1.DragRotateInteractionComponent,
     components_1.DragRotateAndZoomInteractionComponent,
-    components_1.DefaultControlComponent,
+    components_1.DragZoomInteractionComponent,
     components_1.OverlayComponent,
     components_1.ContentComponent,
     components_1.AttributionComponent,

@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var FormatComponent = (function () {
     function FormatComponent() {
         this.componentType = 'format';

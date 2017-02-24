@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
@@ -25,6 +24,14 @@ var DragRotateAndZoomInteractionComponent = (function () {
     };
     return DragRotateAndZoomInteractionComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Function)
+], DragRotateAndZoomInteractionComponent.prototype, "condition", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], DragRotateAndZoomInteractionComponent.prototype, "duration", void 0);
 DragRotateAndZoomInteractionComponent = __decorate([
     core_1.Component({
         selector: 'aol-interaction-dragrotateandzoom',
