@@ -59,7 +59,7 @@ var MapComponent = (function () {
         // console.log('changes detected in aol-map, setting new properties: ', properties);
         this.instance.setProperties(properties, false);
     };
-    MapComponent.prototype.ngAfterViewChecked = function () {
+    MapComponent.prototype.ngAfterViewInit = function () {
         this.instance.updateSize();
     };
     return MapComponent;
