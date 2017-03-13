@@ -84,7 +84,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.instance.setProperties(properties, false);
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     this.instance.updateSize();
   }
 }
