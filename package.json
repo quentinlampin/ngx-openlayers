@@ -1,53 +1,52 @@
 {
-    "name": "angular2-openlayers",
-    "version": "0.6.3",
-    "scripts": {
-        "lint": "tslint src/**/*.ts",
-        "test": "ngc && karma start",
-        "prepublish": "ngc",
-        "ngc": "ngc"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/quentin-ol/angular2-openlayers"
-    },
-    "author": {
-        "name": "Quentin Lampin",
-        "email": "quentin.lampin@orange.com"
-    },
-    "keywords": [
-        "angular",
-        "angular2",
-        "openlayers"
-    ],
-    "license": "MPL-2.0",
-    "bugs": {
-        "url": "https://github.com/quentin-ol/angular2-openlayers/issues"
-    },
-    "main": "./dist/index.js",
-    "typings": "./dist/index.d.ts",
-    "dependencies": {
-        "openlayers": "3.20.1"
-    },
-    "devDependencies": {
-        "@angular/platform-browser": "^2.4.1",
-        "@angular/common": "^2.4.1",
-        "@angular/core": "^2.4.1",
-        "zone.js": "0.7.4",
-        "@types/openlayers": "3.20.1",
-        "rxjs": "5.0.2",
-        "@angular/compiler": "^2.4.1",
-        "@angular/compiler-cli": "^2.4.1",
-        "@angular/platform-server": "^2.4.1",
-        "@types/es6-shim": "^0.31.32",
-        "@types/jasmine": "^2.5.38",
-        "@types/selenium-webdriver": "^2.53.33",
-        "codelyzer": "2.0.0-beta.4",
-        "tslint": "~4.2.0",
-        "typescript": "^2.0.10"
-
-    },
-    "engines": {
-        "node": ">=0.8.0"
-    }
+  "name": "angular2-openlayers",
+  "version": "0.6.4",
+  "scripts": {
+    "lint": "tslint src/**/*.ts",
+    "test": "ngc && karma start",
+    "prepublish": "ngc",
+    "ngc": "ngc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quentin-ol/angular2-openlayers"
+  },
+  "author": {
+    "name": "Quentin Lampin",
+    "email": "quentin.lampin@orange.com"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "openlayers"
+  ],
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/quentin-ol/angular2-openlayers/issues"
+  },
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "dependencies": {
+    "openlayers": "3.20.1"
+  },
+  "devDependencies": {
+    "@angular/common": "^2.4.1",
+    "@angular/compiler": "^2.4.1",
+    "@angular/compiler-cli": "^2.4.9",
+    "@angular/core": "^2.4.1",
+    "@angular/platform-browser": "^2.4.1",
+    "@angular/platform-server": "^2.4.1",
+    "@types/es6-shim": "^0.31.32",
+    "@types/jasmine": "^2.5.38",
+    "@types/openlayers": "3.20.1",
+    "@types/selenium-webdriver": "^2.53.33",
+    "codelyzer": "2.0.0-beta.4",
+    "rxjs": "5.0.2",
+    "tslint": "~4.2.0",
+    "typescript": "^2.0.10",
+    "zone.js": "0.7.4"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
 }
