@@ -1,4 +1,4 @@
-import { Component, Optional, OnChanges, Input } from '@angular/core';
+import { Component, Optional, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
@@ -32,7 +32,7 @@ export class CoordinateComponent implements OnChanges {
     }
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: number[];
@@ -85,7 +85,7 @@ export class CollectionCoordinatesComponent implements OnChanges {
     }
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: Array<Coordinate>;

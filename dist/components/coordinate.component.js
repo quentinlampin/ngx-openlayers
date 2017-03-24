@@ -32,7 +32,7 @@ var CoordinateComponent = (function () {
             this.host = overlayHost;
         }
     }
-    CoordinateComponent.prototype.ngOnChanges = function () {
+    CoordinateComponent.prototype.ngOnChanges = function (changes) {
         var referenceProjection;
         var referenceProjectionCode;
         var transformedCoordinates;
@@ -99,7 +99,7 @@ var CollectionCoordinatesComponent = (function () {
             throw new Error('aol-collection-coordinates must be a child of a geometry component');
         }
     }
-    CollectionCoordinatesComponent.prototype.ngOnChanges = function () {
+    CollectionCoordinatesComponent.prototype.ngOnChanges = function (changes) {
         var referenceProjection;
         var referenceProjectionCode;
         var transformedCoordinates;

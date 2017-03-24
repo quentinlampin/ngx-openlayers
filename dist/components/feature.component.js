@@ -26,7 +26,7 @@ var FeatureComponent = (function () {
     FeatureComponent.prototype.ngOnDestroy = function () {
         this.host.instance.removeFeature(this.instance);
     };
-    FeatureComponent.prototype.ngOnChanges = function () {
+    FeatureComponent.prototype.ngOnChanges = function (changes) {
         if (this.instance) {
             this.instance.setId(this.id);
         }

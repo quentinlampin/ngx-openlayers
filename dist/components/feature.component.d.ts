@@ -1,5 +1,5 @@
 /// <reference types="openlayers" />
-import { OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Feature } from 'openlayers';
 import { SourceVectorComponent } from './sources';
 export declare class FeatureComponent implements OnInit, OnDestroy, OnChanges {
@@ -10,5 +10,5 @@ export declare class FeatureComponent implements OnInit, OnDestroy, OnChanges {
     constructor(host: SourceVectorComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
-    ngOnChanges(): void;
+    ngOnChanges(changes: SimpleChanges): void;
 }
