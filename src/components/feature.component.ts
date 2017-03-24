@@ -10,13 +10,16 @@ export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
   public componentType = 'feature';
   public instance: Feature;
 
-  @Input() id: string|number|undefined = undefined;
+  @Input() id: string|number|undefined;
 
   constructor(private host: SourceVectorComponent) {
   }
 
   ngOnInit() {
     this.instance = new Feature();
+    if (this.id !== undefined) {
+      this.instance.setId(this.id);
+    }
     this.host.instance.addFeature(this.instance);
   }
 
@@ -25,6 +28,8 @@ export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges() {
-    this.instance.setId(this.id);
+    if (this.instance) {
+      this.instance.setId(this.id);
+    }
   }
 }
