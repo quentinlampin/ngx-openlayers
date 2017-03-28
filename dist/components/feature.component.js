@@ -19,7 +19,7 @@ var FeatureComponent = (function () {
     }
     FeatureComponent.prototype.ngOnInit = function () {
         this.instance = new openlayers_1.Feature();
-        if (this.id) {
+        if (this.id !== undefined) {
             this.instance.setId(this.id);
         }
         this.host.instance.addFeature(this.instance);

@@ -27,6 +27,38 @@ var ControlOverviewMapComponent = (function () {
     };
     return ControlOverviewMapComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], ControlOverviewMapComponent.prototype, "collapsed", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], ControlOverviewMapComponent.prototype, "collapseLabel", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], ControlOverviewMapComponent.prototype, "collapsible", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], ControlOverviewMapComponent.prototype, "label", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], ControlOverviewMapComponent.prototype, "layers", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Element)
+], ControlOverviewMapComponent.prototype, "target", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], ControlOverviewMapComponent.prototype, "tipLabel", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", openlayers_1.View)
+], ControlOverviewMapComponent.prototype, "view", void 0);
 ControlOverviewMapComponent = __decorate([
     core_1.Component({
         selector: 'aol-control-overviewmap',
