@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MapComponent, ViewComponent,
   LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent,
-  SourceBingmapsComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent,
+  SourceBingmapsComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
   FeatureComponent,
   GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent,
   CollectionCoordinatesComponent, CoordinateComponent,
@@ -15,7 +15,7 @@ import {
   TileGridComponent,
   DefaultInteractionComponent, DragRotateInteractionComponent, DragRotateAndZoomInteractionComponent,
   DoubleClickZoomInteractionComponent, DragAndDropInteractionComponent, DragBoxInteractionComponent,
-  DragPanInteractionComponent, DragZoomInteractionComponent,
+  DragPanInteractionComponent, DragZoomInteractionComponent, MouseWheelZoomInteractionComponent,
   OverlayComponent,
   ContentComponent,
   AttributionComponent,
@@ -38,6 +38,7 @@ const COMPONENTS = [
   SourceVectorComponent,
   SourceXYZComponent,
   SourceVectorTileComponent,
+  SourceTileWMSComponent,
 
   FeatureComponent,
   GeometryLinestringComponent,
@@ -76,6 +77,7 @@ const COMPONENTS = [
   DragRotateInteractionComponent,
   DragRotateAndZoomInteractionComponent,
   DragZoomInteractionComponent,
+  MouseWheelZoomInteractionComponent,
 
   OverlayComponent,
   ContentComponent,
