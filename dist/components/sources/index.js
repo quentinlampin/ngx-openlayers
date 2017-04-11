@@ -8,4 +8,5 @@ __export(require("./source.component"));
 __export(require("./vector.component"));
 __export(require("./vectortile.component"));
 __export(require("./xyz.component"));
+__export(require("./tilewms.component"));
 //# sourceMappingURL=index.js.map

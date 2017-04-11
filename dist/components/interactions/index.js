@@ -10,4 +10,5 @@ __export(require("./dragpan.component"));
 __export(require("./dragrotate.component"));
 __export(require("./dragrotateandzoom.component"));
 __export(require("./dragzoom.component"));
+__export(require("./mousewheelzoom.component"));
 //# sourceMappingURL=index.js.map
