@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var sources_1 = require("./sources");
@@ -27,7 +26,7 @@ var FeatureComponent = (function () {
     FeatureComponent.prototype.ngOnDestroy = function () {
         this.host.instance.removeFeature(this.instance);
     };
-    FeatureComponent.prototype.ngOnChanges = function () {
+    FeatureComponent.prototype.ngOnChanges = function (changes) {
         if (this.instance) {
             this.instance.setId(this.id);
         }

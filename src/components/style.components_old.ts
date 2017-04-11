@@ -1,5 +1,7 @@
-import { Component, Directive, EventEmitter, Host, OnDestroy, OnChanges, AfterContentInit,
-         Input, Output, ContentChild } from '@angular/core';
+import {
+  Component, Directive, EventEmitter, Host, OnDestroy, OnChanges, AfterContentInit,
+  Input, Output, ContentChild, SimpleChanges
+} from '@angular/core';
 import { style } from 'openlayers';
 import { FeatureComponent } from './feature.component';
 
@@ -31,7 +33,7 @@ export class StyleIconDirective implements OnChanges {
 
     constructor() { }
 
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
         this.onChanged.emit(this.src);
     }
 }

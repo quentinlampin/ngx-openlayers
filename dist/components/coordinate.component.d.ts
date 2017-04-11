@@ -1,4 +1,4 @@
-import { OnChanges } from '@angular/core';
+import { OnChanges, SimpleChanges } from '@angular/core';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
 import { ViewComponent } from './view.component';
@@ -10,7 +10,7 @@ export declare class CoordinateComponent implements OnChanges {
     y: number;
     srid: string;
     constructor(map: MapComponent, viewHost: ViewComponent, geometryPointHost: GeometryPointComponent, overlayHost: OverlayComponent);
-    ngOnChanges(): void;
+    ngOnChanges(changes: SimpleChanges): void;
 }
 export declare class CollectionCoordinatesComponent implements OnChanges {
     private map;
@@ -18,5 +18,5 @@ export declare class CollectionCoordinatesComponent implements OnChanges {
     coordinates: [number, number][];
     srid: string;
     constructor(map: MapComponent, geometryLinestring: GeometryLinestringComponent, geometryPolygon: GeometryPolygonComponent);
-    ngOnChanges(): void;
+    ngOnChanges(changes: SimpleChanges): void;
 }
