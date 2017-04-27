@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
     public zoom = 15;
     public opacity = 1.0;
+    public width = 5;
 
     increaseZoom() {
         this.zoom  = Math.min(this.zoom + 1, 18);
