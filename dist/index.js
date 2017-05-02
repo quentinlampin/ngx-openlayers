@@ -24,6 +24,7 @@ var COMPONENTS = [
     components_1.SourceXYZComponent,
     components_1.SourceVectorTileComponent,
     components_1.SourceTileWMSComponent,
+    components_1.SourceGeoJSONComponent,
     components_1.FeatureComponent,
     components_1.GeometryLinestringComponent,
     components_1.GeometryPointComponent,
