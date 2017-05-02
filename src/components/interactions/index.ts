@@ -7,3 +7,4 @@ export * from './dragrotate.component';
 export * from './dragrotateandzoom.component';
 export * from './dragzoom.component';
 export * from './mousewheelzoom.component';
+export * from './pinchzoom.component';
