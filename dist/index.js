@@ -58,6 +58,7 @@ var COMPONENTS = [
     components_1.DragRotateAndZoomInteractionComponent,
     components_1.DragZoomInteractionComponent,
     components_1.MouseWheelZoomInteractionComponent,
+    components_1.PinchZoomInteractionComponent,
     components_1.OverlayComponent,
     components_1.ContentComponent,
     components_1.AttributionComponent,
