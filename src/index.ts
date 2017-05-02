@@ -4,13 +4,13 @@ import {
   MapComponent, ViewComponent,
   LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent,
   SourceBingmapsComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
-  FeatureComponent,
+  SourceGeoJSONComponent, FeatureComponent,
   GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent,
   CollectionCoordinatesComponent, CoordinateComponent,
   StyleCircleComponent, StyleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent, StyleTextComponent,
   ControlAttributionComponent, ControlFullScreenComponent, ControlMousePositionComponent,
   ControlOverviewMapComponent, ControlRotateComponent, ControlScaleLineComponent, ControlZoomComponent, ControlZoomSliderComponent,
-  ControlZoomToExtentComponent, DefaultControlComponent,  ControlComponent,
+  ControlZoomToExtentComponent, DefaultControlComponent, ControlComponent,
   FormatMVTComponent,
   TileGridComponent,
   DefaultInteractionComponent, DragRotateInteractionComponent, DragRotateAndZoomInteractionComponent,
@@ -40,7 +40,7 @@ const COMPONENTS = [
   SourceXYZComponent,
   SourceVectorTileComponent,
   SourceTileWMSComponent,
-
+  SourceGeoJSONComponent,
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
@@ -92,4 +92,4 @@ const COMPONENTS = [
   imports: [CommonModule],
   exports: COMPONENTS
 })
-export class AngularOpenlayersModule {}
+export class AngularOpenlayersModule { }
