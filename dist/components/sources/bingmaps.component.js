@@ -40,12 +40,40 @@ var SourceBingmapsComponent = SourceBingmapsComponent_1 = (function (_super) {
 }(source_component_1.SourceComponent));
 __decorate([
     core_1.Input(),
+    __metadata("design:type", Number)
+], SourceBingmapsComponent.prototype, "cacheSize", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], SourceBingmapsComponent.prototype, "hidpi", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], SourceBingmapsComponent.prototype, "culture", void 0);
+__decorate([
+    core_1.Input(),
     __metadata("design:type", String)
 ], SourceBingmapsComponent.prototype, "key", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
 ], SourceBingmapsComponent.prototype, "imagerySet", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], SourceBingmapsComponent.prototype, "maxZoom", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], SourceBingmapsComponent.prototype, "reprojectionErrorThreshold", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Function)
+], SourceBingmapsComponent.prototype, "tileLoadFunction", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], SourceBingmapsComponent.prototype, "wrapX", void 0);
 SourceBingmapsComponent = SourceBingmapsComponent_1 = __decorate([
     core_1.Component({
         selector: 'aol-source-bingmaps',
