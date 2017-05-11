@@ -21,7 +21,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
@@ -37,6 +36,42 @@ var SourceOsmComponent = SourceOsmComponent_1 = (function (_super) {
     };
     return SourceOsmComponent;
 }(source_component_1.SourceComponent));
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], SourceOsmComponent.prototype, "attributions", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], SourceOsmComponent.prototype, "cacheSize", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], SourceOsmComponent.prototype, "crossOrigin", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], SourceOsmComponent.prototype, "maxZoom", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], SourceOsmComponent.prototype, "opaque", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], SourceOsmComponent.prototype, "reprojectionErrorThreshold", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Function)
+], SourceOsmComponent.prototype, "tileLoadFunction", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], SourceOsmComponent.prototype, "url", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], SourceOsmComponent.prototype, "wrapX", void 0);
 SourceOsmComponent = SourceOsmComponent_1 = __decorate([
     core_1.Component({
         selector: 'aol-source-osm',

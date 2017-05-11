@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { Feature } from 'openlayers';
 import { SourceVectorComponent } from './sources';
 
@@ -27,7 +27,7 @@ export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
     this.host.instance.removeFeature(this.instance);
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     if (this.instance) {
       this.instance.setId(this.id);
     }

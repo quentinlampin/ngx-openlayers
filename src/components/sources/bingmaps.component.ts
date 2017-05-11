@@ -1,5 +1,5 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source } from 'openlayers';
+import { source, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 
@@ -12,8 +12,16 @@ import { SourceComponent } from './source.component';
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   instance: source.BingMaps;
+
+  @Input() cacheSize: number;
+  @Input() hidpi: boolean;
+  @Input() culture: string;
   @Input() key: string;
   @Input() imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey' = 'Aerial';
+  @Input() maxZoom: number;
+  @Input() reprojectionErrorThreshold: number;
+  @Input() tileLoadFunction: TileLoadFunctionType;
+  @Input() wrapX: boolean;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

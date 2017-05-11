@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("./map.component");
@@ -33,7 +32,7 @@ var CoordinateComponent = (function () {
             this.host = overlayHost;
         }
     }
-    CoordinateComponent.prototype.ngOnChanges = function () {
+    CoordinateComponent.prototype.ngOnChanges = function (changes) {
         var referenceProjection;
         var referenceProjectionCode;
         var transformedCoordinates;
@@ -100,7 +99,7 @@ var CollectionCoordinatesComponent = (function () {
             throw new Error('aol-collection-coordinates must be a child of a geometry component');
         }
     }
-    CollectionCoordinatesComponent.prototype.ngOnChanges = function () {
+    CollectionCoordinatesComponent.prototype.ngOnChanges = function (changes) {
         var referenceProjection;
         var referenceProjectionCode;
         var transformedCoordinates;

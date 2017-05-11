@@ -25,66 +25,45 @@ var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var source_component_1 = require("./source.component");
-var SourceBingmapsComponent = SourceBingmapsComponent_1 = (function (_super) {
-    __extends(SourceBingmapsComponent, _super);
-    function SourceBingmapsComponent(layer) {
-        var _this = _super.call(this, layer) || this;
-        _this.imagerySet = 'Aerial';
-        return _this;
+var SourceGeoJSONComponent = SourceGeoJSONComponent_1 = (function (_super) {
+    __extends(SourceGeoJSONComponent, _super);
+    function SourceGeoJSONComponent(layer) {
+        return _super.call(this, layer) || this;
     }
-    SourceBingmapsComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.source.BingMaps(this);
+    SourceGeoJSONComponent.prototype.ngOnInit = function () {
+        this.format = new openlayers_1.format.GeoJSON(this);
+        this.instance = new openlayers_1.source.Vector(this);
         this.host.instance.setSource(this.instance);
     };
-    return SourceBingmapsComponent;
+    return SourceGeoJSONComponent;
 }(source_component_1.SourceComponent));
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Number)
-], SourceBingmapsComponent.prototype, "cacheSize", void 0);
+    __metadata("design:type", Object)
+], SourceGeoJSONComponent.prototype, "defaultDataProjection", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Boolean)
-], SourceBingmapsComponent.prototype, "hidpi", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], SourceBingmapsComponent.prototype, "culture", void 0);
+    __metadata("design:type", Object)
+], SourceGeoJSONComponent.prototype, "featureProjection", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
-], SourceBingmapsComponent.prototype, "key", void 0);
+], SourceGeoJSONComponent.prototype, "geometryName", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
-], SourceBingmapsComponent.prototype, "imagerySet", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Number)
-], SourceBingmapsComponent.prototype, "maxZoom", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Number)
-], SourceBingmapsComponent.prototype, "reprojectionErrorThreshold", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Function)
-], SourceBingmapsComponent.prototype, "tileLoadFunction", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], SourceBingmapsComponent.prototype, "wrapX", void 0);
-SourceBingmapsComponent = SourceBingmapsComponent_1 = __decorate([
+], SourceGeoJSONComponent.prototype, "url", void 0);
+SourceGeoJSONComponent = SourceGeoJSONComponent_1 = __decorate([
     core_1.Component({
-        selector: 'aol-source-bingmaps',
-        template: "<div class=\"aol-source-bingmaps\"></div>",
+        selector: 'aol-source-geojson',
+        template: "<ng-content></ng-content>",
         providers: [
-            { provide: source_component_1.SourceComponent, useExisting: core_1.forwardRef(function () { return SourceBingmapsComponent_1; }) }
+            { provide: source_component_1.SourceComponent, useExisting: core_1.forwardRef(function () { return SourceGeoJSONComponent_1; }) }
         ]
     }),
     __param(0, core_1.Host()),
-    __metadata("design:paramtypes", [layers_1.LayerTileComponent])
-], SourceBingmapsComponent);
-exports.SourceBingmapsComponent = SourceBingmapsComponent;
-var SourceBingmapsComponent_1;
-//# sourceMappingURL=bingmaps.component.js.map
+    __metadata("design:paramtypes", [layers_1.LayerVectorComponent])
+], SourceGeoJSONComponent);
+exports.SourceGeoJSONComponent = SourceGeoJSONComponent;
+var SourceGeoJSONComponent_1;
+//# sourceMappingURL=geojson.component.js.map
