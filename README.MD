@@ -24,6 +24,7 @@ Here is a "minimal" map example that fetches tiles from OpenStreetMap and center
 ```
 
 ## Documentation
+
 The API is documented in `documentation/`
 
 ## Development
@@ -43,7 +44,7 @@ npm run lint
 Live example (reload on code changes):
 
 ```bash
-npm install -g angular-cli@1.0.0-beta.21 (May require sudo)
+npm install -g @angular/cli
 cd example
 npm install
 ng serve
