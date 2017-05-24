@@ -27,7 +27,7 @@
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
     "dependencies": {
-        "openlayers": "4.0.1"
+        "openlayers": "4.0.x || 4.1.x"
     },
     "devDependencies": {
         "@angular/common": "^2.4.1",
