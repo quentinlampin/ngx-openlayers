@@ -41,7 +41,7 @@ Exposed events are:
 
     - `click` (ol.MapBrowserEvent) - A click with no dragging. A double click will fire two of this.
     - `dblclick` (ol.MapBrowserEvent) - A true double click, with no dragging.
-    - `moveend` (ol.MapEvent) - Triggered after the map is moved.
+    - `onMoveEnd` (ol.MapEvent) - Triggered after the map is moved.
     - `pointerdrag` (ol.MapBrowserEvent) experimental - Triggered when a pointer is dragged.
     - `pointermove` (ol.MapBrowserEvent) - Triggered when a pointer is moved. Note that on touch devices this is triggered when the map is panned, so is not the same as mousemove.
     - `postcompose` (ol.render.Event) experimental
