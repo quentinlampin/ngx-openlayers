@@ -39,16 +39,16 @@ Available parameters are:
 
 Exposed events are:
 
-    - `click` (ol.MapBrowserEvent) - A click with no dragging. A double click will fire two of this.
-    - `dblclick` (ol.MapBrowserEvent) - A true double click, with no dragging.
+    - `onClick` (ol.MapBrowserEvent) - A click with no dragging. A double click will fire two of this.
+    - `onDblClick` (ol.MapBrowserEvent) - A true double click, with no dragging.
     - `onMoveEnd` (ol.MapEvent) - Triggered after the map is moved.
-    - `pointerdrag` (ol.MapBrowserEvent) experimental - Triggered when a pointer is dragged.
-    - `pointermove` (ol.MapBrowserEvent) - Triggered when a pointer is moved. Note that on touch devices this is triggered when the map is panned, so is not the same as mousemove.
-    - `postcompose` (ol.render.Event) experimental
-    - `postrender` (ol.MapEvent) experimental - Triggered after a map frame is rendered.
-    - `precompose` (ol.render.Event) experimental
-    - `propertychange` (ol.Object.Event) - Triggered when a property is changed.
-    - `singleclick` (ol.MapBrowserEvent) - A true single click with no dragging and no double click. Note that this event is delayed by 250 ms to ensure that it is not a double click.
+    - `onPointerDrag` (ol.MapBrowserEvent) experimental - Triggered when a pointer is dragged.
+    - `onPointerMove` (ol.MapBrowserEvent) - Triggered when a pointer is moved. Note that on touch devices this is triggered when the map is panned, so is not the same as mousemove.
+    - `onPostCompose` (ol.render.Event) experimental
+    - `onPostRender` (ol.MapEvent) experimental - Triggered after a map frame is rendered.
+    - `onPreCompose` (ol.render.Event) experimental
+    - `onPropertyChange` (ol.Object.Event) - Triggered when a property is changed.
+    - `onSingleClick` (ol.MapBrowserEvent) - A true single click with no dragging and no double click. Note that this event is delayed by 250 ms to ensure that it is not a double click.
 
 ### Important note
 
