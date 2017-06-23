@@ -13,4 +13,5 @@ __export(require("./dragrotateandzoom.component"));
 __export(require("./dragzoom.component"));
 __export(require("./mousewheelzoom.component"));
 __export(require("./pinchzoom.component"));
+__export(require("./draw.component"));
 //# sourceMappingURL=index.js.map
