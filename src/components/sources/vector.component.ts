@@ -15,6 +15,8 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   @Input() overlaps: boolean;
   @Input() useSpatialIndex: boolean;
   @Input() wrapX: boolean;
+  @Input() url: string;
+  @Input() format: ol.format.Feature;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);
