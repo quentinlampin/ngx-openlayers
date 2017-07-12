@@ -352,3 +352,53 @@ positioned on the map view. You can style overlay components like a regular comp
     </aol-content>
 </aol-overlay>
 ```
+
+## Interaction component
+
+### Default interactions
+
+You could add default interactions to the map (drag, zoom, etc) just adding the `aol-interaction-default` component. 
+
+```html
+<aol-map>
+	<aol-interaction-default></aol-interaction-default>
+</aol-map>
+```
+
+### Drawing interaction
+
+Interaction for drawing feature geometries. See http://openlayers.org/en/master/apidoc/ol.interaction.Draw.html
+
+Draw point
+```html
+<aol-map>
+	<df-interaction-draw type="Point"></df-interaction-draw>
+</aol-map>
+```
+
+
+Available parameters
+
+    - `clickTolerance` (`number` | `undefined`) The maximum distance in pixels between "down" and "up" for a "up" event to be considered a "click" event and actually add a point/vertex to the geometry being drawn. Default is 6 pixels. That value was chosen for the draw interaction to behave correctly on mouse as well as on touch devices.
+    - `features` (`ol.Collection.<ol.Feature>` | `undefined`) Destination collection for the drawn features.
+    - `source` (`ol.source.Vector` | `undefined`) Destination source for the drawn features.
+    - `snapTolerance` (`number` | `undefined`) Pixel distance for snapping to the drawing finish. Default is 12.
+    - `type` (`ol.geom.GeometryType`) Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon' or 'Circle'). Required.
+    - `maxPoints` (`number` | `undefined`) The number of points that can be drawn before a polygon ring or line string is finished. The default is no restriction.
+    - `minPoints` (`number` | `undefined`) The number of points that must be drawn before a polygon ring or line string can be finished. Default is 3 for polygon rings and 2 for line strings.
+    - `finishCondition` (`ol.EventsConditionType` | `undefined`) A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether the drawing can be finished.
+    - `style` (`ol.style.Style` | `Array.<ol.style.Style>` | `ol.StyleFunction` | `undefined`) Style for sketch features.
+    - `geometryFunction` (`ol.DrawGeometryFunctionType` | `undefined`) Function that is called when a geometry's coordinates are updated.
+    - `geometryName` (`string` | `undefined`) Geometry name to use for features created by the draw interaction.
+    - `condition` (`ol.EventsConditionType` | `undefined`) A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled. By default ol.events.condition.noModifierKeys, i.e. a click, adds a vertex or deactivates freehand drawing.
+    - `freehand` (`boolean` | `undefined`) Operate in freehand mode for lines, polygons, and circles. This makes the interaction always operate in freehand mode and takes precedence over any freehandCondition option.
+    - `freehandCondition` (`ol.EventsConditionType` | `undefined`) Condition that activates freehand drawing for lines and polygons. This function takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled. The default is ol.events.condition.shiftKeyOnly, meaning that the Shift key activates freehand drawing.
+    - `wrapX` (`boolean` | `undefined`) Wrap the world horizontally on the sketch overlay. Default is false.
+
+Exposed events are:
+
+    - onChange (ol.events.Event) - Generic change event. Triggered when the revision counter is increased.
+    - onChangeActive (ol.Object.Event)
+    - onDrawEnd (ol.interaction.Draw.Event) - Triggered upon feature draw end
+    - onDrawStart (ol.interaction.Draw.Event) - Triggered upon feature draw start
+    - onPropertyChange (ol.Object.Event) - Triggered when a property is changed.
