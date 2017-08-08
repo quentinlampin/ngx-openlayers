@@ -1,4 +1,53 @@
 language: node_js
 sudo: false
 node_js:
-- '4.2.1'
+- '6'
+
+env:
+- NPM_CONFIG_LOGLEVEL='warn'
+
+jobs:
+  include:
+  - stage: build library
+    before_script:
+    - rm -rf lib
+    script:
+    - npm pack
+    - mkdir -p lib
+    - cp *.tgz lib/
+    cache:
+      directories:
+      - lib
+  - stage: build demo
+    before_install:
+    - cd example
+    install:
+    - npm i
+    script:
+    - npm un -S angular2-openlayers
+    - cp -r ../lib .
+    - npm i -S lib/*.tgz
+    - npm run build
+    cache:
+      directories:
+      - lib
+  - stage: deploy library release
+    script: ignore
+    deploy:
+      - provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        file_glob: true
+        file: lib/*
+        skip_cleanup: true
+        on:
+          tags: true
+  - stage: deploy demo pages
+    script: ignore
+    deploy:
+      - provider: pages
+        local_dir: dist
+        skip_cleanup: true
+        github_token: $GITHUB_OAUTH_TOKEN
+        on:
+          tags: true
+
