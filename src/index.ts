@@ -17,7 +17,7 @@ import {
   DoubleClickZoomInteractionComponent, DragAndDropInteractionComponent, DragBoxInteractionComponent,
   DragPanInteractionComponent, DragZoomInteractionComponent, MouseWheelZoomInteractionComponent,
   PinchZoomInteractionComponent,
-  DrawInteractionComponent,
+  DrawInteractionComponent, SelectInteractionComponent,
   OverlayComponent,
   ContentComponent,
   AttributionComponent,
@@ -82,6 +82,7 @@ const COMPONENTS = [
   MouseWheelZoomInteractionComponent,
   PinchZoomInteractionComponent,
   DrawInteractionComponent,
+  SelectInteractionComponent,
 
   OverlayComponent,
   ContentComponent,
