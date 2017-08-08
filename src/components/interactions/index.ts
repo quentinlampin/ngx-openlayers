@@ -9,3 +9,4 @@ export * from './dragzoom.component';
 export * from './mousewheelzoom.component';
 export * from './pinchzoom.component';
 export * from './draw.component';
+export * from './translate.component';
