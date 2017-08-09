@@ -4,7 +4,7 @@ import {
   MapComponent, ViewComponent,
   LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent,
   SourceBingmapsComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
-  SourceGeoJSONComponent, FeatureComponent,
+  SourceGeoJSONComponent, SourceTileWMTSComponent, FeatureComponent,
   GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent,
   CollectionCoordinatesComponent, CoordinateComponent,
   StyleCircleComponent, StyleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent, StyleTextComponent,
@@ -12,7 +12,7 @@ import {
   ControlOverviewMapComponent, ControlRotateComponent, ControlScaleLineComponent, ControlZoomComponent, ControlZoomSliderComponent,
   ControlZoomToExtentComponent, DefaultControlComponent, ControlComponent,
   FormatMVTComponent,
-  TileGridComponent,
+  TileGridComponent, TileGridWMTSComponent,
   DefaultInteractionComponent, DragRotateInteractionComponent, DragRotateAndZoomInteractionComponent,
   DoubleClickZoomInteractionComponent, DragAndDropInteractionComponent, DragBoxInteractionComponent,
   DragPanInteractionComponent, DragZoomInteractionComponent, MouseWheelZoomInteractionComponent,
@@ -40,6 +40,7 @@ const COMPONENTS = [
   SourceXYZComponent,
   SourceVectorTileComponent,
   SourceTileWMSComponent,
+  SourceTileWMTSComponent,
   SourceGeoJSONComponent,
   FeatureComponent,
   GeometryLinestringComponent,
@@ -69,6 +70,7 @@ const COMPONENTS = [
 
   FormatMVTComponent,
   TileGridComponent,
+  TileGridWMTSComponent,
 
   DefaultInteractionComponent,
   DoubleClickZoomInteractionComponent,

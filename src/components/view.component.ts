@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { View, Extent } from 'openlayers';
+import { View, Extent, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 
 @Component({
@@ -22,6 +22,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input() rotation: number;
   @Input() zoom: number;
   @Input() zoomFactor: number;
+  @Input() center: Coordinate;
 
   constructor(private host: MapComponent) {
   }
