@@ -1,4 +1,4 @@
-# angular2-openlayers [![Build Status](https://travis-ci.org/quentin-ol/angular2-openlayers.svg?branch=master)](https://travis-ci.org/quentin-ol/angular2-openlayers)
+# angular2-openlayers [![Build Status](https://travis-ci.org/quentin-ol/angular2-openlayers.svg?branch=master)](https://travis-ci.org/quentin-ol/angular2-openlayers)[![Join the chat at https://gitter.im/angular2-openlayers](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular2-openlayers?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Installation
 
@@ -26,6 +26,10 @@ Here is a "minimal" map example that fetches tiles from OpenStreetMap and center
 ## Documentation
 
 The API is documented in `documentation/`
+
+## Getting Help
+
+Join us at our Gitter: [https://gitter.im/angular2-openlayers](https://gitter.im/angular2-openlayers)
 
 ## Development
 
