@@ -1,4 +1,4 @@
-﻿# angular2-openlayers
+# angular2-openlayers [![Build Status](https://travis-ci.org/quentin-ol/angular2-openlayers.svg?branch=master)](https://travis-ci.org/quentin-ol/angular2-openlayers)
 
 ## Installation
 
