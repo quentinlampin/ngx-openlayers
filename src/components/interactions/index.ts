@@ -10,4 +10,5 @@ export * from './mousewheelzoom.component';
 export * from './pinchzoom.component';
 export * from './draw.component';
 export * from './select.component';
+export * from './translate.component';
 export * from './modify.component';
