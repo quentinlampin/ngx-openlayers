@@ -62,4 +62,4 @@ Live example will be viewable at locahost:4200
 
 ## License
 
-MPL-2.0 © [Quentin Lampin](quentin.lampin@orange.com)
+MPL-2.0 - Quentin Lampin <quentin.lampin@orange.com> Copyright 2017 Orange
