@@ -1,6 +1,6 @@
 {
-  "name": "angular2-openlayers",
-  "version": "0.6.8",
+  "name": "ngx-openlayers",
+  "version": "0.6.9",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "ngc && karma start",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/quentin-ol/angular2-openlayers"
+    "url": "https://github.com/quentin-ol/ngx-openlayers"
   },
   "author": {
     "name": "Quentin Lampin",
@@ -18,11 +18,14 @@
   "keywords": [
     "angular",
     "angular2",
-    "openlayers"
+    "angular4",
+    "openlayers",
+    "openlayers3",
+    "openlayers4"
   ],
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/quentin-ol/angular2-openlayers/issues"
+    "url": "https://github.com/quentin-ol/ngx-openlayers/issues"
   },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

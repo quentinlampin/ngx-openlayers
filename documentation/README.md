@@ -1,4 +1,4 @@
-# angular2-openlayers documentation
+# ngx-openlayers documentation
 
 ## Foreword
 
@@ -16,7 +16,7 @@ OpenLayers objects is built in a declarative Angular fashion.
 
 ## Map Component
 
-The `MapComponent`(`aol-map`) is the root component of Angular2 OpenLayers maps.
+The `MapComponent`(`aol-map`) is the root component of ngx OpenLayers maps.
 
 Available parameters are:
 
