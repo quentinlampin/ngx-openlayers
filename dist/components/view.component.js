@@ -62,6 +62,7 @@ ViewComponent.propDecorators = {
     'rotation': [{ type: core_1.Input },],
     'zoom': [{ type: core_1.Input },],
     'zoomFactor': [{ type: core_1.Input },],
+    'center': [{ type: core_1.Input },],
 };
 exports.ViewComponent = ViewComponent;
 //# sourceMappingURL=view.component.js.map

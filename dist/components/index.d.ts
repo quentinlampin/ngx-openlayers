@@ -13,4 +13,5 @@ export * from './geometry.components';
 export * from './map.component';
 export * from './overlay.component';
 export * from './tilegrid.component';
+export * from './tilegridwmts.component';
 export * from './view.component';

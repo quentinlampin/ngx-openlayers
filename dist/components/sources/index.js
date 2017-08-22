@@ -11,4 +11,5 @@ __export(require("./vectortile.component"));
 __export(require("./xyz.component"));
 __export(require("./tilewms.component"));
 __export(require("./geojson.component"));
+__export(require("./tilewmts.component"));
 //# sourceMappingURL=index.js.map

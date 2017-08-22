@@ -23,7 +23,7 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4",
-    "ngx-openlayers": "0.6.8"
+    "ngx-openlayers": "0.6.9"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

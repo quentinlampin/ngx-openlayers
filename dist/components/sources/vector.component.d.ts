@@ -8,6 +8,8 @@ export declare class SourceVectorComponent extends SourceComponent implements On
     overlaps: boolean;
     useSpatialIndex: boolean;
     wrapX: boolean;
+    url: string;
+    format: ol.format.Feature;
     constructor(layer: LayerVectorComponent);
     ngOnInit(): void;
 }

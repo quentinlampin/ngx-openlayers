@@ -18,5 +18,6 @@ __export(require("./geometry.components"));
 __export(require("./map.component"));
 __export(require("./overlay.component"));
 __export(require("./tilegrid.component"));
+__export(require("./tilegridwmts.component"));
 __export(require("./view.component"));
 //# sourceMappingURL=index.js.map

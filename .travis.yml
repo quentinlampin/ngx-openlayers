@@ -24,7 +24,7 @@ jobs:
     install:
     - npm i
     script:
-    - npm un -S angular2-openlayers
+    - npm un -S ngx-openlayers
     - cp -r ../lib .
     - npm i -S lib/*.tgz
     - npm run build

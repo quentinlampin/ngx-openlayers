@@ -42,6 +42,8 @@ SourceVectorComponent.propDecorators = {
     'overlaps': [{ type: core_1.Input },],
     'useSpatialIndex': [{ type: core_1.Input },],
     'wrapX': [{ type: core_1.Input },],
+    'url': [{ type: core_1.Input },],
+    'format': [{ type: core_1.Input },],
 };
 exports.SourceVectorComponent = SourceVectorComponent;
 //# sourceMappingURL=vector.component.js.map
