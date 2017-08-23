@@ -17,7 +17,7 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   @Input() wrapX: boolean;
   @Input() url: string;
   @Input() format: ol.format.Feature;
-  @Input() loadingstrategy: ol.loadingstrategy;
+  @Input() loadingstrategy: ol.LoadingStrategy;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);
