@@ -30,7 +30,7 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
         this.instance.on('propertychange', (event: interaction.Translate.Event) => this.onPropertyChange.emit(event));
         this.instance.on('translateend', (event: interaction.Translate.Event) => this.onTranslateEnd.emit(event));
         this.instance.on('translatestart', (event: interaction.Translate.Event) => this.onTranslateStart.emit(event));
-        this.instance.on('translating', (event: interaction.Translate.Event) => this.onTranslating.emit(event));        
+        this.instance.on('translating', (event: interaction.Translate.Event) => this.onTranslating.emit(event));
 
         this.map.instance.addInteraction(this.instance);
     }
