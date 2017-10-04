@@ -12,9 +12,10 @@ jobs:
     before_script:
     - rm -rf lib
     script:
-    - npm pack
+    - rm -rf ./dist
+    - npm run build:pack
     - mkdir -p lib
-    - cp *.tgz lib/
+    - cp ./dist/*.tgz lib/
     cache:
       directories:
       - lib

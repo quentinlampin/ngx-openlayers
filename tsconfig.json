@@ -12,7 +12,8 @@
         "outDir": "./dist"
     },
     "files": [
-        "src/index.ts"
+        "src/index.ts",
+        "testing/index.ts"
     ],
     "exclude": [
         "node_modules",
