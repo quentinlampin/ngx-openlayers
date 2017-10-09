@@ -23,6 +23,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input() zoom: number;
   @Input() zoomFactor: number;
   @Input() center: Coordinate;
+  @Input() projection: string;
 
   constructor(private host: MapComponent) {
   }
