@@ -19,6 +19,7 @@ export declare class ViewComponent implements OnInit, OnChanges, OnDestroy {
     zoom: number;
     zoomFactor: number;
     center: Coordinate;
+    projection: string;
     constructor(host: MapComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;

@@ -1,6 +1,6 @@
 /// <reference types="openlayers" />
 import { OnInit } from '@angular/core';
-import { source, Size, TileUrlFunctionType } from 'openlayers';
+import { source, Size, TileUrlFunctionType, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 export declare class SourceXYZComponent extends SourceComponent implements OnInit {
@@ -12,6 +12,7 @@ export declare class SourceXYZComponent extends SourceComponent implements OnIni
     reprojectionErrorThreshold: number;
     minZoom: number;
     maxZoom: number;
+    tileLoadFunction?: TileLoadFunctionType;
     tilePixelRatio: number;
     tileSize: number | Size;
     tileUrlFunction: TileUrlFunctionType;
