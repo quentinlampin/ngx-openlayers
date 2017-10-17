@@ -47,6 +47,7 @@ SourceXYZComponent.propDecorators = {
     'reprojectionErrorThreshold': [{ type: core_1.Input },],
     'minZoom': [{ type: core_1.Input },],
     'maxZoom': [{ type: core_1.Input },],
+    'tileLoadFunction': [{ type: core_1.Input },],
     'tilePixelRatio': [{ type: core_1.Input },],
     'tileSize': [{ type: core_1.Input },],
     'tileUrlFunction': [{ type: core_1.Input },],

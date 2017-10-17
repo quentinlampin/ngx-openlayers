@@ -10,6 +10,7 @@ export declare class SourceVectorComponent extends SourceComponent implements On
     wrapX: boolean;
     url: string;
     format: ol.format.Feature;
+    strategy: ol.LoadingStrategy;
     constructor(layer: LayerVectorComponent);
     ngOnInit(): void;
 }

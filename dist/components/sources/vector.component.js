@@ -44,6 +44,7 @@ SourceVectorComponent.propDecorators = {
     'wrapX': [{ type: core_1.Input },],
     'url': [{ type: core_1.Input },],
     'format': [{ type: core_1.Input },],
+    'strategy': [{ type: core_1.Input },],
 };
 exports.SourceVectorComponent = SourceVectorComponent;
 //# sourceMappingURL=vector.component.js.map
