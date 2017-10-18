@@ -1,5 +1,5 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, Size, TileUrlFunctionType, TileLoadFunctionType } from 'openlayers';
+import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 
@@ -19,6 +19,7 @@ export class SourceXYZComponent extends SourceComponent implements OnInit {
   @Input() reprojectionErrorThreshold: number;
   @Input() minZoom: number;
   @Input() maxZoom: number;
+  @Input() tileGrid: tilegrid.TileGrid;
   @Input() tileLoadFunction?: TileLoadFunctionType;
   @Input() tilePixelRatio: number;
   @Input() tileSize: number|Size;
