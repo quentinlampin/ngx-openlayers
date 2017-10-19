@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Host, Input, OnInit, forwardRef, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
@@ -10,7 +10,7 @@ import { SourceComponent } from './source.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }
   ]
 })
-export class SourceXYZComponent extends SourceComponent implements OnInit {
+export class SourceXYZComponent extends SourceComponent implements OnInit, OnChanges {
   instance: source.XYZ;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
@@ -36,5 +36,24 @@ export class SourceXYZComponent extends SourceComponent implements OnInit {
     // console.log('creating ol.source.XYZ instance with:', this);
     this.instance = new source.XYZ(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let properties: {[index: string]: any} = {};
+
+    if (!this.instance) {
+      return;
+    }
+    for (let key in changes) {
+      if (changes.hasOwnProperty(key)) {
+        properties[key] = changes[key].currentValue;
+      }
+    }
+
+    this.instance.setProperties(properties, false);
+    if (changes.hasOwnProperty('url')) {
+      this.instance = new source.XYZ(this);
+      this.host.instance.setSource(this.instance);
+    }
   }
 }
