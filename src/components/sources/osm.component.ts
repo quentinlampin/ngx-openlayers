@@ -1,4 +1,4 @@
-import { Component, Host, OnInit, forwardRef, Input } from '@angular/core';
+import { Component, Host, forwardRef, Input, AfterContentInit } from '@angular/core';
 import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
@@ -11,7 +11,7 @@ import { SourceXYZComponent } from './xyz.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }
   ]
 })
-export class SourceOsmComponent extends SourceXYZComponent implements OnInit {
+export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
   instance: source.OSM;
 
   @Input() attributions: AttributionLike;
@@ -28,8 +28,11 @@ export class SourceOsmComponent extends SourceXYZComponent implements OnInit {
     super(layer);
   }
 
-  ngOnInit() {
-    this.instance = new source.OSM(this);
-    this.host.instance.setSource(this.instance);
+  ngAfterContentInit() {
+    if (this.tileGridXYZ) {
+      this.tileGrid = this.tileGridXYZ.instance;
+      this.instance = new source.OSM(this);
+      this.host.instance.setSource(this.instance);
+    }
   }
 }
