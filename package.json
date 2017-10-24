@@ -1,6 +1,6 @@
 {
     "name": "ngx-openlayers",
-    "version": "0.7.11",
+    "version": "0.8.11",
     "scripts": {
         "lint": "tslint src/**/*.ts",
         "test": "ngc && karma start",
