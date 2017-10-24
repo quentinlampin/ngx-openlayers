@@ -1,4 +1,4 @@
-import { Component, Host, Input, AfterContentInit, forwardRef, ContentChild } from '@angular/core';
+import { Component, Host, Input, AfterContentInit, forwardRef, OnChanges, ContentChild, SimpleChanges } from '@angular/core';
 import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
@@ -11,7 +11,7 @@ import { TileGridComponent } from '../tilegrid.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }
   ]
 })
-export class SourceXYZComponent extends SourceComponent implements AfterContentInit {
+export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: source.XYZ;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
@@ -38,6 +38,25 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   ngAfterContentInit() {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
+      this.instance = new source.XYZ(this);
+      this.host.instance.setSource(this.instance);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let properties: {[index: string]: any} = {};
+
+    if (!this.instance) {
+      return;
+    }
+    for (let key in changes) {
+      if (changes.hasOwnProperty(key)) {
+        properties[key] = changes[key].currentValue;
+      }
+    }
+
+    this.instance.setProperties(properties, false);
+    if (changes.hasOwnProperty('url')) {
       this.instance = new source.XYZ(this);
       this.host.instance.setSource(this.instance);
     }

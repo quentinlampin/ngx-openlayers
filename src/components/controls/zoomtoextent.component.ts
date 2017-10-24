@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { control, Extent } from 'openlayers';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,6 +8,11 @@ import { MapComponent } from '../map.component';
 })
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
   instance: control.ZoomToExtent;
+
+  @Input() className: string;
+  @Input() label: (string | Node);
+  @Input() tipLabel: string;
+  @Input() extent: Extent;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomtoextent');
