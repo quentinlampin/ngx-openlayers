@@ -2,6 +2,7 @@ import { Component, Host, OnInit, forwardRef, Input } from '@angular/core';
 import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import { SourceXYZComponent } from './xyz.component';
 
 @Component({
   selector: 'aol-source-osm',
@@ -10,7 +11,7 @@ import { SourceComponent } from './source.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }
   ]
 })
-export class SourceOsmComponent extends SourceComponent implements OnInit {
+export class SourceOsmComponent extends SourceXYZComponent implements OnInit {
   instance: source.OSM;
 
   @Input() attributions: AttributionLike;
