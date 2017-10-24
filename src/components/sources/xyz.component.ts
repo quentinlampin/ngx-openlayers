@@ -1,7 +1,8 @@
-import { Component, Host, Input, OnInit, forwardRef, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Host, Input, AfterContentInit, forwardRef, OnChanges, ContentChild, SimpleChanges } from '@angular/core';
 import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import { TileGridComponent } from '../tilegrid.component';
 
 @Component({
   selector: 'aol-source-xyz',
@@ -10,7 +11,7 @@ import { SourceComponent } from './source.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }
   ]
 })
-export class SourceXYZComponent extends SourceComponent implements OnInit, OnChanges {
+export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: source.XYZ;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
@@ -28,14 +29,18 @@ export class SourceXYZComponent extends SourceComponent implements OnInit, OnCha
   @Input() urls: string[];
   @Input() wrapX: boolean;
 
+  @ContentChild(TileGridComponent) tileGridXYZ: TileGridComponent;
+
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);
   }
 
-  ngOnInit() {
-    // console.log('creating ol.source.XYZ instance with:', this);
-    this.instance = new source.XYZ(this);
-    this.host.instance.setSource(this.instance);
+  ngAfterContentInit() {
+    if (this.tileGridXYZ) {
+      this.tileGrid = this.tileGridXYZ.instance;
+      this.instance = new source.XYZ(this);
+      this.host.instance.setSource(this.instance);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
