@@ -23,9 +23,9 @@ var SourceOsmComponent = (function (_super) {
     SourceOsmComponent.prototype.ngAfterContentInit = function () {
         if (this.tileGridXYZ) {
             this.tileGrid = this.tileGridXYZ.instance;
-            this.instance = new openlayers_1.source.OSM(this);
-            this.host.instance.setSource(this.instance);
         }
+        this.instance = new openlayers_1.source.OSM(this);
+        this.host.instance.setSource(this.instance);
     };
     return SourceOsmComponent;
 }(xyz_component_1.SourceXYZComponent));
