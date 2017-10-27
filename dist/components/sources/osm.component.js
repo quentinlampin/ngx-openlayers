@@ -14,17 +14,21 @@ var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var source_component_1 = require("./source.component");
+var xyz_component_1 = require("./xyz.component");
 var SourceOsmComponent = (function (_super) {
     __extends(SourceOsmComponent, _super);
     function SourceOsmComponent(layer) {
         return _super.call(this, layer) || this;
     }
-    SourceOsmComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.source.OSM(this);
-        this.host.instance.setSource(this.instance);
+    SourceOsmComponent.prototype.ngAfterContentInit = function () {
+        if (this.tileGridXYZ) {
+            this.tileGrid = this.tileGridXYZ.instance;
+            this.instance = new openlayers_1.source.OSM(this);
+            this.host.instance.setSource(this.instance);
+        }
     };
     return SourceOsmComponent;
-}(source_component_1.SourceComponent));
+}(xyz_component_1.SourceXYZComponent));
 SourceOsmComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'aol-source-osm',

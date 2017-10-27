@@ -28,5 +28,13 @@ ControlZoomComponent.decorators = [
 ControlZoomComponent.ctorParameters = function () { return [
     { type: map_component_1.MapComponent, },
 ]; };
+ControlZoomComponent.propDecorators = {
+    'duration': [{ type: core_1.Input },],
+    'zoomInLabel': [{ type: core_1.Input },],
+    'zoomOutLabel': [{ type: core_1.Input },],
+    'zoomInTipLabel': [{ type: core_1.Input },],
+    'zoomOutTipLabel': [{ type: core_1.Input },],
+    'delta': [{ type: core_1.Input },],
+};
 exports.ControlZoomComponent = ControlZoomComponent;
 //# sourceMappingURL=zoom.component.js.map

@@ -1,9 +1,10 @@
 /// <reference types="openlayers" />
-import { OnInit } from '@angular/core';
-import { source, Size, TileUrlFunctionType, TileLoadFunctionType } from 'openlayers';
+import { AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
+import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
-export declare class SourceXYZComponent extends SourceComponent implements OnInit {
+import { TileGridComponent } from '../tilegrid.component';
+export declare class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
     instance: source.XYZ;
     cacheSize: number;
     crossOrigin: string;
@@ -12,6 +13,7 @@ export declare class SourceXYZComponent extends SourceComponent implements OnIni
     reprojectionErrorThreshold: number;
     minZoom: number;
     maxZoom: number;
+    tileGrid: tilegrid.TileGrid;
     tileLoadFunction?: TileLoadFunctionType;
     tilePixelRatio: number;
     tileSize: number | Size;
@@ -19,6 +21,8 @@ export declare class SourceXYZComponent extends SourceComponent implements OnIni
     url: string;
     urls: string[];
     wrapX: boolean;
+    tileGridXYZ: TileGridComponent;
     constructor(layer: LayerTileComponent);
-    ngOnInit(): void;
+    ngAfterContentInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
 }

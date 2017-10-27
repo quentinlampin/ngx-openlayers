@@ -12,4 +12,5 @@ __export(require("./xyz.component"));
 __export(require("./tilewms.component"));
 __export(require("./geojson.component"));
 __export(require("./tilewmts.component"));
+__export(require("./imagewms.component"));
 //# sourceMappingURL=index.js.map

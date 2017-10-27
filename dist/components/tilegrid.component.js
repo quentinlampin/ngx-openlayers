@@ -6,7 +6,20 @@ var TileGridComponent = (function () {
     function TileGridComponent() {
     }
     TileGridComponent.prototype.ngOnInit = function () {
-        this.instance = openlayers_1.tilegrid.createXYZ(this);
+        if (!this.resolutions) {
+            this.instance = openlayers_1.tilegrid.createXYZ(this);
+        }
+        else {
+            this.instance = new openlayers_1.tilegrid.TileGrid(this);
+        }
+    };
+    TileGridComponent.prototype.ngOnChanges = function (changes) {
+        if (!this.resolutions) {
+            this.instance = openlayers_1.tilegrid.createXYZ(this);
+        }
+        else {
+            this.instance = new openlayers_1.tilegrid.TileGrid(this);
+        }
     };
     return TileGridComponent;
 }());
@@ -23,6 +36,8 @@ TileGridComponent.propDecorators = {
     'maxZoom': [{ type: core_1.Input },],
     'minZoom': [{ type: core_1.Input },],
     'tileSize': [{ type: core_1.Input },],
+    'origin': [{ type: core_1.Input },],
+    'resolutions': [{ type: core_1.Input },],
 };
 exports.TileGridComponent = TileGridComponent;
 //# sourceMappingURL=tilegrid.component.js.map

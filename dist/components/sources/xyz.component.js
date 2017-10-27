@@ -14,15 +14,34 @@ var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var source_component_1 = require("./source.component");
+var tilegrid_component_1 = require("../tilegrid.component");
 var SourceXYZComponent = (function (_super) {
     __extends(SourceXYZComponent, _super);
     function SourceXYZComponent(layer) {
         return _super.call(this, layer) || this;
     }
-    SourceXYZComponent.prototype.ngOnInit = function () {
-        // console.log('creating ol.source.XYZ instance with:', this);
-        this.instance = new openlayers_1.source.XYZ(this);
-        this.host.instance.setSource(this.instance);
+    SourceXYZComponent.prototype.ngAfterContentInit = function () {
+        if (this.tileGridXYZ) {
+            this.tileGrid = this.tileGridXYZ.instance;
+            this.instance = new openlayers_1.source.XYZ(this);
+            this.host.instance.setSource(this.instance);
+        }
+    };
+    SourceXYZComponent.prototype.ngOnChanges = function (changes) {
+        var properties = {};
+        if (!this.instance) {
+            return;
+        }
+        for (var key in changes) {
+            if (changes.hasOwnProperty(key)) {
+                properties[key] = changes[key].currentValue;
+            }
+        }
+        this.instance.setProperties(properties, false);
+        if (changes.hasOwnProperty('url')) {
+            this.instance = new openlayers_1.source.XYZ(this);
+            this.host.instance.setSource(this.instance);
+        }
     };
     return SourceXYZComponent;
 }(source_component_1.SourceComponent));
@@ -47,6 +66,7 @@ SourceXYZComponent.propDecorators = {
     'reprojectionErrorThreshold': [{ type: core_1.Input },],
     'minZoom': [{ type: core_1.Input },],
     'maxZoom': [{ type: core_1.Input },],
+    'tileGrid': [{ type: core_1.Input },],
     'tileLoadFunction': [{ type: core_1.Input },],
     'tilePixelRatio': [{ type: core_1.Input },],
     'tileSize': [{ type: core_1.Input },],
@@ -54,6 +74,7 @@ SourceXYZComponent.propDecorators = {
     'url': [{ type: core_1.Input },],
     'urls': [{ type: core_1.Input },],
     'wrapX': [{ type: core_1.Input },],
+    'tileGridXYZ': [{ type: core_1.ContentChild, args: [tilegrid_component_1.TileGridComponent,] },],
 };
 exports.SourceXYZComponent = SourceXYZComponent;
 //# sourceMappingURL=xyz.component.js.map

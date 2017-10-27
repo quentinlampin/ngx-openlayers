@@ -10,6 +10,7 @@ __export(require("./components"));
 var COMPONENTS = [
     components_1.MapComponent,
     components_1.ViewComponent,
+    components_1.LayerImageComponent,
     components_1.LayerTileComponent,
     components_1.LayerVectorComponent,
     components_1.LayerVectorTileComponent,
@@ -21,6 +22,7 @@ var COMPONENTS = [
     components_1.SourceTileWMSComponent,
     components_1.SourceTileWMTSComponent,
     components_1.SourceGeoJSONComponent,
+    components_1.SourceImageWMSComponent,
     components_1.FeatureComponent,
     components_1.GeometryLinestringComponent,
     components_1.GeometryPointComponent,

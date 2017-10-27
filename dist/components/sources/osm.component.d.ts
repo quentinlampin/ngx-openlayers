@@ -1,9 +1,9 @@
 /// <reference types="openlayers" />
-import { OnInit } from '@angular/core';
+import { AfterContentInit } from '@angular/core';
 import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
-import { SourceComponent } from './source.component';
-export declare class SourceOsmComponent extends SourceComponent implements OnInit {
+import { SourceXYZComponent } from './xyz.component';
+export declare class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
     instance: source.OSM;
     attributions: AttributionLike;
     cacheSize: number;
@@ -15,5 +15,5 @@ export declare class SourceOsmComponent extends SourceComponent implements OnIni
     url: string;
     wrapX: boolean;
     constructor(layer: LayerTileComponent);
-    ngOnInit(): void;
+    ngAfterContentInit(): void;
 }

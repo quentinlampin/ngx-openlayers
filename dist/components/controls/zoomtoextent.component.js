@@ -28,5 +28,11 @@ ControlZoomToExtentComponent.decorators = [
 ControlZoomToExtentComponent.ctorParameters = function () { return [
     { type: map_component_1.MapComponent, },
 ]; };
+ControlZoomToExtentComponent.propDecorators = {
+    'className': [{ type: core_1.Input },],
+    'label': [{ type: core_1.Input },],
+    'tipLabel': [{ type: core_1.Input },],
+    'extent': [{ type: core_1.Input },],
+};
 exports.ControlZoomToExtentComponent = ControlZoomToExtentComponent;
 //# sourceMappingURL=zoomtoextent.component.js.map
