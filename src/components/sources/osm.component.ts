@@ -31,8 +31,8 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   ngAfterContentInit() {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
-      this.instance = new source.OSM(this);
-      this.host.instance.setSource(this.instance);
     }
+    this.instance = new source.OSM(this);
+    this.host.instance.setSource(this.instance);
   }
 }
