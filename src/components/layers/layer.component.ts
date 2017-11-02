@@ -1,6 +1,7 @@
 import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { layer, Extent } from 'openlayers';
 import { MapComponent } from '../map.component';
+import { LayerGroupComponent } from './layergroup.component';
 
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   public instance: any;
@@ -13,15 +14,15 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() minResolution: number;
   @Input() maxResolution: number;
 
-  constructor(protected host: MapComponent) {
+  constructor(protected host: LayerGroupComponent | MapComponent) {
   }
 
   ngOnInit() {
-    this.host.instance.addLayer(this.instance);
+    this.host.instance.getLayers().push(this.instance);
   }
 
   ngOnDestroy() {
-    this.host.instance.removeLayer(this.instance);
+    this.host.instance.getLayers().remove(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges) {
