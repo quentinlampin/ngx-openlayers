@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Optional } from '@angular/core';
 import { layer, style, StyleFunction } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
+import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
   selector: 'aol-layer-vectortile',
@@ -18,8 +19,9 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit {
   @Input() updateWhileInteracting: boolean;
   @Input() visible: boolean;
 
-  constructor(map: MapComponent) {
-    super(map);
+  constructor(map: MapComponent,
+              @Optional() group?: LayerGroupComponent) {
+    super(group || map);
   }
 
   ngOnInit() {

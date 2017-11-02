@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, Optional } from '@angular/core';
 import { layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
+import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
   selector: 'aol-layer-vector',
@@ -12,8 +13,9 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   @Input() renderBuffer: number;
 
-  constructor(map: MapComponent) {
-    super(map);
+  constructor(map: MapComponent,
+              @Optional() group?: LayerGroupComponent) {
+    super(group || map);
   }
 
   ngOnInit() {

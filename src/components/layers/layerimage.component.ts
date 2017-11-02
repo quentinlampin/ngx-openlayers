@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional } from '@angular/core';
 import { Extent, layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
+import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
   selector: 'aol-layer-image',
@@ -17,8 +18,9 @@ export class LayerImageComponent extends LayerComponent implements OnInit {
   @Input() maxResolution: number;
   @Input() zIndex: number;
 
-  constructor(map: MapComponent) {
-    super(map);
+  constructor(map: MapComponent,
+              @Optional() group?: LayerGroupComponent) {
+    super(group || map);
   }
 
   ngOnInit() {
