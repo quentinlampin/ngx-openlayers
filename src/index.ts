@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MapComponent, ViewComponent,
-  LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent, LayerImageComponent,
+  LayerGroupComponent, LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent, LayerImageComponent,
   SourceBingmapsComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
   SourceGeoJSONComponent, SourceTileWMTSComponent, SourceImageWMSComponent, FeatureComponent,
   GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent,
@@ -30,6 +30,7 @@ const COMPONENTS = [
 
   ViewComponent,
 
+  LayerGroupComponent,
   LayerImageComponent,
   LayerTileComponent,
   LayerVectorComponent,
