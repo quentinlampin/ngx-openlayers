@@ -38,9 +38,9 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   ngAfterContentInit() {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
-      this.instance = new source.XYZ(this);
-      this.host.instance.setSource(this.instance);
     }
+    this.instance = new source.XYZ(this);
+    this.host.instance.setSource(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges) {
