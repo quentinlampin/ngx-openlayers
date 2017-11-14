@@ -14,10 +14,11 @@ var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
 var layer_component_1 = require("./layer.component");
+var layergroup_component_1 = require("./layergroup.component");
 var LayerTileComponent = (function (_super) {
     __extends(LayerTileComponent, _super);
-    function LayerTileComponent(map) {
-        return _super.call(this, map) || this;
+    function LayerTileComponent(map, group) {
+        return _super.call(this, group || map) || this;
     }
     LayerTileComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.layer.Tile instance with:', this);
@@ -35,6 +36,7 @@ LayerTileComponent.decorators = [
 /** @nocollapse */
 LayerTileComponent.ctorParameters = function () { return [
     { type: map_component_1.MapComponent, },
+    { type: layergroup_component_1.LayerGroupComponent, decorators: [{ type: core_1.Optional },] },
 ]; };
 LayerTileComponent.propDecorators = {
     'preload': [{ type: core_1.Input },],

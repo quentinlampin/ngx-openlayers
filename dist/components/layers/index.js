@@ -4,6 +4,7 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./layer.component"));
+__export(require("./layergroup.component"));
 __export(require("./layerimage.component"));
 __export(require("./layertile.component"));
 __export(require("./layervector.component"));

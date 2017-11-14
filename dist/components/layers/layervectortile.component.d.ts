@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { layer, style, StyleFunction } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
+import { LayerGroupComponent } from './layergroup.component';
 export declare class LayerVectorTileComponent extends LayerComponent implements OnInit {
     renderBuffer: number;
     renderMode: layer.VectorTileRenderType | string;
@@ -11,6 +12,6 @@ export declare class LayerVectorTileComponent extends LayerComponent implements 
     updateWhileAnimating: boolean;
     updateWhileInteracting: boolean;
     visible: boolean;
-    constructor(map: MapComponent);
+    constructor(map: MapComponent, group?: LayerGroupComponent);
     ngOnInit(): void;
 }

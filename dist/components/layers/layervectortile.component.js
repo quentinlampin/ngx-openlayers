@@ -14,10 +14,11 @@ var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
 var layer_component_1 = require("./layer.component");
+var layergroup_component_1 = require("./layergroup.component");
 var LayerVectorTileComponent = (function (_super) {
     __extends(LayerVectorTileComponent, _super);
-    function LayerVectorTileComponent(map) {
-        return _super.call(this, map) || this;
+    function LayerVectorTileComponent(map, group) {
+        return _super.call(this, group || map) || this;
     }
     LayerVectorTileComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.layer.VectorTile instance with:', this);
@@ -35,6 +36,7 @@ LayerVectorTileComponent.decorators = [
 /** @nocollapse */
 LayerVectorTileComponent.ctorParameters = function () { return [
     { type: map_component_1.MapComponent, },
+    { type: layergroup_component_1.LayerGroupComponent, decorators: [{ type: core_1.Optional },] },
 ]; };
 LayerVectorTileComponent.propDecorators = {
     'renderBuffer': [{ type: core_1.Input },],

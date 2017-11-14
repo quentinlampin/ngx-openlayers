@@ -10,6 +10,8 @@ __export(require("./components"));
 var COMPONENTS = [
     components_1.MapComponent,
     components_1.ViewComponent,
+    components_1.GraticuleComponent,
+    components_1.LayerGroupComponent,
     components_1.LayerImageComponent,
     components_1.LayerTileComponent,
     components_1.LayerVectorComponent,

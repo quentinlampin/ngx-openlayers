@@ -7,10 +7,10 @@ var LayerComponent = (function () {
         this.componentType = 'layer';
     }
     LayerComponent.prototype.ngOnInit = function () {
-        this.host.instance.addLayer(this.instance);
+        this.host.instance.getLayers().push(this.instance);
     };
     LayerComponent.prototype.ngOnDestroy = function () {
-        this.host.instance.removeLayer(this.instance);
+        this.host.instance.getLayers().remove(this.instance);
     };
     LayerComponent.prototype.ngOnChanges = function (changes) {
         var properties = {};

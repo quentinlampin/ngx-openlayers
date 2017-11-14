@@ -15,6 +15,7 @@ __export(require("./content.component"));
 __export(require("./coordinate.component"));
 __export(require("./feature.component"));
 __export(require("./geometry.components"));
+__export(require("./graticule.component"));
 __export(require("./map.component"));
 __export(require("./overlay.component"));
 __export(require("./tilegrid.component"));

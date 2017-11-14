@@ -23,9 +23,9 @@ var SourceXYZComponent = (function (_super) {
     SourceXYZComponent.prototype.ngAfterContentInit = function () {
         if (this.tileGridXYZ) {
             this.tileGrid = this.tileGridXYZ.instance;
-            this.instance = new openlayers_1.source.XYZ(this);
-            this.host.instance.setSource(this.instance);
         }
+        this.instance = new openlayers_1.source.XYZ(this);
+        this.host.instance.setSource(this.instance);
     };
     SourceXYZComponent.prototype.ngOnChanges = function (changes) {
         var properties = {};

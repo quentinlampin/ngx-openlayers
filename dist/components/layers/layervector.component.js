@@ -14,10 +14,11 @@ var core_1 = require("@angular/core");
 var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
 var layer_component_1 = require("./layer.component");
+var layergroup_component_1 = require("./layergroup.component");
 var LayerVectorComponent = (function (_super) {
     __extends(LayerVectorComponent, _super);
-    function LayerVectorComponent(map) {
-        return _super.call(this, map) || this;
+    function LayerVectorComponent(map, group) {
+        return _super.call(this, group || map) || this;
     }
     LayerVectorComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.layer.Vector instance with:', this);
@@ -35,6 +36,7 @@ LayerVectorComponent.decorators = [
 /** @nocollapse */
 LayerVectorComponent.ctorParameters = function () { return [
     { type: map_component_1.MapComponent, },
+    { type: layergroup_component_1.LayerGroupComponent, decorators: [{ type: core_1.Optional },] },
 ]; };
 LayerVectorComponent.propDecorators = {
     'renderBuffer': [{ type: core_1.Input },],
