@@ -11,6 +11,7 @@ export * from './content.component';
 export * from './coordinate.component';
 export * from './feature.component';
 export * from './geometry.components';
+export * from './graticule.component';
 export * from './map.component';
 export * from './overlay.component';
 export * from './tilegrid.component';
