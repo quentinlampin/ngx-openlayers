@@ -29,6 +29,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
       // console.log('setting ol.style.Circle instance\'s radius');
       this.instance.setRadius(this.radius);
     }
+    this.host.update();
   }
 
   ngAfterContentInit() {
