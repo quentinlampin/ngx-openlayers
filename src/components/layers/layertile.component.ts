@@ -1,4 +1,7 @@
-import { Component, OnDestroy, OnInit, Input, Optional } from '@angular/core';
+import {
+  Component, OnDestroy, OnInit, Input, Optional, OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
@@ -8,11 +11,14 @@ import { LayerGroupComponent } from './layergroup.component';
   selector: 'aol-layer-tile',
   template: `<ng-content></ng-content>`
 })
-export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy {
+export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
   public source: source.Tile;
 
   @Input() preload: number;
   @Input() useInterimTilesOnError: boolean;
+
+  @Input() precompose: (evt: ol.events.Event) => void;
+  @Input() postcompose: (evt: ol.events.Event) => void;
 
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
@@ -23,5 +29,9 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
     // console.log('creating ol.layer.Tile instance with:', this);
     this.instance = new layer.Tile(this);
     super.ngOnInit();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }

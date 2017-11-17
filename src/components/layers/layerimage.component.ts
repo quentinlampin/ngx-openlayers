@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Optional } from '@angular/core';
+import {
+  Component, EventEmitter, Input, OnChanges, OnInit, Optional,
+  SimpleChanges
+} from '@angular/core';
 import { Extent, layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
@@ -8,7 +11,7 @@ import { LayerGroupComponent } from './layergroup.component';
   selector: 'aol-layer-image',
   template: `<ng-content></ng-content>`
 })
-export class LayerImageComponent extends LayerComponent implements OnInit {
+export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
   public source: source.Image;
 
   @Input() opacity: number;
@@ -18,6 +21,9 @@ export class LayerImageComponent extends LayerComponent implements OnInit {
   @Input() maxResolution: number;
   @Input() zIndex: number;
 
+  @Input() precompose: (evt: ol.events.Event) => void;
+  @Input() postcompose: (evt: ol.events.Event) => void;
+
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
     super(group || map);
@@ -26,5 +32,9 @@ export class LayerImageComponent extends LayerComponent implements OnInit {
   ngOnInit() {
     this.instance = new layer.Image(this);
     super.ngOnInit();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }
