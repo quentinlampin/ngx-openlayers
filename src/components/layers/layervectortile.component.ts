@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Optional } from '@angular/core';
+import { Component, OnInit, Input, Optional, SimpleChanges, OnChanges } from '@angular/core';
 import { layer, style, StyleFunction } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
@@ -8,7 +8,7 @@ import { LayerGroupComponent } from './layergroup.component';
   selector: 'aol-layer-vectortile',
   template: `<ng-content></ng-content>`
 })
-export class LayerVectorTileComponent extends LayerComponent implements OnInit {
+export class LayerVectorTileComponent extends LayerComponent implements OnInit, OnChanges {
 
   @Input() renderBuffer: number;
   @Input() renderMode: layer.VectorTileRenderType|string;
@@ -19,6 +19,9 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit {
   @Input() updateWhileInteracting: boolean;
   @Input() visible: boolean;
 
+  @Input() precompose: (evt: ol.events.Event) => void;
+  @Input() postcompose: (evt: ol.events.Event) => void;
+
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
     super(group || map);
@@ -28,5 +31,9 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit {
     // console.log('creating ol.layer.VectorTile instance with:', this);
     this.instance = new layer.VectorTile(this);
     super.ngOnInit();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }

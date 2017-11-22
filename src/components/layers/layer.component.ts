@@ -14,6 +14,9 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() minResolution: number;
   @Input() maxResolution: number;
 
+  @Input() precompose: (evt: ol.events.Event) => void;
+  @Input() postcompose: (evt: ol.events.Event) => void;
+
   constructor(protected host: LayerGroupComponent | MapComponent) {
   }
 
@@ -33,6 +36,14 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     for (let key in changes) {
       if (changes.hasOwnProperty(key)) {
         properties[key] = changes[key].currentValue;
+        if (key === 'precompose') {
+          this.instance.un('precompose', changes[key].previousValue)
+          this.instance.on('precompose', changes[key].currentValue);
+        }
+        if (key === 'postcompose') {
+          this.instance.un('postcompose', changes[key].previousValue)
+          this.instance.on('postcompose', changes[key].currentValue);
+        }
       }
     }
     // console.log('changes detected in aol-layer, setting new properties: ', properties);
