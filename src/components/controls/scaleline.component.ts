@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -8,6 +8,7 @@ import { MapComponent } from '../map.component';
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
   instance: control.ScaleLine;
+  @Input() units: string;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-scaleline');
