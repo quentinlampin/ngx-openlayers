@@ -1,39 +1,39 @@
-import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { interaction, EventsConditionType, layer, style, Collection, SelectFilterFunction, StyleFunction, Feature } from 'openlayers';
+import { Component, OnDestroy, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
     selector: 'aol-interaction-select',
     template: ''
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {
-    instance: interaction.Select;
+  instance: ol.interaction.Select;
 
 
-    @Input() addCondition?: EventsConditionType;
-    @Input() condition?: EventsConditionType;
-    @Input() layers?: (layer.Layer[] | ((layer: layer.Layer) => boolean));
-    @Input() style?: (style.Style | style.Style[] | StyleFunction);
-    @Input() removeCondition?: EventsConditionType;
-    @Input() toggleCondition?: EventsConditionType;
+    @Input() addCondition?: ol.EventsConditionType;
+    @Input() condition?: ol.EventsConditionType;
+    @Input() layers?: (ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean));
+    @Input() style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction);
+    @Input() removeCondition?: ol.EventsConditionType;
+    @Input() toggleCondition?: ol.EventsConditionType;
     @Input() multi?: boolean;
-    @Input() features?: Collection<Feature>;
-    @Input() filter?: SelectFilterFunction;
+    @Input() features?: ol.Collection<ol.Feature>;
+    @Input() filter?: ol.SelectFilterFunction;
     @Input() wrapX?: boolean;
 
-    @Output() onChange = new EventEmitter<interaction.Select.Event>();
-    @Output() onSelect = new EventEmitter<interaction.Select.Event>();
-    @Output() onPropertyChange = new EventEmitter<interaction.Select.Event>();
+    @Output() onChange = new EventEmitter<ol.interaction.Select.Event>();
+    @Output() onSelect = new EventEmitter<ol.interaction.Select.Event>();
+    @Output() onPropertyChange = new EventEmitter<ol.interaction.Select.Event>();
 
-    constructor(private map: MapComponent) {
+    constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
     }
 
     ngOnInit() {
-        this.instance = new interaction.Select(this);
+        this.instance = new this.mapSystem.interaction.Select(this);
 
-        this.instance.on('change', (event: interaction.Select.Event) => this.onChange.emit(event));
-        this.instance.on('select', (event: interaction.Select.Event) => this.onSelect.emit(event));
-        this.instance.on('propertychange', (event: interaction.Select.Event) => this.onPropertyChange.emit(event));
+        this.instance.on('change', (event: ol.interaction.Select.Event) => this.onChange.emit(event));
+        this.instance.on('select', (event: ol.interaction.Select.Event) => this.onSelect.emit(event));
+        this.instance.on('propertychange', (event: ol.interaction.Select.Event) => this.onPropertyChange.emit(event));
 
         this.map.instance.addInteraction(this.instance);
     }

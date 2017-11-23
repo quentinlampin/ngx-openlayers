@@ -1,9 +1,9 @@
 import {
   Component, Directive, EventEmitter, Host, OnDestroy, OnChanges, AfterContentInit,
-  Input, Output, ContentChild, SimpleChanges
+  Input, Output, ContentChild, SimpleChanges, Inject
 } from '@angular/core';
-import { style } from 'openlayers';
 import { FeatureComponent } from './feature.component';
+import { MapSystemToken } from '../map-system';
 
 @Directive({
     selector: 'aol-style-icon'
@@ -12,14 +12,14 @@ export class StyleIconDirective implements OnChanges {
 
     // For usage info see: http://openlayers.org/en/latest/apidoc/ol.style.Icon.html
     @Input() anchor: [number, number];
-    @Input() anchorXUnits: style.IconAnchorUnits;
-    @Input() anchorYUnits: style.IconAnchorUnits;
-    @Input() anchorOrigin: style.IconOrigin;
+    @Input() anchorXUnits: ol.style.IconAnchorUnits;
+    @Input() anchorYUnits: ol.style.IconAnchorUnits;
+    @Input() anchorOrigin: ol.style.IconOrigin;
     @Input() color: [number, number, number, number];
-    @Input() crossOrigin: style.IconOrigin;
+    @Input() crossOrigin: ol.style.IconOrigin;
     @Input() img: string;
     @Input() offset: [number, number];
-    @Input() offsetOrigin: style.IconOrigin;
+    @Input() offsetOrigin: ol.style.IconOrigin;
     @Input() opacity: number;
     @Input() scale: number;
     @Input() snapToPixel: boolean;
@@ -31,7 +31,7 @@ export class StyleIconDirective implements OnChanges {
 
     @Output() onChanged = new EventEmitter<any>();
 
-    constructor() { }
+    constructor(@Inject(MapSystemToken) protected mapSystem: any) { }
 
     ngOnChanges(changes: SimpleChanges) {
         this.onChanged.emit(this.src);
@@ -43,12 +43,13 @@ export class StyleIconDirective implements OnChanges {
     template: `<ng-content></ng-content>`
 })
 export class StyleComponent implements OnDestroy, AfterContentInit {
-    private _host_: FeatureComponent;
+  private _host_: FeatureComponent;
     private childSubscription$: any;
 
     @ContentChild(StyleIconDirective) iconStyleDirective: StyleIconDirective;
 
-    constructor( @Host() feature: FeatureComponent) {
+    constructor(@Inject(MapSystemToken) protected mapSystem: any,
+                @Host() feature: FeatureComponent) {
         console.log('instancing aol-style');
         this._host_ = feature;
     }
@@ -61,8 +62,8 @@ export class StyleComponent implements OnDestroy, AfterContentInit {
     }
 
     update() {
-        this._host_.setStyle(new style.Style({
-            image: new style.Icon({
+        this._host_.setStyle(new this.mapSystem.style.Style({
+            image: new this.mapSystem.style.Icon({
                 anchor: this.iconStyleDirective.anchor,
                 anchorOrigin: this.iconStyleDirective.anchorOrigin,
                 anchorXUnits: this.iconStyleDirective.anchorXUnits,

@@ -1,6 +1,6 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { format, geom } from 'openlayers';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { FormatComponent } from './format.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-format-mvt',
@@ -10,16 +10,16 @@ import { FormatComponent } from './format.component';
   ]
 })
 export class FormatMVTComponent extends FormatComponent {
-  instance: format.MVT;
+  instance: ol.format.MVT;
 
-  @Input() featureClass: (((geom: (geom.Geometry | { [k: string]: any })) => any) |
-    ((geom: geom.GeometryType, arg2: number[], arg3: (number[] | number[][]), arg4: { [k: string]: any }) => any));
+  @Input() featureClass: (((geom: (ol.geom.Geometry | { [k: string]: any })) => any) |
+    ((geom: ol.geom.GeometryType, arg2: number[], arg3: (number[] | number[][]), arg4: { [k: string]: any }) => any));
   @Input() geometryName: string;
   @Input() layerName: string;
   @Input() layers: string[];
 
-  constructor() {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any) {
     super();
-    this.instance = new format.MVT(this);
+    this.instance = new this.mapSystem.format.MVT(this);
   }
 }

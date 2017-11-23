@@ -1,40 +1,40 @@
-import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { interaction, layer, Collection, Feature } from 'openlayers';
+import { Component, OnDestroy, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-interaction-translate',
   template: ''
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.Translate;
+  instance: ol.interaction.Translate;
 
-  @Input() features?: Collection<Feature>;
-  @Input() layers?: (layer.Layer[] | ((layer: layer.Layer) => boolean));
+  @Input() features?: ol.Collection<ol.Feature>;
+  @Input() layers?: (ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean));
   @Input() hitTolerance?: number;
 
-  @Output() onChange: EventEmitter<interaction.Translate.Event>;
-  @Output() onPropertyChange: EventEmitter<interaction.Translate.Event>;
-  @Output() onTranslateEnd: EventEmitter<interaction.Translate.Event>;
-  @Output() onTranslateStart: EventEmitter<interaction.Translate.Event>;
-  @Output() onTranslating: EventEmitter<interaction.Translate.Event>;
+  @Output() onChange: EventEmitter<ol.interaction.Translate.Event>;
+  @Output() onPropertyChange: EventEmitter<ol.interaction.Translate.Event>;
+  @Output() onTranslateEnd: EventEmitter<ol.interaction.Translate.Event>;
+  @Output() onTranslateStart: EventEmitter<ol.interaction.Translate.Event>;
+  @Output() onTranslating: EventEmitter<ol.interaction.Translate.Event>;
 
-  constructor(private map: MapComponent) {
-    this.onChange = new EventEmitter<interaction.Translate.Event>();
-    this.onPropertyChange = new EventEmitter<interaction.Translate.Event>();
-    this.onTranslateEnd = new EventEmitter<interaction.Translate.Event>();
-    this.onTranslateStart = new EventEmitter<interaction.Translate.Event>();
-    this.onTranslating = new EventEmitter<interaction.Translate.Event>();
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
+    this.onChange = new EventEmitter<ol.interaction.Translate.Event>();
+    this.onPropertyChange = new EventEmitter<ol.interaction.Translate.Event>();
+    this.onTranslateEnd = new EventEmitter<ol.interaction.Translate.Event>();
+    this.onTranslateStart = new EventEmitter<ol.interaction.Translate.Event>();
+    this.onTranslating = new EventEmitter<ol.interaction.Translate.Event>();
   }
 
   ngOnInit() {
-    this.instance = new interaction.Translate(this);
+    this.instance = new this.mapSystem.interaction.Translate(this);
 
-    this.instance.on('change', (event: interaction.Translate.Event) => this.onChange.emit(event));
-    this.instance.on('propertychange', (event: interaction.Translate.Event) => this.onPropertyChange.emit(event));
-    this.instance.on('translateend', (event: interaction.Translate.Event) => this.onTranslateEnd.emit(event));
-    this.instance.on('translatestart', (event: interaction.Translate.Event) => this.onTranslateStart.emit(event));
-    this.instance.on('translating', (event: interaction.Translate.Event) => this.onTranslating.emit(event));
+    this.instance.on('change', (event: ol.interaction.Translate.Event) => this.onChange.emit(event));
+    this.instance.on('propertychange', (event: ol.interaction.Translate.Event) => this.onPropertyChange.emit(event));
+    this.instance.on('translateend', (event: ol.interaction.Translate.Event) => this.onTranslateEnd.emit(event));
+    this.instance.on('translatestart', (event: ol.interaction.Translate.Event) => this.onTranslateStart.emit(event));
+    this.instance.on('translating', (event: ol.interaction.Translate.Event) => this.onTranslating.emit(event));
 
     this.map.instance.addInteraction(this.instance);
   }

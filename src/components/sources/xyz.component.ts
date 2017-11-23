@@ -1,8 +1,11 @@
-import { Component, Host, Input, AfterContentInit, forwardRef, OnChanges, ContentChild, SimpleChanges } from '@angular/core';
-import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
+import {
+  Component, Host, Input, AfterContentInit, forwardRef, OnChanges, ContentChild, SimpleChanges,
+  Inject
+} from '@angular/core';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 import { TileGridComponent } from '../tilegrid.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-xyz',
@@ -12,7 +15,7 @@ import { TileGridComponent } from '../tilegrid.component';
   ]
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
-  instance: source.XYZ;
+  instance: ol.source.XYZ;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
   @Input() opaque: boolean;
@@ -20,26 +23,26 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @Input() reprojectionErrorThreshold: number;
   @Input() minZoom: number;
   @Input() maxZoom: number;
-  @Input() tileGrid: tilegrid.TileGrid;
-  @Input() tileLoadFunction?: TileLoadFunctionType;
+  @Input() tileGrid: ol.tilegrid.TileGrid;
+  @Input() tileLoadFunction?: ol.TileLoadFunctionType;
   @Input() tilePixelRatio: number;
-  @Input() tileSize: number|Size;
-  @Input() tileUrlFunction: TileUrlFunctionType;
+  @Input() tileSize: number|ol.Size;
+  @Input() tileUrlFunction: ol.TileUrlFunctionType;
   @Input() url: string;
   @Input() urls: string[];
   @Input() wrapX: boolean;
 
   @ContentChild(TileGridComponent) tileGridXYZ: TileGridComponent;
 
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerTileComponent) {
+    super(mapSystem, layer);
   }
 
   ngAfterContentInit() {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
     }
-    this.instance = new source.XYZ(this);
+    this.instance = new this.mapSystem.source.XYZ(this);
     this.host.instance.setSource(this.instance);
   }
 
@@ -57,7 +60,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
 
     this.instance.setProperties(properties, false);
     if (changes.hasOwnProperty('url')) {
-      this.instance = new source.XYZ(this);
+      this.instance = new this.mapSystem.source.XYZ(this);
       this.host.instance.setSource(this.instance);
     }
   }

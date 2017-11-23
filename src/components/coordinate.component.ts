@@ -1,9 +1,9 @@
-import { Component, Optional, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { proj, Coordinate } from 'openlayers';
+import { Component, Optional, OnChanges, Input, SimpleChanges, Inject } from '@angular/core';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
 import { ViewComponent } from './view.component';
 import { OverlayComponent } from './overlay.component';
+import { MapSystemToken } from '../map-system';
 
 @Component({
   selector: 'aol-coordinate',
@@ -17,6 +17,7 @@ export class CoordinateComponent implements OnChanges {
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
+    @Inject(MapSystemToken) protected mapSystem: any,
     private map: MapComponent,
     @Optional() viewHost: ViewComponent,
     @Optional() geometryPointHost: GeometryPointComponent,
@@ -33,7 +34,7 @@ export class CoordinateComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let referenceProjection: proj.Projection;
+    let referenceProjection: ol.proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: number[];
 
@@ -43,7 +44,7 @@ export class CoordinateComponent implements OnChanges {
     if (this.srid === referenceProjectionCode) {
       transformedCoordinates = [this.x, this.y];
     } else {
-      transformedCoordinates = proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
+      transformedCoordinates = this.mapSystem.proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
     }
 
     switch (this.host.componentType) {
@@ -71,6 +72,7 @@ export class CollectionCoordinatesComponent implements OnChanges {
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
+      @Inject(MapSystemToken) protected mapSystem: any,
       private map: MapComponent,
       @Optional() geometryLinestring: GeometryLinestringComponent,
       @Optional() geometryPolygon: GeometryPolygonComponent
@@ -86,9 +88,9 @@ export class CollectionCoordinatesComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let referenceProjection: proj.Projection;
+    let referenceProjection: ol.proj.Projection;
     let referenceProjectionCode: string;
-    let transformedCoordinates: Array<Coordinate>;
+    let transformedCoordinates: Array<ol.Coordinate>;
 
     // console.log('coordinates change: ', this.coordinates);
 
@@ -99,8 +101,8 @@ export class CollectionCoordinatesComponent implements OnChanges {
       transformedCoordinates = this.coordinates;
     } else {
       transformedCoordinates = [];
-      this.coordinates.forEach(function (coordinate: Coordinate) {
-        transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
+      this.coordinates.forEach(function (coordinate: ol.Coordinate) {
+        transformedCoordinates.push(this.mapSystem.proj.transform(coordinate, this.srid, referenceProjectionCode));
       }.bind(this));
     }
     switch (this.host.componentType) {

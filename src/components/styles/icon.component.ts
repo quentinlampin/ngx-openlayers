@@ -1,23 +1,23 @@
-import { Component, Input, Host, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
+import { Component, Input, Host, OnInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import { StyleComponent } from './style.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-style-icon',
   template: `<div class="aol-style-icon"></div>`,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
-  public instance: style.Icon;
+  public instance: ol.style.Icon;
 
   @Input() anchor: [number, number];
-  @Input() anchorXUnits: style.IconAnchorUnits;
-  @Input() anchorYUnits: style.IconAnchorUnits;
-  @Input() anchorOrigin: style.IconOrigin;
+  @Input() anchorXUnits: ol.style.IconAnchorUnits;
+  @Input() anchorYUnits: ol.style.IconAnchorUnits;
+  @Input() anchorOrigin: ol.style.IconOrigin;
   @Input() color: [number, number, number, number];
-  @Input() crossOrigin: style.IconOrigin;
+  @Input() crossOrigin: ol.style.IconOrigin;
   @Input() img: string;
   @Input() offset: [number, number];
-  @Input() offsetOrigin: style.IconOrigin;
+  @Input() offsetOrigin: ol.style.IconOrigin;
   @Input() opacity: number;
   @Input() scale: number;
   @Input() snapToPixel: boolean;
@@ -28,12 +28,12 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input() src: string;
 
 
-  constructor(@Host() private host: StyleComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() private host: StyleComponent) {
   }
 
   ngOnInit() {
     // console.log('creating ol.style.Icon instance with: ', this);
-    this.instance = new style.Icon(this);
+    this.instance = new this.mapSystem.style.Icon(this);
     this.host.instance.setImage(this.instance);
   }
 
@@ -51,7 +51,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
       this.instance.setScale(changes['scale'].currentValue);
     }
     if (changes['src']) {
-      this.instance = new style.Icon(this);
+      this.instance = new this.mapSystem.Icon(this);
       this.host.instance.setImage(this.instance);
     }
     this.host.update();

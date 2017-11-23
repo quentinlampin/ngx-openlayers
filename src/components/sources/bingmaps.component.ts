@@ -1,7 +1,7 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, TileLoadFunctionType } from 'openlayers';
+import { Component, Host, Input, OnInit, forwardRef, Inject } from '@angular/core';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-bingmaps',
@@ -11,7 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
-  instance: source.BingMaps;
+  instance: ol.source.BingMaps;
 
   @Input() cacheSize: number;
   @Input() hidpi: boolean;
@@ -20,15 +20,15 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   @Input() imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey' = 'Aerial';
   @Input() maxZoom: number;
   @Input() reprojectionErrorThreshold: number;
-  @Input() tileLoadFunction: TileLoadFunctionType;
+  @Input() tileLoadFunction: ol.TileLoadFunctionType;
   @Input() wrapX: boolean;
 
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerTileComponent) {
+    super(mapSystem, layer);
   }
 
   ngOnInit() {
-    this.instance = new source.BingMaps(this);
+    this.instance = new this.mapSystem.source.BingMaps(this);
     this.host.instance.setSource(this.instance);
   }
 }

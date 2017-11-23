@@ -1,33 +1,35 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { tilegrid, Extent, Size , Coordinate} from 'openlayers';
+import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { MapSystemToken } from '../map-system';
 
 @Component({
   selector: 'aol-tilegrid',
   template: ''
 })
 export class TileGridComponent implements OnInit, OnChanges {
-  instance: tilegrid.TileGrid;
+  instance: ol.tilegrid.TileGrid;
 
-  @Input() extent: Extent;
+  @Input() extent: ol.Extent;
   @Input() maxZoom: number;
   @Input() minZoom: number;
-  @Input() tileSize: number|Size;
-  @Input() origin?: Coordinate;
+  @Input() tileSize: number|ol.Size;
+  @Input() origin?: ol.Coordinate;
   @Input() resolutions: number[];
+
+  constructor(@Inject(MapSystemToken) protected mapSystem: any) {}
 
   ngOnInit() {
     if (!this.resolutions) {
-      this.instance = tilegrid.createXYZ(this)
+      this.instance = this.mapSystem.tilegrid.createXYZ(this)
     } else {
-      this.instance = new tilegrid.TileGrid(this);
+      this.instance = new this.mapSystem.tilegrid.TileGrid(this);
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (!this.resolutions) {
-      this.instance = tilegrid.createXYZ(this)
+      this.instance = this.mapSystem.tilegrid.createXYZ(this)
     } else {
-      this.instance = new tilegrid.TileGrid(this);
+      this.instance = new this.mapSystem.tilegrid.TileGrid(this);
     }
   }
 }

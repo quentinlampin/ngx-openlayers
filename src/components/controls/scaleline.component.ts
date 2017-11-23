@@ -1,21 +1,21 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-control-scaleline',
   template: `<ng-content></ng-content>`
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
-  instance: control.ScaleLine;
+  instance: ol.control.ScaleLine;
   @Input() units: string;
 
-  constructor(private map: MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
     // console.log('instancing aol-control-scaleline');
   }
 
   ngOnInit() {
-    this.instance = new control.ScaleLine(this);
+    this.instance = new this.mapSystem.control.ScaleLine(this);
     this.map.instance.addControl(this.instance);
   }
 

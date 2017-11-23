@@ -1,8 +1,8 @@
-import { Component, Host, forwardRef, Input, AfterContentInit } from '@angular/core';
-import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
+import { Component, Host, forwardRef, Input, AfterContentInit, Inject } from '@angular/core';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-osm',
@@ -12,27 +12,27 @@ import { SourceXYZComponent } from './xyz.component';
   ]
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
-  instance: source.OSM;
+  instance: ol.source.OSM;
 
-  @Input() attributions: AttributionLike;
+  @Input() attributions: ol.AttributionLike;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
   @Input() maxZoom: number;
   @Input() opaque: boolean;
   @Input() reprojectionErrorThreshold: number;
-  @Input() tileLoadFunction: TileLoadFunctionType;
+  @Input() tileLoadFunction: ol.TileLoadFunctionType;
   @Input() url: string;
   @Input() wrapX: boolean;
 
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerTileComponent) {
+    super(mapSystem, layer);
   }
 
   ngAfterContentInit() {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
     }
-    this.instance = new source.OSM(this);
+    this.instance = new this.mapSystem.source.OSM(this);
     this.host.instance.setSource(this.instance);
   }
 }

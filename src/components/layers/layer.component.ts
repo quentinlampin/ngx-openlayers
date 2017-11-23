@@ -1,7 +1,7 @@
-import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { layer, Extent } from 'openlayers';
+import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges, Inject } from '@angular/core';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
+import { MapSystemToken } from '../../map-system';
 
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   public instance: any;
@@ -9,7 +9,7 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() opacity: number;
   @Input() visible: boolean;
-  @Input() extent:	Extent;
+  @Input() extent:	ol.Extent;
   @Input() zIndex:	number;
   @Input() minResolution: number;
   @Input() maxResolution: number;
@@ -17,7 +17,7 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() precompose: (evt: ol.events.Event) => void;
   @Input() postcompose: (evt: ol.events.Event) => void;
 
-  constructor(protected host: LayerGroupComponent | MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, protected host: LayerGroupComponent | MapComponent) {
   }
 
   ngOnInit() {

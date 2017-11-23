@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { Feature } from 'openlayers';
+import { Component, OnInit, OnDestroy, OnChanges, Input, SimpleChanges, Inject } from '@angular/core';
 import { SourceVectorComponent } from './sources';
+import { MapSystemToken } from '../map-system';
 
 @Component({
   selector: 'aol-feature',
@@ -8,15 +8,16 @@ import { SourceVectorComponent } from './sources';
 })
 export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
   public componentType = 'feature';
-  public instance: Feature;
+  public instance: ol.Feature;
 
   @Input() id: string|number|undefined;
 
-  constructor(private host: SourceVectorComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any,
+              private host: SourceVectorComponent) {
   }
 
   ngOnInit() {
-    this.instance = new Feature();
+    this.instance = new this.mapSystem.Feature();
     if (this.id !== undefined) {
       this.instance.setId(this.id);
     }

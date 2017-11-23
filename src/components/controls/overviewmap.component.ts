@@ -1,28 +1,28 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control, View, layer } from 'openlayers';
+import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-control-overviewmap',
   template: `<ng-content></ng-content>`
 })
 export class ControlOverviewMapComponent implements OnInit, OnDestroy {
-  instance: control.OverviewMap;
+  instance: ol.control.OverviewMap;
   @Input() collapsed: boolean;
   @Input() collapseLabel: string;
   @Input() collapsible: boolean;
   @Input() label: string;
-  @Input() layers: layer.Layer[];
+  @Input() layers: ol.layer.Layer[];
   @Input() target: Element;
   @Input() tipLabel: string;
-  @Input() view: View;
+  @Input() view: ol.View;
 
-  constructor(private map: MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
     // console.log('instancing aol-control-overviewmap');
   }
 
   ngOnInit() {
-    this.instance = new control.OverviewMap(this);
+    this.instance = new this.mapSystem.control.OverviewMap(this);
     this.map.instance.addControl(this.instance);
   }
 

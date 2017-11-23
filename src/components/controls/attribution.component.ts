@@ -1,6 +1,6 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Component, ElementRef, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-control-attribution',
@@ -8,11 +8,12 @@ import { MapComponent } from '../map.component';
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {
   public componentType: string = 'control';
-  instance: control.Attribution;
+  instance: ol.control.Attribution;
   target: Element;
   @Input() collapsible: boolean;
 
   constructor(
+    @Inject(MapSystemToken) protected mapSystem: any,
     private map: MapComponent,
     private element: ElementRef
   ) {
@@ -21,7 +22,7 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.target = this.element.nativeElement;
     // console.log('ol.control.Attribution init: ', this);
-    this.instance = new control.Attribution(this);
+    this.instance = new this.mapSystem.control.Attribution(this);
     this.map.instance.addControl(this.instance);
   }
 

@@ -1,6 +1,6 @@
-import { Component, Input, Host, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
+import { Component, Input, Host, AfterContentInit, OnChanges, OnDestroy, SimpleChanges, Inject } from '@angular/core';
 import { StyleComponent } from './style.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-style-circle',
@@ -8,15 +8,15 @@ import { StyleComponent } from './style.component';
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
   public componentType: string = 'style-circle';
-  public instance: style.Circle;
+  public instance: ol.style.Circle;
 
-  @Input() fill: style.Fill;
+  @Input() fill: ol.style.Fill;
   @Input() radius: number;
   @Input() snapToPixel: boolean;
-  @Input() stroke: style.Stroke;
-  @Input() atlasManager: style.AtlasManager;
+  @Input() stroke: ol.style.Stroke;
+  @Input() atlasManager: ol.style.AtlasManager;
 
-  constructor(@Host() private host: StyleComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() private host: StyleComponent) {
   }
 
   /**
@@ -34,7 +34,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
 
   ngAfterContentInit() {
     // console.log('creating ol.style.Circle instance with: ', this);
-    this.instance = new style.Circle(this);
+    this.instance = new this.mapSystem.style.Circle(this);
     this.host.instance.setImage(this.instance);
     this.host.update();
   }

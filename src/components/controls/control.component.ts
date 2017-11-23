@@ -1,7 +1,7 @@
-import { Component, ContentChild, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Component, ContentChild, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from '../map.component';
 import { ContentComponent } from '../content.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-control',
@@ -9,11 +9,12 @@ import { ContentComponent } from '../content.component';
 })
 export class ControlComponent implements OnInit, OnDestroy {
   public componentType: string = 'control';
-  instance: control.Control;
+  instance: ol.control.Control;
   element: Element;
   @ContentChild(ContentComponent) content: ContentComponent;
 
   constructor(
+    @Inject(MapSystemToken) protected mapSystem: any,
     private map: MapComponent
   ) {
   }
@@ -21,7 +22,7 @@ export class ControlComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
-      this.instance = new control.Control(this);
+      this.instance = new this.mapSystem.control.Control(this);
       this.map.instance.addControl(this.instance);
     }
   }

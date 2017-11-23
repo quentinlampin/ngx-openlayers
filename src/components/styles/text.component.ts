@@ -1,13 +1,13 @@
-import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
+import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import { StyleComponent } from './style.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-style-text',
   template: `<div class="aol-style-text"></div>`,
 })
 export class StyleTextComponent implements OnInit, OnChanges {
-  public instance: style.Text;
+  public instance: ol.style.Text;
   public componentType: string = 'style-text';
 
   @Input() font: string|undefined;
@@ -20,7 +20,7 @@ export class StyleTextComponent implements OnInit, OnChanges {
   @Input() textAlign: string|undefined;
   @Input() textBaseLine: string|undefined;
 
-  constructor(@Optional() private host: StyleComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Optional() private host: StyleComponent) {
     if (!host) {
       throw new Error('aol-style-text must be a descendant of aol-style');
     }
@@ -29,7 +29,7 @@ export class StyleTextComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // console.log('creating ol.style.Text instance with: ', this);
-    this.instance = new style.Text(this);
+    this.instance = new this.mapSystem.style.Text(this);
     this.host.instance.setText(this.instance);
   }
 

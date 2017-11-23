@@ -1,7 +1,7 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source } from 'openlayers';
+import { Component, Host, Input, OnInit, forwardRef, Inject } from '@angular/core';
 import { LayerVectorComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-vector',
@@ -11,7 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
-  instance: source.Vector;
+  instance: ol.source.Vector;
   @Input() overlaps: boolean;
   @Input() useSpatialIndex: boolean;
   @Input() wrapX: boolean;
@@ -19,12 +19,12 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   @Input() format: ol.format.Feature;
   @Input() strategy: ol.LoadingStrategy;
 
-  constructor(@Host() layer: LayerVectorComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerVectorComponent) {
+    super(mapSystem, layer);
   }
 
   ngOnInit() {
-    this.instance = new source.Vector(this);
+    this.instance = new this.mapSystem.source.Vector(this);
     this.host.instance.setSource(this.instance);
   }
 }

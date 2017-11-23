@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { geom } from 'openlayers';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FeatureComponent } from './feature.component';
+import { MapSystemToken } from '../map-system';
 
 @Component({
   selector: 'aol-geometry-linestring',
@@ -8,14 +8,15 @@ import { FeatureComponent } from './feature.component';
 })
 export class GeometryLinestringComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-linestring';
-  public instance: geom.LineString;
+  public instance: ol.geom.LineString;
 
-  constructor(private host: FeatureComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any,
+              private host: FeatureComponent) {
     // console.log('instancing aol-geometry-linestring');
   }
 
   ngOnInit() {
-    this.instance = new geom.LineString([]);
+    this.instance = new this.mapSystem.geom.LineString([]);
     this.host.instance.setGeometry(this.instance);
   }
   ngOnDestroy() {
@@ -29,14 +30,15 @@ export class GeometryLinestringComponent implements OnInit, OnDestroy {
 })
 export class GeometryPointComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-point';
-  public instance: geom.Point;
+  public instance: ol.geom.Point;
 
-  constructor(private host: FeatureComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any,
+              private host: FeatureComponent) {
     // console.log('creating aol-geometry-point');
   }
 
   ngOnInit() {
-    this.instance = new geom.Point([0, 0]); // defaulting coordinates to [0,0]. To be overridden in child component.
+    this.instance = new this.mapSystem.geom.Point([0, 0]); // defaulting coordinates to [0,0]. To be overridden in child component.
     this.host.instance.setGeometry(this.instance);
   }
 
@@ -51,15 +53,16 @@ export class GeometryPointComponent implements OnInit, OnDestroy {
 })
 export class GeometryPolygonComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-polygon';
-  public instance: geom.Polygon;
+  public instance: ol.geom.Polygon;
 
-  constructor(private host: FeatureComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any,
+              private host: FeatureComponent) {
     // console.log('creating aol-geometry-polygon');
   }
 
   ngOnInit() {
     // defaulting coordinates to [0,0]. To be overridden in child component.
-    this.instance = new geom.Polygon([ [ [0, 0], [1, 0], [1, 1] ] ]);
+    this.instance = new this.mapSystem.geom.Polygon([ [ [0, 0], [1, 0], [1, 1] ] ]);
     this.host.instance.setGeometry(this.instance);
   }
 

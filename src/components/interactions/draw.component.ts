@@ -1,13 +1,13 @@
-import { Component, Input, OnDestroy, OnInit, EventEmitter, Output } from '@angular/core';
-import { interaction } from 'openlayers';
+import { Component, Input, OnDestroy, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-interaction-draw',
   template: ''
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.Draw;
+  instance: ol.interaction.Draw;
 
   @Input() clickTolerance?: number;
   @Input() features?: ol.Collection<ol.Feature>;
@@ -31,11 +31,11 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Output() onDrawStart = new EventEmitter<ol.interaction.Draw.Event>();
   @Output() onPropertyChange = new EventEmitter<ol.interaction.Draw.Event>();
 
-  constructor(private map: MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
   }
 
   ngOnInit() {
-    this.instance = new interaction.Draw(this);
+    this.instance = new this.mapSystem.interaction.Draw(this);
     this.instance.on('change', (event: ol.interaction.Draw.Event) => this.onChange.emit(event));
     this.instance.on('change:active', (event: ol.interaction.Draw.Event) => this.onChangeActive.emit(event));
     this.instance.on('drawend', (event: ol.interaction.Draw.Event) => this.onDrawEnd.emit(event));

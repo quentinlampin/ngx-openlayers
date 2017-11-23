@@ -1,6 +1,6 @@
-import { Component, Input, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Graticule, style } from 'openlayers';
+import { Component, Input, AfterContentInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import { MapComponent } from './map.component';
+import { MapSystemToken } from '../map-system';
 
 @Component({
   selector: 'aol-graticule',
@@ -10,12 +10,12 @@ export class GraticuleComponent implements AfterContentInit, OnChanges {
   instance: any;
   public componentType: string = 'graticule';
 
-  @Input() strokeStyle: style.Stroke;
+  @Input() strokeStyle: ol.style.Stroke;
   @Input() showLabels: boolean;
   @Input() lonLabelPosition: number;
   @Input() latLabelPosition: number;
 
-  constructor(private map: MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -32,13 +32,13 @@ export class GraticuleComponent implements AfterContentInit, OnChanges {
     }
 
     if (properties) {
-      this.instance = new Graticule(properties);
+      this.instance = new this.mapSystem.Graticule(properties);
     }
     this.instance.setMap(this.map.instance);
   }
 
   ngAfterContentInit(): void {
-    this.instance = new Graticule({
+    this.instance = new this.mapSystem.Graticule({
       strokeStyle: this.strokeStyle,
       showLabels: this.showLabels,
       lonLabelPosition: this.lonLabelPosition,

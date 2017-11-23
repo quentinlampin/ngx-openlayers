@@ -1,15 +1,15 @@
-import { Host, Input, OnDestroy, OnInit } from '@angular/core';
-import { source } from 'openlayers';
+import { Host, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { LayerComponent } from '../layers';
 import AttributionLike = ol.AttributionLike;
+import { MapSystemToken } from '../../map-system';
 
 export class SourceComponent implements OnInit, OnDestroy {
-  public instance: source.Source;
+  public instance: ol.source.Source;
   public componentType: string = 'source';
 
   @Input() attributions: AttributionLike;
 
-  constructor(@Host() protected host: LayerComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() protected host: LayerComponent) {
   }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, TileLoadFunctionType, tilegrid } from 'openlayers';
+import { Component, Host, Input, OnInit, forwardRef, Inject } from '@angular/core';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-tilewms',
@@ -11,7 +11,7 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceTileWMSComponent extends SourceComponent implements OnInit {
-  instance: source.TileWMS;
+  instance: ol.source.TileWMS;
   @Input() cacheSize: number;
   @Input() crossOrigin: string;
   @Input() gutter: number;
@@ -20,18 +20,18 @@ export class SourceTileWMSComponent extends SourceComponent implements OnInit {
   @Input() projection: string;
   @Input() reprojectionErrorThreshold: number;
   @Input() serverType: string;
-  @Input() tileGrid: tilegrid.TileGrid;
-  @Input() tileLoadFunction: TileLoadFunctionType;
+  @Input() tileGrid: ol.tilegrid.TileGrid;
+  @Input() tileLoadFunction: ol.TileLoadFunctionType;
   @Input() url: string;
   @Input() urls: string[];
   @Input() wrapX: boolean;
 
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerTileComponent) {
+    super(mapSystem, layer);
   }
 
   ngOnInit() {
-    this.instance = new source.TileWMS(this);
+    this.instance = new this.mapSystem.source.TileWMS(this);
     this.host.instance.setSource(this.instance);
   }
 }

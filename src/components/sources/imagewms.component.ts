@@ -1,7 +1,7 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { AttributionLike, ImageLoadFunctionType, ProjectionLike, source } from 'openlayers';
+import { Component, Host, Input, OnInit, forwardRef, Inject } from '@angular/core';
 import { LayerImageComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-imagewms',
@@ -11,26 +11,26 @@ import { SourceComponent } from './source.component';
   ]
 })
 export class SourceImageWMSComponent extends SourceComponent implements OnInit {
-  instance: source.ImageWMS;
+  instance: ol.source.ImageWMS;
 
-  @Input() attributions: AttributionLike;
+  @Input() attributions: ol.AttributionLike;
   @Input() crossOrigin: string;
   @Input() hidpi: boolean;
   @Input() serverType: string;
-  @Input() imageLoadFunction?: ImageLoadFunctionType;
+  @Input() imageLoadFunction?: ol.ImageLoadFunctionType;
   @Input() logo: (string | olx.LogoOptions);
   @Input() params: Object;
-  @Input() projection: (ProjectionLike | string);
+  @Input() projection: (ol.ProjectionLike | string);
   @Input() ratio: number;
   @Input() resolutions: Array<number>;
   @Input() url: string;
 
-  constructor(@Host() layer: LayerImageComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerImageComponent) {
+    super(mapSystem, layer);
   }
 
   ngOnInit() {
-    this.instance = new source.ImageWMS(this);
+    this.instance = new this.mapSystem.source.ImageWMS(this);
     this.host.instance.setSource(this.instance);
   }
 }

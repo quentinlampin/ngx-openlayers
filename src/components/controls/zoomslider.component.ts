@@ -1,20 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-control-zoomslider',
   template: `<ng-content></ng-content>`
 })
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {
-  instance: control.ZoomSlider;
+  instance: ol.control.ZoomSlider;
 
-  constructor(private map: MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private map: MapComponent) {
     // console.log('instancing aol-control-zoomslider');
   }
 
   ngOnInit() {
-    this.instance = new control.ZoomSlider(this);
+    this.instance = new this.mapSystem.control.ZoomSlider(this);
     this.map.instance.addControl(this.instance);
   }
 

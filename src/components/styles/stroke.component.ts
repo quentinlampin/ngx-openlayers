@@ -1,19 +1,19 @@
-import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { style, Color } from 'openlayers';
+import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
 import { StyleTextComponent } from './text.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-style-stroke',
   template: `<div class="aol-style-stroke"></div>`,
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {
-  public instance: style.Stroke;
+  public instance: ol.style.Stroke;
   /* the typings do not have the setters */
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/any;
 
-  @Input() color: Color|undefined;
+  @Input() color: ol.Color|undefined;
   @Input() lineCap: string|undefined;
   @Input() lineDash: number[]|undefined;
   @Input() lineJoin: string|undefined;
@@ -21,6 +21,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input() width: number|undefined;
 
   constructor(
+    @Inject(MapSystemToken) protected mapSystem: any,
     @Optional() styleHost: StyleComponent,
     @Optional() styleCircleHost: StyleCircleComponent,
     @Optional() styleTextHost: StyleTextComponent
@@ -40,7 +41,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // console.log('creating ol.style.Stroke instance with: ', this);
-    this.instance = new style.Stroke(this);
+    this.instance = new this.mapSystem.style.Stroke(this);
     switch (this.host.componentType) {
       case 'style':
         this.host.instance.setStroke(this.instance);

@@ -1,18 +1,18 @@
-import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { View, Extent, Coordinate } from 'openlayers';
+import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges, Inject } from '@angular/core';
 import { MapComponent } from './map.component';
+import { MapSystemToken } from '../map-system';
 
 @Component({
   selector: 'aol-view',
   template: `<ng-content></ng-content>`
 })
 export class ViewComponent implements OnInit, OnChanges, OnDestroy {
-  public instance: View;
+  public instance: ol.View;
   public componentType: string = 'view';
 
   @Input() constrainRotation: boolean|number;
   @Input() enableRotation: boolean;
-  @Input() extent: Extent;
+  @Input() extent: ol.Extent;
   @Input() maxResolution: number;
   @Input() minResolution: number;
   @Input() maxZoom: number;
@@ -22,17 +22,17 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input() rotation: number;
   @Input() zoom: number;
   @Input() zoomFactor: number;
-  @Input() center: Coordinate;
+  @Input() center: ol.Coordinate;
   @Input() projection: string;
 
   @Input() zoomAnimation = false;
 
-  constructor(private host: MapComponent) {
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, private host: MapComponent) {
   }
 
   ngOnInit() {
     // console.log('creating ol.View instance with: ', this);
-    this.instance = new View(this);
+    this.instance = new this.mapSystem.View(this);
     this.host.instance.setView(this.instance);
   }
 
