@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MapComponent, ViewComponent, GraticuleComponent,
@@ -22,6 +22,7 @@ import {
   AttributionComponent,
   AttributionsComponent
 } from './components';
+import { MapSystemToken } from './map-system';
 
 export * from './components';
 
@@ -103,4 +104,13 @@ const COMPONENTS = [
   imports: [CommonModule],
   exports: COMPONENTS
 })
-export class AngularOpenlayersModule { }
+export class AngularOpenlayersModule {
+  static forRoot(mapSystemConfiguration: any): ModuleWithProviders {
+    return {
+      ngModule: AngularOpenlayersModule,
+      providers: [
+        { provide: MapSystemToken, useValue: mapSystemConfiguration}
+      ]
+    };
+  }
+}
