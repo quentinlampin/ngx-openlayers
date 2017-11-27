@@ -17,9 +17,6 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
   @Input() preload: number;
   @Input() useInterimTilesOnError: boolean;
 
-  @Input() precompose: (evt: ol.events.Event) => void;
-  @Input() postcompose: (evt: ol.events.Event) => void;
-
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
     super(group || map);

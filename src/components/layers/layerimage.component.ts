@@ -21,9 +21,6 @@ export class LayerImageComponent extends LayerComponent implements OnInit, OnCha
   @Input() maxResolution: number;
   @Input() zIndex: number;
 
-  @Input() precompose: (evt: ol.events.Event) => void;
-  @Input() postcompose: (evt: ol.events.Event) => void;
-
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
     super(group || map);
