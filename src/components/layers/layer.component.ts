@@ -21,6 +21,12 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
+    if (this.precompose !== null && this.precompose !== undefined) {
+      this.instance.on('precompose', this.precompose);
+    }
+    if (this.postcompose !== null && this.postcompose !== undefined) {
+      this.instance.on('postcompose', this.postcompose);
+    }
     this.host.instance.getLayers().push(this.instance);
   }
 

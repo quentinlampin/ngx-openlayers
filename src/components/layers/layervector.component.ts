@@ -16,9 +16,6 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   @Input() renderBuffer: number;
 
-  @Input() precompose: (evt: ol.events.Event) => void;
-  @Input() postcompose: (evt: ol.events.Event) => void;
-
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
     super(group || map);

@@ -19,9 +19,6 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
   @Input() updateWhileInteracting: boolean;
   @Input() visible: boolean;
 
-  @Input() precompose: (evt: ol.events.Event) => void;
-  @Input() postcompose: (evt: ol.events.Event) => void;
-
   constructor(map: MapComponent,
               @Optional() group?: LayerGroupComponent) {
     super(group || map);
