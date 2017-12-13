@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        { "glob": "**/*", "input": "../node_modules/ol-cesium/dist/Cesium", "output": "./" }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,9 +20,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/ol-cesium/dist/ol.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/ol-cesium/dist/Cesium/Cesium.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

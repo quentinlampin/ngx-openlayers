@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {AngularOpenlayersModule} from 'ngx-openlayers';
 
 import {AppComponent} from './app.component';
+import { ol } from 'ol-cesium';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import {AppComponent} from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AngularOpenlayersModule
+    AngularOpenlayersModule.forRoot(ol)
   ],
   providers: [],
   bootstrap: [AppComponent]

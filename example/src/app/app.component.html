@@ -1,4 +1,5 @@
 <aol-map [width]="'100%'" [height]="'100%'">
+    <aol-interaction-default></aol-interaction-default>
 	<aol-view [zoom]="zoom" [zoomAnimation]="true">
 		<aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
 	</aol-view>
@@ -38,3 +39,4 @@
 
 <span>opacity:</span><button (click)="increaseOpacity()">+</button><button (click)="decreaseOpacity()">-</button><br>
 <span>zoom:</span><button (click)="increaseZoom()">+</button><button (click)="decreaseZoom()">-</button><br>
+<span>3d mode:</span><button (click)="switch3dMode()">{{ globe3dEnabled ? 'Disable' : 'Enable' }}</button>
