@@ -1,15 +1,15 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { control, Extent } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class ControlZoomToExtentComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: control.ZoomToExtent;
+    instance: ol.control.ZoomToExtent;
     className: string;
     label: (string | Node);
     tipLabel: string;
-    extent: Extent;
-    constructor(map: MapComponent);
+    extent: ol.Extent;
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

@@ -1,10 +1,10 @@
 /// <reference types="openlayers" />
 import { OnInit } from '@angular/core';
-import { source, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 export declare class SourceTileWMSComponent extends SourceComponent implements OnInit {
-    instance: source.TileWMS;
+    protected mapSystem: any;
+    instance: ol.source.TileWMS;
     cacheSize: number;
     crossOrigin: string;
     gutter: number;
@@ -13,11 +13,11 @@ export declare class SourceTileWMSComponent extends SourceComponent implements O
     projection: string;
     reprojectionErrorThreshold: number;
     serverType: string;
-    tileGrid: tilegrid.TileGrid;
-    tileLoadFunction: TileLoadFunctionType;
+    tileGrid: ol.tilegrid.TileGrid;
+    tileLoadFunction: ol.TileLoadFunctionType;
     url: string;
     urls: string[];
     wrapX: boolean;
-    constructor(layer: LayerTileComponent);
+    constructor(mapSystem: any, layer: LayerTileComponent);
     ngOnInit(): void;
 }

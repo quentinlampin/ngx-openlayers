@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var map_system_1 = require("../../map-system");
 var DrawInteractionComponent = (function () {
-    function DrawInteractionComponent(map) {
+    function DrawInteractionComponent(mapSystem, map) {
+        this.mapSystem = mapSystem;
         this.map = map;
         this.onChange = new core_1.EventEmitter();
         this.onChangeActive = new core_1.EventEmitter();
@@ -14,7 +15,7 @@ var DrawInteractionComponent = (function () {
     }
     DrawInteractionComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.instance = new openlayers_1.interaction.Draw(this);
+        this.instance = new this.mapSystem.interaction.Draw(this);
         this.instance.on('change', function (event) { return _this.onChange.emit(event); });
         this.instance.on('change:active', function (event) { return _this.onChangeActive.emit(event); });
         this.instance.on('drawend', function (event) { return _this.onDrawEnd.emit(event); });
@@ -35,6 +36,7 @@ DrawInteractionComponent.decorators = [
 ];
 /** @nocollapse */
 DrawInteractionComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 DrawInteractionComponent.propDecorators = {

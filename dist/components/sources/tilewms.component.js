@@ -11,16 +11,18 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var source_component_1 = require("./source.component");
+var map_system_1 = require("../../map-system");
 var SourceTileWMSComponent = (function (_super) {
     __extends(SourceTileWMSComponent, _super);
-    function SourceTileWMSComponent(layer) {
-        return _super.call(this, layer) || this;
+    function SourceTileWMSComponent(mapSystem, layer) {
+        var _this = _super.call(this, mapSystem, layer) || this;
+        _this.mapSystem = mapSystem;
+        return _this;
     }
     SourceTileWMSComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.source.TileWMS(this);
+        this.instance = new this.mapSystem.source.TileWMS(this);
         this.host.instance.setSource(this.instance);
     };
     return SourceTileWMSComponent;
@@ -36,6 +38,7 @@ SourceTileWMSComponent.decorators = [
 ];
 /** @nocollapse */
 SourceTileWMSComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: layers_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
 ]; };
 SourceTileWMSComponent.propDecorators = {

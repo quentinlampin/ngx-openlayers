@@ -1,15 +1,15 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction, EventsConditionType } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class DragZoomInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.DragZoom;
+    instance: ol.interaction.DragZoom;
     className: string;
-    condition: EventsConditionType;
+    condition: ol.EventsConditionType;
     duration: number;
     out: boolean;
-    constructor(map: MapComponent);
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

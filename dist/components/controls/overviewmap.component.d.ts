@@ -1,19 +1,19 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { control, View, layer } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class ControlOverviewMapComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: control.OverviewMap;
+    instance: ol.control.OverviewMap;
     collapsed: boolean;
     collapseLabel: string;
     collapsible: boolean;
     label: string;
-    layers: layer.Layer[];
+    layers: ol.layer.Layer[];
     target: Element;
     tipLabel: string;
-    view: View;
-    constructor(map: MapComponent);
+    view: ol.View;
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

@@ -1,14 +1,14 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { source } from 'openlayers';
 import { LayerComponent } from '../layers';
 import AttributionLike = ol.AttributionLike;
 export declare class SourceComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     protected host: LayerComponent;
-    instance: source.Source;
+    instance: ol.source.Source;
     componentType: string;
     attributions: AttributionLike;
-    constructor(host: LayerComponent);
+    constructor(mapSystem: any, host: LayerComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

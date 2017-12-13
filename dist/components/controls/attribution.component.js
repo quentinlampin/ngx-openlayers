@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var map_system_1 = require("../../map-system");
 var ControlAttributionComponent = (function () {
-    function ControlAttributionComponent(map, element) {
+    function ControlAttributionComponent(mapSystem, map, element) {
+        this.mapSystem = mapSystem;
         this.map = map;
         this.element = element;
         this.componentType = 'control';
@@ -12,7 +13,7 @@ var ControlAttributionComponent = (function () {
     ControlAttributionComponent.prototype.ngOnInit = function () {
         this.target = this.element.nativeElement;
         // console.log('ol.control.Attribution init: ', this);
-        this.instance = new openlayers_1.control.Attribution(this);
+        this.instance = new this.mapSystem.control.Attribution(this);
         this.map.instance.addControl(this.instance);
     };
     ControlAttributionComponent.prototype.ngOnDestroy = function () {
@@ -29,6 +30,7 @@ ControlAttributionComponent.decorators = [
 ];
 /** @nocollapse */
 ControlAttributionComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
     { type: core_1.ElementRef, },
 ]; };

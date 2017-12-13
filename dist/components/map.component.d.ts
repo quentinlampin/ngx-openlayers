@@ -1,9 +1,9 @@
 /// <reference types="openlayers" />
 import { OnInit, ElementRef, EventEmitter, AfterViewInit, SimpleChanges, OnChanges } from '@angular/core';
-import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent, control, interaction } from 'openlayers';
 export declare class MapComponent implements OnInit, AfterViewInit, OnChanges {
+    private mapSystem;
     private host;
-    instance: Map;
+    instance: ol.Map;
     componentType: string;
     width: string;
     height: string;
@@ -13,19 +13,19 @@ export declare class MapComponent implements OnInit, AfterViewInit, OnChanges {
     loadTilesWhileInteracting: boolean;
     logo: string | boolean;
     renderer: 'canvas' | 'webgl';
-    onClick: EventEmitter<MapBrowserEvent>;
-    onDblClick: EventEmitter<MapBrowserEvent>;
-    onMoveEnd: EventEmitter<MapEvent>;
-    onPointerDrag: EventEmitter<MapBrowserEvent>;
-    onPointerMove: EventEmitter<MapBrowserEvent>;
-    onPostCompose: EventEmitter<render.Event>;
-    onPostRender: EventEmitter<MapEvent>;
-    onPreCompose: EventEmitter<render.Event>;
-    onPropertyChange: EventEmitter<ObjectEvent>;
-    onSingleClick: EventEmitter<MapBrowserEvent>;
-    controls: control.Control[];
-    interactions: interaction.Interaction[];
-    constructor(host: ElementRef);
+    onClick: EventEmitter<ol.MapBrowserEvent>;
+    onDblClick: EventEmitter<ol.MapBrowserEvent>;
+    onMoveEnd: EventEmitter<ol.MapEvent>;
+    onPointerDrag: EventEmitter<ol.MapBrowserEvent>;
+    onPointerMove: EventEmitter<ol.MapBrowserEvent>;
+    onPostCompose: EventEmitter<ol.render.Event>;
+    onPostRender: EventEmitter<ol.MapEvent>;
+    onPreCompose: EventEmitter<ol.render.Event>;
+    onPropertyChange: EventEmitter<ol.ObjectEvent>;
+    onSingleClick: EventEmitter<ol.MapBrowserEvent>;
+    controls: ol.control.Control[];
+    interactions: ol.interaction.Interaction[];
+    constructor(mapSystem: any, host: ElementRef);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngAfterViewInit(): void;

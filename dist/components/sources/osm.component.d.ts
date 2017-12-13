@@ -1,19 +1,19 @@
 /// <reference types="openlayers" />
 import { AfterContentInit } from '@angular/core';
-import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceXYZComponent } from './xyz.component';
 export declare class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
-    instance: source.OSM;
-    attributions: AttributionLike;
+    protected mapSystem: any;
+    instance: ol.source.OSM;
+    attributions: ol.AttributionLike;
     cacheSize: number;
     crossOrigin: string;
     maxZoom: number;
     opaque: boolean;
     reprojectionErrorThreshold: number;
-    tileLoadFunction: TileLoadFunctionType;
+    tileLoadFunction: ol.TileLoadFunctionType;
     url: string;
     wrapX: boolean;
-    constructor(layer: LayerTileComponent);
+    constructor(mapSystem: any, layer: LayerTileComponent);
     ngAfterContentInit(): void;
 }

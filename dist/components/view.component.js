@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("./map.component");
+var map_system_1 = require("../map-system");
 var ViewComponent = (function () {
-    function ViewComponent(host) {
+    function ViewComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
         this.componentType = 'view';
     }
     ViewComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.View instance with: ', this);
-        this.instance = new openlayers_1.View(this);
+        this.instance = new this.mapSystem.View(this);
         this.host.instance.setView(this.instance);
     };
     ViewComponent.prototype.ngOnChanges = function (changes) {
@@ -47,6 +48,7 @@ ViewComponent.decorators = [
 ];
 /** @nocollapse */
 ViewComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 ViewComponent.propDecorators = {

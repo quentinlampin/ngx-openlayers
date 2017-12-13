@@ -2,17 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var map_component_1 = require("./map.component");
-var openlayers_1 = require("openlayers");
 var content_component_1 = require("./content.component");
+var map_system_1 = require("../map-system");
 var OverlayComponent = (function () {
-    function OverlayComponent(map) {
+    function OverlayComponent(mapSystem, map) {
+        this.mapSystem = mapSystem;
         this.map = map;
         this.componentType = 'overlay';
     }
     OverlayComponent.prototype.ngOnInit = function () {
         if (this.content) {
             this.element = this.content.elementRef.nativeElement;
-            this.instance = new openlayers_1.Overlay(this);
+            this.instance = new this.mapSystem.Overlay(this);
             this.map.instance.addOverlay(this.instance);
         }
     };
@@ -31,6 +32,7 @@ OverlayComponent.decorators = [
 ];
 /** @nocollapse */
 OverlayComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 OverlayComponent.propDecorators = {

@@ -1,10 +1,10 @@
 /// <reference types="openlayers" />
 import { ElementRef, OnInit } from '@angular/core';
-import { Attribution } from 'openlayers';
 export declare class AttributionComponent implements OnInit {
+    protected mapSystem: any;
     private elementRef;
-    instance: Attribution;
+    instance: ol.Attribution;
     html: string;
-    constructor(elementRef: ElementRef);
+    constructor(mapSystem: any, elementRef: ElementRef);
     ngOnInit(): void;
 }

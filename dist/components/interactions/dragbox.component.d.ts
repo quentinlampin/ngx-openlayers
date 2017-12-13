@@ -1,14 +1,14 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction, EventsConditionType, DragBoxEndConditionType } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class DragBoxInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.DragBox;
+    instance: ol.interaction.DragBox;
     className: string;
-    condition: EventsConditionType;
-    boxEndCondition: DragBoxEndConditionType;
-    constructor(map: MapComponent);
+    condition: ol.EventsConditionType;
+    boxEndCondition: ol.DragBoxEndConditionType;
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

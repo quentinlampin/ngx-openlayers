@@ -1,24 +1,24 @@
 /// <reference types="openlayers" />
 import { AfterContentInit } from '@angular/core';
-import { source, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
 import { LayerVectorTileComponent } from '../layers';
 import { FormatComponent } from '../formats';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 export declare class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
-    instance: source.VectorTile;
+    protected mapSystem: any;
+    instance: ol.source.VectorTile;
     cacheSize: number;
     overlaps: boolean;
-    projection: ProjectionLike;
+    projection: ol.ProjectionLike;
     tilePixelRatio: number;
-    tileUrlFunction: TileUrlFunctionType;
+    tileUrlFunction: ol.TileUrlFunctionType;
     url: string;
     urls: string[];
     wrapX: boolean;
     formatComponent: FormatComponent;
-    format: format.Feature;
+    format: ol.format.Feature;
     tileGridComponent: TileGridComponent;
-    tileGrid: tilegrid.TileGrid;
-    constructor(layer: LayerVectorTileComponent);
+    tileGrid: ol.tilegrid.TileGrid;
+    constructor(mapSystem: any, layer: LayerVectorTileComponent);
     ngAfterContentInit(): void;
 }

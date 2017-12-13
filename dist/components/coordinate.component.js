@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("./map.component");
 var geometry_components_1 = require("./geometry.components");
 var view_component_1 = require("./view.component");
 var overlay_component_1 = require("./overlay.component");
+var map_system_1 = require("../map-system");
 var CoordinateComponent = (function () {
-    function CoordinateComponent(map, viewHost, geometryPointHost, overlayHost) {
+    function CoordinateComponent(mapSystem, map, viewHost, geometryPointHost, overlayHost) {
+        this.mapSystem = mapSystem;
         this.map = map;
         this.srid = 'EPSG:3857';
         // console.log('instancing aol-coordinate');
@@ -31,7 +32,7 @@ var CoordinateComponent = (function () {
             transformedCoordinates = [this.x, this.y];
         }
         else {
-            transformedCoordinates = openlayers_1.proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
+            transformedCoordinates = this.mapSystem.proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
         }
         switch (this.host.componentType) {
             case 'geometry-point':
@@ -55,6 +56,7 @@ CoordinateComponent.decorators = [
 ];
 /** @nocollapse */
 CoordinateComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
     { type: view_component_1.ViewComponent, decorators: [{ type: core_1.Optional },] },
     { type: geometry_components_1.GeometryPointComponent, decorators: [{ type: core_1.Optional },] },
@@ -67,7 +69,8 @@ CoordinateComponent.propDecorators = {
 };
 exports.CoordinateComponent = CoordinateComponent;
 var CollectionCoordinatesComponent = (function () {
-    function CollectionCoordinatesComponent(map, geometryLinestring, geometryPolygon) {
+    function CollectionCoordinatesComponent(mapSystem, map, geometryLinestring, geometryPolygon) {
+        this.mapSystem = mapSystem;
         this.map = map;
         this.srid = 'EPSG:3857';
         // console.log('creating aol-collection-coordinates');
@@ -94,7 +97,7 @@ var CollectionCoordinatesComponent = (function () {
         else {
             transformedCoordinates = [];
             this.coordinates.forEach(function (coordinate) {
-                transformedCoordinates.push(openlayers_1.proj.transform(coordinate, this.srid, referenceProjectionCode));
+                transformedCoordinates.push(this.mapSystem.proj.transform(coordinate, this.srid, referenceProjectionCode));
             }.bind(this));
         }
         switch (this.host.componentType) {
@@ -118,6 +121,7 @@ CollectionCoordinatesComponent.decorators = [
 ];
 /** @nocollapse */
 CollectionCoordinatesComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
     { type: geometry_components_1.GeometryLinestringComponent, decorators: [{ type: core_1.Optional },] },
     { type: geometry_components_1.GeometryPolygonComponent, decorators: [{ type: core_1.Optional },] },

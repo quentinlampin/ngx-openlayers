@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var map_system_1 = require("../../map-system");
 var DragRotateInteractionComponent = (function () {
-    function DragRotateInteractionComponent(map) {
+    function DragRotateInteractionComponent(mapSystem, map) {
+        this.mapSystem = mapSystem;
         this.map = map;
     }
     DragRotateInteractionComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.interaction.DragRotate(this);
+        this.instance = new this.mapSystem.interaction.DragRotate(this);
         this.map.instance.addInteraction(this.instance);
     };
     DragRotateInteractionComponent.prototype.ngOnDestroy = function () {
@@ -24,6 +25,7 @@ DragRotateInteractionComponent.decorators = [
 ];
 /** @nocollapse */
 DragRotateInteractionComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 DragRotateInteractionComponent.propDecorators = {

@@ -1,15 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var style_component_1 = require("./style.component");
+var map_system_1 = require("../../map-system");
 var StyleIconComponent = (function () {
-    function StyleIconComponent(host) {
+    function StyleIconComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
     }
     StyleIconComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.style.Icon instance with: ', this);
-        this.instance = new openlayers_1.style.Icon(this);
+        this.instance = new this.mapSystem.style.Icon(this);
         this.host.instance.setImage(this.instance);
     };
     StyleIconComponent.prototype.ngOnChanges = function (changes) {
@@ -26,7 +27,7 @@ var StyleIconComponent = (function () {
             this.instance.setScale(changes['scale'].currentValue);
         }
         if (changes['src']) {
-            this.instance = new openlayers_1.style.Icon(this);
+            this.instance = new this.mapSystem.Icon(this);
             this.host.instance.setImage(this.instance);
         }
         this.host.update();
@@ -42,6 +43,7 @@ StyleIconComponent.decorators = [
 ];
 /** @nocollapse */
 StyleIconComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: style_component_1.StyleComponent, decorators: [{ type: core_1.Host },] },
 ]; };
 StyleIconComponent.propDecorators = {

@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var map_system_1 = require("../../map-system");
 var DefaultControlComponent = (function () {
-    function DefaultControlComponent(map) {
+    function DefaultControlComponent(mapSystem, map) {
+        this.mapSystem = mapSystem;
         this.map = map;
     }
     DefaultControlComponent.prototype.ngOnInit = function () {
         var _this = this;
         // console.log('ol.control.defaults init: ', this);
-        this.instance = openlayers_1.control.defaults(this);
+        this.instance = this.mapSystem.control.defaults(this);
         this.instance.forEach(function (control) { return _this.map.instance.addControl(control); });
     };
     DefaultControlComponent.prototype.ngOnDestroy = function () {
@@ -28,6 +29,7 @@ DefaultControlComponent.decorators = [
 ];
 /** @nocollapse */
 DefaultControlComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 DefaultControlComponent.propDecorators = {

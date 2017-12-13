@@ -1,15 +1,15 @@
 /// <reference types="openlayers" />
 import { OnInit } from '@angular/core';
-import { source, ProjectionLike, format } from 'openlayers';
 import { LayerVectorComponent } from '../layers';
 import { SourceComponent } from './source.component';
 export declare class SourceGeoJSONComponent extends SourceComponent implements OnInit {
-    instance: source.Vector;
-    format: format.Feature;
-    defaultDataProjection: ProjectionLike;
-    featureProjection: ProjectionLike;
+    protected mapSystem: any;
+    instance: ol.source.Vector;
+    format: ol.format.Feature;
+    defaultDataProjection: ol.ProjectionLike;
+    featureProjection: ol.ProjectionLike;
     geometryName: string;
     url: string;
-    constructor(layer: LayerVectorComponent);
+    constructor(mapSystem: any, layer: LayerVectorComponent);
     ngOnInit(): void;
 }

@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var map_system_1 = require("../../map-system");
 var PinchZoomInteractionComponent = (function () {
-    function PinchZoomInteractionComponent(map) {
+    function PinchZoomInteractionComponent(mapSystem, map) {
+        this.mapSystem = mapSystem;
         this.map = map;
     }
     PinchZoomInteractionComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.interaction.PinchZoom(this);
+        this.instance = new this.mapSystem.interaction.PinchZoom(this);
         this.map.instance.addInteraction(this.instance);
     };
     PinchZoomInteractionComponent.prototype.ngOnDestroy = function () {
@@ -24,6 +25,7 @@ PinchZoomInteractionComponent.decorators = [
 ];
 /** @nocollapse */
 PinchZoomInteractionComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 PinchZoomInteractionComponent.propDecorators = {

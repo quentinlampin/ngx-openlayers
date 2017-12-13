@@ -1,14 +1,14 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.MouseWheelZoom;
+    instance: ol.interaction.MouseWheelZoom;
     duration: number;
     timeout: number;
     useAnchor: boolean;
-    constructor(map: MapComponent);
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

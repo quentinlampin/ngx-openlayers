@@ -1,11 +1,11 @@
 /// <reference types="openlayers" />
 import { AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
-import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 import { TileGridComponent } from '../tilegrid.component';
 export declare class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
-    instance: source.XYZ;
+    protected mapSystem: any;
+    instance: ol.source.XYZ;
     cacheSize: number;
     crossOrigin: string;
     opaque: boolean;
@@ -13,16 +13,16 @@ export declare class SourceXYZComponent extends SourceComponent implements After
     reprojectionErrorThreshold: number;
     minZoom: number;
     maxZoom: number;
-    tileGrid: tilegrid.TileGrid;
-    tileLoadFunction?: TileLoadFunctionType;
+    tileGrid: ol.tilegrid.TileGrid;
+    tileLoadFunction?: ol.TileLoadFunctionType;
     tilePixelRatio: number;
-    tileSize: number | Size;
-    tileUrlFunction: TileUrlFunctionType;
+    tileSize: number | ol.Size;
+    tileUrlFunction: ol.TileUrlFunctionType;
     url: string;
     urls: string[];
     wrapX: boolean;
     tileGridXYZ: TileGridComponent;
-    constructor(layer: LayerTileComponent);
+    constructor(mapSystem: any, layer: LayerTileComponent);
     ngAfterContentInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
 }

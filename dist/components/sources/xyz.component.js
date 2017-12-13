@@ -11,20 +11,22 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var source_component_1 = require("./source.component");
 var tilegrid_component_1 = require("../tilegrid.component");
+var map_system_1 = require("../../map-system");
 var SourceXYZComponent = (function (_super) {
     __extends(SourceXYZComponent, _super);
-    function SourceXYZComponent(layer) {
-        return _super.call(this, layer) || this;
+    function SourceXYZComponent(mapSystem, layer) {
+        var _this = _super.call(this, mapSystem, layer) || this;
+        _this.mapSystem = mapSystem;
+        return _this;
     }
     SourceXYZComponent.prototype.ngAfterContentInit = function () {
         if (this.tileGridXYZ) {
             this.tileGrid = this.tileGridXYZ.instance;
         }
-        this.instance = new openlayers_1.source.XYZ(this);
+        this.instance = new this.mapSystem.source.XYZ(this);
         this.host.instance.setSource(this.instance);
     };
     SourceXYZComponent.prototype.ngOnChanges = function (changes) {
@@ -39,7 +41,7 @@ var SourceXYZComponent = (function (_super) {
         }
         this.instance.setProperties(properties, false);
         if (changes.hasOwnProperty('url')) {
-            this.instance = new openlayers_1.source.XYZ(this);
+            this.instance = new this.mapSystem.source.XYZ(this);
             this.host.instance.setSource(this.instance);
         }
     };
@@ -56,6 +58,7 @@ SourceXYZComponent.decorators = [
 ];
 /** @nocollapse */
 SourceXYZComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: layers_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
 ]; };
 SourceXYZComponent.propDecorators = {

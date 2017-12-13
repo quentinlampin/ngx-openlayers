@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var map_system_1 = require("../../map-system");
 var LayerComponent = (function () {
-    function LayerComponent(host) {
+    function LayerComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
         this.componentType = 'layer';
     }
@@ -27,6 +29,11 @@ var LayerComponent = (function () {
     };
     return LayerComponent;
 }());
+/** @nocollapse */
+LayerComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
+    null,
+]; };
 LayerComponent.propDecorators = {
     'opacity': [{ type: core_1.Input },],
     'visible': [{ type: core_1.Input },],

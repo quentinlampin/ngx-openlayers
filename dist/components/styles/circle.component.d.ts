@@ -1,17 +1,17 @@
 /// <reference types="openlayers" />
 import { AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
 import { StyleComponent } from './style.component';
 export declare class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
+    protected mapSystem: any;
     private host;
     componentType: string;
-    instance: style.Circle;
-    fill: style.Fill;
+    instance: ol.style.Circle;
+    fill: ol.style.Fill;
     radius: number;
     snapToPixel: boolean;
-    stroke: style.Stroke;
-    atlasManager: style.AtlasManager;
-    constructor(host: StyleComponent);
+    stroke: ol.style.Stroke;
+    atlasManager: ol.style.AtlasManager;
+    constructor(mapSystem: any, host: StyleComponent);
     /**
      * WORK-AROUND: since the re-rendering is not triggered on style change
      * we trigger a radius change.

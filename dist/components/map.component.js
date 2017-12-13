@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
+var map_system_1 = require("../map-system");
 var MapComponent = (function () {
-    function MapComponent(host) {
+    function MapComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
         this.componentType = 'map';
         this.width = '100%';
@@ -25,7 +26,7 @@ var MapComponent = (function () {
     MapComponent.prototype.ngOnInit = function () {
         var _this = this;
         // console.log('creating ol.Map instance with:', this);
-        this.instance = new openlayers_1.Map(this);
+        this.instance = new this.mapSystem.Map(this);
         this.instance.setTarget(this.host.nativeElement.firstElementChild);
         this.instance.on('click', function (event) { return _this.onClick.emit(event); });
         this.instance.on('dblclick', function (event) { return _this.onDblClick.emit(event); });
@@ -64,6 +65,7 @@ MapComponent.decorators = [
 ];
 /** @nocollapse */
 MapComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: core_1.ElementRef, },
 ]; };
 MapComponent.propDecorators = {

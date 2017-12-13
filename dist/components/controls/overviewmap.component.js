@@ -1,15 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var map_component_1 = require("../map.component");
+var map_system_1 = require("../../map-system");
 var ControlOverviewMapComponent = (function () {
-    function ControlOverviewMapComponent(map) {
+    function ControlOverviewMapComponent(mapSystem, map) {
+        this.mapSystem = mapSystem;
         this.map = map;
         // console.log('instancing aol-control-overviewmap');
     }
     ControlOverviewMapComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.control.OverviewMap(this);
+        this.instance = new this.mapSystem.control.OverviewMap(this);
         this.map.instance.addControl(this.instance);
     };
     ControlOverviewMapComponent.prototype.ngOnDestroy = function () {
@@ -26,6 +27,7 @@ ControlOverviewMapComponent.decorators = [
 ];
 /** @nocollapse */
 ControlOverviewMapComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: map_component_1.MapComponent, },
 ]; };
 ControlOverviewMapComponent.propDecorators = {

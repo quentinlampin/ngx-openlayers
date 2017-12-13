@@ -1,14 +1,14 @@
 /// <reference types="openlayers" />
 import { OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { View, Extent, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 export declare class ViewComponent implements OnInit, OnChanges, OnDestroy {
+    protected mapSystem: any;
     private host;
-    instance: View;
+    instance: ol.View;
     componentType: string;
     constrainRotation: boolean | number;
     enableRotation: boolean;
-    extent: Extent;
+    extent: ol.Extent;
     maxResolution: number;
     minResolution: number;
     maxZoom: number;
@@ -18,9 +18,9 @@ export declare class ViewComponent implements OnInit, OnChanges, OnDestroy {
     rotation: number;
     zoom: number;
     zoomFactor: number;
-    center: Coordinate;
+    center: ol.Coordinate;
     projection: string;
-    constructor(host: MapComponent);
+    constructor(mapSystem: any, host: MapComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;

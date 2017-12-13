@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var feature_component_1 = require("../feature.component");
 var layers_1 = require("../layers");
+var map_system_1 = require("../../map-system");
 var StyleComponent = (function () {
-    function StyleComponent(featureHost, layerHost) {
+    function StyleComponent(mapSystem, featureHost, layerHost) {
+        this.mapSystem = mapSystem;
         this.componentType = 'style';
         // console.log('creating aol-style');
         this.host = !!featureHost ? featureHost : layerHost;
@@ -19,7 +20,7 @@ var StyleComponent = (function () {
     };
     StyleComponent.prototype.ngOnInit = function () {
         // console.log('creating aol-style instance with: ', this);
-        this.instance = new openlayers_1.style.Style(this);
+        this.instance = new this.mapSystem.style.Style(this);
         this.host.instance.setStyle(this.instance);
     };
     return StyleComponent;
@@ -32,6 +33,7 @@ StyleComponent.decorators = [
 ];
 /** @nocollapse */
 StyleComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: feature_component_1.FeatureComponent, decorators: [{ type: core_1.Optional },] },
     { type: layers_1.LayerVectorComponent, decorators: [{ type: core_1.Optional },] },
 ]; };

@@ -11,22 +11,24 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var formats_1 = require("../formats");
 var tilegrid_component_1 = require("../tilegrid.component");
 var source_component_1 = require("./source.component");
+var map_system_1 = require("../../map-system");
 var SourceVectorTileComponent = (function (_super) {
     __extends(SourceVectorTileComponent, _super);
-    function SourceVectorTileComponent(layer) {
-        return _super.call(this, layer) || this;
+    function SourceVectorTileComponent(mapSystem, layer) {
+        var _this = _super.call(this, mapSystem, layer) || this;
+        _this.mapSystem = mapSystem;
+        return _this;
     }
     /* need the children to construct the OL3 object */
     SourceVectorTileComponent.prototype.ngAfterContentInit = function () {
         this.format = this.formatComponent.instance;
         this.tileGrid = this.tileGridComponent.instance;
         // console.log('creating ol.source.VectorTile instance with:', this);
-        this.instance = new openlayers_1.source.VectorTile(this);
+        this.instance = new this.mapSystem.source.VectorTile(this);
         this.host.instance.setSource(this.instance);
     };
     return SourceVectorTileComponent;
@@ -42,6 +44,7 @@ SourceVectorTileComponent.decorators = [
 ];
 /** @nocollapse */
 SourceVectorTileComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: layers_1.LayerVectorTileComponent, decorators: [{ type: core_1.Host },] },
 ]; };
 SourceVectorTileComponent.propDecorators = {

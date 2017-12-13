@@ -11,13 +11,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var format_component_1 = require("./format.component");
+var map_system_1 = require("../../map-system");
 var FormatMVTComponent = (function (_super) {
     __extends(FormatMVTComponent, _super);
-    function FormatMVTComponent() {
+    function FormatMVTComponent(mapSystem) {
         var _this = _super.call(this) || this;
-        _this.instance = new openlayers_1.format.MVT(_this);
+        _this.mapSystem = mapSystem;
+        _this.instance = new _this.mapSystem.format.MVT(_this);
         return _this;
     }
     return FormatMVTComponent;
@@ -32,7 +33,9 @@ FormatMVTComponent.decorators = [
             },] },
 ];
 /** @nocollapse */
-FormatMVTComponent.ctorParameters = function () { return []; };
+FormatMVTComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
+]; };
 FormatMVTComponent.propDecorators = {
     'featureClass': [{ type: core_1.Input },],
     'geometryName': [{ type: core_1.Input },],

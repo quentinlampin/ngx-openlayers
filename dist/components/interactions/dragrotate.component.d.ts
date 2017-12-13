@@ -1,13 +1,13 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction, EventsConditionType } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class DragRotateInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.DragRotate;
-    condition: EventsConditionType;
+    instance: ol.interaction.DragRotate;
+    condition: ol.EventsConditionType;
     duration: number;
-    constructor(map: MapComponent);
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

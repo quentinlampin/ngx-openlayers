@@ -2,8 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var layers_1 = require("../layers");
+var map_system_1 = require("../../map-system");
 var SourceComponent = (function () {
-    function SourceComponent(host) {
+    function SourceComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
         this.componentType = 'source';
     }
@@ -17,6 +19,7 @@ var SourceComponent = (function () {
 }());
 /** @nocollapse */
 SourceComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: layers_1.LayerComponent, decorators: [{ type: core_1.Host },] },
 ]; };
 SourceComponent.propDecorators = {

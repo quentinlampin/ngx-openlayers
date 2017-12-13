@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var style_component_1 = require("./style.component");
+var map_system_1 = require("../../map-system");
 var StyleTextComponent = (function () {
-    function StyleTextComponent(host) {
+    function StyleTextComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
         this.componentType = 'style-text';
         if (!host) {
@@ -14,7 +15,7 @@ var StyleTextComponent = (function () {
     }
     StyleTextComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.style.Text instance with: ', this);
-        this.instance = new openlayers_1.style.Text(this);
+        this.instance = new this.mapSystem.style.Text(this);
         this.host.instance.setText(this.instance);
     };
     StyleTextComponent.prototype.ngOnChanges = function (changes) {
@@ -58,6 +59,7 @@ StyleTextComponent.decorators = [
 ];
 /** @nocollapse */
 StyleTextComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: style_component_1.StyleComponent, decorators: [{ type: core_1.Optional },] },
 ]; };
 StyleTextComponent.propDecorators = {

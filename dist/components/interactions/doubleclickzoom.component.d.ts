@@ -1,13 +1,13 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.DoubleClickZoom;
+    instance: ol.interaction.DoubleClickZoom;
     duration: number;
     delta: number;
-    constructor(map: MapComponent);
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

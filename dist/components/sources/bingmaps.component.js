@@ -11,18 +11,19 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var layers_1 = require("../layers");
 var source_component_1 = require("./source.component");
+var map_system_1 = require("../../map-system");
 var SourceBingmapsComponent = (function (_super) {
     __extends(SourceBingmapsComponent, _super);
-    function SourceBingmapsComponent(layer) {
-        var _this = _super.call(this, layer) || this;
+    function SourceBingmapsComponent(mapSystem, layer) {
+        var _this = _super.call(this, mapSystem, layer) || this;
+        _this.mapSystem = mapSystem;
         _this.imagerySet = 'Aerial';
         return _this;
     }
     SourceBingmapsComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.source.BingMaps(this);
+        this.instance = new this.mapSystem.source.BingMaps(this);
         this.host.instance.setSource(this.instance);
     };
     return SourceBingmapsComponent;
@@ -38,6 +39,7 @@ SourceBingmapsComponent.decorators = [
 ];
 /** @nocollapse */
 SourceBingmapsComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: layers_1.LayerTileComponent, decorators: [{ type: core_1.Host },] },
 ]; };
 SourceBingmapsComponent.propDecorators = {

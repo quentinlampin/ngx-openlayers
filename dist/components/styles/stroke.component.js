@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var style_component_1 = require("./style.component");
 var circle_component_1 = require("./circle.component");
 var text_component_1 = require("./text.component");
+var map_system_1 = require("../../map-system");
 var StyleStrokeComponent = (function () {
-    function StyleStrokeComponent(styleHost, styleCircleHost, styleTextHost) {
+    function StyleStrokeComponent(mapSystem, styleHost, styleCircleHost, styleTextHost) {
+        this.mapSystem = mapSystem;
         if (!styleHost) {
             throw new Error('aol-style-stroke must be a descendant of aol-style');
         }
@@ -23,7 +24,7 @@ var StyleStrokeComponent = (function () {
     }
     StyleStrokeComponent.prototype.ngOnInit = function () {
         // console.log('creating ol.style.Stroke instance with: ', this);
-        this.instance = new openlayers_1.style.Stroke(this);
+        this.instance = new this.mapSystem.style.Stroke(this);
         switch (this.host.componentType) {
             case 'style':
                 this.host.instance.setStroke(this.instance);
@@ -75,6 +76,7 @@ StyleStrokeComponent.decorators = [
 ];
 /** @nocollapse */
 StyleStrokeComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: style_component_1.StyleComponent, decorators: [{ type: core_1.Optional },] },
     { type: circle_component_1.StyleCircleComponent, decorators: [{ type: core_1.Optional },] },
     { type: text_component_1.StyleTextComponent, decorators: [{ type: core_1.Optional },] },

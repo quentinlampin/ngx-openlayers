@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var components_1 = require("./components");
+var map_system_1 = require("./map-system");
 __export(require("./components"));
 var COMPONENTS = [
     components_1.MapComponent,
@@ -73,6 +74,14 @@ var COMPONENTS = [
 var AngularOpenlayersModule = (function () {
     function AngularOpenlayersModule() {
     }
+    AngularOpenlayersModule.forRoot = function (mapSystemConfiguration) {
+        return {
+            ngModule: AngularOpenlayersModule,
+            providers: [
+                { provide: map_system_1.MapSystemToken, useValue: mapSystemConfiguration }
+            ]
+        };
+    };
     return AngularOpenlayersModule;
 }());
 AngularOpenlayersModule.decorators = [

@@ -1,15 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var openlayers_1 = require("openlayers");
 var sources_1 = require("./sources");
+var map_system_1 = require("../map-system");
 var FeatureComponent = (function () {
-    function FeatureComponent(host) {
+    function FeatureComponent(mapSystem, host) {
+        this.mapSystem = mapSystem;
         this.host = host;
         this.componentType = 'feature';
     }
     FeatureComponent.prototype.ngOnInit = function () {
-        this.instance = new openlayers_1.Feature();
+        this.instance = new this.mapSystem.Feature();
         if (this.id !== undefined) {
             this.instance.setId(this.id);
         }
@@ -33,6 +34,7 @@ FeatureComponent.decorators = [
 ];
 /** @nocollapse */
 FeatureComponent.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: core_1.Inject, args: [map_system_1.MapSystemToken,] },] },
     { type: sources_1.SourceVectorComponent, },
 ]; };
 FeatureComponent.propDecorators = {

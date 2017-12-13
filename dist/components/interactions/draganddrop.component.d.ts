@@ -1,14 +1,14 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction, format, ProjectionLike } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class DragAndDropInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.DragAndDrop;
-    formatConstructors: ((n: format.Feature) => any)[];
-    projection: ProjectionLike;
+    instance: ol.interaction.DragAndDrop;
+    formatConstructors: ((n: ol.format.Feature) => any)[];
+    projection: ol.ProjectionLike;
     target: Element;
-    constructor(map: MapComponent);
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }

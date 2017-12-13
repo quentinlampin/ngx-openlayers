@@ -1,19 +1,19 @@
 /// <reference types="openlayers" />
 import { OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
 import { StyleComponent } from './style.component';
 export declare class StyleIconComponent implements OnInit, OnChanges {
+    protected mapSystem: any;
     private host;
-    instance: style.Icon;
+    instance: ol.style.Icon;
     anchor: [number, number];
-    anchorXUnits: style.IconAnchorUnits;
-    anchorYUnits: style.IconAnchorUnits;
-    anchorOrigin: style.IconOrigin;
+    anchorXUnits: ol.style.IconAnchorUnits;
+    anchorYUnits: ol.style.IconAnchorUnits;
+    anchorOrigin: ol.style.IconOrigin;
     color: [number, number, number, number];
-    crossOrigin: style.IconOrigin;
+    crossOrigin: ol.style.IconOrigin;
     img: string;
     offset: [number, number];
-    offsetOrigin: style.IconOrigin;
+    offsetOrigin: ol.style.IconOrigin;
     opacity: number;
     scale: number;
     snapToPixel: boolean;
@@ -22,7 +22,7 @@ export declare class StyleIconComponent implements OnInit, OnChanges {
     size: [number, number];
     imgSize: [number, number];
     src: string;
-    constructor(host: StyleComponent);
+    constructor(mapSystem: any, host: StyleComponent);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
 }

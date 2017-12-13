@@ -1,13 +1,13 @@
 /// <reference types="openlayers" />
 import { OnDestroy, OnInit } from '@angular/core';
-import { interaction } from 'openlayers';
 import { MapComponent } from '../map.component';
 export declare class PinchZoomInteractionComponent implements OnInit, OnDestroy {
+    protected mapSystem: any;
     private map;
-    instance: interaction.PinchZoom;
+    instance: ol.interaction.PinchZoom;
     duration: number;
     constrainResolution: boolean;
-    constructor(map: MapComponent);
+    constructor(mapSystem: any, map: MapComponent);
     ngOnInit(): void;
     ngOnDestroy(): void;
 }
