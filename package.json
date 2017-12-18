@@ -3,9 +3,10 @@
     "version": "0.8.16",
     "scripts": {
         "lint": "tslint src/**/*.ts",
-        "test": "ngc && karma start",
+        "test": "echo \"No tests specified\" && exit 0",
         "prepublish": "ngc",
-        "ngc": "ngc"
+        "ngc": "ngc",
+        "release": "npm version -m \"[version] %s\" patch"
     },
     "repository": {
         "type": "git",
