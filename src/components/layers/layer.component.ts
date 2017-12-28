@@ -17,6 +17,8 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() precompose: (evt: ol.events.Event) => void;
   @Input() postcompose: (evt: ol.events.Event) => void;
 
+  @Input() index: number;
+
   constructor(protected host: LayerGroupComponent | MapComponent) {
   }
 
@@ -27,7 +29,11 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     if (this.postcompose !== null && this.postcompose !== undefined) {
       this.instance.on('postcompose', this.postcompose);
     }
-    this.host.instance.getLayers().push(this.instance);
+    if (this.index != null) {
+      this.host.instance.getLayers().insertAt(this.index, this.instance);
+    } else {
+      this.host.instance.getLayers().push(this.instance);
+    }
   }
 
   ngOnDestroy() {
@@ -41,14 +47,18 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     }
     for (let key in changes) {
       if (changes.hasOwnProperty(key)) {
-        properties[key] = changes[key].currentValue;
-        if (key === 'precompose') {
-          this.instance.un('precompose', changes[key].previousValue)
-          this.instance.on('precompose', changes[key].currentValue);
-        }
-        if (key === 'postcompose') {
-          this.instance.un('postcompose', changes[key].previousValue)
-          this.instance.on('postcompose', changes[key].currentValue);
+        if (key === 'index') {
+          // TODO: move the position of the layer in the list
+        } else {
+          properties[key] = changes[key].currentValue;
+          if (key === 'precompose') {
+            this.instance.un('precompose', changes[key].previousValue)
+            this.instance.on('precompose', changes[key].currentValue);
+          }
+          if (key === 'postcompose') {
+            this.instance.un('postcompose', changes[key].previousValue)
+            this.instance.on('postcompose', changes[key].currentValue);
+          }
         }
       }
     }
