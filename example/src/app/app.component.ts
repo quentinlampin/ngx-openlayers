@@ -5,9 +5,16 @@ import {Component} from '@angular/core';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    public zoom = 15;
+    public zoom = 3;
     public opacity = 1.0;
     public width = 5;
+    layerVisible = false;
+
+    constructor() {
+      setTimeout(() => {
+        this.layerVisible = true;
+      }, 5000);
+    }
 
     increaseZoom() {
         this.zoom  = Math.min(this.zoom + 1, 18);
