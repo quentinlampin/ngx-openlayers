@@ -1,5 +1,6 @@
 export * from './controls';
 export * from './formats';
+export * from './geometries';
 export * from './interactions';
 export * from './layers';
 export * from './sources';
@@ -10,7 +11,6 @@ export * from './attributions.component';
 export * from './content.component';
 export * from './coordinate.component';
 export * from './feature.component';
-export * from './geometry.components';
 export * from './graticule.component';
 export * from './map.component';
 export * from './overlay.component';

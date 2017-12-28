@@ -1,7 +1,7 @@
 import { Component, Optional, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
-import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
+import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometries';
 import { ViewComponent } from './view.component';
 import { OverlayComponent } from './overlay.component';
 

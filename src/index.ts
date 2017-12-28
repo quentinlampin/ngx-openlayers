@@ -5,7 +5,7 @@ import {
   LayerGroupComponent, LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent, LayerImageComponent,
   SourceBingmapsComponent, SourceClusterComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
   SourceGeoJSONComponent, SourceTileWMTSComponent, SourceTileJSONComponent, SourceImageStaticComponent, SourceImageWMSComponent, FeatureComponent,
-  GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent,
+  SimpleGeometryComponent, GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent, GeometryMultiPolygonComponent,
   CollectionCoordinatesComponent, CoordinateComponent,
   StyleCircleComponent, StyleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent, StyleTextComponent,
   ControlAttributionComponent, ControlFullScreenComponent, ControlMousePositionComponent,
@@ -53,6 +53,7 @@ const COMPONENTS = [
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryMultiPolygonComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
 
