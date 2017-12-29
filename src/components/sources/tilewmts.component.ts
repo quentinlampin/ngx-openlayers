@@ -1,4 +1,4 @@
-import {Component, Host, Input, forwardRef, AfterContentInit, ContentChild, SimpleChanges} from '@angular/core';
+import { Component, Host, Input, forwardRef, AfterContentInit, ContentChild, SimpleChanges, OnChanges } from '@angular/core';
 import {
   TileLoadFunctionType,
   tilegrid,
@@ -19,7 +19,7 @@ import {TileGridWMTSComponent} from '../tilegridwmts.component';
     {provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent)}
   ]
 })
-export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit {
+export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
 
   instance: source.WMTS;
   @Input() cacheSize?: number;
@@ -48,28 +48,6 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
     super(layer);
   }
 
-
-  ngOnChanges(changes: SimpleChanges) {
-    let properties: {[index: string]: any} = {};
-    if (!this.instance) {
-      return;
-    }
-    for (let key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        switch (key) {
-          case 'url':
-            this.url = changes[key].currentValue;
-            this.setLayerSource();
-            break;
-          default:
-            break;
-        }
-        properties[key] = changes[key].currentValue;
-      }
-    }
-    this.instance.setProperties(properties, false);
-  }
-
   setLayerSource(): void {
     this.instance = new source.WMTS(this);
     this.host.instance.setSource(this.instance);
@@ -80,5 +58,9 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
       this.tileGrid = this.tileGridWMTS.instance;
       this.setLayerSource();
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }

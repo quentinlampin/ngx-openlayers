@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Host, Input, OnInit, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { source, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
@@ -10,7 +10,7 @@ import { SourceComponent } from './source.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }
   ]
 })
-export class SourceBingmapsComponent extends SourceComponent implements OnInit {
+export class SourceBingmapsComponent extends SourceComponent implements OnInit, OnChanges {
   instance: source.BingMaps;
 
   @Input() cacheSize: number;
@@ -30,5 +30,9 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   ngOnInit() {
     this.instance = new source.BingMaps(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }

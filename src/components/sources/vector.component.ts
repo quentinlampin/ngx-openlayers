@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Host, Input, OnInit, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { source } from 'openlayers';
 import { LayerVectorComponent } from '../layers';
 import { SourceComponent } from './source.component';
@@ -10,7 +10,7 @@ import { SourceComponent } from './source.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }
   ]
 })
-export class SourceVectorComponent extends SourceComponent implements OnInit {
+export class SourceVectorComponent extends SourceComponent implements OnInit, OnChanges {
   instance: source.Vector;
   @Input() overlaps: boolean;
   @Input() useSpatialIndex: boolean;
@@ -26,5 +26,9 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   ngOnInit() {
     this.instance = new source.Vector(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }
