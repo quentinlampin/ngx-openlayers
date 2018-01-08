@@ -2,10 +2,15 @@
 	<aol-view [zoom]="zoom">
 		<aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
 	</aol-view>
-	<aol-layer-tile [opacity]="opacity">
+	<aol-layer-tile [opacity]="opacity" [index]="0">
     <aol-source-osm></aol-source-osm>
-	</aol-layer-tile>
-	<aol-layer-vector [opacity]="opacity">
+  </aol-layer-tile>
+  <aol-layer-tile *ngIf="layerVisible" [extent]="[-13884991, 2870341, -7455066, 6338219]" [index]="1">
+    <aol-source-tilewms [url]="'https://ahocevar.com/geoserver/wms'"
+                        [params]="{'LAYERS': 'topp:states', 'TILED': true}"
+                        [serverType]="'geoserver'"></aol-source-tilewms>
+  </aol-layer-tile>
+	<aol-layer-vector [opacity]="opacity" [index]="2">
 		<aol-source-vector>
 			<aol-feature>
 				<aol-geometry-point>
@@ -34,6 +39,7 @@
 	    </aol-feature>
 		</aol-source-vector>
 	</aol-layer-vector>
+  <aol-interaction-default></aol-interaction-default>
 </aol-map>
 
 <span>opacity:</span><button (click)="increaseOpacity()">+</button><button (click)="decreaseOpacity()">-</button><br>
