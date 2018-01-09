@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { interaction, EventsConditionType, style, StyleFunction, Collection, Feature } from 'openlayers';
+import { interaction, EventsConditionType, style, StyleFunction, Collection, Feature, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -15,6 +15,7 @@ export class ModifyInteractionComponent implements OnInit, OnDestroy {
     @Input() style?: (style.Style | style.Style[] | StyleFunction);
     @Input() features: Collection<Feature>;
     @Input() wrapX?: boolean;
+    @Input() source?: source.Vector;
 
     @Output() onModifyEnd = new EventEmitter<interaction.Modify.Event>();
     @Output() onModifyStart = new EventEmitter<interaction.Modify.Event>();
