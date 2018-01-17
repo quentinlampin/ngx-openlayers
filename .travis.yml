@@ -50,4 +50,12 @@ jobs:
         github_token: $GITHUB_OAUTH_TOKEN
         on:
           tags: true
+  - stage: publish library release
+    deploy:
+      provider: npm
+      email: $NPM_EMAIL
+      api_key: $NPM_TOKEN
+      on:
+        tags: true
+      skip_cleanup: true
 
