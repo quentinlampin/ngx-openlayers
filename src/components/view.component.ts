@@ -25,7 +25,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input() center: Coordinate;
   @Input() projection: string;
 
-  @Input() animatedZoom = false;
+  @Input() zoomAnimation = false;
 
   constructor(private host: MapComponent) {
   }
@@ -46,7 +46,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
         switch (key) {
           case 'zoom':
             /** Work-around: setting the zoom via setProperties does not work. */
-            if (this.animatedZoom) {
+            if (this.zoomAnimation) {
               this.instance.animate({zoom: changes[key].currentValue});
             } else {
               this.instance.setZoom(changes[key].currentValue);
