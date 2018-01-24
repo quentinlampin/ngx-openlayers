@@ -1,7 +1,7 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
 import { source, TileLoadFunctionType, tilegrid } from 'openlayers';
-import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
+import {LayerTileComponent} from '../layers/layertile.component';
 
 @Component({
   selector: 'aol-source-tilewms',

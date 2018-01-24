@@ -1,7 +1,7 @@
 import { Component, Input, Optional, OnInit } from '@angular/core';
 import { style, StyleGeometryFunction, geom } from 'openlayers';
 import { FeatureComponent } from '../feature.component';
-import { LayerVectorComponent } from '../layers';
+import { LayerVectorComponent } from '../layers/layervector.component';
 
 @Component({
   selector: 'aol-style',

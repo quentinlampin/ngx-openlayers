@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { Feature } from 'openlayers';
-import { SourceVectorComponent } from './sources';
+import { SourceVectorComponent } from './sources/vector.component';
 
 @Component({
   selector: 'aol-feature',
