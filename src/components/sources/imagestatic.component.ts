@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Host, Input, OnInit, forwardRef, SimpleChanges, OnChanges } from '@angular/core';
 import { ProjectionLike, source, Extent, AttributionLike, ImageLoadFunctionType, Size } from 'openlayers';
 import { SourceComponent } from './source.component';
 import { LayerImageComponent } from '../layers/layerimage.component';
@@ -8,7 +8,7 @@ import { LayerImageComponent } from '../layers/layerimage.component';
   template: `<ng-content></ng-content>`,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
 })
-export class SourceImageStaticComponent extends SourceComponent implements OnInit {
+export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {
   instance: source.ImageStatic;
 
   @Input() projection: (ProjectionLike | string);
@@ -27,5 +27,9 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   ngOnInit() {
     this.instance = new source.ImageStatic(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }

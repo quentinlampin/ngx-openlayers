@@ -44,21 +44,6 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let properties: {[index: string]: any} = {};
-
-    if (!this.instance) {
-      return;
-    }
-    for (let key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        properties[key] = changes[key].currentValue;
-      }
-    }
-
-    this.instance.setProperties(properties, false);
-    if (changes.hasOwnProperty('url')) {
-      this.instance = new source.XYZ(this);
-      this.host.instance.setSource(this.instance);
-    }
+    super.ngOnChanges(changes);
   }
 }

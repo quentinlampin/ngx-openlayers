@@ -1,4 +1,4 @@
-import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
+import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit, SimpleChanges, OnChanges } from '@angular/core';
 import { source, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
 import { LayerVectorTileComponent } from '../layers';
 import { FormatComponent } from '../formats';
@@ -12,7 +12,7 @@ import { SourceComponent } from './source.component';
     { provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }
   ]
 })
-export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
+export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit, OnChanges {
   public instance: source.VectorTile;
   @Input() cacheSize: number;
   @Input() overlaps: boolean;
@@ -39,5 +39,9 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
     // console.log('creating ol.source.VectorTile instance with:', this);
     this.instance = new source.VectorTile(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
   }
 }
