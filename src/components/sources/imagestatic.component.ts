@@ -1,7 +1,7 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { ProjectionLike, source, Extent, AttributionLike, ImageLoadFunctionType, Size } from 'openlayers';
+import {Component, Host, Input, OnInit, forwardRef, Inject} from '@angular/core';
 import { SourceComponent } from './source.component';
 import { LayerImageComponent } from '../layers/layerimage.component';
+import { MapSystemToken } from '../../map-system';
 
 @Component({
   selector: 'aol-source-imagestatic',
@@ -9,23 +9,23 @@ import { LayerImageComponent } from '../layers/layerimage.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
 })
 export class SourceImageStaticComponent extends SourceComponent implements OnInit {
-  instance: source.ImageStatic;
+  instance: ol.source.ImageStatic;
 
-  @Input() projection: (ProjectionLike | string);
-  @Input() imageExtent: Extent;
+  @Input() projection: (ol.ProjectionLike | string);
+  @Input() imageExtent: ol.Extent;
   @Input() url: string;
-  @Input() attributions: AttributionLike;
+  @Input() attributions: ol.AttributionLike;
   @Input() crossOrigin?: string;
-  @Input() imageLoadFunction?: ImageLoadFunctionType;
+  @Input() imageLoadFunction?: ol.ImageLoadFunctionType;
   @Input() logo?: (string | olx.LogoOptions);
-  @Input() imageSize?: Size;
+  @Input() imageSize?: ol.Size;
 
-  constructor(@Host() layer: LayerImageComponent) {
-    super(layer);
+  constructor(@Inject(MapSystemToken) protected mapSystem: any, @Host() layer: LayerImageComponent) {
+    super(mapSystem, layer);
   }
 
   ngOnInit() {
-    this.instance = new source.ImageStatic(this);
+    this.instance = this.mapSystem.source.ImageStatic(this);
     this.host.instance.setSource(this.instance);
   }
 }
