@@ -53,7 +53,6 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
             }
             break;
           case 'projection':
-            console.log('## ViewComponent: projection updated => recreate the view ##');
             this.instance = new View(this);
             this.host.instance.setView(this.instance);
             break;
