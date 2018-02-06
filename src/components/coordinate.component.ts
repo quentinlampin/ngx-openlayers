@@ -1,4 +1,4 @@
-import { Component, Optional, OnChanges, Input, SimpleChanges } from '@angular/core';
+import {Component, Optional, OnChanges, Input, SimpleChanges, OnInit} from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
@@ -9,7 +9,7 @@ import { OverlayComponent } from './overlay.component';
   selector: 'aol-coordinate',
   template: `<div class="aol-coordinate"></div>`
 })
-export class CoordinateComponent implements OnChanges {
+export class CoordinateComponent implements OnChanges, OnInit {
   private host: any;
 
   @Input() x: number;
@@ -32,7 +32,17 @@ export class CoordinateComponent implements OnChanges {
     }
   }
 
+  ngOnInit() {
+    this.map.instance.on('change:view', () => {
+      this.reprojectCoordinates();
+    });
+  }
+
   ngOnChanges(changes: SimpleChanges) {
+    this.reprojectCoordinates();
+  }
+
+  reprojectCoordinates() {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: number[];
@@ -64,7 +74,7 @@ export class CoordinateComponent implements OnChanges {
   selector: 'aol-collection-coordinates',
   template: `<div class="aol-collection-coordinates"></div>`
 })
-export class CollectionCoordinatesComponent implements OnChanges {
+export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   private host: any;
 
   @Input() coordinates: [number, number][];
@@ -85,7 +95,17 @@ export class CollectionCoordinatesComponent implements OnChanges {
     }
   }
 
+  ngOnInit() {
+    this.map.instance.on('change:view', () => {
+      this.reprojectCoordinates();
+    });
+  }
+
   ngOnChanges(changes: SimpleChanges) {
+    this.reprojectCoordinates();
+  }
+
+  reprojectCoordinates() {
     let referenceProjection: proj.Projection;
     let referenceProjectionCode: string;
     let transformedCoordinates: Array<Coordinate>;
