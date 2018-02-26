@@ -1,8 +1,8 @@
 import { Component, Host, forwardRef, Input, AfterContentInit } from '@angular/core';
 import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
-import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
+import {LayerTileComponent} from '../layers/layertile.component';
 
 @Component({
   selector: 'aol-source-osm',

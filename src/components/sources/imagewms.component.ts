@@ -1,6 +1,6 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
 import { AttributionLike, ImageLoadFunctionType, ProjectionLike, source } from 'openlayers';
-import { LayerImageComponent } from '../layers';
+import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 
 @Component({

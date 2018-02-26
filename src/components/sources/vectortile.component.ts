@@ -1,9 +1,9 @@
 import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
 import { source, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
-import { LayerVectorTileComponent } from '../layers';
-import { FormatComponent } from '../formats';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
+import {FormatComponent} from '../formats/format.component';
+import {LayerVectorTileComponent} from '../layers/layervectortile.component';
 
 @Component({
   selector: 'aol-source-vectortile',
