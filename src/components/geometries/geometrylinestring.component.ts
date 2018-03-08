@@ -8,11 +8,9 @@ import { geom, proj } from 'openlayers';
   selector: 'aol-geometry-linestring',
   template: `<ng-content></ng-content>`
 })
-export class GeometryLinestringComponent extends SimpleGeometryComponent implements OnInit, OnDestroy, OnChanges {
+export class GeometryLinestringComponent extends SimpleGeometryComponent implements OnInit, OnDestroy {
   public componentType: string = 'geometry-linestring';
   public instance: ol.geom.LineString;
-  @Input() coordinates: ol.Coordinate[];
-  transformedCoordinates: ol.Coordinate[];
 
   constructor(map: MapComponent, host: FeatureComponent) {
     super(map, host);
@@ -20,34 +18,10 @@ export class GeometryLinestringComponent extends SimpleGeometryComponent impleme
   }
 
   ngOnInit() {
-    this.instance = new geom.LineString(this.transformedCoordinates);
+    this.instance = new geom.LineString([[0, 0], [1, 1]]);
     super.ngOnInit();
   }
   ngOnDestroy() {
     super.ngOnDestroy();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.reprojectCoordinates();
-  }
-
-  reprojectCoordinates() {
-    let referenceProjection: ol.proj.Projection;
-    let referenceProjectionCode: string;
-
-    referenceProjection = this.map.instance.getView().getProjection();
-    referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
-
-    if (this.srid && this.srid !== referenceProjectionCode) {
-      this.transformedCoordinates = this.coordinates.map(
-        coordinate => proj.transform(coordinate, this.srid, referenceProjectionCode)
-      );
-    } else {
-      this.transformedCoordinates = this.coordinates;
-    }
-
-    if (this.instance) {
-      this.instance.setCoordinates(this.transformedCoordinates);
-    }
   }
 }

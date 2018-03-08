@@ -5,20 +5,20 @@ import { MapComponent } from '../map.component';
 import { geom, proj } from 'openlayers';
 
 @Component({
-  selector: 'aol-geometry-multipolygon',
+  selector: 'aol-geometry-multipoint',
   template: `<ng-content></ng-content>`
 })
-export class GeometryMultiPolygonComponent extends SimpleGeometryComponent implements OnInit, OnDestroy {
-  public componentType: string = 'geometry-multipolygon';
-  public instance: ol.geom.MultiPolygon;
+export class GeometryMultiPointComponent extends SimpleGeometryComponent implements OnInit, OnDestroy {
+  public componentType: string = 'geometry-multipoint';
+  public instance: ol.geom.MultiPoint;
 
   constructor(map: MapComponent, host: FeatureComponent) {
     super(map, host);
-    // console.log('creating aol-geometry-multipolygon');
+    // console.log('creating aol-geometry-multipoint');
   }
 
   ngOnInit() {
-    this.instance = new geom.MultiPolygon([[[[0, 0], [1, 1], [0, 1]]]]);
+    this.instance = new geom.MultiPoint([[0, 0], [1, 1]]);
     super.ngOnInit();
   }
 

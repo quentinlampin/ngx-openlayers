@@ -1,7 +1,10 @@
-import { Component, Optional, OnChanges, Input, SimpleChanges } from '@angular/core';
+import {Component, Optional, OnChanges, Input, SimpleChanges, OnInit} from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
-import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometries';
+import {
+  GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent,
+  GeometryMultiPointComponent, GeometryMultiLinestringComponent, GeometryMultiPolygonComponent
+} from './geometries';
 import { ViewComponent } from './view.component';
 import { OverlayComponent } from './overlay.component';
 
@@ -9,8 +12,9 @@ import { OverlayComponent } from './overlay.component';
   selector: 'aol-coordinate',
   template: `<div class="aol-coordinate"></div>`
 })
-export class CoordinateComponent implements OnChanges {
+export class CoordinateComponent implements OnChanges, OnInit {
   private host: any;
+  private mapSrid = 'EPSG:3857';
 
   @Input() x: number;
   @Input() y: number;
@@ -32,29 +36,37 @@ export class CoordinateComponent implements OnChanges {
     }
   }
 
+  ngOnInit() {
+    this.map.instance.on('change:view', (e: ol.ObjectEvent) => this.onMapViewChanged(e));
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    let referenceProjection: proj.Projection;
-    let referenceProjectionCode: string;
-    let transformedCoordinates: number[];
+    this.transformCoordinates();
+  }
 
-    referenceProjection = this.map.instance.getView().getProjection();
-    referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
+  private onMapViewChanged(event: ol.ObjectEvent) {
+    this.mapSrid = (<ol.View> (<ol.Object> event.target).get(event.key)).getProjection().getCode();
+    this.transformCoordinates();
+  }
 
-    if (this.srid === referenceProjectionCode) {
-      transformedCoordinates = [this.x, this.y];
+  private transformCoordinates() {
+    let transformCoordinates: number[];
+
+    if (this.srid === this.mapSrid) {
+      transformCoordinates = [this.x, this.y];
     } else {
-      transformedCoordinates = proj.transform([this.x, this.y], this.srid, referenceProjectionCode);
+      transformCoordinates = ol.proj.transform([this.x, this.y], this.srid, this.mapSrid);
     }
 
     switch (this.host.componentType) {
       case 'geometry-point':
-        this.host.instance.setCoordinates(transformedCoordinates);
+        this.host.instance.setCoordinates(transformCoordinates);
         break;
       case 'view':
-        this.host.instance.setCenter(transformedCoordinates);
+        this.host.instance.setCenter(transformCoordinates);
         break;
       case 'overlay':
-        this.host.instance.setPosition(transformedCoordinates);
+        this.host.instance.setPosition(transformCoordinates);
         break;
     }
   }
@@ -64,55 +76,79 @@ export class CoordinateComponent implements OnChanges {
   selector: 'aol-collection-coordinates',
   template: `<div class="aol-collection-coordinates"></div>`
 })
-export class CollectionCoordinatesComponent implements OnChanges {
+export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   private host: any;
+  private mapSrid = 'EPSG:3857';
 
-  @Input() coordinates: [number, number][];
+  @Input() coordinates: ol.Coordinate[]|ol.Coordinate[][]|ol.Coordinate[][][];
   @Input() srid: string = 'EPSG:3857';
 
   constructor(
       private map: MapComponent,
-      @Optional() geometryLinestring: GeometryLinestringComponent,
-      @Optional() geometryPolygon: GeometryPolygonComponent
+      @Optional() geometryLinestring:      GeometryLinestringComponent,
+      @Optional() geometryPolygon:         GeometryPolygonComponent,
+      @Optional() geometryMultipoint:      GeometryMultiPointComponent,
+      @Optional() geometryMultilinestring: GeometryMultiLinestringComponent,
+      @Optional() geometryMultipolygon:    GeometryMultiPolygonComponent
   ) {
     // console.log('creating aol-collection-coordinates');
     if (!!geometryLinestring) {
       this.host = geometryLinestring;
     } else if (!!geometryPolygon) {
       this.host = geometryPolygon;
+    } else if (!!geometryMultipoint) {
+      this.host = geometryMultipoint;
+    } else if (!!geometryMultilinestring) {
+      this.host = geometryMultilinestring;
+    } else if (!!geometryMultipolygon) {
+      this.host = geometryMultipolygon;
     } else {
       throw new Error('aol-collection-coordinates must be a child of a geometry component');
     }
   }
 
+  ngOnInit() {
+    this.map.instance.on('change:view', (e: ol.ObjectEvent) => this.onMapViewChanged(e));
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    let referenceProjection: proj.Projection;
-    let referenceProjectionCode: string;
-    let transformedCoordinates: Array<Coordinate>;
+    this.transformCoordinates();
+  }
 
-    // console.log('coordinates change: ', this.coordinates);
+  private onMapViewChanged(event: ol.ObjectEvent) {
+    this.mapSrid = (<ol.View> (<ol.Object> event.target).get(event.key)).getProjection().getCode();
+    this.transformCoordinates();
+  }
 
-    referenceProjection = this.map.instance.getView().getProjection();
-    referenceProjectionCode = referenceProjection ? referenceProjection.getCode() : 'EPSG:3857';
+  private transformCoordinates() {
+    let newCoordinates: ol.Coordinate[]|ol.Coordinate[][]|ol.Coordinate[][][];
 
-    if (this.srid === referenceProjectionCode) {
-      transformedCoordinates = this.coordinates;
+    if (this.srid === this.mapSrid) {
+      newCoordinates = this.coordinates;
     } else {
-      transformedCoordinates = [];
-      this.coordinates.forEach(function (coordinate: Coordinate) {
-        transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
-      }.bind(this));
+      switch (this.host.componentType) {
+        case 'geometry-linestring':
+        case 'geometry-multipoint':
+          newCoordinates = (<ol.Coordinate[]> this.coordinates).map(c =>
+            ol.proj.transform(c, this.srid, this.mapSrid)
+          );
+          break;
+        case 'geometry-polygon':
+        case 'geometry-multilinestring':
+          newCoordinates = (<ol.Coordinate[][]> this.coordinates).map(cc =>
+            cc.map(c => ol.proj.transform(c, this.srid, this.mapSrid))
+          );
+          break;
+        case 'geometry-multipolygon':
+          newCoordinates = (<ol.Coordinate[][][]> this.coordinates).map(ccc =>
+            ccc.map(cc =>
+              cc.map(c => ol.proj.transform(c, this.srid, this.mapSrid))
+            )
+          );
+          break;
+      }
     }
-    switch (this.host.componentType) {
-      case 'geometry-linestring':
-        this.host.instance.setCoordinates(transformedCoordinates);
-        break;
-      case 'geometry-polygon':
-        this.host.instance.setCoordinates([transformedCoordinates]);
-        break;
-      default:
-        throw new Error('aol-collection-coordinates\' host is of unknown type: ' + this.host.componentType);
-        // break;
-    }
+
+    this.host.instance.setCoordinates(newCoordinates);
   }
 }

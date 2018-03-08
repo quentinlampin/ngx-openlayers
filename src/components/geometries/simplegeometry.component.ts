@@ -19,6 +19,4 @@ export abstract class SimpleGeometryComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.host.instance.setGeometry(null);
   }
-
-  abstract reprojectCoordinates(): void;
 }
