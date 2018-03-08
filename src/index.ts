@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import {
   MapComponent, ViewComponent, GraticuleComponent,
   LayerGroupComponent, LayerTileComponent, LayerVectorComponent, LayerVectorTileComponent, LayerImageComponent,
-  SourceBingmapsComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
-  SourceGeoJSONComponent, SourceTileWMTSComponent,SourceImageStaticComponent, SourceImageWMSComponent, FeatureComponent,
+  SourceBingmapsComponent, SourceClusterComponent, SourceOsmComponent, SourceVectorComponent, SourceVectorTileComponent, SourceXYZComponent, SourceTileWMSComponent,
+  SourceGeoJSONComponent, SourceTileWMTSComponent, SourceImageStaticComponent, SourceImageWMSComponent, FeatureComponent,
   GeometryLinestringComponent, GeometryPointComponent, GeometryPolygonComponent,
   CollectionCoordinatesComponent, CoordinateComponent,
   StyleCircleComponent, StyleComponent, StyleFillComponent, StyleIconComponent, StyleStrokeComponent, StyleTextComponent,
@@ -39,6 +39,7 @@ const COMPONENTS = [
 
   SourceOsmComponent,
   SourceBingmapsComponent,
+  SourceClusterComponent,
   SourceVectorComponent,
   SourceXYZComponent,
   SourceVectorTileComponent,
