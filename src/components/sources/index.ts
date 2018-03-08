@@ -9,3 +9,4 @@ export * from './geojson.component';
 export * from './tilewmts.component';
 export * from './imagewms.component';
 export * from './imagestatic.component';
+export * from './cluster.component';

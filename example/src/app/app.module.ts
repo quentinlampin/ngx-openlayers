@@ -4,14 +4,20 @@ import {FormsModule} from '@angular/forms';
 import {AngularOpenlayersModule} from 'ngx-openlayers';
 
 import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app.routing';
+import {ClusterComponent} from './cluster/cluster.component';
+import {BasicComponent} from './basic/basic.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BasicComponent,
+    ClusterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    AppRoutingModule,
     AngularOpenlayersModule
   ],
   providers: [],
