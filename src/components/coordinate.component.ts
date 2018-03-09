@@ -38,6 +38,8 @@ export class CoordinateComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.map.instance.on('change:view', (e: ol.ObjectEvent) => this.onMapViewChanged(e));
+    this.mapSrid = this.map.instance.getView().getProjection().getCode();
+    this.transformCoordinates();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -109,6 +111,8 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.map.instance.on('change:view', (e: ol.ObjectEvent) => this.onMapViewChanged(e));
+    this.mapSrid = this.map.instance.getView().getProjection().getCode();
+    this.transformCoordinates();
   }
 
   ngOnChanges(changes: SimpleChanges) {
