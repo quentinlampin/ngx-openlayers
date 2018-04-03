@@ -99,8 +99,8 @@ Available parameters are:
 - `visible` (`boolean|undefined`): layers visibility, defaults to `True`.
 - `extent`  (`ol.Extent|undefined`): bounding extent for layer rendering. The layer will not be rendered outside of this extent.
 - `zIndex`  (`number|undefined`) experimental: layers are ordered, first by Z-index and then by position. The default Z-index is 0.
-- `minResolution` (`number|undefined`: 	minimum resolution (inclusive) at which the layer is visible.
-- `maxResolution` (`number|undefined`: 	maximum resolution (exclusive) at which the layer is visible.
+- `minResolution` (`number|undefined`: minimum resolution (inclusive) at which the layer is visible.
+- `maxResolution` (`number|undefined`: maximum resolution (exclusive) at which the layer is visible.
 
 ## Source components
 
@@ -348,7 +348,7 @@ You could add default interactions to the map (drag, zoom, etc) just adding the 
 
 ```html
 <aol-map>
-	<aol-interaction-default></aol-interaction-default>
+    <aol-interaction-default></aol-interaction-default>
 </aol-map>
 ```
 
@@ -359,7 +359,7 @@ Interaction for drawing feature geometries. See https://openlayers.org/en/master
 Draw point
 ```html
 <aol-map>
-	<df-interaction-draw type="Point"></df-interaction-draw>
+    <df-interaction-draw type="Point"></df-interaction-draw>
 </aol-map>
 ```
 
