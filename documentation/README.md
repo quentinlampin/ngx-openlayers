@@ -52,7 +52,7 @@ Exposed events are:
 
 ### Important note
 
-A map component without a view won't fetch tiles, _i.e.__ it stays **blank**, provide an `<aol-view>` component to display
+A map component without a view won't fetch tiles, _i.e._ it stays **blank**, provide an `<aol-view>` component to display
 the map.
 
 ### Map component example
