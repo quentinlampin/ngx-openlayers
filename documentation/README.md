@@ -2,9 +2,9 @@
 
 ## Foreword
 
-Most of the following documentation is an adaptation of OpenLayers' own documentation: http://openlayers.org/en/latest/apidoc.
+Most of the following documentation is an adaptation of OpenLayers' own documentation: https://openlayers.org/en/latest/apidoc/.
 While trying to cover most important aspects in here, this documentation is by no means exhaustive,
-please refer to http://openlayers.org/en/latest/apidoc if in doubt. Contributions welcome!
+please refer to https://openlayers.org/en/latest/apidoc/ if in doubt. Contributions welcome!
 
 ## Basic structure
 
@@ -354,7 +354,7 @@ You could add default interactions to the map (drag, zoom, etc) just adding the 
 
 ### Drawing interaction
 
-Interaction for drawing feature geometries. See http://openlayers.org/en/master/apidoc/ol.interaction.Draw.html
+Interaction for drawing feature geometries. See https://openlayers.org/en/master/apidoc/ol.interaction.Draw.html
 
 Draw point
 ```html
