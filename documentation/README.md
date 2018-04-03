@@ -344,7 +344,7 @@ positioned on the map view. You can style overlay components like a regular comp
 
 ### Default interactions
 
-You could add default interactions to the map (drag, zoom, etc) just adding the `aol-interaction-default` component. 
+You could add default interactions to the map (drag, zoom, etc) just adding the `aol-interaction-default` component.
 
 ```html
 <aol-map>
