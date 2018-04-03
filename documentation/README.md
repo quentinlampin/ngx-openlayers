@@ -14,7 +14,7 @@ Each property of the underlying OpenLayers object is also an `@Input()` property
 Each component has a directive selector of the form `aol-` and a structure of components that corresponds to the hierarchy of
 OpenLayers objects is built in a declarative Angular fashion.
 
-## Map Component
+## Map component
 
 The `MapComponent` (`aol-map`) is the root component of ngx-openlayers maps.
 
@@ -61,7 +61,7 @@ Here is a simple example, based on OpenStreetMap tiles source:
 </aol-map>
  ```
 
-## View Component
+## View component
 
 The `ViewComponent` (`<aol-view>`) describes which content to display. In most cases, the view specifies the center of the map,
 _i.e._ coordinates on which the map is centered, and a zoom level or extent.
@@ -89,7 +89,7 @@ Available parameters are:
 </aol-view>
 ```
 
-## Layer Components
+## Layer components
 
 `LayerComponents` (`<aol-layer-*>`) provide ways to displaying contents on the map.
 
@@ -223,7 +223,7 @@ The `GeometryPolygonComponent` (`aol-geometry-polygon`) defines a polygon.
 </aol-feature>
 ```
 
-## Style Components
+## Style components
 
 `StyleComponents` (`<aol-style-*>`) provide ways to altering the look of vector features.
 
