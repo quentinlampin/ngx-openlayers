@@ -2,9 +2,9 @@
 
 ## Foreword
 
-Most of the following documentation is an adaptation of OpenLayers' own documentation: http://openlayers.org/en/latest/apidoc.
+Most of the following documentation is an adaptation of OpenLayers' own documentation: https://openlayers.org/en/latest/apidoc/.
 While trying to cover most important aspects in here, this documentation is by no means exhaustive,
-please refer to http://openlayers.org/en/latest/apidoc if in doubt. Contributions welcome!
+please refer to https://openlayers.org/en/latest/apidoc/ if in doubt. Contributions welcome!
 
 ## Basic structure
 
@@ -14,45 +14,37 @@ Each property of the underlying OpenLayers object is also an `@Input()` property
 Each component has a directive selector of the form `aol-` and a structure of components that corresponds to the hierarchy of
 OpenLayers objects is built in a declarative Angular fashion.
 
-## Map Component
+## Map component
 
-The `MapComponent`(`aol-map`) is the root component of ngx OpenLayers maps.
+The `MapComponent` (`aol-map`) is the root component of ngx-openlayers maps.
 
 Available parameters are:
 
-    - `width` (`string|undefined`): width of the enclosing `<div>`
-        Defaults to "100%"
-    - `height` (`string|undefined`): height of the enclosing `<div>`
-        Defaults to "100%"
-    - `pixelRatio` (`number|undefined`): physical pixels to device-independent pixels (dips) ratio. 
-        Defaults to window.devicePixelRatio.
-    - `keyboardEventTarget` (`Element|string|undefined`): element to listen to keyboard events on. 
-        Defaults to enclosing `<div>`
-    - `loadTilesWhileAnimating` (`boolean|undefined`): tiles loading policy while animating.
-        Defaults to `false`.
-    - `loadTilesWhileInteracting` (`boolean|undefined`): tiles loading policy while interacting.
-        Defaults to `false`.
-    - `logo` (`string|boolean|undefined`): map logo. Provide `true` to display the Openlayers logo or a string URL.
-        Defaults to `undefined`.
-    - `renderer` (`'canvas'|'webgl'|undefined`): map renderer.
-        Defaults to canvas.
+- `width` (`string|undefined`): width of the enclosing `<div>`. Defaults to `100%`.
+- `height` (`string|undefined`): height of the enclosing `<div>`. Defaults to `100%`.
+- `pixelRatio` (`number|undefined`): physical pixels to device-independent pixels (dips) ratio. Defaults to `window.devicePixelRatio`.
+- `keyboardEventTarget` (`Element|string|undefined`): element to listen to keyboard events on. Defaults to enclosing `<div>`.
+- `loadTilesWhileAnimating` (`boolean|undefined`): tiles loading policy while animating. Defaults to `false`.
+- `loadTilesWhileInteracting` (`boolean|undefined`): tiles loading policy while interacting. Defaults to `false`.
+- `logo` (`string|boolean|undefined`): map logo. Provide `true` to display the Openlayers logo or a string URL. Defaults to `undefined`.
+- `renderer` (`'canvas'|'webgl'|undefined`): map renderer. Defaults to canvas.
 
 Exposed events are:
 
-    - `onClick` (ol.MapBrowserEvent) - A click with no dragging. A double click will fire two of this.
-    - `onDblClick` (ol.MapBrowserEvent) - A true double click, with no dragging.
-    - `onMoveEnd` (ol.MapEvent) - Triggered after the map is moved.
-    - `onPointerDrag` (ol.MapBrowserEvent) experimental - Triggered when a pointer is dragged.
-    - `onPointerMove` (ol.MapBrowserEvent) - Triggered when a pointer is moved. Note that on touch devices this is triggered when the map is panned, so is not the same as mousemove.
-    - `onPostCompose` (ol.render.Event) experimental
-    - `onPostRender` (ol.MapEvent) experimental - Triggered after a map frame is rendered.
-    - `onPreCompose` (ol.render.Event) experimental
-    - `onPropertyChange` (ol.Object.Event) - Triggered when a property is changed.
-    - `onSingleClick` (ol.MapBrowserEvent) - A true single click with no dragging and no double click. Note that this event is delayed by 250 ms to ensure that it is not a double click.
+- `onClick` (`ol.MapBrowserEvent`) - A click with no dragging. A double click will fire two of this.
+- `onDblClick` (`ol.MapBrowserEvent`) - A true double click, with no dragging.
+- `onMoveEnd` (`ol.MapEvent`) - Triggered after the map is moved.
+- `onPointerDrag` (`ol.MapBrowserEvent`) experimental - Triggered when a pointer is dragged.
+- `onPointerMove` (`ol.MapBrowserEvent`) - Triggered when a pointer is moved. Note that on touch devices this is triggered when the map is panned, so is not the same as mousemove.
+- `onPostCompose` (`ol.render.Event`) experimental
+- `onPostRender` (`ol.MapEvent`) experimental - Triggered after a map frame is rendered.
+- `onPreCompose` (`ol.render.Event`) experimental
+- `onPropertyChange` (`ol.Object.Event`) - Triggered when a property is changed.
+- `onSingleClick` (`ol.MapBrowserEvent`) - A true single click with no dragging and no double click. Note that this event is delayed by 250 ms to ensure that it is not a double click.
 
 ### Important note
 
-A map component without a view won't fetch tiles, _i.e.__ it stays **blank**, provide an `<aol-view>` component to display
+A map component without a view won't fetch tiles, _i.e._ it stays **blank**, provide an `<aol-view>` component to display
 the map.
 
 ### Map component example
@@ -69,30 +61,25 @@ Here is a simple example, based on OpenStreetMap tiles source:
 </aol-map>
  ```
 
-## View Component
+## View component
 
 The `ViewComponent` (`<aol-view>`) describes which content to display. In most cases, the view specifies the center of the map,
 _i.e._ coordinates on which the map is centered, and a zoom level or extent.
 
 Available parameters are:
 
-    - `constrainRotation` (boolean|number|undefined) Rotation constraint. false means no constraint. true means no constraint, but snap to zero near zero. A number constrains the rotation to that number of values. For example, 4 will constrain the rotation to 0, 90, 180, and 270 degrees.
-        Defaults to true.
-    - `enableRotation` (boolean|undefined) Enable rotation. If false a rotation constraint that always sets the rotation to zero is used. The constrainRotation option has no effect if enableRotation is false.
-        Defaults to true.
-    - `extent` (ol.Extent|undefined) extent that constrains the center, in other words, center cannot be set outside this extent.
-        Defaults to undefined.
-    - `maxResolution` (number|undefined) The maximum resolution used to determine the resolution constraint. It is used together with minResolution (or maxZoom) and zoomFactor. If unspecified it is calculated in such a way that the projection's validity extent fits in a 256x256 px tile. If the projection is Spherical Mercator (the default) then maxResolution defaults to 40075016.68557849 / 256 = 156543.03392804097.
-    - `minResolution` (number|undefined) The minimum resolution used to determine the resolution constraint. It is used together with maxResolution (or minZoom) and zoomFactor. If unspecified it is calculated assuming 29 zoom levels (with a factor of 2). If the projection is Spherical Mercator (the default) then minResolution defaults to 40075016.68557849 / 256 / Math.pow(2, 28) = 0.0005831682455839253.
-    - `maxZoom` (number|undefined) The maximum zoom level used to determine the resolution constraint. It is used together with minZoom (or maxResolution) and zoomFactor. Default is 28. Note that if minResolution is also provided, it is given precedence over maxZoom.
-    - `minZoom` (number|undefined) The minimum zoom level used to determine the resolution constraint. It is used together with maxZoom (or minResolution) and zoomFactor. Default is 0. Note that if maxResolution is also provided, it is given precedence over minZoom.
-    - `resolution` (number|undefined) The initial resolution for the view. The units are projection units per pixel (e.g. meters per pixel). An alternative to setting this is to set zoom. Default is undefined, and layer sources will not be fetched if neither this nor zoom are defined.
-    - `resolutions` (number[]|undefined) Resolutions to determine the resolution constraint. If set the maxResolution, minResolution, minZoom, maxZoom, and zoomFactor options are ignored.
-    - `rotation` (number|undefined) The initial rotation for the view in radians (positive rotation clockwise).
-        Defaults to 0.
-    - `zoom` (number|undefined) Only used if resolution is not defined. Zoom level used to calculate the initial resolution for the view. The initial resolution is determined using the ol.View#constrainResolution method.
-    - `zoomFactor`(number|undefined) The zoom factor used to determine the resolution constraint.
-        Defaults to 2.
+- `constrainRotation` (`boolean|number|undefined`) Rotation constraint. false means no constraint. true means no constraint, but snap to zero near zero. A number constrains the rotation to that number of values. For example, 4 will constrain the rotation to 0, 90, 180, and 270 degrees. Defaults to `true`.
+- `enableRotation` (`boolean|undefined`) Enable rotation. If false a rotation constraint that always sets the rotation to zero is used. The constrainRotation option has no effect if enableRotation is false. Defaults to `true`.
+- `extent` (`ol.Extent|undefined`) extent that constrains the center, in other words, center cannot be set outside this extent. Defaults to `undefined`.
+- `maxResolution` (`number|undefined`) The maximum resolution used to determine the resolution constraint. It is used together with `minResolution` (or `maxZoom`) and `zoomFactor`. If unspecified it is calculated in such a way that the projection's validity extent fits in a 256x256 px tile. If the projection is Spherical Mercator (the default) then `maxResolution` defaults to `40075016.68557849 / 256 = 156543.03392804097`.
+- `minResolution` (`number|undefined`) The minimum resolution used to determine the resolution constraint. It is used together with `maxResolution` (or `minZoom`) and `zoomFactor`. If unspecified it is calculated assuming 29 zoom levels (with a factor of 2). If the projection is Spherical Mercator (the default) then `minResolution` defaults to `40075016.68557849 / 256 / Math.pow(2, 28) = 0.0005831682455839253`.
+- `maxZoom` (`number|undefined`) The maximum zoom level used to determine the resolution constraint. It is used together with `minZoom` (or `maxResolution`) and `zoomFactor`. Default is 28. Note that if `minResolution` is also provided, it is given precedence over `maxZoom`.
+- `minZoom` (`number|undefined`) The minimum zoom level used to determine the resolution constraint. It is used together with `maxZoom` (or `minResolution`) and `zoomFactor`. Default is 0. Note that if `maxResolution` is also provided, it is given precedence over `minZoom`.
+- `resolution` (`number|undefined`) The initial resolution for the view. The units are projection units per pixel (e.g. meters per pixel). An alternative to setting this is to set `zoom`. Default is `undefined`, and layer sources will not be fetched if neither this nor `zoom` are defined.
+- `resolutions` (`number[]|undefined`) Resolutions to determine the resolution constraint. If set the `maxResolution`, `minResolution`, `minZoom`, `maxZoom`, and `zoomFactor` options are ignored.
+- `rotation` (`number|undefined`) The initial rotation for the view in radians (positive rotation clockwise). Defaults to 0.
+- `zoom` (`number|undefined`) Only used if resolution is not defined. Zoom level used to calculate the initial resolution for the view. The initial resolution is determined using the `ol.View#constrainResolution` method.
+- `zoomFactor` (`number|undefined`) The zoom factor used to determine the resolution constraint. Defaults to 2.
 
 ### View component example
 
@@ -102,18 +89,18 @@ Available parameters are:
 </aol-view>
 ```
 
-## Layer Components
+## Layer components
 
 `LayerComponents` (`<aol-layer-*>`) provide ways to displaying contents on the map.
 
 Available parameters are:
 
-    - `opacity` (`number|undefined`): layer's opacity, defaults to 1` (opaque).
-    - `visible` (`boolean|undefined`): layers visibility, defaults to `True`.
-    - `extent`  (`ol.Extent`|undefined`): bounding extent for layer rendering. The layer will not be rendered outside of this extent.
-    - `zIndex`  (`number|undefined`) experimental: layers are ordered, first by Z-index and then by position. The default Z-index is 0.
-    - `minResolution` (`number|undefined`: 	minimum resolution (inclusive) at which the layer is visible.
-    - `maxResolution` (`number|undefined`: 	maximum resolution (exclusive) at which the layer is visible.
+- `opacity` (`number|undefined`): layer's opacity, defaults to `1` (opaque).
+- `visible` (`boolean|undefined`): layers visibility, defaults to `true`.
+- `extent`  (`ol.Extent|undefined`): bounding extent for layer rendering. The layer will not be rendered outside of this extent.
+- `zIndex`  (`number|undefined`) experimental: layers are ordered, first by Z-index and then by position. The default Z-index is 0.
+- `minResolution` (`number|undefined`: minimum resolution (inclusive) at which the layer is visible.
+- `maxResolution` (`number|undefined`: maximum resolution (exclusive) at which the layer is visible.
 
 ## Source components
 
@@ -183,7 +170,7 @@ The `GeometryLinestringComponent` (`aol-geometry-linestring`) defines a collecti
 ```html
 <aol-feature>
     <aol-geometry-linestring>
-        <aol-collection-coordinates 
+        <aol-collection-coordinates
             [coordinates]="[[5.0, 45.01],[5.01, 45.03]]"
             [srid]="'EPSG:4326'">
         </aol-collection-coordinates>
@@ -223,7 +210,7 @@ The `GeometryPolygonComponent` (`aol-geometry-polygon`) defines a polygon.
 ```html
 <aol-feature>
     <aol-geometry-polygon>
-        <aol-collection-coordinates 
+        <aol-collection-coordinates
             [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
             [srid]="'EPSG:4326'"
         >
@@ -236,7 +223,7 @@ The `GeometryPolygonComponent` (`aol-geometry-polygon`) defines a polygon.
 </aol-feature>
 ```
 
-## Style Components
+## Style components
 
 `StyleComponents` (`<aol-style-*>`) provide ways to altering the look of vector features.
 
@@ -252,8 +239,8 @@ https://github.com/openlayers/ol3/issues/5775 (related).
 Note that it can be further style using `<aol-style-fill>` and `<aol-style-stroke>`.
 Available parameters are:
 
-    - `radius` (`number|undefined`): circle's radius, defaults to 10px.
-    - `snapToPixel` (`boolean|undefined`): whether or not use sub-pixels, defaults to `True`.
+- `radius` (`number|undefined`): circle's radius, defaults to `10px`.
+- `snapToPixel` (`boolean|undefined`): whether or not use sub-pixels, defaults to `true`.
 
 ### Fill style component
 
@@ -261,7 +248,7 @@ Available parameters are:
 
 Available parameters are:
 
-    - `color` (`Color|ColorLike|undefined`): color, gradient or pattern. See ol.color and ol.colorlike for possible formats. Defaults to black.
+- `color` (`Color|ColorLike|undefined`): color, gradient or pattern. See `ol.color` and `ol.colorlike` for possible formats. Defaults to black.
 
 ### Icon style component
 
@@ -269,23 +256,23 @@ The `StyleIconComponent` (`<aol-style-icon`) displays an icon.
 
 Available parameters are:
 
-    - `anchor` (`[number, number]`): image anchor. Defaults to [0.5, 0.5]: icon center.
-    - `anchorXUnits` (`style.IconAnchorUnits`): X anchor unit: 'fraction' indicates a fraction of the icon, 'pixels' indicates a value in pixels. Defaults to 'fraction'.
-    - `anchorYUnits` (`style.IconAnchorUnits`): Y anchor unit: 'fraction' indicates a fraction of the icon, 'pixels' indicates a value in pixels. Defaults to 'fraction'.
-    - `anchorOrigin` (`style.IconOrigin`): origin of the anchor: bottom-left, bottom-right, top-left or top-right. Defaults to top-left.
-    - `color` (`[number, number, number, number]`): tint of the icon. If not specified, the icon will be left as is.
-    - `crossOrigin` (`style.IconOrigin`): crossOrigin attribute for loaded images.
-    - `img` (`string`): image object for the icon.
-    - `offset` (`[number, number]`): offset, which, together with the size and the offset origin, define the sub-rectangle to use from the original icon image. Defaults to [0, 0].
-    - `offsetOrigin` (`style.IconOrigin`): origin of the offset: bottom-left, bottom-right, top-left or top-right. Defaults to top-left.
-    - `opacity` (`number`): opacity of the icon. Default is 1.
-    - `scale` (`number`): scale
-    - `snapToPixel` (`boolean`): whether or not use sub-pixels, defaults to `True`.
-    - `rotateWithView` (`boolean`): whether to rotate the icon with the view. Defaults to false.
-    - `rotation` (`number`): rotation in radians (positive rotation clockwise). Defaults to 0.
-    - `size` (`[number, number]`): icon size in pixel. Can be used together with offset to define the sub-rectangle to use from the origin (sprite) icon image.
-    - `imgSize` (`[number, number]`): image size in pixels. Only required if img is set and src is not, and for SVG images in Internet Explorer 11. The provided imgSize needs to match the actual size of the image.
-    - `src` (`string`): image source URI. Required.
+- `anchor` (`[number, number]`): image anchor. Defaults to `[0.5, 0.5]`: icon center.
+- `anchorXUnits` (`style.IconAnchorUnits`): X anchor unit: 'fraction' indicates a fraction of the icon, 'pixels' indicates a value in pixels. Defaults to 'fraction'.
+- `anchorYUnits` (`style.IconAnchorUnits`): Y anchor unit: 'fraction' indicates a fraction of the icon, 'pixels' indicates a value in pixels. Defaults to 'fraction'.
+- `anchorOrigin` (`style.IconOrigin`): origin of the anchor: `bottom-left`, `bottom-right`, `top-left` or `top-right`. Defaults to `top-left`.
+- `color` (`[number, number, number, number]`): tint of the icon. If not specified, the icon will be left as is.
+- `crossOrigin` (`style.IconOrigin`): `crossOrigin` attribute for loaded images.
+- `img` (`string`): image object for the icon.
+- `offset` (`[number, number]`): offset, which, together with the size and the offset origin, define the sub-rectangle to use from the original icon image. Defaults to `[0, 0]`.
+- `offsetOrigin` (`style.IconOrigin`): origin of the offset: `bottom-left`, `bottom-right`, `top-left` or `top-right`. Defaults to `top-left`.
+- `opacity` (`number`): opacity of the icon. Default is 1.
+- `scale` (`number`): scale
+- `snapToPixel` (`boolean`): whether or not use sub-pixels, defaults to `true`.
+- `rotateWithView` (`boolean`): whether to rotate the icon with the view. Defaults to `false`.
+- `rotation` (`number`): rotation in radians (positive rotation clockwise). Defaults to 0.
+- `size` (`[number, number]`): icon size in pixel. Can be used together with offset to define the sub-rectangle to use from the origin (sprite) icon image.
+- `imgSize` (`[number, number]`): image size in pixels. Only required if img is set and src is not, and for SVG images in Internet Explorer 11. The provided `imgSize` needs to match the actual size of the image.
+- `src` (`string`): image source URI. Required.
 
 
 ### Stroke style component
@@ -294,12 +281,12 @@ Available parameters are:
 
 Available parameters are:
 
-    - `color`: (`Color|ColorLike|undefined`): color, gradient or pattern. See ol.color and ol.colorlike for possible formats. Defaults to black.
-    - `lineCap`: (string|undefined): line cap style: butt, round, or square. Default to round.
-    - `lineDash`: (number[]|undefined): line dash pattern. Defaults to undefined (no dash). No support inInternet Explorer 10 and lower.
-    - `lineJoin`: (string|undefined): line join style: bevel, round, or miter. Defaults to round.
-    - `miterLimit`: (number|undefined): miter limit. Defaults to 10.
-    - `width`: (number|undefined): line width.
+- `color`: (`Color|ColorLike|undefined`): color, gradient or pattern. See `ol.color` and `ol.colorlike` for possible formats. Defaults to black.
+- `lineCap`: (`string|undefined`): line cap style: `butt`, `round`, or `square`. Default to `round`.
+- `lineDash`: (`number[]|undefined`): line dash pattern. Defaults to `undefined` (no dash). No support in Internet Explorer 10 and lower.
+- `lineJoin`: (`string|undefined`): line join style: `bevel`, `round`, or `miter`. Defaults to `round`.
+- `miterLimit`: (`number|undefined`): miter limit. Defaults to 10.
+- `width`: (`number|undefined`): line width.
 
 ### Text style component
 
@@ -307,15 +294,15 @@ Available parameters are:
 
 Available parameters are:
 
-    - `font`: (`string|undefined`): Font style as CSS 'font' value. Default is '10px sans-serif'
-    - `offsetX`: (`number|undefined`): Horizontal text offset in pixels. A positive will shift the text right. Default is 0.
-    - `offsetY`: (`number|undefined`): Vertical text offset in pixels. A positive will shift the text down. Default is 0.
-    - `scale`: (`number|undefined`): Scale.
-    - `rotateWithView`: (`boolean|undefined`): Whether to rotate the text with the view. Default is false.
-    - `rotation`: (`number|undefined`): Rotation in radians (positive rotation clockwise). Default is 0.
-    - `text`: (`string|undefined`): Text content.
-    - `textAlign`: (`string|undefined`): Text alignment. Possible values: 'left', 'right', 'center', 'end' or 'start'. Default is 'start'.
-    - `textBaseLine`: (`string|undefined`): Text base line. Possible values: 'bottom', 'top', 'middle', 'alphabetic', 'hanging', 'ideographic'. Default is 'alphabetic'.
+- `font`: (`string|undefined`): Font style as CSS 'font' value. Default is '10px sans-serif'
+- `offsetX`: (`number|undefined`): Horizontal text offset in pixels. A positive will shift the text right. Default is 0.
+- `offsetY`: (`number|undefined`): Vertical text offset in pixels. A positive will shift the text down. Default is 0.
+- `scale`: (`number|undefined`): Scale.
+- `rotateWithView`: (`boolean|undefined`): Whether to rotate the text with the view. Default is false.
+- `rotation`: (`number|undefined`): Rotation in radians (positive rotation clockwise). Default is 0.
+- `text`: (`string|undefined`): Text content.
+- `textAlign`: (`string|undefined`): Text alignment. Possible values: 'left', 'right', 'center', 'end' or 'start'. Default is 'start'.
+- `textBaseLine`: (`string|undefined`): Text base line. Possible values: 'bottom', 'top', 'middle', 'alphabetic', 'hanging', 'ideographic'. Default is 'alphabetic'.
 
 ## Controls components
 
@@ -357,48 +344,48 @@ positioned on the map view. You can style overlay components like a regular comp
 
 ### Default interactions
 
-You could add default interactions to the map (drag, zoom, etc) just adding the `aol-interaction-default` component. 
+You could add default interactions to the map (drag, zoom, etc) just adding the `aol-interaction-default` component.
 
 ```html
 <aol-map>
-	<aol-interaction-default></aol-interaction-default>
+    <aol-interaction-default></aol-interaction-default>
 </aol-map>
 ```
 
 ### Drawing interaction
 
-Interaction for drawing feature geometries. See http://openlayers.org/en/master/apidoc/ol.interaction.Draw.html
+Interaction for drawing feature geometries. See https://openlayers.org/en/master/apidoc/ol.interaction.Draw.html
 
 Draw point
 ```html
 <aol-map>
-	<df-interaction-draw type="Point"></df-interaction-draw>
+    <df-interaction-draw type="Point"></df-interaction-draw>
 </aol-map>
 ```
 
 
 Available parameters
 
-    - `clickTolerance` (`number` | `undefined`) The maximum distance in pixels between "down" and "up" for a "up" event to be considered a "click" event and actually add a point/vertex to the geometry being drawn. Default is 6 pixels. That value was chosen for the draw interaction to behave correctly on mouse as well as on touch devices.
-    - `features` (`ol.Collection.<ol.Feature>` | `undefined`) Destination collection for the drawn features.
-    - `source` (`ol.source.Vector` | `undefined`) Destination source for the drawn features.
-    - `snapTolerance` (`number` | `undefined`) Pixel distance for snapping to the drawing finish. Default is 12.
-    - `type` (`ol.geom.GeometryType`) Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon' or 'Circle'). Required.
-    - `maxPoints` (`number` | `undefined`) The number of points that can be drawn before a polygon ring or line string is finished. The default is no restriction.
-    - `minPoints` (`number` | `undefined`) The number of points that must be drawn before a polygon ring or line string can be finished. Default is 3 for polygon rings and 2 for line strings.
-    - `finishCondition` (`ol.EventsConditionType` | `undefined`) A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether the drawing can be finished.
-    - `style` (`ol.style.Style` | `Array.<ol.style.Style>` | `ol.StyleFunction` | `undefined`) Style for sketch features.
-    - `geometryFunction` (`ol.DrawGeometryFunctionType` | `undefined`) Function that is called when a geometry's coordinates are updated.
-    - `geometryName` (`string` | `undefined`) Geometry name to use for features created by the draw interaction.
-    - `condition` (`ol.EventsConditionType` | `undefined`) A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled. By default ol.events.condition.noModifierKeys, i.e. a click, adds a vertex or deactivates freehand drawing.
-    - `freehand` (`boolean` | `undefined`) Operate in freehand mode for lines, polygons, and circles. This makes the interaction always operate in freehand mode and takes precedence over any freehandCondition option.
-    - `freehandCondition` (`ol.EventsConditionType` | `undefined`) Condition that activates freehand drawing for lines and polygons. This function takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled. The default is ol.events.condition.shiftKeyOnly, meaning that the Shift key activates freehand drawing.
-    - `wrapX` (`boolean` | `undefined`) Wrap the world horizontally on the sketch overlay. Default is false.
+- `clickTolerance` (`number` | `undefined`) The maximum distance in pixels between "down" and "up" for a "up" event to be considered a "click" event and actually add a point/vertex to the geometry being drawn. Default is 6 pixels. That value was chosen for the draw interaction to behave correctly on mouse as well as on touch devices.
+- `features` (`ol.Collection.<ol.Feature>` | `undefined`) Destination collection for the drawn features.
+- `source` (`ol.source.Vector` | `undefined`) Destination source for the drawn features.
+- `snapTolerance` (`number` | `undefined`) Pixel distance for snapping to the drawing finish. Default is 12.
+- `type` (`ol.geom.GeometryType`) Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint', 'MultiLineString', 'MultiPolygon' or 'Circle'). Required.
+- `maxPoints` (`number` | `undefined`) The number of points that can be drawn before a polygon ring or line string is finished. The default is no restriction.
+- `minPoints` (`number` | `undefined`) The number of points that must be drawn before a polygon ring or line string can be finished. Default is 3 for polygon rings and 2 for line strings.
+- `finishCondition` (`ol.EventsConditionType` | `undefined`) A function that takes an `ol.MapBrowserEvent` and returns a boolean to indicate whether the drawing can be finished.
+- `style` (`ol.style.Style` | `Array.<ol.style.Style>` | `ol.StyleFunction` | `undefined`) Style for sketch features.
+- `geometryFunction` (`ol.DrawGeometryFunctionType` | `undefined`) Function that is called when a geometry's coordinates are updated.
+- `geometryName` (`string` | `undefined`) Geometry name to use for features created by the draw interaction.
+- `condition` (`ol.EventsConditionType` | `undefined`) A function that takes an `ol.MapBrowserEvent` and returns a boolean to indicate whether that event should be handled. By default `ol.events.condition.noModifierKeys`, i.e. a click, adds a vertex or deactivates freehand drawing.
+- `freehand` (`boolean` | `undefined`) Operate in freehand mode for lines, polygons, and circles. This makes the interaction always operate in freehand mode and takes precedence over any freehandCondition option.
+- `freehandCondition` (`ol.EventsConditionType` | `undefined`) Condition that activates freehand drawing for lines and polygons. This function takes an `ol.MapBrowserEvent` and returns a boolean to indicate whether that event should be handled. The default is `ol.events.condition.shiftKeyOnly`, meaning that the `Shift` key activates freehand drawing.
+- `wrapX` (`boolean` | `undefined`) Wrap the world horizontally on the sketch overlay. Default is false.
 
 Exposed events are:
 
-    - onChange (ol.events.Event) - Generic change event. Triggered when the revision counter is increased.
-    - onChangeActive (ol.Object.Event)
-    - onDrawEnd (ol.interaction.Draw.Event) - Triggered upon feature draw end
-    - onDrawStart (ol.interaction.Draw.Event) - Triggered upon feature draw start
-    - onPropertyChange (ol.Object.Event) - Triggered when a property is changed.
+- `onChange` (`ol.events.Event`) - Generic change event. Triggered when the revision counter is increased.
+- `onChangeActive` (`ol.Object.Event`)
+- `onDrawEnd` (`ol.interaction.Draw.Event`) - Triggered upon feature draw end
+- `onDrawStart` (`ol.interaction.Draw.Event`) - Triggered upon feature draw start
+- `onPropertyChange` (`ol.Object.Event`) - Triggered when a property is changed.
