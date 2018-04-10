@@ -6,6 +6,7 @@ export * from './vectortile.component';
 export * from './xyz.component';
 export * from './tilewms.component';
 export * from './geojson.component';
+export * from './tilejson.component';
 export * from './tilewmts.component';
 export * from './imagewms.component';
 export * from './imagestatic.component';
