@@ -1,5 +1,5 @@
 import {Component, Host, Input, OnInit, forwardRef, ContentChild, AfterContentInit} from '@angular/core';
-import { source } from 'openlayers';
+import { source, Feature, geom } from 'openlayers';
 import { LayerVectorComponent } from '../layers';
 import { SourceComponent } from './source.component';
 import { SourceVectorComponent } from './vector.component';
@@ -16,6 +16,7 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
     instance: source.Cluster;
 
     @Input() distance: number;
+    @Input() geometryFunction?: ((feature: Feature) => geom.Point);
 
     @ContentChild(SourceVectorComponent) sourceVectorComponent: SourceVectorComponent;
     source: source.Vector;
