@@ -1,7 +1,7 @@
 import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
 import { source, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
-import { LayerVectorTileComponent } from '../layers';
-import { FormatComponent } from '../formats';
+import { LayerVectorTileComponent } from '../layers/layervectortile.component';
+import { FormatComponent } from '../formats/format.component';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 

@@ -1,8 +1,7 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, ProjectionLike, format } from 'openlayers';
-import { LayerVectorComponent } from '../layers';
-import { FormatComponent } from '../formats';
-import { SourceComponent } from './source.component';
+import {Component, forwardRef, Host, Input, OnInit} from '@angular/core';
+import {format, ProjectionLike, source} from 'openlayers';
+import {LayerVectorComponent} from '../layers/layervector.component';
+import {SourceComponent} from './source.component';
 
 
 @Component({

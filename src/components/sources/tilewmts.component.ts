@@ -8,7 +8,7 @@ import {
   TileCoord,
   Tile
 } from 'openlayers';
-import {LayerTileComponent} from '../layers';
+import {LayerTileComponent} from '../layers/layertile.component';
 import {SourceComponent} from './source.component';
 import {TileGridWMTSComponent} from '../tilegridwmts.component';
 

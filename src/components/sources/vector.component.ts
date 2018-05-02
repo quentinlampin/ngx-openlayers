@@ -1,6 +1,6 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
 import { source } from 'openlayers';
-import { LayerVectorComponent } from '../layers';
+import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
 
 @Component({

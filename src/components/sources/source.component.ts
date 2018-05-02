@@ -1,6 +1,6 @@
 import { Host, Input, OnDestroy, OnInit } from '@angular/core';
 import { source } from 'openlayers';
-import { LayerComponent } from '../layers';
+import { LayerComponent } from '../layers/layer.component';
 import AttributionLike = ol.AttributionLike;
 
 export class SourceComponent implements OnInit, OnDestroy {

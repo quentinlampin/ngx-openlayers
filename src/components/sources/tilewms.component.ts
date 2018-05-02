@@ -1,6 +1,6 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
 import { source, TileLoadFunctionType, tilegrid } from 'openlayers';
-import { LayerTileComponent } from '../layers';
+import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 
 @Component({
