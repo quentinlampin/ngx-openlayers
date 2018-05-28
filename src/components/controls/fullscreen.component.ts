@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { control } from 'openlayers';
 import { MapComponent } from '../map.component';
 
@@ -8,6 +8,12 @@ import { MapComponent } from '../map.component';
 })
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
   instance: control.FullScreen;
+
+   @Input() className: string;
+   @Input() label: string;
+   @Input() labelActive: string;
+   @Input() tipLabel: string;
+   @Input() keys: boolean;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-fullscreen');
