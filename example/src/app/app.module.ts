@@ -7,12 +7,14 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
 import {ClusterComponent} from './cluster/cluster.component';
 import {BasicComponent} from './basic/basic.component';
+import {RasterComponent} from './raster/raster.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicComponent,
-    ClusterComponent
+    ClusterComponent,
+    RasterComponent
   ],
   imports: [
     BrowserModule,

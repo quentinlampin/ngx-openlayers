@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './cluster.component.html'
+  selector: 'app-root',
+  templateUrl: './cluster.component.html'
 })
 export class ClusterComponent implements OnInit {
   distance = 60;

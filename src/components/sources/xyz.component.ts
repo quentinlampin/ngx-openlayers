@@ -1,8 +1,20 @@
-import { Component, Host, Input, AfterContentInit, forwardRef, OnChanges, ContentChild, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Host,
+  Input,
+  AfterContentInit,
+  forwardRef,
+  OnChanges,
+  ContentChild,
+  SimpleChanges,
+  Optional,
+  OnInit
+} from '@angular/core';
 import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers';
 import { SourceComponent } from './source.component';
 import { TileGridComponent } from '../tilegrid.component';
+import { SourceRasterComponent } from './raster.component';
 
 @Component({
   selector: 'aol-source-xyz',
@@ -31,8 +43,9 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
 
   @ContentChild(TileGridComponent) tileGridXYZ: TileGridComponent;
 
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
+  constructor(@Optional() @Host() layer: LayerTileComponent,
+              @Optional() @Host() raster?: SourceRasterComponent) {
+    super(layer, raster);
   }
 
   ngAfterContentInit() {
@@ -40,7 +53,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
       this.tileGrid = this.tileGridXYZ.instance;
     }
     this.instance = new source.XYZ(this);
-    this.host.instance.setSource(this.instance);
+    this._register(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -58,7 +71,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
     this.instance.setProperties(properties, false);
     if (changes.hasOwnProperty('url')) {
       this.instance = new source.XYZ(this);
-      this.host.instance.setSource(this.instance);
+      this._register(this.instance);
     }
   }
 }
