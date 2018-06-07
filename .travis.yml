@@ -8,6 +8,9 @@ env:
 
 jobs:
   include:
+  - stage: check
+    script:
+    - npm run lint
   - stage: build library
     before_script:
     - rm -rf lib
