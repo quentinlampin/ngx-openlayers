@@ -4,10 +4,10 @@ import { StyleComponent } from './style.component';
 
 @Component({
   selector: 'aol-style-circle',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
-  public componentType: string = 'style-circle';
+  public componentType = 'style-circle';
   public instance: style.Circle;
 
   @Input() fill: style.Fill;
@@ -16,8 +16,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   @Input() stroke: style.Stroke;
   @Input() atlasManager: style.AtlasManager;
 
-  constructor(@Host() private host: StyleComponent) {
-  }
+  constructor(@Host() private host: StyleComponent) {}
 
   /**
    * WORK-AROUND: since the re-rendering is not triggered on style change

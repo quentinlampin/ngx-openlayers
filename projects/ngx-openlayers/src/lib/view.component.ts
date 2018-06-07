@@ -4,13 +4,13 @@ import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-view',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   public instance: View;
-  public componentType: string = 'view';
+  public componentType = 'view';
 
-  @Input() constrainRotation: boolean|number;
+  @Input() constrainRotation: boolean | number;
   @Input() enableRotation: boolean;
   @Input() extent: Extent;
   @Input() maxResolution: number;
@@ -27,8 +27,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() zoomAnimation = false;
 
-  constructor(private host: MapComponent) {
-  }
+  constructor(private host: MapComponent) {}
 
   ngOnInit() {
     // console.log('creating ol.View instance with: ', this);
@@ -37,17 +36,17 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let properties: { [index: string]: any } = {};
+    const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
     }
-    for (let key in changes) {
+    for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         switch (key) {
           case 'zoom':
             /** Work-around: setting the zoom via setProperties does not work. */
             if (this.zoomAnimation) {
-              this.instance.animate({zoom: changes[key].currentValue});
+              this.instance.animate({ zoom: changes[key].currentValue });
             } else {
               this.instance.setZoom(changes[key].currentValue);
             }

@@ -9,11 +9,11 @@ const routes: Routes = [
   { path: 'basic', component: BasicComponent },
   { path: 'cluster', component: ClusterComponent },
   { path: 'raster', component: RasterComponent },
-  { path: '**', redirectTo: '/basic' }
+  { path: '**', redirectTo: '/basic' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

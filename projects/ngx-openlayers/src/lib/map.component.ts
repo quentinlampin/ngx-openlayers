@@ -1,30 +1,32 @@
 import {
-  Component, OnInit, ElementRef, Input, Output, EventEmitter, AfterViewInit,
-  SimpleChanges, OnChanges
+  Component,
+  OnInit,
+  ElementRef,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  SimpleChanges,
+  OnChanges,
 } from '@angular/core';
-import {
-  Map, MapBrowserEvent, MapEvent, render, ObjectEvent, control,
-  interaction
-} from 'openlayers';
+import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent, control, interaction } from 'openlayers';
 
 @Component({
   selector: 'aol-map',
-  template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
+  template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`,
 })
-
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   public instance: Map;
-  public componentType: string = 'map';
+  public componentType = 'map';
 
-  @Input() width: string = '100%';
-  @Input() height: string = '100%';
+  @Input() width = '100%';
+  @Input() height = '100%';
   @Input() pixelRatio: number;
-  @Input() keyboardEventTarget: Element|string;
+  @Input() keyboardEventTarget: Element | string;
   @Input() loadTilesWhileAnimating: boolean;
   @Input() loadTilesWhileInteracting: boolean;
-  @Input() logo: string|boolean;
-  @Input() renderer: 'canvas'|'webgl';
-
+  @Input() logo: string | boolean;
+  @Input() renderer: 'canvas' | 'webgl';
 
   @Output() onClick: EventEmitter<MapBrowserEvent>;
   @Output() onDblClick: EventEmitter<MapBrowserEvent>;
@@ -71,11 +73,11 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let properties: { [index: string]: any } = {};
+    const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
     }
-    for (let key in changes) {
+    for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         properties[key] = changes[key].currentValue;
       }

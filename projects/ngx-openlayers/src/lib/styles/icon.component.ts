@@ -27,9 +27,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input() imgSize: [number, number];
   @Input() src: string;
 
-
-  constructor(@Host() private host: StyleComponent) {
-  }
+  constructor(@Host() private host: StyleComponent) {}
 
   ngOnInit() {
     // console.log('creating ol.style.Icon instance with: ', this);

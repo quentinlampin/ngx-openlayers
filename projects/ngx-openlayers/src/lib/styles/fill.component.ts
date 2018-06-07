@@ -10,10 +10,10 @@ import { StyleTextComponent } from './text.component';
 })
 export class StyleFillComponent implements OnInit, OnChanges {
   /* the typings do not have the setters */
-  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/any;
+  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
   public instance: style.Fill;
 
-  @Input() color: Color|ColorLike;
+  @Input() color: Color | ColorLike;
 
   constructor(
     @Optional() styleHost: StyleComponent,

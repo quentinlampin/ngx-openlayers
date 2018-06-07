@@ -1,37 +1,43 @@
-import {Component, Host, Input, forwardRef, AfterContentInit, ContentChild, SimpleChanges} from '@angular/core';
 import {
-  TileLoadFunctionType,
-  tilegrid,
-  ProjectionLike,
-  source,
-  ImageTile,
-  TileCoord,
-  Tile
-} from 'openlayers';
-import {LayerTileComponent} from '../layers/layertile.component';
-import {SourceComponent} from './source.component';
-import {TileGridWMTSComponent} from '../tilegridwmts.component';
+  Component,
+  Host,
+  Input,
+  forwardRef,
+  AfterContentInit,
+  ContentChild,
+  SimpleChanges,
+  OnChanges,
+} from '@angular/core';
+import { TileLoadFunctionType, tilegrid, ProjectionLike, source, ImageTile, TileCoord, Tile } from 'openlayers';
+import { LayerTileComponent } from '../layers/layertile.component';
+import { SourceComponent } from './source.component';
+import { TileGridWMTSComponent } from '../tilegridwmts.component';
 
 @Component({
   selector: 'aol-source-tilewmts',
   template: `<ng-content></ng-content>`,
-  providers: [
-    {provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent)}
-  ]
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
 })
-export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit {
-
+export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: source.WMTS;
   @Input() cacheSize?: number;
-  @Input() crossOrigin?: (string);
-  @Input() logo?: (string | olx.LogoOptions);
+  @Input() crossOrigin?: string;
+  @Input() logo?: string | olx.LogoOptions;
   @Input() tileGrid: tilegrid.WMTS;
   @Input() projection: ProjectionLike;
   @Input() reprojectionErrorThreshold?: number;
-  @Input() requestEncoding?: (source.WMTSRequestEncoding | string);
+  @Input() requestEncoding?: source.WMTSRequestEncoding | string;
   @Input() layer: string;
   @Input() style: string;
-  @Input() tileClass?: ((n: ImageTile, coords: TileCoord, state: Tile.State, s1: string, s2: string, type: TileLoadFunctionType) => any);
+  @Input()
+  tileClass?: ((
+    n: ImageTile,
+    coords: TileCoord,
+    state: Tile.State,
+    s1: string,
+    s2: string,
+    type: TileLoadFunctionType
+  ) => any);
   @Input() tilePixelRatio?: number;
   @Input() version?: string;
   @Input() format?: string;
@@ -48,13 +54,12 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
     super(layer);
   }
 
-
   ngOnChanges(changes: SimpleChanges) {
-    let properties: {[index: string]: any} = {};
+    const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
     }
-    for (let key in changes) {
+    for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         switch (key) {
           case 'url':

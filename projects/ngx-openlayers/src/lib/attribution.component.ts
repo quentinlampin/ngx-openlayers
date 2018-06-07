@@ -3,16 +3,13 @@ import { Attribution } from 'openlayers';
 
 @Component({
   selector: 'aol-attribution',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
 })
 export class AttributionComponent implements OnInit {
   instance: Attribution;
   html: string;
 
-  constructor(
-    private elementRef: ElementRef
-  ) {
-  }
+  constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
     this.html = this.elementRef.nativeElement.innerHTML;

@@ -5,12 +5,12 @@ import { LayerVectorComponent } from '../layers/layervector.component';
 
 @Component({
   selector: 'aol-style',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class StyleComponent implements OnInit {
-  private host: FeatureComponent|LayerVectorComponent;
+  private host: FeatureComponent | LayerVectorComponent;
   public instance: style.Style;
-  public componentType: string = 'style';
+  public componentType = 'style';
 
   @Input() geometry: string | geom.Geometry | StyleGeometryFunction;
   @Input() fill: style.Fill;
@@ -19,10 +19,7 @@ export class StyleComponent implements OnInit {
   @Input() text: style.Text;
   @Input() zIndex: number;
 
-  constructor(
-    @Optional() featureHost: FeatureComponent,
-    @Optional() layerHost: LayerVectorComponent
-  ) {
+  constructor(@Optional() featureHost: FeatureComponent, @Optional() layerHost: LayerVectorComponent) {
     // console.log('creating aol-style');
     this.host = !!featureHost ? featureHost : layerHost;
     if (!this.host) {

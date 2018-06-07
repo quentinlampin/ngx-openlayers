@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-dragpan',
-  template: ''
+  template: '',
 })
 export class DragPanInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragPan;
@@ -12,8 +12,7 @@ export class DragPanInteractionComponent implements OnInit, OnDestroy {
   @Input() condition: EventsConditionType;
   @Input() kinetic: Kinetic;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.DragPan(this);

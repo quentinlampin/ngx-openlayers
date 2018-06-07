@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-dragzoom',
-  template: ''
+  template: '',
 })
 export class DragZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragZoom;
@@ -14,8 +14,7 @@ export class DragZoomInteractionComponent implements OnInit, OnDestroy {
   @Input() duration: number;
   @Input() out: boolean;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.DragZoom(this);

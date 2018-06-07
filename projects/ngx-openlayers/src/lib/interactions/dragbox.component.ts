@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-dragbox',
-  template: ''
+  template: '',
 })
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragBox;
@@ -13,8 +13,7 @@ export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   @Input() condition: EventsConditionType;
   @Input() boxEndCondition: DragBoxEndConditionType;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.DragBox(this);

@@ -6,9 +6,7 @@ import { LayerTileComponent } from '../layers/layertile.component';
 @Component({
   selector: 'aol-source-bingmaps',
   template: `<div class="aol-source-bingmaps"></div>`,
-  providers: [
-    { provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }
-  ]
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   instance: source.BingMaps;
@@ -17,7 +15,7 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   @Input() hidpi: boolean;
   @Input() culture: string;
   @Input() key: string;
-  @Input() imagerySet: 'Road'|'Aerial'|'AerialWithLabels'|'collinsBart'|'ordnanceSurvey' = 'Aerial';
+  @Input() imagerySet: 'Road' | 'Aerial' | 'AerialWithLabels' | 'collinsBart' | 'ordnanceSurvey' = 'Aerial';
   @Input() maxZoom: number;
   @Input() reprojectionErrorThreshold: number;
   @Input() tileLoadFunction: TileLoadFunctionType;

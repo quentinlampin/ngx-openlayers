@@ -4,13 +4,13 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-zoomtoextent',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
   instance: control.ZoomToExtent;
 
   @Input() className: string;
-  @Input() label: (string | Node);
+  @Input() label: string | Node;
   @Input() tipLabel: string;
   @Input() extent: Extent;
 

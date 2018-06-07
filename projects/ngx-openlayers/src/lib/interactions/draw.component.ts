@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-draw',
-  template: ''
+  template: '',
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.Draw;
@@ -17,7 +17,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Input() maxPoints?: number;
   @Input() minPoints?: number;
   @Input() finishCondition?: ol.EventsConditionType;
-  @Input() style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction);
+  @Input() style?: ol.style.Style | ol.style.Style[] | ol.StyleFunction;
   @Input() geometryFunction?: ol.DrawGeometryFunctionType;
   @Input() geometryName?: string;
   @Input() condition?: ol.EventsConditionType;
@@ -31,8 +31,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Output() onDrawStart = new EventEmitter<ol.interaction.Draw.Event>();
   @Output() onPropertyChange = new EventEmitter<ol.interaction.Draw.Event>();
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.Draw(this);

@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-defaults',
-  template: ''
+  template: '',
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {
   instance: Collection<control.Control>;
@@ -15,17 +15,16 @@ export class DefaultControlComponent implements OnInit, OnDestroy {
   @Input() zoom: boolean;
   @Input() zoomOptions: olx.control.ZoomOptions;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     // console.log('ol.control.defaults init: ', this);
     this.instance = control.defaults(this);
-    this.instance.forEach((control) => this.map.instance.addControl(control));
+    this.instance.forEach(c => this.map.instance.addControl(c));
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-defaults');
-    this.instance.forEach((control) => this.map.instance.removeControl(control));
+    this.instance.forEach(c => this.map.instance.removeControl(c));
   }
 }

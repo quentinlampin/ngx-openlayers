@@ -1,7 +1,4 @@
-import {
-  Component, EventEmitter, Input, OnChanges, OnInit, Optional,
-  SimpleChanges
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Extent, layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
@@ -9,7 +6,7 @@ import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
   selector: 'aol-layer-image',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
   public source: source.Image;
@@ -21,8 +18,7 @@ export class LayerImageComponent extends LayerComponent implements OnInit, OnCha
   @Input() maxResolution: number;
   @Input() zIndex: number;
 
-  constructor(map: MapComponent,
-              @Optional() group?: LayerGroupComponent) {
+  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);
   }
 
