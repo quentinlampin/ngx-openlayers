@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-draganddrop',
-  template: ''
+  template: '',
 })
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragAndDrop;
@@ -13,8 +13,7 @@ export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   @Input() projection: ProjectionLike;
   @Input() target: Element;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.DragAndDrop(this);

@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-pinchzoom',
-  template: ''
+  template: '',
 })
 export class PinchZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.PinchZoom;
@@ -12,8 +12,7 @@ export class PinchZoomInteractionComponent implements OnInit, OnDestroy {
   @Input() duration: number;
   @Input() constrainResolution: boolean;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.PinchZoom(this);

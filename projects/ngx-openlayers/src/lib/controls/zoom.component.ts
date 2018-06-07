@@ -4,14 +4,14 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-zoom',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
   instance: control.Zoom;
 
   @Input() duration: number;
-  @Input() zoomInLabel: (string | Node);
-  @Input() zoomOutLabel: (string | Node);
+  @Input() zoomInLabel: string | Node;
+  @Input() zoomOutLabel: string | Node;
   @Input() zoomInTipLabel: string;
   @Input() zoomOutTipLabel: string;
   @Input() delta: number;

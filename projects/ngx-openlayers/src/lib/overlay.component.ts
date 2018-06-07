@@ -5,7 +5,7 @@ import { ContentComponent } from './content.component';
 
 @Component({
   selector: 'aol-overlay',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
 })
 export class OverlayComponent implements OnInit, OnDestroy {
   componentType = 'overlay';
@@ -13,19 +13,16 @@ export class OverlayComponent implements OnInit, OnDestroy {
   element: Element;
   @ContentChild(ContentComponent) content: ContentComponent;
 
-  @Input() id: number|string;
+  @Input() id: number | string;
   @Input() offset: number[];
-  @Input() positioning: OverlayPositioning|string;
+  @Input() positioning: OverlayPositioning | string;
   @Input() stopEvent: boolean;
   @Input() insertFirst: boolean;
   @Input() autoPan: boolean;
   @Input() autoPanAnimation: olx.animation.PanOptions;
   @Input() autoPanMargin: number;
 
-  constructor(
-    private map: MapComponent
-  ) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     if (this.content) {

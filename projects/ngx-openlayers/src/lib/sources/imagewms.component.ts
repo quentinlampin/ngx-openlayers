@@ -6,9 +6,7 @@ import { SourceComponent } from './source.component';
 @Component({
   selector: 'aol-source-imagewms',
   template: `<ng-content></ng-content>`,
-  providers: [
-    { provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }
-  ]
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
 })
 export class SourceImageWMSComponent extends SourceComponent implements OnInit {
   instance: source.ImageWMS;
@@ -18,9 +16,9 @@ export class SourceImageWMSComponent extends SourceComponent implements OnInit {
   @Input() hidpi: boolean;
   @Input() serverType: string;
   @Input() imageLoadFunction?: ImageLoadFunctionType;
-  @Input() logo: (string | olx.LogoOptions);
+  @Input() logo: string | olx.LogoOptions;
   @Input() params: Object;
-  @Input() projection: (ProjectionLike | string);
+  @Input() projection: ProjectionLike | string;
   @Input() ratio: number;
   @Input() resolutions: Array<number>;
   @Input() url: string;

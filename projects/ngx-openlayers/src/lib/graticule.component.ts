@@ -4,28 +4,27 @@ import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-graticule',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
 })
 export class GraticuleComponent implements AfterContentInit, OnChanges {
   instance: any;
-  public componentType: string = 'graticule';
+  public componentType = 'graticule';
 
   @Input() strokeStyle: style.Stroke;
   @Input() showLabels: boolean;
   @Input() lonLabelPosition: number;
   @Input() latLabelPosition: number;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    let properties: {[index: string]: any} = {};
+    const properties: { [index: string]: any } = {};
 
     if (!this.instance) {
       return;
     }
 
-    for (let key in changes) {
+    for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         properties[key] = changes[key].currentValue;
       }
@@ -42,7 +41,7 @@ export class GraticuleComponent implements AfterContentInit, OnChanges {
       strokeStyle: this.strokeStyle,
       showLabels: this.showLabels,
       lonLabelPosition: this.lonLabelPosition,
-      latLabelPosition: this.latLabelPosition
+      latLabelPosition: this.latLabelPosition,
     });
     this.instance.setMap(this.map.instance);
   }

@@ -7,14 +7,14 @@ import { OverlayComponent } from './overlay.component';
 
 @Component({
   selector: 'aol-coordinate',
-  template: `<div class="aol-coordinate"></div>`
+  template: `<div class="aol-coordinate"></div>`,
 })
 export class CoordinateComponent implements OnChanges {
   private host: any;
 
   @Input() x: number;
   @Input() y: number;
-  @Input() srid: string = 'EPSG:3857';
+  @Input() srid = 'EPSG:3857';
 
   constructor(
     private map: MapComponent,
@@ -62,18 +62,18 @@ export class CoordinateComponent implements OnChanges {
 
 @Component({
   selector: 'aol-collection-coordinates',
-  template: `<div class="aol-collection-coordinates"></div>`
+  template: `<div class="aol-collection-coordinates"></div>`,
 })
 export class CollectionCoordinatesComponent implements OnChanges {
   private host: any;
 
   @Input() coordinates: [number, number][];
-  @Input() srid: string = 'EPSG:3857';
+  @Input() srid = 'EPSG:3857';
 
   constructor(
-      private map: MapComponent,
-      @Optional() geometryLinestring: GeometryLinestringComponent,
-      @Optional() geometryPolygon: GeometryPolygonComponent
+    private map: MapComponent,
+    @Optional() geometryLinestring: GeometryLinestringComponent,
+    @Optional() geometryPolygon: GeometryPolygonComponent
   ) {
     // console.log('creating aol-collection-coordinates');
     if (!!geometryLinestring) {
@@ -99,9 +99,11 @@ export class CollectionCoordinatesComponent implements OnChanges {
       transformedCoordinates = this.coordinates;
     } else {
       transformedCoordinates = [];
-      this.coordinates.forEach(function (coordinate: Coordinate) {
-        transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
-      }.bind(this));
+      this.coordinates.forEach(
+        function(coordinate: Coordinate) {
+          transformedCoordinates.push(proj.transform(coordinate, this.srid, referenceProjectionCode));
+        }.bind(this)
+      );
     }
     switch (this.host.componentType) {
       case 'geometry-linestring':
@@ -111,8 +113,8 @@ export class CollectionCoordinatesComponent implements OnChanges {
         this.host.instance.setCoordinates([transformedCoordinates]);
         break;
       default:
-        throw new Error('aol-collection-coordinates\' host is of unknown type: ' + this.host.componentType);
-        // break;
+        throw new Error('aol-collection-coordinates host is of unknown type: ' + this.host.componentType);
+      // break;
     }
   }
 }

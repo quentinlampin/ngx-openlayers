@@ -4,13 +4,13 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-translate',
-  template: ''
+  template: '',
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.Translate;
 
   @Input() features?: Collection<Feature>;
-  @Input() layers?: (layer.Layer[] | ((layer: layer.Layer) => boolean));
+  @Input() layers?: layer.Layer[] | ((layer: layer.Layer) => boolean);
   @Input() hitTolerance?: number;
 
   @Output() onChange: EventEmitter<interaction.Translate.Event>;

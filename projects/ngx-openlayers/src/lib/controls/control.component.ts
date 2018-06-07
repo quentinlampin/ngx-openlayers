@@ -5,18 +5,15 @@ import { ContentComponent } from '../content.component';
 
 @Component({
   selector: 'aol-control',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class ControlComponent implements OnInit, OnDestroy {
-  public componentType: string = 'control';
+  public componentType = 'control';
   instance: control.Control;
   element: Element;
   @ContentChild(ContentComponent) content: ContentComponent;
 
-  constructor(
-    private map: MapComponent
-  ) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     if (this.content) {

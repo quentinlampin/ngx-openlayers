@@ -10,9 +10,9 @@ import { SourceComponent } from './source.component';
   providers: [
     {
       provide: SourceComponent,
-      useExisting: forwardRef(() => SourceRasterComponent)
-    }
-  ]
+      useExisting: forwardRef(() => SourceRasterComponent),
+    },
+  ],
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
   instance: source.Raster;

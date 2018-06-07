@@ -1,4 +1,4 @@
-import { Component, ViewChild, ContentChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SourceRasterComponent } from 'ngx-openlayers';
 
 interface RasterData {
@@ -16,7 +16,7 @@ export class RasterComponent {
   operationType = 'image';
   lib: any = {
     brightness: brightness,
-    contrast: contrast
+    contrast: contrast,
   };
   brightness = 0;
   contrast = 0;
@@ -37,8 +37,8 @@ export class RasterComponent {
     return imageData;
   }
 
-  afterOperations() { }
-  
+  afterOperations() {}
+
   updateRaster() {
     this.currentRasterSource.instance.changed();
   }
@@ -49,7 +49,7 @@ export class RasterComponent {
  */
 function brightness(imageData: ImageData, adjustment: number) {
   const pixels = imageData.data,
-    pixelsLength =  pixels.length;
+    pixelsLength = pixels.length;
 
   for (let i = 0; i < pixelsLength; i += 4) {
     pixels[i] += adjustment;

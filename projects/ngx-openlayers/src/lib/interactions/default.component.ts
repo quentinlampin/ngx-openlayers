@@ -4,20 +4,19 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-default',
-  template: ''
+  template: '',
 })
 export class DefaultInteractionComponent implements OnInit, OnDestroy {
   instance: Collection<interaction.Interaction>;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = interaction.defaults();
-    this.instance.forEach((interaction) => this.map.instance.addInteraction(interaction));
+    this.instance.forEach(i => this.map.instance.addInteraction(i));
   }
 
   ngOnDestroy() {
-    this.instance.forEach((interaction) => this.map.instance.removeInteraction(interaction));
+    this.instance.forEach(i => this.map.instance.removeInteraction(i));
   }
 }

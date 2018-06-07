@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-mouseposition',
-  template: ``
+  template: ``,
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {
   instance: control.MousePosition;
@@ -12,11 +12,7 @@ export class ControlMousePositionComponent implements OnInit, OnDestroy {
   @Input() projection: ProjectionLike;
   target: Element;
 
-  constructor(
-    private map: MapComponent,
-    private element: ElementRef
-  ) {
-  }
+  constructor(private map: MapComponent, private element: ElementRef) {}
 
   ngOnInit() {
     this.target = this.element.nativeElement;

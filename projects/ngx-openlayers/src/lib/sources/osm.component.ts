@@ -1,16 +1,14 @@
-import {Component, Host, forwardRef, Input, AfterContentInit, Optional, OnInit} from '@angular/core';
+import { Component, Host, forwardRef, Input, AfterContentInit, Optional } from '@angular/core';
 import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
-import {SourceRasterComponent} from './raster.component';
+import { SourceRasterComponent } from './raster.component';
 
 @Component({
   selector: 'aol-source-osm',
   template: `<div class="aol-source-osm"></div>`,
-  providers: [
-    { provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }
-  ]
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
   instance: source.OSM;
@@ -25,8 +23,14 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   @Input() url: string;
   @Input() wrapX: boolean;
 
-  constructor(@Host() @Optional() layer: LayerTileComponent,
-              @Host() @Optional() raster?: SourceRasterComponent) {
+  constructor(
+    @Host()
+    @Optional()
+    layer: LayerTileComponent,
+    @Host()
+    @Optional()
+    raster?: SourceRasterComponent
+  ) {
     super(layer, raster);
   }
 

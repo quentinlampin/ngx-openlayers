@@ -6,21 +6,19 @@ import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
   selector: 'aol-layer-vectortile',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
 })
 export class LayerVectorTileComponent extends LayerComponent implements OnInit, OnChanges {
-
   @Input() renderBuffer: number;
-  @Input() renderMode: layer.VectorTileRenderType|string;
+  @Input() renderMode: layer.VectorTileRenderType | string;
   /* not marked as optional in the typings */
   @Input() renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
-  @Input() style: (style.Style | style.Style[] | StyleFunction);
+  @Input() style: style.Style | style.Style[] | StyleFunction;
   @Input() updateWhileAnimating: boolean;
   @Input() updateWhileInteracting: boolean;
   @Input() visible: boolean;
 
-  constructor(map: MapComponent,
-              @Optional() group?: LayerGroupComponent) {
+  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);
   }
 

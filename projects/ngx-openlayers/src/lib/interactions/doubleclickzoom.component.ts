@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-doubleclickzoom',
-  template: ''
+  template: '',
 })
 export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DoubleClickZoom;
@@ -12,8 +12,7 @@ export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
   @Input() duration: number;
   @Input() delta: number;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.DoubleClickZoom(this);

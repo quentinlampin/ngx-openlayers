@@ -8,7 +8,6 @@ import {
   ContentChild,
   SimpleChanges,
   Optional,
-  OnInit
 } from '@angular/core';
 import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -19,9 +18,7 @@ import { SourceRasterComponent } from './raster.component';
 @Component({
   selector: 'aol-source-xyz',
   template: `<ng-content></ng-content>`,
-  providers: [
-    { provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }
-  ]
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: source.XYZ;
@@ -35,7 +32,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @Input() tileGrid: tilegrid.TileGrid;
   @Input() tileLoadFunction?: TileLoadFunctionType;
   @Input() tilePixelRatio: number;
-  @Input() tileSize: number|Size;
+  @Input() tileSize: number | Size;
   @Input() tileUrlFunction: TileUrlFunctionType;
   @Input() url: string;
   @Input() urls: string[];
@@ -43,8 +40,14 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
 
   @ContentChild(TileGridComponent) tileGridXYZ: TileGridComponent;
 
-  constructor(@Optional() @Host() layer: LayerTileComponent,
-              @Optional() @Host() raster?: SourceRasterComponent) {
+  constructor(
+    @Optional()
+    @Host()
+    layer: LayerTileComponent,
+    @Optional()
+    @Host()
+    raster?: SourceRasterComponent
+  ) {
     super(layer, raster);
   }
 
@@ -57,12 +60,12 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let properties: {[index: string]: any} = {};
+    const properties: { [index: string]: any } = {};
 
     if (!this.instance) {
       return;
     }
-    for (let key in changes) {
+    for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         properties[key] = changes[key].currentValue;
       }

@@ -4,7 +4,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-mousewheelzoom',
-  template: ''
+  template: '',
 })
 export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.MouseWheelZoom;
@@ -12,8 +12,7 @@ export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   @Input() timeout: number;
   @Input() useAnchor: boolean;
 
-  constructor(private map: MapComponent) {
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new interaction.MouseWheelZoom(this);
