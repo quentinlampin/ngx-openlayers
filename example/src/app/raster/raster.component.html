@@ -45,13 +45,13 @@
   <span>Contrast : </span>
   <input type="range" min="-255" max="255"
          [(ngModel)]="contrast"
-         (input)="raster1.instance.changed(); raster2.instance.changed()" />
+         (input)="updateRaster()" />
   <span> ({{ contrast }})</span>
 </div>
 <div class="control">
   <span>Brightness : </span>
   <input type="range" min="-255" max="255"
          [(ngModel)]="brightness"
-         (input)="raster1.instance.changed(); raster2.instance.changed()" />
+         (input)="updateRaster()" />
   <span> ({{ brightness }})</span>
 </div>

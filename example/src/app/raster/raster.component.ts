@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {SourceRasterComponent} from 'ngx-openlayers';
 
 interface RasterData {
   brightness: number;
@@ -15,15 +16,16 @@ export class RasterComponent {
   operationType = 'image';
   lib: any = {
     brightness: brightness,
-    contrast: contrast
+    contrast: contrast,
   };
   brightness = 0;
   contrast = 0;
 
   selectLayer = 'osm';
+  @ViewChild(SourceRasterComponent) currentRasterSource;
 
   beforeOperations(event) {
-    let data: RasterData = event.data;
+    const data: RasterData = event.data;
     data.brightness = this.brightness;
     data.contrast = this.contrast;
   }
@@ -35,7 +37,11 @@ export class RasterComponent {
     return imageData;
   }
 
-  afterOperations() { }
+  afterOperations() {}
+
+  updateRaster() {
+    this.currentRasterSource.instance.changed();
+  }
 }
 
 /**
