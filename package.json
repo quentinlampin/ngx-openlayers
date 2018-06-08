@@ -1,6 +1,6 @@
 {
     "name": "ngx-openlayers",
-    "version": "0.8.20",
+    "version": "0.8.21",
     "scripts": {
         "lint": "tslint src/**/*.ts",
         "test": "echo \"No tests specified\" && exit 0",
