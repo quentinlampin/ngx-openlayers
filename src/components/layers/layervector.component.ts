@@ -6,12 +6,13 @@ import { layer, source } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
+import {Styleable} from '../styles/styleable';
 
 @Component({
   selector: 'aol-layer-vector',
   template: `<ng-content></ng-content>`
 })
-export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
+export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges, Styleable {
   public source: source.Vector;
 
   @Input() renderBuffer: number;
@@ -29,5 +30,13 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   ngOnChanges(changes: SimpleChanges) {
     super.ngOnChanges(changes);
+  }
+
+  setStyle(style: ol.style.Style): void {
+    this.instance.setStyle(style);
+  }
+
+  unsetStyle(style: ol.style.Style): boolean {
+    return this.instance.setStyle(null);
   }
 }

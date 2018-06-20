@@ -1,4 +1,4 @@
-import { Component, Input, Optional, OnInit } from '@angular/core';
+import {Component, Input, Optional, OnInit, OnDestroy} from '@angular/core';
 import { style, StyleGeometryFunction, geom } from 'openlayers';
 import { FeatureComponent } from '../feature.component';
 import { LayerVectorComponent } from '../layers';
@@ -7,7 +7,7 @@ import { LayerVectorComponent } from '../layers';
   selector: 'aol-style',
   template: `<ng-content></ng-content>`
 })
-export class StyleComponent implements OnInit {
+export class StyleComponent implements OnInit, OnDestroy {
   private host: FeatureComponent|LayerVectorComponent;
   public instance: style.Style;
   public componentType: string = 'style';
@@ -38,6 +38,10 @@ export class StyleComponent implements OnInit {
   ngOnInit() {
     // console.log('creating aol-style instance with: ', this);
     this.instance = new style.Style(this);
-    this.host.instance.setStyle(this.instance);
+    this.host.setStyle(this.instance);
+  }
+
+  ngOnDestroy() {
+    this.host.unsetStyle(this.instance);
   }
 }
