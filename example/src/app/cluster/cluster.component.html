@@ -20,7 +20,6 @@
           </aol-geometry-point>
         </aol-feature>
       </aol-source-vector>
-
       <aol-style>
         <aol-style-circle [radius]="10">
           <aol-style-stroke [color]="'#fff'"></aol-style-stroke>
@@ -30,7 +29,11 @@
           <aol-style-fill [color]="'#fff'"></aol-style-fill>
         </aol-style-text>
       </aol-style>
-
+      <aol-style>
+        <aol-style-text [text]="'Name'" [offsetY]="25">
+          <aol-style-fill [color]="'#fff'"></aol-style-fill>
+        </aol-style-text>
+      </aol-style>
     </aol-source-cluster>
   </aol-layer-vector>
 
