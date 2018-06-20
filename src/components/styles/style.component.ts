@@ -38,10 +38,10 @@ export class StyleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // console.log('creating aol-style instance with: ', this);
     this.instance = new style.Style(this);
-    this.host.setStyle(this.instance);
+    this.host.addStyle(this.instance);
   }
 
   ngOnDestroy() {
-    this.host.unsetStyle(this.instance);
+    this.host.removeStyle(this.instance);
   }
 }

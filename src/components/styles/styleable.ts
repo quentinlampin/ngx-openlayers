@@ -3,15 +3,17 @@ import { style } from 'openlayers';
 export interface Styleable {
 
   /**
+   * Set the style for the styleable object.
    *
    * @param {ol.style.Style} style
    */
-  setStyle(style: style.Style): void;
+  addStyle(style: style.Style): void;
 
   /**
+   * Unset the style for the styleable object.
    *
    * @param {ol.style.Style} style
-   * @returns {boolean}
+   * @returns {boolean} if the method was successful true, else false
    */
-  unsetStyle(style: style.Style): boolean;
+  removeStyle(style: style.Style): boolean;
 }
