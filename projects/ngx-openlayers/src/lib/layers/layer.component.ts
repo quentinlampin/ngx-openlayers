@@ -1,5 +1,6 @@
 import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { MapComponent } from '../map.component';
+import { Extent } from 'openlayers';
 import { LayerGroupComponent } from './layergroup.component';
 
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
