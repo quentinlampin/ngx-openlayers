@@ -12,7 +12,7 @@ import {
   ControlAttributionComponent, ControlFullScreenComponent, ControlMousePositionComponent,
   ControlOverviewMapComponent, ControlRotateComponent, ControlScaleLineComponent, ControlZoomComponent, ControlZoomSliderComponent,
   ControlZoomToExtentComponent, DefaultControlComponent, ControlComponent,
-  FormatMVTComponent,
+  FormatMVTComponent, FormatGeoJSONComponent,
   TileGridComponent, TileGridWMTSComponent,
   DefaultInteractionComponent, DragRotateInteractionComponent, DragRotateAndZoomInteractionComponent,
   DoubleClickZoomInteractionComponent, DragAndDropInteractionComponent, DragBoxInteractionComponent,
@@ -79,6 +79,7 @@ const COMPONENTS = [
   ControlZoomToExtentComponent,
 
   FormatMVTComponent,
+  FormatGeoJSONComponent,
   TileGridComponent,
   TileGridWMTSComponent,
 
