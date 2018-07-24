@@ -241,6 +241,10 @@
   version "8.9.5"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/@types/node/-/node-8.9.5.tgz#162b864bc70be077e6db212b322754917929e976"
 
+"@types/openlayers@4.3.x || 4.4.x":
+  version "4.3.15"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/@types/openlayers/-/openlayers-4.3.15.tgz#a5b8614d60825ee7db5b2636bfa05ce9be944c6c"
+
 "@types/q@^0.0.32":
   version "0.0.32"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/@types/q/-/q-0.0.32.tgz#bd284e57c84f1325da702babfc82a5328190c0c5"
@@ -404,7 +408,15 @@ acorn-dynamic-import@^3.0.0:
   dependencies:
     acorn "^5.0.0"
 
-acorn@^5.0.0:
+acorn@4.x:
+  version "4.0.13"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/acorn/-/acorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
+
+acorn@5.1.2:
+  version "5.1.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/acorn/-/acorn-5.1.2.tgz#911cb53e036807cf0fa778dc5d370fbd864246d7"
+
+acorn@^5.0.0, acorn@^5.2.1:
   version "5.7.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
 
@@ -503,6 +515,10 @@ ansi-styles@^3.1.0, ansi-styles@^3.2.1:
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
   dependencies:
     color-convert "^1.9.0"
+
+ansi-styles@~1.0.0:
+  version "1.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ansi-styles/-/ansi-styles-1.0.0.tgz#cb102df1c56f5123eab8b67cd7b98027a0279178"
 
 anymatch@^1.3.0:
   version "1.3.2"
@@ -620,6 +636,10 @@ arraybuffer.slice@0.0.6:
   version "0.0.6"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/arraybuffer.slice/-/arraybuffer.slice-0.0.6.tgz#f33b2159f0532a3f3107a272c0ccfbd1ad2979ca"
 
+arraybuffer.slice@~0.0.7:
+  version "0.0.7"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/arraybuffer.slice/-/arraybuffer.slice-0.0.7.tgz#3bbc4275dd584cc1b10809b89d4e8b63a69e7675"
+
 arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
@@ -666,9 +686,19 @@ async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
 
+async-limiter@~1.0.0:
+  version "1.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
+
 async@1.x, async@^1.4.0, async@^1.5.2:
   version "1.5.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
+
+async@2.5.0:
+  version "2.5.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
+  dependencies:
+    lodash "^4.14.0"
 
 async@^2.1.4:
   version "2.6.1"
@@ -774,6 +804,10 @@ babel-types@^6.18.0, babel-types@^6.26.0:
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
+babylon@7.0.0-beta.19:
+  version "7.0.0-beta.19"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/babylon/-/babylon-7.0.0-beta.19.tgz#e928c7e807e970e0536b078ab3e0c48f9e052503"
+
 babylon@^6.18.0:
   version "6.18.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
@@ -834,6 +868,13 @@ binary-extensions@^1.0.0:
   version "1.11.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/binary-extensions/-/binary-extensions-1.11.0.tgz#46aa1751fb6a2f93ee5e689bb1087d4b14c6c205"
 
+binary@^0.3.0:
+  version "0.3.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/binary/-/binary-0.3.0.tgz#9f60553bc5ce8c3386f3b553cff47462adecaa79"
+  dependencies:
+    buffers "~0.1.1"
+    chainsaw "~0.1.0"
+
 blob@0.0.4:
   version "0.0.4"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/blob/-/blob-0.0.4.tgz#bcf13052ca54463f30f9fc7e95b9a47630a94921"
@@ -850,7 +891,7 @@ blocking-proxy@^1.0.0:
   dependencies:
     minimist "^1.2.0"
 
-bluebird@^3.3.0, bluebird@^3.5.1:
+bluebird@^3.3.0, bluebird@^3.5.1, bluebird@~3.5.0:
   version "3.5.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -1041,6 +1082,10 @@ buffer@^4.3.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
+buffers@~0.1.1:
+  version "0.1.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/buffers/-/buffers-0.1.1.tgz#b24579c3bed4d6d396aeee6d9a8ae7f5482ab7bb"
+
 builtin-modules@^1.0.0, builtin-modules@^1.1.1:
   version "1.1.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
@@ -1148,12 +1193,24 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
+catharsis@~0.8.9:
+  version "0.8.9"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/catharsis/-/catharsis-0.8.9.tgz#98cc890ca652dd2ef0e70b37925310ff9e90fc8b"
+  dependencies:
+    underscore-contrib "~0.3.0"
+
 center-align@^0.1.1:
   version "0.1.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/center-align/-/center-align-0.1.3.tgz#aa0d32629b6ee972200411cbd4461c907bc2b7ad"
   dependencies:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
+
+chainsaw@~0.1.0:
+  version "0.1.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/chainsaw/-/chainsaw-0.1.0.tgz#5eab50b28afe58074d0d58291388828b5e5fbc98"
+  dependencies:
+    traverse ">=0.3.0 <0.4"
 
 chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
@@ -1172,6 +1229,14 @@ chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.1, chalk@^2.3.2, chalk@^2.4
     ansi-styles "^3.2.1"
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
+
+chalk@~0.4.0:
+  version "0.4.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/chalk/-/chalk-0.4.0.tgz#5199a3ddcd0c1efe23bc08c1b027b06176e0c64f"
+  dependencies:
+    ansi-styles "~1.0.0"
+    has-color "~0.1.0"
+    strip-ansi "~0.1.0"
 
 chalk@~2.2.2:
   version "2.2.2"
@@ -1293,6 +1358,28 @@ clone-deep@^2.0.1:
 clone@^2.1.1:
   version "2.1.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
+
+closure-util@1.24.0:
+  version "1.24.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/closure-util/-/closure-util-1.24.0.tgz#03f4dd845e8f910de61935a9d10b4839a1dc372c"
+  dependencies:
+    acorn "5.1.2"
+    async "2.5.0"
+    fs-extra "4.0.2"
+    gaze "1.1.2"
+    get-down "1.2.0"
+    glob "7.1.2"
+    graceful-fs "4.1.11"
+    handlebars "4.0.10"
+    lodash "4.17.4"
+    minimatch "3.0.4"
+    mkdirp "0.5.1"
+    nomnom "1.8.1"
+    npmlog "4.1.2"
+    rimraf "2.6.2"
+    send "0.15.4"
+    socket.io "2.0.1"
+    temp "0.8.3"
 
 co@^4.6.0:
   version "4.6.0"
@@ -1680,7 +1767,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@*, debug@^3.1.0:
+debug@*, debug@^3.1.0, debug@~3.1.0:
   version "3.1.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -1698,7 +1785,19 @@ debug@2.3.3:
   dependencies:
     ms "0.7.2"
 
-debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.6, debug@^2.6.8:
+debug@2.6.4:
+  version "2.6.4"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
+  dependencies:
+    ms "0.7.3"
+
+debug@2.6.8:
+  version "2.6.8"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
+  dependencies:
+    ms "2.0.0"
+
+debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.6, debug@^2.6.8, debug@~2.6.6:
   version "2.6.9"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -1711,6 +1810,18 @@ decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
 decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
+
+decompress-zip@0.3.0:
+  version "0.3.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/decompress-zip/-/decompress-zip-0.3.0.tgz#ae3bcb7e34c65879adfe77e19c30f86602b4bdb0"
+  dependencies:
+    binary "^0.3.0"
+    graceful-fs "^4.1.3"
+    mkpath "^0.1.0"
+    nopt "^3.0.1"
+    q "^1.1.2"
+    readable-stream "^1.1.8"
+    touch "0.0.3"
 
 deep-equal@^1.0.1:
   version "1.0.1"
@@ -1997,6 +2108,22 @@ engine.io-client@1.8.3:
     xmlhttprequest-ssl "1.5.3"
     yeast "0.1.2"
 
+engine.io-client@~3.1.0:
+  version "3.1.6"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/engine.io-client/-/engine.io-client-3.1.6.tgz#5bdeb130f8b94a50ac5cbeb72583e7a4a063ddfd"
+  dependencies:
+    component-emitter "1.2.1"
+    component-inherit "0.0.3"
+    debug "~3.1.0"
+    engine.io-parser "~2.1.1"
+    has-cors "1.1.0"
+    indexof "0.0.1"
+    parseqs "0.0.5"
+    parseuri "0.0.5"
+    ws "~3.3.1"
+    xmlhttprequest-ssl "~1.5.4"
+    yeast "0.1.2"
+
 engine.io-parser@1.3.2:
   version "1.3.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/engine.io-parser/-/engine.io-parser-1.3.2.tgz#937b079f0007d0893ec56d46cb220b8cb435220a"
@@ -2008,6 +2135,16 @@ engine.io-parser@1.3.2:
     has-binary "0.1.7"
     wtf-8 "1.0.0"
 
+engine.io-parser@~2.1.0, engine.io-parser@~2.1.1:
+  version "2.1.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/engine.io-parser/-/engine.io-parser-2.1.2.tgz#4c0f4cff79aaeecbbdcfdea66a823c6085409196"
+  dependencies:
+    after "0.8.2"
+    arraybuffer.slice "~0.0.7"
+    base64-arraybuffer "0.1.5"
+    blob "0.0.4"
+    has-binary2 "~1.0.2"
+
 engine.io@1.8.3:
   version "1.8.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/engine.io/-/engine.io-1.8.3.tgz#8de7f97895d20d39b85f88eeee777b2bd42b13d4"
@@ -2018,6 +2155,19 @@ engine.io@1.8.3:
     debug "2.3.3"
     engine.io-parser "1.3.2"
     ws "1.1.2"
+
+engine.io@~3.1.0:
+  version "3.1.5"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/engine.io/-/engine.io-3.1.5.tgz#0e7ef9d690eb0b35597f1d4ad02a26ca2dba3845"
+  dependencies:
+    accepts "~1.3.4"
+    base64id "1.0.0"
+    cookie "0.3.1"
+    debug "~3.1.0"
+    engine.io-parser "~2.1.0"
+    ws "~3.3.1"
+  optionalDependencies:
+    uws "~9.14.0"
 
 enhanced-resolve@^4.0.0:
   version "4.1.0"
@@ -2106,7 +2256,7 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
-escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
+escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5, escape-string-regexp@~1.0.5:
   version "1.0.5"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -2157,7 +2307,7 @@ estraverse@^4.1.0, estraverse@^4.1.1:
   version "4.2.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
 
-estree-walker@^0.5.1, estree-walker@^0.5.2:
+estree-walker@^0.5.0, estree-walker@^0.5.1, estree-walker@^0.5.2:
   version "0.5.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/estree-walker/-/estree-walker-0.5.2.tgz#d3850be7529c9580d815600b53126515e146dd39"
 
@@ -2165,7 +2315,7 @@ esutils@^2.0.2:
   version "2.0.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-etag@~1.8.1:
+etag@~1.8.0, etag@~1.8.1:
   version "1.8.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
@@ -2487,6 +2637,10 @@ foreach@^2.0.5:
   version "2.0.5"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
 
+foreachasync@^3.0.0:
+  version "3.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/foreachasync/-/foreachasync-3.0.0.tgz#5502987dc8714be3392097f32e0071c9dee07cf6"
+
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -2517,6 +2671,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
+fresh@0.5.0:
+  version "0.5.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/fresh/-/fresh-0.5.0.tgz#f474ca5e6a9246d6fd8e0953cfa9b9c805afa78e"
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -2533,6 +2691,14 @@ fs-access@^1.0.0:
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/fs-access/-/fs-access-1.0.1.tgz#d6a87f262271cefebec30c553407fb995da8777a"
   dependencies:
     null-check "^1.0.0"
+
+fs-extra@4.0.2:
+  version "4.0.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/fs-extra/-/fs-extra-4.0.2.tgz#f91704c53d1b461f893452b0c307d9997647ab6b"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
 
 fs-extra@^6.0.0:
   version "6.0.1"
@@ -2594,6 +2760,12 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+gaze@1.1.2:
+  version "1.1.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/gaze/-/gaze-1.1.2.tgz#847224677adb8870d679257ed3388fdb61e40105"
+  dependencies:
+    globule "^1.0.0"
+
 gaze@^1.0.0:
   version "1.1.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/gaze/-/gaze-1.1.3.tgz#c441733e13b927ac8c0ff0b4c3b033f28812924a"
@@ -2603,6 +2775,21 @@ gaze@^1.0.0:
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
+
+get-down@1.2.0:
+  version "1.2.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/get-down/-/get-down-1.2.0.tgz#6aeca5043ef0aeaa5170c90b0f746c650017a3c3"
+  dependencies:
+    decompress-zip "0.3.0"
+    graceful-fs "4.1.11"
+    junk "2.1.0"
+    mout "1.0.0"
+    q "1.5.0"
+    request "2.81.0"
+    request-progress "3.0.0"
+    retry "0.10.1"
+    tar "3.1.5"
+    tmp "0.0.31"
 
 get-stdin@^4.0.1:
   version "4.0.1"
@@ -2659,6 +2846,17 @@ glob@7.0.x:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+glob@7.1.2, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
+  version "7.1.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 glob@^5.0.15:
   version "5.0.15"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
@@ -2676,17 +2874,6 @@ glob@^6.0.4:
     inflight "^1.0.4"
     inherits "2"
     minimatch "2 || 3"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
-  version "7.1.2"
-  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
-  dependencies:
-    fs.realpath "^1.0.0"
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "^3.0.4"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
@@ -2756,13 +2943,23 @@ got@^6.7.1:
     unzip-response "^2.0.1"
     url-parse-lax "^1.0.0"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
+graceful-fs@4.1.11, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
 handle-thing@^1.2.5:
   version "1.2.5"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/handle-thing/-/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
+
+handlebars@4.0.10:
+  version "4.0.10"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/handlebars/-/handlebars-4.0.10.tgz#3d30c718b09a3d96f23ea4cc1f403c4d3ba9ff4f"
+  dependencies:
+    async "^1.4.0"
+    optimist "^0.6.1"
+    source-map "^0.4.4"
+  optionalDependencies:
+    uglify-js "^2.6"
 
 handlebars@^4.0.1, handlebars@^4.0.3:
   version "4.0.11"
@@ -2802,11 +2999,21 @@ has-ansi@^2.0.0:
   dependencies:
     ansi-regex "^2.0.0"
 
+has-binary2@~1.0.2:
+  version "1.0.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/has-binary2/-/has-binary2-1.0.3.tgz#7776ac627f3ea77250cfc332dab7ddf5e4f5d11d"
+  dependencies:
+    isarray "2.0.1"
+
 has-binary@0.1.7:
   version "0.1.7"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/has-binary/-/has-binary-0.1.7.tgz#68e61eb16210c9545a0a5cce06a873912fe1e68c"
   dependencies:
     isarray "0.0.1"
+
+has-color@~0.1.0:
+  version "0.1.7"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/has-color/-/has-color-0.1.7.tgz#67144a5260c34fc3cca677d041daf52fe7b78b2f"
 
 has-cors@1.1.0:
   version "1.1.0"
@@ -3034,7 +3241,7 @@ iconv-lite@0.4.23, iconv-lite@^0.4.4:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-ieee754@^1.1.4:
+ieee754@^1.1.4, ieee754@^1.1.6:
   version "1.1.12"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"
 
@@ -3403,6 +3610,10 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
+isarray@2.0.1:
+  version "2.0.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
+
 isbinaryfile@^3.0.0:
   version "3.0.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/isbinaryfile/-/isbinaryfile-3.0.2.tgz#4a3e974ec0cba9004d3fc6cde7209ea69368a621"
@@ -3572,9 +3783,32 @@ js-yaml@3.x, js-yaml@^3.7.0, js-yaml@^3.9.0:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js2xmlparser@~3.0.0:
+  version "3.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/js2xmlparser/-/js2xmlparser-3.0.0.tgz#3fb60eaa089c5440f9319f51760ccd07e2499733"
+  dependencies:
+    xmlcreate "^1.0.1"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
+
+jsdoc@3.5.5:
+  version "3.5.5"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/jsdoc/-/jsdoc-3.5.5.tgz#484521b126e81904d632ff83ec9aaa096708fa4d"
+  dependencies:
+    babylon "7.0.0-beta.19"
+    bluebird "~3.5.0"
+    catharsis "~0.8.9"
+    escape-string-regexp "~1.0.5"
+    js2xmlparser "~3.0.0"
+    klaw "~2.0.0"
+    marked "~0.3.6"
+    mkdirp "~0.5.1"
+    requizzle "~0.2.1"
+    strip-json-comments "~2.0.1"
+    taffydb "2.6.2"
+    underscore "~1.8.3"
 
 jsesc@^1.3.0:
   version "1.3.0"
@@ -3646,6 +3880,10 @@ jszip@^3.1.3:
     lie "~3.1.0"
     pako "~1.0.2"
     readable-stream "~2.0.6"
+
+junk@2.1.0:
+  version "2.1.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/junk/-/junk-2.1.0.tgz#f431b4b7f072dc500a5f10ce7f4ec71930e70134"
 
 karma-chrome-launcher@~2.2.0:
   version "2.2.0"
@@ -3732,6 +3970,12 @@ kind-of@^5.0.0:
 kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
+
+klaw@~2.0.0:
+  version "2.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/klaw/-/klaw-2.0.0.tgz#59c128e0dc5ce410201151194eeb9cbf858650f6"
+  dependencies:
+    graceful-fs "^4.1.9"
 
 latest-version@^3.0.0:
   version "3.1.0"
@@ -3860,11 +4104,15 @@ lodash.tail@^4.1.1:
   version "4.1.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/lodash.tail/-/lodash.tail-4.1.1.tgz#d2333a36d9e7717c8ad2f7cacafec7c32b444664"
 
+lodash@4.17.4:
+  version "4.17.4"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
 lodash@^3.8.0:
   version "3.10.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.0, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.10, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.0, lodash@~4.17.10:
   version "4.17.10"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
@@ -3928,6 +4176,12 @@ lru-cache@4.1.x, lru-cache@^4.0.1, lru-cache@^4.1.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+magic-string@*:
+  version "0.25.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/magic-string/-/magic-string-0.25.0.tgz#1f3696f9931ff0a1ed4c132250529e19cad6759b"
+  dependencies:
+    sourcemap-codec "^1.4.1"
+
 magic-string@^0.22.4:
   version "0.22.5"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/magic-string/-/magic-string-0.22.5.tgz#8e9cf5afddf44385c1da5bc2a6a0dbd10b03657e"
@@ -3957,6 +4211,10 @@ map-visit@^1.0.0:
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
   dependencies:
     object-visit "^1.0.0"
+
+marked@~0.3.6:
+  version "0.3.19"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
 
 math-random@^1.0.1:
   version "1.0.1"
@@ -4062,6 +4320,10 @@ mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.17, mime-types@~2.1.18, 
   dependencies:
     mime-db "~1.35.0"
 
+mime@1.3.4:
+  version "1.3.4"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
+
 mime@1.4.1:
   version "1.4.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
@@ -4094,7 +4356,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
 
-"minimatch@2 || 3", minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatch@~3.0.2:
+"minimatch@2 || 3", minimatch@3.0.4, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -4112,14 +4374,14 @@ minimist@~0.0.1:
   version "0.0.10"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
-minipass@^2.2.1, minipass@^2.3.3:
+minipass@^2.0.2, minipass@^2.2.1, minipass@^2.3.3:
   version "2.3.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/minipass/-/minipass-2.3.3.tgz#a7dcc8b7b833f5d368759cce544dccb55f50f233"
   dependencies:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
 
-minizlib@^1.1.0:
+minizlib@^1.0.3, minizlib@^1.1.0:
   version "1.1.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/minizlib/-/minizlib-1.1.0.tgz#11e13658ce46bc3a70a267aac58359d1e0c29ceb"
   dependencies:
@@ -4154,11 +4416,19 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
+mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+mkpath@^0.1.0:
+  version "0.1.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/mkpath/-/mkpath-0.1.0.tgz#7554a6f8d871834cc97b5462b122c4c124d6de91"
+
+mout@1.0.0:
+  version "1.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/mout/-/mout-1.0.0.tgz#9bdf1d4af57d66d47cb353a6335a3281098e1501"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -4178,6 +4448,10 @@ ms@0.7.1:
 ms@0.7.2:
   version "0.7.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
+
+ms@0.7.3:
+  version "0.7.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ms/-/ms-0.7.3.tgz#708155a5e44e33f5fd0fc53e81d0d40a91be1fff"
 
 ms@2.0.0:
   version "2.0.0"
@@ -4264,6 +4538,13 @@ ng-packagr@^3.0.0-rc.2:
     stylus "^0.54.5"
     uglify-js "^3.0.7"
     update-notifier "^2.3.0"
+
+"ngx-openlayers@file:dist/ngx-openlayers":
+  version "0.0.1"
+  dependencies:
+    "@types/openlayers" "4.3.x || 4.4.x"
+    openlayers "4.3.x || 4.4.x"
+    tslib "^1.9.0"
 
 no-case@^2.2.0:
   version "2.3.2"
@@ -4365,7 +4646,14 @@ node-sass@^4.5.3, node-sass@^4.9.0:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
-"nopt@2 || 3", nopt@3.x:
+nomnom@1.8.1:
+  version "1.8.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/nomnom/-/nomnom-1.8.1.tgz#2151f722472ba79e50a76fc125bb8c8f2e4dc2a7"
+  dependencies:
+    chalk "~0.4.0"
+    underscore "~1.6.0"
+
+"nopt@2 || 3", nopt@3.x, nopt@^3.0.1:
   version "3.0.6"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
   dependencies:
@@ -4377,6 +4665,12 @@ nopt@^4.0.1:
   dependencies:
     abbrev "1"
     osenv "^0.1.4"
+
+nopt@~1.0.10:
+  version "1.0.10"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/nopt/-/nopt-1.0.10.tgz#6ddd21bd2a31417b92727dd585f8a6f37608ebee"
+  dependencies:
+    abbrev "1"
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, "normalize-package-data@~1.0.1 || ^2.0.0":
   version "2.4.0"
@@ -4441,7 +4735,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-"npmlog@0 || 1 || 2 || 3 || 4", "npmlog@2 || ^3.1.0 || ^4.0.0", npmlog@^4.0.0, npmlog@^4.0.2:
+"npmlog@0 || 1 || 2 || 3 || 4", "npmlog@2 || ^3.1.0 || ^4.0.0", npmlog@4.1.2, npmlog@^4.0.0, npmlog@^4.0.2:
   version "4.1.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/npmlog/-/npmlog-4.1.2.tgz#08a7f2a8bf734604779a9efa4ad5cc717abb954b"
   dependencies:
@@ -4476,7 +4770,7 @@ object-assign@4.1.0:
   version "4.1.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/object-assign/-/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
 
-object-assign@^4.0.1, object-assign@^4.1.0:
+object-assign@^4.0.1, object-assign@^4.1.0, object-assign@~4.1.1:
   version "4.1.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4550,6 +4844,25 @@ once@1.x, once@^1.3.0, once@^1.3.1, once@^1.3.3, once@^1.4.0:
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   dependencies:
     wrappy "1"
+
+"openlayers@4.3.x || 4.4.x":
+  version "4.4.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/openlayers/-/openlayers-4.4.2.tgz#3dbb30e0ae0b0df0b5c5b9549f26b9642736c376"
+  dependencies:
+    async "2.5.0"
+    closure-util "1.24.0"
+    fs-extra "4.0.2"
+    jsdoc "3.5.5"
+    nomnom "1.8.1"
+    pbf "3.1.0"
+    pixelworks "1.1.0"
+    rbush "2.0.1"
+    rollup "^0.50.0"
+    rollup-plugin-cleanup "^1.0.0"
+    rollup-plugin-commonjs "^8.0.2"
+    rollup-plugin-node-resolve "^3.0.0"
+    temp "0.8.3"
+    walk "2.3.9"
 
 opn@^5.1.0, opn@~5.3.0:
   version "5.3.0"
@@ -4783,6 +5096,13 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
+pbf@3.1.0:
+  version "3.1.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/pbf/-/pbf-3.1.0.tgz#f70004badcb281761eabb1e76c92f179f08189e9"
+  dependencies:
+    ieee754 "^1.1.6"
+    resolve-protobuf-schema "^2.0.0"
+
 pbkdf2@^3.0.3:
   version "3.0.16"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/pbkdf2/-/pbkdf2-3.0.16.tgz#7404208ec6b01b62d85bf83853a8064f8d9c2a5c"
@@ -4818,6 +5138,10 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
+
+pixelworks@1.1.0:
+  version "1.1.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/pixelworks/-/pixelworks-1.1.0.tgz#1f095ad48dca8bf8a1c8258e0092031a44f22ca5"
 
 pkg-dir@^2.0.0:
   version "2.0.0"
@@ -4936,6 +5260,10 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+protocol-buffers-schema@^3.3.1:
+  version "3.3.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/protocol-buffers-schema/-/protocol-buffers-schema-3.3.2.tgz#00434f608b4e8df54c59e070efeefc37fb4bb859"
+
 protractor@~5.3.0:
   version "5.3.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/protractor/-/protractor-5.3.2.tgz#b8278f3131d9d52fa1172ed0f7fec03085fbe0ce"
@@ -5012,7 +5340,11 @@ q@1.4.1:
   version "1.4.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
-q@^1.4.1:
+q@1.5.0:
+  version "1.5.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
+
+q@^1.1.2, q@^1.4.1:
   version "1.5.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
@@ -5043,6 +5375,10 @@ querystring@0.2.0:
 querystringify@^2.0.0:
   version "2.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/querystringify/-/querystringify-2.0.0.tgz#fa3ed6e68eb15159457c89b37bc6472833195755"
+
+quickselect@^1.0.0:
+  version "1.1.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/quickselect/-/quickselect-1.1.1.tgz#852e412ce418f237ad5b660d70cffac647ae94c2"
 
 randomatic@^3.0.0:
   version "3.0.0"
@@ -5090,6 +5426,12 @@ raw-body@2.3.3:
 raw-loader@^0.5.1:
   version "0.5.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
+
+rbush@2.0.1:
+  version "2.0.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rbush/-/rbush-2.0.1.tgz#4cfaca28c3064bc0ee75431a1b79990e875eefa9"
+  dependencies:
+    quickselect "^1.0.0"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
   version "1.2.8"
@@ -5151,6 +5493,15 @@ read-pkg@^3.0.0:
 readable-stream@1.0, readable-stream@~1.0.2:
   version "1.0.34"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
+
+readable-stream@^1.1.8:
+  version "1.1.14"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -5276,32 +5627,13 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@2.87.0, request@^2.74.0, request@^2.83.0, request@^2.87.0:
-  version "2.87.0"
-  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
+request-progress@3.0.0:
+  version "3.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/request-progress/-/request-progress-3.0.0.tgz#4ca754081c7fec63f505e4faa825aa06cd669dbe"
   dependencies:
-    aws-sign2 "~0.7.0"
-    aws4 "^1.6.0"
-    caseless "~0.12.0"
-    combined-stream "~1.0.5"
-    extend "~3.0.1"
-    forever-agent "~0.6.1"
-    form-data "~2.3.1"
-    har-validator "~5.0.3"
-    http-signature "~1.2.0"
-    is-typedarray "~1.0.0"
-    isstream "~0.1.2"
-    json-stringify-safe "~5.0.1"
-    mime-types "~2.1.17"
-    oauth-sign "~0.8.2"
-    performance-now "^2.1.0"
-    qs "~6.5.1"
-    safe-buffer "^5.1.1"
-    tough-cookie "~2.3.3"
-    tunnel-agent "^0.6.0"
-    uuid "^3.1.0"
+    throttleit "^1.0.0"
 
-"request@>=2.9.0 <2.82.0":
+request@2.81.0, "request@>=2.9.0 <2.82.0":
   version "2.81.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
@@ -5328,6 +5660,31 @@ request@2.87.0, request@^2.74.0, request@^2.83.0, request@^2.87.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
+request@2.87.0, request@^2.74.0, request@^2.83.0, request@^2.87.0:
+  version "2.87.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
+  dependencies:
+    aws-sign2 "~0.7.0"
+    aws4 "^1.6.0"
+    caseless "~0.12.0"
+    combined-stream "~1.0.5"
+    extend "~3.0.1"
+    forever-agent "~0.6.1"
+    form-data "~2.3.1"
+    har-validator "~5.0.3"
+    http-signature "~1.2.0"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.17"
+    oauth-sign "~0.8.2"
+    performance-now "^2.1.0"
+    qs "~6.5.1"
+    safe-buffer "^5.1.1"
+    tough-cookie "~2.3.3"
+    tunnel-agent "^0.6.0"
+    uuid "^3.1.0"
+
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
@@ -5344,6 +5701,12 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+requizzle@~0.2.1:
+  version "0.2.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/requizzle/-/requizzle-0.2.1.tgz#6943c3530c4d9a7e46f1cddd51c158fc670cdbde"
+  dependencies:
+    underscore "~1.6.0"
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -5354,6 +5717,12 @@ resolve-from@^3.0.0:
   version "3.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
 
+resolve-protobuf-schema@^2.0.0:
+  version "2.1.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/resolve-protobuf-schema/-/resolve-protobuf-schema-2.1.0.tgz#9ca9a9e69cf192bbdaf1006ec1973948aa4a3758"
+  dependencies:
+    protocol-buffers-schema "^3.3.1"
+
 resolve-url@^0.2.1:
   version "0.2.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
@@ -5362,7 +5731,7 @@ resolve@1.1.x:
   version "1.1.7"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
-resolve@^1.1.6, resolve@^1.1.7, resolve@^1.3.2, resolve@^1.5.0:
+resolve@^1.1.6, resolve@^1.1.7, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.5.0:
   version "1.8.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/resolve/-/resolve-1.8.1.tgz#82f1ec19a423ac1fbd080b0bab06ba36e84a7a26"
   dependencies:
@@ -5372,7 +5741,7 @@ ret@~0.1.10:
   version "0.1.15"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
 
-retry@^0.10.0:
+retry@0.10.1, retry@^0.10.0:
   version "0.10.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/retry/-/retry-0.10.1.tgz#e76388d217992c252750241d3d3956fed98d8ff4"
 
@@ -5382,11 +5751,15 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.0, rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@2, rimraf@2.6.2, rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.0, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
     glob "^7.0.5"
+
+rimraf@~2.2.6:
+  version "2.2.8"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
 
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
@@ -5394,6 +5767,24 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+rollup-plugin-cleanup@^1.0.0:
+  version "1.0.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rollup-plugin-cleanup/-/rollup-plugin-cleanup-1.0.1.tgz#ca056c74fe6ea21783f99851963b173cbe8e9359"
+  dependencies:
+    acorn "4.x"
+    magic-string "*"
+    rollup-pluginutils "*"
+
+rollup-plugin-commonjs@^8.0.2:
+  version "8.4.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rollup-plugin-commonjs/-/rollup-plugin-commonjs-8.4.1.tgz#5c9cea2b2c3de322f5fbccd147e07ed5e502d7a0"
+  dependencies:
+    acorn "^5.2.1"
+    estree-walker "^0.5.0"
+    magic-string "^0.22.4"
+    resolve "^1.4.0"
+    rollup-pluginutils "^2.0.1"
 
 rollup-plugin-commonjs@^9.1.3:
   version "9.1.3"
@@ -5419,12 +5810,16 @@ rollup-plugin-sourcemaps@^0.4.2:
     rollup-pluginutils "^2.0.1"
     source-map-resolve "^0.5.0"
 
-rollup-pluginutils@^2.0.1:
+rollup-pluginutils@*, rollup-pluginutils@^2.0.1:
   version "2.3.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rollup-pluginutils/-/rollup-pluginutils-2.3.0.tgz#478ace04bd7f6da2e724356ca798214884738fc4"
   dependencies:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
+
+rollup@^0.50.0:
+  version "0.50.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/rollup/-/rollup-0.50.1.tgz#e4dafcbf8d2bb0d9f5589d0cc6f64d76b8815730"
 
 rollup@^0.59.0:
   version "0.59.4"
@@ -5578,6 +5973,24 @@ semver@~4.3.3:
 semver@~5.3.0:
   version "5.3.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
+
+send@0.15.4:
+  version "0.15.4"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/send/-/send-0.15.4.tgz#985faa3e284b0273c793364a35c6737bd93905b9"
+  dependencies:
+    debug "2.6.8"
+    depd "~1.1.1"
+    destroy "~1.0.4"
+    encodeurl "~1.0.1"
+    escape-html "~1.0.3"
+    etag "~1.8.0"
+    fresh "0.5.0"
+    http-errors "~1.6.2"
+    mime "1.3.4"
+    ms "2.0.0"
+    on-finished "~2.3.0"
+    range-parser "~1.2.0"
+    statuses "~1.3.1"
 
 send@0.16.2:
   version "0.16.2"
@@ -5752,6 +6165,10 @@ socket.io-adapter@0.5.0:
     debug "2.3.3"
     socket.io-parser "2.3.1"
 
+socket.io-adapter@~1.1.0:
+  version "1.1.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
+
 socket.io-client@1.7.3:
   version "1.7.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/socket.io-client/-/socket.io-client-1.7.3.tgz#b30e86aa10d5ef3546601c09cde4765e381da377"
@@ -5768,6 +6185,23 @@ socket.io-client@1.7.3:
     socket.io-parser "2.3.1"
     to-array "0.1.4"
 
+socket.io-client@2.0.1:
+  version "2.0.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/socket.io-client/-/socket.io-client-2.0.1.tgz#1d52f8c74660c68bb6695953fa119971155fad93"
+  dependencies:
+    backo2 "1.0.2"
+    base64-arraybuffer "0.1.5"
+    component-bind "1.0.0"
+    component-emitter "1.2.1"
+    debug "2.6.4"
+    engine.io-client "~3.1.0"
+    has-cors "1.1.0"
+    indexof "0.0.1"
+    object-component "0.0.3"
+    parseuri "0.0.5"
+    socket.io-parser "~3.1.1"
+    to-array "0.1.4"
+
 socket.io-parser@2.3.1:
   version "2.3.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/socket.io-parser/-/socket.io-parser-2.3.1.tgz#dd532025103ce429697326befd64005fcfe5b4a0"
@@ -5776,6 +6210,15 @@ socket.io-parser@2.3.1:
     debug "2.2.0"
     isarray "0.0.1"
     json3 "3.3.2"
+
+socket.io-parser@~3.1.1:
+  version "3.1.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/socket.io-parser/-/socket.io-parser-3.1.3.tgz#ed2da5ee79f10955036e3da413bfd7f1e4d86c8e"
+  dependencies:
+    component-emitter "1.2.1"
+    debug "~3.1.0"
+    has-binary2 "~1.0.2"
+    isarray "2.0.1"
 
 socket.io@1.7.3:
   version "1.7.3"
@@ -5788,6 +6231,17 @@ socket.io@1.7.3:
     socket.io-adapter "0.5.0"
     socket.io-client "1.7.3"
     socket.io-parser "2.3.1"
+
+socket.io@2.0.1:
+  version "2.0.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/socket.io/-/socket.io-2.0.1.tgz#064c125178462e477a6df23d2fdad18dd1c5914f"
+  dependencies:
+    debug "~2.6.6"
+    engine.io "~3.1.0"
+    object-assign "~4.1.1"
+    socket.io-adapter "~1.1.0"
+    socket.io-client "2.0.1"
+    socket.io-parser "~3.1.1"
 
 sockjs-client@1.1.5:
   version "1.1.5"
@@ -5867,6 +6321,10 @@ source-map@~0.2.0:
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/source-map/-/source-map-0.2.0.tgz#dab73fbcfc2ba819b4de03bd6f6eaa48164b3f9d"
   dependencies:
     amdefine ">=0.0.4"
+
+sourcemap-codec@^1.4.1:
+  version "1.4.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/sourcemap-codec/-/sourcemap-codec-1.4.1.tgz#c8fd92d91889e902a07aee392bdd2c5863958ba2"
 
 spdx-correct@^3.0.0:
   version "3.0.0"
@@ -6048,6 +6506,10 @@ strip-ansi@^4.0.0:
   dependencies:
     ansi-regex "^3.0.0"
 
+strip-ansi@~0.1.0:
+  version "0.1.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/strip-ansi/-/strip-ansi-0.1.1.tgz#39e8a98d044d150660abe4a6808acf70bb7bc991"
+
 strip-bom@^2.0.0:
   version "2.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/strip-bom/-/strip-bom-2.0.0.tgz#6219a85616520491f35788bdbf1447a99c7e6b0e"
@@ -6130,9 +6592,22 @@ symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
+taffydb@2.6.2:
+  version "2.6.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/taffydb/-/taffydb-2.6.2.tgz#7cbcb64b5a141b6a2efc2c5d2c67b4e150b2a268"
+
 tapable@^1.0.0:
   version "1.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/tapable/-/tapable-1.0.0.tgz#cbb639d9002eed9c6b5975eb20598d7936f1f9f2"
+
+tar@3.1.5:
+  version "3.1.5"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/tar/-/tar-3.1.5.tgz#4981e97ab7bad4cb1d5da9232047c9047a681aef"
+  dependencies:
+    minipass "^2.0.2"
+    minizlib "^1.0.3"
+    mkdirp "^0.5.0"
+    yallist "^3.0.2"
 
 tar@^2.0.0:
   version "2.2.1"
@@ -6154,6 +6629,13 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
+temp@0.8.3:
+  version "0.8.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/temp/-/temp-0.8.3.tgz#e0c6bc4d26b903124410e4fed81103014dfc1f59"
+  dependencies:
+    os-tmpdir "^1.0.0"
+    rimraf "~2.2.6"
+
 term-size@^1.2.0:
   version "1.2.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/term-size/-/term-size-1.2.0.tgz#458b83887f288fc56d6fffbfad262e26638efa69"
@@ -6163,6 +6645,10 @@ term-size@^1.2.0:
 text-table@^0.2.0:
   version "0.2.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
+
+throttleit@^1.0.0:
+  version "1.0.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/throttleit/-/throttleit-1.0.0.tgz#9e785836daf46743145a5984b6268d828528ac6c"
 
 through2@^2.0.0:
   version "2.0.3"
@@ -6249,11 +6735,21 @@ toposort@^1.0.0:
   version "1.0.7"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/toposort/-/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"
 
+touch@0.0.3:
+  version "0.0.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/touch/-/touch-0.0.3.tgz#51aef3d449571d4f287a5d87c9c8b49181a0db1d"
+  dependencies:
+    nopt "~1.0.10"
+
 tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.4"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/tough-cookie/-/tough-cookie-2.3.4.tgz#ec60cee38ac675063ffc97a5c18970578ee83655"
   dependencies:
     punycode "^1.4.1"
+
+"traverse@>=0.3.0 <0.4":
+  version "0.3.9"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/traverse/-/traverse-0.3.9.tgz#717b8f220cc0bb7b44e40514c22b2e8bbc70d8b9"
 
 tree-kill@^1.0.0, tree-kill@^1.2.0:
   version "1.2.0"
@@ -6426,6 +6922,24 @@ ultron@1.0.x:
   version "1.0.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
 
+ultron@~1.1.0:
+  version "1.1.1"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
+
+underscore-contrib@~0.3.0:
+  version "0.3.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/underscore-contrib/-/underscore-contrib-0.3.0.tgz#665b66c24783f8fa2b18c9f8cbb0e2c7d48c26c7"
+  dependencies:
+    underscore "1.6.0"
+
+underscore@1.6.0, underscore@~1.6.0:
+  version "1.6.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/underscore/-/underscore-1.6.0.tgz#8b38b10cacdef63337b8b24e4ff86d45aea529a8"
+
+underscore@~1.8.3:
+  version "1.8.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
+
 union-value@^1.0.0:
   version "1.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
@@ -6593,6 +7107,10 @@ uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
   version "3.3.2"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
+uws@~9.14.0:
+  version "9.14.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/uws/-/uws-9.14.0.tgz#fac8386befc33a7a3705cbd58dc47b430ca4dd95"
+
 validate-npm-package-license@^3.0.1:
   version "3.0.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/validate-npm-package-license/-/validate-npm-package-license-3.0.3.tgz#81643bcbef1bdfecd4623793dc4648948ba98338"
@@ -6631,6 +7149,12 @@ vm-browserify@0.0.4:
 void-elements@^2.0.0:
   version "2.0.1"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
+
+walk@2.3.9:
+  version "2.3.9"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/walk/-/walk-2.3.9.tgz#31b4db6678f2ae01c39ea9fb8725a9031e558a7b"
+  dependencies:
+    foreachasync "^3.0.0"
 
 watchpack@^1.5.0:
   version "1.6.0"
@@ -6882,6 +7406,14 @@ ws@^1.0.1:
     options ">=0.0.5"
     ultron "1.0.x"
 
+ws@~3.3.1:
+  version "3.3.3"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/ws/-/ws-3.3.3.tgz#f1cf84fe2d5e901ebce94efaece785f187a228f2"
+  dependencies:
+    async-limiter "~1.0.0"
+    safe-buffer "~5.1.0"
+    ultron "~1.1.0"
+
 wtf-8@1.0.0:
   version "1.0.0"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/wtf-8/-/wtf-8-1.0.0.tgz#392d8ba2d0f1c34d1ee2d630f15d0efb68e1048a"
@@ -6912,9 +7444,17 @@ xmlbuilder@~9.0.1:
   version "9.0.7"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
 
+xmlcreate@^1.0.1:
+  version "1.0.2"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/xmlcreate/-/xmlcreate-1.0.2.tgz#fa6bf762a60a413fb3dd8f4b03c5b269238d308f"
+
 xmlhttprequest-ssl@1.5.3:
   version "1.5.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.3.tgz#185a888c04eca46c3e4070d99f7b49de3528992d"
+
+xmlhttprequest-ssl@~1.5.4:
+  version "1.5.5"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.5.tgz#c2876b06168aadc40e57d97e81191ac8f4398b3e"
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"

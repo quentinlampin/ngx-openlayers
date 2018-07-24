@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {proj} from 'openlayers';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,10 @@ export class ClusterComponent implements OnInit {
   points: Array<{ x: number; y: number }> = [];
 
   ngOnInit() {
+
+    const foo = proj.get('EPSG:4326').getExtent();
+    console.log(foo);
+
     // Generate random points
     const nbPoints = 2000;
     for (let i = 0; i < nbPoints; ++i) {
