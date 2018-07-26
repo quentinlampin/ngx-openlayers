@@ -34,6 +34,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/draw-features.html',
   },
   {
+    title: 'Modify polygon',
+    description: 'Example of using aol-interaction-modify',
+    routerLink: 'modify-polygon',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/modify-features.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',

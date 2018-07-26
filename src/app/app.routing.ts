@@ -10,6 +10,7 @@ import { CursorPositionComponent } from './cursor-position/cursor-position.compo
 import { DisplayGeometryComponent } from './display-geometry/display-geometry.component';
 import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-geojson-source.component';
 import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
+import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'display-geometry', component: DisplayGeometryComponent },
       { path: 'display-geojson-source', component: DisplayGeojsonSourceComponent },
       { path: 'draw-polygon', component: DrawPolygonComponent },
+      { path: 'modify-polygon', component: ModifyPolygonComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],
