@@ -2772,6 +2772,10 @@ gaze@^1.0.0:
   dependencies:
     globule "^1.0.0"
 
+geojson@^0.5.0:
+  version "0.5.0"
+  resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/geojson/-/geojson-0.5.0.tgz#3cd6c96399be65b56ee55596116fe9191ce701c0"
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://repo.webfactory.intelligence-airbusds.com/api/npm/npm/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
