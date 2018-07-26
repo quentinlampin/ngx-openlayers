@@ -12,6 +12,7 @@ import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-
 import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
 import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
+import { SwipeComponent } from './swipe/swipe.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'draw-polygon', component: DrawPolygonComponent },
       { path: 'modify-polygon', component: ModifyPolygonComponent },
       { path: 'side-by-side', component: SideBySideComponent },
+      { path: 'swipe', component: SwipeComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],
