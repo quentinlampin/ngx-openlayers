@@ -16,6 +16,7 @@ import { DisplayGeometryComponent } from './display-geometry/display-geometry.co
 import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-geojson-source.component';
 import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
 import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
+import { SideBySideComponent } from './side-by-side/side-by-side.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.componen
     DisplayGeojsonSourceComponent,
     DrawPolygonComponent,
     ModifyPolygonComponent,
+    SideBySideComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
