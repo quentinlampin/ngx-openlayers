@@ -6,6 +6,7 @@ import { RasterComponent } from './raster/raster.component';
 import { ExamplesListComponent } from './examples-list/examples-list.component';
 import { ExamplesItemComponent } from './examples-item/examples-item.component';
 import { MapPositionComponent } from './map-position/map-position.component';
+import { CursorPositionComponent } from './cursor-position/cursor-position.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       { path: 'basic', component: BasicComponent },
       { path: 'map-position', component: MapPositionComponent },
+      { path: 'cursor-position', component: CursorPositionComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],
