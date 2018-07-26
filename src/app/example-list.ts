@@ -57,6 +57,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/overlay.html',
   },
   {
+    title: 'Change color when feature is selected or hovered',
+    description: 'Change aol-style on hover or on select',
+    routerLink: 'color-select-hover',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/vector-layer.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',
