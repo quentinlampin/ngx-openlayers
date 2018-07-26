@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
+import 'hammerjs';
+import 'hammer-timejs';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
@@ -17,6 +19,7 @@ import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-
 import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
 import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
+import { SwipeComponent } from './swipe/swipe.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { SideBySideComponent } from './side-by-side/side-by-side.component';
     DrawPolygonComponent,
     ModifyPolygonComponent,
     SideBySideComponent,
+    SwipeComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
