@@ -20,6 +20,7 @@ import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
 import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
 import { SwipeComponent } from './swipe/swipe.component';
+import { OverlayComponent } from './overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SwipeComponent } from './swipe/swipe.component';
     ModifyPolygonComponent,
     SideBySideComponent,
     SwipeComponent,
+    OverlayComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
