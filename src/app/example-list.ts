@@ -63,6 +63,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/vector-layer.html',
   },
   {
+    title: 'Marker',
+    description: 'Display marker with svg on specific point',
+    routerLink: 'marker',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/icon-color.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',
