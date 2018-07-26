@@ -22,6 +22,7 @@ import { SideBySideComponent } from './side-by-side/side-by-side.component';
 import { SwipeComponent } from './swipe/swipe.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { ColorSelectHoverComponent } from './color-select-hover/color-select-hover.component';
+import { MarkerComponent } from './marker/marker.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ColorSelectHoverComponent } from './color-select-hover/color-select-hov
     SwipeComponent,
     OverlayComponent,
     ColorSelectHoverComponent,
+    MarkerComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
