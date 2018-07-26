@@ -11,6 +11,7 @@ import { RasterComponent } from './raster/raster.component';
 import { ExamplesListComponent } from './examples-list/examples-list.component';
 import { ExamplesItemComponent } from './examples-item/examples-item.component';
 import { MapPositionComponent } from './map-position/map-position.component';
+import { CursorPositionComponent } from './cursor-position/cursor-position.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MapPositionComponent } from './map-position/map-position.component';
     ExamplesListComponent,
     ExamplesItemComponent,
     MapPositionComponent,
+    CursorPositionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
