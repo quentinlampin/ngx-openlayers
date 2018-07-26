@@ -14,6 +14,7 @@ import { MapPositionComponent } from './map-position/map-position.component';
 import { CursorPositionComponent } from './cursor-position/cursor-position.component';
 import { DisplayGeometryComponent } from './display-geometry/display-geometry.component';
 import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-geojson-source.component';
+import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-
     CursorPositionComponent,
     DisplayGeometryComponent,
     DisplayGeojsonSourceComponent,
+    DrawPolygonComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],

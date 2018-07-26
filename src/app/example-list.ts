@@ -28,6 +28,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/vector-layer.html',
   },
   {
+    title: 'Draw polygon',
+    description: 'Example of using aol-interaction-draw',
+    routerLink: 'draw-polygon',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/draw-features.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',
