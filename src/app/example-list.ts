@@ -40,6 +40,11 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/modify-features.html',
   },
   {
+    title: 'Side by side',
+    description: 'Compare 2 maps side by side',
+    routerLink: 'side-by-side',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',
