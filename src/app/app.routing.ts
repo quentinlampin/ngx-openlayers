@@ -5,6 +5,7 @@ import { BasicComponent } from './basic/basic.component';
 import { RasterComponent } from './raster/raster.component';
 import { ExamplesListComponent } from './examples-list/examples-list.component';
 import { ExamplesItemComponent } from './examples-item/examples-item.component';
+import { MapPositionComponent } from './map-position/map-position.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
     component: ExamplesItemComponent,
     children: [
       { path: 'basic', component: BasicComponent },
+      { path: 'map-position', component: MapPositionComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],

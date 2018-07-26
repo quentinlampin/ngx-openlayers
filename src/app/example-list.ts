@@ -5,6 +5,11 @@ export const examplesList = [
     routerLink: 'basic',
   },
   {
+    title: 'Map position',
+    description: 'Map longitude, latitude and zoom.',
+    routerLink: 'map-position',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',

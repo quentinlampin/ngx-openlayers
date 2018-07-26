@@ -10,6 +10,7 @@ import { BasicComponent } from './basic/basic.component';
 import { RasterComponent } from './raster/raster.component';
 import { ExamplesListComponent } from './examples-list/examples-list.component';
 import { ExamplesItemComponent } from './examples-item/examples-item.component';
+import { MapPositionComponent } from './map-position/map-position.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ExamplesItemComponent } from './examples-item/examples-item.component';
     RasterComponent,
     ExamplesListComponent,
     ExamplesItemComponent,
+    MapPositionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
