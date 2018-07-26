@@ -13,6 +13,7 @@ import { ExamplesItemComponent } from './examples-item/examples-item.component';
 import { MapPositionComponent } from './map-position/map-position.component';
 import { CursorPositionComponent } from './cursor-position/cursor-position.component';
 import { DisplayGeometryComponent } from './display-geometry/display-geometry.component';
+import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-geojson-source.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DisplayGeometryComponent } from './display-geometry/display-geometry.co
     MapPositionComponent,
     CursorPositionComponent,
     DisplayGeometryComponent,
+    DisplayGeojsonSourceComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
