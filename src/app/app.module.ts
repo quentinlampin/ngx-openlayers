@@ -21,6 +21,7 @@ import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.componen
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
 import { SwipeComponent } from './swipe/swipe.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { ColorSelectHoverComponent } from './color-select-hover/color-select-hover.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { OverlayComponent } from './overlay/overlay.component';
     SideBySideComponent,
     SwipeComponent,
     OverlayComponent,
+    ColorSelectHoverComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],

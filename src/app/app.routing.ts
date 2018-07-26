@@ -14,6 +14,7 @@ import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.componen
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
 import { SwipeComponent } from './swipe/swipe.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { ColorSelectHoverComponent } from './color-select-hover/color-select-hover.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'side-by-side', component: SideBySideComponent },
       { path: 'swipe', component: SwipeComponent },
       { path: 'overlay', component: OverlayComponent },
+      { path: 'color-select-hover', component: ColorSelectHoverComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],
