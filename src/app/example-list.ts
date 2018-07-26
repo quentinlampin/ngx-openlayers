@@ -51,6 +51,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/layer-swipe.html',
   },
   {
+    title: 'Overlay',
+    description: 'Example of using aol-overlay',
+    routerLink: 'overlay',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/overlay.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',

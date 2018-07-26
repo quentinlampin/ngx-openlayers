@@ -13,6 +13,7 @@ import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
 import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
 import { SwipeComponent } from './swipe/swipe.component';
+import { OverlayComponent } from './overlay/overlay.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'modify-polygon', component: ModifyPolygonComponent },
       { path: 'side-by-side', component: SideBySideComponent },
       { path: 'swipe', component: SwipeComponent },
+      { path: 'overlay', component: OverlayComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],
