@@ -22,6 +22,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/geojson.html',
   },
   {
+    title: 'Display geometry from a geojson file',
+    description: 'Example of using aol-source-geojson',
+    routerLink: 'display-geojson-source',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/vector-layer.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',

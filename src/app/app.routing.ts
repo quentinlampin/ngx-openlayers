@@ -8,6 +8,7 @@ import { ExamplesItemComponent } from './examples-item/examples-item.component';
 import { MapPositionComponent } from './map-position/map-position.component';
 import { CursorPositionComponent } from './cursor-position/cursor-position.component';
 import { DisplayGeometryComponent } from './display-geometry/display-geometry.component';
+import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-geojson-source.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'map-position', component: MapPositionComponent },
       { path: 'cursor-position', component: CursorPositionComponent },
       { path: 'display-geometry', component: DisplayGeometryComponent },
+      { path: 'display-geojson-source', component: DisplayGeojsonSourceComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
     ],
