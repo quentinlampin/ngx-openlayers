@@ -16,6 +16,12 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/mouse-position.html',
   },
   {
+    title: 'Display geometry',
+    description: 'Example of geojson features : point, polygon, linestring.',
+    routerLink: 'display-geometry',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/geojson.html',
+  },
+  {
     title: 'Cluster',
     description: 'Example of using aol-source-cluster. This example shows how to do clustering on point features.',
     routerLink: 'cluster',
