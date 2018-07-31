@@ -1,7 +1,9 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source } from 'openlayers';
+import { Vector } from 'ol/source';
+import Feature from 'ol/format/Feature';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
+import { LoadingStrategy } from 'ol/source/Vector';
 
 @Component({
   selector: 'aol-source-vector',
@@ -11,7 +13,7 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
-  instance: source.Vector;
+  instance: Vector;
   @Input()
   overlaps: boolean;
   @Input()
@@ -21,16 +23,16 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   @Input()
   url: string;
   @Input()
-  format: ol.format.Feature;
+  format: Feature;
   @Input()
-  strategy: ol.LoadingStrategy;
+  strategy: LoadingStrategy;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);
   }
 
   ngOnInit() {
-    this.instance = new source.Vector(this);
+    this.instance = new Vector(this);
     this.host.instance.setSource(this.instance);
   }
 }

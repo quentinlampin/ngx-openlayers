@@ -1,7 +1,9 @@
 import { Component, Input, Optional, OnInit } from '@angular/core';
-import { style, StyleGeometryFunction, geom } from 'openlayers';
+import { Fill, Image, Stroke, Style, Text } from 'ol/style';
+import { Geometry } from 'ol/geom';
 import { FeatureComponent } from '../feature.component';
 import { LayerVectorComponent } from '../layers/layervector.component';
+import { GeometryFunction } from 'ol/style/Style';
 
 @Component({
   selector: 'aol-style',
@@ -11,19 +13,19 @@ import { LayerVectorComponent } from '../layers/layervector.component';
 })
 export class StyleComponent implements OnInit {
   private host: FeatureComponent | LayerVectorComponent;
-  public instance: style.Style;
+  public instance: Style;
   public componentType = 'style';
 
   @Input()
-  geometry: string | geom.Geometry | StyleGeometryFunction;
+  geometry: string | Geometry | GeometryFunction;
   @Input()
-  fill: style.Fill;
+  fill: Fill;
   @Input()
-  image: style.Image;
+  image: Image;
   @Input()
-  stroke: style.Stroke;
+  stroke: Stroke;
   @Input()
-  text: style.Text;
+  text: Text;
   @Input()
   zIndex: number;
 
@@ -42,7 +44,7 @@ export class StyleComponent implements OnInit {
 
   ngOnInit() {
     // console.log('creating aol-style instance with: ', this);
-    this.instance = new style.Style(this);
+    this.instance = new Style(this);
     this.host.instance.setStyle(this.instance);
   }
 }

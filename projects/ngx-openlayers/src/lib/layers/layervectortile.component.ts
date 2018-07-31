@@ -1,8 +1,12 @@
 import { Component, OnInit, Input, Optional, SimpleChanges, OnChanges } from '@angular/core';
-import { layer, style, StyleFunction } from 'openlayers';
+import { VectorTile } from 'ol/layer';
+import { RenderType } from 'ol/layer/VectorTile';
+import { Feature } from 'ol';
+import { Style } from 'ol/style';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
+import { StyleFunction } from 'ol/style/Style';
 
 @Component({
   selector: 'aol-layer-vectortile',
@@ -14,12 +18,12 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
   @Input()
   renderBuffer: number;
   @Input()
-  renderMode: layer.VectorTileRenderType | string;
+  renderMode: RenderType | string;
   /* not marked as optional in the typings */
   @Input()
-  renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
+  renderOrder: (feature1: Feature, feature2: Feature) => number;
   @Input()
-  style: style.Style | style.Style[] | StyleFunction;
+  style: Style | Style[] | StyleFunction;
   @Input()
   updateWhileAnimating: boolean;
   @Input()
@@ -33,7 +37,7 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
 
   ngOnInit() {
     // console.log('creating ol.layer.VectorTile instance with:', this);
-    this.instance = new layer.VectorTile(this);
+    this.instance = new VectorTile(this);
     super.ngOnInit();
   }
 

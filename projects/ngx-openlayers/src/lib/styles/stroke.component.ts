@@ -1,8 +1,9 @@
 import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { style, Color } from 'openlayers';
+import { Stroke } from 'ol/style';
 import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
 import { StyleTextComponent } from './text.component';
+import { Color } from 'ol/color';
 
 @Component({
   selector: 'aol-style-stroke',
@@ -11,7 +12,7 @@ import { StyleTextComponent } from './text.component';
   `,
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {
-  public instance: style.Stroke;
+  public instance: Stroke;
   /* the typings do not have the setters */
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
 
@@ -48,7 +49,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // console.log('creating ol.style.Stroke instance with: ', this);
-    this.instance = new style.Stroke(this);
+    this.instance = new Stroke(this);
     switch (this.host.componentType) {
       case 'style':
         this.host.instance.setStroke(this.instance);

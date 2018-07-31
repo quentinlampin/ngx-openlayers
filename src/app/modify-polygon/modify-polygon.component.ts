@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Feature as OlFeature, format, proj } from 'openlayers';
-import { Feature } from 'geojson';
+import { Feature } from 'ol';
+import Projection from 'ol/proj/Projection';
+import { GeoJSON } from 'ol/format';
 
 @Component({
   selector: 'app-modify-polygon',
@@ -60,9 +61,9 @@ import { Feature } from 'geojson';
 export class ModifyPolygonComponent implements OnInit {
   constructor() {}
 
-  format: format.GeoJSON = new format.GeoJSON();
-  displayProj = new proj.Projection({ code: 'EPSG:3857' });
-  inputProj = new proj.Projection({ code: 'EPSG:4326' });
+  format: GeoJSON = new GeoJSON();
+  displayProj = new Projection({ code: 'EPSG:3857' });
+  inputProj = new Projection({ code: 'EPSG:4326' });
 
   feature: Feature = {
     geometry: {
@@ -83,7 +84,7 @@ export class ModifyPolygonComponent implements OnInit {
 
   ngOnInit() {}
 
-  modifyEnd(feature: OlFeature) {
+  modifyEnd(feature: Feature) {
     this.feature = this.format.writeFeatureObject(feature, {
       dataProjection: this.inputProj,
       featureProjection: this.displayProj,

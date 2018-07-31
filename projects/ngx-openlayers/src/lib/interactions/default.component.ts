@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interaction, Collection } from 'openlayers';
+import { defaults, Interaction } from 'ol/interaction';
+import { Collection } from 'ol';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -7,12 +8,12 @@ import { MapComponent } from '../map.component';
   template: '',
 })
 export class DefaultInteractionComponent implements OnInit, OnDestroy {
-  instance: Collection<interaction.Interaction>;
+  instance: Collection<Interaction>;
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = interaction.defaults();
+    this.instance = defaults();
     this.instance.forEach(i => this.map.instance.addInteraction(i));
   }
 

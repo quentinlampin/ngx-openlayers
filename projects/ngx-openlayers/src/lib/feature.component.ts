@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { Feature } from 'openlayers';
+import { Feature } from 'ol';
 import { SourceVectorComponent } from './sources/vector.component';
 
 @Component({

@@ -1,13 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { tilegrid, Size, Coordinate } from 'openlayers';
+import WMTS from 'ol/tilegrid/WMTS';
 import { TileGridComponent } from './tilegrid.component';
+import { Coordinate } from 'ol/coordinate';
+import { Size } from 'ol/size';
 
 @Component({
   selector: 'aol-tilegrid-wmts',
   template: '',
 })
 export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
-  instance: tilegrid.WMTS;
+  instance: WMTS;
 
   @Input()
   origin?: Coordinate;
@@ -25,6 +27,6 @@ export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
   widths?: number[];
 
   ngOnInit() {
-    this.instance = new tilegrid.WMTS(this);
+    this.instance = new WMTS(this);
   }
 }
