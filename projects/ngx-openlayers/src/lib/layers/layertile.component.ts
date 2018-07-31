@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Input, Optional, OnChanges, SimpleChanges } from '@angular/core';
-import { layer, source } from 'openlayers';
+import { Tile } from 'ol/layer';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
@@ -11,7 +11,7 @@ import { LayerGroupComponent } from './layergroup.component';
   `,
 })
 export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
-  public source: source.Tile;
+  public source: Tile;
 
   @Input()
   preload: number;
@@ -24,7 +24,7 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
 
   ngOnInit() {
     // console.log('creating ol.layer.Tile instance with:', this);
-    this.instance = new layer.Tile(this);
+    this.instance = new Tile(this);
     super.ngOnInit();
   }
 

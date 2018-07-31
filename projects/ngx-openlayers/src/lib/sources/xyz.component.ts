@@ -11,11 +11,15 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
+import { XYZ } from 'ol/source';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceRasterComponent } from './raster.component';
+import { Size } from 'ol/size';
+import { TileSourceEvent } from 'ol/source/Tile';
+import TileGrid from 'ol/tilegrid/TileGrid';
+import { LoadFunction, UrlFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-xyz',
@@ -25,7 +29,7 @@ import { SourceRasterComponent } from './raster.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
-  instance: source.XYZ;
+  instance: XYZ;
   @Input()
   cacheSize: number;
   @Input()
@@ -41,15 +45,15 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @Input()
   maxZoom: number;
   @Input()
-  tileGrid: tilegrid.TileGrid;
+  tileGrid: TileGrid;
   @Input()
-  tileLoadFunction?: TileLoadFunctionType;
+  tileLoadFunction?: LoadFunction;
   @Input()
   tilePixelRatio: number;
   @Input()
   tileSize: number | Size;
   @Input()
-  tileUrlFunction: TileUrlFunctionType;
+  tileUrlFunction?: UrlFunction;
   @Input()
   url: string;
   @Input()
@@ -61,11 +65,11 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   tileGridXYZ: TileGridComponent;
 
   @Output()
-  tileLoadStart: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  tileLoadStart: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
   @Output()
-  tileLoadEnd: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  tileLoadEnd: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
   @Output()
-  tileLoadError: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
   constructor(
     @Optional()
@@ -104,11 +108,11 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   }
 
   init() {
-    this.instance = new source.XYZ(this);
+    this.instance = new XYZ(this);
 
-    this.instance.on('tileloadstart', (event: source.TileEvent) => this.tileLoadStart.emit(event));
-    this.instance.on('tileloadend', (event: source.TileEvent) => this.tileLoadEnd.emit(event));
-    this.instance.on('tileloaderror', (event: source.TileEvent) => this.tileLoadError.emit(event));
+    this.instance.on('tileloadstart', (event: TileSourceEvent) => this.tileLoadStart.emit(event));
+    this.instance.on('tileloadend', (event: TileSourceEvent) => this.tileLoadEnd.emit(event));
+    this.instance.on('tileloaderror', (event: TileSourceEvent) => this.tileLoadError.emit(event));
 
     this._register(this.instance);
   }

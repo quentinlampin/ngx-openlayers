@@ -1,25 +1,27 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
-import { interaction, EventsConditionType, DragBoxEndConditionType } from 'openlayers';
+import { DragBox } from 'ol/interaction';
 import { MapComponent } from '../map.component';
+import { Condition } from 'ol/events/condition';
+import { EndCondition } from 'ol/interaction/DragBox';
 
 @Component({
   selector: 'aol-interaction-dragbox',
   template: '',
 })
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.DragBox;
+  instance: DragBox;
 
   @Input()
   className: string;
   @Input()
-  condition: EventsConditionType;
+  condition: Condition;
   @Input()
-  boxEndCondition: DragBoxEndConditionType;
+  boxEndCondition: EndCondition;
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = new interaction.DragBox(this);
+    this.instance = new DragBox(this);
     this.map.instance.addInteraction(this.instance);
   }
 

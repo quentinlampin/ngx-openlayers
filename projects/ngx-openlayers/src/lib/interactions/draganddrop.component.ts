@@ -1,16 +1,18 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { interaction, format, ProjectionLike } from 'openlayers';
+import { DragAndDrop } from 'ol/interaction';
+import Feature from 'ol/format/Feature';
 import { MapComponent } from '../map.component';
+import { ProjectionLike } from 'ol/proj';
 
 @Component({
   selector: 'aol-interaction-draganddrop',
   template: '',
 })
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.DragAndDrop;
+  instance: DragAndDrop;
 
   @Input()
-  formatConstructors: ((n: format.Feature) => any)[];
+  formatConstructors: ((n: Feature) => any)[];
   @Input()
   projection: ProjectionLike;
   @Input()
@@ -19,7 +21,7 @@ export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = new interaction.DragAndDrop(this);
+    this.instance = new DragAndDrop(this);
     this.map.instance.addInteraction(this.instance);
   }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { proj } from 'openlayers';
 import { MapComponent, ViewComponent } from 'ngx-openlayers';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { transform } from 'ol/proj';
+import Projection from 'ol/proj/Projection';
 
 @Component({
   selector: 'app-map-position',
@@ -84,8 +85,8 @@ export class MapPositionComponent implements OnInit {
   @ViewChild('view')
   view: ViewComponent;
 
-  displayProj = new proj.Projection({ code: 'EPSG:3857' });
-  inputProj = new proj.Projection({ code: 'EPSG:4326' });
+  displayProj = new Projection({ code: 'EPSG:3857' });
+  inputProj = new Projection({ code: 'EPSG:4326' });
 
   currentZoom = 0;
   currentLon = 0;
@@ -103,10 +104,6 @@ export class MapPositionComponent implements OnInit {
 
   displayCoordinates(): void {
     this.currentZoom = this.view.instance.getZoom();
-    [this.currentLon, this.currentLat] = proj.transform(
-      this.view.instance.getCenter(),
-      this.displayProj,
-      this.inputProj
-    );
+    [this.currentLon, this.currentLat] = transform(this.view.instance.getCenter(), this.displayProj, this.inputProj);
   }
 }

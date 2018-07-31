@@ -1,8 +1,9 @@
 import { AfterContentInit, Component, EventEmitter, forwardRef, Host, Input, Output } from '@angular/core';
-import { RasterOperation, RasterOperationType, source } from 'openlayers';
-
+import { Raster, Source } from 'ol/source';
+import { RasterOperationType, RasterSourceEvent } from 'ol/source/Raster';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
+import { Operation } from 'ol/source/Raster';
 
 @Component({
   selector: 'aol-source-raster',
@@ -17,10 +18,10 @@ import { SourceComponent } from './source.component';
   ],
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
-  instance: source.Raster;
+  instance: Raster;
 
   @Input()
-  operation?: RasterOperation;
+  operation?: Operation;
   @Input()
   threads?: number;
   @Input()
@@ -29,11 +30,11 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   operationType?: RasterOperationType;
 
   @Output()
-  beforeOperations: EventEmitter<source.RasterEvent> = new EventEmitter<source.RasterEvent>();
+  beforeOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
   @Output()
-  afterOperations: EventEmitter<source.RasterEvent> = new EventEmitter<source.RasterEvent>();
+  afterOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
 
-  sources: source.Source[] = [];
+  sources: Source[] = [];
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
@@ -44,9 +45,9 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   }
 
   init() {
-    this.instance = new source.Raster(this);
-    this.instance.on('beforeoperations', (event: source.RasterEvent) => this.beforeOperations.emit(event));
-    this.instance.on('afteroperations', (event: source.RasterEvent) => this.afterOperations.emit(event));
+    this.instance = new Raster(this);
+    this.instance.on('beforeoperations', (event: RasterSourceEvent) => this.beforeOperations.emit(event));
+    this.instance.on('afteroperations', (event: RasterSourceEvent) => this.afterOperations.emit(event));
     this._register(this.instance);
   }
 }

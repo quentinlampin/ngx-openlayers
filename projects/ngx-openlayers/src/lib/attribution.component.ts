@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { Attribution } from 'openlayers';
+import { Attribution } from 'ol/control';
 
 @Component({
   selector: 'aol-attribution',

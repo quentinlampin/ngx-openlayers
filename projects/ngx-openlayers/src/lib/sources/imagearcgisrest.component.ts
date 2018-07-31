@@ -1,8 +1,10 @@
 import { Component, forwardRef, Host, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Attribution, ImageLoadFunctionType, ProjectionLike, source } from 'openlayers';
-
+import { ImageArcGISRest } from 'ol/source';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
+import { ProjectionLike } from 'ol/proj';
+import { AttributionLike } from 'ol/source/Source';
+import { LoadFunction } from 'ol/Image';
 
 @Component({
   selector: 'aol-source-imagearcgisrest',
@@ -12,17 +14,16 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
 })
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
-  instance: source.ImageArcGISRest;
+  instance: ImageArcGISRest;
 
   @Input() projection: ProjectionLike | string;
   @Input() url: string;
-  @Input() attributions: Attribution[];
+  @Input() attributions: AttributionLike[];
   @Input() crossOrigin?: string;
-  @Input() imageLoadFunction?: ImageLoadFunctionType;
+  @Input() imageLoadFunction?: LoadFunction;
   @Input() params?: { [k: string]: any };
-  @Input() ratio = 1;
+  @Input() ratio = 1.5;
   @Input() resolutions?: number[];
-  @Input() logo?: string | olx.LogoOptions;
   @Input() wrapX?: boolean;
 
   constructor(@Host() layer: LayerImageComponent) {
@@ -30,7 +31,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   }
 
   ngOnInit() {
-    this.instance = new source.ImageArcGISRest(this);
+    this.instance = new ImageArcGISRest(this);
     this.host.instance.setSource(this.instance);
   }
 

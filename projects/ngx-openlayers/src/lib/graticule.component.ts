@@ -1,5 +1,6 @@
 import { Component, Input, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Graticule, style } from 'openlayers';
+import { Graticule } from 'ol';
+import { Stroke } from 'ol/style';
 import { MapComponent } from './map.component';
 
 @Component({
@@ -11,7 +12,7 @@ export class GraticuleComponent implements AfterContentInit, OnChanges {
   public componentType = 'graticule';
 
   @Input()
-  strokeStyle: style.Stroke;
+  strokeStyle: Stroke;
   @Input()
   showLabels: boolean;
   @Input()

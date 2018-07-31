@@ -1,15 +1,14 @@
 import { Input, OnDestroy } from '@angular/core';
-import { source } from 'openlayers';
+import { Source } from 'ol';
 import { LayerComponent } from '../layers/layer.component';
-import AttributionLike = ol.AttributionLike;
 import { SourceRasterComponent } from './raster.component';
 
 export class SourceComponent implements OnDestroy {
-  public instance: source.Source;
+  public instance: Source;
   public componentType = 'source';
 
   @Input()
-  attributions: AttributionLike;
+  attributions: any;
 
   constructor(protected host: LayerComponent, protected raster?: SourceRasterComponent) {}
 
@@ -23,7 +22,7 @@ export class SourceComponent implements OnDestroy {
     }
   }
 
-  protected _register(s: source.Source) {
+  protected _register(s: Source) {
     if (this.host) {
       this.host.instance.setSource(s);
     }

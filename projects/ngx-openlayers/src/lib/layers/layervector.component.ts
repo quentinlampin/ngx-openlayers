@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit, Input, Optional, OnChanges, SimpleChanges } from '@angular/core';
-import { layer, source, style, StyleFunction } from 'openlayers';
 import { MapComponent } from '../map.component';
+import { Vector } from 'ol/layer';
+import { Style } from 'ol/style';
+import { StyleFunction } from 'ol/style/Style';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
 
@@ -11,13 +13,13 @@ import { LayerGroupComponent } from './layergroup.component';
   `,
 })
 export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
-  public source: source.Vector;
+  public source: Vector;
 
   @Input()
   renderBuffer: number;
 
   @Input()
-  style: style.Style | style.Style[] | StyleFunction;
+  style: Style | Style[] | StyleFunction;
 
   @Input()
   updateWhileAnimating: boolean;
@@ -31,7 +33,7 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   ngOnInit() {
     // console.log('creating ol.layer.Vector instance with:', this);
-    this.instance = new layer.Vector(this);
+    this.instance = new Vector(this);
     super.ngOnInit();
   }
 

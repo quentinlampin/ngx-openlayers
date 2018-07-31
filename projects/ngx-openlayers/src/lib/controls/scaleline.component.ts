@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { ScaleLine } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
   `,
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
-  instance: control.ScaleLine;
+  instance: ScaleLine;
   @Input()
   units: string;
 
@@ -18,7 +18,7 @@ export class ControlScaleLineComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.instance = new control.ScaleLine(this);
+    this.instance = new ScaleLine(this);
     this.map.instance.addControl(this.instance);
   }
 

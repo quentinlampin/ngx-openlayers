@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { proj } from 'openlayers';
+import { transform } from 'ol/proj';
 
 @Component({
   selector: 'app-cursor-position',
@@ -54,8 +54,8 @@ export class CursorPositionComponent implements OnInit {
 
   dispatchCursor(event): void {
     const coordinates = event.coordinate;
-    this.lon = proj.transform(coordinates, 'EPSG:3857', 'EPSG:4326')[0];
-    this.lat = proj.transform(coordinates, 'EPSG:3857', 'EPSG:4326')[1];
+    this.lon = transform(coordinates, 'EPSG:3857', 'EPSG:4326')[0];
+    this.lat = transform(coordinates, 'EPSG:3857', 'EPSG:4326')[1];
   }
 
   latToString(lat: number) {

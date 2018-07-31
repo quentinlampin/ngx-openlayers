@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { interaction } from 'openlayers';
+import { MouseWheelZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { MapComponent } from '../map.component';
   template: '',
 })
 export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.MouseWheelZoom;
+  instance: MouseWheelZoom;
   @Input()
   duration: number;
   @Input()
@@ -18,7 +18,7 @@ export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = new interaction.MouseWheelZoom(this);
+    this.instance = new MouseWheelZoom(this);
     this.map.instance.addInteraction(this.instance);
   }
 

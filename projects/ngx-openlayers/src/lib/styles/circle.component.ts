@@ -1,5 +1,5 @@
 import { Component, Input, Host, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
+import { AtlasManager, Circle, Fill, Stroke } from 'ol/style';
 import { StyleComponent } from './style.component';
 
 @Component({
@@ -10,18 +10,18 @@ import { StyleComponent } from './style.component';
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
   public componentType = 'style-circle';
-  public instance: style.Circle;
+  public instance: Circle;
 
   @Input()
-  fill: style.Fill;
+  fill: Fill;
   @Input()
   radius: number;
   @Input()
   snapToPixel: boolean;
   @Input()
-  stroke: style.Stroke;
+  stroke: Stroke;
   @Input()
-  atlasManager: style.AtlasManager;
+  atlasManager: AtlasManager;
 
   constructor(@Host() private host: StyleComponent) {}
 
@@ -40,7 +40,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
 
   ngAfterContentInit() {
     // console.log('creating ol.style.Circle instance with: ', this);
-    this.instance = new style.Circle(this);
+    this.instance = new Circle(this);
     this.host.instance.setImage(this.instance);
     this.host.update();
   }

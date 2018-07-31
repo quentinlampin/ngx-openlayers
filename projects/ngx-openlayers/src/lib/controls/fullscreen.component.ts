@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { FullScreen } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
   `,
 })
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
-  instance: control.FullScreen;
+  instance: FullScreen;
 
   @Input()
   className: string;
@@ -27,7 +27,7 @@ export class ControlFullScreenComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.instance = new control.FullScreen(this);
+    this.instance = new FullScreen(this);
     this.map.instance.addControl(this.instance);
   }
 
