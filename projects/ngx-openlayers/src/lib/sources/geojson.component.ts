@@ -1,7 +1,10 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, ProjectionLike, format } from 'openlayers';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
+import { Feature } from 'ol';
+import { Vector } from 'ol/source';
+import { GeoJSON } from 'ol/format';
+import { ProjectionLike } from 'ol/proj';
 
 @Component({
   selector: 'aol-source-geojson',
@@ -11,8 +14,8 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoJSONComponent) }],
 })
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
-  instance: source.Vector;
-  format: format.Feature;
+  instance: Vector;
+  format: Feature;
   @Input()
   defaultDataProjection: ProjectionLike;
   @Input()
@@ -27,8 +30,8 @@ export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.format = new format.GeoJSON(this);
-    this.instance = new source.Vector(this);
+    this.format = new GeoJSON(this);
+    this.instance = new Vector(this);
     this.host.instance.setSource(this.instance);
   }
 }

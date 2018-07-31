@@ -48,7 +48,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "projects/ngx-openlayers/node_modules/openlayers/dist/ol.css"
+              "node_modules/ol/ol.css"
             ],
             "scripts": []
           },

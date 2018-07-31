@@ -1,5 +1,5 @@
 import { Component, ContentChild, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Control } from 'ol/control';
 import { MapComponent } from '../map.component';
 import { ContentComponent } from '../content.component';
 
@@ -11,7 +11,7 @@ import { ContentComponent } from '../content.component';
 })
 export class ControlComponent implements OnInit, OnDestroy {
   public componentType = 'control';
-  instance: control.Control;
+  instance: Control;
   element: Element;
   @ContentChild(ContentComponent)
   content: ContentComponent;
@@ -21,7 +21,7 @@ export class ControlComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
-      this.instance = new control.Control(this);
+      this.instance = new Control(this);
       this.map.instance.addControl(this.instance);
     }
   }

@@ -1,5 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control, View, layer } from 'openlayers';
+import { Layer } from 'ol/layer';
+import { View } from 'ol';
+import { OverviewMap } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -9,7 +11,7 @@ import { MapComponent } from '../map.component';
   `,
 })
 export class ControlOverviewMapComponent implements OnInit, OnDestroy {
-  instance: control.OverviewMap;
+  instance: OverviewMap;
   @Input()
   collapsed: boolean;
   @Input()
@@ -19,7 +21,7 @@ export class ControlOverviewMapComponent implements OnInit, OnDestroy {
   @Input()
   label: string;
   @Input()
-  layers: layer.Layer[];
+  layers: Layer[];
   @Input()
   target: Element;
   @Input()
@@ -32,7 +34,7 @@ export class ControlOverviewMapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.instance = new control.OverviewMap(this);
+    this.instance = new OverviewMap(this);
     this.map.instance.addControl(this.instance);
   }
 

@@ -1,49 +1,55 @@
 import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { interaction, EventsConditionType, style, StyleFunction, Collection, Feature, source } from 'openlayers';
 import { MapComponent } from '../map.component';
+import { Modify } from 'ol/interaction';
+import { Collection, Feature } from 'ol';
+import { Style } from 'ol/style';
+import { Vector } from 'ol/source';
+import { ModifyEvent } from 'ol/interaction/Modify';
+import { StyleFunction } from 'ol/style/Style';
+import { Condition } from 'ol/events/condition';
 
 @Component({
   selector: 'aol-interaction-modify',
   template: '',
 })
 export class ModifyInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.Modify;
+  instance: Modify;
 
   @Input()
-  condition?: EventsConditionType;
+  condition?: Condition;
   @Input()
-  deleteCondition?: EventsConditionType;
+  deleteCondition?: Condition;
   @Input()
   pixelTolerance?: number;
   @Input()
-  style?: style.Style | style.Style[] | StyleFunction;
+  style?: Style | Style[] | StyleFunction;
   @Input()
   features: Collection<Feature>;
   @Input()
   wrapX?: boolean;
   @Input()
-  source?: source.Vector;
+  source?: Vector;
 
   @Output()
-  onModifyEnd = new EventEmitter<interaction.Modify.Event>();
+  onModifyEnd = new EventEmitter<ModifyEvent>();
   @Output()
-  onModifyStart = new EventEmitter<interaction.Modify.Event>();
+  onModifyStart = new EventEmitter<ModifyEvent>();
   @Output()
-  onChange = new EventEmitter<interaction.Modify.Event>();
+  onChange = new EventEmitter<ModifyEvent>();
   @Output()
-  onChangeActive = new EventEmitter<interaction.Modify.Event>();
+  onChangeActive = new EventEmitter<ModifyEvent>();
   @Output()
-  onPropertyChange = new EventEmitter<interaction.Modify.Event>();
+  onPropertyChange = new EventEmitter<ModifyEvent>();
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = new interaction.Modify(this);
-    this.instance.on('change', (event: interaction.Modify.Event) => this.onChange.emit(event));
-    this.instance.on('change:active', (event: interaction.Modify.Event) => this.onChangeActive.emit(event));
-    this.instance.on('propertychange', (event: interaction.Modify.Event) => this.onPropertyChange.emit(event));
-    this.instance.on('modifyend', (event: interaction.Modify.Event) => this.onModifyEnd.emit(event));
-    this.instance.on('modifystart', (event: interaction.Modify.Event) => this.onModifyStart.emit(event));
+    this.instance = new Modify(this);
+    this.instance.on('change', (event: ModifyEvent) => this.onChange.emit(event));
+    this.instance.on('change:active', (event: ModifyEvent) => this.onChangeActive.emit(event));
+    this.instance.on('propertychange', (event: ModifyEvent) => this.onPropertyChange.emit(event));
+    this.instance.on('modifyend', (event: ModifyEvent) => this.onModifyEnd.emit(event));
+    this.instance.on('modifystart', (event: ModifyEvent) => this.onModifyStart.emit(event));
     this.map.instance.addInteraction(this.instance);
   }
 

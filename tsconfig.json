@@ -10,8 +10,7 @@
     "experimentalDecorators": true,
     "target": "es5",
     "typeRoots": [
-      "node_modules/@types",
-      "projects/ngx-openlayers/node_modules/@types"
+      "node_modules/@types"
     ],
     "lib": [
       "es2017",
@@ -20,9 +19,6 @@
     "paths": {
       "ngx-openlayers": [
         "dist/ngx-openlayers"
-      ],
-      "openlayers": [
-        "projects/ngx-openlayers/node_modules/openlayers"
       ]
     }
   }

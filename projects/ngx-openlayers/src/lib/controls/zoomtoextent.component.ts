@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control, Extent } from 'openlayers';
+import { ZoomToExtent } from 'ol/control';
 import { MapComponent } from '../map.component';
+import { Extent } from 'ol/extent';
 
 @Component({
   selector: 'aol-control-zoomtoextent',
@@ -9,7 +10,7 @@ import { MapComponent } from '../map.component';
   `,
 })
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
-  instance: control.ZoomToExtent;
+  instance: ZoomToExtent;
 
   @Input()
   className: string;
@@ -25,7 +26,7 @@ export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.instance = new control.ZoomToExtent(this);
+    this.instance = new ZoomToExtent(this);
     this.map.instance.addControl(this.instance);
   }
 

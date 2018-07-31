@@ -1,5 +1,5 @@
 import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { style } from 'openlayers';
+import { Text } from 'ol/style';
 import { StyleComponent } from './style.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { StyleComponent } from './style.component';
   `,
 })
 export class StyleTextComponent implements OnInit, OnChanges {
-  public instance: style.Text;
+  public instance: Text;
   public componentType = 'style-text';
 
   @Input()
@@ -40,7 +40,7 @@ export class StyleTextComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // console.log('creating ol.style.Text instance with: ', this);
-    this.instance = new style.Text(this);
+    this.instance = new Text(this);
     this.host.instance.setText(this.instance);
   }
 

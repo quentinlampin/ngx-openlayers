@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Zoom } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
   `,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
-  instance: control.Zoom;
+  instance: Zoom;
 
   @Input()
   duration: number;
@@ -29,7 +29,7 @@ export class ControlZoomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.instance = new control.Zoom(this);
+    this.instance = new Zoom(this);
     this.map.instance.addControl(this.instance);
   }
 
