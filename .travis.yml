@@ -1,64 +1,21 @@
 language: node_js
 sudo: false
 node_js:
-- '6'
-
-env:
-- NPM_CONFIG_LOGLEVEL='warn'
+- 'lts/*'
 
 jobs:
   include:
   - stage: check
+    name: "lint"
     script:
-    - npm run lint
-  - stage: build library
+    - yarn lint ngx-openlayers
+    - yarn lint demo-ngx-openlayers
+
+  - stage: build
     before_script:
-    - rm -rf lib
+    - yarn --cwd projects/ngx-openlayers
     script:
-    - npm pack
-    - mkdir -p lib
-    - cp *.tgz lib/
-    cache:
-      directories:
-      - lib
-  - stage: build demo
-    before_install:
-    - cd example
-    install:
-    - npm i
-    script:
-    - npm un -S ngx-openlayers
-    - cp -r ../lib .
-    - npm i -S lib/*.tgz
-    - npm run build
-    cache:
-      directories:
-      - lib
-  - stage: deploy library release
-    script: ignore
-    deploy:
-      - provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
-        file_glob: true
-        file: lib/*
-        skip_cleanup: true
-        on:
-          tags: true
-  - stage: deploy demo pages
-    script: ignore
-    deploy:
-      - provider: pages
-        local_dir: dist
-        skip_cleanup: true
-        github_token: $GITHUB_OAUTH_TOKEN
-        on:
-          tags: true
-  - stage: publish library release
-    deploy:
-      provider: npm
-      email: $NPM_EMAIL
-      api_key: $NPM_TOKEN
-      on:
-        tags: true
-      skip_cleanup: true
+    - yarn build ngx-openlayers
+    - yarn
+    - yarn build demo-ngx-openlayers
 

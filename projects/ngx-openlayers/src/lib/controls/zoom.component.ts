@@ -9,12 +9,18 @@ import { MapComponent } from '../map.component';
 export class ControlZoomComponent implements OnInit, OnDestroy {
   instance: control.Zoom;
 
-  @Input() duration: number;
-  @Input() zoomInLabel: string | Node;
-  @Input() zoomOutLabel: string | Node;
-  @Input() zoomInTipLabel: string;
-  @Input() zoomOutTipLabel: string;
-  @Input() delta: number;
+  @Input()
+  duration: number;
+  @Input()
+  zoomInLabel: string | Node;
+  @Input()
+  zoomOutLabel: string | Node;
+  @Input()
+  zoomInTipLabel: string;
+  @Input()
+  zoomOutTipLabel: string;
+  @Input()
+  delta: number;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoom');

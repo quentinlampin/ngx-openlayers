@@ -8,12 +8,18 @@ import { MapComponent } from '../map.component';
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {
   instance: Collection<control.Control>;
-  @Input() attribution: boolean;
-  @Input() attributionOptions: olx.control.AttributionOptions;
-  @Input() rotate: boolean;
-  @Input() rotateOptions: olx.control.RotateOptions;
-  @Input() zoom: boolean;
-  @Input() zoomOptions: olx.control.ZoomOptions;
+  @Input()
+  attribution: boolean;
+  @Input()
+  attributionOptions: olx.control.AttributionOptions;
+  @Input()
+  rotate: boolean;
+  @Input()
+  rotateOptions: olx.control.RotateOptions;
+  @Input()
+  zoom: boolean;
+  @Input()
+  zoomOptions: olx.control.ZoomOptions;
 
   constructor(private map: MapComponent) {}
 

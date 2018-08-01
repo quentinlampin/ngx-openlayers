@@ -8,7 +8,8 @@ export class SourceComponent implements OnDestroy {
   public instance: source.Source;
   public componentType = 'source';
 
-  @Input() attributions: AttributionLike;
+  @Input()
+  attributions: AttributionLike;
 
   constructor(protected host: LayerComponent, protected raster?: SourceRasterComponent) {}
 

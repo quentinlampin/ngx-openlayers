@@ -9,10 +9,14 @@ import { MapComponent } from '../map.component';
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
   instance: control.ZoomToExtent;
 
-  @Input() className: string;
-  @Input() label: string | Node;
-  @Input() tipLabel: string;
-  @Input() extent: Extent;
+  @Input()
+  className: string;
+  @Input()
+  label: string | Node;
+  @Input()
+  tipLabel: string;
+  @Input()
+  extent: Extent;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomtoextent');

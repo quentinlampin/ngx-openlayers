@@ -9,8 +9,10 @@ import { MapComponent } from '../map.component';
 export class DragRotateInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragRotate;
 
-  @Input() condition: EventsConditionType;
-  @Input() duration: number;
+  @Input()
+  condition: EventsConditionType;
+  @Input()
+  duration: number;
 
   constructor(private map: MapComponent) {}
 

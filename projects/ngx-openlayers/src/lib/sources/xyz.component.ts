@@ -22,23 +22,39 @@ import { SourceRasterComponent } from './raster.component';
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: source.XYZ;
-  @Input() cacheSize: number;
-  @Input() crossOrigin: string;
-  @Input() opaque: boolean;
-  @Input() projection: string;
-  @Input() reprojectionErrorThreshold: number;
-  @Input() minZoom: number;
-  @Input() maxZoom: number;
-  @Input() tileGrid: tilegrid.TileGrid;
-  @Input() tileLoadFunction?: TileLoadFunctionType;
-  @Input() tilePixelRatio: number;
-  @Input() tileSize: number | Size;
-  @Input() tileUrlFunction: TileUrlFunctionType;
-  @Input() url: string;
-  @Input() urls: string[];
-  @Input() wrapX: boolean;
+  @Input()
+  cacheSize: number;
+  @Input()
+  crossOrigin: string;
+  @Input()
+  opaque: boolean;
+  @Input()
+  projection: string;
+  @Input()
+  reprojectionErrorThreshold: number;
+  @Input()
+  minZoom: number;
+  @Input()
+  maxZoom: number;
+  @Input()
+  tileGrid: tilegrid.TileGrid;
+  @Input()
+  tileLoadFunction?: TileLoadFunctionType;
+  @Input()
+  tilePixelRatio: number;
+  @Input()
+  tileSize: number | Size;
+  @Input()
+  tileUrlFunction: TileUrlFunctionType;
+  @Input()
+  url: string;
+  @Input()
+  urls: string[];
+  @Input()
+  wrapX: boolean;
 
-  @ContentChild(TileGridComponent) tileGridXYZ: TileGridComponent;
+  @ContentChild(TileGridComponent)
+  tileGridXYZ: TileGridComponent;
 
   constructor(
     @Optional()

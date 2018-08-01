@@ -7,15 +7,23 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   public instance: any;
   public componentType = 'layer';
 
-  @Input() opacity: number;
-  @Input() visible: boolean;
-  @Input() extent: Extent;
-  @Input() zIndex: number;
-  @Input() minResolution: number;
-  @Input() maxResolution: number;
+  @Input()
+  opacity: number;
+  @Input()
+  visible: boolean;
+  @Input()
+  extent: Extent;
+  @Input()
+  zIndex: number;
+  @Input()
+  minResolution: number;
+  @Input()
+  maxResolution: number;
 
-  @Input() precompose: (evt: ol.events.Event) => void;
-  @Input() postcompose: (evt: ol.events.Event) => void;
+  @Input()
+  precompose: (evt: ol.events.Event) => void;
+  @Input()
+  postcompose: (evt: ol.events.Event) => void;
 
   constructor(protected host: LayerGroupComponent | MapComponent) {}
 

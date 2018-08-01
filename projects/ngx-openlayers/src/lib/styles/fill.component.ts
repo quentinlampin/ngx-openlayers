@@ -13,7 +13,8 @@ export class StyleFillComponent implements OnInit, OnChanges {
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
   public instance: style.Fill;
 
-  @Input() color: Color | ColorLike;
+  @Input()
+  color: Color | ColorLike;
 
   constructor(
     @Optional() styleHost: StyleComponent,

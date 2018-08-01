@@ -10,22 +10,37 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   public instance: View;
   public componentType = 'view';
 
-  @Input() constrainRotation: boolean | number;
-  @Input() enableRotation: boolean;
-  @Input() extent: Extent;
-  @Input() maxResolution: number;
-  @Input() minResolution: number;
-  @Input() maxZoom: number;
-  @Input() minZoom: number;
-  @Input() resolution: number;
-  @Input() resolutions: number[];
-  @Input() rotation: number;
-  @Input() zoom: number;
-  @Input() zoomFactor: number;
-  @Input() center: Coordinate;
-  @Input() projection: string;
+  @Input()
+  constrainRotation: boolean | number;
+  @Input()
+  enableRotation: boolean;
+  @Input()
+  extent: Extent;
+  @Input()
+  maxResolution: number;
+  @Input()
+  minResolution: number;
+  @Input()
+  maxZoom: number;
+  @Input()
+  minZoom: number;
+  @Input()
+  resolution: number;
+  @Input()
+  resolutions: number[];
+  @Input()
+  rotation: number;
+  @Input()
+  zoom: number;
+  @Input()
+  zoomFactor: number;
+  @Input()
+  center: Coordinate;
+  @Input()
+  projection: string;
 
-  @Input() zoomAnimation = false;
+  @Input()
+  zoomAnimation = false;
 
   constructor(private host: MapComponent) {}
 

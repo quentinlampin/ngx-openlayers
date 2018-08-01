@@ -14,9 +14,12 @@ export class FormatMVTComponent extends FormatComponent {
   featureClass:
     | ((geom: geom.Geometry | { [k: string]: any }) => any)
     | ((geom: geom.GeometryType, arg2: number[], arg3: number[] | number[][], arg4: { [k: string]: any }) => any);
-  @Input() geometryName: string;
-  @Input() layerName: string;
-  @Input() layers: string[];
+  @Input()
+  geometryName: string;
+  @Input()
+  layerName: string;
+  @Input()
+  layers: string[];
 
   constructor() {
     super();

@@ -9,14 +9,21 @@ import { LayerGroupComponent } from './layergroup.component';
   template: `<ng-content></ng-content>`,
 })
 export class LayerVectorTileComponent extends LayerComponent implements OnInit, OnChanges {
-  @Input() renderBuffer: number;
-  @Input() renderMode: layer.VectorTileRenderType | string;
+  @Input()
+  renderBuffer: number;
+  @Input()
+  renderMode: layer.VectorTileRenderType | string;
   /* not marked as optional in the typings */
-  @Input() renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
-  @Input() style: style.Style | style.Style[] | StyleFunction;
-  @Input() updateWhileAnimating: boolean;
-  @Input() updateWhileInteracting: boolean;
-  @Input() visible: boolean;
+  @Input()
+  renderOrder: (feature1: ol.Feature, feature2: ol.Feature) => number;
+  @Input()
+  style: style.Style | style.Style[] | StyleFunction;
+  @Input()
+  updateWhileAnimating: boolean;
+  @Input()
+  updateWhileInteracting: boolean;
+  @Input()
+  visible: boolean;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

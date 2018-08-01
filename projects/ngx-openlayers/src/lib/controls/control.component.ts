@@ -11,7 +11,8 @@ export class ControlComponent implements OnInit, OnDestroy {
   public componentType = 'control';
   instance: control.Control;
   element: Element;
-  @ContentChild(ContentComponent) content: ContentComponent;
+  @ContentChild(ContentComponent)
+  content: ContentComponent;
 
   constructor(private map: MapComponent) {}
 

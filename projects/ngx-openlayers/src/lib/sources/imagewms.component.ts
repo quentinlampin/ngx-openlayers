@@ -11,17 +11,28 @@ import { SourceComponent } from './source.component';
 export class SourceImageWMSComponent extends SourceComponent implements OnInit {
   instance: source.ImageWMS;
 
-  @Input() attributions: AttributionLike;
-  @Input() crossOrigin: string;
-  @Input() hidpi: boolean;
-  @Input() serverType: string;
-  @Input() imageLoadFunction?: ImageLoadFunctionType;
-  @Input() logo: string | olx.LogoOptions;
-  @Input() params: Object;
-  @Input() projection: ProjectionLike | string;
-  @Input() ratio: number;
-  @Input() resolutions: Array<number>;
-  @Input() url: string;
+  @Input()
+  attributions: AttributionLike;
+  @Input()
+  crossOrigin: string;
+  @Input()
+  hidpi: boolean;
+  @Input()
+  serverType: string;
+  @Input()
+  imageLoadFunction?: ImageLoadFunctionType;
+  @Input()
+  logo: string | olx.LogoOptions;
+  @Input()
+  params: Object;
+  @Input()
+  projection: ProjectionLike | string;
+  @Input()
+  ratio: number;
+  @Input()
+  resolutions: Array<number>;
+  @Input()
+  url: string;
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);

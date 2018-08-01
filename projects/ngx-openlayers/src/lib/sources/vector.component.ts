@@ -10,12 +10,18 @@ import { SourceComponent } from './source.component';
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
   instance: source.Vector;
-  @Input() overlaps: boolean;
-  @Input() useSpatialIndex: boolean;
-  @Input() wrapX: boolean;
-  @Input() url: string;
-  @Input() format: ol.format.Feature;
-  @Input() strategy: ol.LoadingStrategy;
+  @Input()
+  overlaps: boolean;
+  @Input()
+  useSpatialIndex: boolean;
+  @Input()
+  wrapX: boolean;
+  @Input()
+  url: string;
+  @Input()
+  format: ol.format.Feature;
+  @Input()
+  strategy: ol.LoadingStrategy;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);

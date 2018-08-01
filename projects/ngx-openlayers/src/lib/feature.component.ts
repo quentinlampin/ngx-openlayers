@@ -10,7 +10,8 @@ export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
   public componentType = 'feature';
   public instance: Feature;
 
-  @Input() id: string | number | undefined;
+  @Input()
+  id: string | number | undefined;
 
   constructor(private host: SourceVectorComponent) {}
 

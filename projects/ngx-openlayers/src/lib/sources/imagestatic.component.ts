@@ -11,14 +11,22 @@ import { LayerImageComponent } from '../layers/layerimage.component';
 export class SourceImageStaticComponent extends SourceComponent implements OnInit {
   instance: source.ImageStatic;
 
-  @Input() projection: ProjectionLike | string;
-  @Input() imageExtent: Extent;
-  @Input() url: string;
-  @Input() attributions: AttributionLike;
-  @Input() crossOrigin?: string;
-  @Input() imageLoadFunction?: ImageLoadFunctionType;
-  @Input() logo?: string | olx.LogoOptions;
-  @Input() imageSize?: Size;
+  @Input()
+  projection: ProjectionLike | string;
+  @Input()
+  imageExtent: Extent;
+  @Input()
+  url: string;
+  @Input()
+  attributions: AttributionLike;
+  @Input()
+  crossOrigin?: string;
+  @Input()
+  imageLoadFunction?: ImageLoadFunctionType;
+  @Input()
+  logo?: string | olx.LogoOptions;
+  @Input()
+  imageSize?: Size;
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);

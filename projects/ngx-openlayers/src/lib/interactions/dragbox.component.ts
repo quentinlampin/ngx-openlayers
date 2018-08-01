@@ -9,9 +9,12 @@ import { MapComponent } from '../map.component';
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragBox;
 
-  @Input() className: string;
-  @Input() condition: EventsConditionType;
-  @Input() boxEndCondition: DragBoxEndConditionType;
+  @Input()
+  className: string;
+  @Input()
+  condition: EventsConditionType;
+  @Input()
+  boxEndCondition: DragBoxEndConditionType;
 
   constructor(private map: MapComponent) {}
 

@@ -13,12 +13,18 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   /* the typings do not have the setters */
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
 
-  @Input() color: Color | undefined;
-  @Input() lineCap: string | undefined;
-  @Input() lineDash: number[] | undefined;
-  @Input() lineJoin: string | undefined;
-  @Input() miterLimit: number | undefined;
-  @Input() width: number | undefined;
+  @Input()
+  color: Color | undefined;
+  @Input()
+  lineCap: string | undefined;
+  @Input()
+  lineDash: number[] | undefined;
+  @Input()
+  lineJoin: string | undefined;
+  @Input()
+  miterLimit: number | undefined;
+  @Input()
+  width: number | undefined;
 
   constructor(
     @Optional() styleHost: StyleComponent,

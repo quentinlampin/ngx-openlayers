@@ -10,10 +10,14 @@ export class GraticuleComponent implements AfterContentInit, OnChanges {
   instance: any;
   public componentType = 'graticule';
 
-  @Input() strokeStyle: style.Stroke;
-  @Input() showLabels: boolean;
-  @Input() lonLabelPosition: number;
-  @Input() latLabelPosition: number;
+  @Input()
+  strokeStyle: style.Stroke;
+  @Input()
+  showLabels: boolean;
+  @Input()
+  lonLabelPosition: number;
+  @Input()
+  latLabelPosition: number;
 
   constructor(private map: MapComponent) {}
 

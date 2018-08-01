@@ -11,15 +11,24 @@ import { LayerTileComponent } from '../layers/layertile.component';
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   instance: source.BingMaps;
 
-  @Input() cacheSize: number;
-  @Input() hidpi: boolean;
-  @Input() culture: string;
-  @Input() key: string;
-  @Input() imagerySet: 'Road' | 'Aerial' | 'AerialWithLabels' | 'collinsBart' | 'ordnanceSurvey' = 'Aerial';
-  @Input() maxZoom: number;
-  @Input() reprojectionErrorThreshold: number;
-  @Input() tileLoadFunction: TileLoadFunctionType;
-  @Input() wrapX: boolean;
+  @Input()
+  cacheSize: number;
+  @Input()
+  hidpi: boolean;
+  @Input()
+  culture: string;
+  @Input()
+  key: string;
+  @Input()
+  imagerySet: 'Road' | 'Aerial' | 'AerialWithLabels' | 'collinsBart' | 'ordnanceSurvey' = 'Aerial';
+  @Input()
+  maxZoom: number;
+  @Input()
+  reprojectionErrorThreshold: number;
+  @Input()
+  tileLoadFunction: TileLoadFunctionType;
+  @Input()
+  wrapX: boolean;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

@@ -17,13 +17,19 @@ import { SourceComponent } from './source.component';
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
   instance: source.Raster;
 
-  @Input() operation?: RasterOperation;
-  @Input() threads?: number;
-  @Input() lib?: Object;
-  @Input() operationType?: RasterOperationType;
+  @Input()
+  operation?: RasterOperation;
+  @Input()
+  threads?: number;
+  @Input()
+  lib?: Object;
+  @Input()
+  operationType?: RasterOperationType;
 
-  @Output() beforeOperations: EventEmitter<source.RasterEvent> = new EventEmitter<source.RasterEvent>();
-  @Output() afterOperations: EventEmitter<source.RasterEvent> = new EventEmitter<source.RasterEvent>();
+  @Output()
+  beforeOperations: EventEmitter<source.RasterEvent> = new EventEmitter<source.RasterEvent>();
+  @Output()
+  afterOperations: EventEmitter<source.RasterEvent> = new EventEmitter<source.RasterEvent>();
 
   sources: source.Source[] = [];
 

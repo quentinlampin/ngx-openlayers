@@ -13,15 +13,24 @@ import { SourceRasterComponent } from './raster.component';
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
   instance: source.OSM;
 
-  @Input() attributions: AttributionLike;
-  @Input() cacheSize: number;
-  @Input() crossOrigin: string;
-  @Input() maxZoom: number;
-  @Input() opaque: boolean;
-  @Input() reprojectionErrorThreshold: number;
-  @Input() tileLoadFunction: TileLoadFunctionType;
-  @Input() url: string;
-  @Input() wrapX: boolean;
+  @Input()
+  attributions: AttributionLike;
+  @Input()
+  cacheSize: number;
+  @Input()
+  crossOrigin: string;
+  @Input()
+  maxZoom: number;
+  @Input()
+  opaque: boolean;
+  @Input()
+  reprojectionErrorThreshold: number;
+  @Input()
+  tileLoadFunction: TileLoadFunctionType;
+  @Input()
+  url: string;
+  @Input()
+  wrapX: boolean;
 
   constructor(
     @Host()

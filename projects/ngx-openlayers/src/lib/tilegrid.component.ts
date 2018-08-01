@@ -8,12 +8,18 @@ import { tilegrid, Extent, Size, Coordinate } from 'openlayers';
 export class TileGridComponent implements OnInit, OnChanges {
   instance: tilegrid.TileGrid;
 
-  @Input() extent: Extent;
-  @Input() maxZoom: number;
-  @Input() minZoom: number;
-  @Input() tileSize: number | Size;
-  @Input() origin?: Coordinate;
-  @Input() resolutions: number[];
+  @Input()
+  extent: Extent;
+  @Input()
+  maxZoom: number;
+  @Input()
+  minZoom: number;
+  @Input()
+  tileSize: number | Size;
+  @Input()
+  origin?: Coordinate;
+  @Input()
+  resolutions: number[];
 
   ngOnInit() {
     if (!this.resolutions) {

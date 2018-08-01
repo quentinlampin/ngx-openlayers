@@ -10,7 +10,8 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
   public componentType = 'control';
   instance: control.Attribution;
   target: Element;
-  @Input() collapsible: boolean;
+  @Input()
+  collapsible: boolean;
 
   constructor(private map: MapComponent, private element: ElementRef) {}
 
