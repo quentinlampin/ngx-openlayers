@@ -82,8 +82,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class MapPositionComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
-  @ViewChild('map') map: MapComponent;
-  @ViewChild('view') view: ViewComponent;
+  @ViewChild('map')
+  map: MapComponent;
+  @ViewChild('view')
+  view: ViewComponent;
 
   displayProj = new proj.Projection({ code: 'EPSG:3857' });
   inputProj = new proj.Projection({ code: 'EPSG:4326' });

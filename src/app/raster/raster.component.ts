@@ -104,7 +104,8 @@ export class RasterComponent {
   contrast = 0;
 
   selectLayer = 'osm';
-  @ViewChild(SourceRasterComponent) currentRasterSource;
+  @ViewChild(SourceRasterComponent)
+  currentRasterSource;
 
   beforeOperations(event) {
     const data: RasterData = event.data;

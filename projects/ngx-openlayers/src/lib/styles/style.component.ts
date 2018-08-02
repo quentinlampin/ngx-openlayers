@@ -12,12 +12,18 @@ export class StyleComponent implements OnInit {
   public instance: style.Style;
   public componentType = 'style';
 
-  @Input() geometry: string | geom.Geometry | StyleGeometryFunction;
-  @Input() fill: style.Fill;
-  @Input() image: style.Image;
-  @Input() stroke: style.Stroke;
-  @Input() text: style.Text;
-  @Input() zIndex: number;
+  @Input()
+  geometry: string | geom.Geometry | StyleGeometryFunction;
+  @Input()
+  fill: style.Fill;
+  @Input()
+  image: style.Image;
+  @Input()
+  stroke: style.Stroke;
+  @Input()
+  text: style.Text;
+  @Input()
+  zIndex: number;
 
   constructor(@Optional() featureHost: FeatureComponent, @Optional() layerHost: LayerVectorComponent) {
     // console.log('creating aol-style');

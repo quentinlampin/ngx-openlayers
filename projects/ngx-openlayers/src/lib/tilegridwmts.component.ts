@@ -9,13 +9,20 @@ import { TileGridComponent } from './tilegrid.component';
 export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
   instance: tilegrid.WMTS;
 
-  @Input() origin?: Coordinate;
-  @Input() origins?: Coordinate[];
-  @Input() resolutions: number[];
-  @Input() matrixIds: string[];
-  @Input() sizes?: Size[];
-  @Input() tileSizes?: (number | Size)[];
-  @Input() widths?: number[];
+  @Input()
+  origin?: Coordinate;
+  @Input()
+  origins?: Coordinate[];
+  @Input()
+  resolutions: number[];
+  @Input()
+  matrixIds: string[];
+  @Input()
+  sizes?: Size[];
+  @Input()
+  tileSizes?: (number | Size)[];
+  @Input()
+  widths?: number[];
 
   ngOnInit() {
     this.instance = new tilegrid.WMTS(this);

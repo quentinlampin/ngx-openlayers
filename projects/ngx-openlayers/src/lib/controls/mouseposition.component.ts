@@ -8,8 +8,10 @@ import { MapComponent } from '../map.component';
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {
   instance: control.MousePosition;
-  @Input() coordinateFormat: CoordinateFormatType;
-  @Input() projection: ProjectionLike;
+  @Input()
+  coordinateFormat: CoordinateFormatType;
+  @Input()
+  projection: ProjectionLike;
   target: Element;
 
   constructor(private map: MapComponent, private element: ElementRef) {}

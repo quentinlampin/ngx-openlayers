@@ -11,8 +11,10 @@ import { LayerGroupComponent } from './layergroup.component';
 export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
   public source: source.Tile;
 
-  @Input() preload: number;
-  @Input() useInterimTilesOnError: boolean;
+  @Input()
+  preload: number;
+  @Input()
+  useInterimTilesOnError: boolean;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

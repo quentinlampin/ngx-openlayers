@@ -1,14 +1,16 @@
 {
   "name": "demo-ngx-openlayers",
-  "version": "0.8.20",
+  "version": "1.0.0-next.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint ngx-openlayers --type-check && ng lint demo-ngx-openlayers --type-check",
-    "e2e": "ng e2e",
-    "format": "prettier --write \"**/@(src|e2e)/**/*.ts\""
+    "start": "yarn build:lib && ng serve",
+    "build:lib": "yarn --cwd projects/ngx-openlayers && ng build ngx-openlayers --prod",
+    "build": "yarn build:lib && ng build demo-ngx-openlayers",
+    "test": "yarn build:lib && ng test",
+    "lint": "ng lint",
+    "e2e": "yarn build:lib && ng e2e",
+    "format": "prettier --write \"**/@(src|e2e)/**/*.ts\"",
+    "release": "yarn --cwd projects/ngx-openlayers release"
   },
   "private": true,
   "dependencies": {
@@ -25,7 +27,6 @@
     "geojson": "^0.5.0",
     "hammer-timejs": "^1.1.0",
     "hammerjs": "^2.0.8",
-    "ngx-openlayers": "file:dist/ngx-openlayers",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -49,6 +50,7 @@
     "ng-packagr": "^3.0.0-rc.2",
     "prettier": "^1.13.4",
     "protractor": "~5.3.0",
+    "standard-version": "^4.4.0",
     "ts-node": "~5.0.1",
     "tsickle": ">=0.25.5",
     "tslib": "^1.7.1",

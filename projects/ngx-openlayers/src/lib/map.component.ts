@@ -19,25 +19,43 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   public instance: Map;
   public componentType = 'map';
 
-  @Input() width = '100%';
-  @Input() height = '100%';
-  @Input() pixelRatio: number;
-  @Input() keyboardEventTarget: Element | string;
-  @Input() loadTilesWhileAnimating: boolean;
-  @Input() loadTilesWhileInteracting: boolean;
-  @Input() logo: string | boolean;
-  @Input() renderer: 'canvas' | 'webgl';
+  @Input()
+  width = '100%';
+  @Input()
+  height = '100%';
+  @Input()
+  pixelRatio: number;
+  @Input()
+  keyboardEventTarget: Element | string;
+  @Input()
+  loadTilesWhileAnimating: boolean;
+  @Input()
+  loadTilesWhileInteracting: boolean;
+  @Input()
+  logo: string | boolean;
+  @Input()
+  renderer: 'canvas' | 'webgl';
 
-  @Output() onClick: EventEmitter<MapBrowserEvent>;
-  @Output() onDblClick: EventEmitter<MapBrowserEvent>;
-  @Output() onMoveEnd: EventEmitter<MapEvent>;
-  @Output() onPointerDrag: EventEmitter<MapBrowserEvent>;
-  @Output() onPointerMove: EventEmitter<MapBrowserEvent>;
-  @Output() onPostCompose: EventEmitter<render.Event>;
-  @Output() onPostRender: EventEmitter<MapEvent>;
-  @Output() onPreCompose: EventEmitter<render.Event>;
-  @Output() onPropertyChange: EventEmitter<ObjectEvent>;
-  @Output() onSingleClick: EventEmitter<MapBrowserEvent>;
+  @Output()
+  onClick: EventEmitter<MapBrowserEvent>;
+  @Output()
+  onDblClick: EventEmitter<MapBrowserEvent>;
+  @Output()
+  onMoveEnd: EventEmitter<MapEvent>;
+  @Output()
+  onPointerDrag: EventEmitter<MapBrowserEvent>;
+  @Output()
+  onPointerMove: EventEmitter<MapBrowserEvent>;
+  @Output()
+  onPostCompose: EventEmitter<render.Event>;
+  @Output()
+  onPostRender: EventEmitter<MapEvent>;
+  @Output()
+  onPreCompose: EventEmitter<render.Event>;
+  @Output()
+  onPropertyChange: EventEmitter<ObjectEvent>;
+  @Output()
+  onSingleClick: EventEmitter<MapBrowserEvent>;
 
   // we pass empty arrays to not get default controls/interactions because we have our own directives
   controls: control.Control[] = [];

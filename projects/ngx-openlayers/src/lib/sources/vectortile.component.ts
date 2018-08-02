@@ -12,18 +12,28 @@ import { SourceComponent } from './source.component';
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
   public instance: source.VectorTile;
-  @Input() cacheSize: number;
-  @Input() overlaps: boolean;
-  @Input() projection: ProjectionLike;
-  @Input() tilePixelRatio: number;
-  @Input() tileUrlFunction: TileUrlFunctionType;
-  @Input() url: string;
-  @Input() urls: string[];
-  @Input() wrapX: boolean;
+  @Input()
+  cacheSize: number;
+  @Input()
+  overlaps: boolean;
+  @Input()
+  projection: ProjectionLike;
+  @Input()
+  tilePixelRatio: number;
+  @Input()
+  tileUrlFunction: TileUrlFunctionType;
+  @Input()
+  url: string;
+  @Input()
+  urls: string[];
+  @Input()
+  wrapX: boolean;
 
-  @ContentChild(FormatComponent) formatComponent: FormatComponent;
+  @ContentChild(FormatComponent)
+  formatComponent: FormatComponent;
   format: format.Feature;
-  @ContentChild(TileGridComponent) tileGridComponent: TileGridComponent;
+  @ContentChild(TileGridComponent)
+  tileGridComponent: TileGridComponent;
   tileGrid: tilegrid.TileGrid;
 
   constructor(@Host() layer: LayerVectorTileComponent) {

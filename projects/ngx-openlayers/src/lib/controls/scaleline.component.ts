@@ -8,7 +8,8 @@ import { MapComponent } from '../map.component';
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
   instance: control.ScaleLine;
-  @Input() units: string;
+  @Input()
+  units: string;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-scaleline');

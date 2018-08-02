@@ -11,10 +11,14 @@ import { SourceComponent } from './source.component';
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
   instance: source.Vector;
   format: format.Feature;
-  @Input() defaultDataProjection: ProjectionLike;
-  @Input() featureProjection: ProjectionLike;
-  @Input() geometryName: string;
-  @Input() url: string;
+  @Input()
+  defaultDataProjection: ProjectionLike;
+  @Input()
+  featureProjection: ProjectionLike;
+  @Input()
+  geometryName: string;
+  @Input()
+  url: string;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);

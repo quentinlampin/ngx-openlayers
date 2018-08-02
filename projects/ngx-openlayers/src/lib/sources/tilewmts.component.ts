@@ -20,15 +20,24 @@ import { TileGridWMTSComponent } from '../tilegridwmts.component';
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: source.WMTS;
-  @Input() cacheSize?: number;
-  @Input() crossOrigin?: string;
-  @Input() logo?: string | olx.LogoOptions;
-  @Input() tileGrid: tilegrid.WMTS;
-  @Input() projection: ProjectionLike;
-  @Input() reprojectionErrorThreshold?: number;
-  @Input() requestEncoding?: source.WMTSRequestEncoding | string;
-  @Input() layer: string;
-  @Input() style: string;
+  @Input()
+  cacheSize?: number;
+  @Input()
+  crossOrigin?: string;
+  @Input()
+  logo?: string | olx.LogoOptions;
+  @Input()
+  tileGrid: tilegrid.WMTS;
+  @Input()
+  projection: ProjectionLike;
+  @Input()
+  reprojectionErrorThreshold?: number;
+  @Input()
+  requestEncoding?: source.WMTSRequestEncoding | string;
+  @Input()
+  layer: string;
+  @Input()
+  style: string;
   @Input()
   tileClass?: ((
     n: ImageTile,
@@ -38,17 +47,27 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
     s2: string,
     type: TileLoadFunctionType
   ) => any);
-  @Input() tilePixelRatio?: number;
-  @Input() version?: string;
-  @Input() format?: string;
-  @Input() matrixSet: string;
-  @Input() dimensions?: GlobalObject;
-  @Input() url?: string;
-  @Input() tileLoadFunction?: TileLoadFunctionType;
-  @Input() urls?: string[];
-  @Input() wrapX?: boolean;
+  @Input()
+  tilePixelRatio?: number;
+  @Input()
+  version?: string;
+  @Input()
+  format?: string;
+  @Input()
+  matrixSet: string;
+  @Input()
+  dimensions?: GlobalObject;
+  @Input()
+  url?: string;
+  @Input()
+  tileLoadFunction?: TileLoadFunctionType;
+  @Input()
+  urls?: string[];
+  @Input()
+  wrapX?: boolean;
 
-  @ContentChild(TileGridWMTSComponent) tileGridWMTS: TileGridWMTSComponent;
+  @ContentChild(TileGridWMTSComponent)
+  tileGridWMTS: TileGridWMTSComponent;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

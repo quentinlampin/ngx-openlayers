@@ -62,7 +62,8 @@ import { MapComponent } from 'ngx-openlayers';
 export class SwipeComponent implements OnInit {
   constructor() {}
 
-  @ViewChild('map') map: MapComponent;
+  @ViewChild('map')
+  map: MapComponent;
 
   public precomposeFunction: (event) => void;
   public postcomposeFunction: (event) => void;

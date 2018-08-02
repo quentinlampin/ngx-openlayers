@@ -11,7 +11,8 @@ import { LayerGroupComponent } from './layergroup.component';
 export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
   public source: source.Vector;
 
-  @Input() renderBuffer: number;
+  @Input()
+  renderBuffer: number;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

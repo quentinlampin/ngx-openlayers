@@ -9,8 +9,10 @@ import { MapComponent } from '../map.component';
 export class PinchZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.PinchZoom;
 
-  @Input() duration: number;
-  @Input() constrainResolution: boolean;
+  @Input()
+  duration: number;
+  @Input()
+  constrainResolution: boolean;
 
   constructor(private map: MapComponent) {}
 

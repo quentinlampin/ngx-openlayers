@@ -40,8 +40,10 @@ import { MapComponent, ViewComponent } from 'ngx-openlayers';
 export class SideBySideComponent implements OnInit, AfterViewInit {
   constructor() {}
 
-  @ViewChild('secondMap') secondMap: MapComponent;
-  @ViewChild('view') view: ViewComponent;
+  @ViewChild('secondMap')
+  secondMap: MapComponent;
+  @ViewChild('view')
+  view: ViewComponent;
 
   ngOnInit() {}
 

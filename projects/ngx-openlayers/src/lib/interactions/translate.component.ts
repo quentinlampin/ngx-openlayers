@@ -9,15 +9,23 @@ import { MapComponent } from '../map.component';
 export class TranslateInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.Translate;
 
-  @Input() features?: Collection<Feature>;
-  @Input() layers?: layer.Layer[] | ((layer: layer.Layer) => boolean);
-  @Input() hitTolerance?: number;
+  @Input()
+  features?: Collection<Feature>;
+  @Input()
+  layers?: layer.Layer[] | ((layer: layer.Layer) => boolean);
+  @Input()
+  hitTolerance?: number;
 
-  @Output() onChange: EventEmitter<interaction.Translate.Event>;
-  @Output() onPropertyChange: EventEmitter<interaction.Translate.Event>;
-  @Output() onTranslateEnd: EventEmitter<interaction.Translate.Event>;
-  @Output() onTranslateStart: EventEmitter<interaction.Translate.Event>;
-  @Output() onTranslating: EventEmitter<interaction.Translate.Event>;
+  @Output()
+  onChange: EventEmitter<interaction.Translate.Event>;
+  @Output()
+  onPropertyChange: EventEmitter<interaction.Translate.Event>;
+  @Output()
+  onTranslateEnd: EventEmitter<interaction.Translate.Event>;
+  @Output()
+  onTranslateStart: EventEmitter<interaction.Translate.Event>;
+  @Output()
+  onTranslating: EventEmitter<interaction.Translate.Event>;
 
   constructor(private map: MapComponent) {
     this.onChange = new EventEmitter<interaction.Translate.Event>();

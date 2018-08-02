@@ -9,10 +9,14 @@ import { MapComponent } from '../map.component';
 export class DragZoomInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragZoom;
 
-  @Input() className: string;
-  @Input() condition: EventsConditionType;
-  @Input() duration: number;
-  @Input() out: boolean;
+  @Input()
+  className: string;
+  @Input()
+  condition: EventsConditionType;
+  @Input()
+  duration: number;
+  @Input()
+  out: boolean;
 
   constructor(private map: MapComponent) {}
 

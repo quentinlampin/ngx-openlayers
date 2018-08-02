@@ -10,15 +10,24 @@ export class StyleTextComponent implements OnInit, OnChanges {
   public instance: style.Text;
   public componentType = 'style-text';
 
-  @Input() font: string | undefined;
-  @Input() offsetX: number | undefined;
-  @Input() offsetY: number | undefined;
-  @Input() scale: number | undefined;
-  @Input() rotateWithView: boolean | undefined;
-  @Input() rotation: number | undefined;
-  @Input() text: string | undefined;
-  @Input() textAlign: string | undefined;
-  @Input() textBaseLine: string | undefined;
+  @Input()
+  font: string | undefined;
+  @Input()
+  offsetX: number | undefined;
+  @Input()
+  offsetY: number | undefined;
+  @Input()
+  scale: number | undefined;
+  @Input()
+  rotateWithView: boolean | undefined;
+  @Input()
+  rotation: number | undefined;
+  @Input()
+  text: string | undefined;
+  @Input()
+  textAlign: string | undefined;
+  @Input()
+  textBaseLine: string | undefined;
 
   constructor(@Optional() private host: StyleComponent) {
     if (!host) {

@@ -9,19 +9,31 @@ import { MapComponent } from '../map.component';
 export class ModifyInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.Modify;
 
-  @Input() condition?: EventsConditionType;
-  @Input() deleteCondition?: EventsConditionType;
-  @Input() pixelTolerance?: number;
-  @Input() style?: style.Style | style.Style[] | StyleFunction;
-  @Input() features: Collection<Feature>;
-  @Input() wrapX?: boolean;
-  @Input() source?: source.Vector;
+  @Input()
+  condition?: EventsConditionType;
+  @Input()
+  deleteCondition?: EventsConditionType;
+  @Input()
+  pixelTolerance?: number;
+  @Input()
+  style?: style.Style | style.Style[] | StyleFunction;
+  @Input()
+  features: Collection<Feature>;
+  @Input()
+  wrapX?: boolean;
+  @Input()
+  source?: source.Vector;
 
-  @Output() onModifyEnd = new EventEmitter<interaction.Modify.Event>();
-  @Output() onModifyStart = new EventEmitter<interaction.Modify.Event>();
-  @Output() onChange = new EventEmitter<interaction.Modify.Event>();
-  @Output() onChangeActive = new EventEmitter<interaction.Modify.Event>();
-  @Output() onPropertyChange = new EventEmitter<interaction.Modify.Event>();
+  @Output()
+  onModifyEnd = new EventEmitter<interaction.Modify.Event>();
+  @Output()
+  onModifyStart = new EventEmitter<interaction.Modify.Event>();
+  @Output()
+  onChange = new EventEmitter<interaction.Modify.Event>();
+  @Output()
+  onChangeActive = new EventEmitter<interaction.Modify.Event>();
+  @Output()
+  onPropertyChange = new EventEmitter<interaction.Modify.Event>();
 
   constructor(private map: MapComponent) {}
 

@@ -11,16 +11,25 @@ export class OverlayComponent implements OnInit, OnDestroy {
   componentType = 'overlay';
   instance: Overlay;
   element: Element;
-  @ContentChild(ContentComponent) content: ContentComponent;
+  @ContentChild(ContentComponent)
+  content: ContentComponent;
 
-  @Input() id: number | string;
-  @Input() offset: number[];
-  @Input() positioning: OverlayPositioning | string;
-  @Input() stopEvent: boolean;
-  @Input() insertFirst: boolean;
-  @Input() autoPan: boolean;
-  @Input() autoPanAnimation: olx.animation.PanOptions;
-  @Input() autoPanMargin: number;
+  @Input()
+  id: number | string;
+  @Input()
+  offset: number[];
+  @Input()
+  positioning: OverlayPositioning | string;
+  @Input()
+  stopEvent: boolean;
+  @Input()
+  insertFirst: boolean;
+  @Input()
+  autoPan: boolean;
+  @Input()
+  autoPanAnimation: olx.animation.PanOptions;
+  @Input()
+  autoPanMargin: number;
 
   constructor(private map: MapComponent) {}
 

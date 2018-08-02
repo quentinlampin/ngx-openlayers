@@ -9,9 +9,12 @@ import { MapComponent } from '../map.component';
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragAndDrop;
 
-  @Input() formatConstructors: ((n: format.Feature) => any)[];
-  @Input() projection: ProjectionLike;
-  @Input() target: Element;
+  @Input()
+  formatConstructors: ((n: format.Feature) => any)[];
+  @Input()
+  projection: ProjectionLike;
+  @Input()
+  target: Element;
 
   constructor(private map: MapComponent) {}
 
