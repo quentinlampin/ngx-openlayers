@@ -12,10 +12,13 @@ import { SourceVectorComponent } from './vector.component';
 export class SourceClusterComponent extends SourceComponent implements AfterContentInit {
   instance: source.Cluster;
 
-  @Input() distance: number;
-  @Input() geometryFunction?: ((feature: Feature) => geom.Point);
+  @Input()
+  distance: number;
+  @Input()
+  geometryFunction?: ((feature: Feature) => geom.Point);
 
-  @ContentChild(SourceVectorComponent) sourceVectorComponent: SourceVectorComponent;
+  @ContentChild(SourceVectorComponent)
+  sourceVectorComponent: SourceVectorComponent;
   source: source.Vector;
 
   constructor(@Host() layer: LayerVectorComponent) {

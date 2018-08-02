@@ -48,7 +48,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/openlayers/dist/ol.css"
+              "projects/ngx-openlayers/node_modules/openlayers/dist/ol.css"
             ],
             "scripts": []
           },
@@ -115,7 +115,9 @@
             ],
             "exclude": [
               "**/node_modules/**"
-            ]
+            ],
+            "tslintConfig": "tslint-prettier.json",
+            "typeCheck": true
           }
         }
       }
@@ -177,7 +179,9 @@
             ],
             "exclude": [
               "**/node_modules/**"
-            ]
+            ],
+            "tslintConfig": "tslint-prettier.json",
+            "typeCheck": true
           }
         }
       }

@@ -12,9 +12,12 @@ import { OverlayComponent } from './overlay.component';
 export class CoordinateComponent implements OnChanges {
   private host: any;
 
-  @Input() x: number;
-  @Input() y: number;
-  @Input() srid = 'EPSG:3857';
+  @Input()
+  x: number;
+  @Input()
+  y: number;
+  @Input()
+  srid = 'EPSG:3857';
 
   constructor(
     private map: MapComponent,
@@ -67,8 +70,10 @@ export class CoordinateComponent implements OnChanges {
 export class CollectionCoordinatesComponent implements OnChanges {
   private host: any;
 
-  @Input() coordinates: [number, number][];
-  @Input() srid = 'EPSG:3857';
+  @Input()
+  coordinates: [number, number][];
+  @Input()
+  srid = 'EPSG:3857';
 
   constructor(
     private map: MapComponent,

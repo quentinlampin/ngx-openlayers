@@ -1,12 +1,18 @@
 {
   "name": "ngx-openlayers",
-  "version": "0.0.1",
-  "dependencies": {
-   "@types/openlayers": "4.3.x || 4.4.x",
-   "openlayers": "4.3.x || 4.4.x"
+  "version": "1.0.0-next.0",
+  "scripts": {
+    "release": "standard-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
+  },
+  "standard-version": {
+    "postchangelog": "cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md"
   },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "@types/openlayers": "4.3.x || 4.4.x",
+    "openlayers": "4.3.x || 4.4.x"
   }
 }

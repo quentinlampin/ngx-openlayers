@@ -11,7 +11,8 @@ import { SourceComponent } from './source.component';
 export class SourceTileJSONComponent extends SourceComponent implements OnInit {
   instance: source.TileJSON;
 
-  @Input() url: string;
+  @Input()
+  url: string;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

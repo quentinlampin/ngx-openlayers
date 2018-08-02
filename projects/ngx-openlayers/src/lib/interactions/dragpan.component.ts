@@ -9,8 +9,10 @@ import { MapComponent } from '../map.component';
 export class DragPanInteractionComponent implements OnInit, OnDestroy {
   instance: interaction.DragPan;
 
-  @Input() condition: EventsConditionType;
-  @Input() kinetic: Kinetic;
+  @Input()
+  condition: EventsConditionType;
+  @Input()
+  kinetic: Kinetic;
 
   constructor(private map: MapComponent) {}
 

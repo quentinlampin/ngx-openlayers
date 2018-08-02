@@ -10,11 +10,16 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   public componentType = 'style-circle';
   public instance: style.Circle;
 
-  @Input() fill: style.Fill;
-  @Input() radius: number;
-  @Input() snapToPixel: boolean;
-  @Input() stroke: style.Stroke;
-  @Input() atlasManager: style.AtlasManager;
+  @Input()
+  fill: style.Fill;
+  @Input()
+  radius: number;
+  @Input()
+  snapToPixel: boolean;
+  @Input()
+  stroke: style.Stroke;
+  @Input()
+  atlasManager: style.AtlasManager;
 
   constructor(@Host() private host: StyleComponent) {}
 

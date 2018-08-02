@@ -9,11 +9,16 @@ import { MapComponent } from '../map.component';
 export class ControlRotateComponent implements OnInit, OnDestroy {
   instance: control.Rotate;
 
-  @Input() className: string;
-  @Input() label: string;
-  @Input() tipLabel: string;
-  @Input() duration: number;
-  @Input() autoHide: boolean;
+  @Input()
+  className: string;
+  @Input()
+  label: string;
+  @Input()
+  tipLabel: string;
+  @Input()
+  duration: number;
+  @Input()
+  autoHide: boolean;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-rotate');

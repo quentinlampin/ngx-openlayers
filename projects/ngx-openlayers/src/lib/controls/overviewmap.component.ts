@@ -8,14 +8,22 @@ import { MapComponent } from '../map.component';
 })
 export class ControlOverviewMapComponent implements OnInit, OnDestroy {
   instance: control.OverviewMap;
-  @Input() collapsed: boolean;
-  @Input() collapseLabel: string;
-  @Input() collapsible: boolean;
-  @Input() label: string;
-  @Input() layers: layer.Layer[];
-  @Input() target: Element;
-  @Input() tipLabel: string;
-  @Input() view: View;
+  @Input()
+  collapsed: boolean;
+  @Input()
+  collapseLabel: string;
+  @Input()
+  collapsible: boolean;
+  @Input()
+  label: string;
+  @Input()
+  layers: layer.Layer[];
+  @Input()
+  target: Element;
+  @Input()
+  tipLabel: string;
+  @Input()
+  view: View;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-overviewmap');

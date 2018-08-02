@@ -10,7 +10,8 @@ import { AttributionComponent } from './attribution.component';
 export class AttributionsComponent implements AfterViewInit {
   instance: Array<Attribution>;
 
-  @ContentChildren(AttributionComponent) attributions: QueryList<AttributionComponent>;
+  @ContentChildren(AttributionComponent)
+  attributions: QueryList<AttributionComponent>;
 
   constructor(@Host() private source: SourceComponent) {}
 

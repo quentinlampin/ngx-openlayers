@@ -1,64 +1,72 @@
 language: node_js
 sudo: false
 node_js:
-- '6'
-
-env:
-- NPM_CONFIG_LOGLEVEL='warn'
+- 'lts/*'
+install:
+- yarn
+cache:
+  yarn: true
+  directories:
+  - node_modules
+  - projects/ngx-openlayers/node_modules
+  - dist
 
 jobs:
   include:
   - stage: check
+    name: next lib linting
     script:
-    - npm run lint
-  - stage: build library
-    before_script:
-    - rm -rf lib
+    - yarn lint
+
+  - stage: build
+    name: next lib and demo
     script:
+    - yarn build --prod --base-href "/ngx-openlayers/" --progress false
+
+  - stage: release
+    name: next lib version on github releases
+    if: tag =~ /^\d+.\d+.\d+-next.\d+$/
+    script: 'true' # skips tests
+    before_deploy:
+    - cd dist/ngx-openlayers
+    - cp ../../projects/ngx-openlayers/CHANGELOG.md CHANGELOG.md
     - npm pack
-    - mkdir -p lib
-    - cp *.tgz lib/
-    cache:
-      directories:
-      - lib
-  - stage: build demo
-    before_install:
-    - cd example
-    install:
-    - npm i
-    script:
-    - npm un -S ngx-openlayers
-    - cp -r ../lib .
-    - npm i -S lib/*.tgz
-    - npm run build
-    cache:
-      directories:
-      - lib
-  - stage: deploy library release
-    script: ignore
     deploy:
-      - provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
-        file_glob: true
-        file: lib/*
-        skip_cleanup: true
-        on:
-          tags: true
-  - stage: deploy demo pages
-    script: ignore
-    deploy:
-      - provider: pages
-        local_dir: dist
-        skip_cleanup: true
-        github_token: $GITHUB_OAUTH_TOKEN
-        on:
-          tags: true
-  - stage: publish library release
-    deploy:
-      provider: npm
-      email: $NPM_EMAIL
-      api_key: $NPM_TOKEN
+    - provider: releases
+      prerelease: true
+      api_key: $GITHUB_OAUTH_TOKEN
+      file_glob: true
+      file: '*.tgz'
+      skip_cleanup: true
       on:
         tags: true
-      skip_cleanup: true
 
+  - stage: release
+    name: next demo on github pages
+    if: tag =~ /^\d+.\d+.\d+-next.\d+$/
+    script: 'true' # skips tests
+    before_deploy:
+    - cd dist/demo-ngx-openlayers
+    deploy:
+    - provider: pages
+      local_dir: dist/demo-ngx-openlayers
+      skip_cleanup: true
+      github_token: $GITHUB_OAUTH_TOKEN
+      on:
+        tags: true
+
+  - stage: deploy
+    name: next lib version on npm
+    if: tag =~ /^\d+.\d+.\d+-next.\d+$/
+    script: 'true' # skips tests
+    before_deploy:
+    - cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md
+    - cd dist/ngx-openlayers
+    deploy:
+    - provider: npm
+      email: $NPM_EMAIL
+      api_key: $NPM_TOKEN
+      tag: next
+      skip_cleanup: true
+      on:
+        tags: true

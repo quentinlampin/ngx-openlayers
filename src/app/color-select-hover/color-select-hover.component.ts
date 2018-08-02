@@ -46,8 +46,10 @@ import { MapComponent, LayerVectorComponent } from 'ngx-openlayers';
 export class ColorSelectHoverComponent implements OnInit {
   constructor() {}
 
-  @ViewChild('map') map: MapComponent;
-  @ViewChildren('aoiLayerVector') aoiLayerVector: QueryList<LayerVectorComponent>;
+  @ViewChild('map')
+  map: MapComponent;
+  @ViewChildren('aoiLayerVector')
+  aoiLayerVector: QueryList<LayerVectorComponent>;
 
   features = {
     type: 'FeatureCollection',

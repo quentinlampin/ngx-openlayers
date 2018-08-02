@@ -9,10 +9,14 @@ import { MapComponent } from '../map.component';
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {
   instance: control.ZoomSlider;
 
-  @Input() className: string;
-  @Input() duration: number;
-  @Input() maxResolution: number;
-  @Input() minResolution: number;
+  @Input()
+  className: string;
+  @Input()
+  duration: number;
+  @Input()
+  maxResolution: number;
+  @Input()
+  minResolution: number;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomslider');
