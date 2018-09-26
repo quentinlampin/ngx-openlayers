@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <aol-map [width]="'100%'" [height]="'100%'">
-    <aol-view [zoom]="zoom">
+    <aol-view [zoom]="zoom" (onChangeZoom)="onChangeZoom($event)">
       <aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
     </aol-view>
     <aol-layer-tile [opacity]="opacity">
@@ -85,5 +85,9 @@ export class BasicComponent {
   decreaseOpacity() {
     this.opacity = Math.max(this.opacity - 0.1, 0);
     console.log('opacity: ', this.opacity);
+  }
+
+  onChangeZoom(evt) {
+    console.log('Zoom changed:', evt);
   }
 }
