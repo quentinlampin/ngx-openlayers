@@ -43,7 +43,7 @@ in `app.component.html`:
 
 ## Documentation
 
-The API is documented in [documentation](/documnetation)
+The API is documented in [documentation](/documentation/)
 
 ## Getting Help
 
