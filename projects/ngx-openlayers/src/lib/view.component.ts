@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { View, Extent, Coordinate } from 'openlayers';
+import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { View, Extent, ObjectEvent, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
 
 @Component({
@@ -42,12 +42,17 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   zoomAnimation = false;
 
+  @Output()
+  onChangeZoom: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
+
   constructor(private host: MapComponent) {}
 
   ngOnInit() {
     // console.log('creating ol.View instance with: ', this);
     this.instance = new View(this);
     this.host.instance.setView(this.instance);
+
+    this.instance.on('change:zoom', (event: ObjectEvent) => this.onChangeZoom.emit(event));
   }
 
   ngOnChanges(changes: SimpleChanges) {
