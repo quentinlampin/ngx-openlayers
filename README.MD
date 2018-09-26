@@ -12,6 +12,24 @@ npm install ngx-openlayers --save
 
 Here is a "minimal" map example that fetches tiles from OpenStreetMap and center the map in Meylan (France):
 
+in `app.module.ts`:
+```js
+...
+import { AngularOpenlayersModule } from "ngx-openlayers";
+...
+
+@NgModule({
+  imports: [
+    ...
+    AngularOpenlayersModule
+  ],
+  ...
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+in `app.component.html`:
 ```html
 <aol-map [width]="'500px'" [height]="'300'">
     <aol-view [zoom]="2">
@@ -25,7 +43,7 @@ Here is a "minimal" map example that fetches tiles from OpenStreetMap and center
 
 ## Documentation
 
-The API is documented in `documentation/`
+The API is documented in [documentation](/documnetation)
 
 ## Getting Help
 
