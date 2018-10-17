@@ -19,6 +19,7 @@ import { MarkerComponent } from './marker/marker.component';
 import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
 import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
+import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
       { path: 'arcgis-image', component: ArcgisImageComponent },
       { path: 'image-wms', component: ImageWMSComponent },
       { path: 'view-projection-update', component: ViewProjectionUpdateComponent },
+      { path: 'overview', component: OverviewComponent },
     ],
   },
   { path: '**', redirectTo: '' },
