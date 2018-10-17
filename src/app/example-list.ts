@@ -99,4 +99,10 @@ export const examplesList = [
     description: 'Dynamically update view projection.',
     routerLink: 'view-projection-update',
   },
+  {
+    title: 'Overview',
+    description: 'Overview of map',
+    routerLink: 'overview',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/overviewmap.html',
+  },
 ];

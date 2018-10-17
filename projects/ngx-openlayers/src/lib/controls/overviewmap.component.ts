@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Layer } from 'ol/layer';
 import { View } from 'ol';
 import { OverviewMap } from 'ol/control';
@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
     <ng-content></ng-content>
   `,
 })
-export class ControlOverviewMapComponent implements OnInit, OnDestroy {
+export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
   instance: OverviewMap;
   @Input()
   collapsed: boolean;
@@ -29,9 +29,7 @@ export class ControlOverviewMapComponent implements OnInit, OnDestroy {
   @Input()
   view: View;
 
-  constructor(private map: MapComponent) {
-    // console.log('instancing aol-control-overviewmap');
-  }
+  constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new OverviewMap(this);
@@ -39,7 +37,18 @@ export class ControlOverviewMapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // console.log('removing aol-control-overviewmap');
     this.map.instance.removeControl(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.instance != null && changes.hasOwnProperty('view')) {
+      this.reloadInstance();
+    }
+  }
+
+  private reloadInstance() {
+    this.map.instance.removeControl(this.instance);
+    this.instance = new OverviewMap(this);
+    this.map.instance.addControl(this.instance);
   }
 }
