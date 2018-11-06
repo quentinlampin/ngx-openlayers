@@ -5,6 +5,7 @@ node_js:
 install:
 - yarn
 cache:
+  timeout: 3600
   yarn: true
   directories:
   - node_modules
