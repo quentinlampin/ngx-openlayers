@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.1"></a>
+# [1.0.0-next.1](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.0...1.0.0-next.1) (2018-11-06)
+
+
+### Bug Fixes
+
+* **source:** check host instance before setSource ([#193](https://github.com/quentin-ol/ngx-openlayers/issues/193)) ([afeb1a9](https://github.com/quentin-ol/ngx-openlayers/commit/afeb1a9))
+
+
+### Features
+
+* **source:** update params when input changes (TileWMS and ImageWMS) ([#199](https://github.com/quentin-ol/ngx-openlayers/issues/199)) ([f7578a4](https://github.com/quentin-ol/ngx-openlayers/commit/f7578a4))
+* **view:** add zoom change output ([884429f](https://github.com/quentin-ol/ngx-openlayers/commit/884429f))
+
+
+
 <a name="1.0.0-next.0"></a>
 # [1.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/v0.8.22...v1.0.0-next.0) (2018-09-21)
 
