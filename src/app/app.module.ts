@@ -23,6 +23,7 @@ import { SwipeComponent } from './swipe/swipe.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { ColorSelectHoverComponent } from './color-select-hover/color-select-hover.component';
 import { MarkerComponent } from './marker/marker.component';
+import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MarkerComponent } from './marker/marker.component';
     OverlayComponent,
     ColorSelectHoverComponent,
     MarkerComponent,
+    ArcgisImageComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],

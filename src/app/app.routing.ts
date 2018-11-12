@@ -16,6 +16,7 @@ import { SwipeComponent } from './swipe/swipe.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { ColorSelectHoverComponent } from './color-select-hover/color-select-hover.component';
 import { MarkerComponent } from './marker/marker.component';
+import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'marker', component: MarkerComponent },
       { path: 'cluster', component: ClusterComponent },
       { path: 'raster', component: RasterComponent },
+      { path: 'arcgis-image', component: ArcgisImageComponent },
     ],
   },
   { path: '**', redirectTo: '' },
