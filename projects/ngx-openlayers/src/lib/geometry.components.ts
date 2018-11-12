@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { geom } from 'openlayers';
 import { FeatureComponent } from './feature.component';
 
@@ -71,5 +71,33 @@ export class GeometryPolygonComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // this.host.setGeometry(null);
+  }
+}
+
+@Component({
+  selector: 'aol-geometry-circle',
+  template: `
+    <ng-content></ng-content>
+  `,
+})
+export class GeometryCircleComponent implements OnInit {
+  public componentType = 'geometry-circle';
+  public instance: geom.Circle;
+
+  @Input()
+  get radius(): number {
+    return this.instance.getRadius();
+  }
+  set radius(radius: number) {
+    this.instance.setRadius(radius);
+  }
+
+  constructor(private host: FeatureComponent) {
+    // defaulting coordinates to [0,0]. To be overridden in child component.
+    this.instance = new geom.Circle([0, 0]);
+  }
+
+  ngOnInit() {
+    this.host.instance.setGeometry(this.instance);
   }
 }
