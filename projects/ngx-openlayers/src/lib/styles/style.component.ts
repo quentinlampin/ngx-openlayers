@@ -5,7 +5,9 @@ import { LayerVectorComponent } from '../layers/layervector.component';
 
 @Component({
   selector: 'aol-style',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class StyleComponent implements OnInit {
   private host: FeatureComponent | LayerVectorComponent;

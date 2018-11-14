@@ -13,7 +13,10 @@ import { Map, MapBrowserEvent, MapEvent, render, ObjectEvent, control, interacti
 
 @Component({
   selector: 'aol-map',
-  template: `<div [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`,
+  template: `
+    <div [style.width]="width" [style.height]="height"></div>
+    <ng-content></ng-content>
+  `,
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   public instance: Map;

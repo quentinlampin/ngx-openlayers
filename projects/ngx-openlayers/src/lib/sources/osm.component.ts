@@ -7,7 +7,9 @@ import { SourceRasterComponent } from './raster.component';
 
 @Component({
   selector: 'aol-source-osm',
-  template: `<div class="aol-source-osm"></div>`,
+  template: `
+    <div class="aol-source-osm"></div>
+  `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {

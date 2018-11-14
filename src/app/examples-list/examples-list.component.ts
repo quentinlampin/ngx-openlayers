@@ -6,16 +6,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   selector: 'app-examples-list',
   template: `
     <div class="search">
-      <form [formGroup]="form">
-        <input type="text" formControlName="term" placeholder="Search"/>
-      </form>
+      <form [formGroup]="form"><input type="text" formControlName="term" placeholder="Search" /></form>
     </div>
     <div class="wrapper">
       <div class="example-item" *ngFor="let example of list" [routerLink]="'examples/' + example.routerLink">
-        <span class="title">{{example.title}}</span>
-        <span class="description">{{example.description}}</span>
-        <div *ngIf="example.openLayersLink" class="open-layers-link" (click)="$event.stopPropagation();">
-          <a [href]="example.openLayersLink" target="_blank">{{example.openLayersLink}}</a>
+        <span class="title">{{ example.title }}</span> <span class="description">{{ example.description }}</span>
+        <div *ngIf="example.openLayersLink" class="open-layers-link" (click)="$event.stopPropagation()">
+          <a [href]="example.openLayersLink" target="_blank">{{ example.openLayersLink }}</a>
         </div>
       </div>
     </div>

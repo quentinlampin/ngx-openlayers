@@ -4,7 +4,9 @@ import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-view',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   public instance: View;

@@ -10,31 +10,31 @@ import { MapComponent, LayerVectorComponent } from 'ngx-openlayers';
       <aol-control-defaults></aol-control-defaults>
       <aol-interaction-select #select [style]="styleInterationSelected"></aol-interaction-select>
 
-
       <aol-view [zoom]="5">
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-group>
         <aol-layer-vector #aoiLayerVector *ngFor="let f of features.features">
-          <aol-style *ngIf="f.id === hoveredFeatureId; else notHovered">
+          <aol-style *ngIf="f.id === hoveredFeatureId; else: notHovered">
             <aol-style-stroke [color]="'white'" width="3"></aol-style-stroke>
-            <aol-style-fill [color]="'rgba(90, 17, 26, 0.3)'" ></aol-style-fill>
+            <aol-style-fill [color]="'rgba(90, 17, 26, 0.3)'"></aol-style-fill>
           </aol-style>
           <ng-template #notHovered>
             <aol-style>
               <aol-style-stroke [color]="'rgba(90, 17, 26)'" width="3"></aol-style-stroke>
-              <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'" ></aol-style-fill>
+              <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
             </aol-style>
           </ng-template>
           <aol-source-vector>
             <aol-feature [id]="f.id">
               <aol-geometry-polygon>
-                <aol-collection-coordinates [coordinates]="f.geometry.coordinates[0]" [srid]="'EPSG:4326'" ></aol-collection-coordinates>
+                <aol-collection-coordinates
+                  [coordinates]="f.geometry.coordinates[0]"
+                  [srid]="'EPSG:4326'"
+                ></aol-collection-coordinates>
               </aol-geometry-polygon>
             </aol-feature>
           </aol-source-vector>

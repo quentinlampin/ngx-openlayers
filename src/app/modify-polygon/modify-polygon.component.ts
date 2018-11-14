@@ -7,28 +7,25 @@ import { Feature } from 'geojson';
   template: `
     <aol-map #map width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
-      <aol-interaction-select [wrapX]="true" #select  ></aol-interaction-select>
+      <aol-interaction-select [wrapX]="true" #select></aol-interaction-select>
       <aol-interaction-modify
         #modify
         [features]="select.instance.getFeatures()"
-        (onModifyEnd)="modifyEnd($event.features.getArray()[0])">
+        (onModifyEnd)="modifyEnd($event.features.getArray()[0])"
+      >
       </aol-interaction-modify>
 
       <aol-view [zoom]="5">
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-vector *ngIf="feature">
         <aol-source-vector>
           <aol-feature>
             <aol-geometry-polygon>
-              <aol-collection-coordinates
-                [coordinates]="feature.geometry.coordinates[0]"
-                [srid]="'EPSG:4326'">
+              <aol-collection-coordinates [coordinates]="feature.geometry.coordinates[0]" [srid]="'EPSG:4326'">
               </aol-collection-coordinates>
             </aol-geometry-polygon>
           </aol-feature>

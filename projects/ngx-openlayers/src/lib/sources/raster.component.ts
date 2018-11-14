@@ -6,7 +6,9 @@ import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-raster',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   providers: [
     {
       provide: SourceComponent,

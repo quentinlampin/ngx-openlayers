@@ -12,31 +12,25 @@ import { Feature as OlFeature, format, geom } from 'openlayers';
         <aol-coordinate [x]="-2.269282" [y]="46.987247" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-vector>
         <aol-source-vector>
           <aol-feature>
             <aol-geometry-polygon>
-              <aol-collection-coordinates [coordinates]="feature.geometry.coordinates[0]" [srid]="'EPSG:4326'"></aol-collection-coordinates>
+              <aol-collection-coordinates
+                [coordinates]="feature.geometry.coordinates[0]"
+                [srid]="'EPSG:4326'"
+              ></aol-collection-coordinates>
             </aol-geometry-polygon>
           </aol-feature>
         </aol-source-vector>
       </aol-layer-vector>
 
       <aol-overlay [positioning]="'center-center'" [stopEvent]="false">
-        <aol-coordinate
-          [x]="tooltip.lon"
-          [y]="tooltip.lat"
-          [srid]="'EPSG:4326'"
-        >
-        </aol-coordinate>
+        <aol-coordinate [x]="tooltip.lon" [y]="tooltip.lat" [srid]="'EPSG:4326'"> </aol-coordinate>
         <aol-content>
-          <div class="tooltip tooltip-static">
-            {{tooltip.text}}
-          </div>
+          <div class="tooltip tooltip-static">{{ tooltip.text }}</div>
         </aol-content>
       </aol-overlay>
     </aol-map>

@@ -7,7 +7,9 @@ import { OverlayComponent } from './overlay.component';
 
 @Component({
   selector: 'aol-coordinate',
-  template: `<div class="aol-coordinate"></div>`,
+  template: `
+    <div class="aol-coordinate"></div>
+  `,
 })
 export class CoordinateComponent implements OnChanges {
   private host: any;
@@ -65,7 +67,9 @@ export class CoordinateComponent implements OnChanges {
 
 @Component({
   selector: 'aol-collection-coordinates',
-  template: `<div class="aol-collection-coordinates"></div>`,
+  template: `
+    <div class="aol-collection-coordinates"></div>
+  `,
 })
 export class CollectionCoordinatesComponent implements OnChanges {
   private host: any;

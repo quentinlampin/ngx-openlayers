@@ -7,7 +7,9 @@ import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-vectortile',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }],
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
