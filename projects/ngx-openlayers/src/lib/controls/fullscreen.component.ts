@@ -4,7 +4,9 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-fullscreen',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
   instance: control.FullScreen;

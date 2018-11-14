@@ -5,7 +5,9 @@ import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-tilewms',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMSComponent) }],
 })
 export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit {

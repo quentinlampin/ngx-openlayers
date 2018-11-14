@@ -14,24 +14,21 @@ import { FormBuilder, FormGroup } from '@angular/forms';
         <aol-coordinate [x]="form.get('x').value" [y]="form.get('y').value" srid="EPSG:4326"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
 
     <div class="info">
       <div class="current-coordinates">
         <h3>Map coordinates</h3>
-        <span>Longitude: {{currentLon}}</span>
-        <span>Latitude: {{currentLat}}</span>
-        <span>Zoom: {{currentZoom}}</span>
+        <span>Longitude: {{ currentLon }}</span> <span>Latitude: {{ currentLat }}</span>
+        <span>Zoom: {{ currentZoom }}</span>
       </div>
       <div class="update-coordinates">
         <h3>Update coordinates</h3>
         <form [formGroup]="form">
-          <div class="row"><label>Longitude:</label><input min="0" type="number" formControlName="x"></div>
-          <div class="row"><label>Latitude:</label><input min="0" type="number" formControlName="y"></div>
-          <div class="row"><label>Zoom:</label><input min="0" type="number" formControlName="zoom"></div>
+          <div class="row"><label>Longitude:</label><input min="0" type="number" formControlName="x" /></div>
+          <div class="row"><label>Latitude:</label><input min="0" type="number" formControlName="y" /></div>
+          <div class="row"><label>Zoom:</label><input min="0" type="number" formControlName="zoom" /></div>
         </form>
       </div>
     </div>

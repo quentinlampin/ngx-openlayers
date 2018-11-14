@@ -11,16 +11,15 @@ import { MapComponent, ViewComponent } from 'ngx-openlayers';
         <aol-coordinate [x]="2.181539" [y]="47.125488" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
 
     <aol-map #secondMap width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
       <aol-layer-tile>
         <aol-source-xyz
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}">
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        >
         </aol-source-xyz>
       </aol-layer-tile>
     </aol-map>

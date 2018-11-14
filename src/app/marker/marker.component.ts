@@ -13,9 +13,7 @@ import { Component, OnInit } from '@angular/core';
         <aol-coordinate [x]="-2.269282" [y]="46.987247" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-vector *ngIf="marker">
         <aol-source-vector #markers>
@@ -27,9 +25,11 @@ import { Component, OnInit } from '@angular/core';
               <aol-style-icon
                 [src]="'assets/marker.svg'"
                 [anchor]="[0.5, 1]"
-                [anchorXUnits]="'fraction'" [anchorYUnits]="'fraction'"
+                [anchorXUnits]="'fraction'"
+                [anchorYUnits]="'fraction'"
                 [scale]="2"
-                [anchorOrigin]="'top-left'">
+                [anchorOrigin]="'top-left'"
+              >
               </aol-style-icon>
             </aol-style>
           </aol-feature>

@@ -6,12 +6,9 @@ import { Router } from '@angular/router';
   selector: 'app-examples-item',
   template: `
     <div class="example-info" *ngIf="exampleInfo">
-      <span class="title">{{exampleInfo.title}}</span>
-      <span class="description">{{exampleInfo.description}}</span>
+      <span class="title">{{ exampleInfo.title }}</span> <span class="description">{{ exampleInfo.description }}</span>
       <div *ngIf="exampleInfo.openLayersLink" class="open-layers-link">
-        <a [href]="exampleInfo.openLayersLink" target="_blank">
-          {{exampleInfo.openLayersLink}}
-        </a>
+        <a [href]="exampleInfo.openLayersLink" target="_blank"> {{ exampleInfo.openLayersLink }} </a>
       </div>
     </div>
     <router-outlet></router-outlet>

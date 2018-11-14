@@ -15,7 +15,9 @@ import { TileGridWMTSComponent } from '../tilegridwmts.component';
 
 @Component({
   selector: 'aol-source-tilewmts',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {

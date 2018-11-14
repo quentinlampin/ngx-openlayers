@@ -4,7 +4,9 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-zoom',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
   instance: control.Zoom;

@@ -5,7 +5,9 @@ import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-geojson',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoJSONComponent) }],
 })
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {

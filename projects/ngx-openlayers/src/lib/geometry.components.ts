@@ -4,7 +4,9 @@ import { FeatureComponent } from './feature.component';
 
 @Component({
   selector: 'aol-geometry-linestring',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class GeometryLinestringComponent implements OnInit, OnDestroy {
   public componentType = 'geometry-linestring';
@@ -25,7 +27,9 @@ export class GeometryLinestringComponent implements OnInit, OnDestroy {
 
 @Component({
   selector: 'aol-geometry-point',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class GeometryPointComponent implements OnInit, OnDestroy {
   public componentType = 'geometry-point';
@@ -47,7 +51,9 @@ export class GeometryPointComponent implements OnInit, OnDestroy {
 
 @Component({
   selector: 'aol-geometry-polygon',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
 })
 export class GeometryPolygonComponent implements OnInit, OnDestroy {
   public componentType = 'geometry-polygon';
