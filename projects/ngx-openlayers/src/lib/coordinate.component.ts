@@ -1,7 +1,12 @@
 import { Component, Optional, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { proj, Coordinate } from 'openlayers';
 import { MapComponent } from './map.component';
-import { GeometryPointComponent, GeometryLinestringComponent, GeometryPolygonComponent } from './geometry.components';
+import {
+  GeometryPointComponent,
+  GeometryLinestringComponent,
+  GeometryPolygonComponent,
+  GeometryCircleComponent,
+} from './geometry.components';
 import { ViewComponent } from './view.component';
 import { OverlayComponent } from './overlay.component';
 
@@ -25,11 +30,14 @@ export class CoordinateComponent implements OnChanges {
     private map: MapComponent,
     @Optional() viewHost: ViewComponent,
     @Optional() geometryPointHost: GeometryPointComponent,
+    @Optional() geometryCircleHost: GeometryCircleComponent,
     @Optional() overlayHost: OverlayComponent
   ) {
     // console.log('instancing aol-coordinate');
     if (geometryPointHost !== null) {
       this.host = geometryPointHost;
+    } else if (geometryCircleHost !== null) {
+      this.host = geometryCircleHost;
     } else if (viewHost !== null) {
       this.host = viewHost;
     } else if (overlayHost !== null) {
@@ -55,6 +63,7 @@ export class CoordinateComponent implements OnChanges {
       case 'geometry-point':
         this.host.instance.setCoordinates(transformedCoordinates);
         break;
+      case 'geometry-circle':
       case 'view':
         this.host.instance.setCenter(transformedCoordinates);
         break;
