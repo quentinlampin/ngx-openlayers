@@ -36,7 +36,9 @@ import { interaction, Feature, geom, proj } from 'openlayers';
       <div class="draw-section">
         <button (click)="drawMode()">{{ isDrawing ? 'End draw' : 'Start draw' }}</button>
         <h3>Result</h3>
-        <pre><code>{{feature | json }}</code></pre>
+        <code>
+          <pre>{{ feature | json }}</pre>
+        </code>
       </div>
     </div>
   `,

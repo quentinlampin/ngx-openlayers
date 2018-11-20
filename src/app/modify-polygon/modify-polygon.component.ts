@@ -35,7 +35,9 @@ import { Feature } from 'geojson';
 
     <div class="info">
       <h3>Result</h3>
-      <pre><code>{{feature | json }}</code></pre>
+      <code>
+        <pre>{{ feature | json }}</pre>
+      </code>
     </div>
   `,
   styles: [

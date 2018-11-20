@@ -29,6 +29,7 @@ import {
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryCircleComponent,
 } from './lib/geometry.components';
 import { CollectionCoordinatesComponent, CoordinateComponent } from './lib/coordinate.component';
 import { StyleComponent } from './lib/styles/style.component';
@@ -96,6 +97,7 @@ export {
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryCircleComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
   StyleComponent,
@@ -167,6 +169,7 @@ const COMPONENTS = [
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryCircleComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
 
