@@ -23,6 +23,7 @@ import { SourceTileJSONComponent } from './lib/sources/tilejson.component';
 import { SourceGeoJSONComponent } from './lib/sources/geojson.component';
 import { SourceImageStaticComponent } from './lib/sources/imagestatic.component';
 import { SourceImageWMSComponent } from './lib/sources/imagewms.component';
+import { SourceImageArcGISRestComponent } from './lib/sources/imagearcgisrest.component';
 import { SourceRasterComponent } from './lib/sources/raster.component';
 import { FeatureComponent } from './lib/feature.component';
 import {
@@ -93,6 +94,7 @@ export {
   SourceImageStaticComponent,
   SourceImageWMSComponent,
   SourceRasterComponent,
+  SourceImageArcGISRestComponent,
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
@@ -164,6 +166,7 @@ const COMPONENTS = [
   SourceGeoJSONComponent,
   SourceImageStaticComponent,
   SourceImageWMSComponent,
+  SourceImageArcGISRestComponent,
   SourceRasterComponent,
   FeatureComponent,
   GeometryLinestringComponent,
