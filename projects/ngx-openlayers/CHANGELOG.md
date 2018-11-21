@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.2"></a>
+# [1.0.0-next.2](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.1...1.0.0-next.2) (2018-11-21)
+
+
+### Features
+
+* **geom:** add circle geometry ([#210](https://github.com/quentin-ol/ngx-openlayers/issues/210)) ([d789ccf](https://github.com/quentin-ol/ngx-openlayers/commit/d789ccf))
+* **source:** add Image ArcGIS source ([#209](https://github.com/quentin-ol/ngx-openlayers/issues/209)) ([98d1577](https://github.com/quentin-ol/ngx-openlayers/commit/98d1577))
+
+
+
 <a name="1.0.0-next.1"></a>
 # [1.0.0-next.1](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.0...1.0.0-next.1) (2018-11-06)
 
