@@ -18,6 +18,8 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
   distance: number;
   @Input()
   geometryFunction?: ((feature: Feature) => geom.Point);
+  @Input()
+  wrapX?: boolean;
 
   @ContentChild(SourceVectorComponent)
   sourceVectorComponent: SourceVectorComponent;
