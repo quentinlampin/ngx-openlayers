@@ -211,11 +211,77 @@ The `GeometryPolygonComponent` (`aol-geometry-polygon`) defines a polygon.
 <aol-feature>
     <aol-geometry-polygon>
         <aol-collection-coordinates
-            [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
+            [coordinates]="[[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]]"
             [srid]="'EPSG:4326'"
         >
         </aol-collection-coordinates>
     </aol-geometry-polygon>
+    <aol-style>
+        <aol-style-stroke [color]="'red'"></aol-style-stroke>
+        <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+    </aol-style>
+</aol-feature>
+```
+
+### MultiPoint component
+
+The `GeometryMultiPointComponent` (`aol-geometry-multipoint`) defines a collection of points.
+
+#### MultiPoint component example
+
+```html
+<aol-feature>
+    <aol-geometry-multipoint>
+        <aol-collection-coordinates
+            [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
+            [srid]="'EPSG:4326'"
+        >
+        </aol-collection-coordinates>
+    </aol-geometry-multipoint>
+    <aol-style>
+            <aol-style-circle [radius]="10">
+                <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+                <aol-style-fill [color]="'green'"></aol-style-fill>
+            </aol-style-circle>
+        </aol-style>
+</aol-feature>
+```
+
+### MultiLinestring component
+
+The `GeometryMultiLinestringComponent` (`aol-geometry-multilinestring`) defines a collection of multilines.
+
+#### MultiLinestring component example
+
+```html
+<aol-feature>
+    <aol-geometry-multilinestring>
+        <aol-collection-coordinates
+            [coordinates]="[[[5.0, 45.01],[5.01, 45.03]],[[6.0, 45.01],[6.01, 45.03]]]"
+            [srid]="'EPSG:4326'">
+        </aol-collection-coordinates>
+    </aol-geometry-multilinestring>
+    <aol-style>
+        <aol-style-stroke [color]="'red'"></aol-style-stroke>
+    </aol-style>
+</aol-feature>
+```
+
+### MultiPolygon component
+
+The `GeometryMultiPolygonComponent` (`aol-geometry-multipolygon`) defines a collection polygons.
+
+#### MultiPolygon component example
+
+```html
+<aol-feature>
+    <aol-geometry-multipolygon>
+        <aol-collection-coordinates
+            [coordinates]="[[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]],[[6, 45],[6.05, 45.05],[6.05, 44.95],[5.95, 44.95]]]"
+            [srid]="'EPSG:4326'"
+        >
+        </aol-collection-coordinates>
+    </aol-geometry-multipolygon>
     <aol-style>
         <aol-style-stroke [color]="'red'"></aol-style-stroke>
         <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>

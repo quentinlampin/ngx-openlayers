@@ -26,13 +26,15 @@ import { SourceImageWMSComponent } from './lib/sources/imagewms.component';
 import { SourceImageArcGISRestComponent } from './lib/sources/imagearcgisrest.component';
 import { SourceRasterComponent } from './lib/sources/raster.component';
 import { FeatureComponent } from './lib/feature.component';
-import {
-  GeometryLinestringComponent,
-  GeometryPointComponent,
-  GeometryPolygonComponent,
-  GeometryCircleComponent,
-} from './lib/geometry.components';
-import { CollectionCoordinatesComponent, CoordinateComponent } from './lib/coordinate.component';
+import { GeometryCircleComponent } from './lib/geom/geometrycircle.component';
+import { GeometryLinestringComponent } from './lib/geom/geometrylinestring.component';
+import { GeometryMultiLinestringComponent } from './lib/geom/geometrymultilinestring.component';
+import { GeometryMultiPointComponent } from './lib/geom/geometrymultipoint.component';
+import { GeometryMultiPolygonComponent } from './lib/geom/geometrymultipolygon.component';
+import { GeometryPointComponent } from './lib/geom/geometrypoint.component';
+import { GeometryPolygonComponent } from './lib/geom/geometrypolygon.component';
+import { CoordinateComponent } from './lib/coordinate.component';
+import { CollectionCoordinatesComponent } from './lib/collectioncoordinates.component';
 import { StyleComponent } from './lib/styles/style.component';
 import { StyleCircleComponent } from './lib/styles/circle.component';
 import { StyleStrokeComponent } from './lib/styles/stroke.component';
@@ -97,6 +99,9 @@ export {
   SourceImageArcGISRestComponent,
   FeatureComponent,
   GeometryLinestringComponent,
+  GeometryMultiLinestringComponent,
+  GeometryMultiPointComponent,
+  GeometryMultiPolygonComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
   GeometryCircleComponent,
@@ -170,6 +175,9 @@ const COMPONENTS = [
   SourceRasterComponent,
   FeatureComponent,
   GeometryLinestringComponent,
+  GeometryMultiLinestringComponent,
+  GeometryMultiPointComponent,
+  GeometryMultiPolygonComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
   GeometryCircleComponent,
