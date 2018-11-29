@@ -81,6 +81,10 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
               this.instance.setZoom(changes[key].currentValue);
             }
             break;
+          case 'projection':
+            this.instance = new View(this);
+            this.host.instance.setView(this.instance);
+            break;
           default:
             break;
         }
