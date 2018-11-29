@@ -17,7 +17,8 @@ export const examplesList = [
   },
   {
     title: 'Display geometry',
-    description: 'Example of geojson features : point, polygon, linestring.',
+    description:
+      'Example of geojson features : point, polygon, linestring, circle, multi-point, multi-linestring, multi-polygon.',
     routerLink: 'display-geometry',
     openLayersLink: 'https://openlayers.org/en/latest/examples/geojson.html',
   },

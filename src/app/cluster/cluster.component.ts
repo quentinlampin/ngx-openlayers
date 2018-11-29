@@ -39,7 +39,7 @@ import { Component, OnInit } from '@angular/core';
           <aol-feature>
             <aol-geometry-polygon>
               <aol-collection-coordinates
-                [coordinates]="[[1.47, 43.545], [1.51, 43.545], [1.51, 43.565], [1.47, 43.565]]"
+                [coordinates]="[[[1.47, 43.545], [1.51, 43.545], [1.51, 43.565], [1.47, 43.565]]]"
                 [srid]="'EPSG:4326'"
               >
               </aol-collection-coordinates>
