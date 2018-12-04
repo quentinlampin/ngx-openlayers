@@ -14,7 +14,7 @@ export class SourceComponent implements OnDestroy {
   constructor(protected host: LayerComponent, protected raster?: SourceRasterComponent) {}
 
   ngOnDestroy() {
-    if (this.host) {
+    if (this.host && this.host.instance) {
       this.host.instance.setSource(null);
     }
 

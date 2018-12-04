@@ -12,16 +12,13 @@ import { proj } from 'openlayers';
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
 
     <div class="info">
       <div class="cursor-coordinates">
         <h3>Cursor coordinates</h3>
-        <span>Longitude: {{lonToString(lon)}}</span>
-        <span>Latitude: {{latToString(lat)}}</span>
+        <span>Longitude: {{ lonToString(lon) }}</span> <span>Latitude: {{ latToString(lat) }}</span>
       </div>
     </div>
   `,

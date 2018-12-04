@@ -12,9 +12,7 @@ import { Component, OnInit } from '@angular/core';
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-tile [opacity]="1">
-        <aol-source-osm></aol-source-osm>
-      </aol-layer-tile>
+      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-vector>
         <aol-source-cluster [distance]="distance">
@@ -31,11 +29,8 @@ import { Component, OnInit } from '@angular/core';
               <aol-style-stroke [color]="'#fff'"></aol-style-stroke>
               <aol-style-fill [color]="'#3399CC'"></aol-style-fill>
             </aol-style-circle>
-            <aol-style-text [text]="'1'">
-              <aol-style-fill [color]="'#fff'"></aol-style-fill>
-            </aol-style-text>
+            <aol-style-text [text]="'1'"> <aol-style-fill [color]="'#fff'"></aol-style-fill> </aol-style-text>
           </aol-style>
-
         </aol-source-cluster>
       </aol-layer-vector>
 
@@ -44,17 +39,16 @@ import { Component, OnInit } from '@angular/core';
           <aol-feature>
             <aol-geometry-polygon>
               <aol-collection-coordinates
-                [coordinates]="[[1.47, 43.545],[1.51, 43.545],[1.51, 43.565], [1.47, 43.565]]"
+                [coordinates]="[[1.47, 43.545], [1.51, 43.545], [1.51, 43.565], [1.47, 43.565]]"
                 [srid]="'EPSG:4326'"
               >
               </aol-collection-coordinates>
             </aol-geometry-polygon>
             <aol-style>
               <aol-style-stroke [color]="'red'" [width]="2"></aol-style-stroke>
-              <aol-style-fill [color]="[255,0,0,0.1]"></aol-style-fill>
+              <aol-style-fill [color]="[255, 0, 0, 0.1]"></aol-style-fill>
             </aol-style>
           </aol-feature>
-
         </aol-source-vector>
       </aol-layer-vector>
     </aol-map>

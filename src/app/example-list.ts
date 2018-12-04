@@ -78,4 +78,11 @@ export const examplesList = [
     title: 'Raster',
     routerLink: 'raster',
   },
+  {
+    title: 'Image ArcGIS',
+    description:
+      'Example of using aol-source-imagearcgisrest. This example display exported image of MapServer ArcGis endpoint.',
+    routerLink: 'arcgis-image',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/arcgis-image.html',
+  },
 ];

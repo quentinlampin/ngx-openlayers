@@ -23,12 +23,14 @@ import { SourceTileJSONComponent } from './lib/sources/tilejson.component';
 import { SourceGeoJSONComponent } from './lib/sources/geojson.component';
 import { SourceImageStaticComponent } from './lib/sources/imagestatic.component';
 import { SourceImageWMSComponent } from './lib/sources/imagewms.component';
+import { SourceImageArcGISRestComponent } from './lib/sources/imagearcgisrest.component';
 import { SourceRasterComponent } from './lib/sources/raster.component';
 import { FeatureComponent } from './lib/feature.component';
 import {
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryCircleComponent,
 } from './lib/geometry.components';
 import { CollectionCoordinatesComponent, CoordinateComponent } from './lib/coordinate.component';
 import { StyleComponent } from './lib/styles/style.component';
@@ -92,10 +94,12 @@ export {
   SourceImageStaticComponent,
   SourceImageWMSComponent,
   SourceRasterComponent,
+  SourceImageArcGISRestComponent,
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryCircleComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
   StyleComponent,
@@ -162,11 +166,13 @@ const COMPONENTS = [
   SourceGeoJSONComponent,
   SourceImageStaticComponent,
   SourceImageWMSComponent,
+  SourceImageArcGISRestComponent,
   SourceRasterComponent,
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryPointComponent,
   GeometryPolygonComponent,
+  GeometryCircleComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
 

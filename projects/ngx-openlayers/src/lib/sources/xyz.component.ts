@@ -17,7 +17,9 @@ import { SourceRasterComponent } from './raster.component';
 
 @Component({
   selector: 'aol-source-xyz',
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
