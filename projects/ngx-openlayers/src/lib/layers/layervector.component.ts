@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Input, Optional, OnChanges, SimpleChanges } from '@angular/core';
-import { layer, source } from 'openlayers';
+import { layer, source, style, StyleFunction } from 'openlayers';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
@@ -15,6 +15,15 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   @Input()
   renderBuffer: number;
+
+  @Input()
+  style: style.Style | style.Style[] | StyleFunction;
+
+  @Input()
+  updateWhileAnimating: boolean;
+
+  @Input()
+  updateWhileInteracting: boolean;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);
