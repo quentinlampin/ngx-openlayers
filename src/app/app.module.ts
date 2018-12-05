@@ -24,6 +24,7 @@ import { OverlayComponent } from './overlay/overlay.component';
 import { ColorSelectHoverComponent } from './color-select-hover/color-select-hover.component';
 import { MarkerComponent } from './marker/marker.component';
 import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
+import { ImageWMSComponent } from './image-wms/image-wms.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
     ColorSelectHoverComponent,
     MarkerComponent,
     ArcgisImageComponent,
+    ImageWMSComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],
