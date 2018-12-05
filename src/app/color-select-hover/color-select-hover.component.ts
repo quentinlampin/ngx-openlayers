@@ -18,7 +18,7 @@ import { MapComponent, LayerVectorComponent } from 'ngx-openlayers';
 
       <aol-layer-group>
         <aol-layer-vector #aoiLayerVector *ngFor="let f of features.features">
-          <aol-style *ngIf="f.id === hoveredFeatureId; else: notHovered">
+          <aol-style *ngIf="f.id === hoveredFeatureId; else notHovered">
             <aol-style-stroke [color]="'white'" width="3"></aol-style-stroke>
             <aol-style-fill [color]="'rgba(90, 17, 26, 0.3)'"></aol-style-fill>
           </aol-style>

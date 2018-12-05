@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Host, Input, OnInit, forwardRef, Output, EventEmitter } from '@angular/core';
 import { ProjectionLike, source, Extent, AttributionLike, ImageLoadFunctionType, Size } from 'openlayers';
 import { SourceComponent } from './source.component';
 import { LayerImageComponent } from '../layers/layerimage.component';
@@ -30,6 +30,13 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   @Input()
   imageSize?: Size;
 
+  @Output()
+  onImageLoadStart = new EventEmitter<source.ImageEvent>();
+  @Output()
+  onImageLoadEnd = new EventEmitter<source.ImageEvent>();
+  @Output()
+  onImageLoadError = new EventEmitter<source.ImageEvent>();
+
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
   }
@@ -37,5 +44,8 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   ngOnInit() {
     this.instance = new source.ImageStatic(this);
     this.host.instance.setSource(this.instance);
+    this.instance.on('imageloadstart', (event: source.ImageEvent) => this.onImageLoadStart.emit(event));
+    this.instance.on('imageloadend', (event: source.ImageEvent) => this.onImageLoadEnd.emit(event));
+    this.instance.on('imageloaderror', (event: source.ImageEvent) => this.onImageLoadError.emit(event));
   }
 }

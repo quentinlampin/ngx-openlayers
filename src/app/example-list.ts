@@ -85,4 +85,10 @@ export const examplesList = [
     routerLink: 'arcgis-image',
     openLayersLink: 'https://openlayers.org/en/latest/examples/arcgis-image.html',
   },
+  {
+    title: 'Image Load Events',
+    description: 'Example of using aol-source-imagewms. This example listens to image loading events.',
+    routerLink: 'image-wms',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/image-load-events.html',
+  },
 ];
