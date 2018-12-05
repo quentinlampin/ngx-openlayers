@@ -1,4 +1,14 @@
-import { Component, Host, Input, OnChanges, OnInit, forwardRef, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Host,
+  Input,
+  OnChanges,
+  OnInit,
+  forwardRef,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { AttributionLike, ImageLoadFunctionType, ProjectionLike, source } from 'openlayers';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
@@ -36,6 +46,13 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   @Input()
   url: string;
 
+  @Output()
+  onImageLoadStart = new EventEmitter<source.ImageEvent>();
+  @Output()
+  onImageLoadEnd = new EventEmitter<source.ImageEvent>();
+  @Output()
+  onImageLoadError = new EventEmitter<source.ImageEvent>();
+
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
   }
@@ -43,6 +60,9 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   ngOnInit() {
     this.instance = new source.ImageWMS(this);
     this.host.instance.setSource(this.instance);
+    this.instance.on('imageloadstart', (event: source.ImageEvent) => this.onImageLoadStart.emit(event));
+    this.instance.on('imageloadend', (event: source.ImageEvent) => this.onImageLoadEnd.emit(event));
+    this.instance.on('imageloaderror', (event: source.ImageEvent) => this.onImageLoadError.emit(event));
   }
 
   ngOnChanges(changes: SimpleChanges) {
