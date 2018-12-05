@@ -41,14 +41,14 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   style: string;
   @Input()
-  tileClass?: ((
+  tileClass?: (
     n: ImageTile,
     coords: TileCoord,
     state: Tile.State,
     s1: string,
     s2: string,
     type: TileLoadFunctionType
-  ) => any);
+  ) => any;
   @Input()
   tilePixelRatio?: number;
   @Input()
