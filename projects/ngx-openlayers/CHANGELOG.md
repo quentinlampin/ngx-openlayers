@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.3"></a>
+# [1.0.0-next.3](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.2...1.0.0-next.3) (2018-12-12)
+
+
+### Features
+
+* **cluster:** add wrapX option ([93429a6](https://github.com/quentin-ol/ngx-openlayers/commit/93429a6))
+* **image:** add image loading events ([fc856b3](https://github.com/quentin-ol/ngx-openlayers/commit/fc856b3))
+
+
+
 <a name="1.0.0-next.2"></a>
 # [1.0.0-next.2](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.1...1.0.0-next.2) (2018-11-21)
 
