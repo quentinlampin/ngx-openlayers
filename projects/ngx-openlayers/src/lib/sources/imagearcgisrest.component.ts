@@ -22,6 +22,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   @Input() ratio = 1;
   @Input() resolutions?: number[];
   @Input() logo?: string | olx.LogoOptions;
+  @Input() wrapX?: boolean;
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);

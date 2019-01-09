@@ -30,6 +30,7 @@ export class SourceComponent implements OnDestroy {
 
     if (this.raster) {
       this.raster.sources = [s];
+      this.raster.init();
     }
   }
 }
