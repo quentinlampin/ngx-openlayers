@@ -1,4 +1,4 @@
-import { Component, Host, forwardRef, Input, AfterContentInit, Optional } from '@angular/core';
+import { Component, Host, forwardRef, Input, AfterContentInit, Optional, Output, EventEmitter } from '@angular/core';
 import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
@@ -34,6 +34,13 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   @Input()
   wrapX: boolean;
 
+  @Output()
+  tileLoadStart: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  @Output()
+  tileLoadEnd: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  @Output()
+  tileLoadError: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+
   constructor(
     @Host()
     @Optional()
@@ -49,7 +56,13 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
     }
+
     this.instance = new source.OSM(this);
+
+    this.instance.on('tileloadstart', (event: source.TileEvent) => this.tileLoadStart.emit(event));
+    this.instance.on('tileloadend', (event: source.TileEvent) => this.tileLoadEnd.emit(event));
+    this.instance.on('tileloaderror', (event: source.TileEvent) => this.tileLoadError.emit(event));
+
     this._register(this.instance);
   }
 }

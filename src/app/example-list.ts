@@ -76,6 +76,8 @@ export const examplesList = [
   },
   {
     title: 'Raster',
+    description:
+      'Example of using raster to perform pixel-based operations. Adjust brightness and contrast in this case.',
     routerLink: 'raster',
   },
   {

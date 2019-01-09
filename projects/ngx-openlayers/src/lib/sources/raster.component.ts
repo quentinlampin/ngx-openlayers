@@ -40,11 +40,13 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   }
 
   ngAfterContentInit() {
-    this.instance = new source.Raster(this);
+    this.init();
+  }
 
+  init() {
+    this.instance = new source.Raster(this);
     this.instance.on('beforeoperations', (event: source.RasterEvent) => this.beforeOperations.emit(event));
     this.instance.on('afteroperations', (event: source.RasterEvent) => this.afterOperations.emit(event));
-
     this._register(this.instance);
   }
 }

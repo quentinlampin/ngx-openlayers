@@ -9,7 +9,7 @@ interface RasterData {
 @Component({
   selector: 'app-raster',
   template: `
-    <aol-map [width]="'100%'" [height]="'100%'">
+    <aol-map width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
       <aol-control-fullscreen></aol-control-fullscreen>
@@ -18,35 +18,20 @@ interface RasterData {
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
 
-      <aol-layer-image *ngIf="selectLayer === 'osm'">
+      <aol-layer-image>
         <aol-source-raster
-          #raster1
+          threads="4"
+          operationType="image"
           [operation]="operation"
-          [threads]="threads"
           [lib]="lib"
-          [operationType]="operationType"
           (beforeOperations)="beforeOperations($event)"
-          (afterOperations)="afterOperations($event)"
         >
-          <aol-source-osm></aol-source-osm>
-        </aol-source-raster>
-      </aol-layer-image>
-
-      <aol-layer-image *ngIf="selectLayer === 'xyz'">
-        <aol-source-raster
-          #raster2
-          [operation]="operation"
-          [threads]="threads"
-          [lib]="lib"
-          [operationType]="operationType"
-          (beforeOperations)="beforeOperations($event)"
-          (afterOperations)="afterOperations($event)"
-        >
+          <aol-source-osm *ngIf="selectLayer === 'osm'"></aol-source-osm>
           <aol-source-xyz
+            *ngIf="selectLayer === 'xyz'"
             url="https://c.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=0e6fc415256d4fbb9b5166a718591d71"
             crossOrigin=""
-          >
-          </aol-source-xyz>
+          ></aol-source-xyz>
         </aol-source-raster>
       </aol-layer-image>
     </aol-map>
@@ -94,8 +79,6 @@ interface RasterData {
   ],
 })
 export class RasterComponent {
-  threads = 4;
-  operationType = 'image';
   lib: any = {
     brightness: brightness,
     contrast: contrast,
@@ -105,7 +88,7 @@ export class RasterComponent {
 
   selectLayer = 'osm';
   @ViewChild(SourceRasterComponent)
-  currentRasterSource;
+  rasterSource;
 
   beforeOperations(event) {
     const data: RasterData = event.data;
@@ -120,10 +103,8 @@ export class RasterComponent {
     return imageData;
   }
 
-  afterOperations() {}
-
   updateRaster() {
-    this.currentRasterSource.instance.changed();
+    this.rasterSource.instance.refresh();
   }
 }
 
