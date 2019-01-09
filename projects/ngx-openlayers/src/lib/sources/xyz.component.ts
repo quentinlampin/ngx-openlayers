@@ -8,6 +8,8 @@ import {
   ContentChild,
   SimpleChanges,
   Optional,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { source, Size, TileUrlFunctionType, TileLoadFunctionType, tilegrid } from 'openlayers';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -58,6 +60,13 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @ContentChild(TileGridComponent)
   tileGridXYZ: TileGridComponent;
 
+  @Output()
+  tileLoadStart: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  @Output()
+  tileLoadEnd: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  @Output()
+  tileLoadError: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+
   constructor(
     @Optional()
     @Host()
@@ -73,8 +82,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
     }
-    this.instance = new source.XYZ(this);
-    this._register(this.instance);
+    this.init();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -91,8 +99,17 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
 
     this.instance.setProperties(properties, false);
     if (changes.hasOwnProperty('url')) {
-      this.instance = new source.XYZ(this);
-      this._register(this.instance);
+      this.init();
     }
+  }
+
+  init() {
+    this.instance = new source.XYZ(this);
+
+    this.instance.on('tileloadstart', (event: source.TileEvent) => this.tileLoadStart.emit(event));
+    this.instance.on('tileloadend', (event: source.TileEvent) => this.tileLoadEnd.emit(event));
+    this.instance.on('tileloaderror', (event: source.TileEvent) => this.tileLoadError.emit(event));
+
+    this._register(this.instance);
   }
 }
