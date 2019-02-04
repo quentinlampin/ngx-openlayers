@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.5"></a>
+# [1.0.0-next.5](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.4...1.0.0-next.5) (2019-02-04)
+
+
+### Features
+
+* **vector:** add style, updateWhileAnimating and updateWhileInteracting inputs ([76c0c83](https://github.com/quentin-ol/ngx-openlayers/commit/76c0c83)), closes [#198](https://github.com/quentin-ol/ngx-openlayers/issues/198)
+
+
+
 <a name="1.0.0-next.4"></a>
 # [1.0.0-next.4](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.3...1.0.0-next.4) (2019-01-14)
 
