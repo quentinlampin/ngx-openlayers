@@ -1,5 +1,6 @@
-import { Component, forwardRef, Host, Input, OnInit } from '@angular/core';
-import { source, ProjectionLike, Attribution, ImageLoadFunctionType } from 'openlayers';
+import { Component, forwardRef, Host, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Attribution, ImageLoadFunctionType, ProjectionLike, source } from 'openlayers';
+
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 
@@ -10,7 +11,7 @@ import { SourceComponent } from './source.component';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
 })
-export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit {
+export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
   instance: source.ImageArcGISRest;
 
   @Input() projection: ProjectionLike | string;
@@ -31,5 +32,11 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   ngOnInit() {
     this.instance = new source.ImageArcGISRest(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.instance && changes.hasOwnProperty('params')) {
+      this.instance.updateParams(this.params);
+    }
   }
 }
