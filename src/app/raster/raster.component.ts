@@ -23,7 +23,6 @@ interface RasterData {
           threads="4"
           operationType="image"
           [operation]="operation"
-          [lib]="lib"
           (beforeOperations)="beforeOperations($event)"
         >
           <aol-source-osm *ngIf="selectLayer === 'osm'"></aol-source-osm>
@@ -79,10 +78,7 @@ interface RasterData {
   ],
 })
 export class RasterComponent {
-  lib: any = {
-    brightness: brightness,
-    contrast: contrast,
-  };
+  operation = rasterOperation;
   brightness = 0;
   contrast = 0;
 
@@ -96,13 +92,6 @@ export class RasterComponent {
     data.contrast = this.contrast;
   }
 
-  operation(imageDatas: [ImageData], data: RasterData) {
-    let [imageData] = imageDatas;
-    imageData = brightness(imageData, data.brightness);
-    imageData = contrast(imageData, data.contrast);
-    return imageData;
-  }
-
   updateRaster() {
     this.rasterSource.instance.refresh();
   }
@@ -110,28 +99,20 @@ export class RasterComponent {
 
 /**
  * @see https://github.com/canastro/image-filter-brightness/blob/master/src/transform.js
- */
-function brightness(imageData: ImageData, adjustment: number) {
-  const pixels = imageData.data,
-    pixelsLength = pixels.length;
-
-  for (let i = 0; i < pixelsLength; i += 4) {
-    pixels[i] += adjustment;
-    pixels[i + 1] += adjustment;
-    pixels[i + 2] += adjustment;
-  }
-  return imageData;
-}
-
-/**
  * @see https://github.com/canastro/image-filter-contrast/blob/master/src/transform.js
  */
-function contrast(imageData: ImageData, adjustment: number) {
+export function rasterOperation(imageDatas: [ImageData], data: RasterData): ImageData {
+  const [imageData] = imageDatas;
+
   const pixels = imageData.data,
-    factor = (259 * (adjustment + 255)) / (255 * (259 - adjustment)),
-    pixelsLength = pixels.length;
+    pixelsLength = pixels.length,
+    factor = (259 * (data.contrast + 255)) / (255 * (259 - data.contrast));
 
   for (let i = 0; i < pixelsLength; i += 4) {
+    pixels[i] += data.brightness;
+    pixels[i + 1] += data.brightness;
+    pixels[i + 2] += data.brightness;
+
     pixels[i] = factor * (pixels[i] - 128) + 128;
     pixels[i + 1] = factor * (pixels[i + 1] - 128) + 128;
     pixels[i + 2] = factor * (pixels[i + 2] - 128) + 128;
