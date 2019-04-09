@@ -4,7 +4,12 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <aol-map [width]="'100%'" [height]="'100%'">
-      <aol-view [zoom]="zoom" (onChangeZoom)="onChangeZoom($event)">
+      <aol-view
+        [zoom]="zoom"
+        (onChangeResolution)="onChangeResolution($event)"
+        (onChangeZoom)="onChangeZoom($event)"
+        (onChangeCenter)="onChangeCenter($event)"
+      >
         <aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
       <aol-layer-tile [opacity]="opacity"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
@@ -44,6 +49,8 @@ import { Component } from '@angular/core';
       <span>opacity:</span><button (click)="increaseOpacity()">+</button><button (click)="decreaseOpacity()">-</button
       ><br />
       <span>zoom:</span><button (click)="increaseZoom()">+</button><button (click)="decreaseZoom()">-</button><br />
+      <span>latitude:</span><button (click)="increaseLat()">+</button><button (click)="decreaseLat()">-</button><br />
+      <span>longitude:</span><button (click)="increaseLon()">+</button><button (click)="decreaseLon()">-</button><br />
     </div>
   `,
   styles: [
@@ -67,6 +74,8 @@ export class BasicComponent {
   public zoom = 15;
   public opacity = 1.0;
   public width = 5;
+  public lon = 5;
+  public lat = 45;
 
   increaseZoom() {
     this.zoom = Math.min(this.zoom + 1, 18);
@@ -78,6 +87,26 @@ export class BasicComponent {
     console.log('zoom: ', this.zoom);
   }
 
+  increaseLat() {
+    this.lat = Math.max(-90, Math.min(90, this.lat + 1));
+    console.log('lat: ', this.lat);
+  }
+
+  decreaseLat() {
+    this.lat = Math.max(-90, Math.min(90, this.lat - 1));
+    console.log('lat: ', this.lat);
+  }
+
+  increaseLon() {
+    this.lon = Math.max(-180, Math.min(180, this.lat + 1));
+    console.log('lon: ', this.lon);
+  }
+
+  decreaseLon() {
+    this.lon = Math.max(-180, Math.min(180, this.lat - 1));
+    console.log('lon: ', this.lon);
+  }
+
   increaseOpacity() {
     this.opacity = Math.min(this.opacity + 0.1, 1);
     console.log('opacity: ', this.opacity);
@@ -86,6 +115,14 @@ export class BasicComponent {
   decreaseOpacity() {
     this.opacity = Math.max(this.opacity - 0.1, 0);
     console.log('opacity: ', this.opacity);
+  }
+
+  onChangeResolution(evt) {
+    console.log('Resolution changed:', evt);
+  }
+
+  onChangeCenter(evt) {
+    console.log('Center changed:', evt);
   }
 
   onChangeZoom(evt) {

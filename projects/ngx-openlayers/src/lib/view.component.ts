@@ -43,12 +43,15 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   center: Coordinate;
   @Input()
   projection: string;
-
   @Input()
   zoomAnimation = false;
 
   @Output()
   onChangeZoom: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
+  @Output()
+  onChangeResolution: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
+  @Output()
+  onChangeCenter: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
 
   constructor(private host: MapComponent) {}
 
@@ -58,6 +61,8 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
     this.host.instance.setView(this.instance);
 
     this.instance.on('change:zoom', (event: ObjectEvent) => this.onChangeZoom.emit(event));
+    this.instance.on('change:resolution', (event: ObjectEvent) => this.onChangeResolution.emit(event));
+    this.instance.on('change:center', (event: ObjectEvent) => this.onChangeCenter.emit(event));
   }
 
   ngOnChanges(changes: SimpleChanges) {
