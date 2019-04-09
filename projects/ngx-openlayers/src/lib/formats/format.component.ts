@@ -1,6 +1,6 @@
-import { format } from 'openlayers';
+import Feature from 'ol/format/Feature';
 
 export class FormatComponent {
-  public instance: format.Feature;
+  public instance: Feature;
   public componentType = 'format';
 }

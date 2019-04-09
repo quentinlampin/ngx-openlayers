@@ -1,9 +1,12 @@
 import { Component, Host, forwardRef, Input, AfterContentInit, Optional, Output, EventEmitter } from '@angular/core';
-import { source, AttributionLike, TileLoadFunctionType } from 'openlayers';
+import { OSM } from 'ol/source';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
 import { SourceRasterComponent } from './raster.component';
+import { LoadFunction } from 'ol/Tile';
+import { AttributionLike } from 'ol/source/Source';
+import { TileSourceEvent } from 'ol/source/Tile';
 
 @Component({
   selector: 'aol-source-osm',
@@ -13,7 +16,7 @@ import { SourceRasterComponent } from './raster.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
-  instance: source.OSM;
+  instance: OSM;
 
   @Input()
   attributions: AttributionLike;
@@ -28,18 +31,18 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   @Input()
   reprojectionErrorThreshold: number;
   @Input()
-  tileLoadFunction: TileLoadFunctionType;
+  tileLoadFunction: LoadFunction;
   @Input()
   url: string;
   @Input()
   wrapX: boolean;
 
   @Output()
-  tileLoadStart: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  tileLoadStart: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
   @Output()
-  tileLoadEnd: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  tileLoadEnd: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
   @Output()
-  tileLoadError: EventEmitter<source.TileEvent> = new EventEmitter<source.TileEvent>();
+  tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
   constructor(
     @Host()
@@ -57,12 +60,11 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
       this.tileGrid = this.tileGridXYZ.instance;
     }
 
-    this.instance = new source.OSM(this);
+    this.instance = new OSM(this);
 
-    this.instance.on('tileloadstart', (event: source.TileEvent) => this.tileLoadStart.emit(event));
-    this.instance.on('tileloadend', (event: source.TileEvent) => this.tileLoadEnd.emit(event));
-    this.instance.on('tileloaderror', (event: source.TileEvent) => this.tileLoadError.emit(event));
-
+    this.instance.on('tileloadstart', (event: TileSourceEvent) => this.tileLoadStart.emit(event));
+    this.instance.on('tileloadend', (event: TileSourceEvent) => this.tileLoadEnd.emit(event));
+    this.instance.on('tileloaderror', (event: TileSourceEvent) => this.tileLoadError.emit(event));
     this._register(this.instance);
   }
 }

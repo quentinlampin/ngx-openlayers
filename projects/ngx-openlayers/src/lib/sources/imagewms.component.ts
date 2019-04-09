@@ -9,9 +9,13 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { AttributionLike, ImageLoadFunctionType, ProjectionLike, source } from 'openlayers';
+import { ImageWMS } from 'ol/source';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
+import { ProjectionLike } from 'ol/proj';
+import { AttributionLike } from 'ol/source/Source';
+import { LoadFunction } from 'ol/Image';
+import { ImageSourceEvent } from 'ol/source/Image';
 
 @Component({
   selector: 'aol-source-imagewms',
@@ -21,7 +25,7 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
 })
 export class SourceImageWMSComponent extends SourceComponent implements OnChanges, OnInit {
-  instance: source.ImageWMS;
+  instance: ImageWMS;
 
   @Input()
   attributions: AttributionLike;
@@ -32,9 +36,7 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   @Input()
   serverType: string;
   @Input()
-  imageLoadFunction?: ImageLoadFunctionType;
-  @Input()
-  logo: string | olx.LogoOptions;
+  imageLoadFunction?: LoadFunction;
   @Input()
   params: Object;
   @Input()
@@ -47,22 +49,22 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   url: string;
 
   @Output()
-  onImageLoadStart = new EventEmitter<source.ImageEvent>();
+  onImageLoadStart = new EventEmitter<ImageSourceEvent>();
   @Output()
-  onImageLoadEnd = new EventEmitter<source.ImageEvent>();
+  onImageLoadEnd = new EventEmitter<ImageSourceEvent>();
   @Output()
-  onImageLoadError = new EventEmitter<source.ImageEvent>();
+  onImageLoadError = new EventEmitter<ImageSourceEvent>();
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
   }
 
   ngOnInit() {
-    this.instance = new source.ImageWMS(this);
+    this.instance = new ImageWMS(this);
     this.host.instance.setSource(this.instance);
-    this.instance.on('imageloadstart', (event: source.ImageEvent) => this.onImageLoadStart.emit(event));
-    this.instance.on('imageloadend', (event: source.ImageEvent) => this.onImageLoadEnd.emit(event));
-    this.instance.on('imageloaderror', (event: source.ImageEvent) => this.onImageLoadError.emit(event));
+    this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.onImageLoadStart.emit(event));
+    this.instance.on('imageloadend', (event: ImageSourceEvent) => this.onImageLoadEnd.emit(event));
+    this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.onImageLoadError.emit(event));
   }
 
   ngOnChanges(changes: SimpleChanges) {

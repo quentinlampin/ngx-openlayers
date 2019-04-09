@@ -1,18 +1,19 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
-import { interaction, EventsConditionType } from 'openlayers';
+import { DragZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
+import { Condition } from 'ol/events/condition';
 
 @Component({
   selector: 'aol-interaction-dragzoom',
   template: '',
 })
 export class DragZoomInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.DragZoom;
+  instance: DragZoom;
 
   @Input()
   className: string;
   @Input()
-  condition: EventsConditionType;
+  condition: Condition;
   @Input()
   duration: number;
   @Input()
@@ -21,7 +22,7 @@ export class DragZoomInteractionComponent implements OnInit, OnDestroy {
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = new interaction.DragZoom(this);
+    this.instance = new DragZoom(this);
     this.map.instance.addInteraction(this.instance);
   }
 

@@ -8,10 +8,14 @@ import {
   SimpleChanges,
   OnChanges,
 } from '@angular/core';
-import { TileLoadFunctionType, tilegrid, ProjectionLike, source, ImageTile, TileCoord, Tile } from 'openlayers';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
+import { WMTS } from 'ol/source';
+import { WMTS as TileGridWMTS } from 'ol/tilegrid';
+import { WMTSRequestEncoding } from 'ol/source';
+import { ProjectionLike } from 'ol/proj';
+import { LoadFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-tilewmts',
@@ -21,34 +25,25 @@ import { TileGridWMTSComponent } from '../tilegridwmts.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
-  instance: source.WMTS;
+  instance: WMTS;
   @Input()
   cacheSize?: number;
   @Input()
   crossOrigin?: string;
   @Input()
-  logo?: string | olx.LogoOptions;
-  @Input()
-  tileGrid: tilegrid.WMTS;
+  tileGrid: TileGridWMTS;
   @Input()
   projection: ProjectionLike;
   @Input()
   reprojectionErrorThreshold?: number;
   @Input()
-  requestEncoding?: source.WMTSRequestEncoding | string;
+  requestEncoding?: WMTSRequestEncoding | string;
   @Input()
   layer: string;
   @Input()
   style: string;
   @Input()
-  tileClass?: (
-    n: ImageTile,
-    coords: TileCoord,
-    state: Tile.State,
-    s1: string,
-    s2: string,
-    type: TileLoadFunctionType
-  ) => any;
+  tileClass?: any;
   @Input()
   tilePixelRatio?: number;
   @Input()
@@ -58,11 +53,11 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   matrixSet: string;
   @Input()
-  dimensions?: GlobalObject;
+  dimensions?: Object;
   @Input()
   url?: string;
   @Input()
-  tileLoadFunction?: TileLoadFunctionType;
+  tileLoadFunction?: LoadFunction;
   @Input()
   urls?: string[];
   @Input()
@@ -97,7 +92,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   }
 
   setLayerSource(): void {
-    this.instance = new source.WMTS(this);
+    this.instance = new WMTS(this);
     this.host.instance.setSource(this.instance);
   }
 

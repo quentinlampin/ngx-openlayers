@@ -1,12 +1,16 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { tilegrid, Extent, Size, Coordinate } from 'openlayers';
+import { createXYZ } from 'ol/tilegrid';
+import TileGrid from 'ol/tilegrid/TileGrid';
+import { Extent } from 'ol/extent';
+import { Coordinate } from 'ol/coordinate';
+import { Size } from 'ol/size';
 
 @Component({
   selector: 'aol-tilegrid',
   template: '',
 })
 export class TileGridComponent implements OnInit, OnChanges {
-  instance: tilegrid.TileGrid;
+  instance: TileGrid;
 
   @Input()
   extent: Extent;
@@ -23,17 +27,17 @@ export class TileGridComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     if (!this.resolutions) {
-      this.instance = tilegrid.createXYZ(this);
+      this.instance = createXYZ(this);
     } else {
-      this.instance = new tilegrid.TileGrid(this);
+      this.instance = new TileGrid(this);
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (!this.resolutions) {
-      this.instance = tilegrid.createXYZ(this);
+      this.instance = createXYZ(this);
     } else {
-      this.instance = new tilegrid.TileGrid(this);
+      this.instance = new TileGrid(this);
     }
   }
 }

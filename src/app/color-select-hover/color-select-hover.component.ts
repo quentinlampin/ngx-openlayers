@@ -1,6 +1,8 @@
 import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { Feature as OlFeature, layer as OlLayer, style } from 'openlayers';
 import { MapComponent, LayerVectorComponent } from 'ngx-openlayers';
+import { Fill, Stroke, Style } from 'ol/style';
+import { Layer } from 'ol/layer';
+import { Feature } from 'ol';
 
 @Component({
   selector: 'app-color-select-hover',
@@ -125,11 +127,11 @@ export class ColorSelectHoverComponent implements OnInit {
     ],
   };
 
-  styleInterationSelected = new style.Style({
-    fill: new style.Fill({
+  styleInterationSelected = new Style({
+    fill: new Fill({
       color: 'rgba(0, 153, 255, 0.1)',
     }),
-    stroke: new style.Stroke({
+    stroke: new Stroke({
       color: 'rgba(0, 153, 255)',
       width: 3,
     }),
@@ -140,10 +142,10 @@ export class ColorSelectHoverComponent implements OnInit {
   ngOnInit() {}
 
   changeFeatureHovered(event) {
-    const hit: OlFeature = this.map.instance.forEachFeatureAtPixel(event.pixel, f => f, {
+    const hit: Feature = this.map.instance.forEachFeatureAtPixel(event.pixel, f => f, {
       layerFilter: inLayer(...this.aoiLayerVector.toArray()),
       hitTolerance: 10,
-    }) as OlFeature;
+    }) as Feature;
 
     if (!hit && this.hoveredFeatureId) {
       this.hoveredFeatureId = null;
@@ -154,6 +156,6 @@ export class ColorSelectHoverComponent implements OnInit {
   }
 }
 
-function inLayer(...layers: LayerVectorComponent[]): (l: OlLayer.Layer) => boolean {
-  return (l: OlLayer.Layer) => layers.some(layer => layer.instance === l);
+function inLayer(...layers: LayerVectorComponent[]): (l: Layer) => boolean {
+  return (l: Layer) => layers.some(layer => layer.instance === l);
 }

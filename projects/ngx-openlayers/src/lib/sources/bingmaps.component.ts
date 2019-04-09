@@ -1,7 +1,8 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { source, TileLoadFunctionType } from 'openlayers';
+import { BingMaps } from 'ol/source';
 import { SourceComponent } from './source.component';
 import { LayerTileComponent } from '../layers/layertile.component';
+import { LoadFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-bingmaps',
@@ -11,7 +12,7 @@ import { LayerTileComponent } from '../layers/layertile.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
-  instance: source.BingMaps;
+  instance: BingMaps;
 
   @Input()
   cacheSize: number;
@@ -28,7 +29,7 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   @Input()
   reprojectionErrorThreshold: number;
   @Input()
-  tileLoadFunction: TileLoadFunctionType;
+  tileLoadFunction: LoadFunction;
   @Input()
   wrapX: boolean;
 
@@ -37,7 +38,7 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.instance = new source.BingMaps(this);
+    this.instance = new BingMaps(this);
     this.host.instance.setSource(this.instance);
   }
 }

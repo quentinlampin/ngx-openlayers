@@ -1,59 +1,56 @@
 import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {
-  interaction,
-  EventsConditionType,
-  layer,
-  style,
-  Collection,
-  SelectFilterFunction,
-  StyleFunction,
-  Feature,
-} from 'openlayers';
 import { MapComponent } from '../map.component';
+import { Select } from 'ol/interaction';
+import { Layer } from 'ol/layer';
+import { Style } from 'ol/style';
+import { Collection, Feature } from 'ol';
+import { SelectEvent, FilterFunction } from 'ol/interaction/Select';
+import { StyleFunction } from 'ol/style/Style';
+import { Condition } from 'ol/events/condition';
 
 @Component({
   selector: 'aol-interaction-select',
   template: '',
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {
-  instance: interaction.Select;
+  instance: Select;
 
   @Input()
-  addCondition?: EventsConditionType;
+  addCondition?: Condition;
   @Input()
-  condition?: EventsConditionType;
+  condition?: Condition;
   @Input()
-  layers?: layer.Layer[] | ((layer: layer.Layer) => boolean);
+  layers?: Layer[] | ((layer: Layer) => boolean);
   @Input()
-  style?: style.Style | style.Style[] | StyleFunction;
+  style?: Style | Style[] | StyleFunction;
   @Input()
-  removeCondition?: EventsConditionType;
+  removeCondition?: Condition;
   @Input()
-  toggleCondition?: EventsConditionType;
+  toggleCondition?: Condition;
   @Input()
   multi?: boolean;
   @Input()
   features?: Collection<Feature>;
   @Input()
-  filter?: SelectFilterFunction;
+  filter?: FilterFunction;
   @Input()
   wrapX?: boolean;
 
   @Output()
-  onChange = new EventEmitter<interaction.Select.Event>();
+  onChange = new EventEmitter<SelectEvent>();
   @Output()
-  onSelect = new EventEmitter<interaction.Select.Event>();
+  onSelect = new EventEmitter<SelectEvent>();
   @Output()
-  onPropertyChange = new EventEmitter<interaction.Select.Event>();
+  onPropertyChange = new EventEmitter<SelectEvent>();
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
-    this.instance = new interaction.Select(this);
+    this.instance = new Select(this);
 
-    this.instance.on('change', (event: interaction.Select.Event) => this.onChange.emit(event));
-    this.instance.on('select', (event: interaction.Select.Event) => this.onSelect.emit(event));
-    this.instance.on('propertychange', (event: interaction.Select.Event) => this.onPropertyChange.emit(event));
+    this.instance.on('change', (event: SelectEvent) => this.onChange.emit(event));
+    this.instance.on('select', (event: SelectEvent) => this.onSelect.emit(event));
+    this.instance.on('propertychange', (event: SelectEvent) => this.onPropertyChange.emit(event));
 
     this.map.instance.addInteraction(this.instance);
   }

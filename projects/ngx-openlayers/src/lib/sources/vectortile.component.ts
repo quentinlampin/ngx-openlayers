@@ -1,9 +1,13 @@
 import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
-import { source, ProjectionLike, TileUrlFunctionType, format, tilegrid } from 'openlayers';
+import { VectorTile } from 'ol';
+import Feature from 'ol/format/Feature';
+import TileGrid from 'ol/tilegrid/TileGrid';
 import { LayerVectorTileComponent } from '../layers/layervectortile.component';
 import { FormatComponent } from '../formats/format.component';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
+import { ProjectionLike } from 'ol/proj';
+import { UrlFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-vectortile',
@@ -13,7 +17,7 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }],
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
-  public instance: source.VectorTile;
+  public instance: VectorTile;
   @Input()
   cacheSize: number;
   @Input()
@@ -23,7 +27,7 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   @Input()
   tilePixelRatio: number;
   @Input()
-  tileUrlFunction: TileUrlFunctionType;
+  tileUrlFunction: UrlFunction;
   @Input()
   url: string;
   @Input()
@@ -33,10 +37,10 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
 
   @ContentChild(FormatComponent)
   formatComponent: FormatComponent;
-  format: format.Feature;
+  format: Feature;
   @ContentChild(TileGridComponent)
   tileGridComponent: TileGridComponent;
-  tileGrid: tilegrid.TileGrid;
+  tileGrid: TileGrid;
 
   constructor(@Host() layer: LayerVectorTileComponent) {
     super(layer);
@@ -47,7 +51,7 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
     this.format = this.formatComponent.instance;
     this.tileGrid = this.tileGridComponent.instance;
     // console.log('creating ol.source.VectorTile instance with:', this);
-    this.instance = new source.VectorTile(this);
+    this.instance = new VectorTile(this);
     this.host.instance.setSource(this.instance);
   }
 }

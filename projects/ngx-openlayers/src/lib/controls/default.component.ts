@@ -1,5 +1,10 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
-import { control, Collection } from 'openlayers';
+import { Control, defaults } from 'ol/control';
+import { Collection } from 'ol';
+import { Options as AttributionOptions } from 'ol/control/Attribution';
+import { Options as RotateOptions } from 'ol/control/Rotate';
+import { Options as ZoomOptions } from 'ol/control/Zoom';
+
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -7,25 +12,25 @@ import { MapComponent } from '../map.component';
   template: '',
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {
-  instance: Collection<control.Control>;
+  instance: Collection<Control>;
   @Input()
   attribution: boolean;
   @Input()
-  attributionOptions: olx.control.AttributionOptions;
+  attributionOptions: AttributionOptions;
   @Input()
   rotate: boolean;
   @Input()
-  rotateOptions: olx.control.RotateOptions;
+  rotateOptions: RotateOptions;
   @Input()
   zoom: boolean;
   @Input()
-  zoomOptions: olx.control.ZoomOptions;
+  zoomOptions: ZoomOptions;
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
     // console.log('ol.control.defaults init: ', this);
-    this.instance = control.defaults(this);
+    this.instance = defaults(this);
     this.instance.forEach(c => this.map.instance.addControl(c));
   }
 

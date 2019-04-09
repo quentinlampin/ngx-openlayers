@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { control } from 'openlayers';
+import { Attribution } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {
   public componentType = 'control';
-  instance: control.Attribution;
+  instance: Attribution;
   target: Element;
   @Input()
   collapsible: boolean;
@@ -18,7 +18,7 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.target = this.element.nativeElement;
     // console.log('ol.control.Attribution init: ', this);
-    this.instance = new control.Attribution(this);
+    this.instance = new Attribution(this);
     this.map.instance.addControl(this.instance);
   }
 
