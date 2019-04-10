@@ -94,4 +94,9 @@ export const examplesList = [
     routerLink: 'image-wms',
     openLayersLink: 'https://openlayers.org/en/latest/examples/image-load-events.html',
   },
+  {
+    title: 'View projection update',
+    description: 'Dynamically update view projection.',
+    routerLink: 'view-projection-update',
+  },
 ];
