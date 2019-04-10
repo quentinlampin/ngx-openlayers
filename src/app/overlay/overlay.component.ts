@@ -21,7 +21,7 @@ import { fromExtent } from 'ol/geom/Polygon';
           <aol-feature>
             <aol-geometry-polygon>
               <aol-collection-coordinates
-                [coordinates]="feature.geometry.coordinates[0]"
+                [coordinates]="feature.geometry.coordinates"
                 [srid]="'EPSG:4326'"
               ></aol-collection-coordinates>
             </aol-geometry-polygon>

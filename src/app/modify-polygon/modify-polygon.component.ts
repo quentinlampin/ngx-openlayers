@@ -26,7 +26,7 @@ import { GeoJSON } from 'ol/format';
         <aol-source-vector>
           <aol-feature>
             <aol-geometry-polygon>
-              <aol-collection-coordinates [coordinates]="feature.geometry.coordinates[0]" [srid]="'EPSG:4326'">
+              <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
               </aol-collection-coordinates>
             </aol-geometry-polygon>
           </aol-feature>

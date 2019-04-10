@@ -20,7 +20,7 @@ import { Component, OnInit } from '@angular/core';
             </aol-style>
             <aol-feature>
               <aol-geometry-polygon>
-                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates[0]" [srid]="'EPSG:4326'">
+                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
                 </aol-collection-coordinates>
               </aol-geometry-polygon>
             </aol-feature>
@@ -68,6 +68,43 @@ import { Component, OnInit } from '@angular/core';
                   <aol-style-fill color="rgba(255, 255, 0, 0.5)"></aol-style-fill>
                 </aol-style>
               </aol-geometry-circle>
+            </aol-feature>
+          </aol-source-vector>
+
+          <aol-source-vector *ngSwitchCase="'MultiPoint'">
+            <aol-feature>
+              <aol-geometry-multipoint>
+                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                </aol-collection-coordinates>
+                <aol-style>
+                  <aol-style-circle [radius]="5">
+                    <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+                    <aol-style-fill [color]="'green'"></aol-style-fill>
+                  </aol-style-circle>
+                </aol-style>
+              </aol-geometry-multipoint>
+            </aol-feature>
+          </aol-source-vector>
+
+          <aol-source-vector *ngSwitchCase="'MultiLineString'">
+            <aol-feature>
+              <aol-geometry-multilinestring>
+                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                </aol-collection-coordinates>
+              </aol-geometry-multilinestring>
+            </aol-feature>
+          </aol-source-vector>
+
+          <aol-source-vector *ngSwitchCase="'MultiPolygon'">
+            <aol-style>
+              <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" width="2"></aol-style-stroke>
+              <aol-style-fill [color]="'rgba(81, 15.3, 23.4, 0.4)'"></aol-style-fill>
+            </aol-style>
+            <aol-feature>
+              <aol-geometry-multipolygon>
+                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                </aol-collection-coordinates>
+              </aol-geometry-multipolygon>
             </aol-feature>
           </aol-source-vector>
         </aol-layer-vector>
@@ -124,6 +161,38 @@ export class DisplayGeometryComponent implements OnInit {
         type: 'Circle',
         coordinates: [3.1060516834259033, 45.78940226200967],
         radius: 50000,
+      },
+    },
+    {
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'MultiPoint',
+        coordinates: [[0, 45], [0.5, 45], [1, 45]],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'MultiLineString',
+        coordinates: [
+          [[0, 44], [1, 44], [2, 44.5]],
+          [[0.5, 43.8], [1.5, 43.8], [2.5, 44.3]],
+          [[1, 43.6], [2, 43.6], [3, 44.1]],
+        ],
+      },
+    },
+    {
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'MultiPolygon',
+        coordinates: [
+          [[[4, 45], [4.5, 44.5], [4, 44], [4, 45]]],
+          [[[5, 45], [5.5, 44.5], [5, 44], [5, 45]]],
+          [[[6, 45], [6.5, 44.5], [6, 44], [6, 45]]],
+        ],
       },
     },
   ];
