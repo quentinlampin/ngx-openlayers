@@ -19,6 +19,7 @@ import { MarkerComponent } from './marker/marker.component';
 import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
 import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
+import { UTFGridComponent } from './utfgrid/utfgrid.component';
 import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'image-wms', component: ImageWMSComponent },
       { path: 'view-projection-update', component: ViewProjectionUpdateComponent },
       { path: 'overview', component: OverviewComponent },
+      { path: 'utf-grid', component: UTFGridComponent },
     ],
   },
   { path: '**', redirectTo: '' },
