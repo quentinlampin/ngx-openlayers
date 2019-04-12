@@ -73,6 +73,7 @@ import { OverlayComponent } from './lib/overlay.component';
 import { ContentComponent } from './lib/content.component';
 import { AttributionsComponent } from './lib/attributions.component';
 import { AttributionComponent } from './lib/attribution.component';
+import { SourceUTFGridComponent } from './lib/sources/utfgrid.component';
 
 export {
   MapComponent,
@@ -86,6 +87,7 @@ export {
   SourceOsmComponent,
   SourceBingmapsComponent,
   SourceClusterComponent,
+  SourceUTFGridComponent,
   SourceVectorComponent,
   SourceXYZComponent,
   SourceVectorTileComponent,
@@ -162,6 +164,7 @@ const COMPONENTS = [
   SourceOsmComponent,
   SourceBingmapsComponent,
   SourceClusterComponent,
+  SourceUTFGridComponent,
   SourceVectorComponent,
   SourceXYZComponent,
   SourceVectorTileComponent,
