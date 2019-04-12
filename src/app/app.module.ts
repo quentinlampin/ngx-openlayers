@@ -26,6 +26,7 @@ import { MarkerComponent } from './marker/marker.component';
 import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
 import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
+import { UTFGridComponent } from './utfgrid/utfgrid.component';
 import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { OverviewComponent } from './overview/overview.component';
     ColorSelectHoverComponent,
     MarkerComponent,
     ArcgisImageComponent,
+    UTFGridComponent,
     ImageWMSComponent,
     OverviewComponent,
     ViewProjectionUpdateComponent,
