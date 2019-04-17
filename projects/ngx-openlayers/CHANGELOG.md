@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.7"></a>
+# [1.0.0-next.7](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.6...1.0.0-next.7) (2019-04-17)
+
+
+### Features
+
+* **geom:** implements MultiPoint, MultiLinestring and MultiPolygon ([8d813c8](https://github.com/quentin-ol/ngx-openlayers/commit/8d813c8))
+* **overviewmap:** refresh overview when the view changes ([543920c](https://github.com/quentin-ol/ngx-openlayers/commit/543920c))
+* **source:** add UTF grid source ([bbb2801](https://github.com/quentin-ol/ngx-openlayers/commit/bbb2801))
+* **view:** add change:resolution and change:center outputs ([fec43e3](https://github.com/quentin-ol/ngx-openlayers/commit/fec43e3))
+* **view:** dynamically update view projection ([eaf263d](https://github.com/quentin-ol/ngx-openlayers/commit/eaf263d))
+
+
+
 <a name="1.0.0-next.6"></a>
 # [1.0.0-next.6](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.5...1.0.0-next.6) (2019-03-13)
 
