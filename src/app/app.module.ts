@@ -26,6 +26,7 @@ import { MarkerComponent } from './marker/marker.component';
 import { ArcgisImageComponent } from './arcgis-image/arcgis-image.component';
 import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ViewProjectionUpdateComponent } from './view-projection-update/view-pro
     MarkerComponent,
     ArcgisImageComponent,
     ImageWMSComponent,
+    OverviewComponent,
     ViewProjectionUpdateComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
