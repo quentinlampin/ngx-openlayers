@@ -13,8 +13,52 @@ All notable changes to this project will be documented in this file. See [standa
 * **source:** add UTF grid source ([bbb2801](https://github.com/quentin-ol/ngx-openlayers/commit/bbb2801))
 * **view:** add change:resolution and change:center outputs ([fec43e3](https://github.com/quentin-ol/ngx-openlayers/commit/fec43e3))
 * **view:** dynamically update view projection ([eaf263d](https://github.com/quentin-ol/ngx-openlayers/commit/eaf263d))
+* **ol:** migrate to OpenLayers 5 ([d42e1fa](https://github.com/quentin-ol/ngx-openlayers/commit/d42e1fa))
 
+### BREAKING CHANGES
 
+* Migration from `openlayers` package to `ol` ([d42e1fa](https://github.com/quentin-ol/ngx-openlayers/commit/d42e1fa))
+* The coordinates input on CollectionCoordinatesComponent is not anymore limited to type [number, number][], but it supports all types of coordinates.
+  ([8d813c8](https://github.com/quentin-ol/ngx-openlayers/commit/8d813c8))
+  
+  That means the existing code must be updated for polygons:
+  
+  Old style:
+  ```html
+  <aol-feature>
+      <aol-geometry-polygon>
+          <aol-collection-coordinates
+              [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
+              [srid]="'EPSG:4326'"
+          >
+          </aol-collection-coordinates>
+      </aol-geometry-polygon>
+      <aol-style>
+          <aol-style-stroke [color]="'red'"></aol-style-stroke>
+          <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+      </aol-style>
+  </aol-feature>
+  ```
+  New style:
+  
+  ```html
+  <aol-feature>
+      <aol-geometry-polygon>
+          <aol-collection-coordinates
+              [coordinates]="[[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]]"
+              [srid]="'EPSG:4326'"
+          >
+          </aol-collection-coordinates>
+      </aol-geometry-polygon>
+      <aol-style>
+          <aol-style-stroke [color]="'red'"></aol-style-stroke>
+          <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+      </aol-style>
+  </aol-feature>
+  ```
+  Notice the [coordinates] input is now a [number, number][][], as defined in GeoJSON.
+  
+  This also allows to display polygon with holes, which is not possible with the current code.
 
 <a name="1.0.0-next.6"></a>
 # [1.0.0-next.6](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.5...1.0.0-next.6) (2019-03-13)
