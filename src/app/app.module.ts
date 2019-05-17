@@ -28,6 +28,7 @@ import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
 import { UTFGridComponent } from './utfgrid/utfgrid.component';
 import { OverviewComponent } from './overview/overview.component';
+import { ImageStaticComponent } from './image-static/image-static.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { OverviewComponent } from './overview/overview.component';
     ArcgisImageComponent,
     UTFGridComponent,
     ImageWMSComponent,
+    ImageStaticComponent,
     OverviewComponent,
     ViewProjectionUpdateComponent,
   ],
