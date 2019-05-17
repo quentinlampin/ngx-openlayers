@@ -28,6 +28,7 @@ import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
 import { UTFGridComponent } from './utfgrid/utfgrid.component';
 import { OverviewComponent } from './overview/overview.component';
+import { TileJsonComponent } from './tile-json/tile-json.component';
 import { SelectInteractionComponent } from './select-interaction/select-interaction.component';
 import { ImageStaticComponent } from './image-static/image-static.component';
 
@@ -55,6 +56,7 @@ import { ImageStaticComponent } from './image-static/image-static.component';
     ImageWMSComponent,
     SelectInteractionComponent,
     ImageStaticComponent,
+    TileJsonComponent,
     OverviewComponent,
     ViewProjectionUpdateComponent,
   ],

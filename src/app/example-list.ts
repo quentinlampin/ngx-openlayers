@@ -123,4 +123,10 @@ export const examplesList = [
     routerLink: 'select-interaction',
     openLayersLink: 'https://openlayers.org/en/latest/examples/select-features.html',
   },
+  {
+    title: 'Tile Json',
+    description: 'Example of using aol-source-tilejson. This example display mapbox json',
+    routerLink: 'tile-json',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/tilejson.html',
+  },
 ];
