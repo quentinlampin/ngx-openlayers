@@ -111,4 +111,10 @@ export const examplesList = [
     routerLink: 'utf-grid',
     openLayersLink: 'https://openlayers.org/en/latest/examples/utfgrid.html',
   },
+  {
+    title: 'Image static',
+    description: 'Example of using aol-source-imagestatic.',
+    routerLink: 'image-static',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/static-image.html',
+  },
 ];

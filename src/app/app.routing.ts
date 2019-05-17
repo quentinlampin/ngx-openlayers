@@ -21,6 +21,7 @@ import { ImageWMSComponent } from './image-wms/image-wms.component';
 import { ViewProjectionUpdateComponent } from './view-projection-update/view-projection-update.component';
 import { UTFGridComponent } from './utfgrid/utfgrid.component';
 import { OverviewComponent } from './overview/overview.component';
+import { ImageStaticComponent } from './image-static/image-static.component';
 
 const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'view-projection-update', component: ViewProjectionUpdateComponent },
       { path: 'overview', component: OverviewComponent },
       { path: 'utf-grid', component: UTFGridComponent },
+      { path: 'image-static', component: ImageStaticComponent },
     ],
   },
   { path: '**', redirectTo: '' },
