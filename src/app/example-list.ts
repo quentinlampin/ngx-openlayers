@@ -117,4 +117,10 @@ export const examplesList = [
     routerLink: 'image-static',
     openLayersLink: 'https://openlayers.org/en/latest/examples/static-image.html',
   },
+  {
+    title: 'Select intercation static',
+    description: 'Example of using select intercation',
+    routerLink: 'select-interaction',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/select-features.html',
+  },
 ];
