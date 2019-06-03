@@ -1,4 +1,4 @@
-import { Component, Input, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, AfterContentInit, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { Graticule } from 'ol';
 import { Stroke } from 'ol/style';
 import { MapComponent } from './map.component';
@@ -7,7 +7,7 @@ import { MapComponent } from './map.component';
   selector: 'aol-graticule',
   template: '<ng-content></ng-content>',
 })
-export class GraticuleComponent implements AfterContentInit, OnChanges {
+export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestroy {
   instance: any;
   public componentType = 'graticule';
 
@@ -49,5 +49,9 @@ export class GraticuleComponent implements AfterContentInit, OnChanges {
       latLabelPosition: this.latLabelPosition,
     });
     this.instance.setMap(this.map.instance);
+  }
+
+  ngOnDestroy(): void {
+    this.instance.setMap(null);
   }
 }
