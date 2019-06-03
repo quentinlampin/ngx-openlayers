@@ -31,6 +31,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { TileJsonComponent } from './tile-json/tile-json.component';
 import { SelectInteractionComponent } from './select-interaction/select-interaction.component';
 import { ImageStaticComponent } from './image-static/image-static.component';
+import { GraticuleComponent } from './graticule/graticule.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ImageStaticComponent } from './image-static/image-static.component';
     TileJsonComponent,
     OverviewComponent,
     ViewProjectionUpdateComponent,
+    GraticuleComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularOpenlayersModule, ReactiveFormsModule],
   providers: [],

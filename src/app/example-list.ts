@@ -129,4 +129,10 @@ export const examplesList = [
     routerLink: 'tile-json',
     openLayersLink: 'https://openlayers.org/en/latest/examples/tilejson.html',
   },
+  {
+    title: 'Graticule',
+    description: 'Example of using aol-graticule. This example shows how to add a graticule overlay to a map',
+    routerLink: 'graticule',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/graticule.html',
+  },
 ];
