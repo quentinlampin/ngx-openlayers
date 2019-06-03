@@ -1,4 +1,14 @@
-import { Component, Host, Input, OnInit, forwardRef, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Host,
+  Input,
+  forwardRef,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+  OnInit,
+} from '@angular/core';
 import { ImageStatic } from 'ol/source';
 import { SourceComponent } from './source.component';
 import { LayerImageComponent } from '../layers/layerimage.component';
@@ -16,7 +26,7 @@ import { ImageSourceEvent } from 'ol/source/Image';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
 })
-export class SourceImageStaticComponent extends SourceComponent implements OnInit {
+export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {
   instance: ImageStatic;
 
   @Input()
@@ -45,11 +55,36 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
     super(layer);
   }
 
-  ngOnInit() {
+  setLayerSource(): void {
     this.instance = new ImageStatic(this);
     this.host.instance.setSource(this.instance);
     this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.onImageLoadStart.emit(event));
     this.instance.on('imageloadend', (event: ImageSourceEvent) => this.onImageLoadEnd.emit(event));
     this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.onImageLoadError.emit(event));
+  }
+
+  ngOnInit() {
+    this.setLayerSource();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const properties: { [index: string]: any } = {};
+    if (!this.instance) {
+      return;
+    }
+    for (const key in changes) {
+      if (changes.hasOwnProperty(key)) {
+        switch (key) {
+          case 'url':
+            this.url = changes[key].currentValue;
+            this.setLayerSource();
+            break;
+          default:
+            break;
+        }
+        properties[key] = changes[key].currentValue;
+      }
+    }
+    this.instance.setProperties(properties, false);
   }
 }
