@@ -1,3 +1,22 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="1.0.0-next.8"></a>
+# [1.0.0-next.8](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.7...1.0.0-next.8) (2019-07-04)
+
+### Features
+
+* **graticule:** unregister on destroy ([5e20e8d](https://github.com/quentin-ol/ngx-openlayers/commit/5e20e8d))
+* **source:imagestatic:** refresh layer source when url change ([410f876](https://github.com/quentin-ol/ngx-openlayers/commit/410f876))
+
+### Documentation
+
+* add tile json source example ([a65bb8c](https://github.com/quentin-ol/ngx-openlayers/commit/a65bb8c))
+* select interaction example ([1e2a46f](https://github.com/quentin-ol/ngx-openlayers/commit/1e2a46f))
+* add image static example ([8ebc128](https://github.com/quentin-ol/ngx-openlayers/commit/8ebc128))
+
+
 # [1.0.0-next.7](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.6...1.0.0-next.7) (2019-04-18)
 
 
@@ -229,6 +248,3 @@
 * **SourceXYZComponent:** add tileLoadFunction input ([f76321e](https://github.com/quentin-ol/ngx-openlayers/commit/f76321e))
 * **tilegrid:** Allow resolutions and origin, and use new tilegrid.Tilegrid constructor ([95db90c](https://github.com/quentin-ol/ngx-openlayers/commit/95db90c))
 * **TranslateInteractionComponent:** add interaction to be able to move feature(s) ([1d265ae](https://github.com/quentin-ol/ngx-openlayers/commit/1d265ae))
-
-
-
