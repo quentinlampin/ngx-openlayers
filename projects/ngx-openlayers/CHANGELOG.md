@@ -2,6 +2,72 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.9"></a>
+# [1.0.0-next.9](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.5...1.0.0-next.9) (2019-06-04)
+
+
+### Bug Fixes
+
+* **source:** update params ImageArcgisRest ([3d0bc9c](https://github.com/quentin-ol/ngx-openlayers/commit/3d0bc9c))
+
+
+### Features
+
+* **geom:** implements MultiPoint, MultiLinestring and MultiPolygon ([f0d4dd1](https://github.com/quentin-ol/ngx-openlayers/commit/f0d4dd1))
+* **graticule:** unregister on destroy ([5e20e8d](https://github.com/quentin-ol/ngx-openlayers/commit/5e20e8d))
+* **openlayers:** migrate to 5 version ([0ed47a3](https://github.com/quentin-ol/ngx-openlayers/commit/0ed47a3))
+* **overviewmap:** refresh overview when the view changes ([4dc9852](https://github.com/quentin-ol/ngx-openlayers/commit/4dc9852))
+* **source:** add UTF grid source ([ccae9e0](https://github.com/quentin-ol/ngx-openlayers/commit/ccae9e0))
+* **source:imagestatic:** refresh layer source when url change ([410f876](https://github.com/quentin-ol/ngx-openlayers/commit/410f876))
+* **view:** add change:resolution and change:center outputs ([27b1529](https://github.com/quentin-ol/ngx-openlayers/commit/27b1529))
+* **view:** dynamically update view projection ([3f0c228](https://github.com/quentin-ol/ngx-openlayers/commit/3f0c228))
+
+
+### BREAKING CHANGES
+
+* **geom:** The coordinates input on CollectionCoordinatesComponent is not anymore limited to type [number, number][], but it supports all types of coordinates.
+   That means the existing code must be updated for polygons:
+
+   Old style:
+  ```html
+  <aol-feature>
+      <aol-geometry-polygon>
+          <aol-collection-coordinates
+              [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
+              [srid]="'EPSG:4326'"
+          >
+          </aol-collection-coordinates>
+      </aol-geometry-polygon>
+      <aol-style>
+          <aol-style-stroke [color]="'red'"></aol-style-stroke>
+          <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+      </aol-style>
+  </aol-feature>
+  ```
+  New style:
+
+   ```html
+  <aol-feature>
+      <aol-geometry-polygon>
+          <aol-collection-coordinates
+              [coordinates]="[[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]]"
+              [srid]="'EPSG:4326'"
+          >
+          </aol-collection-coordinates>
+      </aol-geometry-polygon>
+      <aol-style>
+          <aol-style-stroke [color]="'red'"></aol-style-stroke>
+          <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+      </aol-style>
+  </aol-feature>
+  ```
+  Notice the [coordinates] input is now a [number, number][][], as defined in GeoJSON.
+
+   This also allows to display polygon with holes, which is not possible with the current code.
+* **openlayers:** Migration from `openlayers` package to `ol`
+
+
+
 <a name="1.0.0-next.8"></a>
 # [1.0.0-next.8](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.7...1.0.0-next.8) (2019-07-04)
 

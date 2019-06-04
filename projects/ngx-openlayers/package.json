@@ -1,6 +1,6 @@
 {
   "name": "ngx-openlayers",
-  "version": "1.0.0-next.8",
+  "version": "1.0.0-next.9",
   "scripts": {
     "release": "standard-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
   },
