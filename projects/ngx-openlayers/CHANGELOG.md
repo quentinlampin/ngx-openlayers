@@ -2,8 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.9"></a>
+# [1.0.0-next.9](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.8...1.0.0-next.9) (2019-06-04)
+
+
+### Bug Fixes
+
+* **ci:** fix build error of npm package
+
 <a name="1.0.0-next.8"></a>
-# [1.0.0-next.8](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.7...1.0.0-next.8) (2019-07-04)
+# [1.0.0-next.8](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.7...1.0.0-next.8) (2019-06-04)
 
 ### Features
 
