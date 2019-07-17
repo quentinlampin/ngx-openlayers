@@ -29,7 +29,6 @@ import { Component, OnInit } from '@angular/core';
               <aol-style-stroke [color]="'#fff'"></aol-style-stroke>
               <aol-style-fill [color]="'#3399CC'"></aol-style-fill>
             </aol-style-circle>
-            <aol-style-text [text]="'1'"> <aol-style-fill [color]="'#fff'"></aol-style-fill> </aol-style-text>
           </aol-style>
         </aol-source-cluster>
       </aol-layer-vector>
@@ -52,7 +51,28 @@ import { Component, OnInit } from '@angular/core';
         </aol-source-vector>
       </aol-layer-vector>
     </aol-map>
+
+    <div class="control">
+      <span>Distance : </span>
+      <input type="range" min="0" max="255" [(ngModel)]="distance" />
+      <span> ({{ distance }})</span>
+    </div>
   `,
+  styles: [
+    `
+      aol-map {
+        display: block;
+        height: calc(100% - 250px);
+      }
+
+      .control {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 20px;
+      }
+    `,
+  ],
 })
 export class ClusterComponent implements OnInit {
   distance = 60;

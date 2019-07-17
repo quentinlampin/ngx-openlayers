@@ -1,4 +1,13 @@
-import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
+import {
+  Component,
+  Host,
+  Input,
+  forwardRef,
+  ContentChild,
+  AfterContentInit,
+  SimpleChanges,
+  OnChanges,
+} from '@angular/core';
 import { Feature } from 'ol';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
@@ -13,7 +22,7 @@ import { Point } from 'ol/geom';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
 })
-export class SourceClusterComponent extends SourceComponent implements AfterContentInit {
+export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges {
   instance: Cluster;
 
   @Input()
@@ -36,5 +45,11 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
 
     this.instance = new Cluster(this);
     this.host.instance.setSource(this.instance);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.instance && changes.hasOwnProperty('distance')) {
+      this.instance.setDistance(this.distance);
+    }
   }
 }
