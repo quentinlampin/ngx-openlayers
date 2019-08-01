@@ -50,6 +50,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output()
   onDblClick: EventEmitter<MapBrowserEvent>;
   @Output()
+  onMoveStart: EventEmitter<MapEvent>;
+  @Output()
   onMoveEnd: EventEmitter<MapEvent>;
   @Output()
   onPointerDrag: EventEmitter<MapBrowserEvent>;
@@ -73,6 +75,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(private host: ElementRef) {
     this.onClick = new EventEmitter<MapBrowserEvent>();
     this.onDblClick = new EventEmitter<MapBrowserEvent>();
+    this.onMoveStart = new EventEmitter<MapEvent>();
     this.onMoveEnd = new EventEmitter<MapEvent>();
     this.onPointerDrag = new EventEmitter<MapBrowserEvent>();
     this.onPointerMove = new EventEmitter<MapBrowserEvent>();
@@ -89,6 +92,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.instance.setTarget(this.host.nativeElement.firstElementChild);
     this.instance.on('click', (event: MapBrowserEvent) => this.onClick.emit(event));
     this.instance.on('dblclick', (event: MapBrowserEvent) => this.onDblClick.emit(event));
+    this.instance.on('movestart', (event: MapEvent) => this.onMoveStart.emit(event));
     this.instance.on('moveend', (event: MapEvent) => this.onMoveEnd.emit(event));
     this.instance.on('pointerdrag', (event: MapBrowserEvent) => this.onPointerDrag.emit(event));
     this.instance.on('pointermove', (event: MapBrowserEvent) => this.onPointerMove.emit(event));

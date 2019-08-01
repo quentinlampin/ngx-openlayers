@@ -7,7 +7,7 @@ import Projection from 'ol/proj/Projection';
 @Component({
   selector: 'app-map-position',
   template: `
-    <aol-map #map width="100%" height="100%" (onMoveEnd)="displayCoordinates()">
+    <aol-map #map width="100%" height="100%" (onMoveStart)="startMoving()" (onMoveEnd)="displayCoordinates()">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
 
@@ -21,8 +21,9 @@ import Projection from 'ol/proj/Projection';
     <div class="info">
       <div class="current-coordinates">
         <h3>Map coordinates</h3>
-        <span>Longitude: {{ currentLon }}</span> <span>Latitude: {{ currentLat }}</span>
-        <span>Zoom: {{ currentZoom }}</span>
+        <span>Longitude: {{ moving ? '----' : currentLon }}</span>
+        <span>Latitude: {{ moving ? '----' : currentLat }}</span>
+        <span>Zoom: {{ moving ? '----' : currentZoom }}</span>
       </div>
       <div class="update-coordinates">
         <h3>Update coordinates</h3>
@@ -88,6 +89,7 @@ export class MapPositionComponent implements OnInit {
   displayProj = new Projection({ code: 'EPSG:3857' });
   inputProj = new Projection({ code: 'EPSG:4326' });
 
+  moving = false;
   currentZoom = 0;
   currentLon = 0;
   currentLat = 0;
@@ -103,7 +105,12 @@ export class MapPositionComponent implements OnInit {
   }
 
   displayCoordinates(): void {
+    this.moving = false;
     this.currentZoom = this.view.instance.getZoom();
     [this.currentLon, this.currentLat] = transform(this.view.instance.getCenter(), this.displayProj, this.inputProj);
+  }
+
+  startMoving(): void {
+    this.moving = true;
   }
 }
