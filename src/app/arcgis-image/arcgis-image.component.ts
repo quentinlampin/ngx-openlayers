@@ -14,6 +14,8 @@ import { Component } from '@angular/core';
         <aol-source-imagearcgisrest
           projection="EPSG:3857"
           url="https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer"
+          (onImageLoadStart)="onImageLoadStart()"
+          (onImageLoadEnd)="onImageLoadEnd()"
         ></aol-source-imagearcgisrest>
       </aol-layer-image>
     </aol-map>
@@ -34,4 +36,12 @@ import { Component } from '@angular/core';
 export class ArcgisImageComponent {
   public zoom = 4;
   public opacity = 1.0;
+
+  onImageLoadStart() {
+    console.log('image starts loading at: ' + new Date());
+  }
+
+  onImageLoadEnd() {
+    console.log('image ends loading at: ' + new Date());
+  }
 }
