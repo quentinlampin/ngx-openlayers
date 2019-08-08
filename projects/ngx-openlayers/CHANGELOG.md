@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.11"></a>
+# [1.0.0-next.11](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.10...1.0.0-next.11) (2019-08-08)
+
+
+### Features
+
+* **imagearcgis:** add image events ([24c1c65](https://github.com/quentin-ol/ngx-openlayers/commit/24c1c65))
+
+
+
 <a name="1.0.0-next.10"></a>
 # [1.0.0-next.10](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.5...1.0.0-next.10) (2019-07-23)
 
