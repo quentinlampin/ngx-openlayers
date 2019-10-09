@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Rotate } from 'ol/control';
+import Rotate, { Options as RotateOptions } from 'ol/control/Rotate';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
     <ng-content></ng-content>
   `,
 })
-export class ControlRotateComponent implements OnInit, OnDestroy {
+export class ControlRotateComponent implements OnInit, OnDestroy, RotateOptions {
   instance: Rotate;
 
   @Input()

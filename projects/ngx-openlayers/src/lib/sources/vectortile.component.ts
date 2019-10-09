@@ -1,13 +1,13 @@
 import { Component, Host, Input, forwardRef, ContentChild, AfterContentInit } from '@angular/core';
-import { VectorTile } from 'ol';
+import VectorTile, { Options as VectorTileOptions } from 'ol/source/VectorTile';
 import Feature from 'ol/format/Feature';
 import TileGrid from 'ol/tilegrid/TileGrid';
+import { ProjectionLike } from 'ol/proj';
+import { UrlFunction } from 'ol/Tile';
 import { LayerVectorTileComponent } from '../layers/layervectortile.component';
 import { FormatComponent } from '../formats/format.component';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
-import { ProjectionLike } from 'ol/proj';
-import { UrlFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-vectortile',
@@ -16,7 +16,7 @@ import { UrlFunction } from 'ol/Tile';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }],
 })
-export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
+export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit, VectorTileOptions {
   public instance: VectorTile;
   @Input()
   cacheSize: number;

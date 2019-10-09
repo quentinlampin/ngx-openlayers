@@ -1,5 +1,5 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { Vector } from 'ol/source';
+import Vector, { Options as VectorOptions } from 'ol/source/Vector';
 import Feature from 'ol/format/Feature';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
@@ -12,7 +12,7 @@ import { LoadingStrategy } from 'ol/source/Vector';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
 })
-export class SourceVectorComponent extends SourceComponent implements OnInit {
+export class SourceVectorComponent extends SourceComponent implements OnInit, VectorOptions {
   instance: Vector;
   @Input()
   overlaps: boolean;

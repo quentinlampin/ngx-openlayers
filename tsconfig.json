@@ -21,7 +21,9 @@
     "paths": {
       "ngx-openlayers": [
         "dist/ngx-openlayers"
-      ]
+      ],
+      "ol": ["node_modules/@hanreev/types-ol/ol"],
+      "ol/*": ["node_modules/@hanreev/types-ol/ol/*"]
     }
   },
   "angularCompilerOptions": {

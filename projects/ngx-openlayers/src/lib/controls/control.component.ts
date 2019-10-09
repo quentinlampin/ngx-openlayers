@@ -1,5 +1,5 @@
 import { Component, ContentChild, OnDestroy, OnInit } from '@angular/core';
-import { Control } from 'ol/control';
+import Control, { Options as ControlOptions } from 'ol/control/Control';
 import { MapComponent } from '../map.component';
 import { ContentComponent } from '../content.component';
 import { TileGridComponent } from '../tilegrid.component';
@@ -10,10 +10,10 @@ import { TileGridComponent } from '../tilegrid.component';
     <ng-content></ng-content>
   `,
 })
-export class ControlComponent implements OnInit, OnDestroy {
+export class ControlComponent implements OnInit, OnDestroy, ControlOptions {
   public componentType = 'control';
   instance: Control;
-  element: Element;
+  element: HTMLElement;
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
 

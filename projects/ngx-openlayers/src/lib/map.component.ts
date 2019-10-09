@@ -13,6 +13,7 @@ import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import MapEvent from 'ol/MapEvent';
 import ObjectEvent from 'ol/Object';
+import { MapOptions } from 'ol/PluggableMap';
 import RenderEvent from 'ol/render/Event';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
@@ -24,7 +25,7 @@ import { Interaction } from 'ol/interaction';
     <ng-content></ng-content>
   `,
 })
-export class MapComponent implements OnInit, AfterViewInit, OnChanges {
+export class MapComponent implements OnInit, AfterViewInit, OnChanges, MapOptions {
   public instance: Map;
   public componentType = 'map';
 
@@ -35,7 +36,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Input()
   pixelRatio: number;
   @Input()
-  keyboardEventTarget: Element | string;
+  keyboardEventTarget: HTMLElement | string;
   @Input()
   loadTilesWhileAnimating: boolean;
   @Input()

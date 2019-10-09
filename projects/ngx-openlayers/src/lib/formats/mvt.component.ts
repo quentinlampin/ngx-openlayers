@@ -1,21 +1,18 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { FormatComponent } from './format.component';
-import { MVT } from 'ol/format';
-import { Geometry } from 'ol/geom';
-import GeometryType from 'ol/geom/GeometryType';
+import { FeatureClass } from 'ol/Feature';
+import MVT, { Options as MVTOptions } from 'ol/format/MVT';
 
 @Component({
   selector: 'aol-format-mvt',
   template: '',
   providers: [{ provide: FormatComponent, useExisting: forwardRef(() => FormatMVTComponent) }],
 })
-export class FormatMVTComponent extends FormatComponent {
+export class FormatMVTComponent extends FormatComponent implements MVTOptions {
   instance: MVT;
 
   @Input()
-  featureClass:
-    | ((geom: Geometry | { [k: string]: any }) => any)
-    | ((geom: GeometryType, arg2: number[], arg3: number[] | number[][], arg4: { [k: string]: any }) => any);
+  featureClass: FeatureClass;
   @Input()
   geometryName: string;
   @Input()

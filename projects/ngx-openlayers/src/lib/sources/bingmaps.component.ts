@@ -1,5 +1,5 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
-import { BingMaps } from 'ol/source';
+import BingMaps, { Options as BingMapsOptions } from 'ol/source/BingMaps';
 import { SourceComponent } from './source.component';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { LoadFunction } from 'ol/Tile';
@@ -11,7 +11,7 @@ import { LoadFunction } from 'ol/Tile';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
 })
-export class SourceBingmapsComponent extends SourceComponent implements OnInit {
+export class SourceBingmapsComponent extends SourceComponent implements OnInit, BingMapsOptions {
   instance: BingMaps;
 
   @Input()

@@ -1,7 +1,8 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import UTFGrid, { Options as UTFGridOptions } from 'ol/source/UTFGrid';
+import { Config as TileJSONConfig } from 'ol/source/TileJSON';
 import { SourceComponent } from './source.component';
 import { LayerTileComponent } from '../layers/layertile.component';
-import { UTFGrid } from 'ol/source';
 
 @Component({
   selector: 'aol-source-utfgrid',
@@ -10,9 +11,9 @@ import { UTFGrid } from 'ol/source';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceUTFGridComponent) }],
 })
-export class SourceUTFGridComponent extends SourceComponent implements OnInit {
+export class SourceUTFGridComponent extends SourceComponent implements OnInit, UTFGridOptions {
   instance: UTFGrid;
-  @Input() tileJSON: JSON;
+  @Input() tileJSON: TileJSONConfig;
   @Input() url: string;
 
   constructor(@Host() layer: LayerTileComponent) {

@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
-import { DragBox } from 'ol/interaction';
-import { MapComponent } from '../map.component';
+import DragBox, { EndCondition, Options as DragBoxOptions } from 'ol/interaction/DragBox';
 import { Condition } from 'ol/events/condition';
-import { EndCondition } from 'ol/interaction/DragBox';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-dragbox',
   template: '',
 })
-export class DragBoxInteractionComponent implements OnInit, OnDestroy {
+export class DragBoxInteractionComponent implements OnInit, OnDestroy, DragBoxOptions {
   instance: DragBox;
 
   @Input()
@@ -17,6 +16,8 @@ export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   condition: Condition;
   @Input()
   boxEndCondition: EndCondition;
+
+  onBoxEnd = undefined;
 
   constructor(private map: MapComponent) {}
 

@@ -1,15 +1,15 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { Attribution } from 'ol/control';
+import Attribution, { Options as AttributionOptions } from 'ol/control/Attribution';
 import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-attribution',
   template: ``,
 })
-export class ControlAttributionComponent implements OnInit, OnDestroy {
+export class ControlAttributionComponent implements OnInit, OnDestroy, AttributionOptions {
   public componentType = 'control';
   instance: Attribution;
-  target: Element;
+  target: HTMLElement;
   @Input()
   collapsible: boolean;
 

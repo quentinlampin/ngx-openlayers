@@ -9,7 +9,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { ImageArcGISRest } from 'ol/source';
+import ImageArcGISRest, { Options as ImageArcGISRestOptions } from 'ol/source/ImageArcGISRest';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 import { ProjectionLike } from 'ol/proj';
@@ -24,12 +24,13 @@ import { ImageSourceEvent } from 'ol/source/Image';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
 })
-export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
+export class SourceImageArcGISRestComponent extends SourceComponent
+  implements OnInit, OnChanges, ImageArcGISRestOptions {
   instance: ImageArcGISRest;
 
-  @Input() projection: ProjectionLike | string;
+  @Input() projection: ProjectionLike;
   @Input() url: string;
-  @Input() attributions: AttributionLike[];
+  @Input() attributions: AttributionLike;
   @Input() crossOrigin?: string;
   @Input() imageLoadFunction?: LoadFunction;
   @Input() params?: { [k: string]: any };

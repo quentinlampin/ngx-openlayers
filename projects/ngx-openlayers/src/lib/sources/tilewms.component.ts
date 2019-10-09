@@ -1,9 +1,9 @@
 import { Component, Host, Input, OnChanges, OnInit, forwardRef, SimpleChanges } from '@angular/core';
+import TileWMS, { Options as TileWMSOptions } from 'ol/source/TileWMS';
+import TileGrid from 'ol/tilegrid/TileGrid';
+import { LoadFunction } from 'ol/Tile';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
-import { TileWMS } from 'ol/source';
-import { TileGrid } from 'ol/tilegrid';
-import { LoadFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-tilewms',
@@ -12,7 +12,7 @@ import { LoadFunction } from 'ol/Tile';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMSComponent) }],
 })
-export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit {
+export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit, TileWMSOptions {
   instance: TileWMS;
   @Input()
   cacheSize: number;

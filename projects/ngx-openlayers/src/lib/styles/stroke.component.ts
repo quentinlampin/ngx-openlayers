@@ -1,5 +1,5 @@
 import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Stroke } from 'ol/style';
+import Stroke, { Options as StrokeOptions } from 'ol/style/Stroke';
 import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
 import { StyleTextComponent } from './text.component';
@@ -11,7 +11,7 @@ import { Color } from 'ol/color';
     <div class="aol-style-stroke"></div>
   `,
 })
-export class StyleStrokeComponent implements OnInit, OnChanges {
+export class StyleStrokeComponent implements OnInit, OnChanges, StrokeOptions {
   public instance: Stroke;
   /* the typings do not have the setters */
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
@@ -19,11 +19,11 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input()
   color: Color | undefined;
   @Input()
-  lineCap: string | undefined;
+  lineCap: 'butt' | 'round' | 'square';
   @Input()
   lineDash: number[] | undefined;
   @Input()
-  lineJoin: string | undefined;
+  lineJoin: 'bevel' | 'round' | 'miter';
   @Input()
   miterLimit: number | undefined;
   @Input()

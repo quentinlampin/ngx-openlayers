@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, EventEmitter, forwardRef, Host, Input, Output } from '@angular/core';
-import { Raster, Source } from 'ol/source';
-import { RasterOperationType, RasterSourceEvent } from 'ol/source/Raster';
+import { Source } from 'ol/source';
+import Raster, { Options as RasterOptions, RasterSourceEvent } from 'ol/source/Raster';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 import { Operation } from 'ol/source/Raster';
@@ -17,7 +17,7 @@ import { Operation } from 'ol/source/Raster';
     },
   ],
 })
-export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
+export class SourceRasterComponent extends SourceComponent implements AfterContentInit, RasterOptions {
   instance: Raster;
 
   @Input()
@@ -27,7 +27,7 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   @Input()
   lib?: any;
   @Input()
-  operationType?: RasterOperationType;
+  operationType?: 'pixel' | 'image';
 
   @Output()
   beforeOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
