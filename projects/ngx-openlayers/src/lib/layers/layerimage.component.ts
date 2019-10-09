@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
-import { Image } from 'ol/layer';
+import Image, { Options as ImageOptions } from 'ol/layer/Image';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
@@ -11,9 +11,7 @@ import { Extent } from 'ol/extent';
     <ng-content></ng-content>
   `,
 })
-export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
-  public source: Image;
-
+export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges, ImageOptions {
   @Input()
   opacity: number;
   @Input()

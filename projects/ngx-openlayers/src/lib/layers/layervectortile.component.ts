@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Optional, SimpleChanges, OnChanges } from '@angular/core';
-import { VectorTile } from 'ol/layer';
-import { RenderType } from 'ol/layer/VectorTile';
+import VectorTile, { Options as VectorTileOptions } from 'ol/layer/VectorTile';
+import RenderType from 'ol/layer/VectorTileRenderType';
 import { Feature } from 'ol';
 import { Style } from 'ol/style';
 import { MapComponent } from '../map.component';
@@ -14,7 +14,7 @@ import { StyleFunction } from 'ol/style/Style';
     <ng-content></ng-content>
   `,
 })
-export class LayerVectorTileComponent extends LayerComponent implements OnInit, OnChanges {
+export class LayerVectorTileComponent extends LayerComponent implements OnInit, OnChanges, VectorTileOptions {
   @Input()
   renderBuffer: number;
   @Input()

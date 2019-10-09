@@ -11,7 +11,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { XYZ } from 'ol/source';
+import XYZ, { Options as XYZOptions } from 'ol/source/XYZ';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { TileGridComponent } from '../tilegrid.component';
@@ -28,7 +28,7 @@ import { LoadFunction, UrlFunction } from 'ol/Tile';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
 })
-export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
+export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges, XYZOptions {
   instance: XYZ;
   @Input()
   cacheSize: number;

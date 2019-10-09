@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ZoomSlider } from 'ol/control';
+import ZoomSlider, { Options as ZoomSliderOptions } from 'ol/control/ZoomSlider';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
     <ng-content></ng-content>
   `,
 })
-export class ControlZoomSliderComponent implements OnInit, OnDestroy {
+export class ControlZoomSliderComponent implements OnInit, OnDestroy, ZoomSliderOptions {
   instance: ZoomSlider;
 
   @Input()

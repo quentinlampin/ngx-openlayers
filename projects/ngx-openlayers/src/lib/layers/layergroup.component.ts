@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, SkipSelf, Optional } from '@angular/core';
-import { Group } from 'ol/layer';
+import Group, { Options as GroupOptions } from 'ol/layer/Group';
 import { LayerComponent } from './layer.component';
 import { MapComponent } from '../map.component';
 
@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
     <ng-content></ng-content>
   `,
 })
-export class LayerGroupComponent extends LayerComponent implements OnInit, OnDestroy {
+export class LayerGroupComponent extends LayerComponent implements OnInit, OnDestroy, GroupOptions {
   public instance: Group;
 
   constructor(

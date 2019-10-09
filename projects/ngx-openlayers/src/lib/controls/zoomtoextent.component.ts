@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ZoomToExtent } from 'ol/control';
+import ZoomToExtent, { Options as ZoomToExtentOptions } from 'ol/control/ZoomToExtent';
 import { MapComponent } from '../map.component';
 import { Extent } from 'ol/extent';
 
@@ -9,13 +9,13 @@ import { Extent } from 'ol/extent';
     <ng-content></ng-content>
   `,
 })
-export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
+export class ControlZoomToExtentComponent implements OnInit, OnDestroy, ZoomToExtentOptions {
   instance: ZoomToExtent;
 
   @Input()
   className: string;
   @Input()
-  label: string | Node;
+  label: string | HTMLElement;
   @Input()
   tipLabel: string;
   @Input()

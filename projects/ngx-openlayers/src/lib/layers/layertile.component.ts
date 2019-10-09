@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Input, Optional, OnChanges, SimpleChanges } from '@angular/core';
-import { Tile } from 'ol/layer';
+import Tile, { Options as TileOptions } from 'ol/layer/Tile';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
@@ -10,9 +10,7 @@ import { LayerGroupComponent } from './layergroup.component';
     <ng-content></ng-content>
   `,
 })
-export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
-  public source: Tile;
-
+export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges, TileOptions {
   @Input()
   preload: number;
   @Input()

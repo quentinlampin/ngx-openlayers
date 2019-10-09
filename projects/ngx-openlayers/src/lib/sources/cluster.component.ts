@@ -9,11 +9,12 @@ import {
   OnChanges,
 } from '@angular/core';
 import { Feature } from 'ol';
+import { Point } from 'ol/geom';
+import { Vector } from 'ol/source';
+import Cluster, { Options as ClusterOptions } from 'ol/source/Cluster';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
 import { SourceVectorComponent } from './vector.component';
-import { Cluster, Vector } from 'ol/source';
-import { Point } from 'ol/geom';
 
 @Component({
   selector: 'aol-source-cluster',
@@ -22,7 +23,7 @@ import { Point } from 'ol/geom';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
 })
-export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges {
+export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges, ClusterOptions {
   instance: Cluster;
 
   @Input()

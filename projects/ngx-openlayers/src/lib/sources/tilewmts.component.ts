@@ -11,9 +11,9 @@ import {
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
-import { WMTS } from 'ol/source';
-import { WMTS as TileGridWMTS } from 'ol/tilegrid';
-import { WMTSRequestEncoding } from 'ol/source';
+import WMTS, { Options as WMTSOptions } from 'ol/source/WMTS';
+import WMTSTileGrid from 'ol/tilegrid/WMTS';
+import WMTSRequestEncoding from 'ol/source/WMTSRequestEncoding';
 import { ProjectionLike } from 'ol/proj';
 import { LoadFunction } from 'ol/Tile';
 
@@ -24,14 +24,14 @@ import { LoadFunction } from 'ol/Tile';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
 })
-export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
+export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges, WMTSOptions {
   instance: WMTS;
   @Input()
   cacheSize?: number;
   @Input()
   crossOrigin?: string;
   @Input()
-  tileGrid: TileGridWMTS;
+  tileGrid: WMTSTileGrid;
   @Input()
   projection: ProjectionLike;
   @Input()

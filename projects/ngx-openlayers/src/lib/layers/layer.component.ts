@@ -1,5 +1,5 @@
 import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { Event } from 'ol/events';
+import Event from 'ol/events/Event';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
 import { Extent } from 'ol/extent';

@@ -1,5 +1,5 @@
 import { Component, Input, Host, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Icon } from 'ol/style';
+import Icon, { Options as IconOptions } from 'ol/style/Icon';
 import IconAnchorUnits from 'ol/style/IconAnchorUnits';
 import IconOrigin from 'ol/style/IconOrigin';
 import { StyleComponent } from './style.component';
@@ -10,7 +10,7 @@ import { StyleComponent } from './style.component';
     <div class="aol-style-icon"></div>
   `,
 })
-export class StyleIconComponent implements OnInit, OnChanges {
+export class StyleIconComponent implements OnInit, OnChanges, IconOptions {
   public instance: Icon;
 
   @Input()
@@ -26,7 +26,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   crossOrigin: IconOrigin;
   @Input()
-  img: string;
+  img: HTMLImageElement | HTMLCanvasElement;
   @Input()
   offset: [number, number];
   @Input()
