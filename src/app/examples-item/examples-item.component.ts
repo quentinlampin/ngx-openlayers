@@ -11,11 +11,20 @@ import { Router } from '@angular/router';
         <a [href]="exampleInfo.openLayersLink" target="_blank"> {{ exampleInfo.openLayersLink }} </a>
       </div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="example">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [
     `
+      :host {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
       .example-info {
+        flex: 0 1 auto;
         padding: 2rem 1rem;
         display: flex;
         flex-direction: column;
@@ -39,6 +48,10 @@ import { Router } from '@angular/router';
         margin-bottom: 0px;
         color: rgba(0, 0, 0, 0.6);
         font-size: 12px;
+      }
+
+      .example {
+        flex: 1 1 auto;
       }
     `,
   ],

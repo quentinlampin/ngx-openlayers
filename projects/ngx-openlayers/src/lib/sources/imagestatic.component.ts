@@ -45,11 +45,11 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   imageSize?: Size;
 
   @Output()
-  onImageLoadStart = new EventEmitter<ImageSourceEvent>();
+  imageLoadStart = new EventEmitter<ImageSourceEvent>();
   @Output()
-  onImageLoadEnd = new EventEmitter<ImageSourceEvent>();
+  imageLoadEnd = new EventEmitter<ImageSourceEvent>();
   @Output()
-  onImageLoadError = new EventEmitter<ImageSourceEvent>();
+  imageLoadError = new EventEmitter<ImageSourceEvent>();
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
@@ -58,9 +58,9 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   setLayerSource(): void {
     this.instance = new ImageStatic(this);
     this.host.instance.setSource(this.instance);
-    this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.onImageLoadStart.emit(event));
-    this.instance.on('imageloadend', (event: ImageSourceEvent) => this.onImageLoadEnd.emit(event));
-    this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.onImageLoadError.emit(event));
+    this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.imageLoadStart.emit(event));
+    this.instance.on('imageloadend', (event: ImageSourceEvent) => this.imageLoadEnd.emit(event));
+    this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.imageLoadError.emit(event));
   }
 
   ngOnInit() {

@@ -60,12 +60,18 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [
     `
+      :host {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
       aol-map {
-        display: block;
-        height: calc(100% - 250px);
+        flex: 1 1 auto;
       }
 
       .control {
+        flex: 0 0 auto;
         display: flex;
         align-items: center;
         justify-content: flex-start;

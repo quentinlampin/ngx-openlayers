@@ -7,7 +7,7 @@ import Projection from 'ol/proj/Projection';
 @Component({
   selector: 'app-map-position',
   template: `
-    <aol-map #map width="100%" height="100%" (onMoveStart)="startMoving()" (onMoveEnd)="displayCoordinates()">
+    <aol-map #map width="100%" height="100%" (moveStart)="startMoving()" (moveEnd)="displayCoordinates()">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
 
@@ -38,6 +38,7 @@ import Projection from 'ol/proj/Projection';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
@@ -81,9 +82,9 @@ import Projection from 'ol/proj/Projection';
 export class MapPositionComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
-  @ViewChild('map')
+  @ViewChild('map', { static: true })
   map: MapComponent;
-  @ViewChild('view')
+  @ViewChild('view', { static: true })
   view: ViewComponent;
 
   displayProj = new Projection({ code: 'EPSG:3857' });

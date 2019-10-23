@@ -72,23 +72,23 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     if (!this.instance) {
       return;
     }
-    if (changes['color']) {
-      this.instance.setColor(changes['color'].currentValue);
+    if (changes.color) {
+      this.instance.setColor(changes.color.currentValue);
     }
-    if (changes['lineCap']) {
-      this.instance.setLineCap(changes['lineCap'].currentValue);
+    if (changes.lineCap) {
+      this.instance.setLineCap(changes.lineCap.currentValue);
     }
-    if (changes['lineDash']) {
-      this.instance.setLineDash(changes['lineDash'].currentValue);
+    if (changes.lineDash) {
+      this.instance.setLineDash(changes.lineDash.currentValue);
     }
-    if (changes['lineJoin']) {
-      this.instance.setLineJoin(changes['lineJoin'].currentValue);
+    if (changes.lineJoin) {
+      this.instance.setLineJoin(changes.lineJoin.currentValue);
     }
-    if (changes['miterLimit']) {
-      this.instance.setMiterLimit(changes['miterLimit'].currentValue);
+    if (changes.miterLimit) {
+      this.instance.setMiterLimit(changes.miterLimit.currentValue);
     }
-    if (changes['width']) {
-      this.instance.setWidth(changes['width'].currentValue);
+    if (changes.width) {
+      this.instance.setWidth(changes.width.currentValue);
     }
     this.host.update();
     // console.log('changes detected in aol-style-stroke, setting new properties: ', changes);

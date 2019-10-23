@@ -23,7 +23,7 @@ export class SourceTileWMSComponent extends SourceComponent implements OnChanges
   @Input()
   hidpi: boolean;
   @Input()
-  params: Object;
+  params: { [key: string]: any };
   @Input()
   projection: string;
   @Input()

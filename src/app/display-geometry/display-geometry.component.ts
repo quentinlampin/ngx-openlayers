@@ -37,7 +37,7 @@ import { Component, OnInit } from '@angular/core';
                 </aol-coordinate>
                 <aol-style>
                   <aol-style-circle [radius]="10">
-                    <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+                    <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
                     <aol-style-fill [color]="'green'"></aol-style-fill>
                   </aol-style-circle>
                 </aol-style>
@@ -78,7 +78,7 @@ import { Component, OnInit } from '@angular/core';
                 </aol-collection-coordinates>
                 <aol-style>
                   <aol-style-circle [radius]="5">
-                    <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+                    <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
                     <aol-style-fill [color]="'green'"></aol-style-fill>
                   </aol-style-circle>
                 </aol-style>

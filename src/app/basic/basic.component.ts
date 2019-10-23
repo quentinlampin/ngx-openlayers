@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     <aol-map [width]="'100%'" [height]="'100%'">
       <aol-view
         [zoom]="zoom"
-        (onChangeResolution)="onChangeResolution($event)"
-        (onChangeZoom)="onChangeZoom($event)"
-        (onChangeCenter)="onChangeCenter($event)"
+        (changeResolution)="changeResolution($event)"
+        (changeZoom)="changeZoom($event)"
+        (changeCenter)="changeCenter($event)"
       >
         <aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
@@ -56,6 +56,7 @@ import { Component } from '@angular/core';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
@@ -117,15 +118,15 @@ export class BasicComponent {
     console.log('opacity: ', this.opacity);
   }
 
-  onChangeResolution(evt) {
+  changeResolution(evt) {
     console.log('Resolution changed:', evt);
   }
 
-  onChangeCenter(evt) {
+  changeCenter(evt) {
     console.log('Center changed:', evt);
   }
 
-  onChangeZoom(evt) {
+  changeZoom(evt) {
     console.log('Zoom changed:', evt);
   }
 }

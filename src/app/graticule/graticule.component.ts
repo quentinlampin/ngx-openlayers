@@ -25,6 +25,7 @@ import { Stroke } from 'ol/style';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
