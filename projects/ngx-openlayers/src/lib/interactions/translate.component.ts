@@ -20,32 +20,32 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
   hitTolerance?: number;
 
   @Output()
-  onChange: EventEmitter<TranslateEvent>;
+  olChange: EventEmitter<TranslateEvent>;
   @Output()
-  onPropertyChange: EventEmitter<TranslateEvent>;
+  propertyChange: EventEmitter<TranslateEvent>;
   @Output()
-  onTranslateEnd: EventEmitter<TranslateEvent>;
+  translateEnd: EventEmitter<TranslateEvent>;
   @Output()
-  onTranslateStart: EventEmitter<TranslateEvent>;
+  translateStart: EventEmitter<TranslateEvent>;
   @Output()
-  onTranslating: EventEmitter<TranslateEvent>;
+  translating: EventEmitter<TranslateEvent>;
 
   constructor(private map: MapComponent) {
-    this.onChange = new EventEmitter<TranslateEvent>();
-    this.onPropertyChange = new EventEmitter<TranslateEvent>();
-    this.onTranslateEnd = new EventEmitter<TranslateEvent>();
-    this.onTranslateStart = new EventEmitter<TranslateEvent>();
-    this.onTranslating = new EventEmitter<TranslateEvent>();
+    this.olChange = new EventEmitter<TranslateEvent>();
+    this.propertyChange = new EventEmitter<TranslateEvent>();
+    this.translateEnd = new EventEmitter<TranslateEvent>();
+    this.translateStart = new EventEmitter<TranslateEvent>();
+    this.translating = new EventEmitter<TranslateEvent>();
   }
 
   ngOnInit() {
     this.instance = new Translate(this);
 
-    this.instance.on('change', (event: TranslateEvent) => this.onChange.emit(event));
-    this.instance.on('propertychange', (event: TranslateEvent) => this.onPropertyChange.emit(event));
-    this.instance.on('translateend', (event: TranslateEvent) => this.onTranslateEnd.emit(event));
-    this.instance.on('translatestart', (event: TranslateEvent) => this.onTranslateStart.emit(event));
-    this.instance.on('translating', (event: TranslateEvent) => this.onTranslating.emit(event));
+    this.instance.on('change', (event: TranslateEvent) => this.olChange.emit(event));
+    this.instance.on('propertychange', (event: TranslateEvent) => this.propertyChange.emit(event));
+    this.instance.on('translateend', (event: TranslateEvent) => this.translateEnd.emit(event));
+    this.instance.on('translatestart', (event: TranslateEvent) => this.translateStart.emit(event));
+    this.instance.on('translating', (event: TranslateEvent) => this.translating.emit(event));
 
     this.map.instance.addInteraction(this.instance);
   }

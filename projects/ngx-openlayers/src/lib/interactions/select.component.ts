@@ -37,20 +37,20 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
   wrapX?: boolean;
 
   @Output()
-  onChange = new EventEmitter<SelectEvent>();
+  olChange = new EventEmitter<SelectEvent>();
   @Output()
-  onSelect = new EventEmitter<SelectEvent>();
+  olSelect = new EventEmitter<SelectEvent>();
   @Output()
-  onPropertyChange = new EventEmitter<SelectEvent>();
+  propertyChange = new EventEmitter<SelectEvent>();
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new Select(this);
 
-    this.instance.on('change', (event: SelectEvent) => this.onChange.emit(event));
-    this.instance.on('select', (event: SelectEvent) => this.onSelect.emit(event));
-    this.instance.on('propertychange', (event: SelectEvent) => this.onPropertyChange.emit(event));
+    this.instance.on('change', (event: SelectEvent) => this.olChange.emit(event));
+    this.instance.on('select', (event: SelectEvent) => this.olSelect.emit(event));
+    this.instance.on('propertychange', (event: SelectEvent) => this.propertyChange.emit(event));
 
     this.map.instance.addInteraction(this.instance);
   }

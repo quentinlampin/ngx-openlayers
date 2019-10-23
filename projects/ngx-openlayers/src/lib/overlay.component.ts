@@ -12,7 +12,7 @@ export class OverlayComponent implements OnInit, OnDestroy {
   componentType = 'overlay';
   instance: Overlay;
   element: Element;
-  @ContentChild(ContentComponent)
+  @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
 
   @Input()

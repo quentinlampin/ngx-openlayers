@@ -48,25 +48,25 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   wrapX?: boolean;
 
   @Output()
-  onChange = new EventEmitter<DrawEvent>();
+  olChange = new EventEmitter<DrawEvent>();
   @Output()
-  onChangeActive = new EventEmitter<DrawEvent>();
+  olChangeActive = new EventEmitter<DrawEvent>();
   @Output()
-  onDrawEnd = new EventEmitter<DrawEvent>();
+  drawEnd = new EventEmitter<DrawEvent>();
   @Output()
-  onDrawStart = new EventEmitter<DrawEvent>();
+  drawStart = new EventEmitter<DrawEvent>();
   @Output()
-  onPropertyChange = new EventEmitter<DrawEvent>();
+  propertyChange = new EventEmitter<DrawEvent>();
 
   constructor(private map: MapComponent) {}
 
   ngOnInit() {
     this.instance = new Draw(this);
-    this.instance.on('change', (event: DrawEvent) => this.onChange.emit(event));
-    this.instance.on('change:active', (event: DrawEvent) => this.onChangeActive.emit(event));
-    this.instance.on('drawend', (event: DrawEvent) => this.onDrawEnd.emit(event));
-    this.instance.on('drawstart', (event: DrawEvent) => this.onDrawStart.emit(event));
-    this.instance.on('propertychange', (event: DrawEvent) => this.onPropertyChange.emit(event));
+    this.instance.on('change', (event: DrawEvent) => this.olChange.emit(event));
+    this.instance.on('change:active', (event: DrawEvent) => this.olChangeActive.emit(event));
+    this.instance.on('drawend', (event: DrawEvent) => this.drawEnd.emit(event));
+    this.instance.on('drawstart', (event: DrawEvent) => this.drawStart.emit(event));
+    this.instance.on('propertychange', (event: DrawEvent) => this.propertyChange.emit(event));
     this.map.instance.addInteraction(this.instance);
   }
 

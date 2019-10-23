@@ -12,7 +12,7 @@ import { GeoJSON } from 'ol/format';
       <aol-interaction-modify
         #modify
         [features]="select.instance.getFeatures()"
-        (onModifyEnd)="modifyEnd($event.features.getArray()[0])"
+        (modifyEnd)="modifyEnd($event.features.getArray()[0])"
       >
       </aol-interaction-modify>
 
@@ -44,6 +44,7 @@ import { GeoJSON } from 'ol/format';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 

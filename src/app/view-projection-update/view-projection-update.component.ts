@@ -43,7 +43,7 @@ import { Component } from '@angular/core';
     </aol-map>
     <div class="controls">
       Current projection:
-      <select (change)="onProjectionChange($event)">
+      <select (change)="projectionChange($event)">
         <option value="EPSG:3857">EPSG:3857</option>
         <option value="EPSG:4326">EPSG:4326</option>
       </select>
@@ -52,6 +52,7 @@ import { Component } from '@angular/core';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
@@ -69,7 +70,7 @@ import { Component } from '@angular/core';
 export class ViewProjectionUpdateComponent {
   public viewProjection = 'EPSG:3857';
 
-  onProjectionChange(evt) {
+  projectionChange(evt) {
     console.log(`Projection changed to ${evt.target.value}`);
     this.viewProjection = evt.target.value;
   }

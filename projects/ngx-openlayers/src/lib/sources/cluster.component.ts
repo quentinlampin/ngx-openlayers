@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { Feature } from 'ol';
 import { LayerVectorComponent } from '../layers/layervector.component';
+import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 import { SourceVectorComponent } from './vector.component';
 import { Cluster, Vector } from 'ol/source';
@@ -32,7 +33,7 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
   @Input()
   wrapX?: boolean;
 
-  @ContentChild(SourceVectorComponent)
+  @ContentChild(SourceVectorComponent, { static: false })
   sourceVectorComponent: SourceVectorComponent;
   source: Vector;
 

@@ -8,9 +8,8 @@
     "postchangelog": "cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0 || ^7.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0 || ^7.0.0",
-    "ol": "^5.3.1"
-  },
-  "dependencies": {}
+    "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0",
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0",
+    "ol": "^6.0.0"
+  }
 }

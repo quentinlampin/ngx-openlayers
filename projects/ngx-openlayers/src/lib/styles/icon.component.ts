@@ -60,16 +60,16 @@ export class StyleIconComponent implements OnInit, OnChanges {
     if (!this.instance) {
       return;
     }
-    if (changes['opacity']) {
-      this.instance.setOpacity(changes['opacity'].currentValue);
+    if (changes.opacity) {
+      this.instance.setOpacity(changes.opacity.currentValue);
     }
-    if (changes['rotation']) {
-      this.instance.setRotation(changes['rotation'].currentValue);
+    if (changes.rotation) {
+      this.instance.setRotation(changes.rotation.currentValue);
     }
-    if (changes['scale']) {
-      this.instance.setScale(changes['scale'].currentValue);
+    if (changes.scale) {
+      this.instance.setScale(changes.scale.currentValue);
     }
-    if (changes['src']) {
+    if (changes.src) {
       this.instance = new Icon(this);
       this.host.instance.setImage(this.instance);
     }

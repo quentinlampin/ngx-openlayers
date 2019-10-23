@@ -4,7 +4,7 @@ import { transform } from 'ol/proj';
 @Component({
   selector: 'app-cursor-position',
   template: `
-    <aol-map #map width="100%" height="100%" (onPointerMove)="dispatchCursor($event)">
+    <aol-map #map width="100%" height="100%" (pointerMove)="dispatchCursor($event)">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
 
@@ -25,6 +25,7 @@ import { transform } from 'ol/proj';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 

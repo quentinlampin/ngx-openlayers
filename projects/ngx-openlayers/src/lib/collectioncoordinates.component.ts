@@ -76,16 +76,16 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
       switch (this.host.componentType) {
         case 'geometry-linestring':
         case 'geometry-multipoint':
-          transformedCoordinates = (<Coordinate[]>this.coordinates).map(c => transform(c, this.srid, this.mapSrid));
+          transformedCoordinates = (this.coordinates as Coordinate[]).map(c => transform(c, this.srid, this.mapSrid));
           break;
         case 'geometry-polygon':
         case 'geometry-multilinestring':
-          transformedCoordinates = (<Coordinate[][]>this.coordinates).map(cc =>
+          transformedCoordinates = (this.coordinates as Coordinate[][]).map(cc =>
             cc.map(c => transform(c, this.srid, this.mapSrid))
           );
           break;
         case 'geometry-multipolygon':
-          transformedCoordinates = (<Coordinate[][][]>this.coordinates).map(ccc =>
+          transformedCoordinates = (this.coordinates as Coordinate[][][]).map(ccc =>
             ccc.map(cc => cc.map(c => transform(c, this.srid, this.mapSrid)))
           );
           break;

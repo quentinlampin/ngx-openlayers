@@ -4,7 +4,7 @@ import { SourceUTFGridComponent, ViewComponent } from '../../../projects/ngx-ope
 @Component({
   selector: 'app-root',
   template: `
-    <aol-map (onPointerMove)="displayInfo($event.coordinate)">
+    <aol-map (pointerMove)="displayInfo($event.coordinate)">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
       <aol-control-fullscreen></aol-control-fullscreen>
@@ -27,19 +27,20 @@ import { SourceUTFGridComponent, ViewComponent } from '../../../projects/ngx-ope
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
       aol-map {
-        width: 70%;
+        width: 100%;
         height: 100%;
       }
     `,
   ],
 })
 export class UTFGridComponent {
-  @ViewChild('UTFGrid') UTFGrid: SourceUTFGridComponent;
-  @ViewChild('view') view: ViewComponent;
+  @ViewChild('UTFGrid', { static: true }) UTFGrid: SourceUTFGridComponent;
+  @ViewChild('view', { static: true }) view: ViewComponent;
 
   info: any;
   coords: Coordinates;

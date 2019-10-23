@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <aol-map width="50%" height="50%">
+    <aol-map width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
       <aol-control-overviewmap></aol-control-overviewmap>

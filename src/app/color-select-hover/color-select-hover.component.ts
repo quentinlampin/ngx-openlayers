@@ -7,10 +7,10 @@ import { Feature } from 'ol';
 @Component({
   selector: 'app-color-select-hover',
   template: `
-    <aol-map #map (onPointerMove)="changeFeatureHovered($event)" width="100%" height="100%">
+    <aol-map #map (pointerMove)="changeFeatureHovered($event)" width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
-      <aol-interaction-select #select [style]="styleInterationSelected"></aol-interaction-select>
+      <aol-interaction-select #select [style]="styleInteratiselected"></aol-interaction-select>
 
       <aol-view [zoom]="5">
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
@@ -48,7 +48,7 @@ import { Feature } from 'ol';
 export class ColorSelectHoverComponent implements OnInit {
   constructor() {}
 
-  @ViewChild('map')
+  @ViewChild('map', { static: true })
   map: MapComponent;
   @ViewChildren('aoiLayerVector')
   aoiLayerVector: QueryList<LayerVectorComponent>;
@@ -127,7 +127,7 @@ export class ColorSelectHoverComponent implements OnInit {
     ],
   };
 
-  styleInterationSelected = new Style({
+  styleInteratiselected = new Style({
     fill: new Fill({
       color: 'rgba(0, 153, 255, 0.1)',
     }),

@@ -11,8 +11,8 @@ import { Component, OnInit } from '@angular/core';
           [url]="'https://ahocevar.com/geoserver/wms'"
           [params]="params"
           [serverType]="'geoserver'"
-          (onImageLoadStart)="onImageLoadStart()"
-          (onImageLoadEnd)="onImageLoadEnd()"
+          (imageLoadStart)="imageLoadStart()"
+          (imageLoadEnd)="imageLoadEnd()"
         ></aol-source-imagewms>
       </aol-layer-image>
     </aol-map>
@@ -32,11 +32,11 @@ export class ImageWMSComponent implements OnInit {
 
   ngOnInit() {}
 
-  onImageLoadStart() {
+  imageLoadStart() {
     console.log('image starts loading at: ' + new Date());
   }
 
-  onImageLoadEnd() {
+  imageLoadEnd() {
     console.log('image ends loading at: ' + new Date());
   }
 }

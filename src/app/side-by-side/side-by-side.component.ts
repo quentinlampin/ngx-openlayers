@@ -4,7 +4,7 @@ import { MapComponent, ViewComponent } from 'ngx-openlayers';
 @Component({
   selector: 'app-side-by-side',
   template: `
-    <aol-map #map width="100%" height="100%">
+    <aol-map #map [width]="'100%'" [height]="'100%'">
       <aol-interaction-default></aol-interaction-default>
 
       <aol-view #view [zoom]="5">
@@ -27,6 +27,7 @@ import { MapComponent, ViewComponent } from 'ngx-openlayers';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
@@ -39,9 +40,9 @@ import { MapComponent, ViewComponent } from 'ngx-openlayers';
 export class SideBySideComponent implements OnInit, AfterViewInit {
   constructor() {}
 
-  @ViewChild('secondMap')
+  @ViewChild('secondMap', { static: true })
   secondMap: MapComponent;
-  @ViewChild('view')
+  @ViewChild('view', { static: true })
   view: ViewComponent;
 
   ngOnInit() {}
