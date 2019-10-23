@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Extent } from 'ol/extent';
+import { Extent, getCenter } from 'ol/extent';
 import Projection from 'ol/proj/Projection';
 
 @Component({
@@ -26,6 +26,7 @@ import Projection from 'ol/proj/Projection';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
@@ -54,7 +55,7 @@ export class ImageStaticComponent {
 
   projection = new Projection(this.po);
 
-  getCenter = ext => Extent.getCenter(ext);
+  getCenter = ext => getCenter(ext);
 
   onUrlChange(evt) {
     this.url = evt.target.value;

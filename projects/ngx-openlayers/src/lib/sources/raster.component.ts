@@ -25,7 +25,7 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   @Input()
   threads?: number;
   @Input()
-  lib?: Object;
+  lib?: any;
   @Input()
   operationType?: RasterOperationType;
 

@@ -13,7 +13,7 @@ import { MapComponent } from 'ngx-openlayers';
 
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
-      <aol-layer-tile [precompose]="precomposeFunction" [postcompose]="postcomposeFunction">
+      <aol-layer-tile [prerender]="prerenderFunction" [postrender]="postrenderFunction">
         <aol-source-xyz
           url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         >
@@ -60,11 +60,11 @@ import { MapComponent } from 'ngx-openlayers';
 export class SwipeComponent implements OnInit {
   constructor() {}
 
-  @ViewChild('map')
+  @ViewChild('map', { static: true })
   map: MapComponent;
 
-  public precomposeFunction: (event) => void;
-  public postcomposeFunction: (event) => void;
+  public prerenderFunction: (event) => void;
+  public postrenderFunction: (event) => void;
 
   swipeValue = 50;
   swipeOffsetToCenter = 0;
@@ -74,8 +74,8 @@ export class SwipeComponent implements OnInit {
   paddingSize = 16;
 
   ngOnInit() {
-    this.precomposeFunction = this.precompose();
-    this.postcomposeFunction = this.postcompose();
+    this.prerenderFunction = this.prerender();
+    this.postrenderFunction = this.postrender();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -83,7 +83,7 @@ export class SwipeComponent implements OnInit {
     this.resetSwipeValues();
   }
 
-  precompose() {
+  prerender() {
     return event => {
       const ctx = event.context;
       const width = ctx.canvas.width * (this.swipeValue / 100);
@@ -95,7 +95,7 @@ export class SwipeComponent implements OnInit {
     };
   }
 
-  postcompose() {
+  postrender() {
     return event => {
       const ctx = event.context;
       ctx.restore();

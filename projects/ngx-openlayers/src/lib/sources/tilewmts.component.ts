@@ -9,6 +9,7 @@ import {
   OnChanges,
 } from '@angular/core';
 import { LayerTileComponent } from '../layers/layertile.component';
+import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
 import { WMTS } from 'ol/source';
@@ -53,7 +54,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   matrixSet: string;
   @Input()
-  dimensions?: Object;
+  dimensions?: any;
   @Input()
   url?: string;
   @Input()
@@ -63,7 +64,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   wrapX?: boolean;
 
-  @ContentChild(TileGridWMTSComponent)
+  @ContentChild(TileGridWMTSComponent, { static: false })
   tileGridWMTS: TileGridWMTSComponent;
 
   constructor(@Host() layer: LayerTileComponent) {

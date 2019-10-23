@@ -22,18 +22,18 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   maxResolution: number;
 
   @Input()
-  precompose: (evt: Event) => void;
+  prerender: (evt: Event) => void;
   @Input()
-  postcompose: (evt: Event) => void;
+  postrender: (evt: Event) => void;
 
   constructor(protected host: MapComponent | LayerGroupComponent) {}
 
   ngOnInit() {
-    if (this.precompose !== null && this.precompose !== undefined) {
-      this.instance.on('precompose', this.precompose);
+    if (this.prerender !== null && this.prerender !== undefined) {
+      this.instance.on('prerender', this.prerender);
     }
-    if (this.postcompose !== null && this.postcompose !== undefined) {
-      this.instance.on('postcompose', this.postcompose);
+    if (this.postrender !== null && this.postrender !== undefined) {
+      this.instance.on('postrender', this.postrender);
     }
     this.host.instance.getLayers().push(this.instance);
   }
@@ -50,13 +50,13 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     for (const key in changes) {
       if (changes.hasOwnProperty(key)) {
         properties[key] = changes[key].currentValue;
-        if (key === 'precompose') {
-          this.instance.un('precompose', changes[key].previousValue);
-          this.instance.on('precompose', changes[key].currentValue);
+        if (key === 'prerender') {
+          this.instance.un('prerender', changes[key].previousValue);
+          this.instance.on('prerender', changes[key].currentValue);
         }
-        if (key === 'postcompose') {
-          this.instance.un('postcompose', changes[key].previousValue);
-          this.instance.on('postcompose', changes[key].currentValue);
+        if (key === 'postrender') {
+          this.instance.un('postrender', changes[key].previousValue);
+          this.instance.on('postrender', changes[key].currentValue);
         }
       }
     }

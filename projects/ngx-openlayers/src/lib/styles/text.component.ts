@@ -48,29 +48,29 @@ export class StyleTextComponent implements OnInit, OnChanges {
     if (!this.instance) {
       return;
     }
-    if (changes['font']) {
-      this.instance.setFont(changes['font'].currentValue);
+    if (changes.font) {
+      this.instance.setFont(changes.font.currentValue);
     }
-    if (changes['offsetX']) {
-      this.instance.setOffsetX(changes['offsetX'].currentValue);
+    if (changes.offsetX) {
+      this.instance.setOffsetX(changes.offsetX.currentValue);
     }
-    if (changes['offsetY']) {
-      this.instance.setOffsetY(changes['offsetY'].currentValue);
+    if (changes.offsetY) {
+      this.instance.setOffsetY(changes.offsetY.currentValue);
     }
-    if (changes['scale']) {
-      this.instance.setScale(changes['scale'].currentValue);
+    if (changes.scale) {
+      this.instance.setScale(changes.scale.currentValue);
     }
-    if (changes['rotation']) {
-      this.instance.setRotation(changes['rotation'].currentValue);
+    if (changes.rotation) {
+      this.instance.setRotation(changes.rotation.currentValue);
     }
-    if (changes['text']) {
-      this.instance.setText(changes['text'].currentValue);
+    if (changes.text) {
+      this.instance.setText(changes.text.currentValue);
     }
-    if (changes['textAlign']) {
-      this.instance.setTextAlign(changes['textAlign'].currentValue);
+    if (changes.textAlign) {
+      this.instance.setTextAlign(changes.textAlign.currentValue);
     }
-    if (changes['textBaseLine']) {
-      this.instance.setTextBaseline(changes['textBaseLine'].currentValue);
+    if (changes.textBaseLine) {
+      this.instance.setTextBaseline(changes.textBaseLine.currentValue);
     }
     this.host.update();
     // console.log('changes detected in aol-style-text, setting new properties: ', changes);

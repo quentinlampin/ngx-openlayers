@@ -1,17 +1,17 @@
 {
-    "extends": "../../tslint.json",
-    "rules": {
-        "directive-selector": [
-            true,
-            "attribute",
-            "aol",
-            "camelCase"
-        ],
-        "component-selector": [
-            true,
-            "element",
-            "aol",
-            "kebab-case"
-        ]
-    }
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "aol",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "aol",
+      "kebab-case"
+    ]
+  }
 }

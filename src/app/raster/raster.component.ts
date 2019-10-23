@@ -56,6 +56,7 @@ interface RasterData {
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 
@@ -83,7 +84,7 @@ export class RasterComponent {
   contrast = 0;
 
   selectLayer = 'osm';
-  @ViewChild(SourceRasterComponent)
+  @ViewChild(SourceRasterComponent, { static: true })
   rasterSource;
 
   beforeOperations(event) {
@@ -104,9 +105,9 @@ export class RasterComponent {
 export function rasterOperation(imageDatas: [ImageData], data: RasterData): ImageData {
   const [imageData] = imageDatas;
 
-  const pixels = imageData.data,
-    pixelsLength = pixels.length,
-    factor = (259 * (data.contrast + 255)) / (255 * (259 - data.contrast));
+  const pixels = imageData.data;
+  const pixelsLength = pixels.length;
+  const factor = (259 * (data.contrast + 255)) / (255 * (259 - data.contrast));
 
   for (let i = 0; i < pixelsLength; i += 4) {
     pixels[i] += data.brightness;

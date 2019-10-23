@@ -13,7 +13,7 @@ import { fromExtent } from 'ol/geom/Polygon';
         *ngIf="isDrawing"
         type="Circle"
         [geometryFunction]="drawBoxGeometryFunction"
-        (onDrawEnd)="endDraw($event.feature)"
+        (drawEnd)="endDraw($event.feature)"
       >
       </aol-interaction-draw>
 
@@ -48,6 +48,7 @@ import { fromExtent } from 'ol/geom/Polygon';
   styles: [
     `
       :host {
+        height: 100%;
         display: flex;
       }
 

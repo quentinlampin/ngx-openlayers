@@ -63,8 +63,8 @@ export class StyleFillComponent implements OnInit, OnChanges {
     if (!this.instance) {
       return;
     }
-    if (changes['color']) {
-      this.instance.setColor(changes['color'].currentValue);
+    if (changes.color) {
+      this.instance.setColor(changes.color.currentValue);
     }
     this.host.update();
     // console.log('changes detected in aol-style-fill, setting new color: ', changes);
