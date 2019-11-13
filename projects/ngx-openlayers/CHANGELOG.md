@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.13"></a>
+# [1.0.0-next.13](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.12...1.0.0-next.13) (2019-11-13)
+
+
+### Features
+
+* **wmts:** add wmts tile load events ([7aba5ca](https://github.com/quentin-ol/ngx-openlayers/commit/7aba5ca))
+
+
+
 <a name="1.0.0-next.12"></a>
 # [1.0.0-next.12](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.11...1.0.0-next.12) (2019-11-13)
 
