@@ -7,9 +7,10 @@ import {
   ContentChild,
   SimpleChanges,
   OnChanges,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { LayerTileComponent } from '../layers/layertile.component';
-import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
 import { WMTS } from 'ol/source';
@@ -17,6 +18,7 @@ import { WMTS as TileGridWMTS } from 'ol/tilegrid';
 import { WMTSRequestEncoding } from 'ol/source';
 import { ProjectionLike } from 'ol/proj';
 import { LoadFunction } from 'ol/Tile';
+import { TileSourceEvent } from 'ol/source/Tile';
 
 @Component({
   selector: 'aol-source-tilewmts',
@@ -64,6 +66,13 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   wrapX?: boolean;
 
+  @Output()
+  tileLoadStart: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
+  @Output()
+  tileLoadEnd: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
+  @Output()
+  tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
+
   @ContentChild(TileGridWMTSComponent, { static: false })
   tileGridWMTS: TileGridWMTSComponent;
 
@@ -94,6 +103,9 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
 
   setLayerSource(): void {
     this.instance = new WMTS(this);
+    this.instance.on('tileloadstart', (event: TileSourceEvent) => this.tileLoadStart.emit(event));
+    this.instance.on('tileloadend', (event: TileSourceEvent) => this.tileLoadEnd.emit(event));
+    this.instance.on('tileloaderror', (event: TileSourceEvent) => this.tileLoadError.emit(event));
     this.host.instance.setSource(this.instance);
   }
 
