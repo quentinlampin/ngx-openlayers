@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-next.12"></a>
+# [1.0.0-next.12](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.11...1.0.0-next.12) (2019-11-13)
+
+
+### Chores
+
+* update angular and openayer ([187a3b0](https://github.com/quentin-ol/ngx-openlayers/commit/187a3b0))
+
+
+### Features
+
+* **map:** add onMoveStart event ([f41daf9](https://github.com/quentin-ol/ngx-openlayers/commit/f41daf9))
+
+
+### BREAKING CHANGES
+
+* - precompose, postcompose become prerender, postrender
+- remove `on` prefix for all output, exception for native events :
+  - `click` -> `olClick`
+  - `select` -> `olFeature`
+  - `change` -> `olChange`
+
+
+
 <a name="1.0.0-next.11"></a>
 # [1.0.0-next.11](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.10...1.0.0-next.11) (2019-08-08)
 
