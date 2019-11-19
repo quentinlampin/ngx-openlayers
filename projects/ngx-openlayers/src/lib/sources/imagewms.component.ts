@@ -9,13 +9,14 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { ImageWMS } from 'ol/source';
-import { LayerImageComponent } from '../layers/layerimage.component';
-import { SourceComponent } from './source.component';
+import ImageWMS, { Options as ImageWMSOptions } from 'ol/source/ImageWMS';
 import { ProjectionLike } from 'ol/proj';
 import { AttributionLike } from 'ol/source/Source';
 import { LoadFunction } from 'ol/Image';
 import { ImageSourceEvent } from 'ol/source/Image';
+import WMSServerType from 'ol/source/WMSServerType';
+import { LayerImageComponent } from '../layers/layerimage.component';
+import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-imagewms',
@@ -24,7 +25,7 @@ import { ImageSourceEvent } from 'ol/source/Image';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
 })
-export class SourceImageWMSComponent extends SourceComponent implements OnChanges, OnInit {
+export class SourceImageWMSComponent extends SourceComponent implements OnChanges, OnInit, ImageWMSOptions {
   instance: ImageWMS;
 
   @Input()
@@ -34,17 +35,17 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   @Input()
   hidpi: boolean;
   @Input()
-  serverType: string;
+  serverType: WMSServerType | string;
   @Input()
   imageLoadFunction?: LoadFunction;
   @Input()
   params: { [key: string]: any };
   @Input()
-  projection: ProjectionLike | string;
+  projection: ProjectionLike;
   @Input()
   ratio: number;
   @Input()
-  resolutions: Array<number>;
+  resolutions: number[];
   @Input()
   url: string;
 

@@ -1,5 +1,5 @@
 import { Component, Input, Host, AfterContentInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { AtlasManager, Circle, Fill, Stroke } from 'ol/style';
+import { Circle, Fill, Stroke } from 'ol/style';
 import { StyleComponent } from './style.component';
 
 @Component({
@@ -20,8 +20,6 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   snapToPixel: boolean;
   @Input()
   stroke: Stroke;
-  @Input()
-  atlasManager: AtlasManager;
 
   constructor(@Host() private host: StyleComponent) {}
 

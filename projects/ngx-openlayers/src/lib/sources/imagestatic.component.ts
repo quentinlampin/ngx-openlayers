@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   OnInit,
 } from '@angular/core';
-import { ImageStatic } from 'ol/source';
+import ImageStatic, { Options as ImageStaticOptions } from 'ol/source/ImageStatic';
 import { SourceComponent } from './source.component';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { ProjectionLike } from 'ol/proj';
@@ -26,11 +26,11 @@ import { ImageSourceEvent } from 'ol/source/Image';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
 })
-export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {
+export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges, ImageStaticOptions {
   instance: ImageStatic;
 
   @Input()
-  projection: ProjectionLike | string;
+  projection: ProjectionLike;
   @Input()
   imageExtent: Extent;
   @Input()

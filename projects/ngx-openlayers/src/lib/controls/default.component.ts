@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { Control, defaults } from 'ol/control';
+import { DefaultsOptions } from 'ol/control';
 import { Collection } from 'ol';
 import { Options as AttributionOptions } from 'ol/control/Attribution';
 import { Options as RotateOptions } from 'ol/control/Rotate';
@@ -11,7 +12,7 @@ import { MapComponent } from '../map.component';
   selector: 'aol-control-defaults',
   template: '',
 })
-export class DefaultControlComponent implements OnInit, OnDestroy {
+export class DefaultControlComponent implements OnInit, OnDestroy, DefaultsOptions {
   instance: Collection<Control>;
   @Input()
   attribution: boolean;

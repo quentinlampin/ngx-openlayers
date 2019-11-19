@@ -1,9 +1,10 @@
 import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges, EventEmitter, Output } from '@angular/core';
-import View from 'ol/View';
-import { MapComponent } from './map.component';
-import { ObjectEvent } from 'ol';
-import { Extent } from 'ol/extent';
+import { ObjectEvent } from 'ol/Object';
 import { Coordinate } from 'ol/coordinate';
+import { ProjectionLike } from 'ol/proj';
+import View, { ViewOptions } from 'ol/View';
+import { Extent } from 'ol/extent';
+import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-view',
@@ -11,7 +12,7 @@ import { Coordinate } from 'ol/coordinate';
     <ng-content></ng-content>
   `,
 })
-export class ViewComponent implements OnInit, OnChanges, OnDestroy {
+export class ViewComponent implements OnInit, OnChanges, OnDestroy, ViewOptions {
   public instance: View;
   public componentType = 'view';
 
@@ -42,7 +43,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   center: Coordinate;
   @Input()
-  projection: string;
+  projection: ProjectionLike;
   @Input()
   zoomAnimation = false;
 

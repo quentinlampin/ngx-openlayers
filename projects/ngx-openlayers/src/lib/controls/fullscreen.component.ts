@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FullScreen } from 'ol/control';
+import FullScreen, { Options as FullScreenOptions } from 'ol/control/FullScreen';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
     <ng-content></ng-content>
   `,
 })
-export class ControlFullScreenComponent implements OnInit, OnDestroy {
+export class ControlFullScreenComponent implements OnInit, OnDestroy, FullScreenOptions {
   instance: FullScreen;
 
   @Input()

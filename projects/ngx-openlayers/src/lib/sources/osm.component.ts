@@ -1,5 +1,5 @@
 import { Component, Host, forwardRef, Input, AfterContentInit, Optional, Output, EventEmitter } from '@angular/core';
-import { OSM } from 'ol/source';
+import OSM, { Options as OSMOptions } from 'ol/source/OSM';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
@@ -15,7 +15,7 @@ import { TileSourceEvent } from 'ol/source/Tile';
   `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
 })
-export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
+export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit, OSMOptions {
   instance: OSM;
 
   @Input()

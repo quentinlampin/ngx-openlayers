@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Zoom } from 'ol/control';
+import Zoom, { Options as ZoomOptions } from 'ol/control/Zoom';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -8,15 +8,15 @@ import { MapComponent } from '../map.component';
     <ng-content></ng-content>
   `,
 })
-export class ControlZoomComponent implements OnInit, OnDestroy {
+export class ControlZoomComponent implements OnInit, OnDestroy, ZoomOptions {
   instance: Zoom;
 
   @Input()
   duration: number;
   @Input()
-  zoomInLabel: string | Node;
+  zoomInLabel: string | HTMLElement;
   @Input()
-  zoomOutLabel: string | Node;
+  zoomOutLabel: string | HTMLElement;
   @Input()
   zoomInTipLabel: string;
   @Input()
