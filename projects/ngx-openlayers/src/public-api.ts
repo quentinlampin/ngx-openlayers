@@ -3,6 +3,8 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SimpleGeometryComponent } from './lib/geom/simplegeometry.component';
+import { SourceComponent } from './lib/sources/source.component';
 import { ViewComponent } from './lib/view.component';
 import { GraticuleComponent } from './lib/graticule.component';
 import { LayerGroupComponent } from './lib/layers/layergroup.component';
@@ -74,16 +76,19 @@ import { ContentComponent } from './lib/content.component';
 import { AttributionsComponent } from './lib/attributions.component';
 import { AttributionComponent } from './lib/attribution.component';
 import { SourceUTFGridComponent } from './lib/sources/utfgrid.component';
+import { LayerComponent } from './lib/layers/layer.component';
 
 export {
   MapComponent,
   ViewComponent,
   GraticuleComponent,
+  LayerComponent,
   LayerGroupComponent,
   LayerImageComponent,
   LayerTileComponent,
   LayerVectorComponent,
   LayerVectorTileComponent,
+  SourceComponent,
   SourceOsmComponent,
   SourceBingmapsComponent,
   SourceClusterComponent,
@@ -99,6 +104,7 @@ export {
   SourceImageWMSComponent,
   SourceRasterComponent,
   SourceImageArcGISRestComponent,
+  SimpleGeometryComponent,
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryMultiLinestringComponent,
@@ -176,6 +182,7 @@ const COMPONENTS = [
   SourceImageWMSComponent,
   SourceImageArcGISRestComponent,
   SourceRasterComponent,
+
   FeatureComponent,
   GeometryLinestringComponent,
   GeometryMultiLinestringComponent,

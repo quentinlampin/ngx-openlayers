@@ -1,8 +1,27 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ngx-openlayers",
-  "deleteDestPath": false,
+  "assets": [
+    "ngcc.config.js"
+  ],
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "ol": "ol",
+      "ol/control": "control",
+      "ol/control/MousePosition": "MousePosition",
+      "ol/format": "format",
+      "ol/geom": "geom",
+      "ol/interaction": "interaction",
+      "ol/layer": "ol/layer",
+      "ol/Map": "Map",
+      "ol/proj": "proj",
+      "ol/style": "style",
+      "ol/source": "source",
+      "ol/tilegrid": "tilegrid",
+      "ol/tilegrid/TileGrid": "TileGrid",
+      "ol/tilegrid/WMTS": "WMTS",
+      "ol/View": "View"
+    }
   }
 }

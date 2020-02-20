@@ -8,9 +8,7 @@ import { OverlayComponent } from './overlay.component';
 
 @Component({
   selector: 'aol-coordinate',
-  template: `
-    <div class="aol-coordinate"></div>
-  `,
+  template: ` <div class="aol-coordinate"></div> `,
 })
 export class CoordinateComponent implements OnChanges, OnInit {
   private host: any;
@@ -43,11 +41,8 @@ export class CoordinateComponent implements OnChanges, OnInit {
   }
 
   ngOnInit() {
-    this.map.instance.on('change:view', e => this.onMapViewChanged(e));
-    this.mapSrid = this.map.instance
-      .getView()
-      .getProjection()
-      .getCode();
+    this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
+    this.mapSrid = this.map.instance.getView().getProjection().getCode();
     this.transformCoordinates();
   }
 
@@ -56,10 +51,7 @@ export class CoordinateComponent implements OnChanges, OnInit {
   }
 
   private onMapViewChanged(event) {
-    this.mapSrid = event.target
-      .get(event.key)
-      .getProjection()
-      .getCode();
+    this.mapSrid = event.target.get(event.key).getProjection().getCode();
     this.transformCoordinates();
   }
 

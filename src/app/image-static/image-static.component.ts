@@ -55,7 +55,7 @@ export class ImageStaticComponent {
 
   projection = new Projection(this.po);
 
-  getCenter = ext => getCenter(ext);
+  getCenter = (ext) => getCenter(ext);
 
   onUrlChange(evt) {
     this.url = evt.target.value;

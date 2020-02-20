@@ -14,10 +14,10 @@ export class DefaultInteractionComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.instance = defaults();
-    this.instance.forEach(i => this.map.instance.addInteraction(i));
+    this.instance.forEach((i) => this.map.instance.addInteraction(i));
   }
 
   ngOnDestroy() {
-    this.instance.forEach(i => this.map.instance.removeInteraction(i));
+    this.instance.forEach((i) => this.map.instance.removeInteraction(i));
   }
 }

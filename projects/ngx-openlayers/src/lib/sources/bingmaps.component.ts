@@ -6,9 +6,7 @@ import { LoadFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-bingmaps',
-  template: `
-    <div class="aol-source-bingmaps"></div>
-  `,
+  template: ` <div class="aol-source-bingmaps"></div> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {

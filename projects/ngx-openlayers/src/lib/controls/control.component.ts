@@ -6,9 +6,7 @@ import { TileGridComponent } from '../tilegrid.component';
 
 @Component({
   selector: 'aol-control',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class ControlComponent implements OnInit, OnDestroy {
   public componentType = 'control';

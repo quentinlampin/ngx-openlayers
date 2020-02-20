@@ -6,9 +6,7 @@ import { LineString } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-linestring',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryLinestringComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-linestring';
@@ -19,7 +17,10 @@ export class GeometryLinestringComponent extends SimpleGeometryComponent impleme
   }
 
   ngOnInit() {
-    this.instance = new LineString([[0, 0], [1, 1]]);
+    this.instance = new LineString([
+      [0, 0],
+      [1, 1],
+    ]);
     super.ngOnInit();
   }
 }

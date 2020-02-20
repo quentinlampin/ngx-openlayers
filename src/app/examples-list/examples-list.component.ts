@@ -87,7 +87,7 @@ export class ExamplesListComponent implements OnInit {
         this.list = examplesList;
       } else {
         this.list = this.list.filter(
-          item =>
+          (item) =>
             (item.title && item.title.toLowerCase().includes(termValue)) ||
             (item.description && item.description.toLowerCase().includes(termValue))
         );

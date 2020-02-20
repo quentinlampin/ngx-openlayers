@@ -7,9 +7,7 @@ import { Coordinate } from 'ol/coordinate';
 
 @Component({
   selector: 'aol-view',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   public instance: View;
