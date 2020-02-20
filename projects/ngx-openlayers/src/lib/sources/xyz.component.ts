@@ -1,31 +1,29 @@
 import {
+  AfterContentInit,
   Component,
+  ContentChild,
+  EventEmitter,
+  forwardRef,
   Host,
   Input,
-  AfterContentInit,
-  forwardRef,
   OnChanges,
-  ContentChild,
-  SimpleChanges,
   Optional,
   Output,
-  EventEmitter,
+  SimpleChanges,
 } from '@angular/core';
-import { XYZ } from 'ol/source';
-import { LayerTileComponent } from '../layers/layertile.component';
-import { SourceComponent } from './source.component';
-import { TileGridComponent } from '../tilegrid.component';
-import { SourceRasterComponent } from './raster.component';
 import { Size } from 'ol/size';
+import { XYZ } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
-import TileGrid from 'ol/tilegrid/TileGrid';
 import { LoadFunction, UrlFunction } from 'ol/Tile';
+import TileGrid from 'ol/tilegrid/TileGrid';
+
+import { LayerTileComponent } from '../layers/layertile.component';
+import { TileGridComponent } from '../tilegrid.component';
+import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-xyz',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
@@ -61,7 +59,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @Input()
   wrapX: boolean;
 
-  @ContentChild(TileGridComponent, { static: false })
+  @ContentChild(TileGridComponent)
   tileGridXYZ: TileGridComponent;
 
   @Output()
@@ -74,12 +72,9 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   constructor(
     @Optional()
     @Host()
-    layer: LayerTileComponent,
-    @Optional()
-    @Host()
-    raster?: SourceRasterComponent
+    protected layer?: LayerTileComponent
   ) {
-    super(layer, raster);
+    super(layer);
   }
 
   ngAfterContentInit() {

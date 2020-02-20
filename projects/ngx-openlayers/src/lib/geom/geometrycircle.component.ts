@@ -6,9 +6,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-geometry-circle',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryCircleComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-circle';

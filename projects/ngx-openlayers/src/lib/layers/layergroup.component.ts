@@ -5,9 +5,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-layer-group',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class LayerGroupComponent extends LayerComponent implements OnInit, OnDestroy {
   public instance: Group;

@@ -6,9 +6,7 @@ import { MultiPolygon } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-multipolygon',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryMultiPolygonComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-multipolygon';
@@ -19,7 +17,15 @@ export class GeometryMultiPolygonComponent extends SimpleGeometryComponent imple
   }
 
   ngOnInit() {
-    this.instance = new MultiPolygon([[[[0, 0], [1, 1], [0, 1]]]]);
+    this.instance = new MultiPolygon([
+      [
+        [
+          [0, 0],
+          [1, 1],
+          [0, 1],
+        ],
+      ],
+    ]);
     super.ngOnInit();
   }
 }

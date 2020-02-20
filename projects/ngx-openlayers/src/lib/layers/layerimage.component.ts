@@ -7,9 +7,7 @@ import { Extent } from 'ol/extent';
 
 @Component({
   selector: 'aol-layer-image',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
   public source: Image;

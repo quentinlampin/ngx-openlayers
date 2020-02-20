@@ -6,9 +6,7 @@ import { MultiPoint } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-multipoint',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryMultiPointComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-multipoint';
@@ -19,7 +17,10 @@ export class GeometryMultiPointComponent extends SimpleGeometryComponent impleme
   }
 
   ngOnInit() {
-    this.instance = new MultiPoint([[0, 0], [1, 1]]);
+    this.instance = new MultiPoint([
+      [0, 0],
+      [1, 1],
+    ]);
     super.ngOnInit();
   }
 }

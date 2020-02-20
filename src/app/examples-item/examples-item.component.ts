@@ -60,6 +60,6 @@ export class ExamplesItemComponent implements OnInit {
   constructor(private router: Router) {}
   exampleInfo;
   ngOnInit() {
-    this.exampleInfo = examplesList.find(item => this.router.url.includes(item.routerLink));
+    this.exampleInfo = examplesList.find((item) => this.router.url.includes(item.routerLink));
   }
 }

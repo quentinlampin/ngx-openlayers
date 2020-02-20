@@ -6,9 +6,7 @@ import { MultiLineString } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-multilinestring',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryMultiLinestringComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-multilinestring';
@@ -19,7 +17,12 @@ export class GeometryMultiLinestringComponent extends SimpleGeometryComponent im
   }
 
   ngOnInit() {
-    this.instance = new MultiLineString([[[0, 0], [1, 1]]]);
+    this.instance = new MultiLineString([
+      [
+        [0, 0],
+        [1, 1],
+      ],
+    ]);
     super.ngOnInit();
   }
 }

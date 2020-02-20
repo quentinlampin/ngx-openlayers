@@ -6,9 +6,7 @@ import { Point } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-point',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryPointComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-point';

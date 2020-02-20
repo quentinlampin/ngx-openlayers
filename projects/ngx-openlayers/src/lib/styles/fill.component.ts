@@ -8,9 +8,7 @@ import { ColorLike } from 'ol/colorlike';
 
 @Component({
   selector: 'aol-style-fill',
-  template: `
-    <div class="aol-style-fill"></div>
-  `,
+  template: ` <div class="aol-style-fill"></div> `,
 })
 export class StyleFillComponent implements OnInit, OnChanges {
   /* the typings do not have the setters */

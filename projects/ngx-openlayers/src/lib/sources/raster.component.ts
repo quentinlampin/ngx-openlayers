@@ -1,15 +1,22 @@
-import { AfterContentInit, Component, EventEmitter, forwardRef, Host, Input, Output } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  EventEmitter,
+  forwardRef,
+  Host,
+  Input,
+  Output,
+} from '@angular/core';
 import { Raster, Source } from 'ol/source';
-import { RasterOperationType, RasterSourceEvent } from 'ol/source/Raster';
+import { Operation, RasterOperationType, RasterSourceEvent } from 'ol/source/Raster';
+
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
-import { Operation } from 'ol/source/Raster';
 
 @Component({
   selector: 'aol-source-raster',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   providers: [
     {
       provide: SourceComponent,
@@ -35,6 +42,15 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   afterOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
 
   sources: Source[] = [];
+
+  @ContentChild(SourceComponent)
+  set source(sourceComponent: SourceComponent) {
+    this.sources = [sourceComponent.instance];
+    if (this.instance) {
+      // Openlayer doesn't handle sources update. Just recreate Raster instance.
+      this.init();
+    }
+  }
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);

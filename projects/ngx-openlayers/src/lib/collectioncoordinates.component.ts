@@ -10,9 +10,7 @@ import { transform } from 'ol/proj';
 
 @Component({
   selector: 'aol-collection-coordinates',
-  template: `
-    <div class="aol-collection-coordinates"></div>
-  `,
+  template: ` <div class="aol-collection-coordinates"></div> `,
 })
 export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   private host: any;
@@ -47,11 +45,8 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   }
 
   ngOnInit() {
-    this.map.instance.on('change:view', e => this.onMapViewChanged(e));
-    this.mapSrid = this.map.instance
-      .getView()
-      .getProjection()
-      .getCode();
+    this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
+    this.mapSrid = this.map.instance.getView().getProjection().getCode();
     this.transformCoordinates();
   }
 
@@ -60,10 +55,7 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   }
 
   private onMapViewChanged(event) {
-    this.mapSrid = event.target
-      .get(event.key)
-      .getProjection()
-      .getCode();
+    this.mapSrid = event.target.get(event.key).getProjection().getCode();
     this.transformCoordinates();
   }
 
@@ -76,17 +68,17 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
       switch (this.host.componentType) {
         case 'geometry-linestring':
         case 'geometry-multipoint':
-          transformedCoordinates = (this.coordinates as Coordinate[]).map(c => transform(c, this.srid, this.mapSrid));
+          transformedCoordinates = (this.coordinates as Coordinate[]).map((c) => transform(c, this.srid, this.mapSrid));
           break;
         case 'geometry-polygon':
         case 'geometry-multilinestring':
-          transformedCoordinates = (this.coordinates as Coordinate[][]).map(cc =>
-            cc.map(c => transform(c, this.srid, this.mapSrid))
+          transformedCoordinates = (this.coordinates as Coordinate[][]).map((cc) =>
+            cc.map((c) => transform(c, this.srid, this.mapSrid))
           );
           break;
         case 'geometry-multipolygon':
-          transformedCoordinates = (this.coordinates as Coordinate[][][]).map(ccc =>
-            ccc.map(cc => cc.map(c => transform(c, this.srid, this.mapSrid)))
+          transformedCoordinates = (this.coordinates as Coordinate[][][]).map((ccc) =>
+            ccc.map((cc) => cc.map((c) => transform(c, this.srid, this.mapSrid)))
           );
           break;
       }

@@ -142,10 +142,11 @@ export class ColorSelectHoverComponent implements OnInit {
   ngOnInit() {}
 
   changeFeatureHovered(event) {
-    const hit: Feature = this.map.instance.forEachFeatureAtPixel(event.pixel, f => f, {
-      layerFilter: inLayer(...this.aoiLayerVector.toArray()),
-      hitTolerance: 10,
-    }) as Feature;
+    const hit: Feature =
+      this.map.instance.forEachFeatureAtPixel(event.pixel, (f) => f, {
+        layerFilter: inLayer(...this.aoiLayerVector.toArray()),
+        hitTolerance: 10,
+      }) as Feature;
 
     if (!hit && this.hoveredFeatureId) {
       this.hoveredFeatureId = null;
@@ -157,5 +158,5 @@ export class ColorSelectHoverComponent implements OnInit {
 }
 
 function inLayer(...layers: LayerVectorComponent[]): (l: Layer) => boolean {
-  return (l: Layer) => layers.some(layer => layer.instance === l);
+  return (l: Layer) => layers.some((layer) => layer.instance === l);
 }

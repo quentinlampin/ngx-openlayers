@@ -22,9 +22,7 @@ import { TileSourceEvent } from 'ol/source/Tile';
 
 @Component({
   selector: 'aol-source-tilewmts',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
@@ -73,7 +71,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Output()
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
-  @ContentChild(TileGridWMTSComponent, { static: false })
+  @ContentChild(TileGridWMTSComponent)
   tileGridWMTS: TileGridWMTSComponent;
 
   constructor(@Host() layer: LayerTileComponent) {
