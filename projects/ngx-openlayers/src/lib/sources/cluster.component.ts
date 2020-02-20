@@ -1,26 +1,24 @@
 import {
+  AfterContentInit,
   Component,
+  ContentChild,
+  forwardRef,
   Host,
   Input,
-  forwardRef,
-  ContentChild,
-  AfterContentInit,
-  SimpleChanges,
   OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { Feature } from 'ol';
+import { Point } from 'ol/geom';
+import { Cluster, Vector } from 'ol/source';
+
 import { LayerVectorComponent } from '../layers/layervector.component';
-import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 import { SourceVectorComponent } from './vector.component';
-import { Cluster, Vector } from 'ol/source';
-import { Point } from 'ol/geom';
 
 @Component({
   selector: 'aol-source-cluster',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
 })
 export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges {
@@ -33,7 +31,7 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
   @Input()
   wrapX?: boolean;
 
-  @ContentChild(SourceVectorComponent, { static: false })
+  @ContentChild(SourceVectorComponent)
   sourceVectorComponent: SourceVectorComponent;
   source: Vector;
 

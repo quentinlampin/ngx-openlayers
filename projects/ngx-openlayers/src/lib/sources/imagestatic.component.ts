@@ -21,9 +21,7 @@ import { ImageSourceEvent } from 'ol/source/Image';
 
 @Component({
   selector: 'aol-source-imagestatic',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
 })
 export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {

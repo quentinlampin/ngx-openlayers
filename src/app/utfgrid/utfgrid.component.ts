@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { SourceUTFGridComponent, ViewComponent } from '../../../projects/ngx-openlayers/src/public_api';
+import { SourceUTFGridComponent, ViewComponent } from 'ngx-openlayers';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +47,7 @@ export class UTFGridComponent {
   key = 'pk.eyJ1IjoieWFrb3VzdCIsImEiOiJjanVkc3Y0b2cwNWppM3lwaXd5M3JidHRzIn0.rJmuWPJnuKA9MJ9z5RPKZw';
 
   displayInfo(c) {
-    this.UTFGrid.instance.forDataAtCoordinateAndResolution(c, this.view.instance.getResolution(), data => {
+    this.UTFGrid.instance.forDataAtCoordinateAndResolution(c, this.view.instance.getResolution(), (data) => {
       if (data !== null && data !== undefined && data !== '') {
         this.info = data;
         this.coords = c;

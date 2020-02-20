@@ -6,9 +6,7 @@ import { Polygon } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-polygon',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class GeometryPolygonComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-polygon';
@@ -19,7 +17,13 @@ export class GeometryPolygonComponent extends SimpleGeometryComponent implements
   }
 
   ngOnInit() {
-    this.instance = new Polygon([[[0, 0], [1, 1], [0, 1]]]);
+    this.instance = new Polygon([
+      [
+        [0, 0],
+        [1, 1],
+        [0, 1],
+      ],
+    ]);
     super.ngOnInit();
   }
 }

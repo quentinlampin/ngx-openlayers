@@ -1,18 +1,15 @@
-import { Component, Host, forwardRef, Input, AfterContentInit, Optional, Output, EventEmitter } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, forwardRef, Host, Input, Optional, Output } from '@angular/core';
 import { OSM } from 'ol/source';
+import { AttributionLike } from 'ol/source/Source';
+import { TileSourceEvent } from 'ol/source/Tile';
+import { LoadFunction } from 'ol/Tile';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
-import { SourceRasterComponent } from './raster.component';
-import { LoadFunction } from 'ol/Tile';
-import { AttributionLike } from 'ol/source/Source';
-import { TileSourceEvent } from 'ol/source/Tile';
 
 @Component({
   selector: 'aol-source-osm',
-  template: `
-    <div class="aol-source-osm"></div>
-  `,
+  template: ` <div class="aol-source-osm"></div> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
@@ -45,14 +42,11 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
   constructor(
-    @Host()
     @Optional()
-    layer: LayerTileComponent,
     @Host()
-    @Optional()
-    raster?: SourceRasterComponent
+    protected layer?: LayerTileComponent
   ) {
-    super(layer, raster);
+    super(layer);
   }
 
   ngAfterContentInit() {

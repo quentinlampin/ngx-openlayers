@@ -31,11 +31,11 @@ export class DefaultControlComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // console.log('ol.control.defaults init: ', this);
     this.instance = defaults(this);
-    this.instance.forEach(c => this.map.instance.addControl(c));
+    this.instance.forEach((c) => this.map.instance.addControl(c));
   }
 
   ngOnDestroy() {
     // console.log('removing aol-control-defaults');
-    this.instance.forEach(c => this.map.instance.removeControl(c));
+    this.instance.forEach((c) => this.map.instance.removeControl(c));
   }
 }

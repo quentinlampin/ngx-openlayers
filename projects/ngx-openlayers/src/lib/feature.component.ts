@@ -4,9 +4,7 @@ import { SourceVectorComponent } from './sources/vector.component';
 
 @Component({
   selector: 'aol-feature',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
   public componentType = 'feature';

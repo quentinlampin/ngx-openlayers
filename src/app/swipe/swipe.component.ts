@@ -84,7 +84,7 @@ export class SwipeComponent implements OnInit {
   }
 
   prerender() {
-    return event => {
+    return (event) => {
       const ctx = event.context;
       const width = ctx.canvas.width * (this.swipeValue / 100);
 
@@ -96,7 +96,7 @@ export class SwipeComponent implements OnInit {
   }
 
   postrender() {
-    return event => {
+    return (event) => {
       const ctx = event.context;
       ctx.restore();
     };

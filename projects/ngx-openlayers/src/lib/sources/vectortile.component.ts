@@ -11,9 +11,7 @@ import { UrlFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-vectortile',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }],
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {
@@ -35,10 +33,10 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   @Input()
   wrapX: boolean;
 
-  @ContentChild(FormatComponent, { static: false })
+  @ContentChild(FormatComponent)
   formatComponent: FormatComponent;
   format: Feature;
-  @ContentChild(TileGridComponent, { static: false })
+  @ContentChild(TileGridComponent)
   tileGridComponent: TileGridComponent;
   tileGrid: TileGrid;
 

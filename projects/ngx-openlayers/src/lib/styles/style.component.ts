@@ -7,9 +7,7 @@ import { GeometryFunction } from 'ol/style/Style';
 
 @Component({
   selector: 'aol-style',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class StyleComponent implements OnInit {
   private host: FeatureComponent | LayerVectorComponent;

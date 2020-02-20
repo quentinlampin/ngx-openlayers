@@ -18,7 +18,7 @@ export class AttributionsComponent implements AfterViewInit {
   /* we can do this at the very end */
   ngAfterViewInit() {
     if (this.attributions.length) {
-      this.instance = this.attributions.map(cmp => cmp.instance);
+      this.instance = this.attributions.map((cmp) => cmp.instance);
       // console.log('setting attributions:', this.instance);
       this.source.instance.setAttributions(this.instance);
     }

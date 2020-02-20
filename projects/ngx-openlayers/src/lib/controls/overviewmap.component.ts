@@ -6,9 +6,7 @@ import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-overviewmap',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
   instance: OverviewMap;

@@ -6,9 +6,7 @@ import { StyleComponent } from './style.component';
 
 @Component({
   selector: 'aol-style-icon',
-  template: `
-    <div class="aol-style-icon"></div>
-  `,
+  template: ` <div class="aol-style-icon"></div> `,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
   public instance: Icon;

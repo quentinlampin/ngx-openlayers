@@ -168,7 +168,11 @@ export class DisplayGeometryComponent implements OnInit {
       properties: {},
       geometry: {
         type: 'MultiPoint',
-        coordinates: [[0, 45], [0.5, 45], [1, 45]],
+        coordinates: [
+          [0, 45],
+          [0.5, 45],
+          [1, 45],
+        ],
       },
     },
     {
@@ -177,9 +181,21 @@ export class DisplayGeometryComponent implements OnInit {
       geometry: {
         type: 'MultiLineString',
         coordinates: [
-          [[0, 44], [1, 44], [2, 44.5]],
-          [[0.5, 43.8], [1.5, 43.8], [2.5, 44.3]],
-          [[1, 43.6], [2, 43.6], [3, 44.1]],
+          [
+            [0, 44],
+            [1, 44],
+            [2, 44.5],
+          ],
+          [
+            [0.5, 43.8],
+            [1.5, 43.8],
+            [2.5, 44.3],
+          ],
+          [
+            [1, 43.6],
+            [2, 43.6],
+            [3, 44.1],
+          ],
         ],
       },
     },
@@ -189,9 +205,30 @@ export class DisplayGeometryComponent implements OnInit {
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
-          [[[4, 45], [4.5, 44.5], [4, 44], [4, 45]]],
-          [[[5, 45], [5.5, 44.5], [5, 44], [5, 45]]],
-          [[[6, 45], [6.5, 44.5], [6, 44], [6, 45]]],
+          [
+            [
+              [4, 45],
+              [4.5, 44.5],
+              [4, 44],
+              [4, 45],
+            ],
+          ],
+          [
+            [
+              [5, 45],
+              [5.5, 44.5],
+              [5, 44],
+              [5, 45],
+            ],
+          ],
+          [
+            [
+              [6, 45],
+              [6.5, 44.5],
+              [6, 44],
+              [6, 45],
+            ],
+          ],
         ],
       },
     },
