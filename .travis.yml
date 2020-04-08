@@ -22,14 +22,16 @@ jobs:
   - stage: build
     name: next lib and demo
     script:
-    - yarn build --prod --base-href "/ngx-openlayers/" --progress false
+    - yarn build:lib
+    - cp -r dist/ngx-openlayers dist/ngx-openlayers-publish
+    - yarn build:demo --base-href "/ngx-openlayers/"  --progress false
 
   - stage: release
     name: next lib version on github releases
     if: tag =~ /^\d+.\d+.\d+-next.\d+$/
     script: 'true' # skips tests
     before_deploy:
-    - cd dist/ngx-openlayers
+    - cd dist/ngx-openlayers-publish
     - cp ../../projects/ngx-openlayers/CHANGELOG.md CHANGELOG.md
     - npm pack
     deploy:
@@ -61,8 +63,8 @@ jobs:
     if: tag =~ /^\d+.\d+.\d+-next.\d+$/
     script: 'true' # skips tests
     before_deploy:
-    - cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md
-    - cd dist/ngx-openlayers
+    - cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers-publish/CHANGELOG.md
+    - cd dist/ngx-openlayers-publish
     deploy:
     - provider: npm
       email: $NPM_EMAIL
