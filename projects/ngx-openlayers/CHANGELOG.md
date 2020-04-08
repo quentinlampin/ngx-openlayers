@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-next.15](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.14...1.0.0-next.15) (2020-04-08)
+
+
+### Bug Fixes
+
+* **travis:** lib build without ngcc (demo issue) ([e6fe3eb](https://github.com/quentin-ol/ngx-openlayers/commit/e6fe3eba5fa49a17e2e16cb13d5bb3dffedad3e7))
+
 ## [1.0.0-next.14](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.13...1.0.0-next.14) (2020-04-08)
 
 
