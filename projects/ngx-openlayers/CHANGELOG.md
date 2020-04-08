@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-next.14](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.13...1.0.0-next.14) (2020-04-08)
+
+
+### Features
+
+* update to angular 9 ([d068402](https://github.com/quentin-ol/ngx-openlayers/commit/d068402f9382d3e99a0ec0311a6ff6f6b8a09271))
 
 <a name="1.0.0-next.13"></a>
 # [1.0.0-next.13](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.12...1.0.0-next.13) (2019-11-13)
