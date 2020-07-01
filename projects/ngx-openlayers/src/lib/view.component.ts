@@ -42,6 +42,17 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   projection: string;
   @Input()
+  constrainOnlyCenter: boolean;
+  @Input()
+  smoothExtentConstraint: boolean;
+  @Input()
+  constrainResolution: boolean;
+  @Input()
+  smoothResolutionConstraint: boolean;
+  @Input()
+  showFullExtent: boolean;
+  
+  @Input()
   zoomAnimation = false;
 
   @Output()
