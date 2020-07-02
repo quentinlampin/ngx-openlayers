@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-next.16](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.15...1.0.0-next.16) (2020-07-02)
+
+
+### Features
+
+* **view:** add missing inputs ([69a46ca](https://github.com/quentin-ol/ngx-openlayers/commit/69a46ca0f476603e67f9a51b17d88b0fe882a967))
+
 ## [1.0.0-next.15](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.14...1.0.0-next.15) (2020-04-08)
 
 
