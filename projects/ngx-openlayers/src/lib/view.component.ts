@@ -51,7 +51,9 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   smoothResolutionConstraint: boolean;
   @Input()
   showFullExtent: boolean;
-  
+  @Input()
+  multiWorld: boolean;
+
   @Input()
   zoomAnimation = false;
 
