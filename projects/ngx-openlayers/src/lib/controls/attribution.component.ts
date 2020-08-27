@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
 export class ControlAttributionComponent implements OnInit, OnDestroy {
   public componentType = 'control';
   instance: Attribution;
-  target: Element;
+  target: HTMLElement;
   @Input()
   collapsible: boolean;
 

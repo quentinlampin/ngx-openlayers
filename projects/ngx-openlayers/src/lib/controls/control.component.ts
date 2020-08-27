@@ -2,7 +2,6 @@ import { Component, ContentChild, OnDestroy, OnInit } from '@angular/core';
 import { Control } from 'ol/control';
 import { MapComponent } from '../map.component';
 import { ContentComponent } from '../content.component';
-import { TileGridComponent } from '../tilegrid.component';
 
 @Component({
   selector: 'aol-control',
@@ -11,7 +10,7 @@ import { TileGridComponent } from '../tilegrid.component';
 export class ControlComponent implements OnInit, OnDestroy {
   public componentType = 'control';
   instance: Control;
-  element: Element;
+  element: HTMLElement;
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
 

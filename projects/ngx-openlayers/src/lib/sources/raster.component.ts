@@ -9,7 +9,7 @@ import {
   Output,
 } from '@angular/core';
 import { Raster, Source } from 'ol/source';
-import { Operation, RasterOperationType, RasterSourceEvent } from 'ol/source/Raster';
+import { Operation, RasterSourceEvent } from 'ol/source/Raster';
 
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
@@ -34,7 +34,7 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   @Input()
   lib?: any;
   @Input()
-  operationType?: RasterOperationType;
+  operationType?: 'pixel' | 'image';
 
   @Output()
   beforeOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();

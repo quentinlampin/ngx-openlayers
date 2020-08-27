@@ -24,7 +24,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   crossOrigin: IconOrigin;
   @Input()
-  img: string;
+  img: HTMLCanvasElement | HTMLImageElement;
   @Input()
   offset: [number, number];
   @Input()

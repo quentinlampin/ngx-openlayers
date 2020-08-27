@@ -11,8 +11,6 @@ import { LayerGroupComponent } from './layergroup.component';
   template: ` <ng-content></ng-content> `,
 })
 export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
-  public source: Vector;
-
   @Input()
   renderBuffer: number;
 

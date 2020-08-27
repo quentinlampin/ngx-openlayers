@@ -9,10 +9,10 @@ import {
   SimpleChanges,
   OnChanges,
 } from '@angular/core';
-import Map from 'ol/Map';
+import { Map } from 'ol';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import MapEvent from 'ol/MapEvent';
-import ObjectEvent from 'ol/Object';
+import { ObjectEvent } from 'ol/Object';
 import RenderEvent from 'ol/render/Event';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
@@ -35,7 +35,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Input()
   pixelRatio: number;
   @Input()
-  keyboardEventTarget: Element | string;
+  keyboardEventTarget: HTMLElement | string;
   @Input()
   loadTilesWhileAnimating: boolean;
   @Input()

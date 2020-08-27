@@ -9,7 +9,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { ImageArcGISRest } from 'ol/source';
+import ImageArcGISRest from 'ol/source/ImageArcGISRest';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 import { ProjectionLike } from 'ol/proj';
@@ -27,7 +27,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
 
   @Input() projection: ProjectionLike | string;
   @Input() url: string;
-  @Input() attributions: AttributionLike[];
+  @Input() attributions: AttributionLike;
   @Input() crossOrigin?: string;
   @Input() imageLoadFunction?: LoadFunction;
   @Input() params?: { [k: string]: any };
