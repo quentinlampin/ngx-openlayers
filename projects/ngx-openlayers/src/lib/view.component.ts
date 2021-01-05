@@ -96,6 +96,10 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
             this.instance = new View(this);
             this.host.instance.setView(this.instance);
             break;
+          case 'center':
+            /** Work-around: setting the center via setProperties does not work. */
+            this.instance.setCenter(changes[key].currentValue);
+            break;
           default:
             break;
         }
