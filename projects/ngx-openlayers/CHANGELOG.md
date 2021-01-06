@@ -1,27 +1,21 @@
-# Changelog
+# Change Log
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.0.0-next.16](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.15...1.0.0-next.16) (2020-07-02)
-
-
-### Features
-
-* **view:** add missing inputs ([69a46ca](https://github.com/quentin-ol/ngx-openlayers/commit/69a46ca0f476603e67f9a51b17d88b0fe882a967))
-
-## [1.0.0-next.15](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.14...1.0.0-next.15) (2020-04-08)
+<a name="1.0.0-next.17"></a>
+# [1.0.0-next.17](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.16...1.0.0-next.17) (2021-01-06)
 
 
 ### Bug Fixes
 
-* **travis:** lib build without ngcc (demo issue) ([e6fe3eb](https://github.com/quentin-ol/ngx-openlayers/commit/e6fe3eba5fa49a17e2e16cb13d5bb3dffedad3e7))
-
-## [1.0.0-next.14](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.13...1.0.0-next.14) (2020-04-08)
+* **view:** set the center explicitly because it does not work via setProperties ([958383a](https://github.com/quentin-ol/ngx-openlayers/commit/958383a))
 
 
 ### Features
 
-* update to angular 9 ([d068402](https://github.com/quentin-ol/ngx-openlayers/commit/d068402f9382d3e99a0ec0311a6ff6f6b8a09271))
+* **view:** add multiWorld ([f695cbe](https://github.com/quentin-ol/ngx-openlayers/commit/f695cbe))
+
+
 
 <a name="1.0.0-next.13"></a>
 # [1.0.0-next.13](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.12...1.0.0-next.13) (2019-11-13)
