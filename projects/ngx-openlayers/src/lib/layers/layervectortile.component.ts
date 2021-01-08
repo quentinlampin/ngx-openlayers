@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Optional, SimpleChanges, OnChanges } from '@angular/core';
 import { VectorTile } from 'ol/layer';
-import { RenderType } from 'ol/layer/VectorTile';
+import VectorTileRenderType from 'ol/layer/VectorTileRenderType';
 import { Feature } from 'ol';
 import { Style } from 'ol/style';
 import { MapComponent } from '../map.component';
@@ -16,7 +16,7 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
   @Input()
   renderBuffer: number;
   @Input()
-  renderMode: RenderType | string;
+  renderMode: VectorTileRenderType | string;
   /* not marked as optional in the typings */
   @Input()
   renderOrder: (feature1: Feature, feature2: Feature) => number;

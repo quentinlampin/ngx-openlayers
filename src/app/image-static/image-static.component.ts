@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Extent, getCenter } from 'ol/extent';
-import Projection from 'ol/proj/Projection';
+import Projection, { Options as ProjectionOptions } from 'ol/proj/Projection';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,12 @@ import Projection from 'ol/proj/Projection';
     <div class="controls">
       Current image url:
       <select (change)="onUrlChange($event)">
-        <option value="https://imgs.xkcd.com/comics/online_communities.png"
-          >https://imgs.xkcd.com/comics/online_communities.png</option
-        >
-        <option value="https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg"
-          >https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg</option
-        >
+        <option value="https://imgs.xkcd.com/comics/online_communities.png">
+          https://imgs.xkcd.com/comics/online_communities.png
+        </option>
+        <option value="https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg">
+          https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg
+        </option>
       </select>
     </div>
   `,
@@ -47,7 +47,7 @@ export class ImageStaticComponent {
   public opacity = 1.0;
   extent: Extent = [0, 0, 1024, 968];
 
-  po = {
+  po: ProjectionOptions = {
     code: 'xkcd-image',
     units: 'pixels',
     extent: [0, 0, 1024, 968],

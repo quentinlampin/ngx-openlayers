@@ -10,8 +10,6 @@ import { Extent } from 'ol/extent';
   template: ` <ng-content></ng-content> `,
 })
 export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
-  public source: Image;
-
   @Input()
   opacity: number;
   @Input()

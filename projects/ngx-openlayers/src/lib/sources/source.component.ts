@@ -1,5 +1,5 @@
 import { Input, OnDestroy } from '@angular/core';
-import { Source } from 'ol';
+import Source from 'ol/source/Source';
 
 import { LayerComponent } from '../layers/layer.component';
 

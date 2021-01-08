@@ -17,11 +17,11 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input()
   color: Color | undefined;
   @Input()
-  lineCap: string | undefined;
+  lineCap: CanvasLineCap | undefined;
   @Input()
   lineDash: number[] | undefined;
   @Input()
-  lineJoin: string | undefined;
+  lineJoin: CanvasLineJoin | undefined;
   @Input()
   miterLimit: number | undefined;
   @Input()

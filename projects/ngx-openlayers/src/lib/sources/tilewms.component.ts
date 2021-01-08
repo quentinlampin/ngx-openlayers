@@ -2,7 +2,7 @@ import { Component, Host, Input, OnChanges, OnInit, forwardRef, SimpleChanges } 
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { TileWMS } from 'ol/source';
-import { TileGrid } from 'ol/tilegrid';
+import TileGrid from 'ol/tilegrid/TileGrid';
 import { LoadFunction } from 'ol/Tile';
 
 @Component({

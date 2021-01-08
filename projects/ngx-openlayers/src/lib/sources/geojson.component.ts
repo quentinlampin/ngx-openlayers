@@ -1,7 +1,7 @@
 import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
-import { Feature } from 'ol';
+import FeatureFormat from 'ol/format/Feature';
 import { Vector } from 'ol/source';
 import { GeoJSON } from 'ol/format';
 import { ProjectionLike } from 'ol/proj';
@@ -13,7 +13,7 @@ import { ProjectionLike } from 'ol/proj';
 })
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
   instance: Vector;
-  format: Feature;
+  format: FeatureFormat;
   @Input()
   defaultDataProjection: ProjectionLike;
   @Input()
