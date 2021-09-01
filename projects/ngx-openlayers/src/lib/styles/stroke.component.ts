@@ -4,6 +4,7 @@ import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
 import { StyleTextComponent } from './text.component';
 import { Color } from 'ol/color';
+import { ColorLike } from 'ol/colorLike';
 
 @Component({
   selector: 'aol-style-stroke',
@@ -15,17 +16,17 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
 
   @Input()
-  color: Color | undefined;
+  color: Color | ColorLike;
   @Input()
-  lineCap: string | undefined;
+  lineCap: string;
   @Input()
-  lineDash: number[] | undefined;
+  lineDash: number[];
   @Input()
-  lineJoin: string | undefined;
+  lineJoin: string;
   @Input()
-  miterLimit: number | undefined;
+  miterLimit: number;
   @Input()
-  width: number | undefined;
+  width: number;
 
   constructor(
     @Optional() styleHost: StyleComponent,
