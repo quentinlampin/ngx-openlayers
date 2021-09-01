@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-next.18](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.17...1.0.0-next.18) (2021-09-01)
+
+
+### Features
+
+* **stroke:** add ColorLike typing to color input ([f940292](https://github.com/quentin-ol/ngx-openlayers/commit/f9402921e92c89fbcfabc3ad20e7ffc9b473d6f8))
 
 <a name="1.0.0-next.17"></a>
 # [1.0.0-next.17](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.16...1.0.0-next.17) (2021-01-06)
