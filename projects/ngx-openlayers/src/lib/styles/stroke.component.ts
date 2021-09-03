@@ -4,7 +4,7 @@ import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
 import { StyleTextComponent } from './text.component';
 import { Color } from 'ol/color';
-import { ColorLike } from 'ol/colorLike';
+import { ColorLike } from 'ol/colorlike';
 
 @Component({
   selector: 'aol-style-stroke',
