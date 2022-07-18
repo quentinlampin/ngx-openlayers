@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { examplesList } from '../example-list';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-examples-list',
@@ -73,8 +73,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   ],
 })
 export class ExamplesListComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
-  form: FormGroup;
+  constructor(private fb: UntypedFormBuilder) {}
+  form: UntypedFormGroup;
   list = examplesList;
   ngOnInit() {
     this.form = this.fb.group({

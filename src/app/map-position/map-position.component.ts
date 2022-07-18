@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapComponent, ViewComponent } from 'ngx-openlayers';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { transform } from 'ol/proj';
 import Projection from 'ol/proj/Projection';
 
@@ -80,7 +80,7 @@ import Projection from 'ol/proj/Projection';
   ],
 })
 export class MapPositionComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   @ViewChild('map', { static: true })
   map: MapComponent;
@@ -95,7 +95,7 @@ export class MapPositionComponent implements OnInit {
   currentLon = 0;
   currentLat = 0;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   ngOnInit() {
     this.form = this.fb.group({

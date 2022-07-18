@@ -43,7 +43,7 @@ export class UTFGridComponent {
   @ViewChild('view', { static: true }) view: ViewComponent;
 
   info: any;
-  coords: Coordinates;
+  coords: any;
   key = 'pk.eyJ1IjoieWFrb3VzdCIsImEiOiJjanVkc3Y0b2cwNWppM3lwaXd5M3JidHRzIn0.rJmuWPJnuKA9MJ9z5RPKZw';
 
   displayInfo(c) {
