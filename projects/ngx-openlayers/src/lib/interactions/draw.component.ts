@@ -48,15 +48,15 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   wrapX?: boolean;
 
   @Output()
-  olChange = new EventEmitter<DrawEvent>();
+  olChange = new EventEmitter<any>();
   @Output()
-  olChangeActive = new EventEmitter<DrawEvent>();
+  olChangeActive = new EventEmitter<any>();
   @Output()
-  drawEnd = new EventEmitter<DrawEvent>();
+  drawEnd = new EventEmitter<any>();
   @Output()
-  drawStart = new EventEmitter<DrawEvent>();
+  drawStart = new EventEmitter<any>();
   @Output()
-  propertyChange = new EventEmitter<DrawEvent>();
+  propertyChange = new EventEmitter<any>();
 
   constructor(private map: MapComponent) {}
 

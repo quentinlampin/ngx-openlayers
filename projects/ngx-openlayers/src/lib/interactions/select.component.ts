@@ -37,11 +37,11 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
   wrapX?: boolean;
 
   @Output()
-  olChange = new EventEmitter<SelectEvent>();
+  olChange = new EventEmitter<any>();
   @Output()
-  olSelect = new EventEmitter<SelectEvent>();
+  olSelect = new EventEmitter<any>();
   @Output()
-  propertyChange = new EventEmitter<SelectEvent>();
+  propertyChange = new EventEmitter<any>();
 
   constructor(private map: MapComponent) {}
 

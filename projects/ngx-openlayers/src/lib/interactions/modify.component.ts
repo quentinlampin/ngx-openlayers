@@ -31,15 +31,15 @@ export class ModifyInteractionComponent implements OnInit, OnDestroy {
   source?: Vector;
 
   @Output()
-  modifyEnd = new EventEmitter<ModifyEvent>();
+  modifyEnd = new EventEmitter<any>();
   @Output()
-  modifyStart = new EventEmitter<ModifyEvent>();
+  modifyStart = new EventEmitter<any>();
   @Output()
-  olChange = new EventEmitter<ModifyEvent>();
+  olChange = new EventEmitter<any>();
   @Output()
-  olChangeActive = new EventEmitter<ModifyEvent>();
+  olChangeActive = new EventEmitter<any>();
   @Output()
-  propertyChange = new EventEmitter<ModifyEvent>();
+  propertyChange = new EventEmitter<any>();
 
   constructor(private map: MapComponent) {}
 

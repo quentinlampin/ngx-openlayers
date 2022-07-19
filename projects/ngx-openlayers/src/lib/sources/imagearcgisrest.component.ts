@@ -36,18 +36,18 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   @Input() wrapX?: boolean;
 
   @Output()
-  imageLoadStart = new EventEmitter<ImageSourceEvent>();
+  imageLoadStart = new EventEmitter<any>();
   @Output()
-  imageLoadEnd = new EventEmitter<ImageSourceEvent>();
+  imageLoadEnd = new EventEmitter<any>();
   @Output()
-  imageLoadError = new EventEmitter<ImageSourceEvent>();
+  imageLoadError = new EventEmitter<any>();
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
   }
 
   ngOnInit() {
-    this.instance = new ImageArcGISRest(this);
+    this.instance = new ImageArcGISRest();
     this.host.instance.setSource(this.instance);
     this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.imageLoadStart.emit(event));
     this.instance.on('imageloadend', (event: ImageSourceEvent) => this.imageLoadEnd.emit(event));

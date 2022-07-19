@@ -43,11 +43,11 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   imageSize?: Size;
 
   @Output()
-  imageLoadStart = new EventEmitter<ImageSourceEvent>();
+  imageLoadStart = new EventEmitter<any>();
   @Output()
-  imageLoadEnd = new EventEmitter<ImageSourceEvent>();
+  imageLoadEnd = new EventEmitter<any>();
   @Output()
-  imageLoadError = new EventEmitter<ImageSourceEvent>();
+  imageLoadError = new EventEmitter<any>();
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
