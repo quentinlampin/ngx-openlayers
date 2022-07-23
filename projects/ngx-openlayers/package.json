@@ -1,6 +1,6 @@
 {
   "name": "ngx-openlayers",
-  "version": "1.0.0-next.20",
+  "version": "1.0.0-next.21",
   "scripts": {
     "release": "standard-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
   },
@@ -11,8 +11,8 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 <=14.x.x",
-    "@angular/core": ">=6.0.0 <=14.x.x",
+    "@angular/common": ">=12.0.0 <=14.x.x",
+    "@angular/core": ">=12.0.0 <=14.x.x",
     "ol": "^6.0.0"
   }
 }
