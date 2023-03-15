@@ -1,8 +1,10 @@
-import { Input, OnDestroy } from '@angular/core';
+import { Directive, Input, OnDestroy } from '@angular/core';
 import { Source } from 'ol';
 
 import { LayerComponent } from '../layers/layer.component';
 
+@Directive()
+// tslint:disable-next-line:directive-class-suffix
 export abstract class SourceComponent implements OnDestroy {
   public instance: Source;
   public componentType = 'source';

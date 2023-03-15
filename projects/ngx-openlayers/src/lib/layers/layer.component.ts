@@ -1,9 +1,11 @@
-import { OnDestroy, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Directive, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Event } from 'ol/events';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
 import { Extent } from 'ol/extent';
 
+@Directive()
+// tslint:disable-next-line:directive-class-suffix
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   public instance: any;
   public componentType = 'layer';
