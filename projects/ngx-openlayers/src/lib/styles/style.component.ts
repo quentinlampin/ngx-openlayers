@@ -1,4 +1,4 @@
-import { Component, Input, Optional, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { Fill, Image, Stroke, Style, Text } from 'ol/style';
 import { Geometry } from 'ol/geom';
 import { FeatureComponent } from '../feature.component';
@@ -35,12 +35,12 @@ export class StyleComponent implements OnInit {
     }
   }
 
-  update() {
+  update(): void {
     // console.log('updating style\'s host: ', this.host);
     this.host.instance.changed();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating aol-style instance with: ', this);
     this.instance = new Style(this);
     this.host.instance.setStyle(this.instance);

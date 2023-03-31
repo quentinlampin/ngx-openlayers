@@ -29,13 +29,13 @@ export class DefaultControlComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('ol.control.defaults init: ', this);
     this.instance = defaults(this);
     this.instance.forEach((c) => this.map.instance.addControl(c));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-control-defaults');
     this.instance.forEach((c) => this.map.instance.removeControl(c));
   }

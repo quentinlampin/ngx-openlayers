@@ -49,7 +49,7 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
     super(layer);
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
     }

@@ -16,7 +16,7 @@ export class GeometryPointComponent extends SimpleGeometryComponent implements O
     super(map, host);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Point([0, 0]);
     super.ngOnInit();
   }

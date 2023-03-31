@@ -25,7 +25,7 @@ export class TileGridComponent implements OnInit, OnChanges {
 
   instance: TileGrid;
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (!this.resolutions) {
       this.instance = createXYZ(this);
     } else {
@@ -33,7 +33,7 @@ export class TileGridComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.resolutions) {
       this.instance = createXYZ(this);
     } else {

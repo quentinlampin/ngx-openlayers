@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import IconAnchorUnits from 'ol/style/IconAnchorUnits';
-import IconOrigin from 'ol/style/IconOrigin';
 
 @Component({
   selector: 'app-root',
@@ -36,10 +34,10 @@ import IconOrigin from 'ol/style/IconOrigin';
               <aol-style-icon
                 [src]="'assets/marker.png'"
                 [anchor]="[0.5, 1]"
-                [anchorXUnits]="IconAnchorUnits.FRACTION"
-                [anchorYUnits]="IconAnchorUnits.FRACTION"
+                [anchorXUnits]="'fraction'"
+                [anchorYUnits]="'fraction'"
                 [scale]="0.1"
-                [anchorOrigin]="IconOrigin.TOP_LEFT"
+                [anchorOrigin]="'top-left'"
               >
               </aol-style-icon>
             </aol-style>
@@ -80,58 +78,55 @@ export class BasicComponent {
   public lon = 5;
   public lat = 45;
 
-  protected readonly IconAnchorUnits = IconAnchorUnits;
-  protected readonly IconOrigin = IconOrigin;
-
-  increaseZoom() {
+  increaseZoom(): void {
     this.zoom = Math.min(this.zoom + 1, 18);
     console.log('zoom: ', this.zoom);
   }
 
-  decreaseZoom() {
+  decreaseZoom(): void {
     this.zoom = Math.max(this.zoom - 1, 1);
     console.log('zoom: ', this.zoom);
   }
 
-  increaseLat() {
+  increaseLat(): void {
     this.lat = Math.max(-90, Math.min(90, this.lat + 1));
     console.log('lat: ', this.lat);
   }
 
-  decreaseLat() {
+  decreaseLat(): void {
     this.lat = Math.max(-90, Math.min(90, this.lat - 1));
     console.log('lat: ', this.lat);
   }
 
-  increaseLon() {
+  increaseLon(): void {
     this.lon = Math.max(-180, Math.min(180, this.lat + 1));
     console.log('lon: ', this.lon);
   }
 
-  decreaseLon() {
+  decreaseLon(): void {
     this.lon = Math.max(-180, Math.min(180, this.lat - 1));
     console.log('lon: ', this.lon);
   }
 
-  increaseOpacity() {
+  increaseOpacity(): void {
     this.opacity = Math.min(this.opacity + 0.1, 1);
     console.log('opacity: ', this.opacity);
   }
 
-  decreaseOpacity() {
+  decreaseOpacity(): void {
     this.opacity = Math.max(this.opacity - 0.1, 0);
     console.log('opacity: ', this.opacity);
   }
 
-  changeResolution(evt) {
+  changeResolution(evt): void {
     console.log('Resolution changed:', evt);
   }
 
-  changeCenter(evt) {
+  changeCenter(evt): void {
     console.log('Center changed:', evt);
   }
 
-  changeZoom(evt) {
+  changeZoom(evt): void {
     console.log('Zoom changed:', evt);
   }
 }

@@ -36,7 +36,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
     // console.log('creating aol-style-fill with: ', this);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.style.Fill instance with: ', this);
     this.instance = new Fill(this);
     switch (this.host.componentType) {
@@ -57,7 +57,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {
       return;
     }

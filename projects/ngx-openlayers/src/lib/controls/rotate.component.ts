@@ -24,12 +24,12 @@ export class ControlRotateComponent implements OnInit, OnDestroy {
     // console.log('instancing aol-control-rotate');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Rotate(this);
     this.map.instance.addControl(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-control-rotate');
     this.map.instance.removeControl(this.instance);
   }

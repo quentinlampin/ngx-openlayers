@@ -102,7 +102,7 @@ export class MapPositionComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
       x: 1.4886,
       y: 43.5554,

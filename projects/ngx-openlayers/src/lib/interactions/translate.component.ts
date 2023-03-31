@@ -39,7 +39,7 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
     this.translating = new EventEmitter<TranslateEvent>();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Translate(this);
 
     this.instance.on('change', (event: TranslateEvent) => this.olChange.emit(event));
@@ -51,7 +51,7 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
     this.map.instance.addInteraction(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.map.instance.removeInteraction(this.instance);
   }
 }

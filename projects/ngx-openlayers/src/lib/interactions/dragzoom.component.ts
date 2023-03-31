@@ -21,12 +21,12 @@ export class DragZoomInteractionComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new DragZoom(this);
     this.map.instance.addInteraction(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.map.instance.removeInteraction(this.instance);
   }
 }

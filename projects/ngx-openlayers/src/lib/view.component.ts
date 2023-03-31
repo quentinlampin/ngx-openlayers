@@ -1,15 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ObjectEvent } from 'ol/Object';
 import View from 'ol/View';
 import { Coordinate } from 'ol/coordinate';
 import { Extent } from 'ol/extent';
 import { MapComponent } from './map.component';
+import { ProjectionLike } from 'ol/proj';
 
 @Component({
   selector: 'aol-view',
   template: ` <ng-content></ng-content> `,
 })
-export class ViewComponent implements OnInit, OnChanges, OnDestroy {
+export class ViewComponent implements OnInit, OnChanges {
   @Input()
   constrainRotation: boolean | number;
   @Input()
@@ -37,7 +38,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   center: Coordinate;
   @Input()
-  projection: string;
+  projection: ProjectionLike;
   @Input()
   constrainOnlyCenter: boolean;
   @Input()
@@ -64,7 +65,7 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(private host: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.View instance with: ', this);
     this.instance = new View(this);
     this.host.instance.setView(this.instance);
@@ -73,8 +74,8 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
     this.instance.on('change:center', (event: ObjectEvent) => this.changeCenter.emit(event));
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const properties: { [index: string]: any } = {};
+  ngOnChanges(changes: SimpleChanges): void {
+    const properties: { [index: string]: unknown } = {};
     if (!this.instance) {
       return;
     }
@@ -105,9 +106,5 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
     }
     // console.log('changes detected in aol-view, setting new properties: ', properties);
     this.instance.setProperties(properties, false);
-  }
-
-  ngOnDestroy() {
-    // console.log('removing aol-view');
   }
 }

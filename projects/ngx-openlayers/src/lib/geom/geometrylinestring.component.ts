@@ -16,7 +16,7 @@ export class GeometryLinestringComponent extends SimpleGeometryComponent impleme
     super(map, host);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new LineString([
       [0, 0],
       [1, 1],

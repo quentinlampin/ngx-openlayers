@@ -1,4 +1,4 @@
-import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Text } from 'ol/style';
 import { StyleComponent } from './style.component';
 
@@ -36,13 +36,13 @@ export class StyleTextComponent implements OnInit, OnChanges {
     // console.log('creating aol-style-text with: ', this);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.style.Text instance with: ', this);
     this.instance = new Text(this);
     this.host.instance.setText(this.instance);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {
       return;
     }

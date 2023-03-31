@@ -83,7 +83,7 @@ export class OverlayComponent implements OnInit {
     text: 'Lorem ipsum dolor sit amet',
   };
 
-  ngOnInit() {
+  ngOnInit(): void {
     const olFeature: OlFeature = this.geoJsonFormat.readFeature(this.feature);
     const olGeomPolygon = fromExtent(olFeature.getGeometry().getExtent());
     [, this.tooltip.lat, this.tooltip.lon] = olGeomPolygon.getExtent();

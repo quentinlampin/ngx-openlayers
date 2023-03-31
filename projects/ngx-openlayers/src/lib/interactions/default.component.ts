@@ -12,12 +12,12 @@ export class DefaultInteractionComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = defaults();
     this.instance.forEach((i) => this.map.instance.addInteraction(i));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.instance.forEach((i) => this.map.instance.removeInteraction(i));
   }
 }

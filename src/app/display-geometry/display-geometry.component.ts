@@ -15,12 +15,12 @@ import { Component } from '@angular/core';
         <aol-layer-vector *ngFor="let feature of features" [ngSwitch]="feature.geometry.type">
           <aol-source-vector *ngSwitchCase="'Polygon'">
             <aol-style>
-              <aol-style-stroke [color]="'rgba(90, 17, 26)'" width="3"></aol-style-stroke>
+              <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
               <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
             </aol-style>
             <aol-feature>
               <aol-geometry-polygon>
-                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
                 </aol-collection-coordinates>
               </aol-geometry-polygon>
             </aol-feature>
@@ -30,8 +30,8 @@ import { Component } from '@angular/core';
             <aol-feature>
               <aol-geometry-point>
                 <aol-coordinate
-                  [x]="feature.geometry.coordinates[0]"
-                  [y]="feature.geometry.coordinates[1]"
+                  [x]="$any(feature.geometry.coordinates[0])"
+                  [y]="$any(feature.geometry.coordinates[1])"
                   [srid]="'EPSG:4326'"
                 >
                 </aol-coordinate>
@@ -48,7 +48,7 @@ import { Component } from '@angular/core';
           <aol-source-vector *ngSwitchCase="'LineString'">
             <aol-feature>
               <aol-geometry-linestring>
-                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
                 </aol-collection-coordinates>
               </aol-geometry-linestring>
             </aol-feature>
@@ -58,13 +58,13 @@ import { Component } from '@angular/core';
             <aol-feature>
               <aol-geometry-circle [radius]="feature.geometry.radius">
                 <aol-coordinate
-                  [x]="feature.geometry.coordinates[0]"
-                  [y]="feature.geometry.coordinates[1]"
+                  [x]="$any(feature.geometry.coordinates[0])"
+                  [y]="$any(feature.geometry.coordinates[1])"
                   srid="EPSG:4326"
                 >
                 </aol-coordinate>
                 <aol-style>
-                  <aol-style-stroke color="blue" width="2"></aol-style-stroke>
+                  <aol-style-stroke color="blue" [width]="2"></aol-style-stroke>
                   <aol-style-fill color="rgba(255, 255, 0, 0.5)"></aol-style-fill>
                 </aol-style>
               </aol-geometry-circle>
@@ -74,7 +74,7 @@ import { Component } from '@angular/core';
           <aol-source-vector *ngSwitchCase="'MultiPoint'">
             <aol-feature>
               <aol-geometry-multipoint>
-                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
                 </aol-collection-coordinates>
                 <aol-style>
                   <aol-style-circle [radius]="5">
@@ -89,7 +89,7 @@ import { Component } from '@angular/core';
           <aol-source-vector *ngSwitchCase="'MultiLineString'">
             <aol-feature>
               <aol-geometry-multilinestring>
-                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
                 </aol-collection-coordinates>
               </aol-geometry-multilinestring>
             </aol-feature>
@@ -97,12 +97,12 @@ import { Component } from '@angular/core';
 
           <aol-source-vector *ngSwitchCase="'MultiPolygon'">
             <aol-style>
-              <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" width="2"></aol-style-stroke>
+              <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" [width]="2"></aol-style-stroke>
               <aol-style-fill [color]="'rgba(81, 15.3, 23.4, 0.4)'"></aol-style-fill>
             </aol-style>
             <aol-feature>
               <aol-geometry-multipolygon>
-                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
                 </aol-collection-coordinates>
               </aol-geometry-multipolygon>
             </aol-feature>

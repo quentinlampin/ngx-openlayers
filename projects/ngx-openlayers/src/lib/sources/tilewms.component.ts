@@ -46,12 +46,12 @@ export class SourceTileWMSComponent extends SourceComponent implements OnChanges
     super(layer);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new TileWMS(this);
     this.host.instance.setSource(this.instance);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.instance && changes.hasOwnProperty('params')) {
       this.instance.updateParams(this.params);
     }
