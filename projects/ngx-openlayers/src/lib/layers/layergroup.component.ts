@@ -19,7 +19,7 @@ export class LayerGroupComponent extends LayerComponent implements OnInit, OnDes
     super(group || map);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log(`creating ol.layer.Group instance with:`, this);
     this.instance = new Group(this);
     super.ngOnInit();

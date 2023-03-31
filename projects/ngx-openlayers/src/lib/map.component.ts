@@ -85,7 +85,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.singleClick = new EventEmitter<MapBrowserEvent<UIEvent>>();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.Map instance with:', this);
     this.instance = new Map(this);
     this.instance.setTarget(this.host.nativeElement.firstElementChild);
@@ -102,7 +102,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.instance.on('singleclick', (event: MapBrowserEvent<UIEvent>) => this.singleClick.emit(event));
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
@@ -116,7 +116,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.instance.setProperties(properties, false);
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.instance.updateSize();
   }
 }

@@ -47,7 +47,7 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   }
 
   /* need the children to construct the OL3 object */
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this.format = this.formatComponent.instance;
     this.tileGrid = this.tileGridComponent.instance;
     // console.log('creating ol.source.VectorTile instance with:', this);

@@ -22,12 +22,12 @@ export class ControlZoomSliderComponent implements OnInit, OnDestroy {
     // console.log('instancing aol-control-zoomslider');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new ZoomSlider(this);
     this.map.instance.addControl(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-control-zoomslider');
     this.map.instance.removeControl(this.instance);
   }

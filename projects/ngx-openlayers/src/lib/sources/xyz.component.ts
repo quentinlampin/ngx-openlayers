@@ -78,15 +78,15 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
     super(layer);
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     if (this.tileGridXYZ) {
       this.tileGrid = this.tileGridXYZ.instance;
     }
     this.init();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const properties: { [index: string]: any } = {};
+  ngOnChanges(changes: SimpleChanges): void {
+    const properties: { [index: string]: unknown } = {};
 
     if (!this.instance) {
       return;
@@ -103,7 +103,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
     }
   }
 
-  init() {
+  init(): void {
     this.instance = new XYZ(this);
 
     this.instance.on('tileloadstart', (event: TileSourceEvent) => this.tileLoadStart.emit(event));

@@ -79,8 +79,8 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
     super(layer);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const properties: { [index: string]: any } = {};
+  ngOnChanges(changes: SimpleChanges): void {
+    const properties: { [index: string]: unknown } = {};
     if (!this.instance) {
       return;
     }

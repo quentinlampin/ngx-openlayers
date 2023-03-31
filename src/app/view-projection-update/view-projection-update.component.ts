@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import IconAnchorUnits from 'ol/style/IconAnchorUnits';
-import IconOrigin from 'ol/style/IconOrigin';
 
 @Component({
   selector: 'app-root',
@@ -32,10 +30,10 @@ import IconOrigin from 'ol/style/IconOrigin';
               <aol-style-icon
                 [src]="'assets/marker.png'"
                 [anchor]="[0.5, 1]"
-                [anchorXUnits]="IconAnchorUnits.FRACTION"
-                [anchorYUnits]="IconAnchorUnits.FRACTION"
+                [anchorXUnits]="'fraction'"
+                [anchorYUnits]="'fraction'"
                 [scale]="0.1"
-                [anchorOrigin]="IconOrigin.TOP_LEFT"
+                [anchorOrigin]="'top-left'"
               >
               </aol-style-icon>
             </aol-style>
@@ -72,10 +70,7 @@ import IconOrigin from 'ol/style/IconOrigin';
 export class ViewProjectionUpdateComponent {
   public viewProjection = 'EPSG:3857';
 
-  protected readonly IconAnchorUnits = IconAnchorUnits;
-  protected readonly IconOrigin = IconOrigin;
-
-  projectionChange(evt) {
+  projectionChange(evt): void {
     console.log(`Projection changed to ${evt.target.value}`);
     this.viewProjection = evt.target.value;
   }

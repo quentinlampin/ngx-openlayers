@@ -28,8 +28,4 @@ import { Component, OnInit } from '@angular/core';
     </aol-map>
   `,
 })
-export class DisplayGeojsonSourceComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class DisplayGeojsonSourceComponent {}

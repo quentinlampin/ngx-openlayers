@@ -61,7 +61,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Draw(this);
     this.instance.on('change', (event: DrawEvent) => this.olChange.emit(event));
     this.instance.on('change:active', (event: ObjectEvent) => this.olChangeActive.emit(event));
@@ -71,7 +71,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
     this.map.instance.addInteraction(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.map.instance.removeInteraction(this.instance);
   }
 }

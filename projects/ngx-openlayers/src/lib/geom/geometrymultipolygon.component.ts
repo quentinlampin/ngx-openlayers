@@ -16,7 +16,7 @@ export class GeometryMultiPolygonComponent extends SimpleGeometryComponent imple
     super(map, host);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new MultiPolygon([
       [
         [

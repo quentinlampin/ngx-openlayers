@@ -21,12 +21,12 @@ import { Fill, Stroke, Style } from 'ol/style';
       <aol-layer-group>
         <aol-layer-vector #aoiLayerVector *ngFor="let f of features.features">
           <aol-style *ngIf="f.id === hoveredFeatureId; else notHovered">
-            <aol-style-stroke [color]="'white'" width="3"></aol-style-stroke>
+            <aol-style-stroke [color]="'white'" [width]="3"></aol-style-stroke>
             <aol-style-fill [color]="'rgba(90, 17, 26, 0.3)'"></aol-style-fill>
           </aol-style>
           <ng-template #notHovered>
             <aol-style>
-              <aol-style-stroke [color]="'rgba(90, 17, 26)'" width="3"></aol-style-stroke>
+              <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
               <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
             </aol-style>
           </ng-template>
@@ -137,7 +137,7 @@ export class ColorSelectHoverComponent {
 
   hoveredFeatureId;
 
-  changeFeatureHovered(event) {
+  changeFeatureHovered(event): void {
     const hit: Feature = this.map.instance.forEachFeatureAtPixel(event.pixel, (f) => f, {
       layerFilter: inLayer(...this.aoiLayerVector.toArray()),
       hitTolerance: 10,

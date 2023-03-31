@@ -11,7 +11,7 @@ export class AttributionComponent implements OnInit {
 
   constructor(private elementRef: ElementRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.html = this.elementRef.nativeElement.innerHTML;
     this.instance = new Attribution();
   }

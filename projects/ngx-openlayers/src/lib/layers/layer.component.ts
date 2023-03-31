@@ -29,7 +29,7 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(protected host: MapComponent | LayerGroupComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.prerender !== null && this.prerender !== undefined) {
       this.instance.on('prerender', this.prerender);
     }
@@ -39,11 +39,11 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     this.host.instance.getLayers().push(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.host.instance.getLayers().remove(this.instance);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;

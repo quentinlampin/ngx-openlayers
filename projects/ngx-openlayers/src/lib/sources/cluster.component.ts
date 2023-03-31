@@ -38,14 +38,14 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
     super(layer);
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     this.source = this.sourceVectorComponent.instance;
 
     this.instance = new Cluster(this);
     this.host.instance.setSource(this.instance);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.instance && changes.hasOwnProperty('distance')) {
       this.instance.setDistance(this.distance);
     }

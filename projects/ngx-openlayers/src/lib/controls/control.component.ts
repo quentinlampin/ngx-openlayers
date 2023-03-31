@@ -17,7 +17,7 @@ export class ControlComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
       this.instance = new Control(this);
@@ -25,7 +25,7 @@ export class ControlComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.instance) {
       this.map.instance.removeControl(this.instance);
     }
