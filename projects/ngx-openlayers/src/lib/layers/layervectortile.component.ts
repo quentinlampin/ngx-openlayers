@@ -35,13 +35,13 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
     super(group || map);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.layer.VectorTile instance with:', this);
     this.instance = new VectorTile(this);
     super.ngOnInit();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
   }
 }

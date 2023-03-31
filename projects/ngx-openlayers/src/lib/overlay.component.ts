@@ -35,7 +35,7 @@ export class OverlayComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
       this.instance = new Overlay(this);
@@ -43,7 +43,7 @@ export class OverlayComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.instance) {
       this.map.instance.removeOverlay(this.instance);
     }

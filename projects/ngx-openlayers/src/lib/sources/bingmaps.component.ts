@@ -35,7 +35,7 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
     super(layer);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new BingMaps(this);
     this.host.instance.setSource(this.instance);
   }

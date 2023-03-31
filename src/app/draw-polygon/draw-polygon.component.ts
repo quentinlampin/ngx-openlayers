@@ -68,11 +68,11 @@ export class DrawPolygonComponent {
   drawBoxGeometryFunction = createBox();
   feature;
 
-  drawMode() {
+  drawMode(): void {
     this.isDrawing = !this.isDrawing;
   }
 
-  endDraw(feature: Feature) {
+  endDraw(feature: Feature): void {
     const olGeomPolygon = fromExtent(feature.getGeometry().getExtent());
     olGeomPolygon.transform(new Projection({ code: 'EPSG:3857' }), new Projection({ code: 'EPSG:4326' }));
     this.feature = {

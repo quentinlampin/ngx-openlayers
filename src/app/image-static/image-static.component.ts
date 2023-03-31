@@ -57,7 +57,7 @@ export class ImageStaticComponent {
 
   getCenter = (ext) => getCenter(ext);
 
-  onUrlChange(evt) {
+  onUrlChange(evt): void {
     this.url = evt.target.value;
   }
 }

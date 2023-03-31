@@ -24,7 +24,7 @@ import { MapComponent } from 'ngx-openlayers';
       class="swipe-button"
       [style.marginLeft.px]="swipeOffsetToCenter"
       (panstart)="onPanStart()"
-      (panmove)="onPan($event)"
+      (panmove)="onPan($any($event))"
     >
       <>
     </button>
@@ -72,16 +72,16 @@ export class SwipeComponent implements OnInit {
   paddingSize = 16;
 
   @HostListener('window:resize', ['$event'])
-  onWindowResize(event) {
+  onWindowResize(event): void {
     this.resetSwipeValues();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.prerenderFunction = this.prerender();
     this.postrenderFunction = this.postrender();
   }
 
-  prerender() {
+  prerender(): (event) => void {
     return (event) => {
       const ctx = event.context;
       const width = ctx.canvas.width * (this.swipeValue / 100);
@@ -93,14 +93,14 @@ export class SwipeComponent implements OnInit {
     };
   }
 
-  postrender() {
+  postrender(): (event) => void {
     return (event) => {
       const ctx = event.context;
       ctx.restore();
     };
   }
 
-  resetSwipeValues() {
+  resetSwipeValues(): void {
     this.startX = 0;
     this.swipeOffsetToCenter = 0;
     this.swipeValue = 50;
@@ -111,7 +111,7 @@ export class SwipeComponent implements OnInit {
     this.startX = this.swipeOffsetToCenter;
   }
 
-  onPan(event: any): void {
+  onPan(event: HammerInput): void {
     event.preventDefault();
     const swipePercentageMax = 98;
     const swipePercentageMin = 2;

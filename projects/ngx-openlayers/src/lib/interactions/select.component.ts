@@ -46,7 +46,7 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Select(this);
 
     this.instance.on('change', (event: SelectEvent) => this.olChange.emit(event));
@@ -56,7 +56,7 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
     this.map.instance.addInteraction(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.map.instance.removeInteraction(this.instance);
   }
 }

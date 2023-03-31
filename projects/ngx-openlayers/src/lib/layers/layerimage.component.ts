@@ -30,12 +30,12 @@ export class LayerImageComponent extends LayerComponent implements OnInit, OnCha
     super(group || map);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Image(this);
     super.ngOnInit();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
   }
 }

@@ -58,7 +58,7 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
     super(layer);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new ImageWMS(this);
     this.host.instance.setSource(this.instance);
     this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.imageLoadStart.emit(event));
@@ -66,7 +66,7 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
     this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.imageLoadError.emit(event));
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.instance && changes.hasOwnProperty('params')) {
       this.instance.updateParams(this.params);
     }

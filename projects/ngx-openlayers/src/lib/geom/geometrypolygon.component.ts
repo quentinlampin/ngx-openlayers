@@ -16,7 +16,7 @@ export class GeometryPolygonComponent extends SimpleGeometryComponent implements
     super(map, host);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new Polygon([
       [
         [0, 0],

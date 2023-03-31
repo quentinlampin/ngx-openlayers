@@ -46,7 +46,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
     super(layer);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new ImageArcGISRest(this);
     this.host.instance.setSource(this.instance);
     this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.imageLoadStart.emit(event));
@@ -54,7 +54,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
     this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.imageLoadError.emit(event));
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.instance && changes.hasOwnProperty('params')) {
       this.instance.updateParams(this.params);
     }

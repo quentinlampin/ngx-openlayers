@@ -16,12 +16,12 @@ export class ControlScaleLineComponent implements OnInit, OnDestroy {
     // console.log('instancing aol-control-scaleline');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new ScaleLine(this);
     this.map.instance.addControl(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-control-scaleline');
     this.map.instance.removeControl(this.instance);
   }

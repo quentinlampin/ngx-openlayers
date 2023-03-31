@@ -20,12 +20,12 @@ export class DragBoxInteractionComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new DragBox(this);
     this.map.instance.addInteraction(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.map.instance.removeInteraction(this.instance);
   }
 }

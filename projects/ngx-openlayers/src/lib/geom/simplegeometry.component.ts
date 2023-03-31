@@ -12,7 +12,7 @@ export abstract class SimpleGeometryComponent implements OnInit {
 
   constructor(protected map: MapComponent, protected host: FeatureComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.host.instance.setGeometry(this.instance);
   }
 }

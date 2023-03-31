@@ -16,7 +16,7 @@ export class GeometryMultiLinestringComponent extends SimpleGeometryComponent im
     super(map, host);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new MultiLineString([
       [
         [0, 0],

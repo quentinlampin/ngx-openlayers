@@ -3,11 +3,9 @@ import { Color } from 'ol/color';
 import { Size } from 'ol/size';
 import { Icon } from 'ol/style';
 import { StyleComponent } from './style.component';
-import IconAnchorUnits from 'ol/style/IconAnchorUnits';
-import IconOrigin from 'ol/style/IconOrigin';
 
-type IconAnchorUnits = typeof IconAnchorUnits;
-type IconOrigin = typeof IconOrigin;
+type IconAnchorUnits = 'fraction' | 'pixels';
+type IconOrigin = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
 
 @Component({
   selector: 'aol-style-icon',
@@ -53,13 +51,13 @@ export class StyleIconComponent implements OnInit, OnChanges {
 
   constructor(@Host() private host: StyleComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.style.Icon instance with: ', this);
     this.instance = new Icon(this);
     this.host.instance.setImage(this.instance);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {
       return;
     }

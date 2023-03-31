@@ -22,7 +22,7 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
 
   constructor(private map: MapComponent) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const properties: { [index: string]: any } = {};
 
     if (!this.instance) {

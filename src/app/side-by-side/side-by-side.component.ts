@@ -43,7 +43,7 @@ export class SideBySideComponent implements AfterViewInit {
   @ViewChild('view', { static: true })
   view: ViewComponent;
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.secondMap.instance.setView(this.view.instance);
   }
 }

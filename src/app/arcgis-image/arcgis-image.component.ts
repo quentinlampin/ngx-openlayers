@@ -39,11 +39,11 @@ export class ArcgisImageComponent {
   public zoom = 4;
   public opacity = 1.0;
 
-  imageLoadStart() {
+  imageLoadStart(): void {
     console.log('image starts loading at: ' + new Date());
   }
 
-  imageLoadEnd() {
+  imageLoadEnd(): void {
     console.log('image ends loading at: ' + new Date());
   }
 }
