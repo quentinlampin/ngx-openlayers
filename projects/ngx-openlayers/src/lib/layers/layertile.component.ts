@@ -21,13 +21,13 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
     super(group || map);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.layer.Tile instance with:', this);
     this.instance = new Tile(this);
     super.ngOnInit();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
   }
 }

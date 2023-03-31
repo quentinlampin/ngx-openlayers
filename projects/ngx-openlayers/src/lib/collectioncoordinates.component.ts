@@ -44,22 +44,22 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
     this.mapSrid = this.map.instance.getView().getProjection().getCode();
     this.transformCoordinates();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     this.transformCoordinates();
   }
 
-  private onMapViewChanged(event) {
+  private onMapViewChanged(event): void {
     this.mapSrid = event.target.get(event.key).getProjection().getCode();
     this.transformCoordinates();
   }
 
-  private transformCoordinates() {
+  private transformCoordinates(): void {
     let transformedCoordinates: Coordinate[] | Coordinate[][] | Coordinate[][][];
 
     if (this.srid === this.mapSrid) {

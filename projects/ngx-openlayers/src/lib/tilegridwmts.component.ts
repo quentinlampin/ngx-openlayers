@@ -26,7 +26,7 @@ export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
 
   instance: WMTS;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new WMTS(this);
   }
 }

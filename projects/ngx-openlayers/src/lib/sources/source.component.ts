@@ -13,13 +13,13 @@ export abstract class SourceComponent implements OnDestroy {
 
   constructor(protected host: LayerComponent) {}
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.host && this.host.instance) {
       this.host.instance.setSource(null);
     }
   }
 
-  protected _register(s: Source) {
+  protected _register(s: Source): void {
     if (this.host) {
       this.host.instance.setSource(s);
     }

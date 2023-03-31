@@ -16,7 +16,7 @@ export class GeometryMultiPointComponent extends SimpleGeometryComponent impleme
     super(map, host);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new MultiPoint([
       [0, 0],
       [1, 1],

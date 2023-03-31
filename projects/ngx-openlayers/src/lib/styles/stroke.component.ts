@@ -46,7 +46,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     // console.log('creating aol-style-stroke with: ', this);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.style.Stroke instance with: ', this);
     this.instance = new Stroke(this);
     switch (this.host.componentType) {
@@ -67,7 +67,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {
       return;
     }

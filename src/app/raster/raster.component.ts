@@ -20,7 +20,7 @@ interface RasterData {
 
       <aol-layer-image>
         <aol-source-raster
-          threads="4"
+          [threads]="4"
           operationType="image"
           [operation]="operation"
           (beforeOperations)="beforeOperations($event)"
@@ -87,13 +87,13 @@ export class RasterComponent {
   contrast = 0;
   selectLayer = 'osm';
 
-  beforeOperations(event) {
+  beforeOperations(event): void {
     const data: RasterData = event.data;
     data.brightness = this.brightness;
     data.contrast = this.contrast;
   }
 
-  updateRaster() {
+  updateRaster(): void {
     this.rasterSource.instance.refresh();
   }
 }

@@ -24,12 +24,12 @@ export class ControlFullScreenComponent implements OnInit, OnDestroy {
     // console.log('instancing aol-control-fullscreen');
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new FullScreen(this);
     this.map.instance.addControl(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-control-fullscreen');
     this.map.instance.removeControl(this.instance);
   }

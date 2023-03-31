@@ -30,22 +30,22 @@ export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy
 
   constructor(private map: MapComponent) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instance = new OverviewMap(this);
     this.map.instance.addControl(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.map.instance.removeControl(this.instance);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.instance != null && changes.hasOwnProperty('view')) {
       this.reloadInstance();
     }
   }
 
-  private reloadInstance() {
+  private reloadInstance(): void {
     this.map.instance.removeControl(this.instance);
     this.instance = new OverviewMap(this);
     this.map.instance.addControl(this.instance);

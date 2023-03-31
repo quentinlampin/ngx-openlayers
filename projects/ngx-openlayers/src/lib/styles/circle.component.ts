@@ -24,7 +24,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
    * we trigger a radius change.
    * see openlayers #6233 and #5775
    */
-  update() {
+  update(): void {
     if (!!this.instance) {
       // console.log('setting ol.style.Circle instance\'s radius');
       this.instance.setRadius(this.radius);
@@ -32,14 +32,14 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
     this.host.update();
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     // console.log('creating ol.style.Circle instance with: ', this);
     this.instance = new Circle(this);
     this.host.instance.setImage(this.instance);
     this.host.update();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {
       return;
     }
@@ -49,7 +49,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
     // console.log('changes detected in aol-style-circle, setting new radius: ', changes['radius'].currentValue);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-style-circle');
     this.host.instance.setImage(null);
   }

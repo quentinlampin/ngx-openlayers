@@ -61,11 +61,11 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
     this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.imageLoadError.emit(event));
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.setLayerSource();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;

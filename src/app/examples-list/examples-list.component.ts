@@ -81,7 +81,7 @@ export class ExamplesListComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
       term: '',
     });

@@ -38,11 +38,9 @@ import { SelectEvent } from 'ol/interaction/Select';
 export class SelectInteractionComponent {
   @ViewChild('markersLayer', { static: true }) markersLayer: LayerVectorComponent;
 
-  constructor() {}
-
   isMarkerLayer = (layer: OlLayer) => layer === this.markersLayer.instance;
 
-  select($event: SelectEvent) {
+  select($event: SelectEvent): void {
     console.log($event);
   }
 }

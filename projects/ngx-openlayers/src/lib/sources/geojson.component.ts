@@ -28,7 +28,7 @@ export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
     super(layer);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.format = new GeoJSON(this);
     this.instance = new Vector(this);
     this.host.instance.setSource(this.instance);

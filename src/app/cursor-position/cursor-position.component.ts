@@ -55,11 +55,11 @@ export class CursorPositionComponent {
     this.lat = transform(coordinates, 'EPSG:3857', 'EPSG:4326')[1];
   }
 
-  latToString(lat: number) {
+  latToString(lat: number): string {
     return toSexagesimal(lat, '', '-');
   }
 
-  lonToString(lon: number) {
+  lonToString(lon: number): string {
     return toSexagesimal(lon, '', '-');
   }
 }

@@ -30,13 +30,13 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
     super(group || map);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // console.log('creating ol.layer.Vector instance with:', this);
     this.instance = new Vector(this);
     super.ngOnInit();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
   }
 }

@@ -16,14 +16,14 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
 
   constructor(private map: MapComponent, private element: ElementRef) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.target = this.element.nativeElement;
     // console.log('ol.control.Attribution init: ', this);
     this.instance = new Attribution(this);
     this.map.instance.addControl(this.instance);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // console.log('removing aol-control-attribution');
     this.map.instance.removeControl(this.instance);
   }

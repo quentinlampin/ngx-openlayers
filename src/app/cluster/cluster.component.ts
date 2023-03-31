@@ -91,7 +91,7 @@ export class ClusterComponent implements OnInit {
   distance = 60;
   points: Array<{ x: number; y: number }> = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     // Generate random points
     const nbPoints = 2000;
     for (let i = 0; i < nbPoints; ++i) {
@@ -102,7 +102,7 @@ export class ClusterComponent implements OnInit {
     }
   }
 
-  getRandomInRange(from, to, fixed) {
+  getRandomInRange(from, to, fixed): number {
     return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
   }
 }
