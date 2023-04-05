@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
+    "declarationMap": true,
     "target": "es2018",
     "declaration": true,
     "inlineSources": true,

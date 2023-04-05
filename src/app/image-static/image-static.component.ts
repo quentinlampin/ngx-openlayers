@@ -14,12 +14,12 @@ import Projection from 'ol/proj/Projection';
     <div class="controls">
       Current image url:
       <select (change)="onUrlChange($event)">
-        <option value="https://imgs.xkcd.com/comics/online_communities.png"
-          >https://imgs.xkcd.com/comics/online_communities.png</option
-        >
-        <option value="https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg"
-          >https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg</option
-        >
+        <option value="https://imgs.xkcd.com/comics/online_communities.png">
+          https://imgs.xkcd.com/comics/online_communities.png
+        </option>
+        <option value="https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg">
+          https://pbs.twimg.com/media/D7IgamEUEAA5DHE.jpg
+        </option>
       </select>
     </div>
   `,
