@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getParagraphText()).toEqual('Welcome to app!');
+    expect(await page.getParagraphText()).toEqual('ngx-openlayer demo');
   });
 });
