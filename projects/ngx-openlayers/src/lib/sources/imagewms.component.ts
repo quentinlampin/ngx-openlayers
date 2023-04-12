@@ -23,8 +23,6 @@ import { ImageSourceEvent } from 'ol/source/Image';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
 })
 export class SourceImageWMSComponent extends SourceComponent implements OnChanges, OnInit {
-  instance: ImageWMS;
-
   @Input()
   attributions: AttributionLike;
   @Input()
@@ -52,6 +50,8 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   imageLoadEnd = new EventEmitter<ImageSourceEvent>();
   @Output()
   imageLoadError = new EventEmitter<ImageSourceEvent>();
+
+  instance: ImageWMS;
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);

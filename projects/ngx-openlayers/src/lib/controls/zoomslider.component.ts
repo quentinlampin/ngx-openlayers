@@ -7,8 +7,6 @@ import { MapComponent } from '../map.component';
   template: ` <ng-content></ng-content> `,
 })
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {
-  instance: ZoomSlider;
-
   @Input()
   className: string;
   @Input()
@@ -17,6 +15,8 @@ export class ControlZoomSliderComponent implements OnInit, OnDestroy {
   maxResolution: number;
   @Input()
   minResolution: number;
+
+  instance: ZoomSlider;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoomslider');

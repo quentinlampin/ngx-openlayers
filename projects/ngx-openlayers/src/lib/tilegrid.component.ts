@@ -10,8 +10,6 @@ import { Size } from 'ol/size';
   template: '',
 })
 export class TileGridComponent implements OnInit, OnChanges {
-  instance: TileGrid;
-
   @Input()
   extent: Extent;
   @Input()
@@ -24,6 +22,8 @@ export class TileGridComponent implements OnInit, OnChanges {
   origin?: Coordinate;
   @Input()
   resolutions: number[];
+
+  instance: TileGrid;
 
   ngOnInit() {
     if (!this.resolutions) {

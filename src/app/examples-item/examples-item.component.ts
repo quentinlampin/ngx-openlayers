@@ -57,8 +57,8 @@ import { Router } from '@angular/router';
   ],
 })
 export class ExamplesItemComponent implements OnInit {
-  constructor(private router: Router) {}
   exampleInfo;
+  constructor(private router: Router) {}
   ngOnInit() {
     this.exampleInfo = examplesList.find((item) => this.router.url.includes(item.routerLink));
   }

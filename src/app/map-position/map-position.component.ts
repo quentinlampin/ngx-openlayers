@@ -80,8 +80,6 @@ import Projection from 'ol/proj/Projection';
   ],
 })
 export class MapPositionComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
-
   @ViewChild('map', { static: true })
   map: MapComponent;
   @ViewChild('view', { static: true })
@@ -96,6 +94,8 @@ export class MapPositionComponent implements OnInit {
   currentLat = 0;
 
   form: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.fb.group({

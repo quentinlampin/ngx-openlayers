@@ -1,19 +1,19 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Condition } from 'ol/events/condition';
 import { DragRotate } from 'ol/interaction';
 import { MapComponent } from '../map.component';
-import { Condition } from 'ol/events/condition';
 
 @Component({
   selector: 'aol-interaction-dragrotate',
   template: '',
 })
 export class DragRotateInteractionComponent implements OnInit, OnDestroy {
-  instance: DragRotate;
-
   @Input()
   condition: Condition;
   @Input()
   duration: number;
+
+  instance: DragRotate;
 
   constructor(private map: MapComponent) {}
 

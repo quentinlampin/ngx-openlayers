@@ -7,12 +7,12 @@ import { MapComponent } from '../map.component';
   template: '',
 })
 export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
-  instance: DoubleClickZoom;
-
   @Input()
   duration: number;
   @Input()
   delta: number;
+
+  instance: DoubleClickZoom;
 
   constructor(private map: MapComponent) {}
 

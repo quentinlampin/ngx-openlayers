@@ -7,8 +7,6 @@ import { MapComponent } from '../map.component';
   template: ` <ng-content></ng-content> `,
 })
 export class ControlRotateComponent implements OnInit, OnDestroy {
-  instance: Rotate;
-
   @Input()
   className: string;
   @Input()
@@ -19,6 +17,8 @@ export class ControlRotateComponent implements OnInit, OnDestroy {
   duration: number;
   @Input()
   autoHide: boolean;
+
+  instance: Rotate;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-rotate');

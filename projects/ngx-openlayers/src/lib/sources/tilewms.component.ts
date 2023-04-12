@@ -11,7 +11,6 @@ import { LoadFunction } from 'ol/Tile';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMSComponent) }],
 })
 export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit {
-  instance: TileWMS;
   @Input()
   cacheSize: number;
   @Input()
@@ -38,6 +37,8 @@ export class SourceTileWMSComponent extends SourceComponent implements OnChanges
   urls: string[];
   @Input()
   wrapX: boolean;
+
+  instance: TileWMS;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

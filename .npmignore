@@ -1,7 +1,6 @@
 src
 example
 tsconfig.json
-tslint.json
 *.tgz
 node_modules/*
 npm-debug.log

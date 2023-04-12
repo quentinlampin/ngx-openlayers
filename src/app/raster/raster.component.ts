@@ -79,13 +79,13 @@ interface RasterData {
   ],
 })
 export class RasterComponent {
+  @ViewChild(SourceRasterComponent, { static: true })
+  rasterSource;
+
   operation = rasterOperation;
   brightness = 0;
   contrast = 0;
-
   selectLayer = 'osm';
-  @ViewChild(SourceRasterComponent, { static: true })
-  rasterSource;
 
   beforeOperations(event) {
     const data: RasterData = event.data;
@@ -102,7 +102,7 @@ export class RasterComponent {
  * @see https://github.com/canastro/image-filter-brightness/blob/master/src/transform.js
  * @see https://github.com/canastro/image-filter-contrast/blob/master/src/transform.js
  */
-export function rasterOperation(imageDatas: [ImageData], data: RasterData): ImageData {
+const rasterOperation = (imageDatas: [ImageData], data: RasterData): ImageData => {
   const [imageData] = imageDatas;
 
   const pixels = imageData.data;
@@ -120,4 +120,4 @@ export function rasterOperation(imageDatas: [ImageData], data: RasterData): Imag
   }
 
   return imageData;
-}
+};

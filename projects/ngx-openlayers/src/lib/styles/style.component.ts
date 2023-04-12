@@ -10,10 +10,6 @@ import { GeometryFunction } from 'ol/style/Style';
   template: ` <ng-content></ng-content> `,
 })
 export class StyleComponent implements OnInit {
-  private host: FeatureComponent | LayerVectorComponent;
-  public instance: Style;
-  public componentType = 'style';
-
   @Input()
   geometry: string | Geometry | GeometryFunction;
   @Input()
@@ -26,6 +22,10 @@ export class StyleComponent implements OnInit {
   text: Text;
   @Input()
   zIndex: number;
+
+  instance: Style;
+  componentType = 'style';
+  private host: FeatureComponent | LayerVectorComponent;
 
   constructor(@Optional() featureHost: FeatureComponent, @Optional() layerHost: LayerVectorComponent) {
     // console.log('creating aol-style');

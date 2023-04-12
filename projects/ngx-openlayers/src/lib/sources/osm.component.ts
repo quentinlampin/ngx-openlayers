@@ -13,8 +13,6 @@ import { SourceXYZComponent } from './xyz.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
-  instance: OSM;
-
   @Input()
   attributions: AttributionLike;
   @Input()
@@ -40,6 +38,8 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   tileLoadEnd: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
   @Output()
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
+
+  instance: OSM;
 
   constructor(
     @Optional()

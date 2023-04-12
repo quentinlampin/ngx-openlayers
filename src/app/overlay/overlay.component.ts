@@ -58,8 +58,6 @@ import { fromExtent } from 'ol/geom/Polygon';
   ],
 })
 export class OverlayComponent implements OnInit {
-  constructor() {}
-
   geoJsonFormat = new GeoJSON();
 
   feature = {

@@ -25,8 +25,6 @@ import { SourceComponent } from './source.component';
   ],
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
-  instance: Raster;
-
   @Input()
   operation?: Operation;
   @Input()
@@ -41,7 +39,12 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   @Output()
   afterOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
 
+  instance: Raster;
   sources: Source[] = [];
+
+  constructor(@Host() layer: LayerImageComponent) {
+    super(layer);
+  }
 
   @ContentChild(SourceComponent)
   set source(sourceComponent: SourceComponent) {
@@ -50,10 +53,6 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
       // Openlayer doesn't handle sources update. Just recreate Raster instance.
       this.init();
     }
-  }
-
-  constructor(@Host() layer: LayerImageComponent) {
-    super(layer);
   }
 
   ngAfterContentInit() {

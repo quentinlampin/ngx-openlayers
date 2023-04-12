@@ -1,8 +1,8 @@
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { MapComponent, LayerVectorComponent } from 'ngx-openlayers';
-import { Fill, Stroke, Style } from 'ol/style';
-import { Layer } from 'ol/layer';
+import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { LayerVectorComponent, MapComponent } from 'ngx-openlayers';
 import { Feature } from 'ol';
+import { Layer } from 'ol/layer';
+import { Fill, Stroke, Style } from 'ol/style';
 
 @Component({
   selector: 'app-color-select-hover',
@@ -45,9 +45,7 @@ import { Feature } from 'ol';
     </aol-map>
   `,
 })
-export class ColorSelectHoverComponent implements OnInit {
-  constructor() {}
-
+export class ColorSelectHoverComponent {
   @ViewChild('map', { static: true })
   map: MapComponent;
   @ViewChildren('aoiLayerVector')
@@ -139,8 +137,6 @@ export class ColorSelectHoverComponent implements OnInit {
 
   hoveredFeatureId;
 
-  ngOnInit() {}
-
   changeFeatureHovered(event) {
     const hit: Feature = this.map.instance.forEachFeatureAtPixel(event.pixel, (f) => f, {
       layerFilter: inLayer(...this.aoiLayerVector.toArray()),
@@ -156,6 +152,7 @@ export class ColorSelectHoverComponent implements OnInit {
   }
 }
 
-function inLayer(...layers: LayerVectorComponent[]): (l: Layer) => boolean {
-  return (l: Layer) => layers.some((layer) => layer.instance === l);
-}
+const inLayer =
+  (...layers: LayerVectorComponent[]): ((l: Layer) => boolean) =>
+  (l: Layer) =>
+    layers.some((layer) => layer.instance === l);

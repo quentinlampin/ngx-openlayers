@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { createBox } from 'ol/interaction/Draw';
+import { Component } from '@angular/core';
 import { Feature } from 'ol';
-import Projection from 'ol/proj/Projection';
 import { fromExtent } from 'ol/geom/Polygon';
+import { createBox } from 'ol/interaction/Draw';
+import Projection from 'ol/proj/Projection';
 
 @Component({
   selector: 'app-draw-polygon',
@@ -63,14 +63,10 @@ import { fromExtent } from 'ol/geom/Polygon';
     `,
   ],
 })
-export class DrawPolygonComponent implements OnInit {
-  constructor() {}
-
+export class DrawPolygonComponent {
   isDrawing = false;
   drawBoxGeometryFunction = createBox();
   feature;
-
-  ngOnInit() {}
 
   drawMode() {
     this.isDrawing = !this.isDrawing;

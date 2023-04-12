@@ -58,8 +58,6 @@ import { MapComponent } from 'ngx-openlayers';
   ],
 })
 export class SwipeComponent implements OnInit {
-  constructor() {}
-
   @ViewChild('map', { static: true })
   map: MapComponent;
 
@@ -73,14 +71,14 @@ export class SwipeComponent implements OnInit {
 
   paddingSize = 16;
 
-  ngOnInit() {
-    this.prerenderFunction = this.prerender();
-    this.postrenderFunction = this.postrender();
-  }
-
   @HostListener('window:resize', ['$event'])
   onWindowResize(event) {
     this.resetSwipeValues();
+  }
+
+  ngOnInit() {
+    this.prerenderFunction = this.prerender();
+    this.postrenderFunction = this.postrender();
   }
 
   prerender() {

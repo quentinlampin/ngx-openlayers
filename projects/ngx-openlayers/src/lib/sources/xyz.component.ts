@@ -27,7 +27,6 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
-  instance: XYZ;
   @Input()
   cacheSize: number;
   @Input()
@@ -68,6 +67,8 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   tileLoadEnd: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
   @Output()
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
+
+  instance: XYZ;
 
   constructor(
     @Optional()

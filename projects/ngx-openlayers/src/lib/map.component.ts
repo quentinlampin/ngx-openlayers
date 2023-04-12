@@ -1,21 +1,21 @@
 import {
-  Component,
-  OnInit,
-  ElementRef,
-  Input,
-  Output,
-  EventEmitter,
   AfterViewInit,
-  SimpleChanges,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
   OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
 } from '@angular/core';
 import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import MapEvent from 'ol/MapEvent';
 import ObjectEvent from 'ol/Object';
-import RenderEvent from 'ol/render/Event';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
+import RenderEvent from 'ol/render/Event';
 
 @Component({
   selector: 'aol-map',
@@ -25,9 +25,6 @@ import { Interaction } from 'ol/interaction';
   `,
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
-  public instance: Map;
-  public componentType = 'map';
-
   @Input()
   width = '100%';
   @Input()
@@ -68,6 +65,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output()
   singleClick: EventEmitter<MapBrowserEvent>;
 
+  instance: Map;
+  componentType = 'map';
   // we pass empty arrays to not get default controls/interactions because we have our own directives
   controls: Control[] = [];
   interactions: Interaction[] = [];

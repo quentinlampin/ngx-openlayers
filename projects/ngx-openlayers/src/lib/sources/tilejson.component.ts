@@ -9,10 +9,10 @@ import { SourceComponent } from './source.component';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileJSONComponent) }],
 })
 export class SourceTileJSONComponent extends SourceComponent implements OnInit {
-  instance: TileJSON;
-
   @Input()
   url: string;
+
+  instance: TileJSON;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

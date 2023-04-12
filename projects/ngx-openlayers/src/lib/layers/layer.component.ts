@@ -1,15 +1,11 @@
 import { Directive, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Event } from 'ol/events';
+import { Extent } from 'ol/extent';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
-import { Extent } from 'ol/extent';
 
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
-  public instance: any;
-  public componentType = 'layer';
-
   @Input()
   opacity: number;
   @Input()
@@ -27,6 +23,9 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   prerender: (evt: Event) => void;
   @Input()
   postrender: (evt: Event) => void;
+
+  instance: any;
+  componentType = 'layer';
 
   constructor(protected host: MapComponent | LayerGroupComponent) {}
 
