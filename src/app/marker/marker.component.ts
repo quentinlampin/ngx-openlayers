@@ -38,9 +38,7 @@ import { Component, OnInit } from '@angular/core';
     </aol-map>
   `,
 })
-export class MarkerComponent implements OnInit {
-  constructor() {}
-
+export class MarkerComponent {
   feature = {
     type: 'Feature',
     properties: {},
@@ -62,6 +60,4 @@ export class MarkerComponent implements OnInit {
     lon: -2.264184,
     lat: 46.996207,
   };
-
-  ngOnInit() {}
 }

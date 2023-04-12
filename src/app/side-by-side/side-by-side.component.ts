@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MapComponent, ViewComponent } from 'ngx-openlayers';
 
 @Component({
@@ -37,15 +37,11 @@ import { MapComponent, ViewComponent } from 'ngx-openlayers';
     `,
   ],
 })
-export class SideBySideComponent implements OnInit, AfterViewInit {
-  constructor() {}
-
+export class SideBySideComponent implements AfterViewInit {
   @ViewChild('secondMap', { static: true })
   secondMap: MapComponent;
   @ViewChild('view', { static: true })
   view: ViewComponent;
-
-  ngOnInit() {}
 
   ngAfterViewInit() {
     this.secondMap.instance.setView(this.view.instance);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-display-geometry',
@@ -112,9 +112,7 @@ import { Component, OnInit } from '@angular/core';
     </aol-map>
   `,
 })
-export class DisplayGeometryComponent implements OnInit {
-  constructor() {}
-
+export class DisplayGeometryComponent {
   features = [
     {
       type: 'Feature',
@@ -233,6 +231,4 @@ export class DisplayGeometryComponent implements OnInit {
       },
     },
   ];
-
-  ngOnInit() {}
 }

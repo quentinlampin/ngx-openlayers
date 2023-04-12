@@ -1,20 +1,21 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import MousePosition from 'ol/control/MousePosition';
-import { MapComponent } from '../map.component';
 import { CoordinateFormat } from 'ol/coordinate';
 import { ProjectionLike } from 'ol/proj';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-mouseposition',
   template: ``,
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {
-  instance: MousePosition;
   @Input()
   coordinateFormat: CoordinateFormat;
   @Input()
   projection: ProjectionLike;
   target: Element;
+
+  instance: MousePosition;
 
   constructor(private map: MapComponent, private element: ElementRef) {}
 

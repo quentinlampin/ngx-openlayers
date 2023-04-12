@@ -1,20 +1,18 @@
-import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MapComponent } from '../map.component';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Collection, Feature } from 'ol';
+import { Condition } from 'ol/events/condition';
 import { Select } from 'ol/interaction';
+import { FilterFunction, SelectEvent } from 'ol/interaction/Select';
 import { Layer } from 'ol/layer';
 import { Style } from 'ol/style';
-import { Collection, Feature } from 'ol';
-import { SelectEvent, FilterFunction } from 'ol/interaction/Select';
 import { StyleFunction } from 'ol/style/Style';
-import { Condition } from 'ol/events/condition';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-select',
   template: '',
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {
-  instance: Select;
-
   @Input()
   addCondition?: Condition;
   @Input()
@@ -42,6 +40,8 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
   olSelect = new EventEmitter<SelectEvent>();
   @Output()
   propertyChange = new EventEmitter<SelectEvent>();
+
+  instance: Select;
 
   constructor(private map: MapComponent) {}
 

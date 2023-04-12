@@ -1,17 +1,14 @@
 import { Component, ContentChild, Input, OnDestroy, OnInit } from '@angular/core';
-import { MapComponent } from './map.component';
 import { Overlay, PanOptions } from 'ol';
-import { ContentComponent } from './content.component';
 import OverlayPositioning from 'ol/OverlayPositioning';
+import { ContentComponent } from './content.component';
+import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-overlay',
   template: '<ng-content></ng-content>',
 })
 export class OverlayComponent implements OnInit, OnDestroy {
-  componentType = 'overlay';
-  instance: Overlay;
-  element: Element;
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
 
@@ -31,6 +28,10 @@ export class OverlayComponent implements OnInit, OnDestroy {
   autoPanAnimation: PanOptions;
   @Input()
   autoPanMargin: number;
+
+  componentType = 'overlay';
+  instance: Overlay;
+  element: Element;
 
   constructor(private map: MapComponent) {}
 

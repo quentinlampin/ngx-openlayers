@@ -26,7 +26,6 @@ import { TileSourceEvent } from 'ol/source/Tile';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
-  instance: WMTS;
   @Input()
   cacheSize?: number;
   @Input()
@@ -73,6 +72,8 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
 
   @ContentChild(TileGridWMTSComponent)
   tileGridWMTS: TileGridWMTSComponent;
+
+  instance: WMTS;
 
   constructor(@Host() layer: LayerTileComponent) {
     super(layer);

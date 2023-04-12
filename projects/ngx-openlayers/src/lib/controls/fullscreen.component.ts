@@ -7,8 +7,6 @@ import { MapComponent } from '../map.component';
   template: ` <ng-content></ng-content> `,
 })
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
-  instance: FullScreen;
-
   @Input()
   className: string;
   @Input()
@@ -19,6 +17,8 @@ export class ControlFullScreenComponent implements OnInit, OnDestroy {
   tipLabel: string;
   @Input()
   keys: boolean;
+
+  instance: FullScreen;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-fullscreen');

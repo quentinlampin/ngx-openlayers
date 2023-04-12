@@ -1,25 +1,25 @@
-import { Component, Optional, OnChanges, Input, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { transform } from 'ol/proj';
-import { MapComponent } from './map.component';
-import { GeometryPointComponent } from './geom/geometrypoint.component';
 import { GeometryCircleComponent } from './geom/geometrycircle.component';
-import { ViewComponent } from './view.component';
+import { GeometryPointComponent } from './geom/geometrypoint.component';
+import { MapComponent } from './map.component';
 import { OverlayComponent } from './overlay.component';
+import { ViewComponent } from './view.component';
 
 @Component({
   selector: 'aol-coordinate',
   template: ` <div class="aol-coordinate"></div> `,
 })
 export class CoordinateComponent implements OnChanges, OnInit {
-  private host: any;
-  private mapSrid = 'EPSG:3857';
-
   @Input()
   x: number;
   @Input()
   y: number;
   @Input()
   srid = 'EPSG:3857';
+
+  private host: any;
+  private mapSrid = 'EPSG:3857';
 
   constructor(
     private map: MapComponent,

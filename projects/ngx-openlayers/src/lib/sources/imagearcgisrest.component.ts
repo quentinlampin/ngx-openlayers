@@ -9,13 +9,13 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { LoadFunction } from 'ol/Image';
+import { ProjectionLike } from 'ol/proj';
 import { ImageArcGISRest } from 'ol/source';
+import { ImageSourceEvent } from 'ol/source/Image';
+import { AttributionLike } from 'ol/source/Source';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
-import { ProjectionLike } from 'ol/proj';
-import { AttributionLike } from 'ol/source/Source';
-import { LoadFunction } from 'ol/Image';
-import { ImageSourceEvent } from 'ol/source/Image';
 
 @Component({
   selector: 'aol-source-imagearcgisrest',
@@ -23,8 +23,6 @@ import { ImageSourceEvent } from 'ol/source/Image';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
 })
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
-  instance: ImageArcGISRest;
-
   @Input() projection: ProjectionLike | string;
   @Input() url: string;
   @Input() attributions: AttributionLike[];
@@ -41,6 +39,8 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   imageLoadEnd = new EventEmitter<ImageSourceEvent>();
   @Output()
   imageLoadError = new EventEmitter<ImageSourceEvent>();
+
+  instance: ImageArcGISRest;
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);

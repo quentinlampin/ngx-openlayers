@@ -9,8 +9,6 @@ import { StyleComponent } from './style.component';
   template: ` <div class="aol-style-icon"></div> `,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
-  public instance: Icon;
-
   @Input()
   anchor: [number, number];
   @Input()
@@ -45,6 +43,8 @@ export class StyleIconComponent implements OnInit, OnChanges {
   imgSize: [number, number];
   @Input()
   src: string;
+
+  instance: Icon;
 
   constructor(@Host() private host: StyleComponent) {}
 

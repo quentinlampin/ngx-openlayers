@@ -7,11 +7,12 @@ import { MapComponent } from '../map.component';
   template: ``,
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {
-  public componentType = 'control';
-  instance: Attribution;
-  target: Element;
   @Input()
   collapsible: boolean;
+
+  componentType = 'control';
+  instance: Attribution;
+  target: Element;
 
   constructor(private map: MapComponent, private element: ElementRef) {}
 

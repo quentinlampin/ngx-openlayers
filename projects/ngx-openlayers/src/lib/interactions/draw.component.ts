@@ -1,21 +1,19 @@
-import { Component, Input, OnDestroy, OnInit, EventEmitter, Output } from '@angular/core';
-import { MapComponent } from '../map.component';
-import { Draw } from 'ol/interaction';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Collection, Feature } from 'ol';
-import { Vector } from 'ol/source';
-import GeometryType from 'ol/geom/GeometryType';
-import { Style } from 'ol/style';
-import { DrawEvent, GeometryFunction } from 'ol/interaction/Draw';
-import { StyleFunction } from 'ol/style/Style';
 import { Condition } from 'ol/events/condition';
+import GeometryType from 'ol/geom/GeometryType';
+import { Draw } from 'ol/interaction';
+import { DrawEvent, GeometryFunction } from 'ol/interaction/Draw';
+import { Vector } from 'ol/source';
+import { Style } from 'ol/style';
+import { StyleFunction } from 'ol/style/Style';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-draw',
   template: '',
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
-  instance: Draw;
-
   @Input()
   clickTolerance?: number;
   @Input()
@@ -57,6 +55,8 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   drawStart = new EventEmitter<DrawEvent>();
   @Output()
   propertyChange = new EventEmitter<DrawEvent>();
+
+  instance: Draw;
 
   constructor(private map: MapComponent) {}
 

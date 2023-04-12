@@ -9,8 +9,6 @@ import { Size } from 'ol/size';
   template: '',
 })
 export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
-  instance: WMTS;
-
   @Input()
   origin?: Coordinate;
   @Input()
@@ -25,6 +23,8 @@ export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
   tileSizes?: (number | Size)[];
   @Input()
   widths?: number[];
+
+  instance: WMTS;
 
   ngOnInit() {
     this.instance = new WMTS(this);

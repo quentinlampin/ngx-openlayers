@@ -11,7 +11,6 @@ import { LoadingStrategy } from 'ol/source/Vector';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
-  instance: Vector;
   @Input()
   overlaps: boolean;
   @Input()
@@ -24,6 +23,8 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   format: Feature;
   @Input()
   strategy: LoadingStrategy;
+
+  instance: Vector;
 
   constructor(@Host() layer: LayerVectorComponent) {
     super(layer);

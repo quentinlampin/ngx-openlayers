@@ -7,9 +7,6 @@ import { StyleComponent } from './style.component';
   template: ` <div class="aol-style-text"></div> `,
 })
 export class StyleTextComponent implements OnInit, OnChanges {
-  public instance: Text;
-  public componentType = 'style-text';
-
   @Input()
   font: string | undefined;
   @Input()
@@ -28,6 +25,9 @@ export class StyleTextComponent implements OnInit, OnChanges {
   textAlign: string | undefined;
   @Input()
   textBaseLine: string | undefined;
+
+  instance: Text;
+  componentType = 'style-text';
 
   constructor(@Optional() private host: StyleComponent) {
     if (!host) {
