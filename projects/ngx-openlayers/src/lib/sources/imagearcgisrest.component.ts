@@ -25,7 +25,7 @@ import { SourceComponent } from './source.component';
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
   @Input() projection: ProjectionLike | string;
   @Input() url: string;
-  @Input() attributions: AttributionLike[];
+  @Input() attributions: AttributionLike;
   @Input() crossOrigin?: string;
   @Input() imageLoadFunction?: LoadFunction;
   @Input() params?: { [k: string]: any };

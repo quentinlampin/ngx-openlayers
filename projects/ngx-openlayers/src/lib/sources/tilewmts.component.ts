@@ -1,24 +1,23 @@
 import {
+  AfterContentInit,
   Component,
+  ContentChild,
+  EventEmitter,
   Host,
   Input,
-  forwardRef,
-  AfterContentInit,
-  ContentChild,
-  SimpleChanges,
   OnChanges,
   Output,
-  EventEmitter,
+  SimpleChanges,
+  forwardRef,
 } from '@angular/core';
-import { LayerTileComponent } from '../layers/layertile.component';
-import { SourceComponent } from './source.component';
-import { TileGridWMTSComponent } from '../tilegridwmts.component';
-import { WMTS } from 'ol/source';
-import { WMTS as TileGridWMTS } from 'ol/tilegrid';
-import { WMTSRequestEncoding } from 'ol/source';
-import { ProjectionLike } from 'ol/proj';
 import { LoadFunction } from 'ol/Tile';
+import { ProjectionLike } from 'ol/proj';
+import { WMTS } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
+import WMTSTileGrid from 'ol/tilegrid/WMTS';
+import { LayerTileComponent } from '../layers/layertile.component';
+import { TileGridWMTSComponent } from '../tilegridwmts.component';
+import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-tilewmts',
@@ -31,13 +30,13 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   crossOrigin?: string;
   @Input()
-  tileGrid: TileGridWMTS;
+  tileGrid: WMTSTileGrid;
   @Input()
   projection: ProjectionLike;
   @Input()
   reprojectionErrorThreshold?: number;
   @Input()
-  requestEncoding?: WMTSRequestEncoding | string;
+  requestEncoding?: string;
   @Input()
   layer: string;
   @Input()

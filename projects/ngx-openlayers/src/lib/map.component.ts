@@ -12,8 +12,8 @@ import {
 import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import MapEvent from 'ol/MapEvent';
-import ObjectEvent from 'ol/Object';
 import { Control } from 'ol/control';
+import BaseEvent from 'ol/events/Event';
 import { Interaction } from 'ol/interaction';
 import RenderEvent from 'ol/render/Event';
 
@@ -32,7 +32,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Input()
   pixelRatio: number;
   @Input()
-  keyboardEventTarget: Element | string;
+  keyboardEventTarget: HTMLElement | string;
   @Input()
   loadTilesWhileAnimating: boolean;
   @Input()
@@ -43,27 +43,27 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   renderer: 'canvas' | 'webgl';
 
   @Output()
-  olClick: EventEmitter<MapBrowserEvent>;
+  olClick: EventEmitter<MapBrowserEvent<UIEvent>>;
   @Output()
-  dblClick: EventEmitter<MapBrowserEvent>;
+  dblClick: EventEmitter<MapBrowserEvent<UIEvent>>;
   @Output()
   moveStart: EventEmitter<MapEvent>;
   @Output()
   moveEnd: EventEmitter<MapEvent>;
   @Output()
-  pointerDrag: EventEmitter<MapBrowserEvent>;
+  pointerDrag: EventEmitter<MapBrowserEvent<UIEvent>>;
   @Output()
-  pointerMove: EventEmitter<MapBrowserEvent>;
+  pointerMove: EventEmitter<MapBrowserEvent<UIEvent>>;
   @Output()
   onpostrender: EventEmitter<RenderEvent>;
   @Output()
   postRender: EventEmitter<MapEvent>;
   @Output()
-  onprerender: EventEmitter<RenderEvent>;
+  onpreCompose: EventEmitter<RenderEvent>;
   @Output()
-  propertyChange: EventEmitter<ObjectEvent>;
+  propertyChange: EventEmitter<BaseEvent>;
   @Output()
-  singleClick: EventEmitter<MapBrowserEvent>;
+  singleClick: EventEmitter<MapBrowserEvent<UIEvent>>;
 
   instance: Map;
   componentType = 'map';
@@ -72,34 +72,34 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   interactions: Interaction[] = [];
 
   constructor(private host: ElementRef) {
-    this.olClick = new EventEmitter<MapBrowserEvent>();
-    this.dblClick = new EventEmitter<MapBrowserEvent>();
+    this.olClick = new EventEmitter<MapBrowserEvent<UIEvent>>();
+    this.dblClick = new EventEmitter<MapBrowserEvent<UIEvent>>();
     this.moveStart = new EventEmitter<MapEvent>();
     this.moveEnd = new EventEmitter<MapEvent>();
-    this.pointerDrag = new EventEmitter<MapBrowserEvent>();
-    this.pointerMove = new EventEmitter<MapBrowserEvent>();
+    this.pointerDrag = new EventEmitter<MapBrowserEvent<UIEvent>>();
+    this.pointerMove = new EventEmitter<MapBrowserEvent<UIEvent>>();
     this.onpostrender = new EventEmitter<RenderEvent>();
     this.postRender = new EventEmitter<MapEvent>();
-    this.onprerender = new EventEmitter<RenderEvent>();
-    this.propertyChange = new EventEmitter<ObjectEvent>();
-    this.singleClick = new EventEmitter<MapBrowserEvent>();
+    this.onpreCompose = new EventEmitter<RenderEvent>();
+    this.propertyChange = new EventEmitter<BaseEvent>();
+    this.singleClick = new EventEmitter<MapBrowserEvent<UIEvent>>();
   }
 
   ngOnInit() {
     // console.log('creating ol.Map instance with:', this);
     this.instance = new Map(this);
     this.instance.setTarget(this.host.nativeElement.firstElementChild);
-    this.instance.on('click', (event: MapBrowserEvent) => this.olClick.emit(event));
-    this.instance.on('dblclick', (event: MapBrowserEvent) => this.dblClick.emit(event));
+    this.instance.on('click', (event: MapBrowserEvent<UIEvent>) => this.olClick.emit(event));
+    this.instance.on('dblclick', (event: MapBrowserEvent<UIEvent>) => this.dblClick.emit(event));
     this.instance.on('movestart', (event: MapEvent) => this.moveStart.emit(event));
     this.instance.on('moveend', (event: MapEvent) => this.moveEnd.emit(event));
-    this.instance.on('pointerdrag', (event: MapBrowserEvent) => this.pointerDrag.emit(event));
-    this.instance.on('pointermove', (event: MapBrowserEvent) => this.pointerMove.emit(event));
+    this.instance.on('pointerdrag', (event: MapBrowserEvent<UIEvent>) => this.pointerDrag.emit(event));
+    this.instance.on('pointermove', (event: MapBrowserEvent<UIEvent>) => this.pointerMove.emit(event));
     this.instance.on('postrender', (event: RenderEvent) => this.onpostrender.emit(event));
     this.instance.on('postrender', (event: MapEvent) => this.postRender.emit(event));
-    this.instance.on('prerender', (event: RenderEvent) => this.onprerender.emit(event));
-    this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
-    this.instance.on('singleclick', (event: MapBrowserEvent) => this.singleClick.emit(event));
+    this.instance.on('precompose', (event: RenderEvent) => this.onpreCompose.emit(event));
+    this.instance.on('propertychange', (event: BaseEvent) => this.propertyChange.emit(event));
+    this.instance.on('singleclick', (event: MapBrowserEvent<UIEvent>) => this.singleClick.emit(event));
   }
 
   ngOnChanges(changes: SimpleChanges) {

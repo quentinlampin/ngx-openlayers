@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import Feature from 'ol/format/Feature';
+import FeatureFormat from 'ol/format/Feature';
 import { DragAndDrop } from 'ol/interaction';
 import { ProjectionLike } from 'ol/proj';
 import { MapComponent } from '../map.component';
@@ -10,11 +10,11 @@ import { MapComponent } from '../map.component';
 })
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   @Input()
-  formatConstructors: ((n: Feature) => any)[];
+  formatConstructors: FeatureFormat[];
   @Input()
   projection: ProjectionLike;
   @Input()
-  target: Element;
+  target: HTMLElement;
 
   instance: DragAndDrop;
 

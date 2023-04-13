@@ -13,7 +13,7 @@ export class ControlMousePositionComponent implements OnInit, OnDestroy {
   coordinateFormat: CoordinateFormat;
   @Input()
   projection: ProjectionLike;
-  target: Element;
+  target: HTMLElement;
 
   instance: MousePosition;
 

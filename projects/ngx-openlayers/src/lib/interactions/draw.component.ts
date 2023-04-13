@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Collection, Feature } from 'ol';
+import { ObjectEvent } from 'ol/Object';
 import { Condition } from 'ol/events/condition';
-import GeometryType from 'ol/geom/GeometryType';
 import { Draw } from 'ol/interaction';
 import { DrawEvent, GeometryFunction } from 'ol/interaction/Draw';
 import { Vector } from 'ol/source';
@@ -23,7 +23,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Input()
   snapTolerance?: number;
   @Input()
-  type: GeometryType;
+  type: string;
   @Input()
   maxPoints?: number;
   @Input()
@@ -48,13 +48,13 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Output()
   olChange = new EventEmitter<DrawEvent>();
   @Output()
-  olChangeActive = new EventEmitter<DrawEvent>();
+  olChangeActive = new EventEmitter<ObjectEvent>();
   @Output()
   drawEnd = new EventEmitter<DrawEvent>();
   @Output()
   drawStart = new EventEmitter<DrawEvent>();
   @Output()
-  propertyChange = new EventEmitter<DrawEvent>();
+  propertyChange = new EventEmitter<ObjectEvent>();
 
   instance: Draw;
 
@@ -63,10 +63,10 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.instance = new Draw(this);
     this.instance.on('change', (event: DrawEvent) => this.olChange.emit(event));
-    this.instance.on('change:active', (event: DrawEvent) => this.olChangeActive.emit(event));
+    this.instance.on('change:active', (event: ObjectEvent) => this.olChangeActive.emit(event));
     this.instance.on('drawend', (event: DrawEvent) => this.drawEnd.emit(event));
     this.instance.on('drawstart', (event: DrawEvent) => this.drawStart.emit(event));
-    this.instance.on('propertychange', (event: DrawEvent) => this.propertyChange.emit(event));
+    this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
     this.map.instance.addInteraction(this.instance);
   }
 

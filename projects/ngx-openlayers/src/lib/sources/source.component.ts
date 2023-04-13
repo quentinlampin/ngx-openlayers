@@ -1,6 +1,6 @@
 import { Directive, Input, OnDestroy } from '@angular/core';
-import { Source } from 'ol';
 
+import { Source } from 'ol/source';
 import { LayerComponent } from '../layers/layer.component';
 
 @Directive()

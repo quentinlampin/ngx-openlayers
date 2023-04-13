@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Feature } from 'ol';
-import Projection from 'ol/proj/Projection';
 import { GeoJSON } from 'ol/format';
+import { Polygon } from 'ol/geom';
+import Projection from 'ol/proj/Projection';
 
 @Component({
   selector: 'app-modify-polygon',
@@ -26,7 +27,7 @@ import { GeoJSON } from 'ol/format';
         <aol-source-vector>
           <aol-feature>
             <aol-geometry-polygon>
-              <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+              <aol-collection-coordinates [coordinates]="feature.getGeometry().getCoordinates()" [srid]="'EPSG:4326'">
               </aol-collection-coordinates>
             </aol-geometry-polygon>
           </aol-feature>
@@ -64,27 +65,22 @@ export class ModifyPolygonComponent {
   displayProj = new Projection({ code: 'EPSG:3857' });
   inputProj = new Projection({ code: 'EPSG:4326' });
 
-  feature: Feature = {
-    geometry: {
-      coordinates: [
-        [
-          [-1.7138671875, 43.35713822211053],
-          [4.515380859375, 43.35713822211053],
-          [4.515380859375, 47.76886840424207],
-          [-1.7138671875, 47.76886840424207],
-          [-1.7138671875, 43.35713822211053],
-        ],
+  feature = new Feature<Polygon>({
+    geometry: new Polygon([
+      [
+        [-1.7138671875, 43.35713822211053],
+        [4.515380859375, 43.35713822211053],
+        [4.515380859375, 47.76886840424207],
+        [-1.7138671875, 47.76886840424207],
+        [-1.7138671875, 43.35713822211053],
       ],
-      type: 'Polygon',
-    },
-    properties: {},
-    type: 'Feature',
-  };
+    ]),
+  });
 
-  modifyEnd(feature: Feature) {
+  modifyEnd(feature: Feature<Polygon>) {
     this.feature = this.format.writeFeatureObject(feature, {
       dataProjection: this.inputProj,
       featureProjection: this.displayProj,
-    });
+    }) as unknown as Feature<Polygon>;
   }
 }

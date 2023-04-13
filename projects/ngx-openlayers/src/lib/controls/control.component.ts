@@ -13,7 +13,7 @@ export class ControlComponent implements OnInit, OnDestroy {
 
   componentType = 'control';
   instance: Control;
-  element: Element;
+  element: HTMLElement;
 
   constructor(private map: MapComponent) {}
 

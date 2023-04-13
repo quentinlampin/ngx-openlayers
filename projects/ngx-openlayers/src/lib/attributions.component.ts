@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ContentChildren, Host, QueryList } from '@angular/core';
-import { Attribution } from 'ol/control';
 import { AttributionComponent } from './attribution.component';
 import { SourceComponent } from './sources/source.component';
 
@@ -11,14 +10,14 @@ export class AttributionsComponent implements AfterViewInit {
   @ContentChildren(AttributionComponent)
   attributions: QueryList<AttributionComponent>;
 
-  instance: Array<Attribution>;
+  instance: Array<string>;
 
   constructor(@Host() private source: SourceComponent) {}
 
   /* we can do this at the very end */
   ngAfterViewInit() {
     if (this.attributions.length) {
-      this.instance = this.attributions.map((cmp) => cmp.instance);
+      this.instance = this.attributions.map((cmp) => cmp.html);
       // console.log('setting attributions:', this.instance);
       this.source.instance.setAttributions(this.instance);
     }

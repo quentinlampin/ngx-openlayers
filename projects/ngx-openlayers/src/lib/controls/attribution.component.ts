@@ -12,7 +12,7 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
 
   componentType = 'control';
   instance: Attribution;
-  target: Element;
+  target: HTMLElement;
 
   constructor(private map: MapComponent, private element: ElementRef) {}
 
