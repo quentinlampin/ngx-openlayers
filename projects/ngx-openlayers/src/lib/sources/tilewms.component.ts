@@ -1,9 +1,9 @@
-import { Component, Host, Input, OnChanges, OnInit, forwardRef, SimpleChanges } from '@angular/core';
+import { Component, Host, Input, OnChanges, OnInit, SimpleChanges, forwardRef } from '@angular/core';
+import { LoadFunction } from 'ol/Tile';
+import { TileWMS } from 'ol/source';
+import TileGrid from 'ol/tilegrid/TileGrid';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
-import { TileWMS } from 'ol/source';
-import { TileGrid } from 'ol/tilegrid';
-import { LoadFunction } from 'ol/Tile';
 
 @Component({
   selector: 'aol-source-tilewms',

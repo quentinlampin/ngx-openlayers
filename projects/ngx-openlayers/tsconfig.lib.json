@@ -10,7 +10,8 @@
     "lib": [
       "dom",
       "es2020"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

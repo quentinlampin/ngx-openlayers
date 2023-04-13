@@ -13,6 +13,6 @@ export class AttributionComponent implements OnInit {
 
   ngOnInit() {
     this.html = this.elementRef.nativeElement.innerHTML;
-    this.instance = new Attribution(this);
+    this.instance = new Attribution();
   }
 }
