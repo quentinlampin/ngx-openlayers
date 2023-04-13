@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Extent } from 'ol/extent';
 import { Image } from 'ol/layer';
+import ImageSource from 'ol/source/Image';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
@@ -23,7 +24,7 @@ export class LayerImageComponent extends LayerComponent implements OnInit, OnCha
   @Input()
   zIndex: number;
 
-  source: Image;
+  source: ImageSource;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

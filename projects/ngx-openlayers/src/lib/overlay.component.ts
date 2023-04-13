@@ -1,6 +1,6 @@
 import { Component, ContentChild, Input, OnDestroy, OnInit } from '@angular/core';
-import { Overlay, PanOptions } from 'ol';
-import OverlayPositioning from 'ol/OverlayPositioning';
+import { Overlay } from 'ol';
+import { PanOptions } from 'ol/Overlay';
 import { ContentComponent } from './content.component';
 import { MapComponent } from './map.component';
 
@@ -17,7 +17,7 @@ export class OverlayComponent implements OnInit, OnDestroy {
   @Input()
   offset: number[];
   @Input()
-  positioning: OverlayPositioning | string;
+  positioning: string;
   @Input()
   stopEvent: boolean;
   @Input()
@@ -31,7 +31,7 @@ export class OverlayComponent implements OnInit, OnDestroy {
 
   componentType = 'overlay';
   instance: Overlay;
-  element: Element;
+  element: HTMLElement;
 
   constructor(private map: MapComponent) {}
 

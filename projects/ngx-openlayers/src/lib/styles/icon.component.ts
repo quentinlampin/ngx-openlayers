@@ -1,7 +1,7 @@
-import { Component, Input, Host, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Host, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Color } from 'ol/color';
+import { Size } from 'ol/size';
 import { Icon } from 'ol/style';
-import IconAnchorUnits from 'ol/style/IconAnchorUnits';
-import IconOrigin from 'ol/style/IconOrigin';
 import { StyleComponent } from './style.component';
 
 @Component({
@@ -12,21 +12,21 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   anchor: [number, number];
   @Input()
-  anchorXUnits: IconAnchorUnits;
+  anchorXUnits: string;
   @Input()
-  anchorYUnits: IconAnchorUnits;
+  anchorYUnits: string;
   @Input()
-  anchorOrigin: IconOrigin;
+  anchorOrigin: string;
   @Input()
-  color: [number, number, number, number];
+  color: Color;
   @Input()
-  crossOrigin: IconOrigin;
+  crossOrigin: string;
   @Input()
-  img: string;
+  img: HTMLImageElement | HTMLCanvasElement;
   @Input()
   offset: [number, number];
   @Input()
-  offsetOrigin: IconOrigin;
+  offsetOrigin: string;
   @Input()
   opacity: number;
   @Input()
@@ -38,9 +38,9 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   rotation: number;
   @Input()
-  size: [number, number];
+  size: Size;
   @Input()
-  imgSize: [number, number];
+  imgSize: Size;
   @Input()
   src: string;
 

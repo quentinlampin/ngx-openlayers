@@ -10,9 +10,9 @@ export class ControlZoomComponent implements OnInit, OnDestroy {
   @Input()
   duration: number;
   @Input()
-  zoomInLabel: string | Node;
+  zoomInLabel: string | HTMLElement;
   @Input()
-  zoomOutLabel: string | Node;
+  zoomOutLabel: string | HTMLElement;
   @Input()
   zoomInTipLabel: string;
   @Input()

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Collection, Feature } from 'ol';
+import { ObjectEvent } from 'ol/Object';
 import { Condition } from 'ol/events/condition';
 import { Select } from 'ol/interaction';
 import { FilterFunction, SelectEvent } from 'ol/interaction/Select';
@@ -39,7 +40,7 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
   @Output()
   olSelect = new EventEmitter<SelectEvent>();
   @Output()
-  propertyChange = new EventEmitter<SelectEvent>();
+  propertyChange = new EventEmitter<ObjectEvent>();
 
   instance: Select;
 
@@ -50,7 +51,7 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
 
     this.instance.on('change', (event: SelectEvent) => this.olChange.emit(event));
     this.instance.on('select', (event: SelectEvent) => this.olSelect.emit(event));
-    this.instance.on('propertychange', (event: SelectEvent) => this.propertyChange.emit(event));
+    this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
 
     this.map.instance.addInteraction(this.instance);
   }
