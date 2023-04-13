@@ -20,7 +20,7 @@ export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy
   @Input()
   layers: Layer[];
   @Input()
-  target: Element;
+  target: HTMLElement;
   @Input()
   tipLabel: string;
   @Input()

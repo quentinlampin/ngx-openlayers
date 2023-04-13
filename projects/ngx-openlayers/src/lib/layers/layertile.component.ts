@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Tile } from 'ol/layer';
+import TileSource from 'ol/source/Tile';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
@@ -14,7 +15,7 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
   @Input()
   useInterimTilesOnError: boolean;
 
-  source: Tile;
+  source: TileSource;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

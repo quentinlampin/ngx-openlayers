@@ -1,10 +1,10 @@
-import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Stroke } from 'ol/style';
-import { StyleComponent } from './style.component';
-import { StyleCircleComponent } from './circle.component';
-import { StyleTextComponent } from './text.component';
+import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Color } from 'ol/color';
 import { ColorLike } from 'ol/colorlike';
+import { Stroke } from 'ol/style';
+import { StyleCircleComponent } from './circle.component';
+import { StyleComponent } from './style.component';
+import { StyleTextComponent } from './text.component';
 
 @Component({
   selector: 'aol-style-stroke',
@@ -14,11 +14,11 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input()
   color: Color | ColorLike;
   @Input()
-  lineCap: string;
+  lineCap: CanvasLineCap;
   @Input()
   lineDash: number[];
   @Input()
-  lineJoin: string;
+  lineJoin: CanvasLineJoin;
   @Input()
   miterLimit: number;
   @Input()

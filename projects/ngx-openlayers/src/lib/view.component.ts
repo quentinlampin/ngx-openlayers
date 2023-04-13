@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ObjectEvent } from 'ol/Object';
 import View from 'ol/View';
-import { MapComponent } from './map.component';
-import { ObjectEvent } from 'ol';
-import { Extent } from 'ol/extent';
 import { Coordinate } from 'ol/coordinate';
+import { Extent } from 'ol/extent';
+import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-view',
@@ -55,8 +55,6 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   zoomAnimation = false;
 
   @Output()
-  changeZoom: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
-  @Output()
   changeResolution: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
   @Output()
   changeCenter: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
@@ -71,7 +69,6 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
     this.instance = new View(this);
     this.host.instance.setView(this.instance);
 
-    this.instance.on('change:zoom', (event: ObjectEvent) => this.changeZoom.emit(event));
     this.instance.on('change:resolution', (event: ObjectEvent) => this.changeResolution.emit(event));
     this.instance.on('change:center', (event: ObjectEvent) => this.changeCenter.emit(event));
   }

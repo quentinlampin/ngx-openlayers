@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Vector } from 'ol/layer';
+import VectorSource from 'ol/source/Vector';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
 import { MapComponent } from '../map.component';
@@ -23,7 +24,7 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
   @Input()
   updateWhileInteracting: boolean;
 
-  source: Vector;
+  source: VectorSource;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

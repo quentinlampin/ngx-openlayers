@@ -1,6 +1,6 @@
 import { Directive, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Event } from 'ol/events';
 import { Extent } from 'ol/extent';
+import RenderEvent from 'ol/render/Event';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
 
@@ -20,9 +20,9 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   maxResolution: number;
 
   @Input()
-  prerender: (evt: Event) => void;
+  prerender: (evt: RenderEvent) => void;
   @Input()
-  postrender: (evt: Event) => void;
+  postrender: (evt: RenderEvent) => void;
 
   instance: any;
   componentType = 'layer';

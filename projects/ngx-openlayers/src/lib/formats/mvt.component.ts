@@ -1,7 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
+import { FeatureClass } from 'ol/Feature';
 import { MVT } from 'ol/format';
-import { Geometry } from 'ol/geom';
-import GeometryType from 'ol/geom/GeometryType';
 import { FormatComponent } from './format.component';
 
 @Component({
@@ -11,9 +10,7 @@ import { FormatComponent } from './format.component';
 })
 export class FormatMVTComponent extends FormatComponent {
   @Input()
-  featureClass:
-    | ((geom: Geometry | { [k: string]: any }) => any)
-    | ((geom: GeometryType, arg2: number[], arg3: number[] | number[][], arg4: { [k: string]: any }) => any);
+  featureClass: FeatureClass;
   @Input()
   geometryName: string;
   @Input()
