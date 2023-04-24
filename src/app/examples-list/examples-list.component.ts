@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { examplesList } from '../example-list';
 
+interface ExamplesListForm {
+  term: FormControl<string>;
+}
 @Component({
   selector: 'app-examples-list',
   template: `
@@ -73,7 +76,7 @@ import { examplesList } from '../example-list';
   ],
 })
 export class ExamplesListComponent implements OnInit {
-  form: FormGroup;
+  form: FormGroup<ExamplesListForm>;
   list = examplesList;
 
   constructor(private fb: FormBuilder) {}
