@@ -1,7 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Layer } from 'ol/layer';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { View } from 'ol';
 import { OverviewMap } from 'ol/control';
+import { Layer } from 'ol/layer';
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -9,7 +9,6 @@ import { MapComponent } from '../map.component';
   template: ` <ng-content></ng-content> `,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
-  instance: OverviewMap;
   @Input()
   collapsed: boolean;
   @Input()
@@ -26,6 +25,8 @@ export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy
   tipLabel: string;
   @Input()
   view: View;
+
+  instance: OverviewMap;
 
   constructor(private map: MapComponent) {}
 

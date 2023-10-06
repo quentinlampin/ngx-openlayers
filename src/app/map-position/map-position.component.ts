@@ -1,9 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MapComponent, ViewComponent } from 'ngx-openlayers';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { transform } from 'ol/proj';
 import Projection from 'ol/proj/Projection';
 
+interface MapPositionForm {
+  x: FormControl<number>;
+  y: FormControl<number>;
+  zoom: FormControl<number>;
+}
 @Component({
   selector: 'app-map-position',
   template: `
@@ -80,8 +85,6 @@ import Projection from 'ol/proj/Projection';
   ],
 })
 export class MapPositionComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
-
   @ViewChild('map', { static: true })
   map: MapComponent;
   @ViewChild('view', { static: true })
@@ -95,7 +98,9 @@ export class MapPositionComponent implements OnInit {
   currentLon = 0;
   currentLat = 0;
 
-  form: FormGroup;
+  form: FormGroup<MapPositionForm>;
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.fb.group({

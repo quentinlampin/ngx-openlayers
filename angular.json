@@ -20,9 +20,6 @@
         "@schematics/angular:guard": {
           "skipTests": true
         },
-        "@schematics/angular:module": {
-          "skipTests": true
-        },
         "@schematics/angular:pipe": {
           "skipTests": true
         },
@@ -42,7 +39,6 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -51,7 +47,13 @@
               "src/styles.css",
               "node_modules/ol/ol.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -70,13 +72,13 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -113,19 +115,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json",
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "**/projects/**"
-            ],
-            "tslintConfig": "tslint-prettier.json",
-            "typeCheck": true
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         },
         "e2e": {
@@ -144,7 +139,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-openlayers/tsconfig.lib.json",
             "project": "projects/ngx-openlayers/ng-package.json"
@@ -164,21 +159,20 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ngx-openlayers/tsconfig.lib.json",
-              "projects/ngx-openlayers/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ],
-            "tslintConfig": "projects/ngx-openlayers/tslint-prettier.json",
-            "typeCheck": true
+            "lintFilePatterns": [
+              "projects/ngx-openlayers/**/*.ts",
+              "projects/ngx-openlayers/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "demo-ngx-openlayers"
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  }
 }

@@ -11,12 +11,12 @@ import { ColorLike } from 'ol/colorlike';
   template: ` <div class="aol-style-fill"></div> `,
 })
 export class StyleFillComponent implements OnInit, OnChanges {
-  /* the typings do not have the setters */
-  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
-  public instance: Fill;
-
   @Input()
   color: Color | ColorLike;
+
+  instance: Fill;
+  /* the typings do not have the setters */
+  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
 
   constructor(
     @Optional() styleHost: StyleComponent,

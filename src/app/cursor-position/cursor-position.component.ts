@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { transform } from 'ol/proj';
 
 @Component({
@@ -45,13 +45,9 @@ import { transform } from 'ol/proj';
     `,
   ],
 })
-export class CursorPositionComponent implements OnInit {
-  constructor() {}
-
+export class CursorPositionComponent {
   lon = 0;
   lat = 0;
-
-  ngOnInit() {}
 
   dispatchCursor(event): void {
     const coordinates = event.coordinate;
@@ -68,7 +64,7 @@ export class CursorPositionComponent implements OnInit {
   }
 }
 
-function toSexagesimal(value: number, positiveSuffix: string, negativeSuffix: string): string {
+const toSexagesimal = (value: number, positiveSuffix: string, negativeSuffix: string): string => {
   const modValue = ((value + 180) % 360) - 180;
   return (modValue > 0 ? positiveSuffix : negativeSuffix) + Math.abs(modValue).toFixed(6);
-}
+};

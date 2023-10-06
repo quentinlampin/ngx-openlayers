@@ -1,16 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FeatureComponent } from '../feature.component';
 import { Circle } from 'ol/geom';
-import { SimpleGeometryComponent } from './simplegeometry.component';
+import { FeatureComponent } from '../feature.component';
 import { MapComponent } from '../map.component';
+import { SimpleGeometryComponent } from './simplegeometry.component';
 
 @Component({
   selector: 'aol-geometry-circle',
   template: ` <ng-content></ng-content> `,
 })
 export class GeometryCircleComponent extends SimpleGeometryComponent implements OnInit {
-  public componentType = 'geometry-circle';
-  public instance: Circle;
+  componentType = 'geometry-circle';
+  instance: Circle;
+
+  constructor(map: MapComponent, host: FeatureComponent) {
+    super(map, host);
+    // defaulting coordinates to [0,0]. To be overridden in child component.
+    this.instance = new Circle([0, 0]);
+  }
 
   @Input()
   get radius(): number {
@@ -18,11 +24,5 @@ export class GeometryCircleComponent extends SimpleGeometryComponent implements 
   }
   set radius(radius: number) {
     this.instance.setRadius(radius);
-  }
-
-  constructor(map: MapComponent, host: FeatureComponent) {
-    super(map, host);
-    // defaulting coordinates to [0,0]. To be overridden in child component.
-    this.instance = new Circle([0, 0]);
   }
 }

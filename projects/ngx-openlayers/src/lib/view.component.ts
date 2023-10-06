@@ -10,9 +10,6 @@ import { Coordinate } from 'ol/coordinate';
   template: ` <ng-content></ng-content> `,
 })
 export class ViewComponent implements OnInit, OnChanges, OnDestroy {
-  public instance: View;
-  public componentType = 'view';
-
   @Input()
   constrainRotation: boolean | number;
   @Input()
@@ -63,6 +60,9 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
   changeResolution: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
   @Output()
   changeCenter: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
+
+  instance: View;
+  componentType = 'view';
 
   constructor(private host: MapComponent) {}
 

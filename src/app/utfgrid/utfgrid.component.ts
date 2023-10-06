@@ -39,15 +39,15 @@ import { SourceUTFGridComponent, ViewComponent } from 'ngx-openlayers';
   ],
 })
 export class UTFGridComponent {
-  @ViewChild('UTFGrid', { static: true }) UTFGrid: SourceUTFGridComponent;
+  @ViewChild('UTFGrid', { static: true }) utfGrid: SourceUTFGridComponent;
   @ViewChild('view', { static: true }) view: ViewComponent;
 
   info: any;
-  coords: Coordinates;
+  coords: [number, number];
   key = 'pk.eyJ1IjoieWFrb3VzdCIsImEiOiJjanVkc3Y0b2cwNWppM3lwaXd5M3JidHRzIn0.rJmuWPJnuKA9MJ9z5RPKZw';
 
   displayInfo(c) {
-    this.UTFGrid.instance.forDataAtCoordinateAndResolution(c, this.view.instance.getResolution(), (data) => {
+    this.utfGrid.instance.forDataAtCoordinateAndResolution(c, this.view.instance.getResolution(), (data) => {
       if (data !== null && data !== undefined && data !== '') {
         this.info = data;
         this.coords = c;

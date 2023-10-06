@@ -1,19 +1,19 @@
 import { Component, ContentChild, OnDestroy, OnInit } from '@angular/core';
 import { Control } from 'ol/control';
-import { MapComponent } from '../map.component';
 import { ContentComponent } from '../content.component';
-import { TileGridComponent } from '../tilegrid.component';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control',
   template: ` <ng-content></ng-content> `,
 })
 export class ControlComponent implements OnInit, OnDestroy {
-  public componentType = 'control';
-  instance: Control;
-  element: Element;
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
+
+  componentType = 'control';
+  instance: Control;
+  element: Element;
 
   constructor(private map: MapComponent) {}
 

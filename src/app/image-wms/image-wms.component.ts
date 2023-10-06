@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +25,9 @@ import { Component, OnInit } from '@angular/core';
     `,
   ],
 })
-export class ImageWMSComponent implements OnInit {
-  constructor() {}
-
+export class ImageWMSComponent {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   params = { LAYERS: 'topp:states' };
-
-  ngOnInit() {}
 
   imageLoadStart() {
     console.log('image starts loading at: ' + new Date());

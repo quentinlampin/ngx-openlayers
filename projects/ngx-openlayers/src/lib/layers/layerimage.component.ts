@@ -1,17 +1,15 @@
 import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Extent } from 'ol/extent';
 import { Image } from 'ol/layer';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
-import { Extent } from 'ol/extent';
 
 @Component({
   selector: 'aol-layer-image',
   template: ` <ng-content></ng-content> `,
 })
 export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
-  public source: Image;
-
   @Input()
   opacity: number;
   @Input()
@@ -24,6 +22,8 @@ export class LayerImageComponent extends LayerComponent implements OnInit, OnCha
   maxResolution: number;
   @Input()
   zIndex: number;
+
+  source: Image;
 
   constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
     super(group || map);

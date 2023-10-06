@@ -59,9 +59,7 @@ import { GeoJSON } from 'ol/format';
     `,
   ],
 })
-export class ModifyPolygonComponent implements OnInit {
-  constructor() {}
-
+export class ModifyPolygonComponent {
   format: GeoJSON = new GeoJSON();
   displayProj = new Projection({ code: 'EPSG:3857' });
   inputProj = new Projection({ code: 'EPSG:4326' });
@@ -82,8 +80,6 @@ export class ModifyPolygonComponent implements OnInit {
     properties: {},
     type: 'Feature',
   };
-
-  ngOnInit() {}
 
   modifyEnd(feature: Feature) {
     this.feature = this.format.writeFeatureObject(feature, {

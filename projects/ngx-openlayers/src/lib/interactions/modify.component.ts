@@ -1,20 +1,18 @@
-import { Component, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MapComponent } from '../map.component';
-import { Modify } from 'ol/interaction';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Collection, Feature } from 'ol';
-import { Style } from 'ol/style';
-import { Vector } from 'ol/source';
-import { ModifyEvent } from 'ol/interaction/Modify';
-import { StyleFunction } from 'ol/style/Style';
 import { Condition } from 'ol/events/condition';
+import { Modify } from 'ol/interaction';
+import { ModifyEvent } from 'ol/interaction/Modify';
+import { Vector } from 'ol/source';
+import { Style } from 'ol/style';
+import { StyleFunction } from 'ol/style/Style';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-modify',
   template: '',
 })
 export class ModifyInteractionComponent implements OnInit, OnDestroy {
-  instance: Modify;
-
   @Input()
   condition?: Condition;
   @Input()
@@ -40,6 +38,8 @@ export class ModifyInteractionComponent implements OnInit, OnDestroy {
   olChangeActive = new EventEmitter<ModifyEvent>();
   @Output()
   propertyChange = new EventEmitter<ModifyEvent>();
+
+  instance: Modify;
 
   constructor(private map: MapComponent) {}
 

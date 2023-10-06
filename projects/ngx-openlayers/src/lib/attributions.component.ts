@@ -1,17 +1,17 @@
 import { AfterViewInit, Component, ContentChildren, Host, QueryList } from '@angular/core';
 import { Attribution } from 'ol/control';
-import { SourceComponent } from './sources/source.component';
 import { AttributionComponent } from './attribution.component';
+import { SourceComponent } from './sources/source.component';
 
 @Component({
   selector: 'aol-attributions',
   template: '<ng-content></ng-content>',
 })
 export class AttributionsComponent implements AfterViewInit {
-  instance: Array<Attribution>;
-
   @ContentChildren(AttributionComponent)
   attributions: QueryList<AttributionComponent>;
+
+  instance: Array<Attribution>;
 
   constructor(@Host() private source: SourceComponent) {}
 

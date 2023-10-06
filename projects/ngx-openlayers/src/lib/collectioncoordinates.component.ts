@@ -1,25 +1,25 @@
 import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
-import { MapComponent } from './map.component';
-import { GeometryLinestringComponent } from './geom/geometrylinestring.component';
-import { GeometryPolygonComponent } from './geom/geometrypolygon.component';
-import { GeometryMultiPointComponent } from './geom/geometrymultipoint.component';
-import { GeometryMultiLinestringComponent } from './geom/geometrymultilinestring.component';
-import { GeometryMultiPolygonComponent } from './geom/geometrymultipolygon.component';
 import { Coordinate } from 'ol/coordinate';
 import { transform } from 'ol/proj';
+import { GeometryLinestringComponent } from './geom/geometrylinestring.component';
+import { GeometryMultiLinestringComponent } from './geom/geometrymultilinestring.component';
+import { GeometryMultiPointComponent } from './geom/geometrymultipoint.component';
+import { GeometryMultiPolygonComponent } from './geom/geometrymultipolygon.component';
+import { GeometryPolygonComponent } from './geom/geometrypolygon.component';
+import { MapComponent } from './map.component';
 
 @Component({
   selector: 'aol-collection-coordinates',
   template: ` <div class="aol-collection-coordinates"></div> `,
 })
 export class CollectionCoordinatesComponent implements OnChanges, OnInit {
-  private host: any;
-  private mapSrid = 'EPSG:3857';
-
   @Input()
   coordinates: Coordinate[] | Coordinate[][] | Coordinate[][][];
   @Input()
   srid = 'EPSG:3857';
+
+  private host: any;
+  private mapSrid = 'EPSG:3857';
 
   constructor(
     private map: MapComponent,

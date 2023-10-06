@@ -7,8 +7,6 @@ import { MapComponent } from '../map.component';
   template: ` <ng-content></ng-content> `,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
-  instance: Zoom;
-
   @Input()
   duration: number;
   @Input()
@@ -21,6 +19,8 @@ export class ControlZoomComponent implements OnInit, OnDestroy {
   zoomOutTipLabel: string;
   @Input()
   delta: number;
+
+  instance: Zoom;
 
   constructor(private map: MapComponent) {
     // console.log('instancing aol-control-zoom');

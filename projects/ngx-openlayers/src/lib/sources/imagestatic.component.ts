@@ -1,23 +1,23 @@
 import {
   Component,
+  EventEmitter,
   Host,
   Input,
-  forwardRef,
-  Output,
-  EventEmitter,
   OnChanges,
-  SimpleChanges,
   OnInit,
+  Output,
+  SimpleChanges,
+  forwardRef,
 } from '@angular/core';
-import { ImageStatic } from 'ol/source';
-import { SourceComponent } from './source.component';
-import { LayerImageComponent } from '../layers/layerimage.component';
-import { ProjectionLike } from 'ol/proj';
-import { Extent } from 'ol/extent';
-import { AttributionLike } from 'ol/source/Source';
 import { LoadFunction } from 'ol/Image';
+import { Extent } from 'ol/extent';
+import { ProjectionLike } from 'ol/proj';
 import { Size } from 'ol/size';
+import { ImageStatic } from 'ol/source';
 import { ImageSourceEvent } from 'ol/source/Image';
+import { AttributionLike } from 'ol/source/Source';
+import { LayerImageComponent } from '../layers/layerimage.component';
+import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-imagestatic',
@@ -25,8 +25,6 @@ import { ImageSourceEvent } from 'ol/source/Image';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
 })
 export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {
-  instance: ImageStatic;
-
   @Input()
   projection: ProjectionLike | string;
   @Input()
@@ -48,6 +46,8 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   imageLoadEnd = new EventEmitter<ImageSourceEvent>();
   @Output()
   imageLoadError = new EventEmitter<ImageSourceEvent>();
+
+  instance: ImageStatic;
 
   constructor(@Host() layer: LayerImageComponent) {
     super(layer);
