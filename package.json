@@ -47,6 +47,7 @@
     "eslint-plugin-import": "latest",
     "eslint-plugin-jsdoc": "latest",
     "eslint-plugin-prefer-arrow": "latest",
+    "improved-yarn-audit": "^3.0.0",
     "jasmine-core": "~4.3.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.1",

@@ -1,0 +1,8 @@
+on:
+  push:
+    tags-ignore:
+      - '**'
+
+jobs:
+  angular:
+    uses: ./.github/workflows/angular.yml

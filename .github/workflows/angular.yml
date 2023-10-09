@@ -1,0 +1,66 @@
+on:
+  workflow_call:
+
+env:
+  NODE_JS_VERSION: 16
+
+jobs:
+  install-and-scan-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_JS_VERSION}}
+          cache: 'yarn'
+      - uses: actions/cache@v3
+        with:
+          key: node_modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          path: '**/node_modules'
+      - run: yarn config get cacheFolder
+      - run: yarn --frozen-lockfile
+      - run: yarn run improved-yarn-audit --min-severity high || true
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_JS_VERSION}}
+          cache: 'yarn'
+      - uses: actions/cache@v3
+        with:
+          key: node_modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          path: '**/node_modules'
+      - run: yarn config get cacheFolder
+      - run: yarn --frozen-lockfile
+      - run: yarn lint
+    needs:
+      - install-and-scan-deps
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_JS_VERSION}}
+          cache: 'yarn'
+      - uses: actions/cache@v3
+        with:
+          key: node_modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          path: '**/node_modules'
+      - run: yarn --frozen-lockfile
+      - run: yarn build:lib
+      - run: yarn build:demo --base-href "/ngx-openlayers/" --progress false
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lib-build
+          path: dist/ngx-openlayers/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: demo-build
+          path: dist/demo-ngx-openlayers/
+    needs:
+      - install-and-scan-deps
