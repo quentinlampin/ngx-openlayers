@@ -1,8 +1,10 @@
 on:
   push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
 
 jobs:
-  hello:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo hello
+  angular:
+    uses: ./.github/workflows/angular.yml

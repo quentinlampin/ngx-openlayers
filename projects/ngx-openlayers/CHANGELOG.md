@@ -1,6 +1,8 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [1.0.0-next.20](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.19...1.0.0-next.20) (2023-11-30)
 
 <a name="1.0.0-next.19"></a>
 # [1.0.0-next.19](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.17...1.0.0-next.19) (2021-09-03)

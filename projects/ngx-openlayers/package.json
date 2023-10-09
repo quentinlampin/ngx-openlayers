@@ -2,10 +2,7 @@
   "name": "ngx-openlayers",
   "version": "1.0.0-next.19",
   "scripts": {
-    "release": "standard-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
-  },
-  "standard-version": {
-    "postchangelog": "cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md"
+    "release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
   },
   "peerDependencies": {
     "@angular/common": ">=6.0.0 <=14.x.x",
