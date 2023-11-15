@@ -3,6 +3,7 @@ on:
     tags-ignore:
       - '**'
 
+
 jobs:
   angular:
     uses: ./.github/workflows/angular.yml
