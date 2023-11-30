@@ -25,7 +25,7 @@ jobs:
           key: node_modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
           path: '**/node_modules'
       - run: cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md
-      - run: cd dist/ngx-openlayers/ && npm publish --tag next
+      - run: cd dist/ngx-openlayers/ && npm publish --tag next --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     needs:
