@@ -20,7 +20,7 @@ import RenderEvent from 'ol/render/Event';
 @Component({
   selector: 'aol-map',
   template: `
-    <div [style.width]="width" [style.height]="height"></div>
+    <div [style.width]="width" [style.height]="height" [attr.tabindex]="tabindex"></div>
     <ng-content></ng-content>
   `,
 })
@@ -41,6 +41,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   logo: string | boolean;
   @Input()
   renderer: 'canvas' | 'webgl';
+  @Input()
+  tabindex: number = null;
 
   @Output()
   olClick: EventEmitter<MapBrowserEvent>;

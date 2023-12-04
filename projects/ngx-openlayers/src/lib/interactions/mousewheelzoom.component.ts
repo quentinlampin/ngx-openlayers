@@ -13,6 +13,8 @@ export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   timeout: number;
   @Input()
   useAnchor: boolean;
+  @Input()
+  onFocusOnly: boolean;
 
   instance: MouseWheelZoom;
 

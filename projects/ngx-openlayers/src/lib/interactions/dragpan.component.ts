@@ -13,6 +13,8 @@ export class DragPanInteractionComponent implements OnInit, OnDestroy {
   condition: Condition;
   @Input()
   kinetic: Kinetic;
+  @Input()
+  onFocusOnly: boolean;
 
   instance: DragPan;
 
