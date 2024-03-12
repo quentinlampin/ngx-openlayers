@@ -3,6 +3,11 @@ import { Color } from 'ol/color';
 import { Size } from 'ol/size';
 import { Icon } from 'ol/style';
 import { StyleComponent } from './style.component';
+import IconAnchorUnits from 'ol/style/IconAnchorUnits';
+import IconOrigin from 'ol/style/IconOrigin';
+
+type IconAnchorUnits = typeof IconAnchorUnits;
+type IconOrigin = typeof IconOrigin;
 
 @Component({
   selector: 'aol-style-icon',
@@ -12,11 +17,11 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   anchor: [number, number];
   @Input()
-  anchorXUnits: string;
+  anchorXUnits: IconAnchorUnits;
   @Input()
-  anchorYUnits: string;
+  anchorYUnits: IconAnchorUnits;
   @Input()
-  anchorOrigin: string;
+  anchorOrigin: IconOrigin;
   @Input()
   color: Color;
   @Input()
@@ -26,7 +31,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   offset: [number, number];
   @Input()
-  offsetOrigin: string;
+  offsetOrigin: IconOrigin;
   @Input()
   opacity: number;
   @Input()

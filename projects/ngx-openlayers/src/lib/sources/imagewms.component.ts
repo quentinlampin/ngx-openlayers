@@ -1,13 +1,13 @@
 import {
   Component,
+  EventEmitter,
+  forwardRef,
   Host,
   Input,
   OnChanges,
   OnInit,
-  forwardRef,
-  SimpleChanges,
   Output,
-  EventEmitter,
+  SimpleChanges,
 } from '@angular/core';
 import { ImageWMS } from 'ol/source';
 import { LayerImageComponent } from '../layers/layerimage.component';
@@ -16,6 +16,7 @@ import { ProjectionLike } from 'ol/proj';
 import { AttributionLike } from 'ol/source/Source';
 import { LoadFunction } from 'ol/Image';
 import { ImageSourceEvent } from 'ol/source/Image';
+import { ServerType } from 'ol/source/wms';
 
 @Component({
   selector: 'aol-source-imagewms',
@@ -30,7 +31,7 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   @Input()
   hidpi: boolean;
   @Input()
-  serverType: string;
+  serverType: ServerType;
   @Input()
   imageLoadFunction?: LoadFunction;
   @Input()
