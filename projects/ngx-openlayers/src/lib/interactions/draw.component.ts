@@ -8,6 +8,7 @@ import { Vector } from 'ol/source';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
 import { MapComponent } from '../map.component';
+import { Type } from 'ol/geom/Geometry';
 
 @Component({
   selector: 'aol-interaction-draw',
@@ -23,7 +24,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Input()
   snapTolerance?: number;
   @Input()
-  type: string;
+  type: Type;
   @Input()
   maxPoints?: number;
   @Input()

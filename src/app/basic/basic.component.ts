@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import IconAnchorUnits from 'ol/style/IconAnchorUnits';
+import IconOrigin from 'ol/style/IconOrigin';
 
 @Component({
   selector: 'app-root',
@@ -34,10 +36,10 @@ import { Component } from '@angular/core';
               <aol-style-icon
                 [src]="'assets/marker.png'"
                 [anchor]="[0.5, 1]"
-                [anchorXUnits]="'fraction'"
-                [anchorYUnits]="'fraction'"
+                [anchorXUnits]="IconAnchorUnits.FRACTION"
+                [anchorYUnits]="IconAnchorUnits.FRACTION"
                 [scale]="0.1"
-                [anchorOrigin]="'top-left'"
+                [anchorOrigin]="IconOrigin.TOP_LEFT"
               >
               </aol-style-icon>
             </aol-style>
@@ -77,6 +79,9 @@ export class BasicComponent {
   public width = 5;
   public lon = 5;
   public lat = 45;
+
+  protected readonly IconAnchorUnits = IconAnchorUnits;
+  protected readonly IconOrigin = IconOrigin;
 
   increaseZoom() {
     this.zoom = Math.min(this.zoom + 1, 18);

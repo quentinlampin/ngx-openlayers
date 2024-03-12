@@ -1,9 +1,11 @@
-import { Component, Host, Input, OnChanges, OnInit, SimpleChanges, forwardRef } from '@angular/core';
+import { Component, forwardRef, Host, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { TileWMS } from 'ol/source';
 import TileGrid from 'ol/tilegrid/TileGrid';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
+import { ProjectionLike } from 'ol/proj';
+import { ServerType } from 'ol/source/wms';
 
 @Component({
   selector: 'aol-source-tilewms',
@@ -22,11 +24,11 @@ export class SourceTileWMSComponent extends SourceComponent implements OnChanges
   @Input()
   params: { [key: string]: any };
   @Input()
-  projection: string;
+  projection: ProjectionLike;
   @Input()
   reprojectionErrorThreshold: number;
   @Input()
-  serverType: string;
+  serverType: ServerType;
   @Input()
   tileGrid: TileGrid;
   @Input()

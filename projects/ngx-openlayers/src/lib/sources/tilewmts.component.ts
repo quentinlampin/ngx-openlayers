@@ -3,12 +3,12 @@ import {
   Component,
   ContentChild,
   EventEmitter,
+  forwardRef,
   Host,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
-  forwardRef,
 } from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { ProjectionLike } from 'ol/proj';
@@ -18,6 +18,7 @@ import WMTSTileGrid from 'ol/tilegrid/WMTS';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
 import { SourceComponent } from './source.component';
+import { RequestEncoding } from 'ol/source/WMTS';
 
 @Component({
   selector: 'aol-source-tilewmts',
@@ -36,7 +37,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   reprojectionErrorThreshold?: number;
   @Input()
-  requestEncoding?: string;
+  requestEncoding?: RequestEncoding;
   @Input()
   layer: string;
   @Input()
