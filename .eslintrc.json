@@ -21,6 +21,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "jsdoc/newline-after-description": "off",
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -41,6 +42,14 @@
           "off",
           {
             "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "objectLiteralProperty",
+            "leadingUnderscore": "allow",
+            "format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"]
           }
         ],
         "arrow-parens": [

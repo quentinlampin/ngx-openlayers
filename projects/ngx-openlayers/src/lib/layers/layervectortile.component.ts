@@ -6,6 +6,9 @@ import { StyleFunction } from 'ol/style/Style';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
+import VectorTileRenderType from 'ol/layer/VectorTileRenderType';
+
+type VectorTileRenderType = typeof VectorTileRenderType;
 
 @Component({
   selector: 'aol-layer-vectortile',
@@ -15,7 +18,7 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
   @Input()
   renderBuffer: number;
   @Input()
-  renderMode: string;
+  renderMode: VectorTileRenderType;
   /* not marked as optional in the typings */
   @Input()
   renderOrder: (feature1: Feature, feature2: Feature) => number;
