@@ -113,7 +113,7 @@ property of the source as they would otherwise appear multiple times.
 
 ```html
 <aol-layer-vectortile
-    [renderMode]="'vector'"
+    [renderMode]="VectorTileRenderType.VECTOR"
     [maxResolution]="312"
     [style]="myStyle"
     [zIndex]="20"

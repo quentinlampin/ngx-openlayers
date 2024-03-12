@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
-//
+import { Component } from '@angular/core';
+import IconAnchorUnits from 'ol/style/IconAnchorUnits';
+import IconOrigin from 'ol/style/IconOrigin';
 
 @Component({
   selector: 'app-display-marker',
@@ -25,10 +25,10 @@ import { Component, OnInit } from '@angular/core';
               <aol-style-icon
                 [src]="'assets/marker.svg'"
                 [anchor]="[0.5, 1]"
-                [anchorXUnits]="'fraction'"
-                [anchorYUnits]="'fraction'"
+                [anchorXUnits]="IconAnchorUnits.FRACTION"
+                [anchorYUnits]="IconAnchorUnits.FRACTION"
                 [scale]="2"
-                [anchorOrigin]="'top-left'"
+                [anchorOrigin]="IconOrigin.TOP_LEFT"
               >
               </aol-style-icon>
             </aol-style>
@@ -60,4 +60,6 @@ export class MarkerComponent {
     lon: -2.264184,
     lat: 46.996207,
   };
+  protected readonly IconAnchorUnits = IconAnchorUnits;
+  protected readonly IconOrigin = IconOrigin;
 }
