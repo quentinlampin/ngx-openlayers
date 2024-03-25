@@ -67,5 +67,8 @@
   },
   "volta": {
     "node": "16.20.2"
+  },
+  "resolutions": {
+    "webpack-dev-middleware": "^5.3.4"
   }
 }
