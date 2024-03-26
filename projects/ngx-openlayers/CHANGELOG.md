@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [14.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.21...14.0.0-next.0) (2024-03-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* `ol` peer dep is now `~6.15.1`
+* `DrawInteractionComponent` : input `type` is now of type `Type`
+* `SourceImageWMSComponent` : input `serverType` is now of type `ServerType`
+* `OverlayComponent` : input `positioning` is now of type `Positioning`
+* `SourceTileWMSComponent` : input `projection` is now of type `ProjectionLike` and input `serverType` is now of type `ServerType`
+* `SourceTileWMTSComponent` : input `requestEncoding` is now of type `RequestEncoding`
+* all components inputs of type `Element` or `Node` are now of type `HTMLElement`
+* all `olChangeActive` and `propertyChange` outputs are now `EventEmitter<ObjectEvent>`
+* `FormatMVTComponent` : input `featureClass` is now of type `FeatureClass`
+* `DragAndDropInteractionComponent` : input `formatConstructors` is now of type `FeatureFormat[]`
+* `LayerComponent` : `prerender` and `postrender` inputs functions should now manage events of type `RenderEvent`
+* `SourceImageArcGISRestComponent` : `attributions` input is now of type `AttributionLike`
+* `SourceTileWMTSComponent` : `tileGrid` input is now of type `WMTSTileGrid`
+* `SourceUTFGridComponent` : `tileJSON` input is now of type `Config`
+* `StyleCircleComponent` : `snapToPixel` and `atlasManager` have been removed
+* `StyleIconComponent` : `img` input is now of type `HTMLImageElement | HTMLCanvasElement`
+* `MapComponent` : `prerender` output has been removed, `precompose` output has been added. `olClick`, `dblClick`, `pointerDrag`, `pointerMove`, `singleClick` outputs are now of type `EventEmitter<MapBrowserEvent<UIEvent>>`
+* `ViewComponent` : `changeZoom` output has been removed
+
+### Features
+
+* update openlayers to ~6.13.0 ([ec7f0b5](https://github.com/quentin-ol/ngx-openlayers/commit/ec7f0b5f285facd1f5fbdcd72a7f46d03a7763b4))
+* update openlayers to ~6.15.1 ([f068b92](https://github.com/quentin-ol/ngx-openlayers/commit/f068b92e8f52b5e90e75be2cd91bba25391cee67))
+
 ## [1.0.0-next.21](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.20...1.0.0-next.21) (2023-11-30)
 
 ## [1.0.0-next.20](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.19...1.0.0-next.20) (2023-11-30)
