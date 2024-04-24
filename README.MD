@@ -105,6 +105,7 @@ Live example will be viewable at locahost:4200
 - Malorie Berthoin <malorie.berthoin.neo-soft@externalgcp.ds.airbus.com>
 - Mazzoléni <yoahn.mazzoleni.external@airbus.com>
 - Michael Parry <michael.m.parry.external@airbus.com>
+- Matthieu Lhotellerie  <matthieu.lhotellerie@airbus.com>
 
 ### Other
 
