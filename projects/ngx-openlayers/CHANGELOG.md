@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [14.1.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/14.0.0-next.0...14.1.0-next.0) (2024-04-29)
+
+
+### Features
+
+* **source-vector:** support of 'loader' input ([58c1a6b](https://github.com/quentin-ol/ngx-openlayers/commit/58c1a6bb8e33ca4bec2d4094b1efb4610c3ee516))
+
 ## [14.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/1.0.0-next.21...14.0.0-next.0) (2024-03-26)
 
 
