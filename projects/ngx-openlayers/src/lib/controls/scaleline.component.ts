@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ScaleLine } from 'ol/control';
 import { MapComponent } from '../map.component';
+import { Units } from 'ol/control/ScaleLine';
 
 @Component({
   selector: 'aol-control-scaleline',
@@ -8,7 +9,7 @@ import { MapComponent } from '../map.component';
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
   @Input()
-  units: string;
+  units: Units;
 
   instance: ScaleLine;
 
