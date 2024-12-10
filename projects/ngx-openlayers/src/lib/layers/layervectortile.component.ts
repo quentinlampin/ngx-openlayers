@@ -6,9 +6,7 @@ import { StyleFunction } from 'ol/style/Style';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
-import VectorTileRenderType from 'ol/layer/VectorTileRenderType';
-
-type VectorTileRenderType = typeof VectorTileRenderType;
+import { VectorTileRenderType } from 'ol/layer/VectorTile';
 
 @Component({
   selector: 'aol-layer-vectortile',
