@@ -22,7 +22,7 @@ export class StyleTextComponent implements OnInit, OnChanges {
   @Input()
   text: string | undefined;
   @Input()
-  textAlign: string | undefined;
+  textAlign: CanvasTextAlign | undefined;
   @Input()
   textBaseLine: string | undefined;
 

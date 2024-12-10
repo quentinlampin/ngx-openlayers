@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Extent, getCenter } from 'ol/extent';
-import Projection from 'ol/proj/Projection';
+import Projection, { Options } from 'ol/proj/Projection';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +47,7 @@ export class ImageStaticComponent {
   public opacity = 1.0;
   extent: Extent = [0, 0, 1024, 968];
 
-  po = {
+  po: Options = {
     code: 'xkcd-image',
     units: 'pixels',
     extent: [0, 0, 1024, 968],

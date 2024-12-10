@@ -28,6 +28,8 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   tileLoadFunction: LoadFunction;
   @Input()
   wrapX: boolean;
+  @Input()
+  placeholderTiles = false;
 
   instance: BingMaps;
 
