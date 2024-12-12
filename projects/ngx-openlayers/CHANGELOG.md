@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [15.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/14.1.0-next.0...15.0.0-next.0) (2024-12-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* `ol` peer dep is now `~7.5.2`
+* see all breaking changes from `ol` `7.0.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#700)
+* see all breaking changes from `ol` `7.1.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#710)
+* see all breaking changes from `ol` `7.2.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#720)
+* see all breaking changes from `ol` `7.5.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#750)
+
+### Features
+
+* update openlayers to `~7.5.2` ([0c0e3cb](https://github.com/quentin-ol/ngx-openlayers/commit/0c0e3cb7ed6dd7d7e5d8eb385feff4d9072e4211))
+
 ## [14.1.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/14.0.0-next.0...14.1.0-next.0) (2024-04-29)
 
 
