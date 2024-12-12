@@ -14,7 +14,10 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
   instance: Attribution;
   target: HTMLElement;
 
-  constructor(private map: MapComponent, private element: ElementRef) {}
+  constructor(
+    private map: MapComponent,
+    private element: ElementRef
+  ) {}
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;
