@@ -23,7 +23,10 @@ import { Component } from '@angular/core';
         font-family: Roboto, sans-serif;
         font-size: 16px;
         opacity: 1;
-        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+        box-shadow:
+          0 2px 4px -1px rgba(0, 0, 0, 0.2),
+          0 4px 5px 0 rgba(0, 0, 0, 0.14),
+          0 1px 10px 0 rgba(0, 0, 0, 0.12);
       }
 
       header h1 {

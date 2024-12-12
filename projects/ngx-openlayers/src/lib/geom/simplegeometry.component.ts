@@ -10,7 +10,10 @@ export abstract class SimpleGeometryComponent implements OnInit {
   instance: SimpleGeometry;
   componentType = 'simple-geometry';
 
-  constructor(protected map: MapComponent, protected host: FeatureComponent) {}
+  constructor(
+    protected map: MapComponent,
+    protected host: FeatureComponent
+  ) {}
 
   ngOnInit(): void {
     this.host.instance.setGeometry(this.instance);
