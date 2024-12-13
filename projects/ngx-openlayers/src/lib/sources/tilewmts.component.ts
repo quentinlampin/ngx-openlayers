@@ -19,6 +19,7 @@ import { LayerTileComponent } from '../layers/layertile.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
 import { SourceComponent } from './source.component';
 import { RequestEncoding } from 'ol/source/WMTS';
+import { ImageTile } from 'ol';
 
 @Component({
   selector: 'aol-source-tilewmts',
@@ -43,7 +44,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   style: string;
   @Input()
-  tileClass?: any;
+  tileClass?: typeof ImageTile;
   @Input()
   tilePixelRatio?: number;
   @Input()

@@ -74,7 +74,7 @@ export class SwipeComponent implements OnInit {
   paddingSize = 16;
 
   @HostListener('window:resize', ['$event'])
-  onWindowResize(event): void {
+  onWindowResize(): void {
     this.resetSwipeValues();
   }
 

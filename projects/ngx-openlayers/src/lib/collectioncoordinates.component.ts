@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional } from '@angular/core';
 import { Coordinate } from 'ol/coordinate';
 import { transform } from 'ol/proj';
 import { GeometryLinestringComponent } from './geom/geometrylinestring.component';
@@ -50,7 +50,7 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
     this.transformCoordinates();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.transformCoordinates();
   }
 

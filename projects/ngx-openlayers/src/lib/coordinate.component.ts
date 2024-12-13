@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional } from '@angular/core';
 import { transform } from 'ol/proj';
 import { GeometryCircleComponent } from './geom/geometrycircle.component';
 import { GeometryPointComponent } from './geom/geometrypoint.component';
@@ -46,7 +46,7 @@ export class CoordinateComponent implements OnChanges, OnInit {
     this.transformCoordinates();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.transformCoordinates();
   }
 

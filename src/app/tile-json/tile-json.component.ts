@@ -16,6 +16,4 @@ import { Component } from '@angular/core';
     </aol-map>
   `,
 })
-export class TileJsonComponent {
-  constructor() {}
-}
+export class TileJsonComponent {}
