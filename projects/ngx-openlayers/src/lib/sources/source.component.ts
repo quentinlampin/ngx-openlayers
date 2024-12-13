@@ -2,11 +2,12 @@ import { Directive, Input, OnDestroy } from '@angular/core';
 
 import { Source } from 'ol/source';
 import { LayerComponent } from '../layers/layer.component';
+import { AttributionLike } from 'ol/source/Source';
 
 @Directive()
 export abstract class SourceComponent implements OnDestroy {
   @Input()
-  attributions: any;
+  attributions: AttributionLike;
 
   public instance: Source;
   public componentType = 'source';
