@@ -16,9 +16,9 @@
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@typescript-eslint/recommended"
       ],
       "rules": {
         "jsdoc/newline-after-description": "off",
@@ -49,7 +49,12 @@
           {
             "selector": "objectLiteralProperty",
             "leadingUnderscore": "allow",
-            "format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"]
+            "format": [
+              "camelCase",
+              "PascalCase",
+              "snake_case",
+              "UPPER_CASE"
+            ]
           }
         ],
         "arrow-parens": [

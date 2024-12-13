@@ -17,7 +17,7 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
   @Input()
   latLabelPosition: number;
 
-  instance: any;
+  instance: Graticule;
   componentType = 'graticule';
 
   constructor(private map: MapComponent) {}

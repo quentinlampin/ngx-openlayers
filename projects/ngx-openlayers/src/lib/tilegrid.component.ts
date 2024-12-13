@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { createXYZ } from 'ol/tilegrid';
 import TileGrid from 'ol/tilegrid/TileGrid';
 import { Extent } from 'ol/extent';
@@ -33,7 +33,7 @@ export class TileGridComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (!this.resolutions) {
       this.instance = createXYZ(this);
     } else {
