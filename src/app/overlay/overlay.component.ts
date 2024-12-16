@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeoJSON } from 'ol/format';
-import { Feature as OlFeature } from 'ol';
 import { fromExtent } from 'ol/geom/Polygon';
+import { FeatureLike } from 'ol/Feature';
 
 @Component({
   selector: 'app-display-overlay',
@@ -84,7 +84,7 @@ export class OverlayComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    const olFeature: OlFeature = this.geoJsonFormat.readFeature(this.feature);
+    const olFeature: FeatureLike = this.geoJsonFormat.readFeature(this.feature) as FeatureLike;
     const olGeomPolygon = fromExtent(olFeature.getGeometry().getExtent());
     [, this.tooltip.lat, this.tooltip.lon] = olGeomPolygon.getExtent();
   }

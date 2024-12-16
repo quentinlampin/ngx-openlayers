@@ -12,7 +12,6 @@ import {
 import { LoadFunction } from 'ol/Image';
 import { Extent } from 'ol/extent';
 import { ProjectionLike } from 'ol/proj';
-import { Size } from 'ol/size';
 import { ImageStatic } from 'ol/source';
 import { ImageSourceEvent } from 'ol/source/Image';
 import { AttributionLike } from 'ol/source/Source';
@@ -37,8 +36,6 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   crossOrigin?: string;
   @Input()
   imageLoadFunction?: LoadFunction;
-  @Input()
-  imageSize?: Size;
 
   @Output()
   imageLoadStart = new EventEmitter<ImageSourceEvent>();
