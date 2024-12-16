@@ -43,8 +43,6 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   size: Size;
   @Input()
-  imgSize: Size;
-  @Input()
   src: string;
 
   instance: Icon;
