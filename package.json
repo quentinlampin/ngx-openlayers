@@ -46,7 +46,7 @@
     "@types/topojson-specification": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
-    "commit-and-tag-version": "^11.3.0",
+    "commit-and-tag-version": "^12.5.0",
     "eslint": "^8.39.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^47.0.2",
