@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [16.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/15.0.0-next.0...16.0.0-next.0) (2025-01-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* `ol` peer dep is now `8.2.0`
+* see all breaking changes from `ol` `8.0.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#800)
+* Angular 14 is no more supported
+
+### build
+
+* update to Angular 16 ([b129c81](https://github.com/quentin-ol/ngx-openlayers/commit/b129c81ec30a5195ad04725101798936dee38db6))
+
+
+### Features
+
+* update openlayers to `8.2.0` ([8b376e3](https://github.com/quentin-ol/ngx-openlayers/commit/8b376e33314977db52307403bd6a5219f0e5731d))
+
 ## [15.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/14.1.0-next.0...15.0.0-next.0) (2024-12-12)
 
 
