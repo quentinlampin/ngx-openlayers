@@ -1,13 +1,13 @@
 import {
   Component,
   EventEmitter,
+  forwardRef,
   Host,
   Input,
   OnChanges,
   OnInit,
   Output,
   SimpleChanges,
-  forwardRef,
 } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import { Extent } from 'ol/extent';
@@ -17,6 +17,7 @@ import { ImageSourceEvent } from 'ol/source/Image';
 import { AttributionLike } from 'ol/source/Source';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
+import BaseObject from 'ol/Object';
 
 @Component({
   selector: 'aol-source-imagestatic',
@@ -63,22 +64,20 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
     }
+    const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        switch (key) {
-          case 'url':
-            this.url = changes[key].currentValue;
-            this.setLayerSource();
-            break;
-          default:
-            break;
-        }
-        properties[key] = changes[key].currentValue;
+      switch (key) {
+        case 'url':
+          this.url = changes[key].currentValue;
+          this.setLayerSource();
+          break;
+        default:
+          break;
       }
+      properties[key] = changes[key].currentValue;
     }
     this.instance.setProperties(properties, false);
   }

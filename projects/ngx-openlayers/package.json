@@ -5,8 +5,8 @@
     "release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
   },
   "peerDependencies": {
-    "@angular/common": ">=15.0.0 <=16.x.x",
-    "@angular/core": ">=15.0.0 <=16.x.x",
+    "@angular/common": ">=16.0.0 <=17.x.x",
+    "@angular/core": ">=16.0.0 <=17.x.x",
     "ol": "~8.2.0"
   }
 }

@@ -3,6 +3,7 @@ import { Extent } from 'ol/extent';
 import RenderEvent from 'ol/render/Event';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
+import BaseObject from 'ol/Object';
 
 @Directive()
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
@@ -24,6 +25,7 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   postrender: (evt: RenderEvent) => void;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   instance: any;
   componentType = 'layer';
 
@@ -44,21 +46,19 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
     }
+    const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        properties[key] = changes[key].currentValue;
-        if (key === 'prerender') {
-          this.instance.un('prerender', changes[key].previousValue);
-          this.instance.on('prerender', changes[key].currentValue);
-        }
-        if (key === 'postrender') {
-          this.instance.un('postrender', changes[key].previousValue);
-          this.instance.on('postrender', changes[key].currentValue);
-        }
+      properties[key] = changes[key].currentValue;
+      if (key === 'prerender') {
+        this.instance.un('prerender', changes[key].previousValue);
+        this.instance.on('prerender', changes[key].currentValue);
+      }
+      if (key === 'postrender') {
+        this.instance.un('postrender', changes[key].previousValue);
+        this.instance.on('postrender', changes[key].currentValue);
       }
     }
     // console.log('changes detected in aol-layer, setting new properties: ', properties);

@@ -20,6 +20,7 @@ import TileGrid from 'ol/tilegrid/TileGrid';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
+import BaseObject from 'ol/Object';
 
 @Component({
   selector: 'aol-source-xyz',
@@ -86,17 +87,13 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: unknown } = {};
-
     if (!this.instance) {
       return;
     }
+    const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        properties[key] = changes[key].currentValue;
-      }
+      properties[key] = changes[key].currentValue;
     }
-
     this.instance.setProperties(properties, false);
     if (changes.hasOwnProperty('url')) {
       this.init();

@@ -9,7 +9,7 @@ import {
   Output,
 } from '@angular/core';
 import { Raster, Source } from 'ol/source';
-import { Operation, RasterSourceEvent } from 'ol/source/Raster';
+import { Options, RasterSourceEvent } from 'ol/source/Raster';
 
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
@@ -26,13 +26,13 @@ import { SourceComponent } from './source.component';
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
   @Input()
-  operation?: Operation;
+  operation?: Options['operation'];
   @Input()
-  threads?: number;
+  threads?: Options['threads'];
   @Input()
-  lib?: any;
+  lib?: Options['lib'];
   @Input()
-  operationType?: 'pixel' | 'image';
+  operationType?: Options['operationType'];
 
   @Output()
   beforeOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
