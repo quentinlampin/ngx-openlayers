@@ -16,6 +16,7 @@ import { Control } from 'ol/control';
 import BaseEvent from 'ol/events/Event';
 import { Interaction } from 'ol/interaction';
 import RenderEvent from 'ol/render/Event';
+import BaseObject from 'ol/Object';
 
 @Component({
   selector: 'aol-map',
@@ -103,14 +104,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: any } = {};
     if (!this.instance) {
       return;
     }
+    const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        properties[key] = changes[key].currentValue;
-      }
+      properties[key] = changes[key].currentValue;
     }
     // console.log('changes detected in aol-map, setting new properties: ', properties);
     this.instance.setProperties(properties, false);

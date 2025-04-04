@@ -1,4 +1,4 @@
-import { Component, Input, Optional, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { Fill } from 'ol/style';
 import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
@@ -15,8 +15,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
   color: Color | ColorLike;
 
   instance: Fill;
-  /* the typings do not have the setters */
-  private host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
+  private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
   constructor(
     @Optional() styleHost: StyleComponent,
@@ -39,21 +38,10 @@ export class StyleFillComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     // console.log('creating ol.style.Fill instance with: ', this);
     this.instance = new Fill(this);
-    switch (this.host.componentType) {
-      case 'style':
-        this.host.instance.setFill(this.instance);
-        // console.log('setting ol.style instance\'s fill:', this.host);
-        break;
-      case 'style-text':
-        this.host.instance.setFill(this.instance);
-        break;
-      case 'style-circle':
-        this.host.fill = this.instance;
-        // console.log('setting ol.style.circle instance\'s fill:', this.host);
-        break;
-      default:
-        throw new Error('unknown host type: ' + this.host);
-      // break;
+    if (this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
+      this.host.instance.setFill(this.instance);
+    } else {
+      this.host.fill = this.instance;
     }
   }
 
@@ -64,7 +52,9 @@ export class StyleFillComponent implements OnInit, OnChanges {
     if (changes.color) {
       this.instance.setColor(changes.color.currentValue);
     }
-    this.host.update();
+    if (this.host instanceof StyleCircleComponent || this.host instanceof StyleComponent) {
+      this.host.update();
+    }
     // console.log('changes detected in aol-style-fill, setting new color: ', changes);
   }
 }

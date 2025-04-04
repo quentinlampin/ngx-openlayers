@@ -13,32 +13,19 @@ import { ServerType } from 'ol/source/wms';
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMSComponent) }],
 })
 export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit {
-  @Input()
-  cacheSize: number;
-  @Input()
-  crossOrigin: string;
-  @Input()
-  gutter: number;
-  @Input()
-  hidpi: boolean;
-  @Input()
-  params: { [key: string]: any };
-  @Input()
-  projection: ProjectionLike;
-  @Input()
-  reprojectionErrorThreshold: number;
-  @Input()
-  serverType: ServerType;
-  @Input()
-  tileGrid: TileGrid;
-  @Input()
-  tileLoadFunction: LoadFunction;
-  @Input()
-  url: string;
-  @Input()
-  urls: string[];
-  @Input()
-  wrapX: boolean;
+  @Input() cacheSize: number;
+  @Input() crossOrigin: string;
+  @Input() gutter: number;
+  @Input() hidpi: boolean;
+  @Input() params: Record<string, unknown>;
+  @Input() projection: ProjectionLike;
+  @Input() reprojectionErrorThreshold: number;
+  @Input() serverType: ServerType;
+  @Input() tileGrid: TileGrid;
+  @Input() tileLoadFunction: LoadFunction;
+  @Input() url: string;
+  @Input() urls: string[];
+  @Input() wrapX: boolean;
 
   instance: TileWMS;
 

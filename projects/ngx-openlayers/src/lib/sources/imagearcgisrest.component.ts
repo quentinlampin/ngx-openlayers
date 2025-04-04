@@ -28,7 +28,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   @Input() attributions: AttributionLike;
   @Input() crossOrigin?: string;
   @Input() imageLoadFunction?: LoadFunction;
-  @Input() params?: { [k: string]: any };
+  @Input() params?: Record<string, unknown>;
   @Input() ratio = 1.5;
   @Input() resolutions?: number[];
   @Input() wrapX?: boolean;

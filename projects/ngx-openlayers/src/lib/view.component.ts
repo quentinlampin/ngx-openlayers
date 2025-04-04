@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { ObjectEvent } from 'ol/Object';
+import BaseObject, { ObjectEvent } from 'ol/Object';
 import View from 'ol/View';
 import { Coordinate } from 'ol/coordinate';
 import { Extent } from 'ol/extent';
@@ -75,34 +75,32 @@ export class ViewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: unknown } = {};
     if (!this.instance) {
       return;
     }
+    const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        switch (key) {
-          case 'zoom':
-            /** Work-around: setting the zoom via setProperties does not work. */
-            if (this.zoomAnimation) {
-              this.instance.animate({ zoom: changes[key].currentValue });
-            } else {
-              this.instance.setZoom(changes[key].currentValue);
-            }
-            break;
-          case 'projection':
-            this.instance = new View(this);
-            this.host.instance.setView(this.instance);
-            break;
-          case 'center':
-            /** Work-around: setting the center via setProperties does not work. */
-            this.instance.setCenter(changes[key].currentValue);
-            break;
-          default:
-            break;
-        }
-        properties[key] = changes[key].currentValue;
+      switch (key) {
+        case 'zoom':
+          /** Work-around: setting the zoom via setProperties does not work. */
+          if (this.zoomAnimation) {
+            this.instance.animate({ zoom: changes[key].currentValue });
+          } else {
+            this.instance.setZoom(changes[key].currentValue);
+          }
+          break;
+        case 'projection':
+          this.instance = new View(this);
+          this.host.instance.setView(this.instance);
+          break;
+        case 'center':
+          /** Work-around: setting the center via setProperties does not work. */
+          this.instance.setCenter(changes[key].currentValue);
+          break;
+        default:
+          break;
       }
+      properties[key] = changes[key].currentValue;
     }
     // console.log('changes detected in aol-view, setting new properties: ', properties);
     this.instance.setProperties(properties, false);
