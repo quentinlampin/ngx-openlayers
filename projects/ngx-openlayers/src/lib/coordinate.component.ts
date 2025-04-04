@@ -18,7 +18,7 @@ export class CoordinateComponent implements OnChanges, OnInit {
   @Input()
   srid = 'EPSG:3857';
 
-  private host: any;
+  private host: ViewComponent | GeometryPointComponent | GeometryCircleComponent | OverlayComponent;
   private mapSrid = 'EPSG:3857';
 
   constructor(
@@ -64,17 +64,12 @@ export class CoordinateComponent implements OnChanges, OnInit {
       transformedCoordinates = transform([this.x, this.y], this.srid, this.mapSrid);
     }
 
-    switch (this.host.componentType) {
-      case 'geometry-point':
-        this.host.instance.setCoordinates(transformedCoordinates);
-        break;
-      case 'geometry-circle':
-      case 'view':
-        this.host.instance.setCenter(transformedCoordinates);
-        break;
-      case 'overlay':
-        this.host.instance.setPosition(transformedCoordinates);
-        break;
+    if (this.host instanceof GeometryPointComponent) {
+      this.host.instance.setCoordinates(transformedCoordinates);
+    } else if (this.host instanceof OverlayComponent) {
+      this.host.instance.setPosition(transformedCoordinates);
+    } else {
+      this.host.instance.setCenter(transformedCoordinates);
     }
   }
 }

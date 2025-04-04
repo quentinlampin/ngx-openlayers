@@ -10,16 +10,13 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { LoadFunction } from 'ol/Tile';
-import { ProjectionLike } from 'ol/proj';
 import { WMTS } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
-import WMTSTileGrid from 'ol/tilegrid/WMTS';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { TileGridWMTSComponent } from '../tilegridwmts.component';
 import { SourceComponent } from './source.component';
-import { RequestEncoding } from 'ol/source/WMTS';
-import { ImageTile } from 'ol';
+import { Options } from 'ol/source/WMTS';
+import BaseObject from 'ol/Object';
 
 @Component({
   selector: 'aol-source-tilewmts',
@@ -28,41 +25,41 @@ import { ImageTile } from 'ol';
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
   @Input()
-  cacheSize?: number;
+  cacheSize?: Options['cacheSize'];
   @Input()
-  crossOrigin?: string;
+  crossOrigin?: Options['crossOrigin'];
   @Input()
-  tileGrid: WMTSTileGrid;
+  tileGrid: Options['tileGrid'];
   @Input()
-  projection: ProjectionLike;
+  projection: Options['projection'];
   @Input()
-  reprojectionErrorThreshold?: number;
+  reprojectionErrorThreshold?: Options['reprojectionErrorThreshold'];
   @Input()
-  requestEncoding?: RequestEncoding;
+  requestEncoding?: Options['requestEncoding'];
   @Input()
-  layer: string;
+  layer: Options['layer'];
   @Input()
-  style: string;
+  style: Options['style'];
   @Input()
-  tileClass?: typeof ImageTile;
+  tileClass?: Options['tileClass'];
   @Input()
-  tilePixelRatio?: number;
+  tilePixelRatio?: Options['tilePixelRatio'];
   @Input()
-  version?: string;
+  version?: Options['version'];
   @Input()
-  format?: string;
+  format?: Options['format'];
   @Input()
-  matrixSet: string;
+  matrixSet: Options['matrixSet'];
   @Input()
-  dimensions?: any;
+  dimensions?: Options['dimensions'];
   @Input()
-  url?: string;
+  url?: Options['url'];
   @Input()
-  tileLoadFunction?: LoadFunction;
+  tileLoadFunction?: Options['tileLoadFunction'];
   @Input()
-  urls?: string[];
+  urls?: Options['urls'];
   @Input()
-  wrapX?: boolean;
+  wrapX?: Options['wrapX'];
 
   @Output()
   tileLoadStart: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
@@ -81,22 +78,20 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: unknown } = {};
     if (!this.instance) {
       return;
     }
+    const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        switch (key) {
-          case 'url':
-            this.url = changes[key].currentValue;
-            this.setLayerSource();
-            break;
-          default:
-            break;
-        }
-        properties[key] = changes[key].currentValue;
+      switch (key) {
+        case 'url':
+          this.url = changes[key].currentValue;
+          this.setLayerSource();
+          break;
+        default:
+          break;
       }
+      properties[key] = changes[key].currentValue;
     }
     this.instance.setProperties(properties, false);
   }

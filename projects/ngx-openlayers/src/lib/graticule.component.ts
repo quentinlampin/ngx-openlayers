@@ -2,6 +2,7 @@ import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges
 import { Graticule } from 'ol';
 import { Stroke } from 'ol/style';
 import { MapComponent } from './map.component';
+import { Options } from 'ol/layer/Graticule';
 
 @Component({
   selector: 'aol-graticule',
@@ -23,18 +24,13 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
   constructor(private map: MapComponent) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    const properties: { [index: string]: any } = {};
-
     if (!this.instance) {
       return;
     }
-
+    const properties: Options = {};
     for (const key in changes) {
-      if (changes.hasOwnProperty(key)) {
-        properties[key] = changes[key].currentValue;
-      }
+      properties[key] = changes[key].currentValue;
     }
-
     if (properties) {
       this.instance = new Graticule(properties);
     }

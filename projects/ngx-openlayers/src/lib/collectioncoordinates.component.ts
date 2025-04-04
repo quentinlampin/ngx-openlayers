@@ -18,7 +18,12 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   @Input()
   srid = 'EPSG:3857';
 
-  private host: any;
+  private readonly host:
+    | GeometryLinestringComponent
+    | GeometryPolygonComponent
+    | GeometryMultiPointComponent
+    | GeometryMultiLinestringComponent
+    | GeometryMultiPolygonComponent;
   private mapSrid = 'EPSG:3857';
 
   constructor(
@@ -29,16 +34,15 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
     @Optional() geometryMultilinestring: GeometryMultiLinestringComponent,
     @Optional() geometryMultipolygon: GeometryMultiPolygonComponent
   ) {
-    if (!!geometryLinestring) {
-      this.host = geometryLinestring;
-    } else if (!!geometryPolygon) {
-      this.host = geometryPolygon;
-    } else if (!!geometryMultipoint) {
-      this.host = geometryMultipoint;
-    } else if (!!geometryMultilinestring) {
-      this.host = geometryMultilinestring;
-    } else if (!!geometryMultipolygon) {
-      this.host = geometryMultipolygon;
+    const geometryComponent =
+      geometryLinestring ??
+      geometryPolygon ??
+      geometryMultipoint ??
+      geometryMultilinestring ??
+      geometryMultipolygon ??
+      undefined;
+    if (geometryComponent) {
+      this.host = geometryComponent;
     } else {
       throw new Error('aol-collection-coordinates must be a child of a geometry component');
     }
@@ -60,30 +64,23 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   }
 
   private transformCoordinates(): void {
-    let transformedCoordinates: Coordinate[] | Coordinate[][] | Coordinate[][][];
-
     if (this.srid === this.mapSrid) {
-      transformedCoordinates = this.coordinates;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this.host.instance.setCoordinates(this.coordinates as any[]);
+    } else if (this.host instanceof GeometryLinestringComponent || this.host instanceof GeometryMultiPointComponent) {
+      this.host.instance.setCoordinates(
+        (this.coordinates as Coordinate[]).map((c) => transform(c, this.srid, this.mapSrid))
+      );
+    } else if (this.host instanceof GeometryPolygonComponent || this.host instanceof GeometryMultiLinestringComponent) {
+      this.host.instance.setCoordinates(
+        (this.coordinates as Coordinate[][]).map((cc) => cc.map((c) => transform(c, this.srid, this.mapSrid)))
+      );
     } else {
-      switch (this.host.componentType) {
-        case 'geometry-linestring':
-        case 'geometry-multipoint':
-          transformedCoordinates = (this.coordinates as Coordinate[]).map((c) => transform(c, this.srid, this.mapSrid));
-          break;
-        case 'geometry-polygon':
-        case 'geometry-multilinestring':
-          transformedCoordinates = (this.coordinates as Coordinate[][]).map((cc) =>
-            cc.map((c) => transform(c, this.srid, this.mapSrid))
-          );
-          break;
-        case 'geometry-multipolygon':
-          transformedCoordinates = (this.coordinates as Coordinate[][][]).map((ccc) =>
-            ccc.map((cc) => cc.map((c) => transform(c, this.srid, this.mapSrid)))
-          );
-          break;
-      }
+      this.host.instance.setCoordinates(
+        (this.coordinates as Coordinate[][][]).map((ccc) =>
+          ccc.map((cc) => cc.map((c) => transform(c, this.srid, this.mapSrid)))
+        )
+      );
     }
-
-    this.host.instance.setCoordinates(transformedCoordinates);
   }
 }

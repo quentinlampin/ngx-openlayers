@@ -25,8 +25,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   width: number;
 
   instance: Stroke;
-  /* the typings do not have the setters */
-  host: /*StyleComponent|StyleCircleComponent|StyleTextComponent*/ any;
+  private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
   constructor(
     @Optional() styleHost: StyleComponent,
@@ -49,21 +48,11 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     // console.log('creating ol.style.Stroke instance with: ', this);
     this.instance = new Stroke(this);
-    switch (this.host.componentType) {
-      case 'style':
-        this.host.instance.setStroke(this.instance);
-        // console.log('setting ol.style instance\'s stroke:', this.host);
-        break;
-      case 'style-text':
-        this.host.instance.setStroke(this.instance);
-        break;
-      case 'style-circle':
-        this.host.stroke = this.instance;
-        // console.log('setting ol.style.circle instance\'s stroke:', this.host);
-        break;
-      default:
-        throw new Error('unknown host type: ' + this.host);
-      // break;
+
+    if(this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
+      this.host.instance.setStroke(this.instance);
+    } else {
+      this.host.stroke = this.instance;
     }
   }
 
@@ -89,7 +78,9 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     if (changes.width) {
       this.instance.setWidth(changes.width.currentValue);
     }
-    this.host.update();
+    if(this.host instanceof StyleCircleComponent || this.host instanceof StyleComponent) {
+      this.host.update();
+    }
     // console.log('changes detected in aol-style-stroke, setting new properties: ', changes);
   }
 }
