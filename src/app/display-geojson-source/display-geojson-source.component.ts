@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-display-geojson-source',
@@ -15,17 +15,12 @@ import { Component } from '@angular/core';
 
       <aol-layer-group>
         <aol-layer-vector>
-          <aol-source-vector>
-            <aol-feature>
-              <aol-source-geojson
-                [url]="'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'"
-              >
-              </aol-source-geojson>
-            </aol-feature>
-          </aol-source-vector>
+          <aol-source-geojson [url]="'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'">
+          </aol-source-geojson>
         </aol-layer-vector>
       </aol-layer-group>
     </aol-map>
   `,
 })
-export class DisplayGeojsonSourceComponent {}
+export class DisplayGeojsonSourceComponent {
+}

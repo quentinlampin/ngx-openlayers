@@ -1,16 +1,17 @@
-import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { LayerVectorComponent, MapComponent } from 'ngx-openlayers';
-import { Feature } from 'ol';
-import { Layer } from 'ol/layer';
-import { Fill, Stroke, Style } from 'ol/style';
+import {Component, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {LayerVectorComponent, MapComponent} from 'ngx-openlayers';
+import {Fill, Stroke, Style} from 'ol/style';
+import {pointerMove} from 'ol/events/condition';
+import {SelectEvent} from 'ol/interaction/Select';
 
 @Component({
   selector: 'app-color-select-hover',
   template: `
-    <aol-map #map (pointerMove)="changeFeatureHovered($event)" width="100%" height="100%">
+    <aol-map width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
-      <aol-interaction-select #select [style]="styleInteratiselected"></aol-interaction-select>
+      <aol-interaction-select [style]="styleInteractionClick" (olSelect)="onSelect($event)"></aol-interaction-select>
+      <aol-interaction-select [style]="styleInteractionHover" [condition]="pointerMove" (olSelect)="onHover($event)"></aol-interaction-select>
 
       <aol-view [zoom]="5">
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
@@ -19,17 +20,11 @@ import { Fill, Stroke, Style } from 'ol/style';
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-group>
-        <aol-layer-vector #aoiLayerVector *ngFor="let f of features.features">
-          <aol-style *ngIf="f.id === hoveredFeatureId; else notHovered">
-            <aol-style-stroke [color]="'white'" [width]="3"></aol-style-stroke>
-            <aol-style-fill [color]="'rgba(90, 17, 26, 0.3)'"></aol-style-fill>
+        <aol-layer-vector *ngFor="let f of features.features">
+          <aol-style>
+            <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
+            <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
           </aol-style>
-          <ng-template #notHovered>
-            <aol-style>
-              <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
-              <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
-            </aol-style>
-          </ng-template>
           <aol-source-vector>
             <aol-feature [id]="f.id">
               <aol-geometry-polygon>
@@ -46,10 +41,7 @@ import { Fill, Stroke, Style } from 'ol/style';
   `,
 })
 export class ColorSelectHoverComponent {
-  @ViewChild('map', { static: true })
-  map: MapComponent;
-  @ViewChildren('aoiLayerVector')
-  aoiLayerVector: QueryList<LayerVectorComponent>;
+  protected readonly pointerMove = pointerMove;
 
   features = {
     type: 'FeatureCollection',
@@ -125,7 +117,7 @@ export class ColorSelectHoverComponent {
     ],
   };
 
-  styleInteratiselected = new Style({
+  styleInteractionClick = new Style({
     fill: new Fill({
       color: 'rgba(0, 153, 255, 0.1)',
     }),
@@ -135,24 +127,21 @@ export class ColorSelectHoverComponent {
     }),
   });
 
-  hoveredFeatureId;
+  styleInteractionHover = new Style({
+    fill: new Fill({
+      color: 'rgba(47,255,0,0.1)',
+    }),
+    stroke: new Stroke({
+      color: 'rgb(238,255,0)',
+      width: 3,
+    }),
+  });
 
-  changeFeatureHovered(event): void {
-    const hit: Feature = this.map.instance.forEachFeatureAtPixel(event.pixel, (f) => f, {
-      layerFilter: inLayer(...this.aoiLayerVector.toArray()),
-      hitTolerance: 10,
-    }) as Feature;
+  onHover(event: SelectEvent): void {
+    console.log(event);
+  }
 
-    if (!hit && this.hoveredFeatureId) {
-      this.hoveredFeatureId = null;
-    }
-    if (hit && hit.getId() !== this.hoveredFeatureId) {
-      this.hoveredFeatureId = hit.getId();
-    }
+  onSelect(event: SelectEvent): void {
+    console.log(event);
   }
 }
-
-const inLayer =
-  (...layers: LayerVectorComponent[]): ((l: Layer) => boolean) =>
-  (l: Layer) =>
-    layers.some((layer) => layer.instance === l);
