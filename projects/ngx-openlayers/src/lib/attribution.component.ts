@@ -2,8 +2,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Attribution } from 'ol/control';
 
 @Component({
-  selector: 'aol-attribution',
-  template: '<ng-content></ng-content>',
+    selector: 'aol-attribution',
+    template: '<ng-content></ng-content>',
+    standalone: true,
 })
 export class AttributionComponent implements OnInit {
   instance: Attribution;

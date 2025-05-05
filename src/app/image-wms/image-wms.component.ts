@@ -1,4 +1,12 @@
 import { Component } from '@angular/core';
+import {
+  CoordinateComponent,
+  DefaultInteractionComponent,
+  LayerImageComponent,
+  MapComponent,
+  SourceImageWMSComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +31,15 @@ import { Component } from '@angular/core';
         background: #e0eced;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    MapComponent,
+    DefaultInteractionComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerImageComponent,
+    SourceImageWMSComponent,
   ],
 })
 export class ImageWMSComponent {

@@ -7,8 +7,9 @@ import { StyleComponent } from './style.component';
 import { StyleTextComponent } from './text.component';
 
 @Component({
-  selector: 'aol-style-stroke',
-  template: ` <div class="aol-style-stroke"></div> `,
+    selector: 'aol-style-stroke',
+    template: ` <div class="aol-style-stroke"></div> `,
+    standalone: true,
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input()

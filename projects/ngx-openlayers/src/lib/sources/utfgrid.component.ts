@@ -5,9 +5,10 @@ import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 
 @Component({
-  selector: 'aol-source-utfgrid',
-  template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceUTFGridComponent) }],
+    selector: 'aol-source-utfgrid',
+    template: ` <ng-content></ng-content> `,
+    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceUTFGridComponent) }],
+    standalone: true,
 })
 export class SourceUTFGridComponent extends SourceComponent implements OnInit {
   @Input() tileJSON: Config;

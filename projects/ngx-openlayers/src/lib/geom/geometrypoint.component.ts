@@ -5,8 +5,9 @@ import { MapComponent } from '../map.component';
 import { Point } from 'ol/geom';
 
 @Component({
-  selector: 'aol-geometry-point',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-geometry-point',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class GeometryPointComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-point';

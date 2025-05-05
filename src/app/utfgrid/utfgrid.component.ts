@@ -1,5 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
-import { SourceUTFGridComponent, ViewComponent } from 'ngx-openlayers';
+import {
+  ContentComponent,
+  ControlFullScreenComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  LayerTileComponent,
+  MapComponent,
+  OverlayComponent,
+  SourceOsmComponent,
+  SourceUTFGridComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +49,21 @@ import { SourceUTFGridComponent, ViewComponent } from 'ngx-openlayers';
         height: 100%;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ControlFullScreenComponent,
+    ViewComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    SourceUTFGridComponent,
+    OverlayComponent,
+    CoordinateComponent,
+    ContentComponent,
   ],
 })
 export class UTFGridComponent {

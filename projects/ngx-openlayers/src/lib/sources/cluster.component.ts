@@ -17,9 +17,10 @@ import { SourceComponent } from './source.component';
 import { SourceVectorComponent } from './vector.component';
 
 @Component({
-  selector: 'aol-source-cluster',
-  template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
+    selector: 'aol-source-cluster',
+    template: ` <ng-content></ng-content> `,
+    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
+    standalone: true,
 })
 export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges {
   @Input()

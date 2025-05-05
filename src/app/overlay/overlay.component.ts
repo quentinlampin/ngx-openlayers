@@ -2,6 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { GeoJSON } from 'ol/format';
 import { fromExtent } from 'ol/geom/Polygon';
 import { FeatureLike } from 'ol/Feature';
+import {
+  CollectionCoordinatesComponent,
+  ContentComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryPolygonComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  OverlayComponent as NgxOlOverlayComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-display-overlay',
@@ -55,6 +71,23 @@ import { FeatureLike } from 'ol/Feature';
         border: 1px solid white;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPolygonComponent,
+    CollectionCoordinatesComponent,
+    NgxOlOverlayComponent,
+    ContentComponent,
   ],
 })
 export class OverlayComponent implements OnInit {

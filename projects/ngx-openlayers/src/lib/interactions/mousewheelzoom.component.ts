@@ -3,8 +3,9 @@ import { MouseWheelZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-interaction-mousewheelzoom',
-  template: '',
+    selector: 'aol-interaction-mousewheelzoom',
+    template: '',
+    standalone: true,
 })
 export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   @Input()

@@ -7,9 +7,10 @@ import { LayerVectorComponent } from '../layers/layervector.component';
 import { SourceComponent } from './source.component';
 
 @Component({
-  selector: 'aol-source-geojson',
-  template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoJSONComponent) }],
+    selector: 'aol-source-geojson',
+    template: ` <ng-content></ng-content> `,
+    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoJSONComponent) }],
+    standalone: true,
 })
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
   @Input()

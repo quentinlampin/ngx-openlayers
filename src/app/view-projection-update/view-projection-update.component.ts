@@ -1,4 +1,22 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+  CoordinateComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryPointComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  StyleCircleComponent,
+  StyleComponent,
+  StyleFillComponent,
+  StyleIconComponent,
+  StyleStrokeComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-root',
@@ -65,6 +83,25 @@ import { Component } from '@angular/core';
         padding: 1rem;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    FormsModule,
+    MapComponent,
+    DefaultInteractionComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPointComponent,
+    StyleComponent,
+    StyleCircleComponent,
+    StyleStrokeComponent,
+    StyleFillComponent,
+    StyleIconComponent,
   ],
 })
 export class ViewProjectionUpdateComponent {

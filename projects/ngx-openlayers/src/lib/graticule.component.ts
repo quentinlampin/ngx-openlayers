@@ -5,8 +5,9 @@ import { MapComponent } from './map.component';
 import { Options } from 'ol/layer/Graticule';
 
 @Component({
-  selector: 'aol-graticule',
-  template: '<ng-content></ng-content>',
+    selector: 'aol-graticule',
+    template: '<ng-content></ng-content>',
+    standalone: true,
 })
 export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestroy {
   @Input()

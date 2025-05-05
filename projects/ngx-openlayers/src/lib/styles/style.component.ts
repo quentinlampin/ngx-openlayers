@@ -6,8 +6,9 @@ import { LayerVectorComponent } from '../layers/layervector.component';
 import { GeometryFunction } from 'ol/style/Style';
 
 @Component({
-  selector: 'aol-style',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-style',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class StyleComponent implements OnInit {
   @Input()

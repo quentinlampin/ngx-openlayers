@@ -3,8 +3,9 @@ import { Text } from 'ol/style';
 import { StyleComponent } from './style.component';
 
 @Component({
-  selector: 'aol-style-text',
-  template: ` <div class="aol-style-text"></div> `,
+    selector: 'aol-style-text',
+    template: ` <div class="aol-style-text"></div> `,
+    standalone: true,
 })
 export class StyleTextComponent implements OnInit, OnChanges {
   @Input()

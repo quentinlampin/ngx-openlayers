@@ -8,8 +8,9 @@ type IconAnchorUnits = 'fraction' | 'pixels';
 type IconOrigin = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
 
 @Component({
-  selector: 'aol-style-icon',
-  template: ` <div class="aol-style-icon"></div> `,
+    selector: 'aol-style-icon',
+    template: ` <div class="aol-style-icon"></div> `,
+    standalone: true,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
   @Input()

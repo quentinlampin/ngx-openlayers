@@ -8,9 +8,10 @@ import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
 
 @Component({
-  selector: 'aol-source-osm',
-  template: ` <div class="aol-source-osm"></div> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
+    selector: 'aol-source-osm',
+    template: ` <div class="aol-source-osm"></div> `,
+    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
+    standalone: true,
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
   @Input()

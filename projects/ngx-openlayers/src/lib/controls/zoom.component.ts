@@ -3,8 +3,9 @@ import { Zoom } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-control-zoom',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-control-zoom',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
   @Input()

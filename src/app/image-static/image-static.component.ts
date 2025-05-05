@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Extent, getCenter } from 'ol/extent';
 import Projection, { Options } from 'ol/proj/Projection';
+import { FormsModule } from '@angular/forms';
+import { LayerImageComponent, MapComponent, SourceImageStaticComponent, ViewComponent } from 'ngx-openlayers';
 
 @Component({
   selector: 'app-root',
@@ -40,6 +42,8 @@ import Projection, { Options } from 'ol/proj/Projection';
       }
     `,
   ],
+  standalone: true,
+  imports: [FormsModule, MapComponent, ViewComponent, LayerImageComponent, SourceImageStaticComponent],
 })
 export class ImageStaticComponent {
   public url = 'https://imgs.xkcd.com/comics/online_communities.png';

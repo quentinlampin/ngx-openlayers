@@ -1,4 +1,20 @@
 import { Component } from '@angular/core';
+import {
+  CoordinateComponent,
+  FeatureComponent,
+  GeometryPointComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  StyleCircleComponent,
+  StyleComponent,
+  StyleFillComponent,
+  StyleIconComponent,
+  StyleStrokeComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +28,9 @@ import { Component } from '@angular/core';
       >
         <aol-coordinate [x]="5" [y]="45" [srid]="'EPSG:4326'"></aol-coordinate>
       </aol-view>
-      <aol-layer-tile [opacity]="opacity"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
+      <aol-layer-tile [opacity]="opacity">
+        <aol-source-osm></aol-source-osm>
+      </aol-layer-tile>
       <aol-layer-vector [opacity]="opacity">
         <aol-source-vector>
           <aol-feature>
@@ -46,11 +64,22 @@ import { Component } from '@angular/core';
       </aol-layer-vector>
     </aol-map>
     <div class="controls">
-      <span>opacity:</span><button (click)="increaseOpacity()">+</button><button (click)="decreaseOpacity()">-</button
-      ><br />
-      <span>zoom:</span><button (click)="increaseZoom()">+</button><button (click)="decreaseZoom()">-</button><br />
-      <span>latitude:</span><button (click)="increaseLat()">+</button><button (click)="decreaseLat()">-</button><br />
-      <span>longitude:</span><button (click)="increaseLon()">+</button><button (click)="decreaseLon()">-</button><br />
+      <span>opacity:</span>
+      <button (click)="increaseOpacity()">+</button>
+      <button (click)="decreaseOpacity()">-</button>
+      <br />
+      <span>zoom:</span>
+      <button (click)="increaseZoom()">+</button>
+      <button (click)="decreaseZoom()">-</button>
+      <br />
+      <span>latitude:</span>
+      <button (click)="increaseLat()">+</button>
+      <button (click)="decreaseLat()">-</button>
+      <br />
+      <span>longitude:</span>
+      <button (click)="increaseLon()">+</button>
+      <button (click)="decreaseLon()">-</button>
+      <br />
     </div>
   `,
   styles: [
@@ -69,6 +98,23 @@ import { Component } from '@angular/core';
         padding: 1rem;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    MapComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPointComponent,
+    StyleComponent,
+    StyleCircleComponent,
+    StyleStrokeComponent,
+    StyleFillComponent,
+    StyleIconComponent,
   ],
 })
 export class BasicComponent {

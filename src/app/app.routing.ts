@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { ClusterComponent } from './cluster/cluster.component';
 import { BasicComponent } from './basic/basic.component';
 import { RasterComponent } from './raster/raster.component';
@@ -26,7 +25,7 @@ import { SelectInteractionComponent } from './select-interaction/select-interact
 import { ImageStaticComponent } from './image-static/image-static.component';
 import { GraticuleComponent } from './graticule/graticule.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: ExamplesListComponent },
   {
     path: 'examples',
@@ -59,9 +58,3 @@ const routes: Routes = [
   },
   { path: '**', redirectTo: '' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
