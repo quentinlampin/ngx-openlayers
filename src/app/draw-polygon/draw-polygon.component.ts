@@ -3,6 +3,21 @@ import { Feature } from 'ol';
 import { fromExtent } from 'ol/geom/Polygon';
 import { createBox } from 'ol/interaction/Draw';
 import Projection from 'ol/proj/Projection';
+import { JsonPipe, NgIf } from '@angular/common';
+import {
+  CollectionCoordinatesComponent,
+  CoordinateComponent,
+  DefaultInteractionComponent,
+  DrawInteractionComponent,
+  FeatureComponent,
+  GeometryPolygonComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-draw-polygon',
@@ -61,6 +76,23 @@ import Projection from 'ol/proj/Projection';
         padding: 1rem;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    JsonPipe,
+    MapComponent,
+    DefaultInteractionComponent,
+    DrawInteractionComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPolygonComponent,
+    CollectionCoordinatesComponent,
   ],
 })
 export class DrawPolygonComponent {

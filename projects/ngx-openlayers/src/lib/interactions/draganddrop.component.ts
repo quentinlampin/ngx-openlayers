@@ -5,8 +5,9 @@ import { ProjectionLike } from 'ol/proj';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-interaction-draganddrop',
-  template: '',
+    selector: 'aol-interaction-draganddrop',
+    template: '',
+    standalone: true,
 })
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   @Input()

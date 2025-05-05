@@ -5,8 +5,9 @@ import { EndCondition } from 'ol/interaction/DragBox';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-interaction-dragbox',
-  template: '',
+    selector: 'aol-interaction-dragbox',
+    template: '',
+    standalone: true,
 })
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   @Input()

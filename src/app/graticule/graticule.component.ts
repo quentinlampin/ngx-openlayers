@@ -1,5 +1,18 @@
 import { Component } from '@angular/core';
 import { Stroke } from 'ol/style';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import {
+  ControlFullScreenComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  GraticuleComponent as NgxOlGraticuleComponent,
+  LayerTileComponent,
+  MapComponent,
+  SourceOsmComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +51,20 @@ import { Stroke } from 'ol/style';
         padding: 1rem;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ControlFullScreenComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    NgxOlGraticuleComponent,
   ],
 })
 export class GraticuleComponent {

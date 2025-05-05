@@ -5,8 +5,9 @@ import { Extent } from 'ol/extent';
 import BaseObject from 'ol/Object';
 
 @Component({
-  selector: 'aol-layer-group',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-layer-group',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
   @Input()

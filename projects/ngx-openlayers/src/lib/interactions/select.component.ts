@@ -10,8 +10,9 @@ import { StyleFunction } from 'ol/style/Style';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-interaction-select',
-  template: '',
+    selector: 'aol-interaction-select',
+    template: '',
+    standalone: true,
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {
   @Input()

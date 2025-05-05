@@ -2,7 +2,6 @@
  * Public API Surface of ngx-openlayers
  */
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SimpleGeometryComponent } from './lib/geom/simplegeometry.component';
 import { SourceComponent } from './lib/sources/source.component';
 import { ViewComponent } from './lib/view.component';
@@ -238,9 +237,11 @@ const COMPONENTS = [
   AttributionComponent,
 ];
 
+/**
+ * @deprecated please use standalone components instead
+ */
 @NgModule({
-  declarations: COMPONENTS,
-  imports: [CommonModule],
+  imports: COMPONENTS,
   exports: COMPONENTS,
 })
 export class AngularOpenlayersModule {}

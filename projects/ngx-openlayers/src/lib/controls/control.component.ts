@@ -4,8 +4,9 @@ import { ContentComponent } from '../content.component';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-control',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-control',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class ControlComponent implements OnInit, OnDestroy {
   @ContentChild(ContentComponent, { static: true })

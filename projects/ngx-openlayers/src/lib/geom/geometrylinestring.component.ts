@@ -5,8 +5,9 @@ import { MapComponent } from '../map.component';
 import { LineString } from 'ol/geom';
 
 @Component({
-  selector: 'aol-geometry-linestring',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-geometry-linestring',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class GeometryLinestringComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-linestring';

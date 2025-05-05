@@ -1,5 +1,13 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MapComponent } from 'ngx-openlayers';
+import {
+  CoordinateComponent,
+  DefaultInteractionComponent,
+  LayerTileComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceXYZComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-swipe',
@@ -57,6 +65,16 @@ import { MapComponent } from 'ngx-openlayers';
         height: 40px;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    MapComponent,
+    DefaultInteractionComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    SourceXYZComponent,
   ],
 })
 export class SwipeComponent implements OnInit {

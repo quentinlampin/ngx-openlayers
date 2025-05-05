@@ -1,4 +1,13 @@
 import { Component } from '@angular/core';
+import {
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  LayerTileComponent,
+  MapComponent,
+  SourceTileJSONComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-tile-json',
@@ -15,5 +24,15 @@ import { Component } from '@angular/core';
       </aol-layer-tile>
     </aol-map>
   `,
+  standalone: true,
+  imports: [
+    MapComponent,
+    ViewComponent,
+    CoordinateComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    LayerTileComponent,
+    SourceTileJSONComponent,
+  ],
 })
 export class TileJsonComponent {}

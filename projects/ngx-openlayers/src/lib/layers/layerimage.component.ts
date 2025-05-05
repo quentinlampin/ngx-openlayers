@@ -7,8 +7,9 @@ import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
-  selector: 'aol-layer-image',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-layer-image',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
   @Input()
