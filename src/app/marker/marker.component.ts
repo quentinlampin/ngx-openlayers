@@ -1,4 +1,20 @@
 import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
+import {
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryPointComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  StyleComponent,
+  StyleIconComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-display-marker',
@@ -35,6 +51,23 @@ import { Component } from '@angular/core';
       </aol-layer-vector>
     </aol-map>
   `,
+  standalone: true,
+  imports: [
+    NgIf,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPointComponent,
+    StyleComponent,
+    StyleIconComponent,
+  ],
 })
 export class MarkerComponent {
   feature = {

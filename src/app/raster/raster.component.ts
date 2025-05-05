@@ -1,5 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
-import { SourceRasterComponent } from 'ngx-openlayers';
+import {
+  ControlFullScreenComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  LayerImageComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceRasterComponent,
+  SourceXYZComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 interface RasterData {
   brightness: number;
@@ -76,6 +89,21 @@ interface RasterData {
         margin: 20px;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ControlFullScreenComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerImageComponent,
+    SourceRasterComponent,
+    SourceOsmComponent,
+    SourceXYZComponent,
   ],
 })
 export class RasterComponent {

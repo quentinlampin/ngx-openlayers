@@ -19,11 +19,12 @@ import RenderEvent from 'ol/render/Event';
 import BaseObject from 'ol/Object';
 
 @Component({
-  selector: 'aol-map',
-  template: `
+    selector: 'aol-map',
+    template: `
     <div [style.width]="width" [style.height]="height"></div>
     <ng-content></ng-content>
   `,
+    standalone: true,
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Input()

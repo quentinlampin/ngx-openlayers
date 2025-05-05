@@ -1,4 +1,18 @@
 import { Component } from '@angular/core';
+import {
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  LayerGroupComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceGeoJSONComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-display-geojson-source',
@@ -27,5 +41,20 @@ import { Component } from '@angular/core';
       </aol-layer-group>
     </aol-map>
   `,
+  standalone: true,
+  imports: [
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerGroupComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    SourceGeoJSONComponent,
+  ],
 })
 export class DisplayGeojsonSourceComponent {}

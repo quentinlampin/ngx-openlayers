@@ -5,8 +5,9 @@ import { MapComponent } from '../map.component';
 import { MultiPoint } from 'ol/geom';
 
 @Component({
-  selector: 'aol-geometry-multipoint',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-geometry-multipoint',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class GeometryMultiPointComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-multipoint';

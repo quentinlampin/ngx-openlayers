@@ -10,8 +10,9 @@ import { StyleFunction } from 'ol/style/Style';
 import { MapComponent } from '../map.component';
 
 @Component({
-  selector: 'aol-interaction-modify',
-  template: '',
+    selector: 'aol-interaction-modify',
+    template: '',
+    standalone: true,
 })
 export class ModifyInteractionComponent implements OnInit, OnDestroy {
   @Input()

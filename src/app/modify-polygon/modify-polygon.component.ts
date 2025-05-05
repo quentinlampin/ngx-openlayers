@@ -5,6 +5,22 @@ import { Polygon } from 'ol/geom';
 import Projection from 'ol/proj/Projection';
 import { FeatureLike } from 'ol/Feature';
 import { Feature as GeoJSonFeature, Polygon as GeoJSonPolygon } from 'geojson';
+import { JsonPipe, NgIf } from '@angular/common';
+import {
+  CollectionCoordinatesComponent,
+  CoordinateComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryPolygonComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  ModifyInteractionComponent,
+  SelectInteractionComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-modify-polygon',
@@ -60,6 +76,24 @@ import { Feature as GeoJSonFeature, Polygon as GeoJSonPolygon } from 'geojson';
         padding: 1rem;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    JsonPipe,
+    MapComponent,
+    DefaultInteractionComponent,
+    SelectInteractionComponent,
+    ModifyInteractionComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPolygonComponent,
+    CollectionCoordinatesComponent,
   ],
 })
 export class ModifyPolygonComponent {

@@ -1,8 +1,27 @@
 import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { LayerVectorComponent, MapComponent } from 'ngx-openlayers';
+import {
+  CollectionCoordinatesComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryPolygonComponent,
+  LayerGroupComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SelectInteractionComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  StyleComponent,
+  StyleFillComponent,
+  StyleStrokeComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 import { Feature } from 'ol';
 import { Layer } from 'ol/layer';
 import { Fill, Stroke, Style } from 'ol/style';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-color-select-hover',
@@ -44,6 +63,28 @@ import { Fill, Stroke, Style } from 'ol/style';
       </aol-layer-group>
     </aol-map>
   `,
+  standalone: true,
+  imports: [
+    NgFor,
+    NgIf,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    SelectInteractionComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerGroupComponent,
+    LayerVectorComponent,
+    StyleComponent,
+    StyleStrokeComponent,
+    StyleFillComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPolygonComponent,
+    CollectionCoordinatesComponent,
+  ],
 })
 export class ColorSelectHoverComponent {
   @ViewChild('map', { static: true })

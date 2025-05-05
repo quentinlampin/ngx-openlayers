@@ -5,8 +5,9 @@ import { MapComponent } from '../map.component';
 import { MultiLineString } from 'ol/geom';
 
 @Component({
-  selector: 'aol-geometry-multilinestring',
-  template: ` <ng-content></ng-content> `,
+    selector: 'aol-geometry-multilinestring',
+    template: ` <ng-content></ng-content> `,
+    standalone: true,
 })
 export class GeometryMultiLinestringComponent extends SimpleGeometryComponent implements OnInit {
   public componentType = 'geometry-multilinestring';

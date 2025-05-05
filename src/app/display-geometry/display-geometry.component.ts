@@ -1,4 +1,30 @@
 import { Component } from '@angular/core';
+import { NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
+import {
+  CollectionCoordinatesComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryCircleComponent,
+  GeometryLinestringComponent,
+  GeometryMultiLinestringComponent,
+  GeometryMultiPointComponent,
+  GeometryMultiPolygonComponent,
+  GeometryPointComponent,
+  GeometryPolygonComponent,
+  LayerGroupComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  StyleCircleComponent,
+  StyleComponent,
+  StyleFillComponent,
+  StyleStrokeComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-display-geometry',
@@ -111,6 +137,35 @@ import { Component } from '@angular/core';
       </aol-layer-group>
     </aol-map>
   `,
+  standalone: true,
+  imports: [
+    NgFor,
+    NgSwitch,
+    NgSwitchCase,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
+    LayerGroupComponent,
+    LayerVectorComponent,
+    SourceVectorComponent,
+    StyleComponent,
+    StyleStrokeComponent,
+    StyleFillComponent,
+    FeatureComponent,
+    GeometryPolygonComponent,
+    CollectionCoordinatesComponent,
+    GeometryPointComponent,
+    StyleCircleComponent,
+    GeometryLinestringComponent,
+    GeometryCircleComponent,
+    GeometryMultiPointComponent,
+    GeometryMultiLinestringComponent,
+    GeometryMultiPolygonComponent,
+  ],
 })
 export class DisplayGeometryComponent {
   features = [

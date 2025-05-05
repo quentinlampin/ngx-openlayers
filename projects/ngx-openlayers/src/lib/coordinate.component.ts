@@ -7,8 +7,9 @@ import { OverlayComponent } from './overlay.component';
 import { ViewComponent } from './view.component';
 
 @Component({
-  selector: 'aol-coordinate',
-  template: ` <div class="aol-coordinate"></div> `,
+    selector: 'aol-coordinate',
+    template: ` <div class="aol-coordinate"></div> `,
+    standalone: true,
 })
 export class CoordinateComponent implements OnChanges, OnInit {
   @Input()

@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
 import { transform } from 'ol/proj';
+import {
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  LayerTileComponent,
+  MapComponent,
+  SourceOsmComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-cursor-position',
@@ -43,6 +52,16 @@ import { transform } from 'ol/proj';
         flex-direction: column;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ViewComponent,
+    CoordinateComponent,
+    LayerTileComponent,
+    SourceOsmComponent,
   ],
 })
 export class CursorPositionComponent {

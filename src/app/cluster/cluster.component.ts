@@ -1,4 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
+import {
+  CollectionCoordinatesComponent,
+  ControlFullScreenComponent,
+  CoordinateComponent,
+  DefaultControlComponent,
+  DefaultInteractionComponent,
+  FeatureComponent,
+  GeometryPointComponent,
+  GeometryPolygonComponent,
+  LayerTileComponent,
+  LayerVectorComponent,
+  MapComponent,
+  SourceClusterComponent,
+  SourceOsmComponent,
+  SourceVectorComponent,
+  StyleCircleComponent,
+  StyleComponent,
+  StyleFillComponent,
+  StyleStrokeComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 
 @Component({
   selector: 'app-cluster',
@@ -85,6 +108,30 @@ import { Component, OnInit } from '@angular/core';
         margin: 20px;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    NgFor,
+    FormsModule,
+    MapComponent,
+    DefaultInteractionComponent,
+    DefaultControlComponent,
+    ControlFullScreenComponent,
+    ViewComponent,
+    CoordinateComponent,
+    SourceOsmComponent,
+    LayerTileComponent,
+    LayerVectorComponent,
+    SourceClusterComponent,
+    SourceVectorComponent,
+    FeatureComponent,
+    GeometryPointComponent,
+    StyleComponent,
+    StyleCircleComponent,
+    StyleStrokeComponent,
+    StyleFillComponent,
+    GeometryPolygonComponent,
+    CollectionCoordinatesComponent,
   ],
 })
 export class ClusterComponent implements OnInit {
