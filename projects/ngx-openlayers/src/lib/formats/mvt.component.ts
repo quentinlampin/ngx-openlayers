@@ -4,10 +4,10 @@ import { MVT } from 'ol/format';
 import { FormatComponent } from './format.component';
 
 @Component({
-    selector: 'aol-format-mvt',
-    template: '',
-    providers: [{ provide: FormatComponent, useExisting: forwardRef(() => FormatMVTComponent) }],
-    standalone: true,
+  selector: 'aol-format-mvt',
+  template: '',
+  providers: [{ provide: FormatComponent, useExisting: forwardRef(() => FormatMVTComponent) }],
+  standalone: true,
 })
 export class FormatMVTComponent extends FormatComponent {
   @Input()
@@ -19,7 +19,7 @@ export class FormatMVTComponent extends FormatComponent {
   @Input()
   layers: string[];
 
-  instance: MVT;
+  instance: MVT<FeatureClass>;
 
   constructor() {
     super();

@@ -1,6 +1,7 @@
-import Feature from 'ol/format/Feature';
+import { FeatureClass } from 'ol/Feature';
+import FeatureFormat from 'ol/format/Feature';
 
 export class FormatComponent {
-  public instance: Feature;
+  public instance: FeatureFormat<FeatureClass>;
   public componentType = 'format';
 }
