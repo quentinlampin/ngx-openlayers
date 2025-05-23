@@ -7,6 +7,6 @@
   "peerDependencies": {
     "@angular/common": ">=16.0.0 <=17.x.x",
     "@angular/core": ">=16.0.0 <=17.x.x",
-    "ol": "~8.2.0"
+    "ol": "~9.2.4"
   }
 }
