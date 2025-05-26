@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [17.0.0-next.1](https://github.com/quentin-ol/ngx-openlayers/compare/17.0.0-next.0...17.0.0-next.1) (2025-05-26)
+
 ## [17.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/16.0.0-next.0...17.0.0-next.0) (2025-05-26)
 
 
