@@ -1,7 +1,8 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { FeatureClass } from 'ol/Feature';
 import { MVT } from 'ol/format';
 import { FormatComponent } from './format.component';
+import RenderFeature from 'ol/render/Feature';
+import { FeatureToFeatureClass } from 'ol/format/Feature';
 
 @Component({
   selector: 'aol-format-mvt',
@@ -11,7 +12,7 @@ import { FormatComponent } from './format.component';
 })
 export class FormatMVTComponent extends FormatComponent {
   @Input()
-  featureClass: FeatureClass;
+  featureClass: FeatureToFeatureClass<RenderFeature>;
   @Input()
   geometryName: string;
   @Input()
@@ -19,7 +20,7 @@ export class FormatMVTComponent extends FormatComponent {
   @Input()
   layers: string[];
 
-  instance: MVT<FeatureClass>;
+  instance: MVT;
 
   constructor() {
     super();
