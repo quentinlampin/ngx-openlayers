@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ContentChild, forwardRef, Host, Input } from '@angular/core';
 import { UrlFunction } from 'ol/Tile';
-import FeatureFormat, { FeatureToFeatureClass } from 'ol/format/Feature';
+import FeatureFormat from 'ol/format/Feature';
 import { ProjectionLike } from 'ol/proj';
 import { VectorTile } from 'ol/source';
 import TileGrid from 'ol/tilegrid/TileGrid';
@@ -9,6 +9,7 @@ import { LayerVectorTileComponent } from '../layers/layervectortile.component';
 import { TileGridComponent } from '../tilegrid.component';
 import { SourceComponent } from './source.component';
 import { FeatureLike } from 'ol/Feature';
+import RenderFeature from 'ol/render/Feature';
 
 @Component({
   selector: 'aol-source-vectortile',
@@ -39,7 +40,7 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   @ContentChild(TileGridComponent)
   tileGridComponent: TileGridComponent;
 
-  format: FeatureFormat<FeatureToFeatureClass<FeatureLike>>;
+  format: FeatureFormat<RenderFeature>;
   tileGrid: TileGrid;
 
   instance: VectorTile<FeatureLike>;
