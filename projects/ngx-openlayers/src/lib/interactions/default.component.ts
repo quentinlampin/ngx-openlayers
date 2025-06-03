@@ -9,6 +9,29 @@ import { MapComponent } from '../map.component';
     standalone: true,
 })
 export class DefaultInteractionComponent implements OnInit, OnDestroy {
+  @Input()
+  altShiftDragRotate: boolean;
+  @Input()
+  onFocusOnly: boolean;
+  @Input()
+  doubleClickZoom: boolean;
+  @Input()
+  keyboard: boolean;
+  @Input()
+  mouseWheelZoom: boolean;
+  @Input()
+  shiftDragZoom: boolean;
+  @Input()
+  dragPan: boolean;
+  @Input()
+  pinchRotate: boolean;
+  @Input()
+  pinchZoom: boolean;
+  @Input()
+  zoomDelta: number;
+  @Input()
+  zoomDuration: number;
+  
   instance: Collection<Interaction>;
 
   constructor(private map: MapComponent) {}
