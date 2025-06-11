@@ -1,6 +1,6 @@
 {
   "name": "ngx-openlayers",
-  "version": "17.0.0-next.2",
+  "version": "18.0.0-next.0",
   "scripts": {
     "release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\" --prerelease next"
   },
