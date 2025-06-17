@@ -15,21 +15,24 @@ npm install ngx-openlayers --save
 
 Here is a "minimal" map example that fetches tiles from OpenStreetMap and center the map in Meylan (France):
 
-in `app.module.ts`:
+in `app.component.ts`:
 ```js
 ...
-import { AngularOpenlayersModule } from "ngx-openlayers";
+import {
+  CoordinateComponent,
+  LayerTileComponent,
+  MapComponent,
+  SourceOsmComponent,
+  ViewComponent,
+} from 'ngx-openlayers';
 ...
 
-@NgModule({
-  imports: [
-    ...
-    AngularOpenlayersModule
-  ],
+@Component({
   ...
-  bootstrap: [AppComponent]
+  standalone: true,
+  imports: [MapComponent, ViewComponent, CoordinateComponent, LayerTileComponent, SourceOsmComponent],
 })
-export class AppModule { }
+export class AppComponent { }
 ```
 
 in `app.component.html`:
