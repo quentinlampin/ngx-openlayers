@@ -2,6 +2,145 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.0.0](https://github.com/quentin-ol/ngx-openlayers/compare/v0.8.22...v18.0.0) (2025-06-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* Angular 16 is no more supported
+* `ol` peer dep is now `~10.5.0`
+* see all breaking changes from `ol` `10.0.0` (https://github.com/openlayers/openlayers/blob/main/changelog/v10.0.0.md)
+* `ol` peer dep is now `~9.2.4`
+* see all breaking changes from `ol` `9.0.0` (https://github.com/openlayers/openlayers/blob/main/changelog/v9.0.0.md)
+* Angular 15 is no more supported
+* `ol` peer dep is now `8.2.0`
+* see all breaking changes from `ol` `8.0.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#800)
+* Angular 14 is no more supported
+* `ol` peer dep is now `~7.5.2`
+* see all breaking changes from `ol` `7.0.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#700)
+* see all breaking changes from `ol` `7.1.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#710)
+* see all breaking changes from `ol` `7.2.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#720)
+* see all breaking changes from `ol` `7.5.0` (https://github.com/openlayers/openlayers/blob/main/changelog/upgrade-notes.md#750)
+* `ol` peer dep is now `~6.15.1`
+* `DrawInteractionComponent` : input `type` is now of type `Type`
+* `SourceImageWMSComponent` : input `serverType` is now of type `ServerType`
+* `OverlayComponent` : input `positioning` is now of type `Positioning`
+* `SourceTileWMSComponent` : input `projection` is now of type `ProjectionLike` and input `serverType` is now of type `ServerType`
+* `SourceTileWMTSComponent` : input `requestEncoding` is now of type `RequestEncoding`
+* all components inputs of type `Element` or `Node` are now of type `HTMLElement`
+* all `olChangeActive` and `propertyChange` outputs are now `EventEmitter<ObjectEvent>`
+* `FormatMVTComponent` : input `featureClass` is now of type `FeatureClass`
+* `DragAndDropInteractionComponent` : input `formatConstructors` is now of type `FeatureFormat[]`
+* `LayerComponent` : `prerender` and `postrender` inputs functions should now manage events of type `RenderEvent`
+* `SourceImageArcGISRestComponent` : `attributions` input is now of type `AttributionLike`
+* `SourceTileWMTSComponent` : `tileGrid` input is now of type `WMTSTileGrid`
+* `SourceUTFGridComponent` : `tileJSON` input is now of type `Config`
+* `StyleCircleComponent` : `snapToPixel` and `atlasManager` have been removed
+* `StyleIconComponent` : `img` input is now of type `HTMLImageElement | HTMLCanvasElement`
+* `MapComponent` : `prerender` output has been removed, `precompose` output has been added. `olClick`, `dblClick`, `pointerDrag`, `pointerMove`, `singleClick` outputs are now of type `EventEmitter<MapBrowserEvent<UIEvent>>`
+* `ViewComponent` : `changeZoom` output has been removed
+* **geom:** The coordinates input on CollectionCoordinatesComponent is not anymore limited to type [number, number][], but it supports all types of coordinates.
+   That means the existing code must be updated for polygons:
+
+   Old style:
+  ```html
+  <aol-feature>
+      <aol-geometry-polygon>
+          <aol-collection-coordinates
+              [coordinates]="[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]"
+              [srid]="'EPSG:4326'"
+          >
+          </aol-collection-coordinates>
+      </aol-geometry-polygon>
+      <aol-style>
+          <aol-style-stroke [color]="'red'"></aol-style-stroke>
+          <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+      </aol-style>
+  </aol-feature>
+  ```
+  New style:
+
+   ```html
+  <aol-feature>
+      <aol-geometry-polygon>
+          <aol-collection-coordinates
+              [coordinates]="[[[5, 45],[5.05, 45.05],[5.05, 44.95],[4.95, 44.95]]]"
+              [srid]="'EPSG:4326'"
+          >
+          </aol-collection-coordinates>
+      </aol-geometry-polygon>
+      <aol-style>
+          <aol-style-stroke [color]="'red'"></aol-style-stroke>
+          <aol-style-fill [color]="[255,0,0,0.5]"></aol-style-fill>
+      </aol-style>
+  </aol-feature>
+  ```
+  Notice the [coordinates] input is now a [number, number][][], as defined in GeoJSON.
+
+   This also allows to display polygon with holes, which is not possible with the current code.
+* **openlayers:** Migration from `openlayers` package to `ol`
+
+### build
+
+* update to Angular 16 ([b3c6691](https://github.com/quentin-ol/ngx-openlayers/commit/b3c6691b88893a6509020ade9b9eee9664754a5a))
+* update to Angular 17 ([5676ce3](https://github.com/quentin-ol/ngx-openlayers/commit/5676ce304c8260e4acbea9aaed1f9c72c0edb9ab))
+* update to Angular 18 ([f2e5ed8](https://github.com/quentin-ol/ngx-openlayers/commit/f2e5ed8d6235ba95c874ea3fd4a934dbd2a0b87f))
+
+
+### Features
+
+* **cluster:** add wrapX option ([f3106e4](https://github.com/quentin-ol/ngx-openlayers/commit/f3106e4996537faa4b2823d786cdcc3339069025))
+* **cluster:** update distance input ([6e448a8](https://github.com/quentin-ol/ngx-openlayers/commit/6e448a849c76ea3e6240754d6a1f7598b679116e))
+* **demo:** add example of a cursor position ([eae0a1f](https://github.com/quentin-ol/ngx-openlayers/commit/eae0a1f80822c8bf0976b607a04a447f59697653))
+* **demo:** add example of geojson feature : point, polygon, linestring ([43e5eb7](https://github.com/quentin-ol/ngx-openlayers/commit/43e5eb791de291ac1d030056af783dcc6bc0b16e))
+* **demo:** add example of map position with longitude, latitude and zoom ([107e94c](https://github.com/quentin-ol/ngx-openlayers/commit/107e94c2180348f9b5bffa6ae53ad1f7d952042d))
+* **demo:** add example to display geometry of a geojson file ([939499c](https://github.com/quentin-ol/ngx-openlayers/commit/939499c146ea6dffe30716cf0fdbdd7d0985e2fc))
+* **demo:** example change color on hover or on select ([6f8d7f9](https://github.com/quentin-ol/ngx-openlayers/commit/6f8d7f990f48340e98ce57fee465286fddc79424))
+* **demo:** example draw a polygon ([2bf558c](https://github.com/quentin-ol/ngx-openlayers/commit/2bf558c29c66bd5abe7d7df07482c279ba209735))
+* **demo:** example modify polygon ([240e3dc](https://github.com/quentin-ol/ngx-openlayers/commit/240e3dc275c3f31fdb84add34561bdd9ed0c8eda))
+* **demo:** example of marker with svg ([f37e5ef](https://github.com/quentin-ol/ngx-openlayers/commit/f37e5ef2538a977d590c97a05caa4c51e0e58f9e))
+* **demo:** example of overlay ([af15282](https://github.com/quentin-ol/ngx-openlayers/commit/af15282117ae69395e4cc7deb56aa2d49f17dc22))
+* **demo:** example of side by side ([8f2408e](https://github.com/quentin-ol/ngx-openlayers/commit/8f2408e9b3155cff79c3548a9ea3fab6368d495f))
+* **demo:** example of swipe ([8bb64c5](https://github.com/quentin-ol/ngx-openlayers/commit/8bb64c5e3ed1c42581081b464ccbc96e8d834ff0))
+* **geom:** add circle geometry ([#210](https://github.com/quentin-ol/ngx-openlayers/issues/210)) ([9ac6458](https://github.com/quentin-ol/ngx-openlayers/commit/9ac6458f7fa791ae3d36a1588cdcf684b5a3193c))
+* **geom:** implements MultiPoint, MultiLinestring and MultiPolygon ([98a10d0](https://github.com/quentin-ol/ngx-openlayers/commit/98a10d0982f6ed2493794042622ed13ab8c4a030))
+* **graticule:** unregister on destroy ([bb7fa9f](https://github.com/quentin-ol/ngx-openlayers/commit/bb7fa9f16750020441c0d1a8e564d65d09ce59cc))
+* **image:** add image loading events ([beada1b](https://github.com/quentin-ol/ngx-openlayers/commit/beada1b6cb927af01abc819ce538493743a9a54f))
+* **imagearcgis:** add image events ([9e26397](https://github.com/quentin-ol/ngx-openlayers/commit/9e2639769c30b82eaafce61ef601ec1b4340167b))
+* **map:** add onMoveStart event ([46b8ad3](https://github.com/quentin-ol/ngx-openlayers/commit/46b8ad390d8e0f8085b0c456fe0160b3d6452917))
+* **openlayers:** migrate to 5 version ([54e47fc](https://github.com/quentin-ol/ngx-openlayers/commit/54e47fc039a77d3e5697c8a85903d5df13aa907d))
+* **overviewmap:** refresh overview when the view changes ([18bc7a6](https://github.com/quentin-ol/ngx-openlayers/commit/18bc7a60f281b04c20f99f5d2efe94ca47b19cf8))
+* **raster:** not updated when source change ([ad5f265](https://github.com/quentin-ol/ngx-openlayers/commit/ad5f26530e00b809bf02eb757095343d3e36231b))
+* **source-vector:** support of 'loader' input ([0bda38a](https://github.com/quentin-ol/ngx-openlayers/commit/0bda38a7ef0233f9e7f01ca8c39dfe53504d15e0))
+* **source:imagestatic:** refresh layer source when url change ([d71712f](https://github.com/quentin-ol/ngx-openlayers/commit/d71712ffea0ac6e8472ba2f9c420e90e3d3c8a56))
+* **source:** add Image ArcGIS source ([#209](https://github.com/quentin-ol/ngx-openlayers/issues/209)) ([4a4a4ef](https://github.com/quentin-ol/ngx-openlayers/commit/4a4a4efdb001821e29b6e57ee8b10ca7c2a3a5cd))
+* **source:** add UTF grid source ([813a81b](https://github.com/quentin-ol/ngx-openlayers/commit/813a81b696955b05a218f2c5180810210bebc2dd))
+* **source:** update params when input changes (TileWMS and ImageWMS) ([#199](https://github.com/quentin-ol/ngx-openlayers/issues/199)) ([91de249](https://github.com/quentin-ol/ngx-openlayers/commit/91de249a6f4404ce6d3e8290b16ad455ee9f5a9a))
+* **stroke:** add ColorLike typing to color input ([1b84a4b](https://github.com/quentin-ol/ngx-openlayers/commit/1b84a4ba40bc60d37d79282579d5c1bf6ebcfceb))
+* update openlayers to `~7.5.2` ([7bb278d](https://github.com/quentin-ol/ngx-openlayers/commit/7bb278d59ed866d773698e10d11154a237f9bd0a))
+* update openlayers to `10.5.0` ([6c88713](https://github.com/quentin-ol/ngx-openlayers/commit/6c8871353f8ea4c4eee220d028b9cab8bab46506))
+* update openlayers to `8.2.0` ([4057d44](https://github.com/quentin-ol/ngx-openlayers/commit/4057d44e021a5f860485961c9f14a962d93bc457))
+* update openlayers to `9.2.4` ([866ae56](https://github.com/quentin-ol/ngx-openlayers/commit/866ae561b1f9ee14fcce7fce3e799129353fa3ff))
+* update openlayers to ~6.13.0 ([42fb323](https://github.com/quentin-ol/ngx-openlayers/commit/42fb3230645db423b2747a125c33419979954ea1))
+* update openlayers to ~6.15.1 ([9588b9d](https://github.com/quentin-ol/ngx-openlayers/commit/9588b9d6b4a4d74ef6fc550e2aff24fb1e6df9be))
+* update to angular 9 ([36bf6a8](https://github.com/quentin-ol/ngx-openlayers/commit/36bf6a8e82f108fc27f17b6356b0fb74b5f4d73e))
+* **vector:** add style, updateWhileAnimating and updateWhileInteracting inputs ([ae72c41](https://github.com/quentin-ol/ngx-openlayers/commit/ae72c4130dfcb34574861c5f4512db1a892d77c9)), closes [#198](https://github.com/quentin-ol/ngx-openlayers/issues/198)
+* **view:** add change:resolution and change:center outputs ([7eb0b98](https://github.com/quentin-ol/ngx-openlayers/commit/7eb0b98e6b3eac3bd6b2a8b4308fafbf5edd07b7))
+* **view:** add missing inputs ([9848242](https://github.com/quentin-ol/ngx-openlayers/commit/9848242b050b5b5041a6f405832c8f2105a117ff))
+* **view:** add multiWorld ([059a641](https://github.com/quentin-ol/ngx-openlayers/commit/059a641d438fde881cc0303bbffb88234b134f84))
+* **view:** add zoom change output ([ea08721](https://github.com/quentin-ol/ngx-openlayers/commit/ea08721e7899fcea9110fc4eb0e46b9aa6a6154f))
+* **view:** dynamically update view projection ([425b0e0](https://github.com/quentin-ol/ngx-openlayers/commit/425b0e07daae029064c61c2c835bad40cbe4b319))
+* **wmts:** add wmts tile load events ([04b35d3](https://github.com/quentin-ol/ngx-openlayers/commit/04b35d35725f1a0fa828acadee33568ffae211e1))
+
+
+### Bug Fixes
+
+* **source:** check host instance before setSource ([#193](https://github.com/quentin-ol/ngx-openlayers/issues/193)) ([c3ba771](https://github.com/quentin-ol/ngx-openlayers/commit/c3ba771e2eefc24006604a44bffaf314a9262a17))
+* **source:** update params ImageArcgisRest ([bfc6663](https://github.com/quentin-ol/ngx-openlayers/commit/bfc6663cc5024677421223c94caa6c5671efa534))
+* **stroke:** fix ColorLike import path ([c2179ea](https://github.com/quentin-ol/ngx-openlayers/commit/c2179eab3cca0cb8f5f70c87b29f24d7257305e9))
+* **travis:** lib build without ngcc (demo issue) ([9edc820](https://github.com/quentin-ol/ngx-openlayers/commit/9edc8203316545146034cea07d4ed203b5d745e8))
+* **view:** set the center explicitly because it does not work via setProperties ([2472cff](https://github.com/quentin-ol/ngx-openlayers/commit/2472cff6978c2cc1cdbe2a791fc5889069f159ab))
+
 ## [18.0.0-next.0](https://github.com/quentin-ol/ngx-openlayers/compare/17.0.0-next.2...18.0.0-next.0) (2025-06-11)
 
 
