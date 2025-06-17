@@ -24,8 +24,15 @@ jobs:
         with:
           key: node_modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
           path: '**/node_modules'
+      - id: check-tag
+        run: |
+          if echo "${{ github.event.ref }}" | grep -Eq "^refs/tags/[0-9]+.[0-9]+.[0-9]+-.*$"; then
+            echo "tag=next" >> $GITHUB_OUTPUT
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          fi
       - run: cp projects/ngx-openlayers/CHANGELOG.md dist/ngx-openlayers/CHANGELOG.md
-      - run: cd dist/ngx-openlayers/ && npm publish --tag next --access public
+      - run: cd dist/ngx-openlayers/ && npm publish --tag ${{ steps.check-tag.outputs.tag }} --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     needs:
