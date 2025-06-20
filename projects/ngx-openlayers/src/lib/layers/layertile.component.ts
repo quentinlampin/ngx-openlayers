@@ -4,17 +4,22 @@ import TileSource from 'ol/source/Tile';
 import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
 import { LayerGroupComponent } from './layergroup.component';
+import { BackgroundColor } from 'ol/layer/Base';
 
 @Component({
-    selector: 'aol-layer-tile',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-layer-tile',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
   @Input()
   preload: number;
   @Input()
+  background: BackgroundColor;
+  @Input()
   useInterimTilesOnError: boolean;
+  @Input()
+  cacheSize: number;
 
   source: TileSource;
 
