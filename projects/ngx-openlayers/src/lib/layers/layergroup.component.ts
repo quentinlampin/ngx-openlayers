@@ -3,11 +3,13 @@ import { Group } from 'ol/layer';
 import { MapComponent } from '../map.component';
 import { Extent } from 'ol/extent';
 import BaseObject from 'ol/Object';
+import BaseLayer from 'ol/layer/Base';
+import Collection from 'ol/Collection';
 
 @Component({
-    selector: 'aol-layer-group',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-layer-group',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
   @Input()
@@ -22,6 +24,16 @@ export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
   minResolution: number;
   @Input()
   maxResolution: number;
+  @Input()
+  minZoom: number;
+  @Input()
+  maxZoom: number;
+  @Input()
+  layers: BaseLayer[] | Collection<BaseLayer>;
+  @Input()
+  properties: {
+    [x: string]: unknown;
+  };
 
   public instance: Group;
   componentType = 'layer';
