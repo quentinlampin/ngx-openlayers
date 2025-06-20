@@ -4,9 +4,12 @@ import RenderEvent from 'ol/render/Event';
 import { MapComponent } from '../map.component';
 import { LayerGroupComponent } from './layergroup.component';
 import BaseObject from 'ol/Object';
+import Map from 'ol/Map';
 
 @Directive()
 export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
+  @Input()
+  className: string;
   @Input()
   opacity: number;
   @Input()
@@ -19,6 +22,16 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   minResolution: number;
   @Input()
   maxResolution: number;
+  @Input()
+  minZoom: number;
+  @Input()
+  maxZoom: number;
+  @Input()
+  map: Map;
+  @Input()
+  properties: {
+    [x: string]: unknown;
+  };
 
   @Input()
   prerender: (evt: RenderEvent) => void;
