@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.0.2](https://github.com/quentin-ol/ngx-openlayers/compare/18.0.1...18.0.2) (2025-06-23)
+
+
+### Bug Fixes
+
+* **layers:** add missing inputs ([a25a612](https://github.com/quentin-ol/ngx-openlayers/commit/a25a6122ec6eb2a44e5bb3d08ad20989c7991111)), closes [#318](https://github.com/quentin-ol/ngx-openlayers/issues/318)
+
 ## [18.0.1](https://github.com/quentin-ol/ngx-openlayers/compare/18.0.0...18.0.1) (2025-06-17)
 
 ## [18.0.0](https://github.com/quentin-ol/ngx-openlayers/compare/v0.8.22...v18.0.0) (2025-06-17)
