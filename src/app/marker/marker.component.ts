@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
+import {Component} from '@angular/core';
 import {
   CoordinateComponent,
   DefaultControlComponent,
@@ -29,7 +28,8 @@ import {
 
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
-      <aol-layer-vector *ngIf="marker">
+      @if (marker) {
+        <aol-layer-vector>
         <aol-source-vector #markers>
           <aol-feature>
             <aol-geometry-point>
@@ -49,11 +49,11 @@ import {
           </aol-feature>
         </aol-source-vector>
       </aol-layer-vector>
+      }
     </aol-map>
   `,
   standalone: true,
   imports: [
-    NgIf,
     MapComponent,
     DefaultInteractionComponent,
     DefaultControlComponent,
@@ -70,23 +70,6 @@ import {
   ],
 })
 export class MarkerComponent {
-  feature = {
-    type: 'Feature',
-    properties: {},
-    geometry: {
-      type: 'Polygon',
-      coordinates: [
-        [
-          [-2.3565673828124996, 46.92588289494367],
-          [-2.1148681640624996, 46.92588289494367],
-          [-2.1148681640624996, 47.04954010021555],
-          [-2.3565673828124996, 47.04954010021555],
-          [-2.3565673828124996, 46.92588289494367],
-        ],
-      ],
-    },
-  };
-
   marker = {
     lon: -2.264184,
     lat: 46.996207,

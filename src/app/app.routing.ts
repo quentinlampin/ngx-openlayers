@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ClusterComponent } from './cluster/cluster.component';
-import { BasicComponent } from './basic/basic.component';
+import { SimpleComponent } from './simple/simple.component';
 import { RasterComponent } from './raster/raster.component';
 import { ExamplesListComponent } from './examples-list/examples-list.component';
 import { ExamplesItemComponent } from './examples-item/examples-item.component';
@@ -8,7 +8,7 @@ import { MapPositionComponent } from './map-position/map-position.component';
 import { CursorPositionComponent } from './cursor-position/cursor-position.component';
 import { DisplayGeometryComponent } from './display-geometry/display-geometry.component';
 import { DisplayGeojsonSourceComponent } from './display-geojson-source/display-geojson-source.component';
-import { DrawPolygonComponent } from './draw-polygon/draw-polygon.component';
+import { DrawFeaturesComponent } from './draw-features/draw-features.component';
 import { ModifyPolygonComponent } from './modify-polygon/modify-polygon.component';
 import { SideBySideComponent } from './side-by-side/side-by-side.component';
 import { SwipeComponent } from './swipe/swipe.component';
@@ -31,12 +31,12 @@ export const routes: Routes = [
     path: 'examples',
     component: ExamplesItemComponent,
     children: [
-      { path: 'basic', component: BasicComponent },
+      { path: 'simple', component: SimpleComponent },
       { path: 'map-position', component: MapPositionComponent },
       { path: 'cursor-position', component: CursorPositionComponent },
       { path: 'display-geometry', component: DisplayGeometryComponent },
       { path: 'display-geojson-source', component: DisplayGeojsonSourceComponent },
-      { path: 'draw-polygon', component: DrawPolygonComponent },
+      { path: 'draw-features', component: DrawFeaturesComponent },
       { path: 'modify-polygon', component: ModifyPolygonComponent },
       { path: 'side-by-side', component: SideBySideComponent },
       { path: 'swipe', component: SwipeComponent },
