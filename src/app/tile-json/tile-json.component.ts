@@ -20,7 +20,9 @@ import {
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
       <aol-layer-tile>
-        <aol-source-tilejson url="https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json"></aol-source-tilejson>
+        <aol-source-tilejson
+          url="https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:raster:HYP_HR_SR_OB_DR/map/tiles/WebMercatorQuad?f=tilejson"
+        ></aol-source-tilejson>
       </aol-layer-tile>
     </aol-map>
   `,

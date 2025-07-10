@@ -47,7 +47,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "node_modules/ol/ol.css"
             ],
             "scripts": [],
@@ -110,7 +110,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -167,7 +167,8 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": "671ddb05-2c7a-4af9-98c3-dbdfcb7630ce"
   },
   "schematics": {
     "@angular-eslint/schematics:application": {

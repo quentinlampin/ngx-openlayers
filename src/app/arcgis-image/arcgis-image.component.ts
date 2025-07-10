@@ -28,9 +28,8 @@ import {
 
       <aol-layer-image>
         <aol-source-imagearcgisrest
-          projection="EPSG:3857"
           [ratio]="1"
-          url="https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer"
+          url="https://sampleserver6.arcgisonline.com/ArcGIS/rest/services/USA/MapServer"
           (imageLoadStart)="imageLoadStart()"
           (imageLoadEnd)="imageLoadEnd()"
         ></aol-source-imagearcgisrest>
