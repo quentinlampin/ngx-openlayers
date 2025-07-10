@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Stroke } from 'ol/style';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import {
   ControlFullScreenComponent,
   CoordinateComponent,
@@ -27,11 +26,13 @@ import {
         <aol-source-osm></aol-source-osm>
       </aol-layer-tile>
 
-      <aol-graticule *ngIf="shownGraticule" [strokeStyle]="graticuleStyle" [showLabels]="true"></aol-graticule>
+      @if (showGraticule) {
+        <aol-graticule [strokeStyle]="graticuleStyle" [showLabels]="true"></aol-graticule>
+      }
     </aol-map>
 
     <div class="controls">
-      <input type="checkbox" id="graticule" name="graticule" [(ngModel)]="shownGraticule" />
+      <input type="checkbox" id="graticule" name="graticule" [(ngModel)]="showGraticule" />
       <label for="graticule">Toggle graticule</label>
     </div>
   `,
@@ -53,7 +54,6 @@ import {
     `,
   ],
   imports: [
-    NgIf,
     FormsModule,
     MapComponent,
     DefaultInteractionComponent,
@@ -69,7 +69,7 @@ import {
 export class GraticuleComponent {
   public zoom = 4;
   public opacity = 1.0;
-  public shownGraticule = true;
+  public showGraticule = true;
   public graticuleStyle = new Stroke({
     color: 'rgba(255,120,0,0.9)',
     width: 2,

@@ -38,7 +38,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       .main-container {
         height: calc(100% - 72px);
         background-color: white;
-        margin: 0px;
+        padding: 0 1rem;
         overflow: auto;
       }
     `,
