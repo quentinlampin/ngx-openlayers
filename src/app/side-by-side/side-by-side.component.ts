@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, viewChild } from '@angular/core';
 import {
   CoordinateComponent,
+  DefaultControlComponent,
   DefaultInteractionComponent,
   LayerTileComponent,
   MapComponent,
@@ -12,8 +13,9 @@ import {
 @Component({
   selector: 'app-side-by-side',
   template: `
-    <aol-map #map [width]="'100%'" [height]="'100%'">
+    <aol-map #map>
       <aol-interaction-default></aol-interaction-default>
+      <aol-control-defaults></aol-control-defaults>
 
       <aol-view #view [zoom]="5">
         <aol-coordinate [x]="2.181539" [y]="47.125488" [srid]="'EPSG:4326'"></aol-coordinate>
@@ -22,8 +24,10 @@ import {
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
 
-    <aol-map #secondMap width="100%" height="100%">
+    <aol-map #secondMap>
       <aol-interaction-default></aol-interaction-default>
+      <aol-control-defaults></aol-control-defaults>
+
       <aol-layer-tile>
         <aol-source-xyz
           url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
@@ -41,6 +45,7 @@ import {
 
       aol-map {
         width: 50%;
+        height: 100%;
       }
     `,
   ],
@@ -52,15 +57,14 @@ import {
     LayerTileComponent,
     SourceOsmComponent,
     SourceXYZComponent,
+    DefaultControlComponent,
   ],
 })
 export class SideBySideComponent implements AfterViewInit {
-  @ViewChild('secondMap', { static: true })
-  secondMap: MapComponent;
-  @ViewChild('view', { static: true })
-  view: ViewComponent;
+  secondMap = viewChild<MapComponent>('secondMap');
+  view = viewChild<ViewComponent>('view');
 
   ngAfterViewInit(): void {
-    this.secondMap.instance.setView(this.view.instance);
+    this.secondMap().instance.setView(this.view().instance);
   }
 }

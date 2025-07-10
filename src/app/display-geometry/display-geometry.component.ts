@@ -25,6 +25,18 @@ import {
   StyleStrokeComponent,
   ViewComponent,
 } from 'ngx-openlayers';
+import { GeoJSONFeature } from 'ol/format/GeoJSON';
+
+// Circle is not a valid geojson, it need a specific type
+interface CircleGeoJSONLike extends Pick<GeoJSONFeature, 'type' | 'properties'> {
+  type: 'Feature';
+  properties: object;
+  geometry: {
+    type: 'Circle';
+    coordinates: [number, number];
+    radius: number;
+  };
+}
 
 @Component({
   selector: 'app-display-geometry',
@@ -33,105 +45,112 @@ import {
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
 
-      <aol-view [zoom]="6"> <aol-coordinate [x]="1" [y]="46.292896" [srid]="'EPSG:4326'"></aol-coordinate> </aol-view>
+      <aol-view [zoom]="6">
+        <aol-coordinate [x]="1" [y]="46.292896" [srid]="'EPSG:4326'"></aol-coordinate>
+      </aol-view>
 
-      <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
+      <aol-layer-tile [opacity]="1">
+        <aol-source-osm></aol-source-osm>
+      </aol-layer-tile>
 
       <aol-layer-group>
         <aol-layer-vector *ngFor="let feature of features" [ngSwitch]="feature.geometry.type">
           <aol-source-vector *ngSwitchCase="'Polygon'">
-            <aol-style>
-              <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
-              <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
-            </aol-style>
-            <aol-feature>
-              <aol-geometry-polygon>
-                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
-                </aol-collection-coordinates>
-              </aol-geometry-polygon>
-            </aol-feature>
-          </aol-source-vector>
-
-          <aol-source-vector *ngSwitchCase="'Point'">
-            <aol-feature>
-              <aol-geometry-point>
-                <aol-coordinate
-                  [x]="$any(feature.geometry.coordinates[0])"
-                  [y]="$any(feature.geometry.coordinates[1])"
-                  [srid]="'EPSG:4326'"
-                >
-                </aol-coordinate>
-                <aol-style>
-                  <aol-style-circle [radius]="10">
-                    <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
-                    <aol-style-fill [color]="'green'"></aol-style-fill>
-                  </aol-style-circle>
-                </aol-style>
-              </aol-geometry-point>
-            </aol-feature>
-          </aol-source-vector>
-
-          <aol-source-vector *ngSwitchCase="'LineString'">
-            <aol-feature>
-              <aol-geometry-linestring>
-                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
-                </aol-collection-coordinates>
-              </aol-geometry-linestring>
-            </aol-feature>
-          </aol-source-vector>
-
-          <aol-source-vector *ngSwitchCase="'Circle'">
-            <aol-feature>
-              <aol-geometry-circle [radius]="feature.geometry.radius">
-                <aol-coordinate
-                  [x]="$any(feature.geometry.coordinates[0])"
-                  [y]="$any(feature.geometry.coordinates[1])"
-                  srid="EPSG:4326"
-                >
-                </aol-coordinate>
-                <aol-style>
-                  <aol-style-stroke color="blue" [width]="2"></aol-style-stroke>
-                  <aol-style-fill color="rgba(255, 255, 0, 0.5)"></aol-style-fill>
-                </aol-style>
-              </aol-geometry-circle>
-            </aol-feature>
-          </aol-source-vector>
-
-          <aol-source-vector *ngSwitchCase="'MultiPoint'">
-            <aol-feature>
-              <aol-geometry-multipoint>
-                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
-                </aol-collection-coordinates>
-                <aol-style>
-                  <aol-style-circle [radius]="5">
-                    <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
-                    <aol-style-fill [color]="'green'"></aol-style-fill>
-                  </aol-style-circle>
-                </aol-style>
-              </aol-geometry-multipoint>
-            </aol-feature>
-          </aol-source-vector>
-
-          <aol-source-vector *ngSwitchCase="'MultiLineString'">
-            <aol-feature>
-              <aol-geometry-multilinestring>
-                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
-                </aol-collection-coordinates>
-              </aol-geometry-multilinestring>
-            </aol-feature>
-          </aol-source-vector>
-
-          <aol-source-vector *ngSwitchCase="'MultiPolygon'">
-            <aol-style>
-              <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" [width]="2"></aol-style-stroke>
-              <aol-style-fill [color]="'rgba(81, 15.3, 23.4, 0.4)'"></aol-style-fill>
-            </aol-style>
-            <aol-feature>
-              <aol-geometry-multipolygon>
-                <aol-collection-coordinates [coordinates]="$any(feature.geometry.coordinates)" [srid]="'EPSG:4326'">
-                </aol-collection-coordinates>
-              </aol-geometry-multipolygon>
-            </aol-feature>
+            @for (feature of features; track $index) {
+              <aol-feature>
+                @switch (feature.geometry.type) {
+                  @case ('Polygon') {
+                    <aol-style>
+                      <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
+                      <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
+                    </aol-style>
+                    <aol-geometry-polygon>
+                      <aol-collection-coordinates
+                        [coordinates]="$any(feature.geometry.coordinates)"
+                        [srid]="'EPSG:4326'"
+                      >
+                      </aol-collection-coordinates>
+                    </aol-geometry-polygon>
+                  }
+                  @case ('Point') {
+                    <aol-geometry-point>
+                      <aol-coordinate
+                        [x]="$any(feature.geometry.coordinates[0])"
+                        [y]="$any(feature.geometry.coordinates[1])"
+                        [srid]="'EPSG:4326'"
+                      >
+                      </aol-coordinate>
+                      <aol-style>
+                        <aol-style-circle [radius]="10">
+                          <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
+                          <aol-style-fill [color]="'green'"></aol-style-fill>
+                        </aol-style-circle>
+                      </aol-style>
+                    </aol-geometry-point>
+                  }
+                  @case ('LineString') {
+                    <aol-geometry-linestring>
+                      <aol-collection-coordinates
+                        [coordinates]="$any(feature.geometry.coordinates)"
+                        [srid]="'EPSG:4326'"
+                      >
+                      </aol-collection-coordinates>
+                    </aol-geometry-linestring>
+                  }
+                  @case ('Circle') {
+                    <aol-geometry-circle [radius]="feature.geometry.radius">
+                      <aol-coordinate
+                        [x]="$any(feature.geometry.coordinates[0])"
+                        [y]="$any(feature.geometry.coordinates[1])"
+                        srid="EPSG:4326"
+                      >
+                      </aol-coordinate>
+                      <aol-style>
+                        <aol-style-stroke color="blue" [width]="2"></aol-style-stroke>
+                        <aol-style-fill color="rgba(255, 255, 0, 0.5)"></aol-style-fill>
+                      </aol-style>
+                    </aol-geometry-circle>
+                  }
+                  @case ('MultiPoint') {
+                    <aol-geometry-multipoint>
+                      <aol-collection-coordinates
+                        [coordinates]="$any(feature.geometry.coordinates)"
+                        [srid]="'EPSG:4326'"
+                      >
+                      </aol-collection-coordinates>
+                      <aol-style>
+                        <aol-style-circle [radius]="5">
+                          <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
+                          <aol-style-fill [color]="'green'"></aol-style-fill>
+                        </aol-style-circle>
+                      </aol-style>
+                    </aol-geometry-multipoint>
+                  }
+                  @case ('MultiLineString') {
+                    <aol-geometry-multilinestring>
+                      <aol-collection-coordinates
+                        [coordinates]="$any(feature.geometry.coordinates)"
+                        [srid]="'EPSG:4326'"
+                      >
+                      </aol-collection-coordinates>
+                    </aol-geometry-multilinestring>
+                  }
+                  @case ('MultiPolygon') {
+                    <aol-style>
+                      <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" [width]="2"></aol-style-stroke>
+                      <aol-style-fill [color]="'rgba(81, 15.3, 23.4, 0.4)'"></aol-style-fill>
+                    </aol-style>
+                    <aol-geometry-multipolygon>
+                      <aol-collection-coordinates
+                        [coordinates]="$any(feature.geometry.coordinates)"
+                        [srid]="'EPSG:4326'"
+                      >
+                      </aol-collection-coordinates>
+                    </aol-geometry-multipolygon>
+                  }
+                }
+              </aol-feature>
+            }
           </aol-source-vector>
         </aol-layer-vector>
       </aol-layer-group>
@@ -167,7 +186,7 @@ import {
   ],
 })
 export class DisplayGeometryComponent {
-  features = [
+  features: (GeoJSONFeature | CircleGeoJSONLike)[] = [
     {
       type: 'Feature',
       properties: {},

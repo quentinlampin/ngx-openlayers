@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
 import {
   CollectionCoordinatesComponent,
   ControlFullScreenComponent,
@@ -40,11 +39,13 @@ import {
       <aol-layer-vector>
         <aol-source-cluster [distance]="distance">
           <aol-source-vector>
-            <aol-feature *ngFor="let p of points">
-              <aol-geometry-point>
-                <aol-coordinate [x]="p.x" [y]="p.y" [srid]="'EPSG:4326'"></aol-coordinate>
-              </aol-geometry-point>
-            </aol-feature>
+            @for (p of points; track $index) {
+              <aol-feature>
+                <aol-geometry-point>
+                  <aol-coordinate [x]="p.x" [y]="p.y" [srid]="'EPSG:4326'"></aol-coordinate>
+                </aol-geometry-point>
+              </aol-feature>
+            }
           </aol-source-vector>
 
           <aol-style>
@@ -110,7 +111,6 @@ import {
     `,
   ],
   imports: [
-    NgFor,
     FormsModule,
     MapComponent,
     DefaultInteractionComponent,

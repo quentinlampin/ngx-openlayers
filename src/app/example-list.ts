@@ -1,13 +1,15 @@
 export const examplesList = [
   {
-    title: 'Basic',
-    description: 'Basic example. Demonstrates zoom and opacity.',
-    routerLink: 'basic',
+    title: 'Simple',
+    description: 'A simple map with an OSM source.',
+    routerLink: 'simple',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/simple.html',
   },
   {
     title: 'Map position',
     description: 'Map longitude, latitude and zoom.',
     routerLink: 'map-position',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/center.html',
   },
   {
     title: 'Cursor position',
@@ -29,9 +31,9 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/vector-layer.html',
   },
   {
-    title: 'Draw polygon',
+    title: 'Draw Features',
     description: 'Example of using aol-interaction-draw',
-    routerLink: 'draw-polygon',
+    routerLink: 'draw-features',
     openLayersLink: 'https://openlayers.org/en/latest/examples/draw-features.html',
   },
   {
@@ -44,6 +46,7 @@ export const examplesList = [
     title: 'Side by side',
     description: 'Compare 2 maps side by side',
     routerLink: 'side-by-side',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/side-by-side.html',
   },
   {
     title: 'Swipe',
@@ -80,6 +83,7 @@ export const examplesList = [
     description:
       'Example of using raster to perform pixel-based operations. Adjust brightness and contrast in this case.',
     routerLink: 'raster',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/raster.html',
   },
   {
     title: 'Image ArcGIS',
@@ -98,6 +102,7 @@ export const examplesList = [
     title: 'View projection update',
     description: 'Dynamically update view projection.',
     routerLink: 'view-projection-update',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/projection-and-scale.html',
   },
   {
     title: 'Overview',
@@ -118,8 +123,8 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/static-image.html',
   },
   {
-    title: 'Select intercation static',
-    description: 'Example of using select intercation',
+    title: 'Select interaction static',
+    description: 'Example of using select interaction',
     routerLink: 'select-interaction',
     openLayersLink: 'https://openlayers.org/en/latest/examples/select-features.html',
   },

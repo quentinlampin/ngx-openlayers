@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { transform } from 'ol/proj';
+import { toStringXY } from 'ol/coordinate';
 import {
+  ControlMousePositionComponent,
   CoordinateComponent,
   DefaultControlComponent,
   DefaultInteractionComponent,
@@ -13,9 +14,10 @@ import {
 @Component({
   selector: 'app-cursor-position',
   template: `
-    <aol-map #map width="100%" height="100%" (pointerMove)="dispatchCursor($event)">
+    <aol-map>
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
+      <aol-control-mouseposition projection="EPSG:4326" [coordinateFormat]="toStringXY"></aol-control-mouseposition>
 
       <aol-view [zoom]="14">
         <aol-coordinate [x]="1.4886" [y]="43.5554" [srid]="'EPSG:4326'"></aol-coordinate>
@@ -23,33 +25,17 @@ import {
 
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
-
-    <div class="info">
-      <div class="cursor-coordinates">
-        <h3>Cursor coordinates</h3>
-        <span>Longitude: {{ lonToString(lon) }}</span> <span>Latitude: {{ latToString(lat) }}</span>
-      </div>
-    </div>
   `,
   styles: [
     `
       :host {
         height: 100%;
-        display: flex;
       }
 
       aol-map {
-        width: 70%;
-      }
-
-      .info {
-        width: 28%;
-        padding: 1rem;
-      }
-
-      .cursor-coordinates {
-        display: flex;
-        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        position: relative;
       }
     `,
   ],
@@ -61,28 +47,9 @@ import {
     CoordinateComponent,
     LayerTileComponent,
     SourceOsmComponent,
+    ControlMousePositionComponent,
   ],
 })
 export class CursorPositionComponent {
-  lon = 0;
-  lat = 0;
-
-  dispatchCursor(event): void {
-    const coordinates = event.coordinate;
-    this.lon = transform(coordinates, 'EPSG:3857', 'EPSG:4326')[0];
-    this.lat = transform(coordinates, 'EPSG:3857', 'EPSG:4326')[1];
-  }
-
-  latToString(lat: number): string {
-    return toSexagesimal(lat, '', '-');
-  }
-
-  lonToString(lon: number): string {
-    return toSexagesimal(lon, '', '-');
-  }
+  protected readonly toStringXY = (coord) => toStringXY(coord, 4);
 }
-
-const toSexagesimal = (value: number, positiveSuffix: string, negativeSuffix: string): string => {
-  const modValue = ((value + 180) % 360) - 180;
-  return (modValue > 0 ? positiveSuffix : negativeSuffix) + Math.abs(modValue).toFixed(6);
-};

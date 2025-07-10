@@ -8,11 +8,10 @@ import {
   LayerTileComponent,
   MapComponent,
   OverlayComponent,
-  SourceOsmComponent,
+  SourceTileJSONComponent,
   SourceUTFGridComponent,
   ViewComponent,
 } from 'ngx-openlayers';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -22,19 +21,25 @@ import { NgIf } from '@angular/common';
       <aol-control-defaults></aol-control-defaults>
       <aol-control-fullscreen></aol-control-fullscreen>
       <aol-view #view [zoom]="2" [center]="[3000000, 3000000]"></aol-view>
-      <aol-layer-tile> <aol-source-osm></aol-source-osm> </aol-layer-tile>
+      <aol-layer-tile>
+        <aol-source-tilejson
+          [url]="'https://api.tiles.mapbox.com/v4/mapbox.geography-class.json?secure&access_token=' + key"
+        ></aol-source-tilejson
+      ></aol-layer-tile>
       <aol-layer-tile>
         <aol-source-utfgrid
           #UTFGrid
           [url]="'https://api.tiles.mapbox.com/v4/mapbox.geography-class.json?secure&access_token=' + key"
         ></aol-source-utfgrid>
       </aol-layer-tile>
-      <aol-overlay *ngIf="coords && info" [positioning]="'bottom-right'" [stopEvent]="false">
-        <aol-coordinate [x]="coords[0]" [y]="coords[1]" [srid]="'EPSG:3857'"> </aol-coordinate>
-        <aol-content>
-          <img [src]="'data:image/png;base64,' + info['flag_png']" />
-        </aol-content>
-      </aol-overlay>
+      @if (coords && info) {
+        <aol-overlay [positioning]="'bottom-right'" [stopEvent]="false">
+          <aol-coordinate [x]="coords[0]" [y]="coords[1]" [srid]="'EPSG:3857'"> </aol-coordinate>
+          <aol-content>
+            <img [src]="'data:image/png;base64,' + info['flag_png']" />
+          </aol-content>
+        </aol-overlay>
+      }
     </aol-map>
   `,
   styles: [
@@ -51,18 +56,17 @@ import { NgIf } from '@angular/common';
     `,
   ],
   imports: [
-    NgIf,
     MapComponent,
     DefaultInteractionComponent,
     DefaultControlComponent,
     ControlFullScreenComponent,
     ViewComponent,
     LayerTileComponent,
-    SourceOsmComponent,
     SourceUTFGridComponent,
     OverlayComponent,
     CoordinateComponent,
     ContentComponent,
+    SourceTileJSONComponent,
   ],
 })
 export class UTFGridComponent {
