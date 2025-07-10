@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+  ),
+));
+
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  @include mat.all-component-themes($my-theme);
+}
+
+body {
+  font-family: "Roboto", serif;
+  margin: 0;
+}

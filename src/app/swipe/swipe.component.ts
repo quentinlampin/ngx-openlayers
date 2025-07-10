@@ -47,7 +47,7 @@ import {
         background-color: #0a2340;
         color: white;
         cursor: pointer;
-        left: calc(50% - 27px);
+        left: calc(50% - 20px);
         position: absolute;
         top: 60%;
         box-sizing: border-box;
