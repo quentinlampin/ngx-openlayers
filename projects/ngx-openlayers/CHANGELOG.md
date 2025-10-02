@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [19.0.0](https://github.com/quentin-ol/ngx-openlayers/compare/18.0.2...19.0.0) (2025-10-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Angular 17 is no more supported
+
+### build
+
+* update to Angular 19 ([83f06f8](https://github.com/quentin-ol/ngx-openlayers/commit/83f06f829672045454cb6c32b3c89e2cebc2a953)), closes [#326](https://github.com/quentin-ol/ngx-openlayers/issues/326)
+
 ## [18.0.2](https://github.com/quentin-ol/ngx-openlayers/compare/18.0.1...18.0.2) (2025-06-23)
 
 
