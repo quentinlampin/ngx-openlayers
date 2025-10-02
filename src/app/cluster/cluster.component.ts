@@ -109,7 +109,6 @@ import {
       }
     `,
   ],
-  standalone: true,
   imports: [
     NgFor,
     FormsModule,

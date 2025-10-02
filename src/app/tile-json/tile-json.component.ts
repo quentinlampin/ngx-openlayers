@@ -24,7 +24,6 @@ import {
       </aol-layer-tile>
     </aol-map>
   `,
-  standalone: true,
   imports: [
     MapComponent,
     ViewComponent,

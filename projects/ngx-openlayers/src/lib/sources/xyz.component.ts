@@ -23,10 +23,10 @@ import { SourceComponent } from './source.component';
 import BaseObject from 'ol/Object';
 
 @Component({
-    selector: 'aol-source-xyz',
-    template: ` <ng-content></ng-content> `,
-    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
-    standalone: true,
+  selector: 'aol-source-xyz',
+  template: ` <ng-content></ng-content> `,
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
+  standalone: true,
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
   @Input()

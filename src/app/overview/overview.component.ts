@@ -23,7 +23,6 @@ import {
       <aol-layer-tile #osm [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
   `,
-  standalone: true,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

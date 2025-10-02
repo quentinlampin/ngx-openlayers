@@ -52,7 +52,6 @@ import {
       }
     `,
   ],
-  standalone: true,
   imports: [
     NgIf,
     FormsModule,

@@ -18,10 +18,10 @@ import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 
 @Component({
-    selector: 'aol-source-imagearcgisrest',
-    template: ` <ng-content></ng-content> `,
-    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
-    standalone: true,
+  selector: 'aol-source-imagearcgisrest',
+  template: ` <ng-content></ng-content> `,
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
+  standalone: true,
 })
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
   @Input() projection: ProjectionLike | string;

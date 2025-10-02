@@ -42,7 +42,6 @@ import { LayerImageComponent, MapComponent, SourceImageStaticComponent, ViewComp
       }
     `,
   ],
-  standalone: true,
   imports: [FormsModule, MapComponent, ViewComponent, LayerImageComponent, SourceImageStaticComponent],
 })
 export class ImageStaticComponent {

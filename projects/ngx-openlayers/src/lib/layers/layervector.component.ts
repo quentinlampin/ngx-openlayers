@@ -10,9 +10,9 @@ import { OrderFunction } from 'ol/render';
 import { BackgroundColor } from 'ol/layer/Base';
 
 @Component({
-    selector: 'aol-layer-vector',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-layer-vector',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
   @Input()

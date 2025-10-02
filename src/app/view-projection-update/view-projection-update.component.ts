@@ -84,7 +84,6 @@ import {
       }
     `,
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MapComponent,

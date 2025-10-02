@@ -90,7 +90,6 @@ interface RasterData {
       }
     `,
   ],
-  standalone: true,
   imports: [
     NgIf,
     FormsModule,

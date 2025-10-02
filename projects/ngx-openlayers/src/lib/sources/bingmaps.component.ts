@@ -5,10 +5,10 @@ import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 
 @Component({
-    selector: 'aol-source-bingmaps',
-    template: ` <div class="aol-source-bingmaps"></div> `,
-    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
-    standalone: true,
+  selector: 'aol-source-bingmaps',
+  template: ` <div class="aol-source-bingmaps"></div> `,
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
+  standalone: true,
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   @Input()

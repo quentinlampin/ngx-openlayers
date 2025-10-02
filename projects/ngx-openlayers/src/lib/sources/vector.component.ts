@@ -10,10 +10,10 @@ import { Projection } from 'ol/proj';
 import { Feature } from 'ol';
 
 @Component({
-    selector: 'aol-source-vector',
-    template: ` <ng-content></ng-content> `,
-    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
-    standalone: true,
+  selector: 'aol-source-vector',
+  template: ` <ng-content></ng-content> `,
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
+  standalone: true,
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
   @Input()

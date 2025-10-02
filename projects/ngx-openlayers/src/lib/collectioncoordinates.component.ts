@@ -9,9 +9,9 @@ import { GeometryPolygonComponent } from './geom/geometrypolygon.component';
 import { MapComponent } from './map.component';
 
 @Component({
-    selector: 'aol-collection-coordinates',
-    template: ` <div class="aol-collection-coordinates"></div> `,
-    standalone: true,
+  selector: 'aol-collection-coordinates',
+  template: ` <div class="aol-collection-coordinates"></div> `,
+  standalone: true,
 })
 export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   @Input()
