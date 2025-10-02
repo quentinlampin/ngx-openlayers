@@ -77,7 +77,6 @@ import {
       }
     `,
   ],
-  standalone: true,
   imports: [
     NgIf,
     JsonPipe,

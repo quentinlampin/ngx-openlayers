@@ -7,9 +7,9 @@ import { StyleComponent } from './style.component';
 import { StyleTextComponent } from './text.component';
 
 @Component({
-    selector: 'aol-style-stroke',
-    template: ` <div class="aol-style-stroke"></div> `,
-    standalone: true,
+  selector: 'aol-style-stroke',
+  template: ` <div class="aol-style-stroke"></div> `,
+  standalone: true,
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input()
@@ -50,7 +50,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     // console.log('creating ol.style.Stroke instance with: ', this);
     this.instance = new Stroke(this);
 
-    if(this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
+    if (this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
       this.host.instance.setStroke(this.instance);
     } else {
       this.host.stroke = this.instance;
@@ -79,7 +79,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     if (changes.width) {
       this.instance.setWidth(changes.width.currentValue);
     }
-    if(this.host instanceof StyleCircleComponent || this.host instanceof StyleComponent) {
+    if (this.host instanceof StyleCircleComponent || this.host instanceof StyleComponent) {
       this.host.update();
     }
     // console.log('changes detected in aol-style-stroke, setting new properties: ', changes);

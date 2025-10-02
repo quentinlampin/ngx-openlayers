@@ -46,7 +46,6 @@ import {
       </aol-layer-vector>
     </aol-map>
   `,
-  standalone: true,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

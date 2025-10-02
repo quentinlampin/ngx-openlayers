@@ -11,9 +11,9 @@ import { MapComponent } from '../map.component';
 import { Type } from 'ol/geom/Geometry';
 
 @Component({
-    selector: 'aol-interaction-draw',
-    template: '',
-    standalone: true,
+  selector: 'aol-interaction-draw',
+  template: '',
+  standalone: true,
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Input()

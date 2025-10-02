@@ -19,10 +19,10 @@ import { ImageSourceEvent } from 'ol/source/Image';
 import { ServerType } from 'ol/source/wms';
 
 @Component({
-    selector: 'aol-source-imagewms',
-    template: ` <ng-content></ng-content> `,
-    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
-    standalone: true,
+  selector: 'aol-source-imagewms',
+  template: ` <ng-content></ng-content> `,
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
+  standalone: true,
 })
 export class SourceImageWMSComponent extends SourceComponent implements OnChanges, OnInit {
   @Input() attributions: AttributionLike;

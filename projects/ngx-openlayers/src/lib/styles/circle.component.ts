@@ -3,9 +3,9 @@ import { Circle, Fill, Stroke } from 'ol/style';
 import { StyleComponent } from './style.component';
 
 @Component({
-    selector: 'aol-style-circle',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-style-circle',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
   @Input()

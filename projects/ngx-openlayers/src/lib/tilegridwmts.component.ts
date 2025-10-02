@@ -5,9 +5,9 @@ import { Coordinate } from 'ol/coordinate';
 import { Size } from 'ol/size';
 
 @Component({
-    selector: 'aol-tilegrid-wmts',
-    template: '',
-    standalone: true,
+  selector: 'aol-tilegrid-wmts',
+  template: '',
+  standalone: true,
 })
 export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
   @Input()

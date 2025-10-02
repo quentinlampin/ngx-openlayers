@@ -66,7 +66,6 @@ import {
       }
     `,
   ],
-  standalone: true,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

@@ -5,9 +5,9 @@ import { Layer } from 'ol/layer';
 import { MapComponent } from '../map.component';
 
 @Component({
-    selector: 'aol-control-overviewmap',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-control-overviewmap',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
   @Input()

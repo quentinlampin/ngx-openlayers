@@ -91,7 +91,6 @@ interface MapPositionForm {
       }
     `,
   ],
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,

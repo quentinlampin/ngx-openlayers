@@ -7,9 +7,9 @@ import { Layer } from 'ol/layer';
 import { MapComponent } from '../map.component';
 
 @Component({
-    selector: 'aol-interaction-translate',
-    template: '',
-    standalone: true,
+  selector: 'aol-interaction-translate',
+  template: '',
+  standalone: true,
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {
   @Input()

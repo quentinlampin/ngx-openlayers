@@ -63,7 +63,6 @@ import { NgFor, NgIf } from '@angular/common';
       </aol-layer-group>
     </aol-map>
   `,
-  standalone: true,
   imports: [
     NgFor,
     NgIf,

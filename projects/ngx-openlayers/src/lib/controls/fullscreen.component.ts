@@ -3,9 +3,9 @@ import { FullScreen } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
-    selector: 'aol-control-fullscreen',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-control-fullscreen',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
   @Input()

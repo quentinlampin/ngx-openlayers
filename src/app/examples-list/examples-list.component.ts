@@ -8,8 +8,8 @@ interface ExamplesListForm {
   term: FormControl<string>;
 }
 @Component({
-    selector: 'app-examples-list',
-    template: `
+  selector: 'app-examples-list',
+  template: `
     <div class="search">
       <form [formGroup]="form"><input type="text" formControlName="term" placeholder="Search" /></form>
     </div>
@@ -22,8 +22,8 @@ interface ExamplesListForm {
       </div>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .search {
         display: flex;
         justify-content: center;
@@ -75,15 +75,8 @@ interface ExamplesListForm {
         font-size: 12px;
       }
     `,
-    ],
-    standalone: true,
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgFor,
-        RouterLink,
-        NgIf,
-    ],
+  ],
+  imports: [FormsModule, ReactiveFormsModule, NgFor, RouterLink, NgIf],
 })
 export class ExamplesListComponent implements OnInit {
   form: FormGroup<ExamplesListForm>;

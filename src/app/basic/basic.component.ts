@@ -99,7 +99,6 @@ import {
       }
     `,
   ],
-  standalone: true,
   imports: [
     MapComponent,
     ViewComponent,

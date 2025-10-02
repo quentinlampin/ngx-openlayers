@@ -7,9 +7,9 @@ import { MapComponent } from './map.component';
 import { ProjectionLike } from 'ol/proj';
 
 @Component({
-    selector: 'aol-view',
-    template: ` <ng-content></ng-content> `,
-    standalone: true,
+  selector: 'aol-view',
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
 })
 export class ViewComponent implements OnInit, OnChanges {
   @Input()

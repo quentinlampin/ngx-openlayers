@@ -3,9 +3,9 @@ import { DoubleClickZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
 @Component({
-    selector: 'aol-interaction-doubleclickzoom',
-    template: '',
-    standalone: true,
+  selector: 'aol-interaction-doubleclickzoom',
+  template: '',
+  standalone: true,
 })
 export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
   @Input()

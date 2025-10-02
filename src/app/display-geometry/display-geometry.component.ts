@@ -137,7 +137,6 @@ import {
       </aol-layer-group>
     </aol-map>
   `,
-  standalone: true,
   imports: [
     NgFor,
     NgSwitch,

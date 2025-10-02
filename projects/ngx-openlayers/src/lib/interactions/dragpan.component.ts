@@ -5,9 +5,9 @@ import { DragPan } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
 @Component({
-    selector: 'aol-interaction-dragpan',
-    template: '',
-    standalone: true,
+  selector: 'aol-interaction-dragpan',
+  template: '',
+  standalone: true,
 })
 export class DragPanInteractionComponent implements OnInit, OnDestroy {
   @Input()

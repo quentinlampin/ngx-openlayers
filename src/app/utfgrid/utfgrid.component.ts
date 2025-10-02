@@ -50,7 +50,6 @@ import { NgIf } from '@angular/common';
       }
     `,
   ],
-  standalone: true,
   imports: [
     NgIf,
     MapComponent,

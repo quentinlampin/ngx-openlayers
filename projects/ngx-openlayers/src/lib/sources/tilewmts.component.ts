@@ -19,10 +19,10 @@ import { Options } from 'ol/source/WMTS';
 import BaseObject from 'ol/Object';
 
 @Component({
-    selector: 'aol-source-tilewmts',
-    template: ` <ng-content></ng-content> `,
-    providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
-    standalone: true,
+  selector: 'aol-source-tilewmts',
+  template: ` <ng-content></ng-content> `,
+  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
+  standalone: true,
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {
   @Input()

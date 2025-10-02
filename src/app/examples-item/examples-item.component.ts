@@ -4,8 +4,8 @@ import { Router, RouterOutlet } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-examples-item',
-    template: `
+  selector: 'app-examples-item',
+  template: `
     <div class="example-info" *ngIf="exampleInfo">
       <span class="title">{{ exampleInfo.title }}</span> <span class="description">{{ exampleInfo.description }}</span>
       <div *ngIf="exampleInfo.openLayersLink" class="open-layers-link">
@@ -16,8 +16,8 @@ import { NgIf } from '@angular/common';
       <router-outlet></router-outlet>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       :host {
         height: 100%;
         display: flex;
@@ -55,9 +55,8 @@ import { NgIf } from '@angular/common';
         flex: 1 1 auto;
       }
     `,
-    ],
-    standalone: true,
-    imports: [NgIf, RouterOutlet],
+  ],
+  imports: [NgIf, RouterOutlet],
 })
 export class ExamplesItemComponent implements OnInit {
   exampleInfo;
