@@ -3,6 +3,19 @@
 ## Demo
 https://quentin-ol.github.io/ngx-openlayers/
 
+## Dependencies
+
+ngx-openlayers works with the following versions which must be installed as peer dependencies:
+
+| ngx-openlayers | Angular        | Openlayers     |
+|----------------|----------------|----------------|
+| 19.x           | ^19.0.0        | ~10.5.0        |
+| 18.x           | ^18.0.0        | ~10.5.0        |
+| 17.x           | ^17.0.0        | ~9.2.4         |
+| 16.x           | ^16.0.0        | ~8.2.0         |
+| 15.x           | ^15.0.0        | ~7.5.2         |
+| 14.x           | ^14.0.0        | ~6.15.1        |
+
 ## Installation
 
 To install this library, run:
