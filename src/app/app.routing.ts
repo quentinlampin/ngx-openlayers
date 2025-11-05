@@ -24,6 +24,7 @@ import { TileJsonComponent } from './tile-json/tile-json.component';
 import { SelectInteractionComponent } from './select-interaction/select-interaction.component';
 import { ImageStaticComponent } from './image-static/image-static.component';
 import { GraticuleComponent } from './graticule/graticule.component';
+import { SnapInteractionComponent } from './snap-interaction/snap-interaction.component';
 
 export const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -54,6 +55,7 @@ export const routes: Routes = [
       { path: 'select-interaction', component: SelectInteractionComponent },
       { path: 'tile-json', component: TileJsonComponent },
       { path: 'graticule', component: GraticuleComponent },
+      { path: 'snap', component: SnapInteractionComponent },
     ],
   },
   { path: '**', redirectTo: '' },

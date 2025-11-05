@@ -140,4 +140,10 @@ export const examplesList = [
     routerLink: 'graticule',
     openLayersLink: 'https://openlayers.org/en/latest/examples/graticule.html',
   },
+  {
+    title: 'Snap',
+    description: 'Example of snap interaction',
+    routerLink: 'snap',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/snap.html',
+  },
 ];
