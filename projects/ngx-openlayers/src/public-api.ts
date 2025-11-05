@@ -76,6 +76,7 @@ import { AttributionsComponent } from './lib/attributions.component';
 import { AttributionComponent } from './lib/attribution.component';
 import { SourceUTFGridComponent } from './lib/sources/utfgrid.component';
 import { LayerComponent } from './lib/layers/layer.component';
+import { SnapInteractionComponent } from './lib/interactions/snap.component';
 
 export {
   MapComponent,
@@ -148,6 +149,7 @@ export {
   SelectInteractionComponent,
   ModifyInteractionComponent,
   TranslateInteractionComponent,
+  SnapInteractionComponent,
   OverlayComponent,
   ContentComponent,
   AttributionsComponent,
