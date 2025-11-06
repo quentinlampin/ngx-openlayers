@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [19.1.0](https://github.com/quentin-ol/ngx-openlayers/compare/19.0.0...19.1.0) (2025-11-06)
+
+
+### Features
+
+* **interaction:** snap interaction ([cd0e34e](https://github.com/quentin-ol/ngx-openlayers/commit/cd0e34ec345da3e1181fca7486bba3a18e43a766)), closes [#335](https://github.com/quentin-ol/ngx-openlayers/issues/335)
+
 ## [19.0.0](https://github.com/quentin-ol/ngx-openlayers/compare/18.0.2...19.0.0) (2025-10-02)
 
 
