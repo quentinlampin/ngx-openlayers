@@ -24,7 +24,7 @@ jobs:
           node-version: ${{env.NODE_JS_VERSION}}
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install -g npm@latest
+      - run: sudo npm install -g npm@latest
       - uses: actions/cache@v3
         with:
           key: node_modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
