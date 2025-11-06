@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [19.1.3](https://github.com/quentinlampin/ngx-openlayers/compare/19.1.2...19.1.3) (2025-11-06)
+
 ## [19.1.2](https://github.com/quentin-ol/ngx-openlayers/compare/19.1.1...19.1.2) (2025-11-06)
 
 ## [19.1.1](https://github.com/quentin-ol/ngx-openlayers/compare/19.1.0...19.1.1) (2025-11-06)
