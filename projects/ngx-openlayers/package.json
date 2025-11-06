@@ -1,5 +1,9 @@
 {
   "name": "ngx-openlayers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quentinlampin/ngx-openlayers.git"
+  },
   "version": "19.1.2",
   "scripts": {
     "pre-release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\" --prerelease next",
