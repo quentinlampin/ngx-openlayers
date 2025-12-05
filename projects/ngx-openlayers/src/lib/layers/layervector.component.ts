@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Vector } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Style } from 'ol/style';
@@ -32,7 +32,10 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   source: VectorSource;
 
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
+  constructor() {
+    const map = inject(MapComponent);
+    const group = inject(LayerGroupComponent, { optional: true });
+
     super(group || map);
   }
 

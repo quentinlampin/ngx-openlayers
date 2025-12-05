@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, inject } from '@angular/core';
 import { Feature } from 'ol';
 import { SourceVectorComponent } from './sources/vector.component';
 
@@ -8,13 +8,13 @@ import { SourceVectorComponent } from './sources/vector.component';
   standalone: true,
 })
 export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
+  private host = inject(SourceVectorComponent);
+
   @Input()
   id: string | number | undefined;
 
   componentType = 'feature';
   instance: Feature;
-
-  constructor(private host: SourceVectorComponent) {}
 
   ngOnInit(): void {
     this.instance = new Feature();

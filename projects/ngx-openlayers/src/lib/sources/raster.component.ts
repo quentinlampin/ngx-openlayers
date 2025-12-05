@@ -1,13 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChild,
-  EventEmitter,
-  forwardRef,
-  Host,
-  Input,
-  Output,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, forwardRef, Input, Output, inject } from '@angular/core';
 import { Raster, Source } from 'ol/source';
 import { Options, RasterSourceEvent } from 'ol/source/Raster';
 
@@ -43,7 +34,9 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   instance: Raster;
   sources: Source[] = [];
 
-  constructor(@Host() layer: LayerImageComponent) {
+  constructor() {
+    const layer = inject(LayerImageComponent, { host: true });
+
     super(layer);
   }
 

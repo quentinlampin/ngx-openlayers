@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { examplesList } from '../example-list';
 import { Router, RouterOutlet } from '@angular/router';
 
@@ -63,8 +63,9 @@ import { Router, RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
 })
 export class ExamplesItemComponent implements OnInit {
+  private router = inject(Router);
+
   exampleInfo;
-  constructor(private router: Router) {}
   ngOnInit(): void {
     this.exampleInfo = examplesList.find((item) => this.router.url.includes(item.routerLink));
   }

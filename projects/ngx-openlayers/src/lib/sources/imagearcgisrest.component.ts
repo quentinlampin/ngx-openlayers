@@ -1,14 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Host,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import { ProjectionLike } from 'ol/proj';
 import { ImageArcGISRest } from 'ol/source';
@@ -43,7 +33,9 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
 
   instance: ImageArcGISRest;
 
-  constructor(@Host() layer: LayerImageComponent) {
+  constructor() {
+    const layer = inject(LayerImageComponent, { host: true });
+
     super(layer);
   }
 

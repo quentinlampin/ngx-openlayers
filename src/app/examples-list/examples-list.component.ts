@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { examplesList } from '../example-list';
 import { RouterLink } from '@angular/router';
@@ -83,10 +83,10 @@ interface ExamplesListForm {
   imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class ExamplesListComponent implements OnInit {
+  private fb = inject(FormBuilder);
+
   form: FormGroup<ExamplesListForm>;
   list = examplesList;
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

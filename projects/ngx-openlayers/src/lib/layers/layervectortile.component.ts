@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { VectorTile } from 'ol/layer';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
@@ -38,7 +38,10 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
   @Input()
   cacheSize: number;
 
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
+  constructor() {
+    const map = inject(MapComponent);
+    const group = inject(LayerGroupComponent, { optional: true });
+
     super(group || map);
   }
 

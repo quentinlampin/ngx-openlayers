@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FeatureComponent } from '../feature.component';
 import { SimpleGeometryComponent } from './simplegeometry.component';
 import { MapComponent } from '../map.component';
@@ -13,7 +13,10 @@ export class GeometryPolygonComponent extends SimpleGeometryComponent implements
   public componentType = 'geometry-polygon';
   public instance: Polygon;
 
-  constructor(map: MapComponent, host: FeatureComponent) {
+  constructor() {
+    const map = inject(MapComponent);
+    const host = inject(FeatureComponent);
+
     super(map, host);
   }
 

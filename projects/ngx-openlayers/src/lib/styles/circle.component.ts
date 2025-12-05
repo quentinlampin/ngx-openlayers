@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Host, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
 import { Circle, Fill, Stroke } from 'ol/style';
 import { StyleComponent } from './style.component';
 
@@ -8,6 +8,8 @@ import { StyleComponent } from './style.component';
   standalone: true,
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
+  private host = inject(StyleComponent, { host: true });
+
   @Input()
   fill: Fill;
   @Input()
@@ -17,8 +19,6 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
 
   componentType = 'style-circle';
   instance: Circle;
-
-  constructor(@Host() private host: StyleComponent) {}
 
   /**
    * WORK-AROUND: since the re-rendering is not triggered on style change

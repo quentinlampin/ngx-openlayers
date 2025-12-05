@@ -1,14 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Host,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { ImageWMS } from 'ol/source';
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
@@ -42,7 +32,9 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
 
   instance: ImageWMS;
 
-  constructor(@Host() layer: LayerImageComponent) {
+  constructor() {
+    const layer = inject(LayerImageComponent, { host: true });
+
     super(layer);
   }
 

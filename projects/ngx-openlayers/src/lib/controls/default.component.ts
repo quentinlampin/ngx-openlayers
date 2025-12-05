@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Collection } from 'ol';
 import { Control, defaults } from 'ol/control';
 import { Options as AttributionOptions } from 'ol/control/Attribution';
@@ -13,6 +13,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   attribution: boolean;
   @Input()
@@ -27,8 +29,6 @@ export class DefaultControlComponent implements OnInit, OnDestroy {
   zoomOptions: ZoomOptions;
 
   instance: Collection<Control>;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     // console.log('ol.control.defaults init: ', this);

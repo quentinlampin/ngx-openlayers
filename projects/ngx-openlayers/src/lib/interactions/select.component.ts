@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Condition } from 'ol/events/condition';
@@ -15,6 +15,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   addCondition?: Condition;
   @Input()
@@ -44,8 +46,6 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
   propertyChange = new EventEmitter<ObjectEvent>();
 
   instance: Select;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new Select(this);

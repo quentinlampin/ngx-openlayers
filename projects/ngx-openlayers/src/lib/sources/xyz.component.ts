@@ -1,16 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChild,
-  EventEmitter,
-  forwardRef,
-  Host,
-  Input,
-  OnChanges,
-  Optional,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
 import { Size } from 'ol/size';
 import { XYZ } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
@@ -29,6 +17,8 @@ import BaseObject from 'ol/Object';
   standalone: true,
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
+  protected layer?: LayerTileComponent;
+
   @Input()
   cacheSize: number;
   @Input()
@@ -72,12 +62,12 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
 
   instance: XYZ;
 
-  constructor(
-    @Optional()
-    @Host()
-    protected layer?: LayerTileComponent
-  ) {
+  constructor() {
+    const layer = inject(LayerTileComponent, { optional: true, host: true });
+
     super(layer);
+  
+    this.layer = layer;
   }
 
   ngAfterContentInit(): void {

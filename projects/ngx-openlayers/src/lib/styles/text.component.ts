@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Text } from 'ol/style';
 import { StyleComponent } from './style.component';
 
@@ -8,6 +8,8 @@ import { StyleComponent } from './style.component';
   standalone: true,
 })
 export class StyleTextComponent implements OnInit, OnChanges {
+  private host = inject(StyleComponent, { optional: true });
+
   @Input()
   font: string | undefined;
   @Input()
@@ -30,7 +32,9 @@ export class StyleTextComponent implements OnInit, OnChanges {
   instance: Text;
   componentType = 'style-text';
 
-  constructor(@Optional() private host: StyleComponent) {
+  constructor() {
+    const host = this.host;
+
     if (!host) {
       throw new Error('aol-style-text must be a descendant of aol-style');
     }

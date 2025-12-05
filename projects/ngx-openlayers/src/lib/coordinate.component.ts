@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, inject } from '@angular/core';
 import { transform } from 'ol/proj';
 import { GeometryCircleComponent } from './geom/geometrycircle.component';
 import { GeometryPointComponent } from './geom/geometrypoint.component';
@@ -12,6 +12,8 @@ import { ViewComponent } from './view.component';
   standalone: true,
 })
 export class CoordinateComponent implements OnChanges, OnInit {
+  private map = inject(MapComponent);
+
   @Input()
   x: number;
   @Input()
@@ -22,13 +24,12 @@ export class CoordinateComponent implements OnChanges, OnInit {
   private host: ViewComponent | GeometryPointComponent | GeometryCircleComponent | OverlayComponent;
   private mapSrid = 'EPSG:3857';
 
-  constructor(
-    private map: MapComponent,
-    @Optional() viewHost: ViewComponent,
-    @Optional() geometryPointHost: GeometryPointComponent,
-    @Optional() geometryCircleHost: GeometryCircleComponent,
-    @Optional() overlayHost: OverlayComponent
-  ) {
+  constructor() {
+    const viewHost = inject(ViewComponent, { optional: true });
+    const geometryPointHost = inject(GeometryPointComponent, { optional: true });
+    const geometryCircleHost = inject(GeometryCircleComponent, { optional: true });
+    const overlayHost = inject(OverlayComponent, { optional: true });
+
     // console.log('instancing aol-coordinate');
     if (geometryPointHost !== null) {
       this.host = geometryPointHost;

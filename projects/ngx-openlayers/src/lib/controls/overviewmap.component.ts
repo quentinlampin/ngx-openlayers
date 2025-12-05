@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { View } from 'ol';
 import { OverviewMap } from 'ol/control';
 import { Layer } from 'ol/layer';
@@ -10,6 +10,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   collapsed: boolean;
   @Input()
@@ -28,8 +30,6 @@ export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy
   view: View;
 
   instance: OverviewMap;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new OverviewMap(this);

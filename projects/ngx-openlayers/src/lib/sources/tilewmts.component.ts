@@ -1,15 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChild,
-  EventEmitter,
-  forwardRef,
-  Host,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
 import { WMTS } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -74,7 +63,9 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
 
   instance: WMTS;
 
-  constructor(@Host() layer: LayerTileComponent) {
+  constructor() {
+    const layer = inject(LayerTileComponent, { host: true });
+
     super(layer);
   }
 

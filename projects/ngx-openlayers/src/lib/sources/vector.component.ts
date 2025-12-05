@@ -1,4 +1,4 @@
-import { Component, forwardRef, Host, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, inject } from '@angular/core';
 import { Vector } from 'ol/source';
 import { default as FeatureFormat } from 'ol/format/Feature';
 import { LayerVectorComponent } from '../layers/layervector.component';
@@ -50,7 +50,9 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
 
   instance: Vector;
 
-  constructor(@Host() layer: LayerVectorComponent) {
+  constructor() {
+    const layer = inject(LayerVectorComponent, { host: true });
+
     super(layer);
   }
 

@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, forwardRef, inject } from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { BingMaps } from 'ol/source';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -34,7 +34,9 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
 
   instance: BingMaps;
 
-  constructor(@Host() layer: LayerTileComponent) {
+  constructor() {
+    const layer = inject(LayerTileComponent, { host: true });
+
     super(layer);
   }
 
