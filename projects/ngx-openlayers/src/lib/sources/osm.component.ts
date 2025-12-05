@@ -1,9 +1,8 @@
-import { AfterContentInit, Component, EventEmitter, forwardRef, Host, Input, Optional, Output } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { OSM } from 'ol/source';
 import { AttributionLike } from 'ol/source/Source';
 import { TileSourceEvent } from 'ol/source/Tile';
 import { LoadFunction } from 'ol/Tile';
-import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 import { SourceXYZComponent } from './xyz.component';
 
@@ -41,14 +40,6 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
   instance: OSM;
-
-  constructor(
-    @Optional()
-    @Host()
-    protected layer?: LayerTileComponent
-  ) {
-    super(layer);
-  }
 
   ngAfterContentInit(): void {
     if (this.tileGridXYZ) {

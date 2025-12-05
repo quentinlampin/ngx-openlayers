@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
+
 import {
   CollectionCoordinatesComponent,
   CoordinateComponent,
@@ -54,112 +54,115 @@ interface CircleGeoJSONLike extends Pick<GeoJSONFeature, 'type' | 'properties'> 
       </aol-layer-tile>
 
       <aol-layer-group>
-        <aol-layer-vector *ngFor="let feature of features" [ngSwitch]="feature.geometry.type">
-          <aol-source-vector *ngSwitchCase="'Polygon'">
-            @for (feature of features; track $index) {
-              <aol-feature>
-                @switch (feature.geometry.type) {
-                  @case ('Polygon') {
-                    <aol-style>
-                      <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
-                      <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
-                    </aol-style>
-                    <aol-geometry-polygon>
-                      <aol-collection-coordinates
-                        [coordinates]="$any(feature.geometry.coordinates)"
-                        [srid]="'EPSG:4326'"
-                      >
-                      </aol-collection-coordinates>
-                    </aol-geometry-polygon>
+        @for (feature of features; track feature) {
+          <aol-layer-vector>
+            @switch (feature.geometry.type) {
+              @case ('Polygon') {
+                <aol-source-vector>
+                  @for (feature of features; track $index) {
+                    <aol-feature>
+                      @switch (feature.geometry.type) {
+                        @case ('Polygon') {
+                          <aol-style>
+                            <aol-style-stroke [color]="'rgba(90, 17, 26)'" [width]="3"></aol-style-stroke>
+                            <aol-style-fill [color]="'rgba(90, 17, 26, 0.5)'"></aol-style-fill>
+                          </aol-style>
+                          <aol-geometry-polygon>
+                            <aol-collection-coordinates
+                              [coordinates]="$any(feature.geometry.coordinates)"
+                              [srid]="'EPSG:4326'"
+                            >
+                            </aol-collection-coordinates>
+                          </aol-geometry-polygon>
+                        }
+                        @case ('Point') {
+                          <aol-geometry-point>
+                            <aol-coordinate
+                              [x]="$any(feature.geometry.coordinates[0])"
+                              [y]="$any(feature.geometry.coordinates[1])"
+                              [srid]="'EPSG:4326'"
+                            >
+                            </aol-coordinate>
+                            <aol-style>
+                              <aol-style-circle [radius]="10">
+                                <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
+                                <aol-style-fill [color]="'green'"></aol-style-fill>
+                              </aol-style-circle>
+                            </aol-style>
+                          </aol-geometry-point>
+                        }
+                        @case ('LineString') {
+                          <aol-geometry-linestring>
+                            <aol-collection-coordinates
+                              [coordinates]="$any(feature.geometry.coordinates)"
+                              [srid]="'EPSG:4326'"
+                            >
+                            </aol-collection-coordinates>
+                          </aol-geometry-linestring>
+                        }
+                        @case ('Circle') {
+                          <aol-geometry-circle [radius]="feature.geometry.radius">
+                            <aol-coordinate
+                              [x]="$any(feature.geometry.coordinates[0])"
+                              [y]="$any(feature.geometry.coordinates[1])"
+                              srid="EPSG:4326"
+                            >
+                            </aol-coordinate>
+                            <aol-style>
+                              <aol-style-stroke color="blue" [width]="2"></aol-style-stroke>
+                              <aol-style-fill color="rgba(255, 255, 0, 0.5)"></aol-style-fill>
+                            </aol-style>
+                          </aol-geometry-circle>
+                        }
+                        @case ('MultiPoint') {
+                          <aol-geometry-multipoint>
+                            <aol-collection-coordinates
+                              [coordinates]="$any(feature.geometry.coordinates)"
+                              [srid]="'EPSG:4326'"
+                            >
+                            </aol-collection-coordinates>
+                            <aol-style>
+                              <aol-style-circle [radius]="5">
+                                <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
+                                <aol-style-fill [color]="'green'"></aol-style-fill>
+                              </aol-style-circle>
+                            </aol-style>
+                          </aol-geometry-multipoint>
+                        }
+                        @case ('MultiLineString') {
+                          <aol-geometry-multilinestring>
+                            <aol-collection-coordinates
+                              [coordinates]="$any(feature.geometry.coordinates)"
+                              [srid]="'EPSG:4326'"
+                            >
+                            </aol-collection-coordinates>
+                          </aol-geometry-multilinestring>
+                        }
+                        @case ('MultiPolygon') {
+                          <aol-style>
+                            <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" [width]="2"></aol-style-stroke>
+                            <aol-style-fill [color]="'rgba(81, 15.3, 23.4, 0.4)'"></aol-style-fill>
+                          </aol-style>
+                          <aol-geometry-multipolygon>
+                            <aol-collection-coordinates
+                              [coordinates]="$any(feature.geometry.coordinates)"
+                              [srid]="'EPSG:4326'"
+                            >
+                            </aol-collection-coordinates>
+                          </aol-geometry-multipolygon>
+                        }
+                      }
+                    </aol-feature>
                   }
-                  @case ('Point') {
-                    <aol-geometry-point>
-                      <aol-coordinate
-                        [x]="$any(feature.geometry.coordinates[0])"
-                        [y]="$any(feature.geometry.coordinates[1])"
-                        [srid]="'EPSG:4326'"
-                      >
-                      </aol-coordinate>
-                      <aol-style>
-                        <aol-style-circle [radius]="10">
-                          <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
-                          <aol-style-fill [color]="'green'"></aol-style-fill>
-                        </aol-style-circle>
-                      </aol-style>
-                    </aol-geometry-point>
-                  }
-                  @case ('LineString') {
-                    <aol-geometry-linestring>
-                      <aol-collection-coordinates
-                        [coordinates]="$any(feature.geometry.coordinates)"
-                        [srid]="'EPSG:4326'"
-                      >
-                      </aol-collection-coordinates>
-                    </aol-geometry-linestring>
-                  }
-                  @case ('Circle') {
-                    <aol-geometry-circle [radius]="feature.geometry.radius">
-                      <aol-coordinate
-                        [x]="$any(feature.geometry.coordinates[0])"
-                        [y]="$any(feature.geometry.coordinates[1])"
-                        srid="EPSG:4326"
-                      >
-                      </aol-coordinate>
-                      <aol-style>
-                        <aol-style-stroke color="blue" [width]="2"></aol-style-stroke>
-                        <aol-style-fill color="rgba(255, 255, 0, 0.5)"></aol-style-fill>
-                      </aol-style>
-                    </aol-geometry-circle>
-                  }
-                  @case ('MultiPoint') {
-                    <aol-geometry-multipoint>
-                      <aol-collection-coordinates
-                        [coordinates]="$any(feature.geometry.coordinates)"
-                        [srid]="'EPSG:4326'"
-                      >
-                      </aol-collection-coordinates>
-                      <aol-style>
-                        <aol-style-circle [radius]="5">
-                          <aol-style-stroke [color]="'black'" [width]="5"></aol-style-stroke>
-                          <aol-style-fill [color]="'green'"></aol-style-fill>
-                        </aol-style-circle>
-                      </aol-style>
-                    </aol-geometry-multipoint>
-                  }
-                  @case ('MultiLineString') {
-                    <aol-geometry-multilinestring>
-                      <aol-collection-coordinates
-                        [coordinates]="$any(feature.geometry.coordinates)"
-                        [srid]="'EPSG:4326'"
-                      >
-                      </aol-collection-coordinates>
-                    </aol-geometry-multilinestring>
-                  }
-                  @case ('MultiPolygon') {
-                    <aol-style>
-                      <aol-style-stroke [color]="'rgba(81, 15.3, 23.4)'" [width]="2"></aol-style-stroke>
-                      <aol-style-fill [color]="'rgba(81, 15.3, 23.4, 0.4)'"></aol-style-fill>
-                    </aol-style>
-                    <aol-geometry-multipolygon>
-                      <aol-collection-coordinates
-                        [coordinates]="$any(feature.geometry.coordinates)"
-                        [srid]="'EPSG:4326'"
-                      >
-                      </aol-collection-coordinates>
-                    </aol-geometry-multipolygon>
-                  }
-                }
-              </aol-feature>
+                </aol-source-vector>
+              }
             }
-          </aol-source-vector>
-        </aol-layer-vector>
+          </aol-layer-vector>
+        }
       </aol-layer-group>
     </aol-map>
   `,
   imports: [
-    NgFor,
-    NgSwitch,
-    NgSwitchCase,
     MapComponent,
     DefaultInteractionComponent,
     DefaultControlComponent,

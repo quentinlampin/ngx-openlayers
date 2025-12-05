@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, inject } from '@angular/core';
 import { Coordinate } from 'ol/coordinate';
 import { transform } from 'ol/proj';
 import { GeometryLinestringComponent } from './geom/geometrylinestring.component';
@@ -14,6 +14,8 @@ import { MapComponent } from './map.component';
   standalone: true,
 })
 export class CollectionCoordinatesComponent implements OnChanges, OnInit {
+  private map = inject(MapComponent);
+
   @Input()
   coordinates: Coordinate[] | Coordinate[][] | Coordinate[][][];
   @Input()
@@ -27,14 +29,13 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
     | GeometryMultiPolygonComponent;
   private mapSrid = 'EPSG:3857';
 
-  constructor(
-    private map: MapComponent,
-    @Optional() geometryLinestring: GeometryLinestringComponent,
-    @Optional() geometryPolygon: GeometryPolygonComponent,
-    @Optional() geometryMultipoint: GeometryMultiPointComponent,
-    @Optional() geometryMultilinestring: GeometryMultiLinestringComponent,
-    @Optional() geometryMultipolygon: GeometryMultiPolygonComponent
-  ) {
+  constructor() {
+    const geometryLinestring = inject(GeometryLinestringComponent, { optional: true });
+    const geometryPolygon = inject(GeometryPolygonComponent, { optional: true });
+    const geometryMultipoint = inject(GeometryMultiPointComponent, { optional: true });
+    const geometryMultilinestring = inject(GeometryMultiLinestringComponent, { optional: true });
+    const geometryMultipolygon = inject(GeometryMultiPolygonComponent, { optional: true });
+
     const geometryComponent =
       geometryLinestring ??
       geometryPolygon ??

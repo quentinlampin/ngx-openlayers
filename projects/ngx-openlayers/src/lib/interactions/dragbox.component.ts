@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Condition } from 'ol/events/condition';
 import { DragBox } from 'ol/interaction';
 import { EndCondition } from 'ol/interaction/DragBox';
@@ -10,6 +10,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   className: string;
   @Input()
@@ -18,8 +20,6 @@ export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   boxEndCondition: EndCondition;
 
   instance: DragBox;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new DragBox(this);

@@ -5,7 +5,7 @@ import { Polygon } from 'ol/geom';
 import Projection from 'ol/proj/Projection';
 import { FeatureLike } from 'ol/Feature';
 import { Feature as GeoJSonFeature, Polygon as GeoJSonPolygon } from 'geojson';
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import {
   CollectionCoordinatesComponent,
   CoordinateComponent,
@@ -41,16 +41,18 @@ import {
 
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
-      <aol-layer-vector *ngIf="feature">
-        <aol-source-vector>
-          <aol-feature>
-            <aol-geometry-polygon>
-              <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
-              </aol-collection-coordinates>
-            </aol-geometry-polygon>
-          </aol-feature>
-        </aol-source-vector>
-      </aol-layer-vector>
+      @if (feature) {
+        <aol-layer-vector>
+          <aol-source-vector>
+            <aol-feature>
+              <aol-geometry-polygon>
+                <aol-collection-coordinates [coordinates]="feature.geometry.coordinates" [srid]="'EPSG:4326'">
+                </aol-collection-coordinates>
+              </aol-geometry-polygon>
+            </aol-feature>
+          </aol-source-vector>
+        </aol-layer-vector>
+      }
     </aol-map>
 
     <div class="info">
@@ -78,7 +80,6 @@ import {
     `,
   ],
   imports: [
-    NgIf,
     JsonPipe,
     MapComponent,
     DefaultInteractionComponent,

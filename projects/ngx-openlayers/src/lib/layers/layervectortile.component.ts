@@ -1,10 +1,8 @@
-import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { VectorTile } from 'ol/layer';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
-import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
-import { LayerGroupComponent } from './layergroup.component';
 import { VectorTileRenderType } from 'ol/layer/VectorTile';
 import { OrderFunction } from 'ol/render';
 import { BackgroundColor } from 'ol/layer/Base';
@@ -14,7 +12,7 @@ import { BackgroundColor } from 'ol/layer/Base';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerVectorTileComponent extends LayerComponent implements OnInit, OnChanges {
+export class LayerVectorTileComponent extends LayerComponent {
   @Input()
   renderOrder: OrderFunction;
   @Input()
@@ -38,17 +36,5 @@ export class LayerVectorTileComponent extends LayerComponent implements OnInit, 
   @Input()
   cacheSize: number;
 
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
-    super(group || map);
-  }
-
-  ngOnInit(): void {
-    // console.log('creating ol.layer.VectorTile instance with:', this);
-    this.instance = new VectorTile(this);
-    super.ngOnInit();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    super.ngOnChanges(changes);
-  }
+  instance = new VectorTile(this);
 }

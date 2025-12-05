@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Attribution } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -8,17 +8,15 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+  private element = inject(ElementRef);
+
   @Input()
   collapsible: boolean;
 
   componentType = 'control';
   instance: Attribution;
   target: HTMLElement;
-
-  constructor(
-    private map: MapComponent,
-    private element: ElementRef
-  ) {}
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;

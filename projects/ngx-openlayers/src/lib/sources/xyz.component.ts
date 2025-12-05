@@ -4,10 +4,9 @@ import {
   ContentChild,
   EventEmitter,
   forwardRef,
-  Host,
+  inject,
   Input,
   OnChanges,
-  Optional,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -29,6 +28,8 @@ import BaseObject from 'ol/Object';
   standalone: true,
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {
+  protected layer?: LayerTileComponent;
+
   @Input()
   cacheSize: number;
   @Input()
@@ -71,14 +72,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
   instance: XYZ;
-
-  constructor(
-    @Optional()
-    @Host()
-    protected layer?: LayerTileComponent
-  ) {
-    super(layer);
-  }
+  host = inject(LayerTileComponent, { optional: true, host: true });
 
   ngAfterContentInit(): void {
     if (this.tileGridXYZ) {

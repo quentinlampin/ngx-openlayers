@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ContentChild, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Overlay } from 'ol';
 import { PanOptions, Positioning } from 'ol/Overlay';
 import { ContentComponent } from './content.component';
@@ -10,6 +10,8 @@ import { MapComponent } from './map.component';
   standalone: true,
 })
 export class OverlayComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
 
@@ -33,8 +35,6 @@ export class OverlayComponent implements OnInit, OnDestroy {
   componentType = 'overlay';
   instance: Overlay;
   element: HTMLElement;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     if (this.content) {

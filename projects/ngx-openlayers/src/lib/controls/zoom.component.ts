@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Zoom } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -8,6 +8,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   duration: number;
   @Input()
@@ -22,10 +24,6 @@ export class ControlZoomComponent implements OnInit, OnDestroy {
   delta: number;
 
   instance: Zoom;
-
-  constructor(private map: MapComponent) {
-    // console.log('instancing aol-control-zoom');
-  }
 
   ngOnInit(): void {
     this.instance = new Zoom(this);

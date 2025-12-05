@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, forwardRef, Host, Input } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, forwardRef, inject, Input } from '@angular/core';
 import { UrlFunction } from 'ol/Tile';
 import FeatureFormat from 'ol/format/Feature';
 import { ProjectionLike } from 'ol/proj';
@@ -44,10 +44,7 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   tileGrid: TileGrid;
 
   instance: VectorTile<FeatureLike>;
-
-  constructor(@Host() layer: LayerVectorTileComponent) {
-    super(layer);
-  }
+  host = inject(LayerVectorTileComponent, { host: true });
 
   /* need the children to construct the OL3 object */
   ngAfterContentInit(): void {

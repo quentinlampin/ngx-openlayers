@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
 import { GeoJSON } from 'ol/format';
 import FeatureFormat from 'ol/format/Feature';
 import { ProjectionLike } from 'ol/proj';
@@ -24,10 +24,7 @@ export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
 
   instance: Vector;
   format: FeatureFormat;
-
-  constructor(@Host() layer: LayerVectorComponent) {
-    super(layer);
-  }
+  host = inject(LayerVectorComponent, { host: true });
 
   ngOnInit(): void {
     this.format = new GeoJSON(this);

@@ -1,11 +1,9 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Vector } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
-import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
-import { LayerGroupComponent } from './layergroup.component';
 import { OrderFunction } from 'ol/render';
 import { BackgroundColor } from 'ol/layer/Base';
 
@@ -14,7 +12,7 @@ import { BackgroundColor } from 'ol/layer/Base';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerVectorComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
+export class LayerVectorComponent extends LayerComponent {
   @Input()
   renderBuffer: number;
   @Input()
@@ -32,17 +30,5 @@ export class LayerVectorComponent extends LayerComponent implements OnInit, OnDe
 
   source: VectorSource;
 
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
-    super(group || map);
-  }
-
-  ngOnInit(): void {
-    // console.log('creating ol.layer.Vector instance with:', this);
-    this.instance = new Vector(this);
-    super.ngOnInit();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    super.ngOnChanges(changes);
-  }
+  instance = new Vector(this);
 }

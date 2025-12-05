@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Condition } from 'ol/events/condition';
 import { DragZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
@@ -9,6 +9,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragZoomInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   className: string;
   @Input()
@@ -19,8 +21,6 @@ export class DragZoomInteractionComponent implements OnInit, OnDestroy {
   out: boolean;
 
   instance: DragZoom;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new DragZoom(this);

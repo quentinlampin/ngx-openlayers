@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
 import { Graticule } from 'ol';
 import { Stroke } from 'ol/style';
 import { MapComponent } from './map.component';
@@ -10,6 +10,8 @@ import { Options } from 'ol/layer/Graticule';
   standalone: true,
 })
 export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   strokeStyle: Stroke;
   @Input()
@@ -21,8 +23,6 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
 
   instance: Graticule;
   componentType = 'graticule';
-
-  constructor(private map: MapComponent) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {

@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FeatureComponent } from '../feature.component';
+import { Component } from '@angular/core';
 import { SimpleGeometryComponent } from './simplegeometry.component';
-import { MapComponent } from '../map.component';
 import { LineString } from 'ol/geom';
 
 @Component({
@@ -9,19 +7,10 @@ import { LineString } from 'ol/geom';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class GeometryLinestringComponent extends SimpleGeometryComponent implements OnInit {
+export class GeometryLinestringComponent extends SimpleGeometryComponent {
   public componentType = 'geometry-linestring';
-  public instance: LineString;
-
-  constructor(map: MapComponent, host: FeatureComponent) {
-    super(map, host);
-  }
-
-  ngOnInit(): void {
-    this.instance = new LineString([
-      [0, 0],
-      [1, 1],
-    ]);
-    super.ngOnInit();
-  }
+  public instance = new LineString([
+    [0, 0],
+    [1, 1],
+  ]);
 }

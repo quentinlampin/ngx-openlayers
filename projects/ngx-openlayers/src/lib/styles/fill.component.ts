@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Fill } from 'ol/style';
 import { StyleComponent } from './style.component';
 import { StyleCircleComponent } from './circle.component';
@@ -18,11 +18,11 @@ export class StyleFillComponent implements OnInit, OnChanges {
   instance: Fill;
   private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
-  constructor(
-    @Optional() styleHost: StyleComponent,
-    @Optional() styleCircleHost: StyleCircleComponent,
-    @Optional() styleTextHost: StyleTextComponent
-  ) {
+  constructor() {
+    const styleHost = inject(StyleComponent, { optional: true });
+    const styleCircleHost = inject(StyleCircleComponent, { optional: true });
+    const styleTextHost = inject(StyleTextComponent, { optional: true });
+
     if (!styleHost) {
       throw new Error('aol-style-stroke must be a descendant of aol-style');
     }

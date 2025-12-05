@@ -2,7 +2,7 @@ import {
   Component,
   EventEmitter,
   forwardRef,
-  Host,
+  inject,
   Input,
   OnChanges,
   OnInit,
@@ -47,10 +47,7 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   imageLoadError = new EventEmitter<ImageSourceEvent>();
 
   instance: ImageStatic;
-
-  constructor(@Host() layer: LayerImageComponent) {
-    super(layer);
-  }
+  host = inject(LayerImageComponent, { host: true });
 
   setLayerSource(): void {
     this.instance = new ImageStatic(this);

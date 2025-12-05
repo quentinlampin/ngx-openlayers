@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 env:
-  NODE_JS_VERSION: 18
+  NODE_JS_VERSION: 20
 
 jobs:
   install-and-scan-deps:

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, inject } from '@angular/core';
 import { Attribution } from 'ol/control';
 
 @Component({
@@ -7,10 +7,10 @@ import { Attribution } from 'ol/control';
   standalone: true,
 })
 export class AttributionComponent implements OnInit {
+  private elementRef = inject(ElementRef);
+
   instance: Attribution;
   html: string;
-
-  constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.html = this.elementRef.nativeElement.innerHTML;
