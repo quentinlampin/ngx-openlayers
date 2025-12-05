@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { DoubleClickZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
@@ -8,14 +8,14 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   duration: number;
   @Input()
   delta: number;
 
   instance: DoubleClickZoom;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new DoubleClickZoom(this);

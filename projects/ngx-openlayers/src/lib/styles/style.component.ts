@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Fill, Image, Stroke, Style, Text } from 'ol/style';
 import { Geometry } from 'ol/geom';
 import { FeatureComponent } from '../feature.component';
@@ -28,7 +28,10 @@ export class StyleComponent implements OnInit {
   componentType = 'style';
   private host: FeatureComponent | LayerVectorComponent;
 
-  constructor(@Optional() featureHost: FeatureComponent, @Optional() layerHost: LayerVectorComponent) {
+  constructor() {
+    const featureHost = inject(FeatureComponent, { optional: true });
+    const layerHost = inject(LayerVectorComponent, { optional: true });
+
     // console.log('creating aol-style');
     this.host = !!featureHost ? featureHost : layerHost;
     if (!this.host) {

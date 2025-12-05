@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges, SkipSelf } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Group } from 'ol/layer';
 import { MapComponent } from '../map.component';
 import { Extent } from 'ol/extent';
@@ -39,12 +39,10 @@ export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
   componentType = 'layer';
   private host: MapComponent | LayerGroupComponent;
 
-  constructor(
-    map: MapComponent,
-    @SkipSelf()
-    @Optional()
-    group?: LayerGroupComponent
-  ) {
+  constructor() {
+    const map = inject(MapComponent);
+    const group = inject(LayerGroupComponent, { skipSelf: true, optional: true });
+
     this.host = group || map;
   }
 

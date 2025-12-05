@@ -1,4 +1,4 @@
-import { Component, forwardRef, Host, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, inject } from '@angular/core';
 import { UTFGrid } from 'ol/source';
 import { Config } from 'ol/source/TileJSON';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -16,7 +16,9 @@ export class SourceUTFGridComponent extends SourceComponent implements OnInit {
 
   instance: UTFGrid;
 
-  constructor(@Host() layer: LayerTileComponent) {
+  constructor() {
+    const layer = inject(LayerTileComponent, { host: true });
+
     super(layer);
   }
 

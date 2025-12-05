@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Snap } from 'ol/interaction';
@@ -14,6 +14,8 @@ import { Geometry } from 'ol/geom';
   standalone: true,
 })
 export class SnapInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   features?: Collection<Feature>;
   @Input()
@@ -40,7 +42,7 @@ export class SnapInteractionComponent implements OnInit, OnDestroy {
 
   instance: Snap;
 
-  constructor(private map: MapComponent) {
+  constructor() {
     this.olChange = new EventEmitter<SnapEvent>();
     this.propertyChange = new EventEmitter<ObjectEvent>();
     this.snap = new EventEmitter<SnapEvent>();

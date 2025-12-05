@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Circle } from 'ol/geom';
 import { FeatureComponent } from '../feature.component';
 import { MapComponent } from '../map.component';
@@ -13,7 +13,10 @@ export class GeometryCircleComponent extends SimpleGeometryComponent implements 
   componentType = 'geometry-circle';
   instance: Circle;
 
-  constructor(map: MapComponent, host: FeatureComponent) {
+  constructor() {
+    const map = inject(MapComponent);
+    const host = inject(FeatureComponent);
+
     super(map, host);
     // defaulting coordinates to [0,0]. To be overridden in child component.
     this.instance = new Circle([0, 0]);

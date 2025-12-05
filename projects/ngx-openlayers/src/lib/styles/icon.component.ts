@@ -1,4 +1,4 @@
-import { Component, Host, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Color } from 'ol/color';
 import { Size } from 'ol/size';
 import { Icon } from 'ol/style';
@@ -13,6 +13,8 @@ type IconOrigin = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
   standalone: true,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
+  private host = inject(StyleComponent, { host: true });
+
   @Input()
   anchor: [number, number];
   @Input()
@@ -47,8 +49,6 @@ export class StyleIconComponent implements OnInit, OnChanges {
   src: string;
 
   instance: Icon;
-
-  constructor(@Host() private host: StyleComponent) {}
 
   ngOnInit(): void {
     // console.log('creating ol.style.Icon instance with: ', this);

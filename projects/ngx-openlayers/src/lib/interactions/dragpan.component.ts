@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import Kinetic from 'ol/Kinetic';
 import { Condition } from 'ol/events/condition';
 import { DragPan } from 'ol/interaction';
@@ -10,14 +10,14 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragPanInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   condition: Condition;
   @Input()
   kinetic: Kinetic;
 
   instance: DragPan;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new DragPan(this);

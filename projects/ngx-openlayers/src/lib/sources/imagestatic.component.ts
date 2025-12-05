@@ -1,14 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Host,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import { Extent } from 'ol/extent';
 import { ProjectionLike } from 'ol/proj';
@@ -48,7 +38,9 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
 
   instance: ImageStatic;
 
-  constructor(@Host() layer: LayerImageComponent) {
+  constructor() {
+    const layer = inject(LayerImageComponent, { host: true });
+
     super(layer);
   }
 

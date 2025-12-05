@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Condition } from 'ol/events/condition';
@@ -16,6 +16,8 @@ import { Type } from 'ol/geom/Geometry';
   standalone: true,
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   clickTolerance?: number;
   @Input()
@@ -59,8 +61,6 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   propertyChange = new EventEmitter<ObjectEvent>();
 
   instance: Draw;
-
-  constructor(private map: MapComponent) {}
 
   ngOnInit(): void {
     this.instance = new Draw(this);

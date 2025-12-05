@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Tile } from 'ol/layer';
 import TileSource from 'ol/source/Tile';
 import { MapComponent } from '../map.component';
@@ -23,7 +23,10 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
 
   source: TileSource;
 
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
+  constructor() {
+    const map = inject(MapComponent);
+    const group = inject(LayerGroupComponent, { optional: true });
+
     super(group || map);
   }
 

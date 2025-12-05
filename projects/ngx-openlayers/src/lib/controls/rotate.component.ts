@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Rotate } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -8,6 +8,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlRotateComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   className: string;
   @Input()
@@ -20,10 +22,6 @@ export class ControlRotateComponent implements OnInit, OnDestroy {
   autoHide: boolean;
 
   instance: Rotate;
-
-  constructor(private map: MapComponent) {
-    // console.log('instancing aol-control-rotate');
-  }
 
   ngOnInit(): void {
     this.instance = new Rotate(this);

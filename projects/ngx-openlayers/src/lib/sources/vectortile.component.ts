@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, forwardRef, Host, Input } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, forwardRef, Input, inject } from '@angular/core';
 import { UrlFunction } from 'ol/Tile';
 import FeatureFormat from 'ol/format/Feature';
 import { ProjectionLike } from 'ol/proj';
@@ -45,7 +45,9 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
 
   instance: VectorTile<FeatureLike>;
 
-  constructor(@Host() layer: LayerVectorTileComponent) {
+  constructor() {
+    const layer = inject(LayerVectorTileComponent, { host: true });
+
     super(layer);
   }
 

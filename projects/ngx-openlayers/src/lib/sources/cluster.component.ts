@@ -1,13 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChild,
-  forwardRef,
-  Host,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, forwardRef, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { Feature } from 'ol';
 import { Geometry, Point } from 'ol/geom';
 import { Cluster, Vector } from 'ol/source';
@@ -35,7 +26,9 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
   source: Vector;
   instance: Cluster<Feature<Geometry>>;
 
-  constructor(@Host() layer: LayerVectorComponent) {
+  constructor() {
+    const layer = inject(LayerVectorComponent, { host: true });
+
     super(layer);
   }
 

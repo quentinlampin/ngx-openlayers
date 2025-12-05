@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { defaults, Interaction } from 'ol/interaction';
 import { Collection } from 'ol';
 import { MapComponent } from '../map.component';
@@ -9,9 +9,9 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DefaultInteractionComponent implements OnInit, OnDestroy {
-  instance: Collection<Interaction>;
+  private map = inject(MapComponent);
 
-  constructor(private map: MapComponent) {}
+  instance: Collection<Interaction>;
 
   ngOnInit(): void {
     this.instance = defaults();

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { ZoomSlider } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -8,6 +8,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   className: string;
   @Input()
@@ -18,10 +20,6 @@ export class ControlZoomSliderComponent implements OnInit, OnDestroy {
   minResolution: number;
 
   instance: ZoomSlider;
-
-  constructor(private map: MapComponent) {
-    // console.log('instancing aol-control-zoomslider');
-  }
 
   ngOnInit(): void {
     this.instance = new ZoomSlider(this);

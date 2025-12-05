@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, EventEmitter, forwardRef, Host, Input, Optional, Output } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, forwardRef, Input, Output, inject } from '@angular/core';
 import { OSM } from 'ol/source';
 import { AttributionLike } from 'ol/source/Source';
 import { TileSourceEvent } from 'ol/source/Tile';
@@ -14,6 +14,8 @@ import { SourceXYZComponent } from './xyz.component';
   standalone: true,
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {
+  protected layer?: LayerTileComponent;
+
   @Input()
   attributions: AttributionLike;
   @Input()
@@ -42,12 +44,12 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
 
   instance: OSM;
 
-  constructor(
-    @Optional()
-    @Host()
-    protected layer?: LayerTileComponent
-  ) {
+  constructor() {
+    const layer = inject(LayerTileComponent, { optional: true, host: true });
+
     super(layer);
+  
+    this.layer = layer;
   }
 
   ngAfterContentInit(): void {
