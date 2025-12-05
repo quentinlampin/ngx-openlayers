@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { examplesList } from '../example-list';
 import { RouterLink } from '@angular/router';
-import { NgFor, NgIf } from '@angular/common';
+
 
 interface ExamplesListForm {
   term: FormControl<string>;
@@ -14,14 +14,18 @@ interface ExamplesListForm {
       <form [formGroup]="form"><input type="text" formControlName="term" placeholder="Search" /></form>
     </div>
     <div class="wrapper">
-      <div class="example-item" *ngFor="let example of list" [routerLink]="'examples/' + example.routerLink">
-        <span class="title">{{ example.title }}</span> <span class="description">{{ example.description }}</span>
-        <div *ngIf="example.openLayersLink" class="open-layers-link" (click)="$event.stopPropagation()">
-          <a [href]="example.openLayersLink" target="_blank">{{ example.openLayersLink }}</a>
+      @for (example of list; track example) {
+        <div class="example-item" [routerLink]="'examples/' + example.routerLink">
+          <span class="title">{{ example.title }}</span> <span class="description">{{ example.description }}</span>
+          @if (example.openLayersLink) {
+            <div class="open-layers-link" (click)="$event.stopPropagation()">
+              <a [href]="example.openLayersLink" target="_blank">{{ example.openLayersLink }}</a>
+            </div>
+          }
         </div>
-      </div>
+      }
     </div>
-  `,
+    `,
   styles: [
     `
       .search {
@@ -76,7 +80,7 @@ interface ExamplesListForm {
       }
     `,
   ],
-  imports: [FormsModule, ReactiveFormsModule, NgFor, RouterLink, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class ExamplesListComponent implements OnInit {
   form: FormGroup<ExamplesListForm>;

@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { examplesList } from '../example-list';
 import { Router, RouterOutlet } from '@angular/router';
-import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-examples-item',
   template: `
-    <div class="example-info" *ngIf="exampleInfo">
-      <span class="title">{{ exampleInfo.title }}</span> <span class="description">{{ exampleInfo.description }}</span>
-      <div *ngIf="exampleInfo.openLayersLink" class="open-layers-link">
-        <a [href]="exampleInfo.openLayersLink" target="_blank"> {{ exampleInfo.openLayersLink }} </a>
+    @if (exampleInfo) {
+      <div class="example-info">
+        <span class="title">{{ exampleInfo.title }}</span> <span class="description">{{ exampleInfo.description }}</span>
+        @if (exampleInfo.openLayersLink) {
+          <div class="open-layers-link">
+            <a [href]="exampleInfo.openLayersLink" target="_blank"> {{ exampleInfo.openLayersLink }} </a>
+          </div>
+        }
       </div>
-    </div>
+    }
     <div class="example">
       <router-outlet></router-outlet>
     </div>
-  `,
+    `,
   styles: [
     `
       :host {
@@ -56,7 +60,7 @@ import { NgIf } from '@angular/common';
       }
     `,
   ],
-  imports: [NgIf, RouterOutlet],
+  imports: [RouterOutlet],
 })
 export class ExamplesItemComponent implements OnInit {
   exampleInfo;
