@@ -4,7 +4,7 @@ import {
   ContentChild,
   EventEmitter,
   forwardRef,
-  Host,
+  inject,
   Input,
   Output,
 } from '@angular/core';
@@ -42,10 +42,7 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
 
   instance: Raster;
   sources: Source[] = [];
-
-  constructor(@Host() layer: LayerImageComponent) {
-    super(layer);
-  }
+  host = inject(LayerImageComponent, { host: true });
 
   @ContentChild(SourceComponent)
   set source(sourceComponent: SourceComponent) {

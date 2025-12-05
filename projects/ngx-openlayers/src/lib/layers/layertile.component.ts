@@ -1,9 +1,7 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Tile } from 'ol/layer';
 import TileSource from 'ol/source/Tile';
-import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
-import { LayerGroupComponent } from './layergroup.component';
 import { BackgroundColor } from 'ol/layer/Base';
 
 @Component({
@@ -11,7 +9,7 @@ import { BackgroundColor } from 'ol/layer/Base';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerTileComponent extends LayerComponent implements OnInit, OnDestroy, OnChanges {
+export class LayerTileComponent extends LayerComponent {
   @Input()
   preload: number;
   @Input()
@@ -23,17 +21,5 @@ export class LayerTileComponent extends LayerComponent implements OnInit, OnDest
 
   source: TileSource;
 
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
-    super(group || map);
-  }
-
-  ngOnInit(): void {
-    // console.log('creating ol.layer.Tile instance with:', this);
-    this.instance = new Tile(this);
-    super.ngOnInit();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    super.ngOnChanges(changes);
-  }
+  instance = new Tile(this);
 }

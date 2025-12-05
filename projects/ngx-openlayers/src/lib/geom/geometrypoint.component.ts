@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FeatureComponent } from '../feature.component';
+import { Component } from '@angular/core';
 import { SimpleGeometryComponent } from './simplegeometry.component';
-import { MapComponent } from '../map.component';
 import { Point } from 'ol/geom';
 
 @Component({
@@ -9,16 +7,7 @@ import { Point } from 'ol/geom';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class GeometryPointComponent extends SimpleGeometryComponent implements OnInit {
+export class GeometryPointComponent extends SimpleGeometryComponent {
   public componentType = 'geometry-point';
-  public instance: Point;
-
-  constructor(map: MapComponent, host: FeatureComponent) {
-    super(map, host);
-  }
-
-  ngOnInit(): void {
-    this.instance = new Point([0, 0]);
-    super.ngOnInit();
-  }
+  public instance = new Point([0, 0]);
 }

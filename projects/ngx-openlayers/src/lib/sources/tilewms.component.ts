@@ -1,4 +1,4 @@
-import { Component, forwardRef, Host, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { TileWMS } from 'ol/source';
 import TileGrid from 'ol/tilegrid/TileGrid';
@@ -29,10 +29,7 @@ export class SourceTileWMSComponent extends SourceComponent implements OnChanges
   @Input() wrapX: boolean;
 
   instance: TileWMS;
-
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
-  }
+  host = inject(LayerTileComponent, { host: true });
 
   ngOnInit(): void {
     this.instance = new TileWMS(this);

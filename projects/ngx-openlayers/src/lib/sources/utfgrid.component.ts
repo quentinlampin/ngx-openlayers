@@ -1,4 +1,4 @@
-import { Component, forwardRef, Host, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
 import { UTFGrid } from 'ol/source';
 import { Config } from 'ol/source/TileJSON';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -15,10 +15,7 @@ export class SourceUTFGridComponent extends SourceComponent implements OnInit {
   @Input() url: string;
 
   instance: UTFGrid;
-
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
-  }
+  host = inject(LayerTileComponent, { host: true });
 
   ngOnInit(): void {
     this.instance = new UTFGrid(this);

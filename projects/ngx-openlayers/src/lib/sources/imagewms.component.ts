@@ -2,7 +2,7 @@ import {
   Component,
   EventEmitter,
   forwardRef,
-  Host,
+  inject,
   Input,
   OnChanges,
   OnInit,
@@ -41,10 +41,7 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   @Output() imageLoadError = new EventEmitter<ImageSourceEvent>();
 
   instance: ImageWMS;
-
-  constructor(@Host() layer: LayerImageComponent) {
-    super(layer);
-  }
+  host = inject(LayerImageComponent, { host: true });
 
   ngOnInit(): void {
     this.instance = new ImageWMS(this);

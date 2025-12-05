@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import MousePosition from 'ol/control/MousePosition';
 import { CoordinateFormat } from 'ol/coordinate';
 import { ProjectionLike } from 'ol/proj';
@@ -10,6 +10,9 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+  private element = inject(ElementRef);
+
   @Input()
   coordinateFormat: CoordinateFormat;
   @Input()
@@ -19,11 +22,6 @@ export class ControlMousePositionComponent implements OnInit, OnDestroy {
   target: HTMLElement;
 
   instance: MousePosition;
-
-  constructor(
-    private map: MapComponent,
-    private element: ElementRef
-  ) {}
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;

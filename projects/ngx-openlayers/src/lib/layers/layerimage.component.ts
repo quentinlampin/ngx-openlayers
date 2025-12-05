@@ -1,28 +1,14 @@
-import { Component, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { Image } from 'ol/layer';
 import ImageSource from 'ol/source/Image';
-import { MapComponent } from '../map.component';
 import { LayerComponent } from './layer.component';
-import { LayerGroupComponent } from './layergroup.component';
 
 @Component({
   selector: 'aol-layer-image',
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerImageComponent extends LayerComponent implements OnInit, OnChanges {
+export class LayerImageComponent extends LayerComponent {
   source: ImageSource;
-
-  constructor(map: MapComponent, @Optional() group?: LayerGroupComponent) {
-    super(group || map);
-  }
-
-  ngOnInit(): void {
-    this.instance = new Image(this);
-    super.ngOnInit();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    super.ngOnChanges(changes);
-  }
+  instance = new Image(this);
 }

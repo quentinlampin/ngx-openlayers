@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FeatureComponent } from '../feature.component';
+import { Component } from '@angular/core';
 import { SimpleGeometryComponent } from './simplegeometry.component';
-import { MapComponent } from '../map.component';
 import { MultiLineString } from 'ol/geom';
 
 @Component({
@@ -9,21 +7,12 @@ import { MultiLineString } from 'ol/geom';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class GeometryMultiLinestringComponent extends SimpleGeometryComponent implements OnInit {
+export class GeometryMultiLinestringComponent extends SimpleGeometryComponent {
   public componentType = 'geometry-multilinestring';
-  public instance: MultiLineString;
-
-  constructor(map: MapComponent, host: FeatureComponent) {
-    super(map, host);
-  }
-
-  ngOnInit(): void {
-    this.instance = new MultiLineString([
-      [
-        [0, 0],
-        [1, 1],
-      ],
-    ]);
-    super.ngOnInit();
-  }
+  public instance = new MultiLineString([
+    [
+      [0, 0],
+      [1, 1],
+    ],
+  ]);
 }

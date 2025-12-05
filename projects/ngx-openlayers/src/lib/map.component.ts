@@ -8,6 +8,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  inject,
 } from '@angular/core';
 import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
@@ -27,6 +28,8 @@ import BaseObject from 'ol/Object';
   standalone: true,
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
+  private host = inject(ElementRef);
+
   @Input()
   width = '100%';
   @Input()
@@ -73,7 +76,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   controls: Control[] = [];
   interactions: Interaction[] = [];
 
-  constructor(private host: ElementRef) {
+  constructor() {
     this.olClick = new EventEmitter<MapBrowserEvent>();
     this.dblClick = new EventEmitter<MapBrowserEvent>();
     this.moveStart = new EventEmitter<MapEvent>();

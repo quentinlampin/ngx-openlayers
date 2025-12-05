@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   CoordinateComponent,
@@ -104,6 +104,8 @@ interface MapPositionForm {
   ],
 })
 export class MapPositionComponent implements OnInit {
+  private fb = inject(FormBuilder);
+
   @ViewChild('map', { static: true })
   map: MapComponent;
   @ViewChild('view', { static: true })
@@ -118,8 +120,6 @@ export class MapPositionComponent implements OnInit {
   currentLat = 0;
 
   form: FormGroup<MapPositionForm>;
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

@@ -3,7 +3,7 @@ import {
   Component,
   ContentChild,
   forwardRef,
-  Host,
+  inject,
   Input,
   OnChanges,
   SimpleChanges,
@@ -34,10 +34,7 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
   sourceVectorComponent: SourceVectorComponent;
   source: Vector;
   instance: Cluster<Feature<Geometry>>;
-
-  constructor(@Host() layer: LayerVectorComponent) {
-    super(layer);
-  }
+  host = inject(LayerVectorComponent, { host: true });
 
   ngAfterContentInit(): void {
     this.source = this.sourceVectorComponent.instance;

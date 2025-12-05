@@ -4,11 +4,11 @@ import {
   ContentChild,
   EventEmitter,
   forwardRef,
-  Host,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
+  inject,
 } from '@angular/core';
 import { WMTS } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
@@ -73,10 +73,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   tileGridWMTS: TileGridWMTSComponent;
 
   instance: WMTS;
-
-  constructor(@Host() layer: LayerTileComponent) {
-    super(layer);
-  }
+  host = inject(LayerTileComponent, { host: true });
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { ScaleLine } from 'ol/control';
 import { MapComponent } from '../map.component';
 import { Units } from 'ol/control/ScaleLine';
@@ -9,14 +9,12 @@ import { Units } from 'ol/control/ScaleLine';
   standalone: true,
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   units: Units;
 
   instance: ScaleLine;
-
-  constructor(private map: MapComponent) {
-    // console.log('instancing aol-control-scaleline');
-  }
 
   ngOnInit(): void {
     this.instance = new ScaleLine(this);

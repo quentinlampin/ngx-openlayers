@@ -1,4 +1,4 @@
-import { Directive, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Directive, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Extent } from 'ol/extent';
 import RenderEvent from 'ol/render/Event';
 import { MapComponent } from '../map.component';
@@ -42,7 +42,10 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   instance: any;
   componentType = 'layer';
 
-  constructor(protected host: MapComponent | LayerGroupComponent) {}
+  private readonly mapComponent = inject(MapComponent);
+  private readonly group = inject(LayerGroupComponent, { optional: true });
+
+  protected host = this.group || this.mapComponent;
 
   ngOnInit(): void {
     if (this.prerender !== null && this.prerender !== undefined) {

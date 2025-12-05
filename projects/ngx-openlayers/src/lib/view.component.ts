@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import BaseObject, { ObjectEvent } from 'ol/Object';
 import View from 'ol/View';
 import { Coordinate } from 'ol/coordinate';
@@ -12,6 +12,8 @@ import { ProjectionLike } from 'ol/proj';
   standalone: true,
 })
 export class ViewComponent implements OnInit, OnChanges {
+  private host = inject(MapComponent);
+
   @Input()
   constrainRotation: boolean | number;
   @Input()
@@ -63,8 +65,6 @@ export class ViewComponent implements OnInit, OnChanges {
 
   instance: View;
   componentType = 'view';
-
-  constructor(private host: MapComponent) {}
 
   ngOnInit(): void {
     // console.log('creating ol.View instance with: ', this);

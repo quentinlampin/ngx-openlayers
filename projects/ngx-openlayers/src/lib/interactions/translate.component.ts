@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Translate } from 'ol/interaction';
@@ -12,6 +12,8 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {
+  private map = inject(MapComponent);
+
   @Input()
   features?: Collection<Feature>;
   @Input()
@@ -32,7 +34,7 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
 
   instance: Translate;
 
-  constructor(private map: MapComponent) {
+  constructor() {
     this.olChange = new EventEmitter<TranslateEvent>();
     this.propertyChange = new EventEmitter<ObjectEvent>();
     this.translateEnd = new EventEmitter<TranslateEvent>();
