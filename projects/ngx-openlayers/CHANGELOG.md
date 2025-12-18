@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.0.0](https://github.com/quentinlampin/ngx-openlayers/compare/19.1.3...20.0.0) (2025-12-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Angular 18 is no more supported
+* ol peer dependency is now ~10.7.0
+
+### build
+
+* update to Angular 20 ([ce87117](https://github.com/quentinlampin/ngx-openlayers/commit/ce87117311c0eb6b5df95da0289a64392e0df8f3)), closes [#333](https://github.com/quentinlampin/ngx-openlayers/issues/333)
+
 ## [19.1.3](https://github.com/quentinlampin/ngx-openlayers/compare/19.1.2...19.1.3) (2025-11-06)
 
 ## [19.1.2](https://github.com/quentin-ol/ngx-openlayers/compare/19.1.1...19.1.2) (2025-11-06)
