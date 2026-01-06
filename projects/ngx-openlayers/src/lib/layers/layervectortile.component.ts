@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { VectorTile } from 'ol/layer';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
@@ -12,7 +12,7 @@ import { BackgroundColor } from 'ol/layer/Base';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerVectorTileComponent extends LayerComponent {
+export class LayerVectorTileComponent extends LayerComponent implements OnInit {
   @Input()
   renderOrder: OrderFunction;
   @Input()
@@ -36,5 +36,8 @@ export class LayerVectorTileComponent extends LayerComponent {
   @Input()
   cacheSize: number;
 
-  instance = new VectorTile(this);
+  ngOnInit(): void {
+    this.instance = new VectorTile(this);
+    super.ngOnInit();
+  }
 }

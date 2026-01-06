@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Image } from 'ol/layer';
 import ImageSource from 'ol/source/Image';
 import { LayerComponent } from './layer.component';
@@ -8,7 +8,11 @@ import { LayerComponent } from './layer.component';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerImageComponent extends LayerComponent {
+export class LayerImageComponent extends LayerComponent implements OnInit {
   source: ImageSource;
-  instance = new Image(this);
+
+  ngOnInit(): void {
+    this.instance = new Image(this);
+    super.ngOnInit();
+  }
 }
