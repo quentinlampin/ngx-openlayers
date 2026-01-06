@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Vector } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Style } from 'ol/style';
@@ -12,7 +12,7 @@ import { BackgroundColor } from 'ol/layer/Base';
   template: ` <ng-content></ng-content> `,
   standalone: true,
 })
-export class LayerVectorComponent extends LayerComponent {
+export class LayerVectorComponent extends LayerComponent implements OnInit {
   @Input()
   renderBuffer: number;
   @Input()
@@ -30,5 +30,8 @@ export class LayerVectorComponent extends LayerComponent {
 
   source: VectorSource;
 
-  instance = new Vector(this);
+  ngOnInit(): void {
+    this.instance = new Vector(this);
+    super.ngOnInit();
+  }
 }
