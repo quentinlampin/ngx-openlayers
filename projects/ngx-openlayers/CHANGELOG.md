@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.0.1](https://github.com/quentinlampin/ngx-openlayers/compare/20.0.0...20.0.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* LayerImageComponent, LayerTileComponent, LayerVectorComponent and LayerVectorTileComponent inputs are not applied ([dd03fbb](https://github.com/quentinlampin/ngx-openlayers/commit/dd03fbb6f09ee93d3d90358fa5735c6a6ca4d1f3)), closes [#348](https://github.com/quentinlampin/ngx-openlayers/issues/348)
+
 ## [20.0.0](https://github.com/quentinlampin/ngx-openlayers/compare/19.1.3...20.0.0) (2025-12-18)
 
 

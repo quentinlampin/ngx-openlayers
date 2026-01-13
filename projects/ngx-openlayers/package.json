@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/quentinlampin/ngx-openlayers.git"
   },
-  "version": "20.0.0",
+  "version": "20.0.1",
   "scripts": {
     "pre-release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\" --prerelease next",
     "release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\""
