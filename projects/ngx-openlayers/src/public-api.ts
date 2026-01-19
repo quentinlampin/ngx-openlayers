@@ -36,6 +36,7 @@ import { GeometryPointComponent } from './lib/geom/geometrypoint.component';
 import { GeometryPolygonComponent } from './lib/geom/geometrypolygon.component';
 import { CoordinateComponent } from './lib/coordinate.component';
 import { CollectionCoordinatesComponent } from './lib/collectioncoordinates.component';
+import { StylesComponent } from './lib/styles/styles.component';
 import { StyleComponent } from './lib/styles/style.component';
 import { StyleCircleComponent } from './lib/styles/circle.component';
 import { StyleStrokeComponent } from './lib/styles/stroke.component';
@@ -115,6 +116,8 @@ export {
   GeometryCircleComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
+
+  StylesComponent,
   StyleComponent,
   StyleCircleComponent,
   StyleFillComponent,
@@ -195,6 +198,7 @@ const COMPONENTS = [
   CoordinateComponent,
   CollectionCoordinatesComponent,
 
+  StylesComponent,
   StyleComponent,
   StyleCircleComponent,
   StyleFillComponent,

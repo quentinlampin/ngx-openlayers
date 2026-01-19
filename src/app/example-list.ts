@@ -146,4 +146,10 @@ export const examplesList = [
     routerLink: 'snap',
     openLayersLink: 'https://openlayers.org/en/latest/examples/snap.html',
   },
+  {
+    title: 'Style composition',
+    description: 'Example of styles composition',
+    routerLink: 'styles',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/polygon-styles.html',
+  },
 ];

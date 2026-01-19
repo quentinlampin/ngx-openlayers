@@ -37,12 +37,13 @@ import {
               </aol-geometry-point>
               <aol-style>
                 <aol-style-icon
-                  [src]="'assets/marker.svg'"
+                  src="assets/marker.svg"
                   [anchor]="[0.5, 1]"
-                  [anchorXUnits]="'fraction'"
-                  [anchorYUnits]="'fraction'"
+                  anchorXUnits="fraction"
+                  anchorYUnits="fraction"
                   [scale]="2"
-                  [anchorOrigin]="'top-left'"
+                  anchorOrigin="top-left"
+                  [color]="[22, 125, 222]"
                 >
                 </aol-style-icon>
               </aol-style>
