@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.1.0](https://github.com/quentinlampin/ngx-openlayers/compare/20.0.1...20.1.0) (2026-01-20)
+
+
+### Features
+
+* **styles:** add styles composition for Feature and LayerVector ([bdfcce2](https://github.com/quentinlampin/ngx-openlayers/commit/bdfcce2507e17cc3344ccc15075c352ce0f0fe4d))
+
 ## [20.0.1](https://github.com/quentinlampin/ngx-openlayers/compare/20.0.0...20.0.1) (2026-01-13)
 
 
