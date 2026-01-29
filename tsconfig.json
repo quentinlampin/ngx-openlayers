@@ -17,10 +17,6 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
     "paths": {
       "ngx-openlayers": [
         "dist/ngx-openlayers"
