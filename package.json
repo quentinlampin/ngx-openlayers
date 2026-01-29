@@ -65,9 +65,6 @@
     "ts-node": "~8.3.0",
     "typescript": "~5.8.3"
   },
-  "resolutions": {
-    "tar": "7.5.3"
-  },
   "volta": {
     "node": "20.19.6"
   }
