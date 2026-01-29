@@ -10,8 +10,8 @@
     "release": "commit-and-tag-version -m \"chore(release): version %s\" -t \"\""
   },
   "peerDependencies": {
-    "@angular/common": ">=19.0.0 <=20.x.x",
-    "@angular/core": ">=19.0.0 <=20.x.x",
+    "@angular/common": ">=19.0.0 <=21.x.x",
+    "@angular/core": ">=19.0.0 <=21.x.x",
     "ol": "~10.7.0"
   }
 }

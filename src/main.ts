@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 
 import 'hammerjs';
 
@@ -13,5 +13,5 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes), importProvidersFrom(HammerModule)],
+  providers: [provideZoneChangeDetection(),provideRouter(routes), importProvidersFrom(HammerModule)],
 }).catch((err) => console.log(err));
