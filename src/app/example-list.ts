@@ -6,6 +6,11 @@ export const examplesList = [
     openLayersLink: 'https://openlayers.org/en/latest/examples/simple.html',
   },
   {
+    title: 'Default interaction',
+    description: 'Manage default interaction with options',
+    routerLink: 'default-interaction',
+  },
+  {
     title: 'Map position',
     description: 'Map longitude, latitude and zoom.',
     routerLink: 'map-position',
