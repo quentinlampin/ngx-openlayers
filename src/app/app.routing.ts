@@ -26,6 +26,7 @@ import { ImageStaticComponent } from './image-static/image-static.component';
 import { GraticuleComponent } from './graticule/graticule.component';
 import { SnapInteractionComponent } from './snap-interaction/snap-interaction.component';
 import { StylesCompositionComponent } from './styles/styles-composition.component';
+import { DefaultInteractionComponent } from './default-interaction/default-interaction.component';
 
 export const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -34,6 +35,7 @@ export const routes: Routes = [
     component: ExamplesItemComponent,
     children: [
       { path: 'simple', component: SimpleComponent },
+      { path: 'default-interaction', component: DefaultInteractionComponent },
       { path: 'map-position', component: MapPositionComponent },
       { path: 'cursor-position', component: CursorPositionComponent },
       { path: 'display-geometry', component: DisplayGeometryComponent },
