@@ -67,6 +67,9 @@
     "ts-node": "~8.3.0",
     "typescript": "~5.9.3"
   },
+  "resolutions": {
+    "undici": "7.24.0"
+  },
   "volta": {
     "node": "20.19.6"
   }
