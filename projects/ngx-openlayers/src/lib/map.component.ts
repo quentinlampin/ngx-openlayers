@@ -8,7 +8,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
-  inject,
+  inject, input,
 } from '@angular/core';
 import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
@@ -22,7 +22,7 @@ import BaseObject from 'ol/Object';
 @Component({
   selector: 'aol-map',
   template: `
-    <div [style.width]="width" [style.height]="height"></div>
+    <div [style.width]="width()" [style.height]="height()"></div>
     <ng-content></ng-content>
   `,
   standalone: true,
@@ -30,22 +30,10 @@ import BaseObject from 'ol/Object';
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   private host = inject(ElementRef);
 
-  @Input()
-  width = '100%';
-  @Input()
-  height = '100%';
-  @Input()
-  pixelRatio: number;
-  @Input()
-  keyboardEventTarget: HTMLElement | string;
-  @Input()
-  loadTilesWhileAnimating: boolean;
-  @Input()
-  loadTilesWhileInteracting: boolean;
-  @Input()
-  logo: string | boolean;
-  @Input()
-  renderer: 'canvas' | 'webgl';
+  width = input('100%');
+  height = input('100%');
+  pixelRatio = input<number>();
+  keyboardEventTarget = input<HTMLElement | string>();
 
   @Output()
   olClick: EventEmitter<MapBrowserEvent>;
@@ -70,11 +58,14 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output()
   singleClick: EventEmitter<MapBrowserEvent>;
 
-  instance: Map;
+  instance = new Map({
+    pixelRatio: this.pixelRatio(),
+    keyboardEventTarget: this.keyboardEventTarget(),
+    // we pass empty arrays to not get default controls/interactions because we have our own directives
+    controls: [],
+    interactions: [],
+  });
   componentType = 'map';
-  // we pass empty arrays to not get default controls/interactions because we have our own directives
-  controls: Control[] = [];
-  interactions: Interaction[] = [];
 
   constructor() {
     this.olClick = new EventEmitter<MapBrowserEvent>();
@@ -91,9 +82,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // console.log('creating ol.Map instance with:', this);
-    this.instance = new Map(this);
-    this.instance.setTarget(this.host.nativeElement.firstElementChild);
     this.instance.on('click', (event: MapBrowserEvent) => this.olClick.emit(event));
     this.instance.on('dblclick', (event: MapBrowserEvent) => this.dblClick.emit(event));
     this.instance.on('movestart', (event: MapEvent) => this.moveStart.emit(event));
@@ -108,9 +96,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
     const properties: Parameters<BaseObject['setProperties']>[0] = {};
     for (const key in changes) {
       properties[key] = changes[key].currentValue;
@@ -120,6 +105,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    this.instance.updateSize();
+    this.instance.setTarget(this.host.nativeElement.firstElementChild);
   }
 }

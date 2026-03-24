@@ -48,7 +48,7 @@ export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    this.host.instance.getLayers().remove(this.instance);
+    this.host.instance?.getLayers().remove(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

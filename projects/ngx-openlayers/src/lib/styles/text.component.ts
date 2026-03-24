@@ -44,7 +44,7 @@ export class StyleTextComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     // console.log('creating ol.style.Text instance with: ', this);
     this.instance = new Text(this);
-    this.host.instance.setText(this.instance);
+    this.host?.instance.setText(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -75,7 +75,7 @@ export class StyleTextComponent implements OnInit, OnChanges {
     if (changes.textBaseLine) {
       this.instance.setTextBaseline(changes.textBaseLine.currentValue);
     }
-    this.host.update();
+    this.host?.update();
     // console.log('changes detected in aol-style-text, setting new properties: ', changes);
   }
 }

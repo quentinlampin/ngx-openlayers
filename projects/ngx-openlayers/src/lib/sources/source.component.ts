@@ -12,7 +12,7 @@ export abstract class SourceComponent implements OnDestroy {
   public instance: Source;
   public componentType = 'source';
 
-  protected host: LayerComponent;
+  protected host: LayerComponent | null = null;
 
   ngOnDestroy(): void {
     if (this.host && this.host.instance) {

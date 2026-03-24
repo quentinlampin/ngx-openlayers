@@ -52,6 +52,6 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
 
   ngOnDestroy(): void {
     // console.log('removing aol-style-circle');
-    this.host.instance.setImage(null);
+    this.host.instance?.setImage(null);
   }
 }

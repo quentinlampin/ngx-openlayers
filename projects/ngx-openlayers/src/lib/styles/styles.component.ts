@@ -11,11 +11,11 @@ import { StyleComponent } from './style.component';
 export class StylesComponent implements AfterViewInit {
   @ContentChildren(StyleComponent) styles: StyleComponent[];
 
-  private readonly host: FeatureComponent | LayerVectorComponent;
+  private readonly host: FeatureComponent | LayerVectorComponent | null;
 
   constructor() {
-    const featureHost = inject(FeatureComponent, { optional: true });
-    const layerHost = inject(LayerVectorComponent, { optional: true });
+    const featureHost = inject(FeatureComponent, { optional: true, host: true });
+    const layerHost = inject(LayerVectorComponent, { optional: true, host: true });
 
     this.host = !!featureHost ? featureHost : layerHost;
     if (!this.host) {
@@ -24,10 +24,10 @@ export class StylesComponent implements AfterViewInit {
   }
 
   update(): void {
-    this.host.instance.changed();
+    this.host?.instance.changed();
   }
 
   ngAfterViewInit(): void {
-    this.host.instance.setStyle(this.styles.map(s => s.instance));
+    this.host?.instance.setStyle(this.styles.map(s => s.instance));
   }
 }

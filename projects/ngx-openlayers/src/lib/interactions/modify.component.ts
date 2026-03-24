@@ -15,7 +15,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ModifyInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, {host: true});
 
   @Input()
   condition?: Condition;

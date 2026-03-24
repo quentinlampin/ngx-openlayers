@@ -16,7 +16,7 @@ import { Type } from 'ol/geom/Geometry';
   standalone: true,
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, {host: true});
 
   @Input()
   clickTolerance?: number;
