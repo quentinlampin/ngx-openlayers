@@ -14,7 +14,7 @@ export class SourceUTFGridComponent extends SourceComponent implements OnInit {
   @Input() tileJSON: Config;
   @Input() url: string;
 
-  instance: UTFGrid;
+  instance?: UTFGrid;
   host = inject(LayerTileComponent, { host: true });
 
   ngOnInit(): void {

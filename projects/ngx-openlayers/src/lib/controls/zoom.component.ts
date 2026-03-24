@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlZoomComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   duration: number;
@@ -23,15 +23,17 @@ export class ControlZoomComponent implements OnInit, OnDestroy {
   @Input()
   delta: number;
 
-  instance: Zoom;
+  instance?: Zoom;
 
   ngOnInit(): void {
     this.instance = new Zoom(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-zoom');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-zoom');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }

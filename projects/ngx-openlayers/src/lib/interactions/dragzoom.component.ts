@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragZoomInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   className: string;
@@ -20,14 +20,16 @@ export class DragZoomInteractionComponent implements OnInit, OnDestroy {
   @Input()
   out: boolean;
 
-  instance: DragZoom;
+  instance?: DragZoom;
 
   ngOnInit(): void {
     this.instance = new DragZoom(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

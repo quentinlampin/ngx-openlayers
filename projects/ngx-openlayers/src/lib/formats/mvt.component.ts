@@ -20,7 +20,7 @@ export class FormatMVTComponent extends FormatComponent {
   @Input()
   layers: string[];
 
-  instance: MVT;
+  instance?: MVT;
 
   constructor() {
     super();

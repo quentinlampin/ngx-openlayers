@@ -9,21 +9,23 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragRotateInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   condition: Condition;
   @Input()
   duration: number;
 
-  instance: DragRotate;
+  instance?: DragRotate;
 
   ngOnInit(): void {
     this.instance = new DragRotate(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

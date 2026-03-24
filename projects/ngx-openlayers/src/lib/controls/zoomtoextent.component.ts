@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   className: string;
@@ -20,15 +20,17 @@ export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
   @Input()
   extent: Extent;
 
-  instance: ZoomToExtent;
+  instance?: ZoomToExtent;
 
   ngOnInit(): void {
     this.instance = new ZoomToExtent(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-zoomtoextent');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-zoomtoextent');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }

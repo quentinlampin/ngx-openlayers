@@ -21,7 +21,7 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
   @Input()
   latLabelPosition: number;
 
-  instance: Graticule;
+  instance?: Graticule;
   componentType = 'graticule';
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -35,7 +35,9 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
     if (properties) {
       this.instance = new Graticule(properties);
     }
-    this.instance.setMap(this.map.instance);
+    if (this.map.instance) {
+      this.instance.setMap(this.map.instance);
+    }
   }
 
   ngAfterContentInit(): void {
@@ -45,10 +47,12 @@ export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestro
       lonLabelPosition: this.lonLabelPosition,
       latLabelPosition: this.latLabelPosition,
     });
-    this.instance.setMap(this.map.instance);
+    if (this.map.instance) {
+      this.instance.setMap(this.map.instance);
+    }
   }
 
   ngOnDestroy(): void {
-    this.instance.setMap(null);
+    this.instance?.setMap(null);
   }
 }

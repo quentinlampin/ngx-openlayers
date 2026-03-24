@@ -40,10 +40,10 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   @ContentChild(TileGridComponent)
   tileGridComponent: TileGridComponent;
 
-  format: FeatureFormat<RenderFeature>;
-  tileGrid: TileGrid;
+  format?: FeatureFormat<RenderFeature>;
+  tileGrid?: TileGrid;
 
-  instance: VectorTile<FeatureLike>;
+  instance?: VectorTile<FeatureLike>;
   host = inject(LayerVectorTileComponent, { host: true });
 
   /* need the children to construct the OL3 object */

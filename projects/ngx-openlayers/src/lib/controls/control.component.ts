@@ -9,26 +9,26 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;
 
   componentType = 'control';
-  instance: Control;
+  instance?: Control;
   element: HTMLElement;
 
   ngOnInit(): void {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
       this.instance = new Control(this);
-      this.map.instance.addControl(this.instance);
+      this.map.instance?.addControl(this.instance);
     }
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      this.map.instance.removeControl(this.instance);
+      this.map.instance?.removeControl(this.instance);
     }
   }
 }

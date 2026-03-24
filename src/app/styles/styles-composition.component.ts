@@ -13,7 +13,7 @@ import {
   StylesComponent,
   StyleComponent,
   StyleIconComponent,
-  ViewComponent
+  ViewComponent,
 } from 'ngx-openlayers';
 
 @Component({
@@ -32,7 +32,7 @@ import {
     StylesComponent,
     StyleComponent,
     StyleIconComponent,
-    ViewComponent
+    ViewComponent,
   ],
   template: `
     <aol-map width="100%" height="100%">
@@ -46,7 +46,7 @@ import {
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
 
       <aol-layer-vector>
-        <aol-source-vector >
+        <aol-source-vector>
           <aol-feature>
             <aol-geometry-point>
               <aol-coordinate [x]="marker.lon" [y]="marker.lat" srid="EPSG:4326"></aol-coordinate>

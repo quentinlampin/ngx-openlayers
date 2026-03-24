@@ -51,9 +51,11 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
-    this.mapSrid = this.map.instance.getView().getProjection().getCode();
-    this.transformCoordinates();
+    if (this.map.instance) {
+      this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
+      this.mapSrid = this.map.instance.getView().getProjection().getCode();
+      this.transformCoordinates();
+    }
   }
 
   ngOnChanges(): void {

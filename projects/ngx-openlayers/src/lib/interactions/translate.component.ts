@@ -12,7 +12,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   features?: Collection<Feature>;
@@ -32,7 +32,7 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
   @Output()
   translating: EventEmitter<TranslateEvent>;
 
-  instance: Translate;
+  instance?: Translate;
 
   constructor() {
     this.olChange = new EventEmitter<TranslateEvent>();
@@ -51,10 +51,12 @@ export class TranslateInteractionComponent implements OnInit, OnDestroy {
     this.instance.on('translatestart', (event: TranslateEvent) => this.translateStart.emit(event));
     this.instance.on('translating', (event: TranslateEvent) => this.translating.emit(event));
 
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

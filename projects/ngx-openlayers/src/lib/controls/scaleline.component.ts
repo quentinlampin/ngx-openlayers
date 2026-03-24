@@ -9,20 +9,22 @@ import { Units } from 'ol/control/ScaleLine';
   standalone: true,
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   units: Units;
 
-  instance: ScaleLine;
+  instance?: ScaleLine;
 
   ngOnInit(): void {
     this.instance = new ScaleLine(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-scaleline');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-scaleline');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }

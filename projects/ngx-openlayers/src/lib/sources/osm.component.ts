@@ -39,7 +39,7 @@ export class SourceOsmComponent extends SourceXYZComponent implements AfterConte
   @Output()
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
-  instance: OSM;
+  instance?: OSM;
 
   ngAfterContentInit(): void {
     if (this.tileGridXYZ) {

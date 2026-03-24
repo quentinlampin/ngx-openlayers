@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   className: string;
@@ -21,15 +21,17 @@ export class ControlFullScreenComponent implements OnInit, OnDestroy {
   @Input()
   keys: boolean;
 
-  instance: FullScreen;
+  instance?: FullScreen;
 
   ngOnInit(): void {
     this.instance = new FullScreen(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-fullscreen');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-fullscreen');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }

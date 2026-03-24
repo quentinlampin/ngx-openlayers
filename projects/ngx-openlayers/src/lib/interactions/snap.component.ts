@@ -14,7 +14,7 @@ import { Geometry } from 'ol/geom';
   standalone: true,
 })
 export class SnapInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   features?: Collection<Feature>;
@@ -40,7 +40,7 @@ export class SnapInteractionComponent implements OnInit, OnDestroy {
   @Output()
   unsnap: EventEmitter<SnapEvent>;
 
-  instance: Snap;
+  instance?: Snap;
 
   constructor() {
     this.olChange = new EventEmitter<SnapEvent>();
@@ -57,10 +57,12 @@ export class SnapInteractionComponent implements OnInit, OnDestroy {
     this.instance.on('snap', (event: SnapEvent) => this.snap.emit(event));
     this.instance.on('unsnap', (event: SnapEvent) => this.unsnap.emit(event));
 
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

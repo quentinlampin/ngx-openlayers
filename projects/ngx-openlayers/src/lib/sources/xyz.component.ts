@@ -45,7 +45,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @Input()
   maxZoom: number;
   @Input()
-  tileGrid: TileGrid;
+  tileGrid?: TileGrid;
   @Input()
   tileLoadFunction?: LoadFunction;
   @Input()
@@ -71,7 +71,7 @@ export class SourceXYZComponent extends SourceComponent implements AfterContentI
   @Output()
   tileLoadError: EventEmitter<TileSourceEvent> = new EventEmitter<TileSourceEvent>();
 
-  instance: XYZ;
+  instance?: XYZ;
   host = inject(LayerTileComponent, { optional: true, host: true });
 
   ngAfterContentInit(): void {

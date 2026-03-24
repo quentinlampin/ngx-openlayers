@@ -15,7 +15,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   addCondition?: Condition;
@@ -45,7 +45,7 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
   @Output()
   propertyChange = new EventEmitter<ObjectEvent>();
 
-  instance: Select;
+  instance?: Select;
 
   ngOnInit(): void {
     this.instance = new Select(this);
@@ -54,10 +54,12 @@ export class SelectInteractionComponent implements OnInit, OnDestroy {
     this.instance.on('select', (event: SelectEvent) => this.olSelect.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
 
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

@@ -22,7 +22,7 @@ export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
   @Input()
   url: string;
 
-  instance: Vector;
+  instance?: Vector;
   format: FeatureFormat;
   host = inject(LayerVectorComponent, { host: true });
 

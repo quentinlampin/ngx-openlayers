@@ -7,13 +7,13 @@ import { MapComponent } from '../map.component';
 export abstract class SimpleGeometryComponent implements OnInit {
   @Input() srid: string;
 
-  instance: SimpleGeometry;
+  instance?: SimpleGeometry;
   componentType = 'simple-geometry';
 
   protected readonly map = inject(MapComponent);
   protected readonly host = inject(FeatureComponent);
 
   ngOnInit(): void {
-    this.host.instance.setGeometry(this.instance);
+    this.host.instance?.setGeometry(this.instance);
   }
 }

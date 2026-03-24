@@ -70,7 +70,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output()
   singleClick: EventEmitter<MapBrowserEvent>;
 
-  instance: Map;
+  instance?: Map;
   componentType = 'map';
   // we pass empty arrays to not get default controls/interactions because we have our own directives
   controls: Control[] = [];
@@ -120,6 +120,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    this.instance.updateSize();
+    if (this.instance) {
+      this.instance.updateSize();
+    }
   }
 }

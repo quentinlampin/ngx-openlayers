@@ -8,21 +8,23 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class PinchZoomInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   duration: number;
   @Input()
   constrainResolution: boolean;
 
-  instance: PinchZoom;
+  instance?: PinchZoom;
 
   ngOnInit(): void {
     this.instance = new PinchZoom(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

@@ -15,7 +15,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ModifyInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   condition?: Condition;
@@ -43,7 +43,7 @@ export class ModifyInteractionComponent implements OnInit, OnDestroy {
   @Output()
   propertyChange = new EventEmitter<ObjectEvent>();
 
-  instance: Modify;
+  instance?: Modify;
 
   ngOnInit(): void {
     this.instance = new Modify(this);
@@ -52,10 +52,12 @@ export class ModifyInteractionComponent implements OnInit, OnDestroy {
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
     this.instance.on('modifyend', (event: ModifyEvent) => this.modifyEnd.emit(event));
     this.instance.on('modifystart', (event: ModifyEvent) => this.modifyStart.emit(event));
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

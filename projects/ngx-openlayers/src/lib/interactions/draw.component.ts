@@ -16,7 +16,7 @@ import { Type } from 'ol/geom/Geometry';
   standalone: true,
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   clickTolerance?: number;
@@ -60,7 +60,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Output()
   propertyChange = new EventEmitter<ObjectEvent>();
 
-  instance: Draw;
+  instance?: Draw;
 
   ngOnInit(): void {
     this.instance = new Draw(this);
@@ -69,10 +69,12 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
     this.instance.on('drawend', (event: DrawEvent) => this.drawEnd.emit(event));
     this.instance.on('drawstart', (event: DrawEvent) => this.drawStart.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

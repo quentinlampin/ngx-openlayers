@@ -24,13 +24,13 @@ export class StyleComponent implements OnInit {
   @Input()
   zIndex: number;
 
-  instance: Style;
+  instance?: Style;
   componentType = 'style';
-  private host: FeatureComponent | LayerVectorComponent;
+  private host: FeatureComponent | LayerVectorComponent | null;
 
   constructor() {
-    const featureHost = inject(FeatureComponent, { optional: true });
-    const layerHost = inject(LayerVectorComponent, { optional: true });
+    const featureHost = inject(FeatureComponent, { optional: true, host: true });
+    const layerHost = inject(LayerVectorComponent, { optional: true, host: true });
 
     // console.log('creating aol-style');
     this.host = !!featureHost ? featureHost : layerHost;
@@ -41,12 +41,16 @@ export class StyleComponent implements OnInit {
 
   update(): void {
     // console.log('updating style\'s host: ', this.host);
-    this.host.instance.changed();
+    if (this.host?.instance) {
+      this.host.instance.changed();
+    }
   }
 
   ngOnInit(): void {
     // console.log('creating aol-style instance with: ', this);
     this.instance = new Style(this);
-    this.host.instance.setStyle(this.instance);
+    if (this.host?.instance) {
+      this.host.instance.setStyle(this.instance);
+    }
   }
 }

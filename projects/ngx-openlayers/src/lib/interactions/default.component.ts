@@ -9,16 +9,16 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DefaultInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
-  instance: Collection<Interaction>;
+  instance?: Collection<Interaction>;
 
   ngOnInit(): void {
     this.instance = defaults();
-    this.instance.forEach((i) => this.map.instance.addInteraction(i));
+    this.instance.forEach((i) => this.map.instance?.addInteraction(i));
   }
 
   ngOnDestroy(): void {
-    this.instance.forEach((i) => this.map.instance.removeInteraction(i));
+    this.instance?.forEach((i) => this.map.instance?.removeInteraction(i));
   }
 }

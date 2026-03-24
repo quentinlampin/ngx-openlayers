@@ -43,8 +43,10 @@ export class CoordinateComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
-    this.mapSrid = this.map.instance.getView().getProjection().getCode();
+    if (this.map.instance) {
+      this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
+      this.mapSrid = this.map.instance.getView().getProjection().getCode();
+    }
     this.transformCoordinates();
   }
 
@@ -69,9 +71,9 @@ export class CoordinateComponent implements OnChanges, OnInit {
     if (this.host instanceof GeometryPointComponent) {
       this.host.instance.setCoordinates(transformedCoordinates);
     } else if (this.host instanceof OverlayComponent) {
-      this.host.instance.setPosition(transformedCoordinates);
+      this.host.instance?.setPosition(transformedCoordinates);
     } else {
-      this.host.instance.setCenter(transformedCoordinates);
+      this.host.instance?.setCenter(transformedCoordinates);
     }
   }
 }

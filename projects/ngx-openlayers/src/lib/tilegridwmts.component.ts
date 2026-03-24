@@ -25,7 +25,7 @@ export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
   @Input()
   widths?: number[];
 
-  instance: WMTS;
+  instance?: WMTS;
 
   ngOnInit(): void {
     this.instance = new WMTS(this);

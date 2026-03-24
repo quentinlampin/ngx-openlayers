@@ -48,12 +48,12 @@ export class StyleIconComponent implements OnInit, OnChanges {
   @Input()
   src: string;
 
-  instance: Icon;
+  instance?: Icon;
 
   ngOnInit(): void {
     // console.log('creating ol.style.Icon instance with: ', this);
     this.instance = new Icon(this);
-    this.host.instance.setImage(this.instance);
+    this.host.instance?.setImage(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -71,7 +71,7 @@ export class StyleIconComponent implements OnInit, OnChanges {
     }
     if (changes.src) {
       this.instance = new Icon(this);
-      this.host.instance.setImage(this.instance);
+      this.host.instance?.setImage(this.instance);
     }
     this.host.update();
     // console.log('changes detected in aol-style-icon: ', changes);

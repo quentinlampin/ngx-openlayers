@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   duration: number;
@@ -17,14 +17,16 @@ export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   @Input()
   useAnchor: boolean;
 
-  instance: MouseWheelZoom;
+  instance?: MouseWheelZoom;
 
   ngOnInit(): void {
     this.instance = new MouseWheelZoom(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }
