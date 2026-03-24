@@ -24,7 +24,7 @@ export class TileGridComponent implements OnInit, OnChanges {
   @Input()
   resolutions: number[];
 
-  instance: TileGrid;
+  instance?: TileGrid;
 
   ngOnInit(): void {
     if (!this.resolutions) {

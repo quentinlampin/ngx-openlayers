@@ -14,18 +14,20 @@ export class FeatureComponent implements OnInit, OnDestroy, OnChanges {
   id: string | number | undefined;
 
   componentType = 'feature';
-  instance: Feature;
+  instance?: Feature;
 
   ngOnInit(): void {
     this.instance = new Feature();
     if (this.id !== undefined) {
       this.instance.setId(this.id);
     }
-    this.host.instance.addFeature(this.instance);
+    this.host.instance?.addFeature(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.host.instance.removeFeature(this.instance);
+    if (this.instance) {
+      this.host.instance?.removeFeature(this.instance);
+    }
   }
 
   ngOnChanges(): void {

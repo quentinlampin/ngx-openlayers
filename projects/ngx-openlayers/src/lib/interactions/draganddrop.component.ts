@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   formatConstructors: FeatureFormat[];
@@ -19,14 +19,16 @@ export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   @Input()
   target: HTMLElement;
 
-  instance: DragAndDrop;
+  instance?: DragAndDrop;
 
   ngOnInit(): void {
     this.instance = new DragAndDrop(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

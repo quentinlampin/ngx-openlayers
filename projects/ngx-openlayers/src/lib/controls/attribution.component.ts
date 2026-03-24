@@ -8,25 +8,27 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
   private element = inject(ElementRef);
 
   @Input()
   collapsible: boolean;
 
   componentType = 'control';
-  instance: Attribution;
+  instance?: Attribution;
   target: HTMLElement;
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;
     // console.log('ol.control.Attribution init: ', this);
     this.instance = new Attribution(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-attribution');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-attribution');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }

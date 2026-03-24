@@ -39,7 +39,7 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
   postrender: (evt: RenderEvent) => void;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  instance: any;
+  instance?: any;
   componentType = 'layer';
 
   private readonly mapComponent = inject(MapComponent);
@@ -54,11 +54,11 @@ export abstract class LayerComponent implements OnInit, OnChanges, OnDestroy {
     if (this.postrender !== null && this.postrender !== undefined) {
       this.instance.on('postrender', this.postrender);
     }
-    this.host.instance.getLayers().push(this.instance);
+    this.host.instance?.getLayers().push(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.host.instance.getLayers().remove(this.instance);
+    this.host.instance?.getLayers().remove(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

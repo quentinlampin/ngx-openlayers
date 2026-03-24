@@ -12,7 +12,7 @@ import { ProjectionLike } from 'ol/proj';
   standalone: true,
 })
 export class ViewComponent implements OnInit, OnChanges {
-  private host = inject(MapComponent);
+  private host = inject(MapComponent, { host: true });
 
   @Input()
   constrainRotation: boolean | number;
@@ -63,13 +63,13 @@ export class ViewComponent implements OnInit, OnChanges {
   @Output()
   changeCenter: EventEmitter<ObjectEvent> = new EventEmitter<ObjectEvent>();
 
-  instance: View;
+  instance?: View;
   componentType = 'view';
 
   ngOnInit(): void {
     // console.log('creating ol.View instance with: ', this);
     this.instance = new View(this);
-    this.host.instance.setView(this.instance);
+    this.host.instance?.setView(this.instance);
 
     this.instance.on('change:resolution', (event: ObjectEvent) => this.changeResolution.emit(event));
     this.instance.on('change:center', (event: ObjectEvent) => this.changeCenter.emit(event));
@@ -92,7 +92,7 @@ export class ViewComponent implements OnInit, OnChanges {
           break;
         case 'projection':
           this.instance = new View(this);
-          this.host.instance.setView(this.instance);
+          this.host.instance?.setView(this.instance);
           break;
         case 'center':
           /** Work-around: setting the center via setProperties does not work. */

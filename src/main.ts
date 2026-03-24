@@ -13,5 +13,5 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [provideZoneChangeDetection(),provideRouter(routes), importProvidersFrom(HammerModule)],
+  providers: [provideZoneChangeDetection(), provideRouter(routes), importProvidersFrom(HammerModule)],
 }).catch((err) => console.log(err));

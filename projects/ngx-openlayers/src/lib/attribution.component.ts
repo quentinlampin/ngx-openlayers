@@ -9,7 +9,7 @@ import { Attribution } from 'ol/control';
 export class AttributionComponent implements OnInit {
   private elementRef = inject(ElementRef);
 
-  instance: Attribution;
+  instance?: Attribution;
   html: string;
 
   ngOnInit(): void {

@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   className: string;
@@ -19,14 +19,16 @@ export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   @Input()
   boxEndCondition: EndCondition;
 
-  instance: DragBox;
+  instance?: DragBox;
 
   ngOnInit(): void {
     this.instance = new DragBox(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

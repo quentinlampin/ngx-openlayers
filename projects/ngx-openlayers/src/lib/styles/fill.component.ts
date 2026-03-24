@@ -15,7 +15,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
   @Input()
   color: Color | ColorLike;
 
-  instance: Fill;
+  instance?: Fill;
   private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
   constructor() {
@@ -40,7 +40,7 @@ export class StyleFillComponent implements OnInit, OnChanges {
     // console.log('creating ol.style.Fill instance with: ', this);
     this.instance = new Fill(this);
     if (this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
-      this.host.instance.setFill(this.instance);
+      this.host.instance?.setFill(this.instance);
     } else {
       this.host.fill = this.instance;
     }

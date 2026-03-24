@@ -18,7 +18,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   stroke: Stroke;
 
   componentType = 'style-circle';
-  instance: Circle;
+  instance?: Circle;
 
   /**
    * WORK-AROUND: since the re-rendering is not triggered on style change
@@ -36,7 +36,7 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
   ngAfterContentInit(): void {
     // console.log('creating ol.style.Circle instance with: ', this);
     this.instance = new Circle(this);
-    this.host.instance.setImage(this.instance);
+    this.host.instance?.setImage(this.instance);
     this.host.update();
   }
 
@@ -52,6 +52,6 @@ export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDest
 
   ngOnDestroy(): void {
     // console.log('removing aol-style-circle');
-    this.host.instance.setImage(null);
+    this.host.instance?.setImage(null);
   }
 }

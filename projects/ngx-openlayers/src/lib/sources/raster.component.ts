@@ -40,16 +40,18 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
   @Output()
   afterOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
 
-  instance: Raster;
+  instance?: Raster;
   sources: Source[] = [];
   host = inject(LayerImageComponent, { host: true });
 
   @ContentChild(SourceComponent)
   set source(sourceComponent: SourceComponent) {
-    this.sources = [sourceComponent.instance];
-    if (this.instance) {
-      // Openlayer doesn't handle sources update. Just recreate Raster instance.
-      this.init();
+    if (sourceComponent.instance) {
+      this.sources = [sourceComponent.instance];
+      if (this.instance) {
+        // Openlayer doesn't handle sources update. Just recreate Raster instance.
+        this.init();
+      }
     }
   }
 

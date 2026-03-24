@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   collapsed: boolean;
@@ -29,15 +29,17 @@ export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy
   @Input()
   view: View;
 
-  instance: OverviewMap;
+  instance?: OverviewMap;
 
   ngOnInit(): void {
     this.instance = new OverviewMap(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,8 +49,10 @@ export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy
   }
 
   private reloadInstance(): void {
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeControl(this.instance);
+    }
     this.instance = new OverviewMap(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 }

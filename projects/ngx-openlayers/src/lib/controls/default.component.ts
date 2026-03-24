@@ -13,7 +13,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   attribution: boolean;
@@ -28,16 +28,16 @@ export class DefaultControlComponent implements OnInit, OnDestroy {
   @Input()
   zoomOptions: ZoomOptions;
 
-  instance: Collection<Control>;
+  instance?: Collection<Control>;
 
   ngOnInit(): void {
     // console.log('ol.control.defaults init: ', this);
     this.instance = defaults(this);
-    this.instance.forEach((c) => this.map.instance.addControl(c));
+    this.instance.forEach((c) => this.map.instance?.addControl(c));
   }
 
   ngOnDestroy(): void {
     // console.log('removing aol-control-defaults');
-    this.instance.forEach((c) => this.map.instance.removeControl(c));
+    this.instance?.forEach((c) => this.map.instance?.removeControl(c));
   }
 }

@@ -13,14 +13,14 @@ export class AttributionsComponent implements AfterViewInit {
   @ContentChildren(AttributionComponent)
   attributions: QueryList<AttributionComponent>;
 
-  instance: Array<string>;
+  instance?: Array<string>;
 
   /* we can do this at the very end */
   ngAfterViewInit(): void {
     if (this.attributions.length) {
       this.instance = this.attributions.map((cmp) => cmp.html);
       // console.log('setting attributions:', this.instance);
-      this.source.instance.setAttributions(this.instance);
+      this.source.instance?.setAttributions(this.instance);
     }
   }
 }

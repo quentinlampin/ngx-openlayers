@@ -25,7 +25,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
   @Input()
   width: number;
 
-  instance: Stroke;
+  instance?: Stroke;
   private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
   constructor() {
@@ -51,7 +51,7 @@ export class StyleStrokeComponent implements OnInit, OnChanges {
     this.instance = new Stroke(this);
 
     if (this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
-      this.host.instance.setStroke(this.instance);
+      this.host.instance?.setStroke(this.instance);
     } else {
       this.host.stroke = this.instance;
     }

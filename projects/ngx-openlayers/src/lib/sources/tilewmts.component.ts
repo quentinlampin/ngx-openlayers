@@ -30,7 +30,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @Input()
   crossOrigin?: Options['crossOrigin'];
   @Input()
-  tileGrid: Options['tileGrid'];
+  tileGrid!: Options['tileGrid'];
   @Input()
   projection: Options['projection'];
   @Input()
@@ -72,7 +72,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   @ContentChild(TileGridWMTSComponent)
   tileGridWMTS: TileGridWMTSComponent;
 
-  instance: WMTS;
+  instance?: WMTS;
   host = inject(LayerTileComponent, { host: true });
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -95,11 +95,13 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   }
 
   setLayerSource(): void {
-    this.instance = new WMTS(this);
-    this.instance.on('tileloadstart', (event: TileSourceEvent) => this.tileLoadStart.emit(event));
-    this.instance.on('tileloadend', (event: TileSourceEvent) => this.tileLoadEnd.emit(event));
-    this.instance.on('tileloaderror', (event: TileSourceEvent) => this.tileLoadError.emit(event));
-    this.host.instance.setSource(this.instance);
+    if (this.tileGrid) {
+      this.instance = new WMTS(this);
+      this.instance.on('tileloadstart', (event: TileSourceEvent) => this.tileLoadStart.emit(event));
+      this.instance.on('tileloadend', (event: TileSourceEvent) => this.tileLoadEnd.emit(event));
+      this.instance.on('tileloaderror', (event: TileSourceEvent) => this.tileLoadError.emit(event));
+      this.host.instance.setSource(this.instance);
+    }
   }
 
   ngAfterContentInit(): void {

@@ -32,8 +32,8 @@ export class SourceClusterComponent extends SourceComponent implements AfterCont
 
   @ContentChild(SourceVectorComponent)
   sourceVectorComponent: SourceVectorComponent;
-  source: Vector;
-  instance: Cluster<Feature<Geometry>>;
+  source?: Vector;
+  instance?: Cluster<Feature<Geometry>>;
   host = inject(LayerVectorComponent, { host: true });
 
   ngAfterContentInit(): void {

@@ -33,20 +33,20 @@ export class OverlayComponent implements OnInit, OnDestroy {
   autoPanMargin: number;
 
   componentType = 'overlay';
-  instance: Overlay;
+  instance?: Overlay;
   element: HTMLElement;
 
   ngOnInit(): void {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
       this.instance = new Overlay(this);
-      this.map.instance.addOverlay(this.instance);
+      this.map.instance?.addOverlay(this.instance);
     }
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      this.map.instance.removeOverlay(this.instance);
+      this.map.instance?.removeOverlay(this.instance);
     }
   }
 }

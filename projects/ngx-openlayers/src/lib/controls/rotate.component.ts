@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlRotateComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   className: string;
@@ -21,15 +21,17 @@ export class ControlRotateComponent implements OnInit, OnDestroy {
   @Input()
   autoHide: boolean;
 
-  instance: Rotate;
+  instance?: Rotate;
 
   ngOnInit(): void {
     this.instance = new Rotate(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-rotate');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-rotate');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }

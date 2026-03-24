@@ -116,7 +116,6 @@ export {
   GeometryCircleComponent,
   CoordinateComponent,
   CollectionCoordinatesComponent,
-
   StylesComponent,
   StyleComponent,
   StyleCircleComponent,

@@ -9,10 +9,10 @@ export abstract class SourceComponent implements OnDestroy {
   @Input()
   attributions: AttributionLike;
 
-  public instance: Source;
+  public instance?: Source;
   public componentType = 'source';
 
-  protected host: LayerComponent;
+  protected host: LayerComponent | null = null;
 
   ngOnDestroy(): void {
     if (this.host && this.host.instance) {

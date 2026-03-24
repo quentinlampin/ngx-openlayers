@@ -35,7 +35,7 @@ export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
     [x: string]: unknown;
   };
 
-  public instance: Group;
+  public instance?: Group;
   componentType = 'layer';
   private readonly map = inject(MapComponent);
   private readonly group = inject(LayerGroupComponent, { skipSelf: true, optional: true });
@@ -48,7 +48,7 @@ export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    this.host.instance.getLayers().remove(this.instance);
+    this.host.instance?.getLayers().remove(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

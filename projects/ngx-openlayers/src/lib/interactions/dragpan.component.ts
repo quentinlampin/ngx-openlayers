@@ -10,21 +10,23 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class DragPanInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
 
   @Input()
   condition: Condition;
   @Input()
   kinetic: Kinetic;
 
-  instance: DragPan;
+  instance?: DragPan;
 
   ngOnInit(): void {
     this.instance = new DragPan(this);
-    this.map.instance.addInteraction(this.instance);
+    this.map.instance?.addInteraction(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.map.instance.removeInteraction(this.instance);
+    if (this.instance) {
+      this.map.instance?.removeInteraction(this.instance);
+    }
   }
 }

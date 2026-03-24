@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent);
+  private map = inject(MapComponent, { host: true });
   private element = inject(ElementRef);
 
   @Input()
@@ -21,17 +21,19 @@ export class ControlMousePositionComponent implements OnInit, OnDestroy {
   wrapX: boolean;
   target: HTMLElement;
 
-  instance: MousePosition;
+  instance?: MousePosition;
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;
     // console.log('ol.control.MousePosition init: ', this);
     this.instance = new MousePosition(this);
-    this.map.instance.addControl(this.instance);
+    this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
-    // console.log('removing aol-control-mouseposition');
-    this.map.instance.removeControl(this.instance);
+    if (this.instance) {
+      // console.log('removing aol-control-mouseposition');
+      this.map.instance?.removeControl(this.instance);
+    }
   }
 }
