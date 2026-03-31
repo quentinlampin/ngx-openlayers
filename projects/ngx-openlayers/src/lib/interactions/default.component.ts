@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, inject } from '@angular/core';
 import { defaults, Interaction } from 'ol/interaction';
 import { Collection } from 'ol';
 import { MapComponent } from '../map.component';
@@ -8,17 +8,79 @@ import { MapComponent } from '../map.component';
   template: '',
   standalone: true,
 })
-export class DefaultInteractionComponent implements OnInit, OnDestroy {
+export class DefaultInteractionComponent implements OnInit, OnChanges, OnDestroy {
   private map = inject(MapComponent);
-
   instance: Collection<Interaction>;
+  @Input()
+  altShiftDragRotate?: boolean | undefined;
+  @Input()
+  doubleClickZoom?: boolean | undefined;
+  @Input()
+  keyboard?: boolean | undefined;
+  @Input()
+  mouseWheelZoom?: boolean | undefined;
+  @Input()
+  shiftDragZoom?: boolean | undefined;
+  @Input()
+  dragPan?: boolean | undefined;
+  @Input()
+  pinchRotate?: boolean | undefined;
+  @Input()
+  pinchZoom?: boolean | undefined;
+  @Input()
+  onFocusOnly?: boolean | undefined;
+  @Input()
+  zoomDelta?: number | undefined;
+  @Input()
+  zoomDuration?: number | undefined;
+
 
   ngOnInit(): void {
-    this.instance = defaults();
-    this.instance.forEach((i) => this.map.instance.addInteraction(i));
+    this.instance = defaults({
+      altShiftDragRotate: this.altShiftDragRotate,
+      doubleClickZoom: this.doubleClickZoom,
+      keyboard: this.keyboard,
+      mouseWheelZoom: this.mouseWheelZoom,
+      shiftDragZoom: this.shiftDragZoom,
+      dragPan: this.dragPan,
+      pinchRotate: this.pinchRotate,
+      pinchZoom: this.pinchZoom,
+      onFocusOnly: this.onFocusOnly,
+      zoomDelta: this.zoomDelta,
+      zoomDuration: this.zoomDuration,
+    });
+    if (this.map.instance) {
+      this.instance.forEach((i) => this.map.instance.addInteraction(i));
+    }
+  }
+
+  ngOnChanges() {
+    if (this.instance) {
+      if (this.map.instance) {
+        this.instance.forEach((i) => this.map.instance.removeInteraction(i));
+      }
+      this.instance = defaults({
+        altShiftDragRotate: this.altShiftDragRotate,
+        doubleClickZoom: this.doubleClickZoom,
+        keyboard: this.keyboard,
+        mouseWheelZoom: this.mouseWheelZoom,
+        shiftDragZoom: this.shiftDragZoom,
+        dragPan: this.dragPan,
+        pinchRotate: this.pinchRotate,
+        pinchZoom: this.pinchZoom,
+        onFocusOnly: this.onFocusOnly,
+        zoomDelta: this.zoomDelta,
+        zoomDuration: this.zoomDuration,
+      });
+      if (this.map.instance) {
+        this.instance.forEach((i) => this.map.instance.addInteraction(i));
+      }
+    }
   }
 
   ngOnDestroy(): void {
-    this.instance.forEach((i) => this.map.instance.removeInteraction(i));
+    if (this.map.instance) {
+      this.instance.forEach((i) => this.map.instance.removeInteraction(i));
+    }
   }
 }
