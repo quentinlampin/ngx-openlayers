@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.1.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.0.0...21.1.0) (2026-04-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* instance of all component can be undefined
+
+### Bug Fixes
+
+* fix undefined typing for instance of all component ([ed1d07b](https://github.com/quentinlampin/ngx-openlayers/commit/ed1d07b5c46abedfcbd0bc50e8f8a68aa21db7cf))
+
 ## [21.0.0](https://github.com/quentinlampin/ngx-openlayers/compare/20.1.0...21.0.0) (2026-01-30)
 
 ## [20.1.0](https://github.com/quentinlampin/ngx-openlayers/compare/20.0.1...20.1.0) (2026-01-20)
