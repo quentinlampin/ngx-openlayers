@@ -54,6 +54,8 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
   @Output()
   olChangeActive = new EventEmitter<ObjectEvent>();
   @Output()
+  drawAbort = new EventEmitter<DrawEvent>();
+  @Output()
   drawEnd = new EventEmitter<DrawEvent>();
   @Output()
   drawStart = new EventEmitter<DrawEvent>();
@@ -66,6 +68,7 @@ export class DrawInteractionComponent implements OnInit, OnDestroy {
     this.instance = new Draw(this);
     this.instance.on('change', (event: DrawEvent) => this.olChange.emit(event));
     this.instance.on('change:active', (event: ObjectEvent) => this.olChangeActive.emit(event));
+    this.instance.on('drawabort', (event: DrawEvent) => this.drawAbort.emit(event));
     this.instance.on('drawend', (event: DrawEvent) => this.drawEnd.emit(event));
     this.instance.on('drawstart', (event: DrawEvent) => this.drawStart.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
