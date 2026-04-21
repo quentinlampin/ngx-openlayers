@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.2.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.1.0...21.2.0) (2026-04-21)
+
+
+### Features
+
+* **draw:** add missing output drawabort ([2e4e365](https://github.com/quentinlampin/ngx-openlayers/commit/2e4e36567853c1d78efef2163435bcb380050f58)), closes [#395](https://github.com/quentinlampin/ngx-openlayers/issues/395)
+
 ## [21.1.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.0.0...21.1.0) (2026-04-01)
 
 
