@@ -41,7 +41,7 @@ export class SourceImageWMSComponent extends SourceComponent implements OnChange
   @Output() imageLoadError = new EventEmitter<ImageSourceEvent>();
 
   instance?: ImageWMS;
-  host = inject(LayerImageComponent, { host: true });
+  host = inject(LayerImageComponent);
 
   ngOnInit(): void {
     this.instance = new ImageWMS(this);

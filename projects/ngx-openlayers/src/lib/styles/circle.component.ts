@@ -8,7 +8,7 @@ import { StyleComponent } from './style.component';
   standalone: true,
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
-  private host = inject(StyleComponent, { host: true });
+  private host = inject(StyleComponent);
 
   @Input()
   fill: Fill;

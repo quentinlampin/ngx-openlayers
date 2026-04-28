@@ -47,7 +47,7 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
   imageLoadError = new EventEmitter<ImageSourceEvent>();
 
   instance?: ImageStatic;
-  host = inject(LayerImageComponent, { host: true });
+  host = inject(LayerImageComponent);
 
   setLayerSource(): void {
     this.instance = new ImageStatic(this);

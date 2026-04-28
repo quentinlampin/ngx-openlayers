@@ -9,7 +9,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent, { host: true });
+  private map = inject(MapComponent);
 
   @ContentChild(ContentComponent, { static: true })
   content: ContentComponent;

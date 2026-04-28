@@ -44,7 +44,7 @@ export class SourceVectorTileComponent extends SourceComponent implements AfterC
   tileGrid?: TileGrid;
 
   instance?: VectorTile<FeatureLike>;
-  host = inject(LayerVectorTileComponent, { host: true });
+  host = inject(LayerVectorTileComponent);
 
   /* need the children to construct the OL3 object */
   ngAfterContentInit(): void {

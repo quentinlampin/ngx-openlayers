@@ -33,7 +33,7 @@ export class SourceBingmapsComponent extends SourceComponent implements OnInit {
   placeholderTiles = false;
 
   instance?: BingMaps;
-  host = inject(LayerTileComponent, { host: true });
+  host = inject(LayerTileComponent);
 
   ngOnInit(): void {
     this.instance = new BingMaps(this);

@@ -29,8 +29,8 @@ export class StyleComponent implements OnInit {
   private host: FeatureComponent | LayerVectorComponent | null;
 
   constructor() {
-    const featureHost = inject(FeatureComponent, { optional: true, host: true });
-    const layerHost = inject(LayerVectorComponent, { optional: true, host: true });
+    const featureHost = inject(FeatureComponent, { optional: true });
+    const layerHost = inject(LayerVectorComponent, { optional: true });
 
     // console.log('creating aol-style');
     this.host = !!featureHost ? featureHost : layerHost;

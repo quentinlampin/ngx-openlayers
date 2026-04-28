@@ -29,7 +29,7 @@ export class SourceTileWMSComponent extends SourceComponent implements OnChanges
   @Input() wrapX: boolean;
 
   instance?: TileWMS;
-  host = inject(LayerTileComponent, { host: true });
+  host = inject(LayerTileComponent);
 
   ngOnInit(): void {
     this.instance = new TileWMS(this);

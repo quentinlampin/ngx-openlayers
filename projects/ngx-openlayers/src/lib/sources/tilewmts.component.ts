@@ -73,7 +73,7 @@ export class SourceTileWMTSComponent extends SourceComponent implements AfterCon
   tileGridWMTS: TileGridWMTSComponent;
 
   instance?: WMTS;
-  host = inject(LayerTileComponent, { host: true });
+  host = inject(LayerTileComponent);
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.instance) {
