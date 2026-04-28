@@ -42,7 +42,7 @@ export class SourceImageArcGISRestComponent extends SourceComponent implements O
   imageLoadError = new EventEmitter<ImageSourceEvent>();
 
   instance?: ImageArcGISRest;
-  host = inject(LayerImageComponent, { host: true });
+  host = inject(LayerImageComponent);
 
   ngOnInit(): void {
     this.instance = new ImageArcGISRest(this);

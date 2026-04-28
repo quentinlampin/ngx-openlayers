@@ -12,7 +12,7 @@ import { ProjectionLike } from 'ol/proj';
   standalone: true,
 })
 export class ViewComponent implements OnInit, OnChanges {
-  private host = inject(MapComponent, { host: true });
+  private host = inject(MapComponent);
 
   @Input()
   constrainRotation: boolean | number;

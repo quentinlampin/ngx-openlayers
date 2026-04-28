@@ -14,7 +14,7 @@ export class SourceTileJSONComponent extends SourceComponent implements OnInit {
   url: string;
 
   instance?: TileJSON;
-  host = inject(LayerTileComponent, { host: true });
+  host = inject(LayerTileComponent);
 
   ngOnInit(): void {
     this.instance = new TileJSON(this);

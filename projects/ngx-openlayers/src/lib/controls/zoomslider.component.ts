@@ -8,7 +8,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent, { host: true });
+  private map = inject(MapComponent);
 
   @Input()
   className: string;

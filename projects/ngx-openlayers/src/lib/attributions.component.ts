@@ -8,7 +8,7 @@ import { SourceComponent } from './sources/source.component';
   standalone: true,
 })
 export class AttributionsComponent implements AfterViewInit {
-  private source = inject(SourceComponent, { host: true });
+  private source = inject(SourceComponent);
 
   @ContentChildren(AttributionComponent)
   attributions: QueryList<AttributionComponent>;

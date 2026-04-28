@@ -49,7 +49,7 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
   ) => void;
 
   instance?: Vector;
-  host = inject(LayerVectorComponent, { host: true });
+  host = inject(LayerVectorComponent);
 
   ngOnInit(): void {
     this.instance = new Vector({

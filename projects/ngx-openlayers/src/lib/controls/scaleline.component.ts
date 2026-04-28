@@ -9,7 +9,7 @@ import { Units } from 'ol/control/ScaleLine';
   standalone: true,
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent, { host: true });
+  private map = inject(MapComponent);
 
   @Input()
   units: Units;

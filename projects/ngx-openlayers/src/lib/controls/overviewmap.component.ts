@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
   standalone: true,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {
-  private map = inject(MapComponent, { host: true });
+  private map = inject(MapComponent);
 
   @Input()
   collapsed: boolean;

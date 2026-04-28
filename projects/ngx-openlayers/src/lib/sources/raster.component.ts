@@ -42,7 +42,7 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
 
   instance?: Raster;
   sources: Source[] = [];
-  host = inject(LayerImageComponent, { host: true });
+  host = inject(LayerImageComponent);
 
   @ContentChild(SourceComponent)
   set source(sourceComponent: SourceComponent) {

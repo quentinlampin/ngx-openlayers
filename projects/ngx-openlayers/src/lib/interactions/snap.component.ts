@@ -14,7 +14,7 @@ import { Geometry } from 'ol/geom';
   standalone: true,
 })
 export class SnapInteractionComponent implements OnInit, OnDestroy {
-  private map = inject(MapComponent, { host: true });
+  private map = inject(MapComponent);
 
   @Input()
   features?: Collection<Feature>;

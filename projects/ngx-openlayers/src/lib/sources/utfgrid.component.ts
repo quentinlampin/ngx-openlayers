@@ -15,7 +15,7 @@ export class SourceUTFGridComponent extends SourceComponent implements OnInit {
   @Input() url: string;
 
   instance?: UTFGrid;
-  host = inject(LayerTileComponent, { host: true });
+  host = inject(LayerTileComponent);
 
   ngOnInit(): void {
     this.instance = new UTFGrid(this);

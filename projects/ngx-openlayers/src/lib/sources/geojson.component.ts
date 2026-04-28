@@ -24,7 +24,7 @@ export class SourceGeoJSONComponent extends SourceComponent implements OnInit {
 
   instance?: Vector;
   format: FeatureFormat;
-  host = inject(LayerVectorComponent, { host: true });
+  host = inject(LayerVectorComponent);
 
   ngOnInit(): void {
     this.format = new GeoJSON(this);

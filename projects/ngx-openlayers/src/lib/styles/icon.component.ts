@@ -13,7 +13,7 @@ type IconOrigin = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
   standalone: true,
 })
 export class StyleIconComponent implements OnInit, OnChanges {
-  private host = inject(StyleComponent, { host: true });
+  private host = inject(StyleComponent);
 
   @Input()
   anchor: [number, number];
