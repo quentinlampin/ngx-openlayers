@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.2.1](https://github.com/quentinlampin/ngx-openlayers/compare/21.2.0...21.2.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* remove host injection in components ([e7533a8](https://github.com/quentinlampin/ngx-openlayers/commit/e7533a81ab35fea0773d9ecbdd2669f037a5f8d9))
+
 ## [21.2.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.1.0...21.2.0) (2026-04-21)
 
 
