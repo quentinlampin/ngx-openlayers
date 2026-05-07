@@ -66,8 +66,5 @@
     "prettier": "^3.4.2",
     "ts-node": "~8.3.0",
     "typescript": "~5.9.3"
-  },
-  "volta": {
-    "node": "20.19.6"
   }
 }
