@@ -58,9 +58,10 @@ export class ImageStaticComponent {
 
   projection = new Projection(this.po);
 
-  getCenter = (ext) => getCenter(ext);
+  getCenter = (ext: Extent) => getCenter(ext);
 
-  onUrlChange(evt): void {
-    this.url = evt.target.value;
+  onUrlChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    this.url = select.value;
   }
 }

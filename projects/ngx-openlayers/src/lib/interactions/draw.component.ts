@@ -1,14 +1,16 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input, output } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Condition } from 'ol/events/condition';
 import { Draw } from 'ol/interaction';
 import { DrawEvent, GeometryFunction } from 'ol/interaction/Draw';
+import { Type } from 'ol/geom/Geometry';
 import { Vector } from 'ol/source';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
+
 import { MapComponent } from '../map.component';
-import { Type } from 'ol/geom/Geometry';
+import BaseEvent from 'ol/events/Event';
 
 @Component({
   selector: 'aol-interaction-draw',
@@ -18,60 +20,57 @@ import { Type } from 'ol/geom/Geometry';
 export class DrawInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  clickTolerance?: number;
-  @Input()
-  features?: Collection<Feature>;
-  @Input()
-  source?: Vector;
-  @Input()
-  snapTolerance?: number;
-  @Input()
-  type: Type;
-  @Input()
-  maxPoints?: number;
-  @Input()
-  minPoints?: number;
-  @Input()
-  finishCondition?: Condition;
-  @Input()
-  style?: Style | Style[] | StyleFunction;
-  @Input()
-  geometryFunction?: GeometryFunction;
-  @Input()
-  geometryName?: string;
-  @Input()
-  condition?: Condition;
-  @Input()
-  freehandCondition?: Condition;
-  @Input()
-  freehand?: boolean;
-  @Input()
-  wrapX?: boolean;
+  clickTolerance = input<number>();
+  features = input<Collection<Feature>>();
+  source = input<Vector>();
+  snapTolerance = input<number>();
+  type = input.required<Type>();
+  maxPoints = input<number>();
+  minPoints = input<number>();
+  finishCondition = input<Condition>();
+  style = input<Style | Style[] | StyleFunction>();
+  geometryFunction = input<GeometryFunction>();
+  geometryName = input<string>();
+  condition = input<Condition>();
+  freehandCondition = input<Condition>();
+  freehand = input<boolean>();
+  wrapX = input<boolean>();
 
-  @Output()
-  olChange = new EventEmitter<DrawEvent>();
-  @Output()
-  olChangeActive = new EventEmitter<ObjectEvent>();
-  @Output()
-  drawAbort = new EventEmitter<DrawEvent>();
-  @Output()
-  drawEnd = new EventEmitter<DrawEvent>();
-  @Output()
-  drawStart = new EventEmitter<DrawEvent>();
-  @Output()
-  propertyChange = new EventEmitter<ObjectEvent>();
+  olChange = output<BaseEvent>();
+  olChangeActive = output<ObjectEvent>();
+  drawAbort = output<DrawEvent>();
+  drawEnd = output<DrawEvent>();
+  drawStart = output<DrawEvent>();
+  propertyChange = output<ObjectEvent>();
 
   instance?: Draw;
 
   ngOnInit(): void {
-    this.instance = new Draw(this);
-    this.instance.on('change', (event: DrawEvent) => this.olChange.emit(event));
-    this.instance.on('change:active', (event: ObjectEvent) => this.olChangeActive.emit(event));
-    this.instance.on('drawabort', (event: DrawEvent) => this.drawAbort.emit(event));
-    this.instance.on('drawend', (event: DrawEvent) => this.drawEnd.emit(event));
-    this.instance.on('drawstart', (event: DrawEvent) => this.drawStart.emit(event));
-    this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
+    this.instance = new Draw({
+      clickTolerance: this.clickTolerance(),
+      features: this.features(),
+      source: this.source(),
+      snapTolerance: this.snapTolerance(),
+      type: this.type(),
+      maxPoints: this.maxPoints(),
+      minPoints: this.minPoints(),
+      finishCondition: this.finishCondition(),
+      style: this.style(),
+      geometryFunction: this.geometryFunction(),
+      geometryName: this.geometryName(),
+      condition: this.condition(),
+      freehandCondition: this.freehandCondition(),
+      freehand: this.freehand(),
+      wrapX: this.wrapX(),
+    });
+
+    this.instance.on('change', (event) => this.olChange.emit(event));
+    this.instance.on('change:active', (event) => this.olChangeActive.emit(event));
+    this.instance.on('drawabort', (event) => this.drawAbort.emit(event));
+    this.instance.on('drawend', (event) => this.drawEnd.emit(event));
+    this.instance.on('drawstart', (event) => this.drawStart.emit(event));
+    this.instance.on('propertychange', (event) => this.propertyChange.emit(event));
+
     this.map.instance?.addInteraction(this.instance);
   }
 

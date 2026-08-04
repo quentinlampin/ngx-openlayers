@@ -61,10 +61,17 @@ import {
   ],
 })
 export class SideBySideComponent implements AfterViewInit {
-  secondMap = viewChild<MapComponent>('secondMap');
-  view = viewChild<ViewComponent>('view');
+  readonly secondMap = viewChild.required<MapComponent>('secondMap');
+  readonly view = viewChild.required<ViewComponent>('view');
 
   ngAfterViewInit(): void {
-    this.secondMap().instance.setView(this.view().instance);
+    const secondMapInstance = this.secondMap().instance;
+    const viewInstance = this.view().instance;
+
+    if (!secondMapInstance || !viewInstance) {
+      return;
+    }
+
+    secondMapInstance.setView(viewInstance);
   }
 }

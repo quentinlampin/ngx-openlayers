@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
 import { createXYZ } from 'ol/tilegrid';
 import TileGrid from 'ol/tilegrid/TileGrid';
 import { Extent } from 'ol/extent';
@@ -10,35 +10,40 @@ import { Size } from 'ol/size';
   template: '',
   standalone: true,
 })
-export class TileGridComponent implements OnInit, OnChanges {
-  @Input()
-  extent: Extent;
-  @Input()
-  maxZoom: number;
-  @Input()
-  minZoom: number;
-  @Input()
-  tileSize: number | Size;
-  @Input()
-  origin?: Coordinate;
-  @Input()
-  resolutions: number[];
+export class TileGridComponent {
+  extent = input<Extent>();
+  maxZoom = input<number>();
+  minZoom = input<number>();
+  tileSize = input<number | Size>();
+  origin = input<Coordinate>();
+  resolutions = input<number[]>();
 
   instance?: TileGrid;
 
-  ngOnInit(): void {
-    if (!this.resolutions) {
-      this.instance = createXYZ(this);
-    } else {
-      this.instance = new TileGrid(this);
-    }
+  constructor() {
+    effect(() => {
+      this.buildInstance();
+    });
   }
 
-  ngOnChanges(): void {
-    if (!this.resolutions) {
-      this.instance = createXYZ(this);
+  protected buildInstance(): void {
+    const resolutions = this.resolutions();
+
+    if (!resolutions) {
+      this.instance = createXYZ({
+        extent: this.extent(),
+        maxZoom: this.maxZoom(),
+        minZoom: this.minZoom(),
+        tileSize: this.tileSize(),
+      });
     } else {
-      this.instance = new TileGrid(this);
+      this.instance = new TileGrid({
+        extent: this.extent(),
+        minZoom: this.minZoom(),
+        tileSize: this.tileSize(),
+        origin: this.origin(),
+        resolutions,
+      });
     }
   }
 }

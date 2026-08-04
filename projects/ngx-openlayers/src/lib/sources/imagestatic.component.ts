@@ -1,60 +1,60 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
-import { LoadFunction } from 'ol/Image';
+import { Component, OnChanges, OnInit, SimpleChanges, forwardRef, inject, input, output } from '@angular/core';
 import { Extent } from 'ol/extent';
+import { LoadFunction } from 'ol/Image';
+import BaseObject from 'ol/Object';
 import { ProjectionLike } from 'ol/proj';
 import { ImageStatic } from 'ol/source';
 import { ImageSourceEvent } from 'ol/source/Image';
 import { AttributionLike } from 'ol/source/Source';
+
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
-import BaseObject from 'ol/Object';
 
 @Component({
   selector: 'aol-source-imagestatic',
-  template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
+  template: `<ng-content></ng-content>`,
+  providers: [
+    {
+      provide: SourceComponent,
+      useExisting: forwardRef(() => SourceImageStaticComponent),
+    },
+  ],
   standalone: true,
 })
 export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {
-  @Input()
-  projection: ProjectionLike | string;
-  @Input()
-  imageExtent: Extent;
-  @Input()
-  url: string;
-  @Input()
-  attributions: AttributionLike;
-  @Input()
-  crossOrigin?: string;
-  @Input()
-  imageLoadFunction?: LoadFunction;
+  projection = input.required<ProjectionLike | string>();
+  imageExtent = input.required<Extent>();
+  url = input.required<string>();
+  attributions = input<AttributionLike>();
 
-  @Output()
-  imageLoadStart = new EventEmitter<ImageSourceEvent>();
-  @Output()
-  imageLoadEnd = new EventEmitter<ImageSourceEvent>();
-  @Output()
-  imageLoadError = new EventEmitter<ImageSourceEvent>();
+  crossOrigin = input<string>();
+  imageLoadFunction = input<LoadFunction>();
 
-  instance?: ImageStatic;
-  host = inject(LayerImageComponent);
+  imageLoadStart = output<ImageSourceEvent>();
+  imageLoadEnd = output<ImageSourceEvent>();
+  imageLoadError = output<ImageSourceEvent>();
 
-  setLayerSource(): void {
-    this.instance = new ImageStatic(this);
-    this.host.instance.setSource(this.instance);
-    this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.imageLoadStart.emit(event));
-    this.instance.on('imageloadend', (event: ImageSourceEvent) => this.imageLoadEnd.emit(event));
-    this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.imageLoadError.emit(event));
+  override instance?: ImageStatic;
+
+  readonly host = inject(LayerImageComponent);
+
+  private setLayerSource(): void {
+    this.instance = new ImageStatic({
+      projection: this.projection(),
+      imageExtent: this.imageExtent(),
+      url: this.url(),
+      attributions: this.attributions(),
+      crossOrigin: this.crossOrigin(),
+      imageLoadFunction: this.imageLoadFunction(),
+    });
+
+    this.host.instance?.setSource(this.instance);
+
+    this.instance.on('imageloadstart', (event) => this.imageLoadStart.emit(event));
+
+    this.instance.on('imageloadend', (event) => this.imageLoadEnd.emit(event));
+
+    this.instance.on('imageloaderror', (event) => this.imageLoadError.emit(event));
   }
 
   ngOnInit(): void {
@@ -65,18 +65,18 @@ export class SourceImageStaticComponent extends SourceComponent implements OnIni
     if (!this.instance) {
       return;
     }
+
+    if (changes['url']) {
+      this.setLayerSource();
+      return;
+    }
+
     const properties: Parameters<BaseObject['setProperties']>[0] = {};
+
     for (const key in changes) {
-      switch (key) {
-        case 'url':
-          this.url = changes[key].currentValue;
-          this.setLayerSource();
-          break;
-        default:
-          break;
-      }
       properties[key] = changes[key].currentValue;
     }
+
     this.instance.setProperties(properties, false);
   }
 }

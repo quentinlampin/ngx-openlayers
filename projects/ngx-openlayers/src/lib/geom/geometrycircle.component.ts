@@ -1,21 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
+
 import { Circle } from 'ol/geom';
+
 import { SimpleGeometryComponent } from './simplegeometry.component';
 
 @Component({
   selector: 'aol-geometry-circle',
-  template: ` <ng-content></ng-content> `,
   standalone: true,
+  template: `<ng-content></ng-content>`,
 })
 export class GeometryCircleComponent extends SimpleGeometryComponent {
-  componentType = 'geometry-circle';
-  instance = new Circle([0, 0]);
+  readonly componentType = 'geometry-circle';
 
-  @Input()
-  get radius(): number {
-    return this.instance.getRadius();
-  }
-  set radius(radius: number) {
-    this.instance.setRadius(radius);
+  readonly radius = input<number>();
+
+  readonly instance = new Circle([0, 0]);
+
+  constructor() {
+    super();
+
+    effect(() => {
+      const radius = this.radius();
+
+      if (radius !== undefined) {
+        this.instance.setRadius(radius);
+      }
+    });
   }
 }

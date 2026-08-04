@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { MouseWheelZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
@@ -10,17 +10,19 @@ import { MapComponent } from '../map.component';
 export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  duration: number;
-  @Input()
-  timeout: number;
-  @Input()
-  useAnchor: boolean;
+  duration = input<number>();
+  timeout = input<number>();
+  useAnchor = input<boolean>();
 
   instance?: MouseWheelZoom;
 
   ngOnInit(): void {
-    this.instance = new MouseWheelZoom(this);
+    this.instance = new MouseWheelZoom({
+      duration: this.duration(),
+      timeout: this.timeout(),
+      useAnchor: this.useAnchor(),
+    });
+
     this.map.instance?.addInteraction(this.instance);
   }
 

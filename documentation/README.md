@@ -10,7 +10,7 @@ please refer to https://openlayers.org/en/latest/apidoc/ if in doubt. Contributi
 
 For each supported OpenLayers class, there is a corresponding Angular component. The components instantiate their underlying
 OpenLayers counterpart as part of their initialization and carry the reference in their `instance` property which is public.
-Each property of the underlying OpenLayers object is also an `@Input()` property of the Angular component.
+Each property of the underlying OpenLayers object is also an `input` property of the Angular component. Before version 22, it was `@Input()` properties.
 Each component has a directive selector of the form `aol-` and a structure of components that corresponds to the hierarchy of
 OpenLayers objects is built in a declarative Angular fashion.
 

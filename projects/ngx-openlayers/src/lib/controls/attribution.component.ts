@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { Attribution } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -11,23 +11,25 @@ export class ControlAttributionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
   private element = inject(ElementRef);
 
-  @Input()
-  collapsible: boolean;
+  collapsible = input<boolean>();
 
   componentType = 'control';
   instance?: Attribution;
-  target: HTMLElement;
+  target?: HTMLElement;
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;
-    // console.log('ol.control.Attribution init: ', this);
-    this.instance = new Attribution(this);
+
+    this.instance = new Attribution({
+      collapsible: this.collapsible(),
+      target: this.target,
+    });
+
     this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      // console.log('removing aol-control-attribution');
       this.map.instance?.removeControl(this.instance);
     }
   }

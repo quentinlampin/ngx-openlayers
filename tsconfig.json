@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
@@ -19,7 +18,7 @@
     ],
     "paths": {
       "ngx-openlayers": [
-        "dist/ngx-openlayers"
+        "./dist/ngx-openlayers"
       ]
     },
     "skipLibCheck": true,
@@ -29,6 +28,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
+    "strictTemplates": true
   }
 }

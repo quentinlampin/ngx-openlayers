@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, inject, input } from '@angular/core';
 import MousePosition from 'ol/control/MousePosition';
 import { CoordinateFormat } from 'ol/coordinate';
 import { ProjectionLike } from 'ol/proj';
@@ -11,28 +11,31 @@ import { MapComponent } from '../map.component';
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
-  private element = inject(ElementRef);
+  private element = inject(ElementRef<HTMLElement>);
 
-  @Input()
-  coordinateFormat: CoordinateFormat;
-  @Input()
-  projection: ProjectionLike;
-  @Input()
-  wrapX: boolean;
-  target: HTMLElement;
+  coordinateFormat = input<CoordinateFormat>();
+  projection = input<ProjectionLike>();
+  wrapX = input<boolean>();
+
+  target?: HTMLElement;
 
   instance?: MousePosition;
 
   ngOnInit(): void {
     this.target = this.element.nativeElement;
-    // console.log('ol.control.MousePosition init: ', this);
-    this.instance = new MousePosition(this);
+
+    this.instance = new MousePosition({
+      coordinateFormat: this.coordinateFormat(),
+      projection: this.projection(),
+      wrapX: this.wrapX(),
+      target: this.target,
+    });
+
     this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      // console.log('removing aol-control-mouseposition');
       this.map.instance?.removeControl(this.instance);
     }
   }

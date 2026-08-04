@@ -1,13 +1,5 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChild,
-  EventEmitter,
-  forwardRef,
-  inject,
-  Input,
-  Output,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChild, forwardRef, inject, input, output } from '@angular/core';
+
 import { Raster, Source } from 'ol/source';
 import { Options, RasterSourceEvent } from 'ol/source/Raster';
 
@@ -16,42 +8,40 @@ import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-raster',
-  template: ` <ng-content></ng-content> `,
+  template: `<ng-content></ng-content>`,
+  standalone: true,
   providers: [
     {
       provide: SourceComponent,
       useExisting: forwardRef(() => SourceRasterComponent),
     },
   ],
-  standalone: true,
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {
-  @Input()
-  operation?: Options['operation'];
-  @Input()
-  threads?: Options['threads'];
-  @Input()
-  lib?: Options['lib'];
-  @Input()
-  operationType?: Options['operationType'];
+  operation = input<Options['operation']>();
+  threads = input<Options['threads']>();
+  lib = input<Options['lib']>();
+  operationType = input<Options['operationType']>();
 
-  @Output()
-  beforeOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
-  @Output()
-  afterOperations: EventEmitter<RasterSourceEvent> = new EventEmitter<RasterSourceEvent>();
+  beforeOperations = output<RasterSourceEvent>();
+  afterOperations = output<RasterSourceEvent>();
 
   instance?: Raster;
+
   sources: Source[] = [];
-  host = inject(LayerImageComponent);
+
+  protected override host = inject(LayerImageComponent);
 
   @ContentChild(SourceComponent)
-  set source(sourceComponent: SourceComponent) {
-    if (sourceComponent.instance) {
-      this.sources = [sourceComponent.instance];
-      if (this.instance) {
-        // Openlayer doesn't handle sources update. Just recreate Raster instance.
-        this.init();
-      }
+  set source(sourceComponent: SourceComponent | undefined) {
+    if (!sourceComponent?.instance) {
+      return;
+    }
+
+    this.sources = [sourceComponent.instance];
+
+    if (this.instance) {
+      this.init();
     }
   }
 
@@ -59,10 +49,23 @@ export class SourceRasterComponent extends SourceComponent implements AfterConte
     this.init();
   }
 
-  init(): void {
-    this.instance = new Raster(this);
-    this.instance.on('beforeoperations', (event: RasterSourceEvent) => this.beforeOperations.emit(event));
-    this.instance.on('afteroperations', (event: RasterSourceEvent) => this.afterOperations.emit(event));
+  private init(): void {
+    this.instance = new Raster({
+      operation: this.operation(),
+      threads: this.threads(),
+      lib: this.lib(),
+      operationType: this.operationType(),
+      sources: this.sources,
+    });
+
+    this.instance.on('beforeoperations', (event: RasterSourceEvent) => {
+      this.beforeOperations.emit(event);
+    });
+
+    this.instance.on('afteroperations', (event: RasterSourceEvent) => {
+      this.afterOperations.emit(event);
+    });
+
     this._register(this.instance);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import WMTS from 'ol/tilegrid/WMTS';
 import { TileGridComponent } from './tilegrid.component';
 import { Coordinate } from 'ol/coordinate';
@@ -10,24 +10,23 @@ import { Size } from 'ol/size';
   standalone: true,
 })
 export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
-  @Input()
-  origin?: Coordinate;
-  @Input()
-  origins?: Coordinate[];
-  @Input()
-  resolutions: number[];
-  @Input()
-  matrixIds: string[];
-  @Input()
-  sizes?: Size[];
-  @Input()
-  tileSizes?: Size[];
-  @Input()
-  widths?: number[];
+  origins = input<Coordinate[]>();
+  matrixIds = input<string[]>();
+  sizes = input<Size[]>();
+  tileSizes = input<Size[]>();
 
   instance?: WMTS;
 
   ngOnInit(): void {
-    this.instance = new WMTS(this);
+    this.instance = new WMTS({
+      origin: this.origin(),
+      origins: this.origins(),
+      resolutions: this.resolutions()!,
+      matrixIds: this.matrixIds()!,
+      sizes: this.sizes(),
+      tileSizes: this.tileSizes(),
+      extent: this.extent(),
+      tileSize: this.tileSize(),
+    });
   }
 }

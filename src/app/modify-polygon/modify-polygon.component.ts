@@ -27,10 +27,10 @@ import {
   template: `
     <aol-map #map width="100%" height="100%">
       <aol-interaction-default></aol-interaction-default>
-      <aol-interaction-select [wrapX]="true" #select></aol-interaction-select>
+      <aol-interaction-select #select></aol-interaction-select>
       <aol-interaction-modify
         #modify
-        [features]="select.instance.getFeatures()"
+        [features]="select.instance!.getFeatures()"
         (modifyEnd)="modifyEnd($event.features.getArray()[0])"
       >
       </aol-interaction-modify>

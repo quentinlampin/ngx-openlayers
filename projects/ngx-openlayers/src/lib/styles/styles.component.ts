@@ -9,7 +9,7 @@ import { StyleComponent } from './style.component';
   standalone: true,
 })
 export class StylesComponent implements AfterViewInit {
-  @ContentChildren(StyleComponent) styles: StyleComponent[];
+  @ContentChildren(StyleComponent) styles!: StyleComponent[];
 
   private readonly host: FeatureComponent | LayerVectorComponent | null;
 
@@ -17,7 +17,7 @@ export class StylesComponent implements AfterViewInit {
     const featureHost = inject(FeatureComponent, { optional: true, host: true });
     const layerHost = inject(LayerVectorComponent, { optional: true, host: true });
 
-    this.host = !!featureHost ? featureHost : layerHost;
+    this.host = featureHost ? featureHost : layerHost;
     if (!this.host) {
       throw new Error('aol-styles must be applied to a feature or a layer');
     }

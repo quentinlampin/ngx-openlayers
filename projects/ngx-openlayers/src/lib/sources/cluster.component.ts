@@ -2,12 +2,13 @@ import {
   AfterContentInit,
   Component,
   ContentChild,
-  forwardRef,
-  inject,
-  Input,
+  input,
   OnChanges,
   SimpleChanges,
+  forwardRef,
+  inject,
 } from '@angular/core';
+
 import { Feature } from 'ol';
 import { Geometry, Point } from 'ol/geom';
 import { Cluster, Vector } from 'ol/source';
@@ -19,33 +20,44 @@ import { SourceVectorComponent } from './vector.component';
 @Component({
   selector: 'aol-source-cluster',
   template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
+  providers: [
+    {
+      provide: SourceComponent,
+      useExisting: forwardRef(() => SourceClusterComponent),
+    },
+  ],
   standalone: true,
 })
 export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges {
-  @Input()
-  distance: number;
-  @Input()
-  geometryFunction?: (feature: Feature) => Point;
-  @Input()
-  wrapX?: boolean;
+  distance = input.required<number>();
+  geometryFunction = input<(feature: Feature) => Point>();
+  wrapX = input<boolean>();
 
   @ContentChild(SourceVectorComponent)
-  sourceVectorComponent: SourceVectorComponent;
+  sourceVectorComponent!: SourceVectorComponent;
+
   source?: Vector;
+
   instance?: Cluster<Feature<Geometry>>;
+
   host = inject(LayerVectorComponent);
 
   ngAfterContentInit(): void {
     this.source = this.sourceVectorComponent.instance;
 
-    this.instance = new Cluster(this);
-    this.host.instance.setSource(this.instance);
+    this.instance = new Cluster({
+      distance: this.distance(),
+      geometryFunction: this.geometryFunction(),
+      source: this.source,
+      wrapX: this.wrapX(),
+    });
+
+    this.host.instance?.setSource(this.instance);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.instance && changes.hasOwnProperty('distance')) {
-      this.instance.setDistance(this.distance);
+    if (this.instance && changes['distance']) {
+      this.instance.setDistance(this.distance());
     }
   }
 }

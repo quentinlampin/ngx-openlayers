@@ -3,15 +3,14 @@
 @include mat.elevation-classes();
 @include mat.app-background();
 
-$my-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-  ),
-));
+$my-theme: mat.define-theme((color: (theme-type: light,
+        primary: mat.$azure-palette,
+      ),
+    ));
 
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden;
   @include mat.all-component-themes($my-theme);

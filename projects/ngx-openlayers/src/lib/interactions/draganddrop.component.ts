@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import FeatureFormat from 'ol/format/Feature';
 import { DragAndDrop } from 'ol/interaction';
 import { ProjectionLike } from 'ol/proj';
@@ -12,17 +12,19 @@ import { MapComponent } from '../map.component';
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  formatConstructors: FeatureFormat[];
-  @Input()
-  projection: ProjectionLike;
-  @Input()
-  target: HTMLElement;
+  formatConstructors = input<FeatureFormat[]>();
+  projection = input<ProjectionLike>();
+  target = input<HTMLElement>();
 
   instance?: DragAndDrop;
 
   ngOnInit(): void {
-    this.instance = new DragAndDrop(this);
+    this.instance = new DragAndDrop({
+      formatConstructors: this.formatConstructors(),
+      projection: this.projection(),
+      target: this.target(),
+    });
+
     this.map.instance?.addInteraction(this.instance);
   }
 

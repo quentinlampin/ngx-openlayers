@@ -9,6 +9,8 @@ ngx-openlayers works with the following versions which must be installed as peer
 
 | ngx-openlayers | Angular | Openlayers |
 |----------------|---------|------------|
+| 22.x           | ^22.0.0 | ~10.10.0    |
+| 21.x           | ^21.0.0 | ~10.7.0    |
 | 20.x           | ^20.0.0 | ~10.7.0    |
 | 19.x           | ^19.0.0 | ~10.5.0    |
 | 18.x           | ^18.0.0 | ~10.5.0    |
@@ -123,9 +125,9 @@ Live example will be viewable at locahost:4200
 - Mazzoléni <yoahn.mazzoleni.external@airbus.com>
 - Michael Parry <michael.m.parry.external@airbus.com>
 - Matthieu Lhotellerie  <matthieu.lhotellerie@airbus.com>
+- Mathieu Guyot <mathieu.guyot@airbus.com>
 
 ### Other
-
 - FallenRiteMonk <fallenritemonk@gmail.com>
 - Achim Hasenmueller <achim@autorouter.eu>
 - achimha <guigui03>

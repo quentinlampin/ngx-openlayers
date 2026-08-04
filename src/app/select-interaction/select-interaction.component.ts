@@ -37,11 +37,7 @@ import {
         </aol-source-vector>
       </aol-layer-vector>
 
-      <aol-interaction-select
-        [layers]="[markers.instance]"
-        (olSelect)="select($event)"
-        [wrapX]="false"
-      ></aol-interaction-select>
+      <aol-interaction-select [layers]="[markers.instance]" (olSelect)="select($event)"></aol-interaction-select>
     </aol-map>
   `,
   imports: [

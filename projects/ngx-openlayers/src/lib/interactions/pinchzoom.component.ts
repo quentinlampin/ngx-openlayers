@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { PinchZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
@@ -10,15 +10,15 @@ import { MapComponent } from '../map.component';
 export class PinchZoomInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  duration: number;
-  @Input()
-  constrainResolution: boolean;
+  duration = input<number>();
 
   instance?: PinchZoom;
 
   ngOnInit(): void {
-    this.instance = new PinchZoom(this);
+    this.instance = new PinchZoom({
+      duration: this.duration(),
+    });
+
     this.map.instance?.addInteraction(this.instance);
   }
 

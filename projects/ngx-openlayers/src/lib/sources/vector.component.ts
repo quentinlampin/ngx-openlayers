@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, OnInit, input } from '@angular/core';
 import { Vector } from 'ol/source';
 import { default as FeatureFormat } from 'ol/format/Feature';
 import { LayerVectorComponent } from '../layers/layervector.component';
@@ -12,22 +12,21 @@ import { Feature } from 'ol';
 @Component({
   selector: 'aol-source-vector',
   template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
+  providers: [
+    {
+      provide: SourceComponent,
+      useExisting: forwardRef(() => SourceVectorComponent),
+    },
+  ],
   standalone: true,
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {
-  @Input()
-  overlaps: boolean;
-  @Input()
-  useSpatialIndex: boolean;
-  @Input()
-  wrapX: boolean;
-  @Input()
-  url: string;
-  @Input()
-  format: FeatureFormat;
-  @Input()
-  strategy: LoadingStrategy;
+  overlaps = input<boolean>();
+  useSpatialIndex = input<boolean>();
+  wrapX = input<boolean>();
+  url = input<string>();
+  format = input<FeatureFormat>();
+  strategy = input<LoadingStrategy>();
 
   /**
    * The loader function used to load features, from a remote source for example.
@@ -38,25 +37,34 @@ export class SourceVectorComponent extends SourceComponent implements OnInit {
    * An extra argument is provided to the OpenLayers callback to enable retrieval
    * of the parent VectorSource.
    */
-  @Input()
-  loader: (
-    extent: Extent,
-    resolution: number,
-    projection: Projection,
-    success: (geos: Feature<Geometry>[]) => void,
-    failure: () => void,
-    vectorSource: Vector
-  ) => void;
+  loader =
+    input<
+      (
+        extent: Extent,
+        resolution: number,
+        projection: Projection,
+        success: ((features: Feature<Geometry>[]) => void) | undefined,
+        failure: (() => void) | undefined,
+        vectorSource: Vector | undefined
+      ) => void
+    >();
 
   instance?: Vector;
   host = inject(LayerVectorComponent);
 
   ngOnInit(): void {
+    const loader = this.loader();
+
     this.instance = new Vector({
-      ...this,
-      loader: this.loader
+      overlaps: this.overlaps(),
+      useSpatialIndex: this.useSpatialIndex(),
+      wrapX: this.wrapX(),
+      url: this.url(),
+      format: this.format(),
+      strategy: this.strategy(),
+      loader: loader
         ? (extent, resolution, projection, success, failure) =>
-            this.loader(extent, resolution, projection, success, failure, this.instance)
+            loader(extent, resolution, projection, success, failure, this.instance)
         : undefined,
     });
 

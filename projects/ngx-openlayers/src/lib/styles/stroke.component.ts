@@ -1,87 +1,95 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
+
 import { Color } from 'ol/color';
 import { ColorLike } from 'ol/colorlike';
 import { Stroke } from 'ol/style';
+
 import { StyleCircleComponent } from './circle.component';
 import { StyleComponent } from './style.component';
 import { StyleTextComponent } from './text.component';
 
 @Component({
   selector: 'aol-style-stroke',
-  template: ` <div class="aol-style-stroke"></div> `,
   standalone: true,
+  template: `<div class="aol-style-stroke"></div>`,
 })
-export class StyleStrokeComponent implements OnInit, OnChanges {
-  @Input()
-  color: Color | ColorLike;
-  @Input()
-  lineCap: CanvasLineCap;
-  @Input()
-  lineDash: number[];
-  @Input()
-  lineJoin: CanvasLineJoin;
-  @Input()
-  miterLimit: number;
-  @Input()
-  width: number;
+export class StyleStrokeComponent {
+  readonly color = input<Color | ColorLike>();
+  readonly lineCap = input<CanvasLineCap>();
+  readonly lineDash = input<number[]>();
+  readonly lineJoin = input<CanvasLineJoin>();
+  readonly miterLimit = input<number>();
+  readonly width = input<number>();
 
-  instance?: Stroke;
+  readonly instance: Stroke;
+
+  private readonly styleHost = inject(StyleComponent, { optional: true });
+
+  private readonly circleHost = inject(StyleCircleComponent, { optional: true });
+
+  private readonly textHost = inject(StyleTextComponent, { optional: true });
+
   private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
   constructor() {
-    const styleHost = inject(StyleComponent, { optional: true });
-    const styleCircleHost = inject(StyleCircleComponent, { optional: true });
-    const styleTextHost = inject(StyleTextComponent, { optional: true });
+    this.host =
+      this.textHost ??
+      this.circleHost ??
+      this.styleHost ??
+      (() => {
+        throw new Error('aol-style-stroke must be a descendant of aol-style, aol-style-circle, or aol-style-text.');
+      })();
 
-    if (!styleHost) {
-      throw new Error('aol-style-stroke must be a descendant of aol-style');
-    }
-    if (!!styleTextHost) {
-      this.host = styleTextHost;
-    } else if (!!styleCircleHost) {
-      this.host = styleCircleHost;
-    } else {
-      this.host = styleHost;
-    }
-    // console.log('creating aol-style-stroke with: ', this);
-  }
-
-  ngOnInit(): void {
-    // console.log('creating ol.style.Stroke instance with: ', this);
-    this.instance = new Stroke(this);
+    this.instance = new Stroke({
+      color: this.color(),
+      lineCap: this.lineCap(),
+      lineDash: this.lineDash(),
+      lineJoin: this.lineJoin(),
+      miterLimit: this.miterLimit(),
+      width: this.width(),
+    });
 
     if (this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
       this.host.instance?.setStroke(this.instance);
     } else {
-      this.host.stroke = this.instance;
+      this.host.setStroke(this.instance);
     }
-  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
-    if (changes.color) {
-      this.instance.setColor(changes.color.currentValue);
-    }
-    if (changes.lineCap) {
-      this.instance.setLineCap(changes.lineCap.currentValue);
-    }
-    if (changes.lineDash) {
-      this.instance.setLineDash(changes.lineDash.currentValue);
-    }
-    if (changes.lineJoin) {
-      this.instance.setLineJoin(changes.lineJoin.currentValue);
-    }
-    if (changes.miterLimit) {
-      this.instance.setMiterLimit(changes.miterLimit.currentValue);
-    }
-    if (changes.width) {
-      this.instance.setWidth(changes.width.currentValue);
-    }
-    if (this.host instanceof StyleCircleComponent || this.host instanceof StyleComponent) {
-      this.host.update();
-    }
-    // console.log('changes detected in aol-style-stroke, setting new properties: ', changes);
+    effect(() => {
+      const color = this.color();
+      const lineCap = this.lineCap();
+      const lineDash = this.lineDash();
+      const lineJoin = this.lineJoin();
+      const miterLimit = this.miterLimit();
+      const width = this.width();
+
+      if (color !== undefined) {
+        this.instance.setColor(color);
+      }
+
+      if (lineCap !== undefined) {
+        this.instance.setLineCap(lineCap);
+      }
+
+      if (lineDash !== undefined) {
+        this.instance.setLineDash(lineDash);
+      }
+
+      if (lineJoin !== undefined) {
+        this.instance.setLineJoin(lineJoin);
+      }
+
+      if (miterLimit !== undefined) {
+        this.instance.setMiterLimit(miterLimit);
+      }
+
+      if (width !== undefined) {
+        this.instance.setWidth(width);
+      }
+
+      if (this.host instanceof StyleComponent || this.host instanceof StyleCircleComponent) {
+        this.host.update();
+      }
+    });
   }
 }

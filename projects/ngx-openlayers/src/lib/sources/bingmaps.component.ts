@@ -1,42 +1,52 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, input, OnInit } from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { BingMaps } from 'ol/source';
+
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-bingmaps',
   template: ` <div class="aol-source-bingmaps"></div> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
+  providers: [
+    {
+      provide: SourceComponent,
+      useExisting: forwardRef(() => SourceBingmapsComponent),
+    },
+  ],
   standalone: true,
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {
-  @Input()
-  cacheSize: number;
-  @Input()
-  hidpi: boolean;
-  @Input()
-  culture: string;
-  @Input()
-  key: string;
-  @Input()
-  imagerySet: 'Road' | 'Aerial' | 'AerialWithLabels' | 'collinsBart' | 'ordnanceSurvey' = 'Aerial';
-  @Input()
-  maxZoom: number;
-  @Input()
-  reprojectionErrorThreshold: number;
-  @Input()
-  tileLoadFunction: LoadFunction;
-  @Input()
-  wrapX: boolean;
-  @Input()
+  cacheSize = input<number>();
+  hidpi = input<boolean>();
+  culture = input<string>();
+  key = input.required<string>();
+  imagerySet = input<'Road' | 'Aerial' | 'AerialWithLabels' | 'collinsBart' | 'ordnanceSurvey'>('Aerial');
+  maxZoom = input<number>();
+
+  reprojectionErrorThreshold = input<number>();
+  tileLoadFunction = input<LoadFunction>();
+  wrapX = input<boolean>();
   placeholderTiles = false;
 
   instance?: BingMaps;
+
   host = inject(LayerTileComponent);
 
   ngOnInit(): void {
-    this.instance = new BingMaps(this);
-    this.host.instance.setSource(this.instance);
+    this.instance = new BingMaps({
+      cacheSize: this.cacheSize(),
+      hidpi: this.hidpi(),
+      culture: this.culture(),
+      key: this.key(),
+      imagerySet: this.imagerySet(),
+      maxZoom: this.maxZoom(),
+      reprojectionErrorThreshold: this.reprojectionErrorThreshold(),
+      tileLoadFunction: this.tileLoadFunction(),
+      wrapX: this.wrapX(),
+      placeholderTiles: this.placeholderTiles,
+    });
+
+    this.host.instance?.setSource(this.instance);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { Condition } from 'ol/events/condition';
 import { DragBox } from 'ol/interaction';
 import { EndCondition } from 'ol/interaction/DragBox';
@@ -12,17 +12,19 @@ import { MapComponent } from '../map.component';
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  className: string;
-  @Input()
-  condition: Condition;
-  @Input()
-  boxEndCondition: EndCondition;
+  className = input<string>();
+  condition = input<Condition>();
+  boxEndCondition = input<EndCondition>();
 
   instance?: DragBox;
 
   ngOnInit(): void {
-    this.instance = new DragBox(this);
+    this.instance = new DragBox({
+      className: this.className(),
+      condition: this.condition(),
+      boxEndCondition: this.boxEndCondition(),
+    });
+
     this.map.instance?.addInteraction(this.instance);
   }
 

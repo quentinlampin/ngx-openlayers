@@ -1,15 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  inject,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, effect, inject, input, output } from '@angular/core';
 import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import MapEvent from 'ol/MapEvent';
@@ -22,53 +11,32 @@ import BaseObject from 'ol/Object';
 @Component({
   selector: 'aol-map',
   template: `
-    <div [style.width]="width" [style.height]="height"></div>
+    <div [style.width]="width()" [style.height]="height()"></div>
     <ng-content></ng-content>
   `,
   standalone: true,
 })
-export class MapComponent implements OnInit, AfterViewInit, OnChanges {
+export class MapComponent implements OnInit, AfterViewInit {
   private host = inject(ElementRef);
 
-  @Input()
-  width = '100%';
-  @Input()
-  height = '100%';
-  @Input()
-  pixelRatio: number;
-  @Input()
-  keyboardEventTarget: HTMLElement | string;
-  @Input()
-  loadTilesWhileAnimating: boolean;
-  @Input()
-  loadTilesWhileInteracting: boolean;
-  @Input()
-  logo: string | boolean;
-  @Input()
-  renderer: 'canvas' | 'webgl';
+  width = input('100%');
+  height = input('100%');
+  pixelRatio = input<number>();
+  keyboardEventTarget = input<HTMLElement | string>();
+  logo = input<string | boolean>();
+  renderer = input<'canvas' | 'webgl'>();
 
-  @Output()
-  olClick: EventEmitter<MapBrowserEvent>;
-  @Output()
-  dblClick: EventEmitter<MapBrowserEvent>;
-  @Output()
-  moveStart: EventEmitter<MapEvent>;
-  @Output()
-  moveEnd: EventEmitter<MapEvent>;
-  @Output()
-  pointerDrag: EventEmitter<MapBrowserEvent>;
-  @Output()
-  pointerMove: EventEmitter<MapBrowserEvent>;
-  @Output()
-  onpostrender: EventEmitter<RenderEvent>;
-  @Output()
-  postRender: EventEmitter<MapEvent>;
-  @Output()
-  onpreCompose: EventEmitter<RenderEvent>;
-  @Output()
-  propertyChange: EventEmitter<BaseEvent>;
-  @Output()
-  singleClick: EventEmitter<MapBrowserEvent>;
+  olClick = output<MapBrowserEvent>();
+  dblClick = output<MapBrowserEvent>();
+  moveStart = output<MapEvent>();
+  moveEnd = output<MapEvent>();
+  pointerDrag = output<MapBrowserEvent>();
+  pointerMove = output<MapBrowserEvent>();
+  onpostrender = output<RenderEvent>();
+  postRender = output<MapEvent>();
+  onpreCompose = output<RenderEvent>();
+  propertyChange = output<BaseEvent>();
+  singleClick = output<MapBrowserEvent>();
 
   instance?: Map;
   componentType = 'map';
@@ -76,24 +44,39 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   controls: Control[] = [];
   interactions: Interaction[] = [];
 
+  private initialized = false;
+
   constructor() {
-    this.olClick = new EventEmitter<MapBrowserEvent>();
-    this.dblClick = new EventEmitter<MapBrowserEvent>();
-    this.moveStart = new EventEmitter<MapEvent>();
-    this.moveEnd = new EventEmitter<MapEvent>();
-    this.pointerDrag = new EventEmitter<MapBrowserEvent>();
-    this.pointerMove = new EventEmitter<MapBrowserEvent>();
-    this.onpostrender = new EventEmitter<RenderEvent>();
-    this.postRender = new EventEmitter<MapEvent>();
-    this.onpreCompose = new EventEmitter<RenderEvent>();
-    this.propertyChange = new EventEmitter<BaseEvent>();
-    this.singleClick = new EventEmitter<MapBrowserEvent>();
+    // Non-recreating property updates, mirroring the original ngOnChanges'
+    // blind setProperties push (it iterates changed keys and forwards them
+    // as-is, so pushing the full current set on every dependency change is
+    // equivalent here).
+    effect(() => {
+      const properties: Parameters<BaseObject['setProperties']>[0] = {
+        pixelRatio: this.pixelRatio(),
+        keyboardEventTarget: this.keyboardEventTarget(),
+        logo: this.logo(),
+        renderer: this.renderer(),
+      };
+
+      if (!this.initialized || !this.instance) {
+        return;
+      }
+
+      this.instance.setProperties(properties, false);
+    });
   }
 
   ngOnInit(): void {
-    // console.log('creating ol.Map instance with:', this);
-    this.instance = new Map(this);
+    this.instance = new Map({
+      pixelRatio: this.pixelRatio(),
+      keyboardEventTarget: this.keyboardEventTarget(),
+      controls: this.controls,
+      interactions: this.interactions,
+    });
+
     this.instance.setTarget(this.host.nativeElement.firstElementChild);
+
     this.instance.on('click', (event: MapBrowserEvent) => this.olClick.emit(event));
     this.instance.on('dblclick', (event: MapBrowserEvent) => this.dblClick.emit(event));
     this.instance.on('movestart', (event: MapEvent) => this.moveStart.emit(event));
@@ -105,21 +88,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.instance.on('precompose', (event: RenderEvent) => this.onpreCompose.emit(event));
     this.instance.on('propertychange', (event: BaseEvent) => this.propertyChange.emit(event));
     this.instance.on('singleclick', (event: MapBrowserEvent) => this.singleClick.emit(event));
-  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
-    const properties: Parameters<BaseObject['setProperties']>[0] = {};
-    for (const key in changes) {
-      properties[key] = changes[key].currentValue;
-    }
-    // console.log('changes detected in aol-map, setting new properties: ', properties);
-    this.instance.setProperties(properties, false);
+    this.initialized = true;
   }
 
   ngAfterViewInit(): void {
+    this.instance?.updateSize();
     if (this.instance) {
       this.instance.updateSize();
     }

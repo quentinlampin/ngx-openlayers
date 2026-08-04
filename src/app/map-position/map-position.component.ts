@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {
   CoordinateComponent,
   DefaultControlComponent,
@@ -9,8 +9,7 @@ import {
   SourceOsmComponent,
   ViewComponent,
 } from 'ngx-openlayers';
-import { transform } from 'ol/proj';
-import Projection from 'ol/proj/Projection';
+import { Projection, transform } from 'ol/proj';
 
 interface MapPositionForm {
   x: FormControl<number>;
@@ -24,8 +23,12 @@ interface MapPositionForm {
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
 
-      <aol-view #view [zoom]="form.get('zoom').value">
-        <aol-coordinate [x]="form.get('x').value" [y]="form.get('y').value" srid="EPSG:4326"></aol-coordinate>
+      <aol-view #view [zoom]="form.get('zoom')?.value">
+        <aol-coordinate
+          [x]="form.get('x')?.value ?? 0"
+          [y]="form.get('y')?.value ?? 0"
+          srid="EPSG:4326"
+        ></aol-coordinate>
       </aol-view>
 
       <aol-layer-tile [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
@@ -104,22 +107,24 @@ interface MapPositionForm {
   ],
 })
 export class MapPositionComponent implements OnInit {
-  private fb = inject(FormBuilder);
+  private readonly fb = inject(NonNullableFormBuilder);
 
   @ViewChild('map', { static: true })
-  map: MapComponent;
+  map!: MapComponent;
+
   @ViewChild('view', { static: true })
-  view: ViewComponent;
+  view!: ViewComponent;
 
   displayProj = new Projection({ code: 'EPSG:3857' });
   inputProj = new Projection({ code: 'EPSG:4326' });
 
   moving = false;
+
   currentZoom = 0;
   currentLon = 0;
   currentLat = 0;
 
-  form: FormGroup<MapPositionForm>;
+  form!: FormGroup<MapPositionForm>;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -131,8 +136,20 @@ export class MapPositionComponent implements OnInit {
 
   displayCoordinates(): void {
     this.moving = false;
-    this.currentZoom = this.view.instance.getZoom();
-    [this.currentLon, this.currentLat] = transform(this.view.instance.getCenter(), this.displayProj, this.inputProj);
+
+    const view = this.view.instance;
+
+    if (!view) {
+      return;
+    }
+
+    this.currentZoom = view.getZoom() ?? 0;
+
+    const center = view.getCenter();
+
+    if (center) {
+      [this.currentLon, this.currentLat] = transform(center, this.displayProj, this.inputProj);
+    }
   }
 
   startMoving(): void {

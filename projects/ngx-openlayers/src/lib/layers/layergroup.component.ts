@@ -1,64 +1,84 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
-import { Group } from 'ol/layer';
-import { MapComponent } from '../map.component';
+import { Component, OnDestroy, OnInit, effect, inject, input } from '@angular/core';
+import { Collection } from 'ol';
 import { Extent } from 'ol/extent';
-import BaseObject from 'ol/Object';
 import BaseLayer from 'ol/layer/Base';
-import Collection from 'ol/Collection';
+import { Group } from 'ol/layer';
+
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-layer-group',
-  template: ` <ng-content></ng-content> `,
+  template: `<ng-content></ng-content>`,
   standalone: true,
 })
-export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {
-  @Input()
-  opacity: number;
-  @Input()
-  visible: boolean;
-  @Input()
-  extent: Extent;
-  @Input()
-  zIndex: number;
-  @Input()
-  minResolution: number;
-  @Input()
-  maxResolution: number;
-  @Input()
-  minZoom: number;
-  @Input()
-  maxZoom: number;
-  @Input()
-  layers: BaseLayer[] | Collection<BaseLayer>;
-  @Input()
-  properties: {
-    [x: string]: unknown;
-  };
+export class LayerGroupComponent implements OnInit, OnDestroy {
+  opacity = input<number>();
+  visible = input<boolean>();
+  extent = input<Extent>();
+  zIndex = input<number>();
+  minResolution = input<number>();
+  maxResolution = input<number>();
+  minZoom = input<number>();
+  maxZoom = input<number>();
+  layers = input<BaseLayer[] | Collection<BaseLayer>>();
+  properties = input<{ [x: string]: unknown }>();
 
   public instance?: Group;
+
   componentType = 'layer';
+
   private readonly map = inject(MapComponent);
-  private readonly group = inject(LayerGroupComponent, { skipSelf: true, optional: true });
-  private readonly host = this.group || this.map;
+
+  private readonly group = inject(LayerGroupComponent, {
+    skipSelf: true,
+    optional: true,
+  });
+
+  private readonly host: MapComponent | LayerGroupComponent = this.group ?? this.map;
+
+  constructor() {
+    effect(() => {
+      const values = {
+        opacity: this.opacity(),
+        visible: this.visible(),
+        extent: this.extent(),
+        zIndex: this.zIndex(),
+        minResolution: this.minResolution(),
+        maxResolution: this.maxResolution(),
+        minZoom: this.minZoom(),
+        maxZoom: this.maxZoom(),
+        layers: this.layers(),
+        properties: this.properties(),
+      };
+
+      const definedValues = Object.fromEntries(Object.entries(values).filter(([, v]) => v !== undefined));
+
+      if (this.instance && Object.keys(definedValues).length) {
+        this.instance.setProperties(values, false);
+      }
+    });
+  }
 
   ngOnInit(): void {
-    // console.log(`creating ol.layer.Group instance with:`, this);
-    this.instance = new Group(this);
-    this.host.instance.getLayers().push(this.instance);
+    this.instance = new Group({
+      opacity: this.opacity(),
+      visible: this.visible(),
+      extent: this.extent(),
+      zIndex: this.zIndex(),
+      minResolution: this.minResolution(),
+      maxResolution: this.maxResolution(),
+      minZoom: this.minZoom(),
+      maxZoom: this.maxZoom(),
+      layers: this.layers(),
+      properties: this.properties(),
+    });
+
+    this.host.instance?.getLayers().push(this.instance);
   }
 
   ngOnDestroy(): void {
-    this.host.instance?.getLayers().remove(this.instance);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
+    if (this.instance) {
+      this.host.instance?.getLayers().remove(this.instance);
     }
-    const properties: Parameters<BaseObject['setProperties']>[0] = {};
-    for (const key in changes) {
-      properties[key] = changes[key].currentValue;
-    }
-    this.instance.setProperties(properties, false);
   }
 }

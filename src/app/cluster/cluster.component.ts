@@ -148,7 +148,7 @@ export class ClusterComponent implements OnInit {
     }
   }
 
-  getRandomInRange(from, to, fixed): number {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+  getRandomInRange(from: number, to: number, fixed: number): number {
+    return Number((Math.random() * (to - from) + from).toFixed(fixed));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { Condition } from 'ol/events/condition';
 import { DragRotateAndZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
@@ -11,15 +11,17 @@ import { MapComponent } from '../map.component';
 export class DragRotateAndZoomInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  condition: Condition;
-  @Input()
-  duration: number;
+  condition = input<Condition>();
+  duration = input<number>();
 
   instance?: DragRotateAndZoom;
 
   ngOnInit(): void {
-    this.instance = new DragRotateAndZoom(this);
+    this.instance = new DragRotateAndZoom({
+      condition: this.condition(),
+      duration: this.duration(),
+    });
+
     this.map.instance?.addInteraction(this.instance);
   }
 

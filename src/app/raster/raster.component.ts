@@ -12,6 +12,7 @@ import {
   ViewComponent,
 } from 'ngx-openlayers';
 import { FormsModule } from '@angular/forms';
+import { Operation } from 'ol/source/Raster';
 
 interface RasterData {
   brightness: number;
@@ -108,21 +109,21 @@ interface RasterData {
 })
 export class RasterComponent {
   @ViewChild(SourceRasterComponent, { static: true })
-  rasterSource;
+  rasterSource!: SourceRasterComponent;
 
   operation = rasterOperation;
   brightness = 0;
   contrast = 0;
   selectLayer = 'osm';
 
-  beforeOperations(event): void {
+  beforeOperations(event: { data: RasterData }): void {
     const data: RasterData = event.data;
     data.brightness = this.brightness;
     data.contrast = this.contrast;
   }
 
   updateRaster(): void {
-    this.rasterSource.instance.refresh();
+    this.rasterSource.instance?.refresh();
   }
 }
 
@@ -130,17 +131,18 @@ export class RasterComponent {
  * @see https://github.com/canastro/image-filter-brightness/blob/master/src/transform.js
  * @see https://github.com/canastro/image-filter-contrast/blob/master/src/transform.js
  */
-const rasterOperation = (imageDatas: [ImageData], data: RasterData): ImageData => {
-  const [imageData] = imageDatas;
+const rasterOperation: Operation = (inputs, data) => {
+  const rasterData = data as RasterData;
+
+  const imageData = inputs[0] as ImageData;
 
   const pixels = imageData.data;
-  const pixelsLength = pixels.length;
-  const factor = (259 * (data.contrast + 255)) / (255 * (259 - data.contrast));
+  const factor = (259 * (rasterData.contrast + 255)) / (255 * (259 - rasterData.contrast));
 
-  for (let i = 0; i < pixelsLength; i += 4) {
-    pixels[i] += data.brightness;
-    pixels[i + 1] += data.brightness;
-    pixels[i + 2] += data.brightness;
+  for (let i = 0; i < pixels.length; i += 4) {
+    pixels[i] += rasterData.brightness;
+    pixels[i + 1] += rasterData.brightness;
+    pixels[i + 2] += rasterData.brightness;
 
     pixels[i] = factor * (pixels[i] - 128) + 128;
     pixels[i + 1] = factor * (pixels[i + 1] - 128) + 128;

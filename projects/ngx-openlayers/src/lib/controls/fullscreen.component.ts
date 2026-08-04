@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { FullScreen } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -10,21 +10,22 @@ import { MapComponent } from '../map.component';
 export class ControlFullScreenComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  className: string;
-  @Input()
-  label: string;
-  @Input()
-  labelActive: string;
-  @Input()
-  tipLabel: string;
-  @Input()
-  keys: boolean;
+  className = input<string>();
+  label = input<string>();
+  labelActive = input<string>();
+  tipLabel = input<string>();
+  keys = input<boolean>();
 
   instance?: FullScreen;
 
   ngOnInit(): void {
-    this.instance = new FullScreen(this);
+    this.instance = new FullScreen({
+      className: this.className(),
+      label: this.label(),
+      labelActive: this.labelActive(),
+      tipLabel: this.tipLabel(),
+      keys: this.keys(),
+    });
     this.map.instance?.addControl(this.instance);
   }
 

@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+
 import {
   ContentComponent,
   ControlFullScreenComponent,
@@ -12,29 +13,36 @@ import {
   SourceUTFGridComponent,
   ViewComponent,
 } from 'ngx-openlayers';
+import { Coordinate } from 'ol/coordinate';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   template: `
     <aol-map (pointerMove)="displayInfo($event.coordinate)">
       <aol-interaction-default></aol-interaction-default>
       <aol-control-defaults></aol-control-defaults>
       <aol-control-fullscreen></aol-control-fullscreen>
+
       <aol-view #view [zoom]="2" [center]="[3000000, 3000000]"></aol-view>
+
       <aol-layer-tile>
         <aol-source-tilejson
           [url]="'https://api.tiles.mapbox.com/v4/mapbox.geography-class.json?secure&access_token=' + key"
-        ></aol-source-tilejson
-      ></aol-layer-tile>
+        ></aol-source-tilejson>
+      </aol-layer-tile>
+
       <aol-layer-tile>
         <aol-source-utfgrid
           #UTFGrid
           [url]="'https://api.tiles.mapbox.com/v4/mapbox.geography-class.json?secure&access_token=' + key"
         ></aol-source-utfgrid>
       </aol-layer-tile>
+
       @if (coords && info) {
         <aol-overlay [positioning]="'bottom-right'" [stopEvent]="false">
-          <aol-coordinate [x]="coords[0]" [y]="coords[1]" [srid]="'EPSG:3857'"> </aol-coordinate>
+          <aol-coordinate [x]="coords[0]" [y]="coords[1]" [srid]="'EPSG:3857'"></aol-coordinate>
+
           <aol-content>
             <img [src]="'data:image/png;base64,' + info['flag_png']" />
           </aol-content>
@@ -70,18 +78,36 @@ import {
   ],
 })
 export class UTFGridComponent {
-  @ViewChild('UTFGrid', { static: true }) utfGrid: SourceUTFGridComponent;
-  @ViewChild('view', { static: true }) view: ViewComponent;
+  @ViewChild('UTFGrid', { static: true })
+  utfGrid!: SourceUTFGridComponent;
 
-  info: Record<string, unknown>;
-  coords: [number, number];
-  key = 'pk.eyJ1IjoieWFrb3VzdCIsImEiOiJjanVkc3Y0b2cwNWppM3lwaXd5M3JidHRzIn0.rJmuWPJnuKA9MJ9z5RPKZw';
+  @ViewChild('view', { static: true })
+  view!: ViewComponent;
 
-  displayInfo(c): void {
-    this.utfGrid.instance.forDataAtCoordinateAndResolution(c, this.view.instance.getResolution(), (data) => {
+  info?: Record<string, unknown>;
+
+  coords?: [number, number];
+
+  readonly key = 'pk.eyJ1IjoieWFrb3VzdCIsImEiOiJjanVkc3Y0b2cwNWppM3lwaXd5M3JidHRzIn0.rJmuWPJnuKA9MJ9z5RPKZw';
+
+  displayInfo(coordinate: Coordinate): void {
+    const source = this.utfGrid.instance;
+    const view = this.view.instance;
+
+    if (!source || !view) {
+      return;
+    }
+
+    const resolution = view.getResolution();
+
+    if (resolution === undefined) {
+      return;
+    }
+
+    source.forDataAtCoordinateAndResolution(coordinate, resolution, (data) => {
       if (data !== null && data !== undefined && data !== '') {
-        this.info = data;
-        this.coords = c;
+        this.info = data as Record<string, unknown>;
+        this.coords = [coordinate[0], coordinate[1]];
       }
     });
   }

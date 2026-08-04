@@ -1,7 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { ScaleLine } from 'ol/control';
-import { MapComponent } from '../map.component';
 import { Units } from 'ol/control/ScaleLine';
+import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-scaleline',
@@ -11,19 +11,20 @@ import { Units } from 'ol/control/ScaleLine';
 export class ControlScaleLineComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  units: Units;
+  units = input<Units>();
 
   instance?: ScaleLine;
 
   ngOnInit(): void {
-    this.instance = new ScaleLine(this);
+    this.instance = new ScaleLine({
+      units: this.units(),
+    });
+
     this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      // console.log('removing aol-control-scaleline');
       this.map.instance?.removeControl(this.instance);
     }
   }

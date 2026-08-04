@@ -1,55 +1,37 @@
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
+import { Component, OnDestroy, effect, inject, input } from '@angular/core';
 import { Graticule } from 'ol';
 import { Stroke } from 'ol/style';
 import { MapComponent } from './map.component';
-import { Options } from 'ol/layer/Graticule';
 
 @Component({
   selector: 'aol-graticule',
   template: '<ng-content></ng-content>',
   standalone: true,
 })
-export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestroy {
+export class GraticuleComponent implements OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  strokeStyle: Stroke;
-  @Input()
-  showLabels: boolean;
-  @Input()
-  lonLabelPosition: number;
-  @Input()
-  latLabelPosition: number;
+  strokeStyle = input<Stroke>();
+  showLabels = input<boolean>();
+  lonLabelPosition = input<number>();
+  latLabelPosition = input<number>();
 
   instance?: Graticule;
   componentType = 'graticule';
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
-    const properties: Options = {};
-    for (const key in changes) {
-      properties[key] = changes[key].currentValue;
-    }
-    if (properties) {
-      this.instance = new Graticule(properties);
-    }
-    if (this.map.instance) {
-      this.instance.setMap(this.map.instance);
-    }
-  }
+  constructor() {
+    effect(() => {
+      this.instance = new Graticule({
+        strokeStyle: this.strokeStyle(),
+        showLabels: this.showLabels(),
+        lonLabelPosition: this.lonLabelPosition(),
+        latLabelPosition: this.latLabelPosition(),
+      });
 
-  ngAfterContentInit(): void {
-    this.instance = new Graticule({
-      strokeStyle: this.strokeStyle,
-      showLabels: this.showLabels,
-      lonLabelPosition: this.lonLabelPosition,
-      latLabelPosition: this.latLabelPosition,
+      if (this.map.instance) {
+        this.instance.setMap(this.map.instance);
+      }
     });
-    if (this.map.instance) {
-      this.instance.setMap(this.map.instance);
-    }
   }
 
   ngOnDestroy(): void {

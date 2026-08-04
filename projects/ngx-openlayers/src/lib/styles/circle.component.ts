@@ -1,57 +1,78 @@
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
+
 import { Circle, Fill, Stroke } from 'ol/style';
+
 import { StyleComponent } from './style.component';
 
 @Component({
   selector: 'aol-style-circle',
-  template: ` <ng-content></ng-content> `,
   standalone: true,
+  template: `<ng-content />`,
 })
-export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {
-  private host = inject(StyleComponent);
+export class StyleCircleComponent {
+  protected readonly host = inject(StyleComponent);
 
-  @Input()
-  fill: Fill;
-  @Input()
-  radius: number;
-  @Input()
-  stroke: Stroke;
+  readonly fill = input<Fill>();
+  readonly radius = input<number>();
+  readonly stroke = input<Stroke>();
 
-  componentType = 'style-circle';
-  instance?: Circle;
+  readonly componentType = 'style-circle';
 
-  /**
-   * WORK-AROUND: since the re-rendering is not triggered on style change
-   * we trigger a radius change.
-   * see openlayers #6233 and #5775
-   */
-  update(): void {
-    if (!!this.instance) {
-      // console.log('setting ol.style.Circle instance\'s radius');
-      this.instance.setRadius(this.radius);
-    }
-    this.host.update();
-  }
+  readonly instance: Circle;
 
-  ngAfterContentInit(): void {
-    // console.log('creating ol.style.Circle instance with: ', this);
-    this.instance = new Circle(this);
+  constructor() {
+    this.instance = new Circle({
+      fill: this.fill(),
+      stroke: this.stroke(),
+      radius: this.radius() ?? 0,
+    });
+
     this.host.instance?.setImage(this.instance);
     this.host.update();
+
+    effect(() => {
+      const fill = this.fill();
+
+      if (fill !== undefined) {
+        this.instance.setFill(fill);
+        this.update();
+      }
+    });
+
+    effect(() => {
+      const stroke = this.stroke();
+
+      if (stroke !== undefined) {
+        this.instance.setStroke(stroke);
+        this.update();
+      }
+    });
+
+    effect(() => {
+      this.instance.setRadius(this.radius() ?? 0);
+
+      this.host.update();
+    });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
-    if (changes.radius) {
-      this.instance.setRadius(changes.radius.currentValue);
-    }
-    // console.log('changes detected in aol-style-circle, setting new radius: ', changes['radius'].currentValue);
+  /**
+   * OpenLayers workaround:
+   * Trigger a redraw by reapplying the radius after style changes.
+   * See OL issues #6233 and #5775.
+   */
+  update(): void {
+    this.instance.setRadius(this.radius() ?? 0);
+
+    this.host.update();
   }
 
-  ngOnDestroy(): void {
-    // console.log('removing aol-style-circle');
-    this.host.instance?.setImage(null);
+  setFill(fill: Fill): void {
+    this.instance.setFill(fill);
+    this.update();
+  }
+
+  setStroke(stroke: Stroke): void {
+    this.instance.setStroke(stroke);
+    this.update();
   }
 }
