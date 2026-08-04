@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input, output } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
+import BaseEvent from 'ol/events/Event';
 import { Condition } from 'ol/events/condition';
 import { Select } from 'ol/interaction';
 import { FilterFunction, SelectEvent } from 'ol/interaction/Select';
 import { Layer } from 'ol/layer';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
+
 import { MapComponent } from '../map.component';
 
 @Component({
@@ -17,40 +19,36 @@ import { MapComponent } from '../map.component';
 export class SelectInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  addCondition?: Condition;
-  @Input()
-  condition?: Condition;
-  @Input()
-  layers?: Layer[] | ((layer: Layer) => boolean);
-  @Input()
-  style?: Style | Style[] | StyleFunction;
-  @Input()
-  removeCondition?: Condition;
-  @Input()
-  toggleCondition?: Condition;
-  @Input()
-  multi?: boolean;
-  @Input()
-  features?: Collection<Feature>;
-  @Input()
-  filter?: FilterFunction;
-  @Input()
-  wrapX?: boolean;
+  addCondition = input<Condition>();
+  condition = input<Condition>();
+  layers = input<Layer[] | ((layer: Layer) => boolean)>();
+  style = input<Style | Style[] | StyleFunction>();
+  removeCondition = input<Condition>();
+  toggleCondition = input<Condition>();
+  multi = input<boolean>();
+  features = input<Collection<Feature>>();
+  filter = input<FilterFunction>();
 
-  @Output()
-  olChange = new EventEmitter<SelectEvent>();
-  @Output()
-  olSelect = new EventEmitter<SelectEvent>();
-  @Output()
-  propertyChange = new EventEmitter<ObjectEvent>();
+  olChange = output<BaseEvent>();
+  olSelect = output<SelectEvent>();
+  propertyChange = output<ObjectEvent>();
 
   instance?: Select;
 
   ngOnInit(): void {
-    this.instance = new Select(this);
+    this.instance = new Select({
+      addCondition: this.addCondition(),
+      condition: this.condition(),
+      layers: this.layers(),
+      style: this.style(),
+      removeCondition: this.removeCondition(),
+      toggleCondition: this.toggleCondition(),
+      multi: this.multi(),
+      features: this.features(),
+      filter: this.filter(),
+    });
 
-    this.instance.on('change', (event: SelectEvent) => this.olChange.emit(event));
+    this.instance.on('change', (event) => this.olChange.emit(event));
     this.instance.on('select', (event: SelectEvent) => this.olSelect.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
 

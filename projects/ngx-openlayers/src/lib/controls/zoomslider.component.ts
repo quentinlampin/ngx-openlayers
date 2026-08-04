@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { ZoomSlider } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -10,25 +10,24 @@ import { MapComponent } from '../map.component';
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  className: string;
-  @Input()
-  duration: number;
-  @Input()
-  maxResolution: number;
-  @Input()
-  minResolution: number;
+  className = input<string>();
+  duration = input<number>();
+  target = input<HTMLElement | string>();
 
   instance?: ZoomSlider;
 
   ngOnInit(): void {
-    this.instance = new ZoomSlider(this);
+    this.instance = new ZoomSlider({
+      className: this.className(),
+      duration: this.duration(),
+      target: this.target(),
+    });
+
     this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      // console.log('removing aol-control-zoomslider');
       this.map.instance?.removeControl(this.instance);
     }
   }

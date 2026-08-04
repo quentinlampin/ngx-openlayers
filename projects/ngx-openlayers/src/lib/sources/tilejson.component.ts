@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, input, OnInit } from '@angular/core';
 import { TileJSON } from 'ol/source';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
@@ -10,14 +10,15 @@ import { SourceComponent } from './source.component';
   standalone: true,
 })
 export class SourceTileJSONComponent extends SourceComponent implements OnInit {
-  @Input()
-  url: string;
+  url = input<string>();
 
   instance?: TileJSON;
   host = inject(LayerTileComponent);
 
   ngOnInit(): void {
-    this.instance = new TileJSON(this);
+    this.instance = new TileJSON({
+      url: this.url(),
+    });
     this.host.instance.setSource(this.instance);
   }
 }

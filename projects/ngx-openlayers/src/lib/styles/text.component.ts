@@ -1,81 +1,68 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
+
 import { Text } from 'ol/style';
+
 import { StyleComponent } from './style.component';
 
 @Component({
   selector: 'aol-style-text',
-  template: ` <div class="aol-style-text"></div> `,
   standalone: true,
+  template: `<div class="aol-style-text"></div>`,
 })
-export class StyleTextComponent implements OnInit, OnChanges {
-  private host = inject(StyleComponent, { optional: true });
+export class StyleTextComponent {
+  private readonly host = inject(StyleComponent, { host: true });
 
-  @Input()
-  font: string | undefined;
-  @Input()
-  offsetX: number | undefined;
-  @Input()
-  offsetY: number | undefined;
-  @Input()
-  scale: number | undefined;
-  @Input()
-  rotateWithView: boolean | undefined;
-  @Input()
-  rotation: number | undefined;
-  @Input()
-  text: string | undefined;
-  @Input()
-  textAlign: CanvasTextAlign | undefined;
-  @Input()
-  textBaseLine: string | undefined;
+  readonly font = input<string>();
+  readonly offsetX = input<number>();
+  readonly offsetY = input<number>();
+  readonly scale = input<number>();
+  readonly rotateWithView = input<boolean>();
+  readonly rotation = input<number>();
+  readonly text = input<string>();
+  readonly textAlign = input<CanvasTextAlign>();
+  readonly textBaseline = input<CanvasTextBaseline>();
 
-  instance?: Text;
-  componentType = 'style-text';
+  readonly componentType = 'style-text';
+
+  readonly instance: Text;
 
   constructor() {
-    const host = this.host;
+    this.instance = new Text({
+      font: this.font(),
+      offsetX: this.offsetX(),
+      offsetY: this.offsetY(),
+      scale: this.scale(),
+      rotateWithView: this.rotateWithView(),
+      rotation: this.rotation(),
+      text: this.text(),
+      textAlign: this.textAlign(),
+      textBaseline: this.textBaseline(),
+    });
 
-    if (!host) {
-      throw new Error('aol-style-text must be a descendant of aol-style');
-    }
-    // console.log('creating aol-style-text with: ', this);
+    this.host.instance?.setText(this.instance);
+
+    effect(() => {
+      this.instance.setFont(this.font());
+      this.instance.setOffsetX(this.offsetX() ?? 0);
+      this.instance.setOffsetY(this.offsetY() ?? 0);
+      this.instance.setScale(this.scale() ?? 1);
+      this.instance.setRotateWithView(this.rotateWithView() ?? false);
+      this.instance.setRotation(this.rotation() ?? 0);
+      this.instance.setText(this.text() ?? '');
+      this.instance.setTextAlign(this.textAlign());
+      this.instance.setTextBaseline(this.textBaseline());
+
+      this.host.update();
+    });
   }
 
-  ngOnInit(): void {
-    // console.log('creating ol.style.Text instance with: ', this);
-    this.instance = new Text(this);
-    this.host?.instance?.setText(this.instance);
+  setFill(fill: import('ol/style').Fill): void {
+    this.instance.setFill(fill);
+    this.host.update();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
-    if (changes.font) {
-      this.instance.setFont(changes.font.currentValue);
-    }
-    if (changes.offsetX) {
-      this.instance.setOffsetX(changes.offsetX.currentValue);
-    }
-    if (changes.offsetY) {
-      this.instance.setOffsetY(changes.offsetY.currentValue);
-    }
-    if (changes.scale) {
-      this.instance.setScale(changes.scale.currentValue);
-    }
-    if (changes.rotation) {
-      this.instance.setRotation(changes.rotation.currentValue);
-    }
-    if (changes.text) {
-      this.instance.setText(changes.text.currentValue);
-    }
-    if (changes.textAlign) {
-      this.instance.setTextAlign(changes.textAlign.currentValue);
-    }
-    if (changes.textBaseLine) {
-      this.instance.setTextBaseline(changes.textBaseLine.currentValue);
-    }
-    this.host?.update();
-    // console.log('changes detected in aol-style-text, setting new properties: ', changes);
+  setStroke(stroke: import('ol/style').Stroke): void {
+    this.instance.setStroke(stroke);
+    this.host.update();
   }
 }

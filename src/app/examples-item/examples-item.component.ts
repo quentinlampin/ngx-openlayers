@@ -65,7 +65,7 @@ import { Router, RouterOutlet } from '@angular/router';
 export class ExamplesItemComponent implements OnInit {
   private router = inject(Router);
 
-  exampleInfo;
+  exampleInfo?: (typeof examplesList)[number];
   ngOnInit(): void {
     this.exampleInfo = examplesList.find((item) => this.router.url.includes(item.routerLink));
   }

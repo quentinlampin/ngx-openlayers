@@ -10,7 +10,7 @@ export class AttributionComponent implements OnInit {
   private elementRef = inject(ElementRef);
 
   instance?: Attribution;
-  html: string;
+  html!: string;
 
   ngOnInit(): void {
     this.html = this.elementRef.nativeElement.innerHTML;

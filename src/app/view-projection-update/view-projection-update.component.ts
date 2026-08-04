@@ -106,8 +106,9 @@ import {
 export class ViewProjectionUpdateComponent {
   public viewProjection = 'EPSG:3857';
 
-  projectionChange(evt): void {
-    console.log(`Projection changed to ${evt.target.value}`);
-    this.viewProjection = evt.target.value;
+  projectionChange(evt: Event): void {
+    const select = evt.target as HTMLSelectElement;
+    console.log(`Projection changed to ${select.value}`);
+    this.viewProjection = select.value;
   }
 }

@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input, output } from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Snap } from 'ol/interaction';
-import { MapComponent } from '../map.component';
 import { SnapEvent } from 'ol/events/SnapEvent';
 import { Segmenters } from 'ol/interaction/Snap';
 import VectorSource from 'ol/source/Vector';
 import { Geometry } from 'ol/geom';
+
+import { MapComponent } from '../map.component';
+import BaseEvent from 'ol/events/Event';
 
 @Component({
   selector: 'aol-interaction-snap',
@@ -16,43 +18,33 @@ import { Geometry } from 'ol/geom';
 export class SnapInteractionComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  features?: Collection<Feature>;
-  @Input()
-  source?: VectorSource<Feature<Geometry>>;
-  @Input()
-  edge?: boolean;
-  @Input()
-  vertex?: boolean;
-  @Input()
-  intersection?: boolean;
-  @Input()
-  pixelTolerance?: number;
-  @Input()
-  segmenters?: Segmenters;
+  features = input<Collection<Feature>>();
+  source = input<VectorSource<Feature<Geometry>>>();
+  edge = input<boolean>();
+  vertex = input<boolean>();
+  intersection = input<boolean>();
+  pixelTolerance = input<number>();
+  segmenters = input<Segmenters>();
 
-  @Output()
-  olChange: EventEmitter<SnapEvent>;
-  @Output()
-  propertyChange: EventEmitter<ObjectEvent>;
-  @Output()
-  snap: EventEmitter<SnapEvent>;
-  @Output()
-  unsnap: EventEmitter<SnapEvent>;
+  olChange = output<BaseEvent>();
+  propertyChange = output<ObjectEvent>();
+  snap = output<SnapEvent>();
+  unsnap = output<SnapEvent>();
 
   instance?: Snap;
 
-  constructor() {
-    this.olChange = new EventEmitter<SnapEvent>();
-    this.propertyChange = new EventEmitter<ObjectEvent>();
-    this.snap = new EventEmitter<SnapEvent>();
-    this.unsnap = new EventEmitter<SnapEvent>();
-  }
-
   ngOnInit(): void {
-    this.instance = new Snap(this);
+    this.instance = new Snap({
+      features: this.features(),
+      source: this.source(),
+      edge: this.edge(),
+      vertex: this.vertex(),
+      intersection: this.intersection(),
+      pixelTolerance: this.pixelTolerance(),
+      segmenters: this.segmenters(),
+    });
 
-    this.instance.on('change', (event: SnapEvent) => this.olChange.emit(event));
+    this.instance.on('change', (event) => this.olChange.emit(event));
     this.instance.on('propertychange', (event: ObjectEvent) => this.propertyChange.emit(event));
     this.instance.on('snap', (event: SnapEvent) => this.snap.emit(event));
     this.instance.on('unsnap', (event: SnapEvent) => this.unsnap.emit(event));

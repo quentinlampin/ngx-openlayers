@@ -1,60 +1,67 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, forwardRef, inject, input, output } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import { ProjectionLike } from 'ol/proj';
 import { ImageArcGISRest } from 'ol/source';
 import { ImageSourceEvent } from 'ol/source/Image';
 import { AttributionLike } from 'ol/source/Source';
+
 import { LayerImageComponent } from '../layers/layerimage.component';
 import { SourceComponent } from './source.component';
 
 @Component({
   selector: 'aol-source-imagearcgisrest',
-  template: ` <ng-content></ng-content> `,
-  providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
+  template: `<ng-content></ng-content>`,
+  providers: [
+    {
+      provide: SourceComponent,
+      useExisting: forwardRef(() => SourceImageArcGISRestComponent),
+    },
+  ],
   standalone: true,
 })
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
-  @Input() projection: ProjectionLike | string;
-  @Input() url: string;
-  @Input() attributions: AttributionLike;
-  @Input() crossOrigin?: string;
-  @Input() imageLoadFunction?: LoadFunction;
-  @Input() params?: Record<string, unknown>;
-  @Input() ratio = 1.5;
-  @Input() resolutions?: number[];
-  @Input() wrapX?: boolean;
+  projection = input<ProjectionLike | string>();
+  url = input.required<string>();
+  attributions = input<AttributionLike>();
 
-  @Output()
-  imageLoadStart = new EventEmitter<ImageSourceEvent>();
-  @Output()
-  imageLoadEnd = new EventEmitter<ImageSourceEvent>();
-  @Output()
-  imageLoadError = new EventEmitter<ImageSourceEvent>();
+  crossOrigin = input<string>();
+  imageLoadFunction = input<LoadFunction>();
+  params = input<Record<string, unknown>>();
+  ratio = input(1.5);
+  resolutions = input<number[]>();
 
-  instance?: ImageArcGISRest;
-  host = inject(LayerImageComponent);
+  imageLoadStart = output<ImageSourceEvent>();
+  imageLoadEnd = output<ImageSourceEvent>();
+  imageLoadError = output<ImageSourceEvent>();
+
+  override instance?: ImageArcGISRest;
+
+  readonly host = inject(LayerImageComponent);
 
   ngOnInit(): void {
-    this.instance = new ImageArcGISRest(this);
-    this.host.instance.setSource(this.instance);
-    this.instance.on('imageloadstart', (event: ImageSourceEvent) => this.imageLoadStart.emit(event));
-    this.instance.on('imageloadend', (event: ImageSourceEvent) => this.imageLoadEnd.emit(event));
-    this.instance.on('imageloaderror', (event: ImageSourceEvent) => this.imageLoadError.emit(event));
+    this.instance = new ImageArcGISRest({
+      projection: this.projection(),
+      url: this.url(),
+      attributions: this.attributions(),
+      crossOrigin: this.crossOrigin(),
+      imageLoadFunction: this.imageLoadFunction(),
+      params: this.params(),
+      ratio: this.ratio(),
+      resolutions: this.resolutions(),
+    });
+
+    this.host.instance?.setSource(this.instance);
+
+    this.instance.on('imageloadstart', (event) => this.imageLoadStart.emit(event));
+
+    this.instance.on('imageloadend', (event) => this.imageLoadEnd.emit(event));
+
+    this.instance.on('imageloaderror', (event) => this.imageLoadError.emit(event));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.instance && changes.hasOwnProperty('params')) {
-      this.instance.updateParams(this.params);
+    if (this.instance && changes['params']) {
+      this.instance.updateParams(this.params() ?? {});
     }
   }
 }

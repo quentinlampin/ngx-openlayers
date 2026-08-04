@@ -116,8 +116,16 @@ export class OverlayComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    const olFeature: FeatureLike = this.geoJsonFormat.readFeature(this.feature) as FeatureLike;
-    const olGeomPolygon = fromExtent(olFeature.getGeometry().getExtent());
+    const olFeature = this.geoJsonFormat.readFeature(this.feature) as FeatureLike;
+
+    const geometry = olFeature.getGeometry();
+
+    if (!geometry) {
+      return;
+    }
+
+    const olGeomPolygon = fromExtent(geometry.getExtent());
+
     [, this.tooltip.lat, this.tooltip.lon] = olGeomPolygon.getExtent();
   }
 }

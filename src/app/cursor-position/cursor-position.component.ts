@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { toStringXY } from 'ol/coordinate';
+import { Coordinate, toStringXY } from 'ol/coordinate';
 import {
   ControlMousePositionComponent,
   CoordinateComponent,
@@ -51,5 +51,5 @@ import {
   ],
 })
 export class CursorPositionComponent {
-  protected readonly toStringXY = (coord) => toStringXY(coord, 4);
+  protected readonly toStringXY = (coord?: Coordinate): string => (coord ? toStringXY(coord, 4) : '');
 }

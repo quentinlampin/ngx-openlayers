@@ -12,16 +12,20 @@ export class ControlComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
   @ContentChild(ContentComponent, { static: true })
-  content: ContentComponent;
+  content!: ContentComponent;
 
   componentType = 'control';
   instance?: Control;
-  element: HTMLElement;
+  element?: HTMLElement;
 
   ngOnInit(): void {
     if (this.content) {
       this.element = this.content.elementRef.nativeElement;
-      this.instance = new Control(this);
+
+      this.instance = new Control({
+        element: this.element,
+      });
+
       this.map.instance?.addControl(this.instance);
     }
   }

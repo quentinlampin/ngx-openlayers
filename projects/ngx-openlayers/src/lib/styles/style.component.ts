@@ -1,56 +1,111 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { Fill, Image, Stroke, Style, Text } from 'ol/style';
+import { Component, effect, inject, input } from '@angular/core';
+
 import { Geometry } from 'ol/geom';
+import { Fill, Image, Stroke, Style, Text } from 'ol/style';
+import { GeometryFunction } from 'ol/style/Style';
+
 import { FeatureComponent } from '../feature.component';
 import { LayerVectorComponent } from '../layers/layervector.component';
-import { GeometryFunction } from 'ol/style/Style';
 
 @Component({
   selector: 'aol-style',
-  template: ` <ng-content></ng-content> `,
   standalone: true,
+  template: `<ng-content />`,
 })
-export class StyleComponent implements OnInit {
-  @Input()
-  geometry: string | Geometry | GeometryFunction;
-  @Input()
-  fill: Fill;
-  @Input()
-  image: Image;
-  @Input()
-  stroke: Stroke;
-  @Input()
-  text: Text;
-  @Input()
-  zIndex: number;
+export class StyleComponent {
+  readonly geometry = input<string | Geometry | GeometryFunction>();
+  readonly fill = input<Fill>();
+  readonly image = input<Image>();
+  readonly stroke = input<Stroke>();
+  readonly text = input<Text>();
+  readonly zIndex = input<number>();
 
-  instance?: Style;
-  componentType = 'style';
-  private host: FeatureComponent | LayerVectorComponent | null;
+  readonly componentType = 'style';
+
+  readonly instance: Style;
+
+  private readonly host: FeatureComponent | LayerVectorComponent;
+
+  private readonly featureHost = inject(FeatureComponent, { optional: true });
+
+  private readonly layerHost = inject(LayerVectorComponent, { optional: true });
 
   constructor() {
-    const featureHost = inject(FeatureComponent, { optional: true });
-    const layerHost = inject(LayerVectorComponent, { optional: true });
+    this.host =
+      this.featureHost ??
+      this.layerHost ??
+      (() => {
+        throw new Error('aol-style must be applied to a feature or a vector layer.');
+      })();
 
-    // console.log('creating aol-style');
-    this.host = !!featureHost ? featureHost : layerHost;
-    if (!this.host) {
-      throw new Error('aol-style must be applied to a feature or a layer');
-    }
+    this.instance = new Style({
+      geometry: this.geometry(),
+      fill: this.fill(),
+      image: this.image(),
+      stroke: this.stroke(),
+      text: this.text(),
+      zIndex: this.zIndex(),
+    });
+
+    this.host.instance?.setStyle(this.instance);
+
+    effect(() => {
+      const geometry = this.geometry();
+      const fill = this.fill();
+      const image = this.image();
+      const stroke = this.stroke();
+      const text = this.text();
+      const zIndex = this.zIndex();
+
+      if (geometry !== undefined) {
+        this.instance.setGeometry(geometry);
+      }
+
+      if (fill !== undefined) {
+        this.instance.setFill(fill);
+      }
+
+      if (image !== undefined) {
+        this.instance.setImage(image);
+      }
+
+      if (stroke !== undefined) {
+        this.instance.setStroke(stroke);
+      }
+
+      if (text !== undefined) {
+        this.instance.setText(text);
+      }
+
+      if (zIndex !== undefined) {
+        this.instance.setZIndex(zIndex);
+      }
+
+      this.update();
+    });
   }
 
   update(): void {
-    // console.log('updating style\'s host: ', this.host);
-    if (this.host?.instance) {
-      this.host.instance.changed();
-    }
+    this.host.instance?.changed();
   }
 
-  ngOnInit(): void {
-    // console.log('creating aol-style instance with: ', this);
-    this.instance = new Style(this);
-    if (this.host?.instance) {
-      this.host.instance.setStyle(this.instance);
-    }
+  setFill(fill: Fill | null): void {
+    this.instance.setFill(fill);
+    this.update();
+  }
+
+  setStroke(stroke: Stroke | null): void {
+    this.instance.setStroke(stroke);
+    this.update();
+  }
+
+  setImage(image: Image): void {
+    this.instance.setImage(image);
+    this.update();
+  }
+
+  setText(text: Text): void {
+    this.instance.setText(text);
+    this.update();
   }
 }

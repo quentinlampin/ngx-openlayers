@@ -1,25 +1,27 @@
-import { Component, Input, OnChanges, OnInit, inject } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
+
 import { Coordinate } from 'ol/coordinate';
 import { transform } from 'ol/proj';
+
 import { GeometryLinestringComponent } from './geom/geometrylinestring.component';
 import { GeometryMultiLinestringComponent } from './geom/geometrymultilinestring.component';
 import { GeometryMultiPointComponent } from './geom/geometrymultipoint.component';
 import { GeometryMultiPolygonComponent } from './geom/geometrymultipolygon.component';
 import { GeometryPolygonComponent } from './geom/geometrypolygon.component';
 import { MapComponent } from './map.component';
+import { ObjectEvent } from 'ol/Object';
 
 @Component({
   selector: 'aol-collection-coordinates',
-  template: ` <div class="aol-collection-coordinates"></div> `,
   standalone: true,
+  template: `<div class="aol-collection-coordinates"></div>`,
 })
-export class CollectionCoordinatesComponent implements OnChanges, OnInit {
-  private map = inject(MapComponent);
+export class CollectionCoordinatesComponent {
+  private readonly map = inject(MapComponent);
 
-  @Input()
-  coordinates: Coordinate[] | Coordinate[][] | Coordinate[][][];
-  @Input()
-  srid = 'EPSG:3857';
+  readonly coordinates = input<Coordinate[] | Coordinate[][] | Coordinate[][][]>();
+
+  readonly srid = input('EPSG:3857');
 
   private readonly host:
     | GeometryLinestringComponent
@@ -27,64 +29,81 @@ export class CollectionCoordinatesComponent implements OnChanges, OnInit {
     | GeometryMultiPointComponent
     | GeometryMultiLinestringComponent
     | GeometryMultiPolygonComponent;
+
   private mapSrid = 'EPSG:3857';
 
   constructor() {
-    const geometryLinestring = inject(GeometryLinestringComponent, { optional: true });
-    const geometryPolygon = inject(GeometryPolygonComponent, { optional: true });
-    const geometryMultipoint = inject(GeometryMultiPointComponent, { optional: true });
-    const geometryMultilinestring = inject(GeometryMultiLinestringComponent, { optional: true });
-    const geometryMultipolygon = inject(GeometryMultiPolygonComponent, { optional: true });
-
     const geometryComponent =
-      geometryLinestring ??
-      geometryPolygon ??
-      geometryMultipoint ??
-      geometryMultilinestring ??
-      geometryMultipolygon ??
-      undefined;
-    if (geometryComponent) {
-      this.host = geometryComponent;
-    } else {
+      inject(GeometryLinestringComponent, { optional: true }) ??
+      inject(GeometryPolygonComponent, { optional: true }) ??
+      inject(GeometryMultiPointComponent, { optional: true }) ??
+      inject(GeometryMultiLinestringComponent, { optional: true }) ??
+      inject(GeometryMultiPolygonComponent, { optional: true });
+
+    if (!geometryComponent) {
       throw new Error('aol-collection-coordinates must be a child of a geometry component');
     }
-  }
 
-  ngOnInit(): void {
-    if (this.map.instance) {
-      this.map.instance.on('change:view', (e) => this.onMapViewChanged(e));
-      this.mapSrid = this.map.instance.getView().getProjection().getCode();
-      this.transformCoordinates();
+    this.host = geometryComponent;
+
+    const mapInstance = this.map.instance;
+
+    if (mapInstance) {
+      mapInstance.on('change:view', (event) => this.onMapViewChanged(event));
+
+      this.mapSrid = mapInstance.getView().getProjection().getCode();
     }
+
+    effect(() => {
+      this.coordinates();
+      this.srid();
+
+      this.transformCoordinates();
+    });
   }
 
-  ngOnChanges(): void {
-    this.transformCoordinates();
-  }
-
-  private onMapViewChanged(event): void {
+  private onMapViewChanged(event: ObjectEvent): void {
     this.mapSrid = event.target.get(event.key).getProjection().getCode();
+
     this.transformCoordinates();
   }
 
   private transformCoordinates(): void {
-    if (this.srid === this.mapSrid) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.host.instance.setCoordinates(this.coordinates as any[]);
-    } else if (this.host instanceof GeometryLinestringComponent || this.host instanceof GeometryMultiPointComponent) {
+    const coordinates = this.coordinates();
+
+    if (!coordinates || !this.host.instance) {
+      return;
+    }
+
+    const srid = this.srid();
+
+    if (srid === this.mapSrid) {
+      this.host.instance.setCoordinates(coordinates as never);
+      return;
+    }
+
+    if (this.host instanceof GeometryLinestringComponent || this.host instanceof GeometryMultiPointComponent) {
       this.host.instance.setCoordinates(
-        (this.coordinates as Coordinate[]).map((c) => transform(c, this.srid, this.mapSrid))
+        (coordinates as Coordinate[]).map((coordinate) => transform(coordinate, srid, this.mapSrid))
       );
-    } else if (this.host instanceof GeometryPolygonComponent || this.host instanceof GeometryMultiLinestringComponent) {
+
+      return;
+    }
+
+    if (this.host instanceof GeometryPolygonComponent || this.host instanceof GeometryMultiLinestringComponent) {
       this.host.instance.setCoordinates(
-        (this.coordinates as Coordinate[][]).map((cc) => cc.map((c) => transform(c, this.srid, this.mapSrid)))
-      );
-    } else {
-      this.host.instance.setCoordinates(
-        (this.coordinates as Coordinate[][][]).map((ccc) =>
-          ccc.map((cc) => cc.map((c) => transform(c, this.srid, this.mapSrid)))
+        (coordinates as Coordinate[][]).map((line) =>
+          line.map((coordinate) => transform(coordinate, srid, this.mapSrid))
         )
       );
+
+      return;
     }
+
+    this.host.instance.setCoordinates(
+      (coordinates as Coordinate[][][]).map((polygon) =>
+        polygon.map((line) => line.map((coordinate) => transform(coordinate, srid, this.mapSrid)))
+      )
+    );
   }
 }

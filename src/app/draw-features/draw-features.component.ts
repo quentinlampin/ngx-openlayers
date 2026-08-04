@@ -129,7 +129,7 @@ import { GeoJSON } from 'ol/format';
 })
 export class DrawFeaturesComponent {
   drawBoxGeometryFunction = createBox();
-  feature: GeoJSONFeature;
+  feature!: GeoJSONFeature;
   geoJsonParser = new GeoJSON({ featureProjection: 'EPSG:3857', dataProjection: 'EPSG:4326' });
 
   currentDrawType: 'Point' | 'Circle' | 'Polygon' | 'LineString' | 'Bbox' | 'None' = 'Point';

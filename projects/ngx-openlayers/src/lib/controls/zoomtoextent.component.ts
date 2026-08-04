@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { ZoomToExtent } from 'ol/control';
 import { Extent } from 'ol/extent';
 import { MapComponent } from '../map.component';
@@ -11,25 +11,26 @@ import { MapComponent } from '../map.component';
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  className: string;
-  @Input()
-  label: string | HTMLElement;
-  @Input()
-  tipLabel: string;
-  @Input()
-  extent: Extent;
+  className = input<string>();
+  label = input<string | HTMLElement>();
+  tipLabel = input<string>();
+  extent = input<Extent>();
 
   instance?: ZoomToExtent;
 
   ngOnInit(): void {
-    this.instance = new ZoomToExtent(this);
+    this.instance = new ZoomToExtent({
+      className: this.className(),
+      label: this.label(),
+      tipLabel: this.tipLabel(),
+      extent: this.extent(),
+    });
+
     this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      // console.log('removing aol-control-zoomtoextent');
       this.map.instance?.removeControl(this.instance);
     }
   }

@@ -11,7 +11,7 @@ export class AttributionsComponent implements AfterViewInit {
   private source = inject(SourceComponent);
 
   @ContentChildren(AttributionComponent)
-  attributions: QueryList<AttributionComponent>;
+  attributions!: QueryList<AttributionComponent>;
 
   instance?: Array<string>;
 

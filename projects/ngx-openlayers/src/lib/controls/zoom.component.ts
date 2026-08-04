@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { Zoom } from 'ol/control';
 import { MapComponent } from '../map.component';
 
@@ -10,29 +10,30 @@ import { MapComponent } from '../map.component';
 export class ControlZoomComponent implements OnInit, OnDestroy {
   private map = inject(MapComponent);
 
-  @Input()
-  duration: number;
-  @Input()
-  zoomInLabel: string | HTMLElement;
-  @Input()
-  zoomOutLabel: string | HTMLElement;
-  @Input()
-  zoomInTipLabel: string;
-  @Input()
-  zoomOutTipLabel: string;
-  @Input()
-  delta: number;
+  duration = input<number>();
+  zoomInLabel = input<string | HTMLElement>();
+  zoomOutLabel = input<string | HTMLElement>();
+  zoomInTipLabel = input<string>();
+  zoomOutTipLabel = input<string>();
+  delta = input<number>();
 
   instance?: Zoom;
 
   ngOnInit(): void {
-    this.instance = new Zoom(this);
+    this.instance = new Zoom({
+      duration: this.duration(),
+      zoomInLabel: this.zoomInLabel(),
+      zoomOutLabel: this.zoomOutLabel(),
+      zoomInTipLabel: this.zoomInTipLabel(),
+      zoomOutTipLabel: this.zoomOutTipLabel(),
+      delta: this.delta(),
+    });
+
     this.map.instance?.addControl(this.instance);
   }
 
   ngOnDestroy(): void {
     if (this.instance) {
-      // console.log('removing aol-control-zoom');
       this.map.instance?.removeControl(this.instance);
     }
   }

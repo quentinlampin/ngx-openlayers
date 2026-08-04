@@ -1,61 +1,60 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { Fill } from 'ol/style';
-import { StyleComponent } from './style.component';
-import { StyleCircleComponent } from './circle.component';
-import { StyleTextComponent } from './text.component';
+import { Component, effect, inject, input } from '@angular/core';
+
 import { Color } from 'ol/color';
-import { ColorLike } from 'ol/colorlike';
+import { ColorLike, PatternDescriptor } from 'ol/colorlike';
+import { Fill } from 'ol/style';
+
+import { StyleCircleComponent } from './circle.component';
+import { StyleComponent } from './style.component';
+import { StyleTextComponent } from './text.component';
 
 @Component({
   selector: 'aol-style-fill',
-  template: ` <div class="aol-style-fill"></div> `,
   standalone: true,
+  template: `<div class="aol-style-fill"></div>`,
 })
-export class StyleFillComponent implements OnInit, OnChanges {
-  @Input()
-  color: Color | ColorLike;
+export class StyleFillComponent {
+  readonly color = input<Color | ColorLike | PatternDescriptor | null>();
 
-  instance?: Fill;
+  readonly instance: Fill;
+
+  private readonly styleHost = inject(StyleComponent, { optional: true });
+
+  private readonly circleHost = inject(StyleCircleComponent, { optional: true });
+
+  private readonly textHost = inject(StyleTextComponent, { optional: true });
+
   private readonly host: StyleComponent | StyleCircleComponent | StyleTextComponent;
 
   constructor() {
-    const styleHost = inject(StyleComponent, { optional: true });
-    const styleCircleHost = inject(StyleCircleComponent, { optional: true });
-    const styleTextHost = inject(StyleTextComponent, { optional: true });
+    this.host =
+      this.textHost ??
+      this.circleHost ??
+      this.styleHost ??
+      (() => {
+        throw new Error('aol-style-fill must be a descendant of aol-style, aol-style-circle, or aol-style-text.');
+      })();
 
-    if (!styleHost) {
-      throw new Error('aol-style-stroke must be a descendant of aol-style');
-    }
-    if (!!styleTextHost) {
-      this.host = styleTextHost;
-    } else if (!!styleCircleHost) {
-      this.host = styleCircleHost;
-    } else {
-      this.host = styleHost;
-    }
-    // console.log('creating aol-style-fill with: ', this);
-  }
+    this.instance = new Fill({
+      color: this.color() ?? undefined,
+    });
 
-  ngOnInit(): void {
-    // console.log('creating ol.style.Fill instance with: ', this);
-    this.instance = new Fill(this);
     if (this.host instanceof StyleComponent || this.host instanceof StyleTextComponent) {
       this.host.instance?.setFill(this.instance);
     } else {
-      this.host.fill = this.instance;
+      this.host.setFill(this.instance);
     }
-  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.instance) {
-      return;
-    }
-    if (changes.color) {
-      this.instance.setColor(changes.color.currentValue);
-    }
-    if (this.host instanceof StyleCircleComponent || this.host instanceof StyleComponent) {
-      this.host.update();
-    }
-    // console.log('changes detected in aol-style-fill, setting new color: ', changes);
+    effect(() => {
+      const color = this.color();
+
+      if (color !== undefined) {
+        this.instance.setColor(color);
+      }
+
+      if (this.host instanceof StyleComponent || this.host instanceof StyleCircleComponent) {
+        this.host.update();
+      }
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { examplesList } from '../example-list';
 import { RouterLink } from '@angular/router';
 
@@ -82,9 +82,10 @@ interface ExamplesListForm {
   imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class ExamplesListComponent implements OnInit {
-  private fb = inject(FormBuilder);
+  private readonly fb = inject(NonNullableFormBuilder);
 
-  form: FormGroup<ExamplesListForm>;
+  form!: FormGroup<ExamplesListForm>;
+
   list = examplesList;
 
   ngOnInit(): void {
@@ -92,17 +93,19 @@ export class ExamplesListComponent implements OnInit {
       term: '',
     });
 
-    this.form.get('term').valueChanges.subscribe(() => {
-      const termValue = this.form.get('term').value.toLowerCase();
-      if (!termValue.trim()) {
+    this.form.controls.term.valueChanges.subscribe((termValue) => {
+      const term = termValue.toLowerCase();
+
+      if (!term.trim()) {
         this.list = examplesList;
-      } else {
-        this.list = this.list.filter(
-          (item) =>
-            (item.title && item.title.toLowerCase().includes(termValue)) ||
-            (item.description && item.description.toLowerCase().includes(termValue))
-        );
+        return;
       }
+
+      this.list = examplesList.filter(
+        (item) =>
+          (item.title && item.title.toLowerCase().includes(term)) ||
+          (item.description && item.description.toLowerCase().includes(term))
+      );
     });
   }
 }

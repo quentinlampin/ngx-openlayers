@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Tile } from 'ol/layer';
 import TileSource from 'ol/source/Tile';
-import { LayerComponent } from './layer.component';
 import { BackgroundColor } from 'ol/layer/Base';
+
+import { LayerComponent } from './layer.component';
 
 @Component({
   selector: 'aol-layer-tile',
@@ -10,19 +11,30 @@ import { BackgroundColor } from 'ol/layer/Base';
   standalone: true,
 })
 export class LayerTileComponent extends LayerComponent implements OnInit {
-  @Input()
-  preload: number;
-  @Input()
-  background: BackgroundColor;
-  @Input()
-  useInterimTilesOnError: boolean;
-  @Input()
-  cacheSize: number;
+  preload = input<number>();
+  background = input<BackgroundColor>();
+  useInterimTilesOnError = input<boolean>();
+  cacheSize = input<number>();
 
-  source: TileSource;
+  source!: TileSource;
 
   ngOnInit(): void {
-    this.instance = new Tile(this);
+    this.instance = new Tile({
+      opacity: this.opacity(),
+      visible: this.visible(),
+      extent: this.extent(),
+      zIndex: this.zIndex(),
+      minResolution: this.minResolution(),
+      maxResolution: this.maxResolution(),
+      minZoom: this.minZoom(),
+      maxZoom: this.maxZoom(),
+      preload: this.preload(),
+      background: this.background(),
+      useInterimTilesOnError: this.useInterimTilesOnError(),
+      source: this.source,
+      properties: this.properties(),
+    });
+
     super.ngOnInit();
   }
 }
