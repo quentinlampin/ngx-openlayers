@@ -3,7 +3,7 @@
   "version": "1.0.0-next.0",
   "scripts": {
     "ng": "ng",
-    "start": "yarn build:lib && ng serve",
+    "start": "ng serve",
     "build:lib": "ng build ngx-openlayers --configuration production",
     "build:demo": "ng build demo-ngx-openlayers",
     "build": "yarn build:lib && yarn build:demo",

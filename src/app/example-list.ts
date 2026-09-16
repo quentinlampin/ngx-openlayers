@@ -152,4 +152,10 @@ export const examplesList = [
     routerLink: 'styles',
     openLayersLink: 'https://openlayers.org/en/latest/examples/polygon-styles.html',
   },
+  {
+    title: 'Cloud Optimized GeoTIFF (COG)',
+    description: 'Example of using aol-source-geotiff.',
+    routerLink: 'webgl-geotiff',
+    openLayersLink: 'https://openlayers.org/en/latest/examples/cog.html',
+  },
 ];

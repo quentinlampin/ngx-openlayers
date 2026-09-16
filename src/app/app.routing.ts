@@ -26,6 +26,7 @@ import { ImageStaticComponent } from './image-static/image-static.component';
 import { GraticuleComponent } from './graticule/graticule.component';
 import { SnapInteractionComponent } from './snap-interaction/snap-interaction.component';
 import { StylesCompositionComponent } from './styles/styles-composition.component';
+import { WebGlGeoTiffComponent } from './webgl-geotiff/webgl-geotiff.component';
 
 export const routes: Routes = [
   { path: '', component: ExamplesListComponent },
@@ -58,6 +59,7 @@ export const routes: Routes = [
       { path: 'graticule', component: GraticuleComponent },
       { path: 'snap', component: SnapInteractionComponent },
       { path: 'styles', component: StylesCompositionComponent },
+      { path: 'webgl-geotiff', component: WebGlGeoTiffComponent },
     ],
   },
   { path: '**', redirectTo: '' },
