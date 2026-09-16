@@ -9,6 +9,7 @@ import { GraticuleComponent } from './lib/graticule.component';
 import { LayerGroupComponent } from './lib/layers/layergroup.component';
 import { LayerImageComponent } from './lib/layers/layerimage.component';
 import { LayerTileComponent } from './lib/layers/layertile.component';
+import { LayerWebGlComponent } from './lib/layers/layerwebgl.component';
 import { MapComponent } from './lib/map.component';
 import { LayerVectorComponent } from './lib/layers/layervector.component';
 import { LayerVectorTileComponent } from './lib/layers/layervectortile.component';
@@ -18,6 +19,7 @@ import { SourceClusterComponent } from './lib/sources/cluster.component';
 import { SourceVectorComponent } from './lib/sources/vector.component';
 import { SourceXYZComponent } from './lib/sources/xyz.component';
 import { SourceTileWMTSComponent } from './lib/sources/tilewmts.component';
+import { SourceGeoTIFFComponent } from './lib/sources/geotiff.component';
 import { SourceVectorTileComponent } from './lib/sources/vectortile.component';
 import { SourceTileWMSComponent } from './lib/sources/tilewms.component';
 import { SourceTileJSONComponent } from './lib/sources/tilejson.component';
@@ -87,6 +89,7 @@ export {
   LayerGroupComponent,
   LayerImageComponent,
   LayerTileComponent,
+  LayerWebGlComponent,
   LayerVectorComponent,
   LayerVectorTileComponent,
   SourceComponent,
@@ -103,6 +106,7 @@ export {
   SourceGeoJSONComponent,
   SourceImageStaticComponent,
   SourceImageWMSComponent,
+  SourceGeoTIFFComponent,
   SourceRasterComponent,
   SourceImageArcGISRestComponent,
   SimpleGeometryComponent,
@@ -169,6 +173,7 @@ const COMPONENTS = [
   LayerTileComponent,
   LayerVectorComponent,
   LayerVectorTileComponent,
+  LayerWebGlComponent,
 
   SourceOsmComponent,
   SourceBingmapsComponent,
@@ -185,6 +190,7 @@ const COMPONENTS = [
   SourceImageWMSComponent,
   SourceImageArcGISRestComponent,
   SourceRasterComponent,
+  SourceGeoTIFFComponent,
 
   FeatureComponent,
   GeometryLinestringComponent,
