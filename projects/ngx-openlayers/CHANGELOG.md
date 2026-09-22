@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.3.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.2.2...21.3.0) (2026-09-22)
+
+
+### Features
+
+* **sources:** add support for geotiff sources and webgl layers ([66e332e](https://github.com/quentinlampin/ngx-openlayers/commit/66e332eb517dc7b83d7af21210a7364593ad6fff))
+
 ## [21.2.2](https://github.com/quentinlampin/ngx-openlayers/compare/21.2.1...21.2.2) (2026-05-28)
 
 ## [21.2.1](https://github.com/quentinlampin/ngx-openlayers/compare/21.2.0...21.2.1) (2026-04-29)
