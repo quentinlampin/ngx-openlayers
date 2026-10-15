@@ -14,9 +14,6 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "paths": {
       "ngx-openlayers": [
         "dist/ngx-openlayers"
