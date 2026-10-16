@@ -98,7 +98,7 @@ export class ExamplesListComponent implements OnInit {
       if (!termValue.trim()) {
         this.list = examplesList;
       } else {
-        this.list = this.list.filter(
+        this.list = examplesList.filter(
           (item) =>
             (item.title && item.title.toLowerCase().includes(termValue)) ||
             (item.description && item.description.toLowerCase().includes(termValue))

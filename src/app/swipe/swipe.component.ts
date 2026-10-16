@@ -29,14 +29,16 @@ import {
       </aol-layer-tile>
     </aol-map>
     <button
+      type="button"
       class="swipe-button"
+      aria-label="Drag to compare map layers"
       [style.marginLeft.px]="swipeOffsetToCenter"
       (pointerdown)="onPanStart($event)"
       (pointermove)="onPan($event)"
       (pointerup)="onPanEnd()"
       (pointercancel)="onPanEnd()"
     >
-      <>
+      <span aria-hidden="true">&lt;&gt;</span>
     </button>
   `,
   styles: [
@@ -133,6 +135,9 @@ export class SwipeComponent implements OnInit {
   }
 
   onPanStart(event: PointerEvent): void {
+    if (event.button !== 0) {
+      return;
+    }
     (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
     this.isPanning = true;
     this.pointerStartX = event.clientX;
