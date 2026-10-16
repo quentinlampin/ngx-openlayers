@@ -42,7 +42,6 @@ import {
   ],
 })
 export class ImageWMSComponent {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   params = { LAYERS: 'topp:states' };
 
   imageLoadStart(): void {

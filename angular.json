@@ -140,6 +140,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": "projects/ngx-openlayers/eslint.config.js",
             "lintFilePatterns": [
               "projects/ngx-openlayers/**/*.ts",
               "projects/ngx-openlayers/**/*.html"
