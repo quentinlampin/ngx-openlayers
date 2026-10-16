@@ -9,7 +9,7 @@ ngx-openlayers works with the following versions which must be installed as peer
 
 | ngx-openlayers | Angular | Openlayers |
 |----------------|---------|------------|
-| 22.x           | ^21.0.0 \|\| ^22.0.0 | ~10.7.0    |
+| 22.x           | ^22.0.0 | ~10.7.0    |
 | 21.x           | ^21.0.0 | ~10.7.0    |
 | 20.x           | ^20.0.0 | ~10.7.0    |
 | 19.x           | ^19.0.0 | ~10.5.0    |
