@@ -133,10 +133,12 @@ export class SwipeComponent implements OnInit {
   }
 
   onPanStart(event: PointerEvent): void {
-    if (event.button !== 0) {
+    if (this.isPanning || event.button !== 0) {
       return;
     }
-    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+    if (event.currentTarget instanceof HTMLElement) {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
     this.isPanning = true;
     this.pointerStartX = event.clientX;
     this.startX = this.swipeOffsetToCenter;
