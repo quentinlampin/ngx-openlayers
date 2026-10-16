@@ -6,7 +6,7 @@ import { Units } from 'ol/control/ScaleLine';
 @Component({
   selector: 'aol-control-scaleline',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlScaleLineComponent implements OnInit, OnDestroy {

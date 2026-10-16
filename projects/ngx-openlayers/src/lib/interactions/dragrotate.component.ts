@@ -6,7 +6,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-dragrotate',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DragRotateInteractionComponent implements OnInit, OnDestroy {

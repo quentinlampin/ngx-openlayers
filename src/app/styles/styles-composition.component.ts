@@ -93,7 +93,7 @@ import {
       </aol-layer-vector>
     </aol-map>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: ``,
 })
 export class StylesCompositionComponent {

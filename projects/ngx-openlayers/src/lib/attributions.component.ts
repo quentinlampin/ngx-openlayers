@@ -5,7 +5,7 @@ import { SourceComponent } from './sources/source.component';
 @Component({
   selector: 'aol-attributions',
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class AttributionsComponent implements AfterViewInit {

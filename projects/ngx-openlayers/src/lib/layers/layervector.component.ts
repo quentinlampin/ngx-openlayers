@@ -10,7 +10,7 @@ import { BackgroundColor } from 'ol/layer/Base';
 @Component({
   selector: 'aol-layer-vector',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class LayerVectorComponent extends LayerComponent implements OnInit {

@@ -53,7 +53,7 @@ import {
       }
     </aol-map>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

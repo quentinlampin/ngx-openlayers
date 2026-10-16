@@ -162,7 +162,7 @@ interface CircleGeoJSONLike extends Pick<GeoJSONFeature, 'type' | 'properties'> 
       </aol-layer-group>
     </aol-map>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

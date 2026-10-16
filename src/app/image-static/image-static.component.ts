@@ -42,7 +42,7 @@ import { LayerImageComponent, MapComponent, SourceImageStaticComponent, ViewComp
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, MapComponent, ViewComponent, LayerImageComponent, SourceImageStaticComponent],
 })
 export class ImageStaticComponent {

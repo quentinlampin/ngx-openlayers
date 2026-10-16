@@ -3,7 +3,7 @@ import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular
 @Component({
   selector: 'aol-content',
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ContentComponent {

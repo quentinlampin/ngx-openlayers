@@ -14,7 +14,7 @@ import { StyleComponent } from './style.component';
 @Component({
   selector: 'aol-style-circle',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {

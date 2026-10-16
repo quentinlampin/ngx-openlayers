@@ -71,7 +71,7 @@ import { SnapEvent } from 'ol/events/SnapEvent';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

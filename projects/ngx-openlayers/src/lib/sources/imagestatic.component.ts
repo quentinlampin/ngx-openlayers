@@ -24,7 +24,7 @@ import BaseObject from 'ol/Object';
   selector: 'aol-source-imagestatic',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {

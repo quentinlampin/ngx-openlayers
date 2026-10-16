@@ -23,7 +23,7 @@ import BaseObject from 'ol/Object';
   selector: 'aol-source-tilewmts',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {

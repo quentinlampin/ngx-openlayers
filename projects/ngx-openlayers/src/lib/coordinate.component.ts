@@ -9,7 +9,7 @@ import { ViewComponent } from './view.component';
 @Component({
   selector: 'aol-coordinate',
   template: ` <div class="aol-coordinate"></div> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class CoordinateComponent implements OnChanges, OnInit {

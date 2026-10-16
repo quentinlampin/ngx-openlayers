@@ -8,7 +8,7 @@ import { FeatureToFeatureClass } from 'ol/format/Feature';
   selector: 'aol-format-mvt',
   template: '',
   providers: [{ provide: FormatComponent, useExisting: forwardRef(() => FormatMVTComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class FormatMVTComponent extends FormatComponent {

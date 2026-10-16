@@ -8,7 +8,7 @@ import { Size } from 'ol/size';
 @Component({
   selector: 'aol-tilegrid',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class TileGridComponent implements OnInit, OnChanges {

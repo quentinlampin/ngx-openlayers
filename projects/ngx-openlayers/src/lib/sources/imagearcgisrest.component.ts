@@ -22,7 +22,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-imagearcgisrest',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {

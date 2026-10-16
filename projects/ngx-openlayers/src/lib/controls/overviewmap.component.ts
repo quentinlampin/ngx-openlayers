@@ -16,7 +16,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control-overviewmap',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlOverviewMapComponent implements OnInit, OnChanges, OnDestroy {

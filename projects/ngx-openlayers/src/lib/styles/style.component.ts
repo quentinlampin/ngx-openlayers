@@ -8,7 +8,7 @@ import { GeometryFunction } from 'ol/style/Style';
 @Component({
   selector: 'aol-style',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StyleComponent implements OnInit {

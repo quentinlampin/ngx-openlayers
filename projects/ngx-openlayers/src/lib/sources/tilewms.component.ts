@@ -20,7 +20,7 @@ import { ServerType } from 'ol/source/wms';
   selector: 'aol-source-tilewms',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMSComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit {

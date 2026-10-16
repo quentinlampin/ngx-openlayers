@@ -5,7 +5,7 @@ import { MultiLineString } from 'ol/geom';
 @Component({
   selector: 'aol-geometry-multilinestring',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryMultiLinestringComponent extends SimpleGeometryComponent {

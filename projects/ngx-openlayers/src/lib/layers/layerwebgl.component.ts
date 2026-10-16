@@ -5,7 +5,7 @@ import { LayerComponent } from './layer.component';
 @Component({
   selector: 'aol-layer-webgl',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class LayerWebGlComponent extends LayerComponent implements OnInit, OnChanges {

@@ -5,7 +5,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control-attribution',
   template: ``,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {

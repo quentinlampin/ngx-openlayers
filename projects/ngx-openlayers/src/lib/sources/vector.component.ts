@@ -13,7 +13,7 @@ import { Feature } from 'ol';
   selector: 'aol-source-vector',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {

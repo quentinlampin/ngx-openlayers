@@ -26,7 +26,7 @@ import {
       </aol-layer-tile>
     </aol-map>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     ViewComponent,

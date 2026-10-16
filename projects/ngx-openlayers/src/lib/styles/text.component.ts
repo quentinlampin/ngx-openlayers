@@ -5,7 +5,7 @@ import { StyleComponent } from './style.component';
 @Component({
   selector: 'aol-style-text',
   template: ` <div class="aol-style-text"></div> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StyleTextComponent implements OnInit, OnChanges {

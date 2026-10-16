@@ -11,8 +11,6 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      // Components keep ChangeDetectionStrategy.Eager (set by the Angular 22 migration) until they are made OnPush-safe
-      "@angular-eslint/prefer-on-push-component-change-detection": "off",
       "@angular-eslint/component-selector": [
         "error",
         {

@@ -24,7 +24,7 @@ import { SourceComponent } from './source.component';
       useExisting: forwardRef(() => SourceRasterComponent),
     },
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {

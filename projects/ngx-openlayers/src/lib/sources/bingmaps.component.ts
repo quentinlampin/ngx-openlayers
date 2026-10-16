@@ -8,7 +8,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-bingmaps',
   template: ` <div class="aol-source-bingmaps"></div> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {

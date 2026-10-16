@@ -20,7 +20,7 @@ import { Geometry } from 'ol/geom';
 @Component({
   selector: 'aol-interaction-snap',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SnapInteractionComponent implements OnInit, OnDestroy {

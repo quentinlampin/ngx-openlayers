@@ -5,7 +5,7 @@ import { LineString } from 'ol/geom';
 @Component({
   selector: 'aol-geometry-linestring',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryLinestringComponent extends SimpleGeometryComponent {

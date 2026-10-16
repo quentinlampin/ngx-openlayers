@@ -5,7 +5,7 @@ import { SourceVectorComponent } from './sources/vector.component';
 @Component({
   selector: 'aol-feature',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class FeatureComponent implements OnInit, OnDestroy, OnChanges {

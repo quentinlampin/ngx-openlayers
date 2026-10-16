@@ -25,7 +25,7 @@ import { OSM } from 'ol/source';
       <aol-layer-tile #osm [opacity]="1"> <aol-source-osm></aol-source-osm> </aol-layer-tile>
     </aol-map>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

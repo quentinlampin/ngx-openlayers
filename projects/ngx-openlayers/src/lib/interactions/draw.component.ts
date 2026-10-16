@@ -22,7 +22,7 @@ import { Type } from 'ol/geom/Geometry';
 @Component({
   selector: 'aol-interaction-draw',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DrawInteractionComponent implements OnInit, OnDestroy {

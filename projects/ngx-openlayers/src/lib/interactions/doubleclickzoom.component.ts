@@ -5,7 +5,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-doubleclickzoom',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {

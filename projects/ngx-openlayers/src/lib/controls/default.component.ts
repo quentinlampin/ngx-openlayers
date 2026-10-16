@@ -10,7 +10,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control-defaults',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {

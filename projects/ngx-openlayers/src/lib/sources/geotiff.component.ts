@@ -8,7 +8,7 @@ import { Options } from 'ol/source/GeoTIFF';
   selector: 'aol-source-geotiff',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoTIFFComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceGeoTIFFComponent extends SourceComponent implements OnInit {

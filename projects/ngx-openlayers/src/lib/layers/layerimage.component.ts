@@ -6,7 +6,7 @@ import { LayerComponent } from './layer.component';
 @Component({
   selector: 'aol-layer-image',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class LayerImageComponent extends LayerComponent implements OnInit {

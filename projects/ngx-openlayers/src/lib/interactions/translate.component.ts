@@ -18,7 +18,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-translate',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {

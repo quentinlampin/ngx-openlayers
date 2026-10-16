@@ -5,7 +5,7 @@ import { SimpleGeometryComponent } from './simplegeometry.component';
 @Component({
   selector: 'aol-geometry-circle',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryCircleComponent extends SimpleGeometryComponent {

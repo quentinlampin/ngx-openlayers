@@ -23,7 +23,7 @@ import RenderFeature from 'ol/render/Feature';
   selector: 'aol-source-vectortile',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {

@@ -5,7 +5,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-mousewheelzoom',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class MouseWheelZoomInteractionComponent implements OnInit, OnDestroy {

@@ -26,7 +26,7 @@ import BaseObject from 'ol/Object';
   selector: 'aol-source-xyz',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {

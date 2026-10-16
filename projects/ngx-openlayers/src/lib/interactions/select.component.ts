@@ -21,7 +21,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-select',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SelectInteractionComponent implements OnInit, OnDestroy {

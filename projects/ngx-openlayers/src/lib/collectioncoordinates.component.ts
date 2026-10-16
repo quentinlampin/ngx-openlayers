@@ -11,7 +11,7 @@ import { MapComponent } from './map.component';
 @Component({
   selector: 'aol-collection-coordinates',
   template: ` <div class="aol-collection-coordinates"></div> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class CollectionCoordinatesComponent implements OnChanges, OnInit {

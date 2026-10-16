@@ -18,7 +18,7 @@ import { SourceXYZComponent } from './xyz.component';
   selector: 'aol-source-osm',
   template: ` <div class="aol-source-osm"></div> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {

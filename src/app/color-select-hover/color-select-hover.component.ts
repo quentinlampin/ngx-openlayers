@@ -59,7 +59,7 @@ import { SelectEvent } from 'ol/interaction/Select';
       </aol-layer-vector>
     </aol-map>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

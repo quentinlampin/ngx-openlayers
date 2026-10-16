@@ -7,7 +7,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-dragbox',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DragBoxInteractionComponent implements OnInit, OnDestroy {

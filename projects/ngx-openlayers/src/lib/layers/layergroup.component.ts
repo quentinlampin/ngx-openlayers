@@ -18,7 +18,7 @@ import Collection from 'ol/Collection';
 @Component({
   selector: 'aol-layer-group',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {

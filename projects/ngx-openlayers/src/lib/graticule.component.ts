@@ -16,7 +16,7 @@ import { Options } from 'ol/layer/Graticule';
 @Component({
   selector: 'aol-graticule',
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestroy {

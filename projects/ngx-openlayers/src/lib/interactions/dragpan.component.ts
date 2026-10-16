@@ -7,7 +7,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-dragpan',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DragPanInteractionComponent implements OnInit, OnDestroy {

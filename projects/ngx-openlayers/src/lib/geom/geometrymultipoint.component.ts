@@ -5,7 +5,7 @@ import { MultiPoint } from 'ol/geom';
 @Component({
   selector: 'aol-geometry-multipoint',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryMultiPointComponent extends SimpleGeometryComponent {

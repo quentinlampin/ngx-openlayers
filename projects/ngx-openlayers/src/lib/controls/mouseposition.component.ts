@@ -7,7 +7,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control-mouseposition',
   template: ``,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlMousePositionComponent implements OnInit, OnDestroy {

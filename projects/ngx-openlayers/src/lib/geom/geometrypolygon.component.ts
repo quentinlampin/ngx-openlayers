@@ -5,7 +5,7 @@ import { Polygon } from 'ol/geom';
 @Component({
   selector: 'aol-geometry-polygon',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryPolygonComponent extends SimpleGeometryComponent {

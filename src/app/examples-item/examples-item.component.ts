@@ -60,7 +60,7 @@ import { Router, RouterOutlet } from '@angular/router';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet],
 })
 export class ExamplesItemComponent implements OnInit {

@@ -7,7 +7,7 @@ import { BackgroundColor } from 'ol/layer/Base';
 @Component({
   selector: 'aol-layer-tile',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class LayerTileComponent extends LayerComponent implements OnInit {

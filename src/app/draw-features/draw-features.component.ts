@@ -110,7 +110,7 @@ import { GeoJSON } from 'ol/format';
     `,
   ],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     JsonPipe,
     MapComponent,

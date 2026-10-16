@@ -6,7 +6,7 @@ import { StyleComponent } from './style.component';
 @Component({
   selector: 'aol-styles',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StylesComponent implements AfterViewInit {

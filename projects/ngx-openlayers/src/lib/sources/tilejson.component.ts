@@ -7,7 +7,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-tilejson',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileJSONComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceTileJSONComponent extends SourceComponent implements OnInit {

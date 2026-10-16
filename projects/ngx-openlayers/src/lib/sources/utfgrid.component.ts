@@ -8,7 +8,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-utfgrid',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceUTFGridComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceUTFGridComponent extends SourceComponent implements OnInit {

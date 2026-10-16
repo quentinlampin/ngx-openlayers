@@ -7,7 +7,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-draganddrop',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class DragAndDropInteractionComponent implements OnInit, OnDestroy {

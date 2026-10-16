@@ -5,7 +5,7 @@ import { Point } from 'ol/geom';
 @Component({
   selector: 'aol-geometry-point',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryPointComponent extends SimpleGeometryComponent {

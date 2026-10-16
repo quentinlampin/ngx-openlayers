@@ -10,7 +10,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-geojson',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoJSONComponent) }],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {

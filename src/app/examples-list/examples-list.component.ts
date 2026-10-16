@@ -79,7 +79,7 @@ interface ExamplesListForm {
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class ExamplesListComponent implements OnInit {

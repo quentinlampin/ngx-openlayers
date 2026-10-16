@@ -6,7 +6,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control-zoomtoextent',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlZoomToExtentComponent implements OnInit, OnDestroy {

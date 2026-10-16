@@ -19,7 +19,7 @@ import { ProjectionLike } from 'ol/proj';
 @Component({
   selector: 'aol-view',
   template: ` <ng-content></ng-content> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ViewComponent implements OnInit, OnChanges {

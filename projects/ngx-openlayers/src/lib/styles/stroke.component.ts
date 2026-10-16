@@ -9,7 +9,7 @@ import { StyleTextComponent } from './text.component';
 @Component({
   selector: 'aol-style-stroke',
   template: ` <div class="aol-style-stroke"></div> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {

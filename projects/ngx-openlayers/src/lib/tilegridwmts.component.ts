@@ -7,7 +7,7 @@ import { Size } from 'ol/size';
 @Component({
   selector: 'aol-tilegrid-wmts',
   template: '',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class TileGridWMTSComponent extends TileGridComponent implements OnInit {
