@@ -56,7 +56,7 @@
             "optimization": false,
             "namedChunks": true,
             "browser": "src/main.ts",
-            "allowedCommonJsDependencies": ["xml-utils", "hammerjs", "lerc"]
+            "allowedCommonJsDependencies": ["xml-utils", "lerc"]
           },
           "configurations": {
             "production": {

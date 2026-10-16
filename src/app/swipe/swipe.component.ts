@@ -31,8 +31,10 @@ import {
     <button
       class="swipe-button"
       [style.marginLeft.px]="swipeOffsetToCenter"
-      (panstart)="onPanStart()"
-      (panmove)="onPan($any($event))"
+      (pointerdown)="onPanStart($event)"
+      (pointermove)="onPan($event)"
+      (pointerup)="onPanEnd()"
+      (pointercancel)="onPanEnd()"
     >
       <>
     </button>
@@ -63,6 +65,7 @@ import {
         min-width: 0;
         width: 40px;
         height: 40px;
+        touch-action: none;
       }
     `,
   ],
@@ -88,6 +91,8 @@ export class SwipeComponent implements OnInit {
   swipeOffsetToCenter = 0;
   positionPx = 0;
   startX = 0;
+  pointerStartX = 0;
+  isPanning = false;
 
   paddingSize = 16;
 
@@ -127,18 +132,28 @@ export class SwipeComponent implements OnInit {
     this.positionPx = 0;
   }
 
-  onPanStart(): void {
+  onPanStart(event: PointerEvent): void {
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+    this.isPanning = true;
+    this.pointerStartX = event.clientX;
     this.startX = this.swipeOffsetToCenter;
   }
 
-  onPan(event: HammerInput): void {
+  onPanEnd(): void {
+    this.isPanning = false;
+  }
+
+  onPan(event: PointerEvent): void {
+    if (!this.isPanning) {
+      return;
+    }
     event.preventDefault();
     const swipePercentageMax = 98;
     const swipePercentageMin = 2;
     const maxPercentage = 0.48;
 
-    this.swipeOffsetToCenter = this.startX + event.deltaX;
-    const screenSizePx = event.srcEvent.view.innerWidth - this.paddingSize;
+    this.swipeOffsetToCenter = this.startX + event.clientX - this.pointerStartX;
+    const screenSizePx = window.innerWidth - this.paddingSize;
     this.positionPx = screenSizePx / 2 + this.swipeOffsetToCenter;
     this.swipeValue = (this.positionPx / screenSizePx) * 100;
 
