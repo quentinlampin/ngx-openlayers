@@ -37,7 +37,7 @@
     "@angular/compiler-cli": "^22.2.3",
     "@angular/language-service": "^22.2.3",
     "@types/arcgis-rest-api": "^10.4.5",
-    "@types/node": "^18.19.86",
+    "@types/node": "^24.19.2",
     "@types/topojson-specification": "^1.0.2",
     "angular-eslint": "22.6.0",
     "commit-and-tag-version": "^12.5.0",
