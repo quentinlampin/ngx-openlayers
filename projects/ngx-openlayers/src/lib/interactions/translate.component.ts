@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Collection, Feature } from 'ol';
 import { ObjectEvent } from 'ol/Object';
 import { Translate } from 'ol/interaction';
@@ -9,6 +18,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-translate',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class TranslateInteractionComponent implements OnInit, OnDestroy {

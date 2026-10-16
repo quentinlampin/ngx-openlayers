@@ -1,4 +1,13 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Group } from 'ol/layer';
 import { MapComponent } from '../map.component';
 import { Extent } from 'ol/extent';
@@ -9,6 +18,7 @@ import Collection from 'ol/Collection';
 @Component({
   selector: 'aol-layer-group',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class LayerGroupComponent implements OnInit, OnDestroy, OnChanges {

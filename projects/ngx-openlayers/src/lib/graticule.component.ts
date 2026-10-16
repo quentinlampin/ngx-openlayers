@@ -1,4 +1,13 @@
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Graticule } from 'ol';
 import { Stroke } from 'ol/style';
 import { MapComponent } from './map.component';
@@ -7,6 +16,7 @@ import { Options } from 'ol/layer/Graticule';
 @Component({
   selector: 'aol-graticule',
   template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class GraticuleComponent implements AfterContentInit, OnChanges, OnDestroy {

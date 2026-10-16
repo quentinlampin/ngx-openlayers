@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Collection } from 'ol';
 import { Control, defaults } from 'ol/control';
 import { Options as AttributionOptions } from 'ol/control/Attribution';
@@ -10,6 +10,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control-defaults',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class DefaultControlComponent implements OnInit, OnDestroy {

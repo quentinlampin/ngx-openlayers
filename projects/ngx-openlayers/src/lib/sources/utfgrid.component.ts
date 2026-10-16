@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UTFGrid } from 'ol/source';
 import { Config } from 'ol/source/TileJSON';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -8,6 +8,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-utfgrid',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceUTFGridComponent) }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class SourceUTFGridComponent extends SourceComponent implements OnInit {

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SimpleGeometryComponent } from './simplegeometry.component';
 import { MultiPolygon } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-multipolygon',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class GeometryMultiPolygonComponent extends SimpleGeometryComponent {

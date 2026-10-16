@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { VectorTile } from 'ol/layer';
 import { Style } from 'ol/style';
 import { StyleFunction } from 'ol/style/Style';
@@ -10,6 +10,7 @@ import { BackgroundColor } from 'ol/layer/Base';
 @Component({
   selector: 'aol-layer-vectortile',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class LayerVectorTileComponent extends LayerComponent implements OnInit {

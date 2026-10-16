@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { defaults, Interaction } from 'ol/interaction';
 import { Collection } from 'ol';
 import { MapComponent } from '../map.component';
@@ -6,6 +6,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-default',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class DefaultInteractionComponent implements OnInit, OnDestroy {

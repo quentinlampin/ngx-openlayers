@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GeoTIFF } from 'ol/source';
 import { LayerWebGlComponent } from '../layers/layerwebgl.component';
 import { SourceComponent } from './source.component';
@@ -8,6 +8,7 @@ import { Options } from 'ol/source/GeoTIFF';
   selector: 'aol-source-geotiff',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoTIFFComponent) }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class SourceGeoTIFFComponent extends SourceComponent implements OnInit {

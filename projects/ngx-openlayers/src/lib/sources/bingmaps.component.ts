@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { BingMaps } from 'ol/source';
 import { LayerTileComponent } from '../layers/layertile.component';
@@ -8,6 +8,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-bingmaps',
   template: ` <div class="aol-source-bingmaps"></div> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceBingmapsComponent) }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class SourceBingmapsComponent extends SourceComponent implements OnInit {

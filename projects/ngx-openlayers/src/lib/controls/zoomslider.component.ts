@@ -1,10 +1,11 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ZoomSlider } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-zoomslider',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class ControlZoomSliderComponent implements OnInit, OnDestroy {

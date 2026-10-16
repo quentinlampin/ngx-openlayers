@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { examplesList } from '../example-list';
 import { Router, RouterOutlet } from '@angular/router';
 
@@ -60,6 +60,7 @@ import { Router, RouterOutlet } from '@angular/router';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RouterOutlet],
 })
 export class ExamplesItemComponent implements OnInit {

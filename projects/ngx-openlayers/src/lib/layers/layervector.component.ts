@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Vector } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Style } from 'ol/style';
@@ -10,6 +10,7 @@ import { BackgroundColor } from 'ol/layer/Base';
 @Component({
   selector: 'aol-layer-vector',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class LayerVectorComponent extends LayerComponent implements OnInit {

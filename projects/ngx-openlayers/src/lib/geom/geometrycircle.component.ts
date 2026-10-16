@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Circle } from 'ol/geom';
 import { SimpleGeometryComponent } from './simplegeometry.component';
 
 @Component({
   selector: 'aol-geometry-circle',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class GeometryCircleComponent extends SimpleGeometryComponent {

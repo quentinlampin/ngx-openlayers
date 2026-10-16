@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Stroke } from 'ol/style';
 import { FormsModule } from '@angular/forms';
 import {
@@ -53,6 +53,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     FormsModule,
     MapComponent,

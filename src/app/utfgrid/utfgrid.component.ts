@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   ContentComponent,
   ControlFullScreenComponent,
@@ -55,6 +55,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

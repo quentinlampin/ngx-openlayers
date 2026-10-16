@@ -1,10 +1,20 @@
-import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Circle, Fill, Stroke } from 'ol/style';
 import { StyleComponent } from './style.component';
 
 @Component({
   selector: 'aol-style-circle',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class StyleCircleComponent implements AfterContentInit, OnChanges, OnDestroy {

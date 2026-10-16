@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { createXYZ } from 'ol/tilegrid';
 import TileGrid from 'ol/tilegrid/TileGrid';
 import { Extent } from 'ol/extent';
@@ -8,6 +8,7 @@ import { Size } from 'ol/size';
 @Component({
   selector: 'aol-tilegrid',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class TileGridComponent implements OnInit, OnChanges {

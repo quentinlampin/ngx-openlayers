@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Condition } from 'ol/events/condition';
 import { DragZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
@@ -6,6 +6,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-interaction-dragzoom',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class DragZoomInteractionComponent implements OnInit, OnDestroy {

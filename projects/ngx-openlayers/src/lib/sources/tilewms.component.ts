@@ -1,4 +1,13 @@
-import { Component, forwardRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { LoadFunction } from 'ol/Tile';
 import { TileWMS } from 'ol/source';
 import TileGrid from 'ol/tilegrid/TileGrid';
@@ -11,6 +20,7 @@ import { ServerType } from 'ol/source/wms';
   selector: 'aol-source-tilewms',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMSComponent) }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class SourceTileWMSComponent extends SourceComponent implements OnChanges, OnInit {

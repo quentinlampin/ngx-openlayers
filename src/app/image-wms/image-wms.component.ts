@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CoordinateComponent,
   DefaultInteractionComponent,
@@ -32,6 +32,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Feature as GeoJSonFeature, Polygon as GeoJSonPolygon } from 'geojson';
 import {
   CollectionCoordinatesComponent,
@@ -71,6 +71,7 @@ import { SnapEvent } from 'ol/events/SnapEvent';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

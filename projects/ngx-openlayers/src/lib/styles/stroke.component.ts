@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Color } from 'ol/color';
 import { ColorLike } from 'ol/colorlike';
 import { Stroke } from 'ol/style';
@@ -9,6 +9,7 @@ import { StyleTextComponent } from './text.component';
 @Component({
   selector: 'aol-style-stroke',
   template: ` <div class="aol-style-stroke"></div> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class StyleStrokeComponent implements OnInit, OnChanges {

@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TileJSON } from 'ol/source';
 import { LayerTileComponent } from '../layers/layertile.component';
 import { SourceComponent } from './source.component';
@@ -7,6 +7,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-tilejson',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileJSONComponent) }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class SourceTileJSONComponent extends SourceComponent implements OnInit {

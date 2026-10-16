@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Feature } from 'ol';
 import { GeoJSON } from 'ol/format';
 import { Polygon } from 'ol/geom';
@@ -79,6 +79,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     JsonPipe,
     MapComponent,

@@ -1,10 +1,11 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { DoubleClickZoom } from 'ol/interaction';
 import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-interaction-doubleclickzoom',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class DoubleClickZoomInteractionComponent implements OnInit, OnDestroy {

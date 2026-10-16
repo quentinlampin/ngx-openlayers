@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { examplesList } from '../example-list';
 import { RouterLink } from '@angular/router';
@@ -79,6 +79,7 @@ interface ExamplesListForm {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class ExamplesListComponent implements OnInit {

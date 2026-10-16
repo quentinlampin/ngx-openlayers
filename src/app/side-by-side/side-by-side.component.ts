@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, viewChild } from '@angular/core';
+import { AfterViewInit, Component, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   CoordinateComponent,
   DefaultControlComponent,
@@ -49,6 +49,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

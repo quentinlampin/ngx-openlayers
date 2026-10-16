@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Fill, Image, Stroke, Style, Text } from 'ol/style';
 import { Geometry } from 'ol/geom';
 import { FeatureComponent } from '../feature.component';
@@ -8,6 +8,7 @@ import { GeometryFunction } from 'ol/style/Style';
 @Component({
   selector: 'aol-style',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class StyleComponent implements OnInit {

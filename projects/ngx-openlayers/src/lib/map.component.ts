@@ -9,6 +9,7 @@ import {
   Output,
   SimpleChanges,
   inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import Map from 'ol/Map';
 import MapBrowserEvent from 'ol/MapBrowserEvent';
@@ -25,6 +26,7 @@ import BaseObject from 'ol/Object';
     <div [style.width]="width" [style.height]="height"></div>
     <ng-content></ng-content>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
