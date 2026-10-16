@@ -96,8 +96,6 @@ export class SwipeComponent implements OnInit {
   pointerStartX = 0;
   isPanning = false;
 
-  paddingSize = 16;
-
   @HostListener('window:resize')
   onWindowResize(): void {
     this.resetSwipeValues();
@@ -158,18 +156,18 @@ export class SwipeComponent implements OnInit {
     const maxPercentage = 0.48;
 
     this.swipeOffsetToCenter = this.startX + event.clientX - this.pointerStartX;
-    const screenSizePx = window.innerWidth - this.paddingSize;
-    this.positionPx = screenSizePx / 2 + this.swipeOffsetToCenter;
-    this.swipeValue = (this.positionPx / screenSizePx) * 100;
+    const mapWidthPx = this.map.instance.getSize()[0];
+    this.positionPx = mapWidthPx / 2 + this.swipeOffsetToCenter;
+    this.swipeValue = (this.positionPx / mapWidthPx) * 100;
 
-    const isDraggingButtonOutsideOnRight = this.swipeOffsetToCenter > maxPercentage * screenSizePx;
-    const isDraggingButtonOutsideOnLeft = this.swipeOffsetToCenter < -maxPercentage * screenSizePx;
+    const isDraggingButtonOutsideOnRight = this.swipeOffsetToCenter > maxPercentage * mapWidthPx;
+    const isDraggingButtonOutsideOnLeft = this.swipeOffsetToCenter < -maxPercentage * mapWidthPx;
     if (isDraggingButtonOutsideOnRight) {
-      this.swipeOffsetToCenter = maxPercentage * screenSizePx;
+      this.swipeOffsetToCenter = maxPercentage * mapWidthPx;
       this.swipeValue = swipePercentageMax;
     }
     if (isDraggingButtonOutsideOnLeft) {
-      this.swipeOffsetToCenter = -maxPercentage * screenSizePx;
+      this.swipeOffsetToCenter = -maxPercentage * mapWidthPx;
       this.swipeValue = swipePercentageMin;
     }
     this.map.instance.render();
