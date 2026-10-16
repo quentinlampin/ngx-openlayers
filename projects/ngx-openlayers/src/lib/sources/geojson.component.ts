@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GeoJSON } from 'ol/format';
 import FeatureFormat from 'ol/format/Feature';
 import { ProjectionLike } from 'ol/proj';
@@ -10,6 +10,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-geojson',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceGeoJSONComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceGeoJSONComponent extends SourceComponent implements OnInit {

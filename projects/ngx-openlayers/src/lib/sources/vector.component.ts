@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Vector } from 'ol/source';
 import { default as FeatureFormat } from 'ol/format/Feature';
 import { LayerVectorComponent } from '../layers/layervector.component';
@@ -13,6 +13,7 @@ import { Feature } from 'ol';
   selector: 'aol-source-vector',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceVectorComponent extends SourceComponent implements OnInit {

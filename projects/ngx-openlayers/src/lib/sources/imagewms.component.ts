@@ -8,6 +8,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ImageWMS } from 'ol/source';
 import { LayerImageComponent } from '../layers/layerimage.component';
@@ -22,6 +23,7 @@ import { ServerType } from 'ol/source/wms';
   selector: 'aol-source-imagewms',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageWMSComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceImageWMSComponent extends SourceComponent implements OnChanges, OnInit {

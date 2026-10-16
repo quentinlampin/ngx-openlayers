@@ -7,6 +7,9 @@ permissions:
   id-token: write  # Required for OIDC
   contents: read
 
+env:
+  NODE_JS_VERSION: 24
+
 jobs:
   angular:
     uses: ./.github/workflows/angular.yml

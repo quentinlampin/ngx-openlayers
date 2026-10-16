@@ -1,9 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "strict": false,
     "esModuleInterop": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -16,7 +16,7 @@
     "target": "ES2022",
     "paths": {
       "ngx-openlayers": [
-        "dist/ngx-openlayers"
+        "./dist/ngx-openlayers"
       ]
     },
     "skipLibCheck": true,

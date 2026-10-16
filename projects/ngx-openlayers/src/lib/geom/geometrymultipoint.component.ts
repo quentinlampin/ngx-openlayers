@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SimpleGeometryComponent } from './simplegeometry.component';
 import { MultiPoint } from 'ol/geom';
 
 @Component({
   selector: 'aol-geometry-multipoint',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class GeometryMultiPointComponent extends SimpleGeometryComponent {

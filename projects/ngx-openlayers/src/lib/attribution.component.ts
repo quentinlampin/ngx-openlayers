@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Attribution } from 'ol/control';
 
 @Component({
   selector: 'aol-attribution',
   template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class AttributionComponent implements OnInit {

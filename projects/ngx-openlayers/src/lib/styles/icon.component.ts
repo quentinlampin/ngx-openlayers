@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Color } from 'ol/color';
 import { Size } from 'ol/size';
 import { Icon } from 'ol/style';
@@ -10,6 +10,7 @@ type IconOrigin = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
 @Component({
   selector: 'aol-style-icon',
   template: ` <div class="aol-style-icon"></div> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StyleIconComponent implements OnInit, OnChanges {

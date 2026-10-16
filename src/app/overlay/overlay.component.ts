@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GeoJSON } from 'ol/format';
 import { fromExtent } from 'ol/geom/Polygon';
 import { FeatureLike } from 'ol/Feature';
@@ -72,6 +72,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,
