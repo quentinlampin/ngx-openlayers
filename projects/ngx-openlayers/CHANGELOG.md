@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [22.0.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.3.0...22.0.0) (2026-10-19)
+
 ## [21.3.0](https://github.com/quentinlampin/ngx-openlayers/compare/21.2.2...21.3.0) (2026-09-22)
 
 
