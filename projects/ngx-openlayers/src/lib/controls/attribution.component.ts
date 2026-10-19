@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Attribution } from 'ol/control';
 import { MapComponent } from '../map.component';
 
 @Component({
   selector: 'aol-control-attribution',
   template: ``,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlAttributionComponent implements OnInit, OnDestroy {

@@ -7,6 +7,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Feature } from 'ol';
 import { Geometry, Point } from 'ol/geom';
@@ -20,6 +21,7 @@ import { SourceVectorComponent } from './vector.component';
   selector: 'aol-source-cluster',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceClusterComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceClusterComponent extends SourceComponent implements AfterContentInit, OnChanges {

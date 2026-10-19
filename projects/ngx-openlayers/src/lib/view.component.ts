@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import BaseObject, { ObjectEvent } from 'ol/Object';
 import View from 'ol/View';
 import { Coordinate } from 'ol/coordinate';
@@ -9,6 +19,7 @@ import { ProjectionLike } from 'ol/proj';
 @Component({
   selector: 'aol-view',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ViewComponent implements OnInit, OnChanges {

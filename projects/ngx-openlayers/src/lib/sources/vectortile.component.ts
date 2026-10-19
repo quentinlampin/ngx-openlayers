@@ -1,4 +1,12 @@
-import { AfterContentInit, Component, ContentChild, forwardRef, inject, Input } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  forwardRef,
+  inject,
+  Input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { UrlFunction } from 'ol/Tile';
 import FeatureFormat from 'ol/format/Feature';
 import { ProjectionLike } from 'ol/proj';
@@ -15,6 +23,7 @@ import RenderFeature from 'ol/render/Feature';
   selector: 'aol-source-vectortile',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceVectorTileComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceVectorTileComponent extends SourceComponent implements AfterContentInit {

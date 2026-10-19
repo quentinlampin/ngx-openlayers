@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { examplesList } from '../example-list';
 import { RouterLink } from '@angular/router';
@@ -79,6 +79,7 @@ interface ExamplesListForm {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, ReactiveFormsModule, RouterLink],
 })
 export class ExamplesListComponent implements OnInit {
@@ -97,7 +98,7 @@ export class ExamplesListComponent implements OnInit {
       if (!termValue.trim()) {
         this.list = examplesList;
       } else {
-        this.list = this.list.filter(
+        this.list = examplesList.filter(
           (item) =>
             (item.title && item.title.toLowerCase().includes(termValue)) ||
             (item.description && item.description.toLowerCase().includes(termValue))

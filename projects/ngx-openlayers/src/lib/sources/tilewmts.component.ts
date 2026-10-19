@@ -9,6 +9,7 @@ import {
   Output,
   SimpleChanges,
   inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { WMTS } from 'ol/source';
 import { TileSourceEvent } from 'ol/source/Tile';
@@ -22,6 +23,7 @@ import BaseObject from 'ol/Object';
   selector: 'aol-source-tilewmts',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceTileWMTSComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceTileWMTSComponent extends SourceComponent implements AfterContentInit, OnChanges {

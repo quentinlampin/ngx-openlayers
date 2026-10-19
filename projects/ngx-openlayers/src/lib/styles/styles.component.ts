@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChildren, inject } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FeatureComponent } from '../feature.component';
 import { LayerVectorComponent } from '../layers/layervector.component';
 import { StyleComponent } from './style.component';
@@ -6,6 +6,7 @@ import { StyleComponent } from './style.component';
 @Component({
   selector: 'aol-styles',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class StylesComponent implements AfterViewInit {

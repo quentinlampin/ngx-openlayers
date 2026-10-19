@@ -7,6 +7,7 @@ import {
   inject,
   Input,
   Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Raster, Source } from 'ol/source';
 import { Options, RasterSourceEvent } from 'ol/source/Raster';
@@ -23,6 +24,7 @@ import { SourceComponent } from './source.component';
       useExisting: forwardRef(() => SourceRasterComponent),
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceRasterComponent extends SourceComponent implements AfterContentInit {

@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ContentChild, Input, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Overlay } from 'ol';
 import { PanOptions, Positioning } from 'ol/Overlay';
 import { ContentComponent } from './content.component';
@@ -7,6 +7,7 @@ import { MapComponent } from './map.component';
 @Component({
   selector: 'aol-overlay',
   template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class OverlayComponent implements OnInit, OnDestroy {

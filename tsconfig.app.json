@@ -5,7 +5,7 @@
     "types": [],
     "paths": {
       "ngx-openlayers": [
-        "projects/ngx-openlayers/src"
+        "./projects/ngx-openlayers/src"
       ]
     }
   },

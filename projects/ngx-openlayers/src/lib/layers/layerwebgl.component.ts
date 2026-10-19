@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import WebGLTileLayer, { Options } from 'ol/layer/WebGLTile';
 import { LayerComponent } from './layer.component';
 
 @Component({
   selector: 'aol-layer-webgl',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class LayerWebGlComponent extends LayerComponent implements OnInit, OnChanges {

@@ -8,6 +8,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import { Extent } from 'ol/extent';
@@ -23,6 +24,7 @@ import BaseObject from 'ol/Object';
   selector: 'aol-source-imagestatic',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageStaticComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceImageStaticComponent extends SourceComponent implements OnInit, OnChanges {
