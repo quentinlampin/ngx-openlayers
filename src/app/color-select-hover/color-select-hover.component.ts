@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   CollectionCoordinatesComponent,
   CoordinateComponent,
@@ -59,6 +59,7 @@ import { SelectEvent } from 'ol/interaction/Select';
       </aol-layer-vector>
     </aol-map>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

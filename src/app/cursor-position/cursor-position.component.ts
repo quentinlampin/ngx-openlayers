@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { toStringXY } from 'ol/coordinate';
 import {
   ControlMousePositionComponent,
@@ -39,6 +39,7 @@ import {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,

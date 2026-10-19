@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, inject } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { transform } from 'ol/proj';
 import { GeometryCircleComponent } from './geom/geometrycircle.component';
 import { GeometryPointComponent } from './geom/geometrypoint.component';
@@ -9,6 +9,7 @@ import { ViewComponent } from './view.component';
 @Component({
   selector: 'aol-coordinate',
   template: ` <div class="aol-coordinate"></div> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class CoordinateComponent implements OnChanges, OnInit {

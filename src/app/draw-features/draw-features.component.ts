@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Feature } from 'ol';
 import { createBox } from 'ol/interaction/Draw';
 import { JsonPipe } from '@angular/common';
@@ -110,6 +110,7 @@ import { GeoJSON } from 'ol/format';
     `,
   ],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     JsonPipe,
     MapComponent,

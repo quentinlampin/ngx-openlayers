@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   CoordinateComponent,
   DefaultInteractionComponent,
@@ -29,12 +29,16 @@ import {
       </aol-layer-tile>
     </aol-map>
     <button
+      type="button"
       class="swipe-button"
+      aria-label="Drag to compare map layers"
       [style.marginLeft.px]="swipeOffsetToCenter"
-      (panstart)="onPanStart()"
-      (panmove)="onPan($any($event))"
+      (pointerdown)="onPanStart($event)"
+      (pointermove)="onPan($event)"
+      (pointerup)="onPanEnd()"
+      (pointercancel)="onPanEnd()"
     >
-      <>
+      <span aria-hidden="true">&lt;&gt;</span>
     </button>
   `,
   styles: [
@@ -63,9 +67,11 @@ import {
         min-width: 0;
         width: 40px;
         height: 40px;
+        touch-action: none;
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MapComponent,
     DefaultInteractionComponent,
@@ -87,8 +93,8 @@ export class SwipeComponent implements OnInit {
   swipeOffsetToCenter = 0;
   positionPx = 0;
   startX = 0;
-
-  paddingSize = 16;
+  pointerStartX = 0;
+  isPanning = false;
 
   @HostListener('window:resize')
   onWindowResize(): void {
@@ -126,29 +132,44 @@ export class SwipeComponent implements OnInit {
     this.positionPx = 0;
   }
 
-  onPanStart(): void {
+  onPanStart(event: PointerEvent): void {
+    if (this.isPanning || event.button !== 0) {
+      return;
+    }
+    if (event.currentTarget instanceof HTMLElement) {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
+    this.isPanning = true;
+    this.pointerStartX = event.clientX;
     this.startX = this.swipeOffsetToCenter;
   }
 
-  onPan(event: HammerInput): void {
+  onPanEnd(): void {
+    this.isPanning = false;
+  }
+
+  onPan(event: PointerEvent): void {
+    if (!this.isPanning) {
+      return;
+    }
     event.preventDefault();
     const swipePercentageMax = 98;
     const swipePercentageMin = 2;
     const maxPercentage = 0.48;
 
-    this.swipeOffsetToCenter = this.startX + event.deltaX;
-    const screenSizePx = event.srcEvent.view.innerWidth - this.paddingSize;
-    this.positionPx = screenSizePx / 2 + this.swipeOffsetToCenter;
-    this.swipeValue = (this.positionPx / screenSizePx) * 100;
+    this.swipeOffsetToCenter = this.startX + event.clientX - this.pointerStartX;
+    const mapWidthPx = this.map.instance.getSize()[0];
+    this.positionPx = mapWidthPx / 2 + this.swipeOffsetToCenter;
+    this.swipeValue = (this.positionPx / mapWidthPx) * 100;
 
-    const isDraggingButtonOutsideOnRight = this.swipeOffsetToCenter > maxPercentage * screenSizePx;
-    const isDraggingButtonOutsideOnLeft = this.swipeOffsetToCenter < -maxPercentage * screenSizePx;
+    const isDraggingButtonOutsideOnRight = this.swipeOffsetToCenter > maxPercentage * mapWidthPx;
+    const isDraggingButtonOutsideOnLeft = this.swipeOffsetToCenter < -maxPercentage * mapWidthPx;
     if (isDraggingButtonOutsideOnRight) {
-      this.swipeOffsetToCenter = maxPercentage * screenSizePx;
+      this.swipeOffsetToCenter = maxPercentage * mapWidthPx;
       this.swipeValue = swipePercentageMax;
     }
     if (isDraggingButtonOutsideOnLeft) {
-      this.swipeOffsetToCenter = -maxPercentage * screenSizePx;
+      this.swipeOffsetToCenter = -maxPercentage * mapWidthPx;
       this.swipeValue = swipePercentageMin;
     }
     this.map.instance.render();

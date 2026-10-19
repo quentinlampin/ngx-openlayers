@@ -1,4 +1,4 @@
-import { Component, ContentChild, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ContentChild, OnDestroy, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Control } from 'ol/control';
 import { ContentComponent } from '../content.component';
 import { MapComponent } from '../map.component';
@@ -6,6 +6,7 @@ import { MapComponent } from '../map.component';
 @Component({
   selector: 'aol-control',
   template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class ControlComponent implements OnInit, OnDestroy {

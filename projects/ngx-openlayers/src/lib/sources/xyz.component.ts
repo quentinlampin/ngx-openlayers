@@ -9,6 +9,7 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Size } from 'ol/size';
 import { XYZ } from 'ol/source';
@@ -25,6 +26,7 @@ import BaseObject from 'ol/Object';
   selector: 'aol-source-xyz',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceXYZComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceXYZComponent extends SourceComponent implements AfterContentInit, OnChanges {

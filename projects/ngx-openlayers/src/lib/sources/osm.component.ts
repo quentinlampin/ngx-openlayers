@@ -1,4 +1,12 @@
-import { AfterContentInit, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { OSM } from 'ol/source';
 import { AttributionLike } from 'ol/source/Source';
 import { TileSourceEvent } from 'ol/source/Tile';
@@ -10,6 +18,7 @@ import { SourceXYZComponent } from './xyz.component';
   selector: 'aol-source-osm',
   template: ` <div class="aol-source-osm"></div> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceOsmComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceOsmComponent extends SourceXYZComponent implements AfterContentInit {

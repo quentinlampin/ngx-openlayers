@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Extent, getCenter } from 'ol/extent';
 import Projection, { Options } from 'ol/proj/Projection';
 import { FormsModule } from '@angular/forms';
@@ -42,6 +42,7 @@ import { LayerImageComponent, MapComponent, SourceImageStaticComponent, ViewComp
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, MapComponent, ViewComponent, LayerImageComponent, SourceImageStaticComponent],
 })
 export class ImageStaticComponent {

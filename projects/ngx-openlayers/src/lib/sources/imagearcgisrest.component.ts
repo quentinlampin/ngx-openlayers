@@ -8,6 +8,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { LoadFunction } from 'ol/Image';
 import { ProjectionLike } from 'ol/proj';
@@ -21,6 +22,7 @@ import { SourceComponent } from './source.component';
   selector: 'aol-source-imagearcgisrest',
   template: ` <ng-content></ng-content> `,
   providers: [{ provide: SourceComponent, useExisting: forwardRef(() => SourceImageArcGISRestComponent) }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class SourceImageArcGISRestComponent extends SourceComponent implements OnInit, OnChanges {
